@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# FastF1 cache (large, reproducible)
+f1_cache/
+~/f1_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Sensitive
+*.env
+cookies*.txt
+
+# Large generated files (HTML reports are committed individually)
+# Parquet in fastf1/ subdirs are intermediate cache
+data/*/fastf1/*.parquet
+
+# SQLite DB (large, data is exported to CSV)
+data/*/*.db
+
+# Generated report PNGs (large)
+data/*/*.png

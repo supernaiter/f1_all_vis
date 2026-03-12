@@ -1,0 +1,23 @@
+DriverNumber,Abbreviation,FirstName,LastName,FullName,TeamName,TeamColor,Position,ClassifiedPosition,GridPosition,Status,Points,Laps
+63,RUS,George,Russell,George Russell,Mercedes,00D7B6,1.0,1,1.0,Finished,25.0,58.0
+12,ANT,Kimi,Antonelli,Kimi Antonelli,Mercedes,00D7B6,2.0,2,2.0,Finished,18.0,58.0
+16,LEC,Charles,Leclerc,Charles Leclerc,Ferrari,ED1131,3.0,3,4.0,Finished,15.0,58.0
+44,HAM,Lewis,Hamilton,Lewis Hamilton,Ferrari,ED1131,4.0,4,7.0,Finished,12.0,58.0
+1,NOR,Lando,Norris,Lando Norris,McLaren,F47600,5.0,5,6.0,Finished,10.0,58.0
+3,VER,Max,Verstappen,Max Verstappen,Red Bull Racing,4781D7,6.0,6,20.0,Finished,8.0,58.0
+87,BEA,Oliver,Bearman,Oliver Bearman,Haas F1 Team,9C9FA2,7.0,7,12.0,Lapped,6.0,57.0
+41,LIN,Arvid,Lindblad,Arvid Lindblad,Racing Bulls,6C98FF,8.0,8,9.0,Lapped,4.0,57.0
+5,BOR,Gabriel,Bortoleto,Gabriel Bortoleto,Audi,F50537,9.0,9,10.0,Lapped,2.0,57.0
+10,GAS,Pierre,Gasly,Pierre Gasly,Alpine,00A1E8,10.0,10,14.0,Lapped,1.0,57.0
+31,OCO,Esteban,Ocon,Esteban Ocon,Haas F1 Team,9C9FA2,11.0,11,13.0,Lapped,0.0,57.0
+23,ALB,Alexander,Albon,Alexander Albon,Williams,1868DB,12.0,12,15.0,Lapped,0.0,57.0
+30,LAW,Liam,Lawson,Liam Lawson,Racing Bulls,6C98FF,13.0,13,8.0,Lapped,0.0,57.0
+43,COL,Franco,Colapinto,Franco Colapinto,Alpine,00A1E8,14.0,14,16.0,Lapped,0.0,56.0
+55,SAI,Carlos,Sainz,Carlos Sainz,Williams,1868DB,15.0,15,21.0,Lapped,0.0,56.0
+11,PER,Sergio,Perez,Sergio Perez,Cadillac,909090,16.0,16,18.0,Lapped,0.0,55.0
+18,STR,Lance,Stroll,Lance Stroll,Aston Martin,229971,17.0,R,22.0,Lapped,0.0,43.0
+14,ALO,Fernando,Alonso,Fernando Alonso,Aston Martin,229971,18.0,R,17.0,Retired,0.0,21.0
+77,BOT,Valtteri,Bottas,Valtteri Bottas,Cadillac,909090,19.0,R,19.0,Retired,0.0,15.0
+6,HAD,Isack,Hadjar,Isack Hadjar,Red Bull Racing,4781D7,20.0,R,3.0,Retired,0.0,10.0
+81,PIA,Oscar,Piastri,Oscar Piastri,McLaren,F47600,21.0,W,5.0,Did not start,0.0,0.0
+27,HUL,Nico,Hulkenberg,Nico Hulkenberg,Audi,F50537,22.0,W,11.0,Did not start,0.0,0.0

@@ -1,0 +1,82 @@
+{
+  "event": "2026 R1 Australia Grand Prix",
+  "circuit": "Albert Park Circuit, Melbourne",
+  "race_laps": 58,
+  "exported": "2026-03-12T17:58:27.488112",
+  "tool": "FastF1 v3.8.1",
+  "primary_api": "F1 Live Timing API (via FastF1)",
+  "datasets": [
+    {
+      "file": "race_laps.csv",
+      "rows": 1007,
+      "columns": 22,
+      "size_kb": 111.5,
+      "source": "FastF1 v3.8.1 (fastf1.get_session → session.laps)",
+      "api": "FastF1 (https://docs.fastf1.dev/) — F1 Live Timing APIのラッパー",
+      "description": "決勝全ドライバー全ラップデータ。ラップタイム、セクタータイム、スピード計測、タイヤ情報、ポジション等。"
+    },
+    {
+      "file": "race_laps.parquet",
+      "rows": 1007,
+      "columns": 42,
+      "size_kb": 162.9,
+      "source": "FastF1 v3.8.1 (session.laps)",
+      "api": "FastF1",
+      "description": "race_laps.csvの完全版（Timedelta型保持、全31カラム）"
+    },
+    {
+      "file": "race_results.csv",
+      "rows": 22,
+      "columns": 13,
+      "size_kb": 1.9,
+      "source": "FastF1 v3.8.1 (session.results)",
+      "api": "FastF1 — F1 Live Timing API",
+      "description": "決勝結果。全22ドライバーの順位、グリッド、ステータス、ポイント。"
+    },
+    {
+      "file": "race_control_messages.csv",
+      "rows": 167,
+      "columns": 7,
+      "size_kb": 11.6,
+      "source": "FastF1 v3.8.1 (session.race_control_messages)",
+      "api": "FastF1 — F1 Live Timing API",
+      "description": "レースコントロールメッセージ（VSC/SC/旗等）。167件。"
+    },
+    {
+      "file": "race_weather.csv",
+      "rows": 148,
+      "columns": 8,
+      "size_kb": 8.7,
+      "source": "FastF1 v3.8.1 (session.weather_data)",
+      "api": "FastF1 — F1 Live Timing API",
+      "description": "決勝中の気象データ。気温、路面温度、湿度、風向風速、降雨。"
+    },
+    {
+      "file": "fp_laps.csv",
+      "rows": 1408,
+      "columns": 20,
+      "size_kb": 132.2,
+      "source": "gp_weekend.db (lapsテーブル) ← FastF1 v3.8.1",
+      "api": "FastF1 — F1 Live Timing API",
+      "description": "FP1/FP2/FP3の全ラップデータ。1408行。セッション別にフィルタ可能。"
+    },
+    {
+      "file": "fp_weather.csv",
+      "rows": 161,
+      "columns": 9,
+      "size_kb": 7.2,
+      "source": "gp_weekend.db (weatherテーブル) ← FastF1 v3.8.1",
+      "api": "FastF1 — F1 Live Timing API",
+      "description": "FP1/FP2/FP3の気象データ。161行。"
+    },
+    {
+      "file": "fp_session_summary.csv",
+      "rows": 43,
+      "columns": 7,
+      "size_kb": 2.4,
+      "source": "gp_weekend.db (session_summaryテーブル) ← FastF1 v3.8.1",
+      "api": "FastF1 — F1 Live Timing API",
+      "description": "FP1/FP2のセッション別ドライバーサマリー（ベストラップ、平均、使用コンパウンド）。"
+    }
+  ]
+}

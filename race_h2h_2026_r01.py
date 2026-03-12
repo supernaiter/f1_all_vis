@@ -268,12 +268,26 @@ def generate_h2h_report(drv1, drv2):
                             marker='x', c=colors[drv], s=18, alpha=0.3, zorder=2)
         for pl in pit_laps[drv]:
             for ax in [ax1, ax2, ax3]:
-                ax.axvline(pl, color=colors[drv], linestyle=':', alpha=0.4, linewidth=0.8)
+                ax.axvline(pl, color=colors[drv], linestyle='--', alpha=0.7, linewidth=1.2)
 
     # Y軸
     all_ct = pd.concat([clean_data[d]['LapTimeSec'].dropna() for d in DRIVERS])
     ax1.set_ylim(max(all_ct.min() - 1, 75), all_ct.quantile(0.98) + 2)
     ax1.set_ylabel('ラップタイム (秒)', fontsize=STYLE['label_size'])
+
+    # ピットインラベル（Y軸設定後に上部に配置）
+    y_bottom, y_top = ax1.get_ylim()
+    y_range = y_top - y_bottom
+    for i, drv in enumerate(DRIVERS):
+        for pl in pit_laps[drv]:
+            # 2ドライバーのラベルが同一周で重ならないよう上下にオフセット
+            y_pos = y_top - y_range * (0.03 + 0.08 * i)
+            ax1.text(pl, y_pos, f'{drv} PIT L{pl}',
+                     ha='center', va='top', fontsize=8, fontweight='bold',
+                     color=colors[drv], alpha=0.9,
+                     bbox=dict(boxstyle='round,pad=0.2', facecolor='#1a1a2e',
+                               edgecolor=colors[drv], alpha=0.7, linewidth=0.8))
+
     ax1.xaxis.set_major_locator(MultipleLocator(5))
     ax1.grid(True, color=STYLE['grid_color'], alpha=0.5, linewidth=0.5)
     ax1.legend(loc='upper right', fontsize=10, framealpha=0.3)
@@ -473,10 +487,20 @@ def generate_h2h_report(drv1, drv2):
     stats2 = compute_sector_stats(drv2)
 
     # ================================================================
-    # Chart 4: 直接比較サマリー（4パネル）
+    # Chart 4: 直接比較サマリー（5パネル: 上段2 + 下段3）
     # ================================================================
     print('  Chart 4: 直接比較サマリー...')
-    fig4, axes4 = plt.subplots(2, 2, figsize=(14, 10), gridspec_kw={'hspace': 0.35, 'wspace': 0.3})
+    from matplotlib.gridspec import GridSpec
+    fig4 = plt.figure(figsize=(16, 10))
+    gs = GridSpec(2, 6, figure=fig4, hspace=0.45, wspace=0.6,
+                  height_ratios=[1, 1])
+    # 上段: 4A(左3列), 4B(右3列)
+    axes4 = {}
+    axes4[0, 0] = fig4.add_subplot(gs[0, :3])
+    axes4[0, 1] = fig4.add_subplot(gs[0, 3:])
+    # 下段: 4C(左2.5列), 凡例(中1列), 4D(右2.5列)
+    axes4[1, 0] = fig4.add_subplot(gs[1, :3])
+    axes4[1, 1] = fig4.add_subplot(gs[1, 4:])
 
     # 4A: スティント別平均ペース
     ax4a = axes4[0, 0]
@@ -546,7 +570,7 @@ def generate_h2h_report(drv1, drv2):
     ax4b.set_title(f'4B: セクター別累積タイム差\n({compare_compound}共通ラップ n={len(compare_laps)})', fontsize=12)
     ax4b.grid(True, axis='x', color=STYLE['grid_color'], alpha=0.4)
 
-    # 4C: スピード分布（箱ひげ図）— 正式名ラベル
+    # 4C: スピード分布（箱ひげ図）— 正式名ラベル + 凡例図 + 脚注
     ax4c = axes4[1, 0]
     bp1_data = [clean_data[drv1][col].dropna().values for col in SPEED_COLS]
     bp2_data = [clean_data[drv2][col].dropna().values for col in SPEED_COLS]
@@ -564,9 +588,67 @@ def generate_h2h_report(drv1, drv2):
     ax4c.set_xticks(pos1 + 0.5)
     ax4c.set_xticklabels(SPEED_SHORT, fontsize=9)
     ax4c.set_ylabel('速度 (km/h)', fontsize=STYLE['label_size'] - 1)
-    ax4c.set_title('4C: スピード分布比較\n(クリーンラップ)', fontsize=12)
+    ax4c.set_title('4C: スピード分布比較 (クリーンラップ)', fontsize=12)
     ax4c.grid(True, axis='y', color=STYLE['grid_color'], alpha=0.4)
-    ax4c.legend([bp1['boxes'][0], bp2['boxes'][0]], [drv1, drv2], loc='lower right', fontsize=9, framealpha=0.3)
+    ax4c.legend([bp1['boxes'][0], bp2['boxes'][0]], [drv1, drv2], loc='upper left', fontsize=9, framealpha=0.3)
+
+    # 脚注: 速度計測ポイントの説明
+    footnote = ('S1末端=Sector1終点の通過速度  S2末端=Sector2終点の通過速度\n'
+                'FL=フィニッシュライン通過速度  ST=スピードトラップ(FIA最高速計測点)')
+    ax4c.text(0.5, -0.18, footnote, transform=ax4c.transAxes, fontsize=7.5,
+              color='#999', ha='center', va='top', style='italic')
+
+    # 箱ひげ図の読み方（4Cと4Dの間に独立パネルで解説）
+    ax_legend = fig4.add_subplot(gs[1, 3])
+    ax_legend.set_facecolor(STYLE['bg_color'])
+    ax_legend.set_xlim(0, 10)
+    ax_legend.set_ylim(0, 10)
+    ax_legend.set_xticks([])
+    ax_legend.set_yticks([])
+    for spine in ax_legend.spines.values():
+        spine.set_color('#555577')
+        spine.set_linewidth(0.5)
+
+    # 箱ひげ図をインセット内に手描き
+    bx, bw = 3.0, 1.8  # 箱のX中心と幅
+    q1, med, q3 = 2.5, 4.5, 6.2  # Q1, 中央値, Q3
+    whi_lo, whi_hi = 1.2, 8.0     # ひげの端
+    outlier_y = 9.0                # 外れ値
+
+    lc = '#cccccc'
+    # ひげ（上下）
+    ax_legend.plot([bx, bx], [whi_lo, q1], color=lc, linewidth=1.2)
+    ax_legend.plot([bx, bx], [q3, whi_hi], color=lc, linewidth=1.2)
+    # ひげ端のキャップ
+    ax_legend.plot([bx - 0.4, bx + 0.4], [whi_lo, whi_lo], color=lc, linewidth=1.2)
+    ax_legend.plot([bx - 0.4, bx + 0.4], [whi_hi, whi_hi], color=lc, linewidth=1.2)
+    # 箱
+    box_rect = plt.Rectangle((bx - bw/2, q1), bw, q3 - q1,
+                               facecolor='#445577', edgecolor=lc, linewidth=1.2, alpha=0.7)
+    ax_legend.add_patch(box_rect)
+    # 中央値
+    ax_legend.plot([bx - bw/2, bx + bw/2], [med, med], color='#ff6666', linewidth=1.5)
+    # 外れ値
+    ax_legend.plot(bx, outlier_y, 'o', color=lc, markersize=4, markerfacecolor='none')
+
+    # ラベル（右側に配置）
+    tx = 5.8
+    annot_style = dict(fontsize=6.5, color='#cccccc', va='center', ha='left')
+    ax_legend.annotate('外れ値', xy=(bx + 0.3, outlier_y), xytext=(tx, outlier_y),
+                        arrowprops=dict(arrowstyle='-', color='#888', lw=0.5), **annot_style)
+    ax_legend.annotate('上ひげ(最大値*)', xy=(bx + 0.5, whi_hi), xytext=(tx, whi_hi),
+                        arrowprops=dict(arrowstyle='-', color='#888', lw=0.5), **annot_style)
+    ax_legend.annotate('Q3 (75%)', xy=(bx + bw/2 + 0.1, q3), xytext=(tx, q3),
+                        arrowprops=dict(arrowstyle='-', color='#888', lw=0.5), **annot_style)
+    ax_legend.annotate('中央値', xy=(bx + bw/2 + 0.1, med), xytext=(tx, med),
+                        arrowprops=dict(arrowstyle='-', color='#ff6666', lw=0.5),
+                        fontsize=6.5, color='#ff6666', va='center', ha='left')
+    ax_legend.annotate('Q1 (25%)', xy=(bx + bw/2 + 0.1, q1), xytext=(tx, q1),
+                        arrowprops=dict(arrowstyle='-', color='#888', lw=0.5), **annot_style)
+    ax_legend.annotate('下ひげ(最小値*)', xy=(bx + 0.5, whi_lo), xytext=(tx, whi_lo),
+                        arrowprops=dict(arrowstyle='-', color='#888', lw=0.5), **annot_style)
+    ax_legend.text(5.0, 0.3, '*Q1/Q3から箱の1.5倍以内', fontsize=5.5, color='#888', ha='center')
+    ax_legend.set_title('箱ひげ図の見方', fontsize=7.5, color='#ccc', pad=3)
 
     # 4D: デグラデーション（最長スティントのコンパウンド）
     ax4d = axes4[1, 1]

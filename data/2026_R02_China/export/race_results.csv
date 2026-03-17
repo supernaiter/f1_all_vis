@@ -1,0 +1,23 @@
+DriverNumber,Abbreviation,FirstName,LastName,FullName,TeamName,TeamColor,Position,ClassifiedPosition,GridPosition,Status,Points,Laps
+12,ANT,Kimi,Antonelli,Kimi Antonelli,Mercedes,00D7B6,1.0,1,1.0,Finished,25.0,56.0
+63,RUS,George,Russell,George Russell,Mercedes,00D7B6,2.0,2,2.0,Finished,18.0,56.0
+44,HAM,Lewis,Hamilton,Lewis Hamilton,Ferrari,ED1131,3.0,3,3.0,Finished,15.0,56.0
+16,LEC,Charles,Leclerc,Charles Leclerc,Ferrari,ED1131,4.0,4,4.0,Finished,12.0,56.0
+87,BEA,Oliver,Bearman,Oliver Bearman,Haas F1 Team,9C9FA2,5.0,5,10.0,Finished,10.0,56.0
+10,GAS,Pierre,Gasly,Pierre Gasly,Alpine,00A1E8,6.0,6,7.0,Finished,8.0,56.0
+30,LAW,Liam,Lawson,Liam Lawson,Racing Bulls,6C98FF,7.0,7,14.0,Finished,6.0,56.0
+6,HAD,Isack,Hadjar,Isack Hadjar,Red Bull Racing,4781D7,8.0,8,9.0,Finished,4.0,56.0
+55,SAI,Carlos,Sainz,Carlos Sainz,Williams,1868DB,9.0,9,17.0,Lapped,2.0,55.0
+43,COL,Franco,Colapinto,Franco Colapinto,Alpine,00A1E8,10.0,10,12.0,Lapped,1.0,55.0
+27,HUL,Nico,Hulkenberg,Nico Hulkenberg,Audi,F50537,11.0,11,11.0,Lapped,0.0,55.0
+41,LIN,Arvid,Lindblad,Arvid Lindblad,Racing Bulls,6C98FF,12.0,12,15.0,Lapped,0.0,55.0
+77,BOT,Valtteri,Bottas,Valtteri Bottas,Cadillac,909090,13.0,13,19.0,Lapped,0.0,55.0
+31,OCO,Esteban,Ocon,Esteban Ocon,Haas F1 Team,9C9FA2,14.0,14,13.0,Lapped,0.0,55.0
+11,PER,Sergio,Perez,Sergio Perez,Cadillac,909090,15.0,15,21.0,Lapped,0.0,55.0
+3,VER,Max,Verstappen,Max Verstappen,Red Bull Racing,4781D7,16.0,R,8.0,Retired,0.0,45.0
+14,ALO,Fernando,Alonso,Fernando Alonso,Aston Martin,229971,17.0,R,18.0,Retired,0.0,32.0
+18,STR,Lance,Stroll,Lance Stroll,Aston Martin,229971,18.0,R,20.0,Retired,0.0,9.0
+81,PIA,Oscar,Piastri,Oscar Piastri,McLaren,F47600,19.0,W,5.0,Did not start,0.0,0.0
+1,NOR,Lando,Norris,Lando Norris,McLaren,F47600,20.0,W,6.0,Did not start,0.0,0.0
+5,BOR,Gabriel,Bortoleto,Gabriel Bortoleto,Audi,F50537,21.0,W,16.0,Did not start,0.0,0.0
+23,ALB,Alexander,Albon,Alexander Albon,Williams,1868DB,22.0,W,22.0,Did not start,0.0,0.0

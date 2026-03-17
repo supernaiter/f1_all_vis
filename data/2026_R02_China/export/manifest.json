@@ -1,0 +1,127 @@
+{
+  "event": "2026 R2 China Grand Prix",
+  "circuit": "Shanghai International Circuit",
+  "format": "Sprint Weekend",
+  "sessions": [
+    "FP1",
+    "SQ",
+    "Sprint",
+    "Qualifying",
+    "Race"
+  ],
+  "race_laps": 56,
+  "sprint_laps": 19,
+  "exported": "2026-03-16T11:00:37.830454",
+  "tool": "FastF1 v3.8.1",
+  "primary_api": "F1 Live Timing API (via FastF1)",
+  "datasets": [
+    {
+      "file": "race_laps.csv",
+      "rows": 924,
+      "columns": 22,
+      "size_kb": 102.3,
+      "source": "FastF1 v3.8.1 (fastf1.get_session -> session.laps)",
+      "api": "FastF1 (https://docs.fastf1.dev/)",
+      "description": "決勝全ドライバー全ラップデータ。ラップタイム、セクタータイム、スピード計測、タイヤ情報、ポジション等。"
+    },
+    {
+      "file": "race_laps.parquet",
+      "rows": 924,
+      "columns": 31,
+      "size_kb": 88.3,
+      "source": "FastF1 v3.8.1 (session.laps)",
+      "api": "FastF1",
+      "description": "race_laps.csvの完全版（Timedelta型保持、全カラム）"
+    },
+    {
+      "file": "race_results.csv",
+      "rows": 22,
+      "columns": 13,
+      "size_kb": 1.9,
+      "source": "FastF1 v3.8.1 (session.results)",
+      "api": "FastF1",
+      "description": "決勝結果。全ドライバーの順位、グリッド、ステータス、ポイント。"
+    },
+    {
+      "file": "race_control_messages.csv",
+      "rows": 86,
+      "columns": 7,
+      "size_kb": 5.9,
+      "source": "FastF1 v3.8.1 (session.race_control_messages)",
+      "api": "FastF1",
+      "description": "レースコントロールメッセージ（VSC/SC/旗等）。"
+    },
+    {
+      "file": "race_weather.csv",
+      "rows": 152,
+      "columns": 8,
+      "size_kb": 6.8,
+      "source": "FastF1 v3.8.1 (session.weather_data)",
+      "api": "FastF1",
+      "description": "決勝中の気象データ。気温、路面温度、湿度、風向風速、降雨。"
+    },
+    {
+      "file": "fp_laps.csv",
+      "rows": 540,
+      "columns": 20,
+      "size_kb": 55.0,
+      "source": "FastF1 v3.8.1 (session.laps)",
+      "api": "FastF1",
+      "description": "FP1の全ラップデータ（スプリントウィークのためFP1のみ）。"
+    },
+    {
+      "file": "fp_weather.csv",
+      "rows": 84,
+      "columns": 9,
+      "size_kb": 4.1,
+      "source": "FastF1 v3.8.1 (session.weather_data)",
+      "api": "FastF1",
+      "description": "FP1の気象データ。"
+    },
+    {
+      "file": "fp_session_summary.csv",
+      "rows": 22,
+      "columns": 7,
+      "size_kb": 1.3,
+      "source": "gp_weekend.db (session_summaryビュー)",
+      "api": "FastF1",
+      "description": "FP1のセッション別ドライバーサマリー（ベストラップ、平均、使用コンパウンド）。"
+    },
+    {
+      "file": "sprint_laps.csv",
+      "rows": 397,
+      "columns": 22,
+      "size_kb": 44.4,
+      "source": "FastF1 v3.8.1 (session.laps)",
+      "api": "FastF1",
+      "description": "スプリント全ドライバー全ラップデータ。"
+    },
+    {
+      "file": "sprint_results.csv",
+      "rows": 22,
+      "columns": 13,
+      "size_kb": 1.9,
+      "source": "FastF1 v3.8.1 (session.results)",
+      "api": "FastF1",
+      "description": "スプリント結果。全ドライバーの順位、グリッド、ステータス、ポイント。"
+    },
+    {
+      "file": "sq_laps.csv",
+      "rows": 257,
+      "columns": 21,
+      "size_kb": 27.2,
+      "source": "FastF1 v3.8.1 (session.laps)",
+      "api": "FastF1",
+      "description": "スプリント予選（SQ）全ドライバー全ラップデータ。"
+    },
+    {
+      "file": "quali_laps.csv",
+      "rows": 325,
+      "columns": 21,
+      "size_kb": 34.1,
+      "source": "FastF1 v3.8.1 (session.laps)",
+      "api": "FastF1",
+      "description": "予選（Q）全ドライバー全ラップデータ。"
+    }
+  ]
+}

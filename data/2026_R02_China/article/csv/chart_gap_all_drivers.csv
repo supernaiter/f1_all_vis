@@ -1,0 +1,921 @@
+Driver,Team,Position,LapNumber,GapToANT_sec
+ANT,Mercedes,1,1,0.0
+ANT,Mercedes,1,2,0.0
+ANT,Mercedes,1,3,0.0
+ANT,Mercedes,1,4,0.0
+ANT,Mercedes,1,5,0.0
+ANT,Mercedes,1,6,0.0
+ANT,Mercedes,1,7,0.0
+ANT,Mercedes,1,8,0.0
+ANT,Mercedes,1,9,0.0
+ANT,Mercedes,1,10,0.0
+ANT,Mercedes,1,11,0.0
+ANT,Mercedes,1,12,0.0
+ANT,Mercedes,1,13,0.0
+ANT,Mercedes,1,14,0.0
+ANT,Mercedes,1,15,0.0
+ANT,Mercedes,1,16,0.0
+ANT,Mercedes,1,17,0.0
+ANT,Mercedes,1,18,0.0
+ANT,Mercedes,1,19,0.0
+ANT,Mercedes,1,20,0.0
+ANT,Mercedes,1,21,0.0
+ANT,Mercedes,1,22,0.0
+ANT,Mercedes,1,23,0.0
+ANT,Mercedes,1,24,0.0
+ANT,Mercedes,1,25,0.0
+ANT,Mercedes,1,26,0.0
+ANT,Mercedes,1,27,0.0
+ANT,Mercedes,1,28,0.0
+ANT,Mercedes,1,29,0.0
+ANT,Mercedes,1,30,0.0
+ANT,Mercedes,1,31,0.0
+ANT,Mercedes,1,32,0.0
+ANT,Mercedes,1,33,0.0
+ANT,Mercedes,1,34,0.0
+ANT,Mercedes,1,35,0.0
+ANT,Mercedes,1,36,0.0
+ANT,Mercedes,1,37,0.0
+ANT,Mercedes,1,38,0.0
+ANT,Mercedes,1,39,0.0
+ANT,Mercedes,1,40,0.0
+ANT,Mercedes,1,41,0.0
+ANT,Mercedes,1,42,0.0
+ANT,Mercedes,1,43,0.0
+ANT,Mercedes,1,44,0.0
+ANT,Mercedes,1,45,0.0
+ANT,Mercedes,1,46,0.0
+ANT,Mercedes,1,47,0.0
+ANT,Mercedes,1,48,0.0
+ANT,Mercedes,1,49,0.0
+ANT,Mercedes,1,50,0.0
+ANT,Mercedes,1,51,0.0
+ANT,Mercedes,1,52,0.0
+ANT,Mercedes,1,53,0.0
+ANT,Mercedes,1,54,0.0
+ANT,Mercedes,1,55,0.0
+ANT,Mercedes,1,56,0.0
+RUS,Mercedes,2,1,1.678
+RUS,Mercedes,2,2,1.448
+RUS,Mercedes,2,3,1.56
+RUS,Mercedes,2,4,1.259
+RUS,Mercedes,2,5,1.186
+RUS,Mercedes,2,6,1.389
+RUS,Mercedes,2,7,1.36
+RUS,Mercedes,2,8,1.304
+RUS,Mercedes,2,9,1.209
+RUS,Mercedes,2,10,7.317
+RUS,Mercedes,2,11,2.904
+RUS,Mercedes,2,12,2.661
+RUS,Mercedes,2,13,1.423
+RUS,Mercedes,2,14,3.054
+RUS,Mercedes,2,15,3.742
+RUS,Mercedes,2,16,4.67
+RUS,Mercedes,2,17,4.535
+RUS,Mercedes,2,18,3.789
+RUS,Mercedes,2,19,3.641
+RUS,Mercedes,2,20,3.496
+RUS,Mercedes,2,21,3.23
+RUS,Mercedes,2,22,3.512
+RUS,Mercedes,2,23,3.267
+RUS,Mercedes,2,24,4.199
+RUS,Mercedes,2,25,5.748
+RUS,Mercedes,2,26,6.347
+RUS,Mercedes,2,27,7.528
+RUS,Mercedes,2,28,7.91
+RUS,Mercedes,2,29,7.687
+RUS,Mercedes,2,30,7.959
+RUS,Mercedes,2,31,8.058
+RUS,Mercedes,2,32,8.052
+RUS,Mercedes,2,33,7.716
+RUS,Mercedes,2,34,7.547
+RUS,Mercedes,2,35,7.672
+RUS,Mercedes,2,36,7.572
+RUS,Mercedes,2,37,6.944
+RUS,Mercedes,2,38,6.947
+RUS,Mercedes,2,39,6.95
+RUS,Mercedes,2,40,6.436
+RUS,Mercedes,2,41,6.734
+RUS,Mercedes,2,42,7.465
+RUS,Mercedes,2,43,7.173
+RUS,Mercedes,2,44,7.383
+RUS,Mercedes,2,45,7.532
+RUS,Mercedes,2,46,8.657
+RUS,Mercedes,2,47,8.824
+RUS,Mercedes,2,48,9.213
+RUS,Mercedes,2,49,9.56
+RUS,Mercedes,2,50,9.582
+RUS,Mercedes,2,51,9.102
+RUS,Mercedes,2,52,9.374
+RUS,Mercedes,2,53,7.535
+RUS,Mercedes,2,54,7.816
+RUS,Mercedes,2,55,7.133
+RUS,Mercedes,2,56,5.604
+HAM,Ferrari,3,1,-0.689
+HAM,Ferrari,3,2,0.567
+HAM,Ferrari,3,3,1.141
+HAM,Ferrari,3,4,1.981
+HAM,Ferrari,3,5,2.082
+HAM,Ferrari,3,6,2.872
+HAM,Ferrari,3,7,3.681
+HAM,Ferrari,3,8,4.288
+HAM,Ferrari,3,9,5.303
+HAM,Ferrari,3,10,8.578
+HAM,Ferrari,3,11,3.728
+HAM,Ferrari,3,12,3.787
+HAM,Ferrari,3,13,1.664
+HAM,Ferrari,3,14,1.673
+HAM,Ferrari,3,15,0.524
+HAM,Ferrari,3,16,0.851
+HAM,Ferrari,3,17,0.993
+HAM,Ferrari,3,18,1.051
+HAM,Ferrari,3,19,1.338
+HAM,Ferrari,3,20,1.491
+HAM,Ferrari,3,21,1.534
+HAM,Ferrari,3,22,1.928
+HAM,Ferrari,3,23,2.171
+HAM,Ferrari,3,24,3.881
+HAM,Ferrari,3,25,5.26
+HAM,Ferrari,3,26,5.411
+HAM,Ferrari,3,27,8.053
+HAM,Ferrari,3,28,8.682
+HAM,Ferrari,3,29,9.072
+HAM,Ferrari,3,30,9.591
+HAM,Ferrari,3,31,9.979
+HAM,Ferrari,3,32,10.625
+HAM,Ferrari,3,33,10.678
+HAM,Ferrari,3,34,11.409
+HAM,Ferrari,3,35,12.709
+HAM,Ferrari,3,36,13.696
+HAM,Ferrari,3,37,14.186
+HAM,Ferrari,3,38,15.536
+HAM,Ferrari,3,39,18.134
+HAM,Ferrari,3,40,18.936
+HAM,Ferrari,3,41,20.064
+HAM,Ferrari,3,42,20.65
+HAM,Ferrari,3,43,20.932
+HAM,Ferrari,3,44,21.84
+HAM,Ferrari,3,45,22.708
+HAM,Ferrari,3,46,23.735
+HAM,Ferrari,3,47,24.438
+HAM,Ferrari,3,48,24.883
+HAM,Ferrari,3,49,25.745
+HAM,Ferrari,3,50,26.323
+HAM,Ferrari,3,51,26.446
+HAM,Ferrari,3,52,27.467
+HAM,Ferrari,3,53,26.136
+HAM,Ferrari,3,54,26.4
+HAM,Ferrari,3,55,26.114
+HAM,Ferrari,3,56,25.288
+LEC,Ferrari,4,1,0.927
+LEC,Ferrari,4,2,1.18
+LEC,Ferrari,4,3,2.315
+LEC,Ferrari,4,4,2.756
+LEC,Ferrari,4,5,3.084
+LEC,Ferrari,4,6,4.048
+LEC,Ferrari,4,7,4.63
+LEC,Ferrari,4,8,5.102
+LEC,Ferrari,4,9,5.876
+LEC,Ferrari,4,10,11.602
+LEC,Ferrari,4,11,6.207
+LEC,Ferrari,4,12,6.402
+LEC,Ferrari,4,13,2.37
+LEC,Ferrari,4,14,3.264
+LEC,Ferrari,4,15,2.247
+LEC,Ferrari,4,16,2.949
+LEC,Ferrari,4,17,3.271
+LEC,Ferrari,4,18,2.811
+LEC,Ferrari,4,19,2.856
+LEC,Ferrari,4,20,2.927
+LEC,Ferrari,4,21,2.703
+LEC,Ferrari,4,22,2.734
+LEC,Ferrari,4,23,2.741
+LEC,Ferrari,4,24,3.505
+LEC,Ferrari,4,25,4.672
+LEC,Ferrari,4,26,5.658
+LEC,Ferrari,4,27,6.94
+LEC,Ferrari,4,28,7.427
+LEC,Ferrari,4,29,8.153
+LEC,Ferrari,4,30,8.784
+LEC,Ferrari,4,31,9.085
+LEC,Ferrari,4,32,9.726
+LEC,Ferrari,4,33,9.833
+LEC,Ferrari,4,34,10.541
+LEC,Ferrari,4,35,13.015
+LEC,Ferrari,4,36,14.248
+LEC,Ferrari,4,37,14.856
+LEC,Ferrari,4,38,16.089
+LEC,Ferrari,4,39,17.588
+LEC,Ferrari,4,40,19.694
+LEC,Ferrari,4,41,21.191
+LEC,Ferrari,4,42,22.056
+LEC,Ferrari,4,43,22.704
+LEC,Ferrari,4,44,24.021
+LEC,Ferrari,4,45,25.717
+LEC,Ferrari,4,46,26.706
+LEC,Ferrari,4,47,27.409
+LEC,Ferrari,4,48,27.931
+LEC,Ferrari,4,49,28.739
+LEC,Ferrari,4,50,29.467
+LEC,Ferrari,4,51,30.2
+LEC,Ferrari,4,52,31.249
+LEC,Ferrari,4,53,30.039
+LEC,Ferrari,4,54,30.076
+LEC,Ferrari,4,55,29.832
+LEC,Ferrari,4,56,28.914
+BEA,Haas F1 Team,5,1,7.714
+BEA,Haas F1 Team,5,2,10.545
+BEA,Haas F1 Team,5,3,12.247
+BEA,Haas F1 Team,5,4,14.033
+BEA,Haas F1 Team,5,5,16.002
+BEA,Haas F1 Team,5,6,17.44
+BEA,Haas F1 Team,5,7,19.351
+BEA,Haas F1 Team,5,8,21.465
+BEA,Haas F1 Team,5,9,23.819
+BEA,Haas F1 Team,5,10,34.578
+BEA,Haas F1 Team,5,11,19.408
+BEA,Haas F1 Team,5,12,9.973
+BEA,Haas F1 Team,5,13,3.995
+BEA,Haas F1 Team,5,14,4.278
+BEA,Haas F1 Team,5,15,5.345
+BEA,Haas F1 Team,5,16,7.01
+BEA,Haas F1 Team,5,17,8.798
+BEA,Haas F1 Team,5,18,9.936
+BEA,Haas F1 Team,5,19,12.129
+BEA,Haas F1 Team,5,20,13.985
+BEA,Haas F1 Team,5,21,15.582
+BEA,Haas F1 Team,5,22,16.837
+BEA,Haas F1 Team,5,23,17.646
+BEA,Haas F1 Team,5,24,18.993
+BEA,Haas F1 Team,5,25,20.159
+BEA,Haas F1 Team,5,26,20.963
+BEA,Haas F1 Team,5,27,21.778
+BEA,Haas F1 Team,5,28,22.827
+BEA,Haas F1 Team,5,29,24.13
+BEA,Haas F1 Team,5,30,25.24
+BEA,Haas F1 Team,5,31,26.715
+BEA,Haas F1 Team,5,32,28.228
+BEA,Haas F1 Team,5,33,29.052
+BEA,Haas F1 Team,5,34,30.426
+BEA,Haas F1 Team,5,35,31.809
+BEA,Haas F1 Team,5,36,33.275
+BEA,Haas F1 Team,5,37,34.358
+BEA,Haas F1 Team,5,38,36.054
+BEA,Haas F1 Team,5,39,37.603
+BEA,Haas F1 Team,5,40,38.606
+BEA,Haas F1 Team,5,41,40.292
+BEA,Haas F1 Team,5,42,42.074
+BEA,Haas F1 Team,5,43,43.352
+BEA,Haas F1 Team,5,44,45.436
+BEA,Haas F1 Team,5,45,47.14
+BEA,Haas F1 Team,5,46,49.159
+BEA,Haas F1 Team,5,47,50.463
+BEA,Haas F1 Team,5,48,51.995
+BEA,Haas F1 Team,5,49,54.114
+BEA,Haas F1 Team,5,50,55.444
+BEA,Haas F1 Team,5,51,56.258
+BEA,Haas F1 Team,5,52,57.761
+BEA,Haas F1 Team,5,53,56.911
+BEA,Haas F1 Team,5,54,57.523
+BEA,Haas F1 Team,5,55,57.793
+BEA,Haas F1 Team,5,56,57.293
+GAS,Alpine,6,1,2.454
+GAS,Alpine,6,2,3.066
+GAS,Alpine,6,3,3.976
+GAS,Alpine,6,4,5.299
+GAS,Alpine,6,5,6.238
+GAS,Alpine,6,6,7.364
+GAS,Alpine,6,7,8.587
+GAS,Alpine,6,8,9.692
+GAS,Alpine,6,9,10.945
+GAS,Alpine,6,10,17.268
+GAS,Alpine,6,11,8.833
+GAS,Alpine,6,12,8.906
+GAS,Alpine,6,13,3.947
+GAS,Alpine,6,14,5.398
+GAS,Alpine,6,15,6.059
+GAS,Alpine,6,16,8.099
+GAS,Alpine,6,17,9.782
+GAS,Alpine,6,18,10.316
+GAS,Alpine,6,19,12.825
+GAS,Alpine,6,20,15.567
+GAS,Alpine,6,21,17.846
+GAS,Alpine,6,22,20.572
+GAS,Alpine,6,23,21.833
+GAS,Alpine,6,24,23.693
+GAS,Alpine,6,25,25.747
+GAS,Alpine,6,26,26.979
+GAS,Alpine,6,27,28.552
+GAS,Alpine,6,28,30.188
+GAS,Alpine,6,29,31.373
+GAS,Alpine,6,30,33.339
+GAS,Alpine,6,31,34.865
+GAS,Alpine,6,32,36.135
+GAS,Alpine,6,33,36.815
+GAS,Alpine,6,34,37.987
+GAS,Alpine,6,35,39.243
+GAS,Alpine,6,36,40.332
+GAS,Alpine,6,37,40.925
+GAS,Alpine,6,38,42.071
+GAS,Alpine,6,39,43.331
+GAS,Alpine,6,40,44.046
+GAS,Alpine,6,41,45.917
+GAS,Alpine,6,42,47.013
+GAS,Alpine,6,43,47.954
+GAS,Alpine,6,44,49.386
+GAS,Alpine,6,45,50.753
+GAS,Alpine,6,46,52.219
+GAS,Alpine,6,47,54.302
+GAS,Alpine,6,48,55.606
+GAS,Alpine,6,49,56.835
+GAS,Alpine,6,50,58.216
+GAS,Alpine,6,51,58.958
+GAS,Alpine,6,52,60.325
+GAS,Alpine,6,53,59.3
+GAS,Alpine,6,54,59.806
+GAS,Alpine,6,55,60.066
+GAS,Alpine,6,56,59.706
+LAW,Racing Bulls,7,1,5.947
+LAW,Racing Bulls,7,2,7.44
+LAW,Racing Bulls,7,3,8.374
+LAW,Racing Bulls,7,4,10.094
+LAW,Racing Bulls,7,5,12.614
+LAW,Racing Bulls,7,6,14.952
+LAW,Racing Bulls,7,7,17.249
+LAW,Racing Bulls,7,8,19.805
+LAW,Racing Bulls,7,9,28.628
+LAW,Racing Bulls,7,10,64.095
+LAW,Racing Bulls,7,11,32.075
+LAW,Racing Bulls,7,12,12.749
+LAW,Racing Bulls,7,13,4.648
+LAW,Racing Bulls,7,14,6.47
+LAW,Racing Bulls,7,15,7.268
+LAW,Racing Bulls,7,16,10.101
+LAW,Racing Bulls,7,17,12.455
+LAW,Racing Bulls,7,18,14.105
+LAW,Racing Bulls,7,19,16.278
+LAW,Racing Bulls,7,20,18.703
+LAW,Racing Bulls,7,21,20.265
+LAW,Racing Bulls,7,22,22.453
+LAW,Racing Bulls,7,23,24.199
+LAW,Racing Bulls,7,24,26.232
+LAW,Racing Bulls,7,25,28.317
+LAW,Racing Bulls,7,26,30.174
+LAW,Racing Bulls,7,27,31.942
+LAW,Racing Bulls,7,28,33.742
+LAW,Racing Bulls,7,29,35.669
+LAW,Racing Bulls,7,30,37.397
+LAW,Racing Bulls,7,31,39.373
+LAW,Racing Bulls,7,32,41.349
+LAW,Racing Bulls,7,33,42.804
+LAW,Racing Bulls,7,34,45.007
+LAW,Racing Bulls,7,35,46.979
+LAW,Racing Bulls,7,36,48.946
+LAW,Racing Bulls,7,37,50.759
+LAW,Racing Bulls,7,38,52.801
+LAW,Racing Bulls,7,39,55.07
+LAW,Racing Bulls,7,40,56.73
+LAW,Racing Bulls,7,41,59.003
+LAW,Racing Bulls,7,42,60.629
+LAW,Racing Bulls,7,43,62.254
+LAW,Racing Bulls,7,44,64.276
+LAW,Racing Bulls,7,45,66.295
+LAW,Racing Bulls,7,46,68.382
+LAW,Racing Bulls,7,47,70.179
+LAW,Racing Bulls,7,48,71.916
+LAW,Racing Bulls,7,49,73.85
+LAW,Racing Bulls,7,50,75.392
+LAW,Racing Bulls,7,51,76.774
+LAW,Racing Bulls,7,52,78.823
+LAW,Racing Bulls,7,53,78.643
+LAW,Racing Bulls,7,54,79.669
+LAW,Racing Bulls,7,55,80.457
+LAW,Racing Bulls,7,56,80.624
+HAD,Red Bull Racing,8,1,23.506
+HAD,Red Bull Racing,8,2,45.4
+HAD,Red Bull Racing,8,3,46.199
+HAD,Red Bull Racing,8,4,47.893
+HAD,Red Bull Racing,8,5,49.182
+HAD,Red Bull Racing,8,6,50.271
+HAD,Red Bull Racing,8,7,51.316
+HAD,Red Bull Racing,8,8,52.655
+HAD,Red Bull Racing,8,9,53.961
+HAD,Red Bull Racing,8,10,75.328
+HAD,Red Bull Racing,8,11,62.82
+HAD,Red Bull Racing,8,12,24.121
+HAD,Red Bull Racing,8,13,7.026
+HAD,Red Bull Racing,8,14,7.4
+HAD,Red Bull Racing,8,15,8.339
+HAD,Red Bull Racing,8,16,11.424
+HAD,Red Bull Racing,8,17,13.821
+HAD,Red Bull Racing,8,18,15.585
+HAD,Red Bull Racing,8,19,17.526
+HAD,Red Bull Racing,8,20,20.033
+HAD,Red Bull Racing,8,21,22.237
+HAD,Red Bull Racing,8,22,24.017
+HAD,Red Bull Racing,8,23,25.648
+HAD,Red Bull Racing,8,24,28.015
+HAD,Red Bull Racing,8,25,30.118
+HAD,Red Bull Racing,8,26,31.904
+HAD,Red Bull Racing,8,27,33.607
+HAD,Red Bull Racing,8,28,35.377
+HAD,Red Bull Racing,8,29,37.078
+HAD,Red Bull Racing,8,30,38.831
+HAD,Red Bull Racing,8,31,40.591
+HAD,Red Bull Racing,8,32,42.697
+HAD,Red Bull Racing,8,33,44.075
+HAD,Red Bull Racing,8,34,46.093
+HAD,Red Bull Racing,8,35,47.994
+HAD,Red Bull Racing,8,36,49.734
+HAD,Red Bull Racing,8,37,51.417
+HAD,Red Bull Racing,8,38,53.47
+HAD,Red Bull Racing,8,39,55.629
+HAD,Red Bull Racing,8,40,57.414
+HAD,Red Bull Racing,8,41,59.994
+HAD,Red Bull Racing,8,42,61.417
+HAD,Red Bull Racing,8,43,63.128
+HAD,Red Bull Racing,8,44,65.155
+HAD,Red Bull Racing,8,45,67.243
+HAD,Red Bull Racing,8,46,69.272
+HAD,Red Bull Racing,8,47,71.976
+HAD,Red Bull Racing,8,48,74.276
+HAD,Red Bull Racing,8,49,76.583
+HAD,Red Bull Racing,8,50,78.613
+HAD,Red Bull Racing,8,51,80.605
+HAD,Red Bull Racing,8,52,83.135
+HAD,Red Bull Racing,8,53,83.542
+HAD,Red Bull Racing,8,54,85.291
+HAD,Red Bull Racing,8,55,86.711
+HAD,Red Bull Racing,8,56,87.326
+SAI,Williams,9,1,7.37
+SAI,Williams,9,2,9.808
+SAI,Williams,9,3,11.782
+SAI,Williams,9,4,13.376
+SAI,Williams,9,5,15.595
+SAI,Williams,9,6,18.561
+SAI,Williams,9,7,21.78
+SAI,Williams,9,8,24.371
+SAI,Williams,9,9,32.149
+SAI,Williams,9,10,68.665
+SAI,Williams,9,11,36.698
+SAI,Williams,9,12,14.539
+SAI,Williams,9,13,5.371
+SAI,Williams,9,14,6.898
+SAI,Williams,9,15,7.801
+SAI,Williams,9,16,10.625
+SAI,Williams,9,17,13.099
+SAI,Williams,9,18,14.697
+SAI,Williams,9,19,17.0
+SAI,Williams,9,20,19.635
+SAI,Williams,9,21,21.85
+SAI,Williams,9,22,25.483
+SAI,Williams,9,23,27.778
+SAI,Williams,9,24,30.229
+SAI,Williams,9,25,32.469
+SAI,Williams,9,26,34.589
+SAI,Williams,9,27,37.707
+SAI,Williams,9,28,39.79
+SAI,Williams,9,29,42.223
+SAI,Williams,9,30,44.566
+SAI,Williams,9,31,46.918
+SAI,Williams,9,32,49.274
+SAI,Williams,9,33,51.293
+SAI,Williams,9,34,54.035
+SAI,Williams,9,35,56.67
+SAI,Williams,9,36,59.4
+SAI,Williams,9,37,61.721
+SAI,Williams,9,38,64.69
+SAI,Williams,9,39,67.781
+SAI,Williams,9,40,69.989
+SAI,Williams,9,41,73.067
+SAI,Williams,9,42,75.409
+SAI,Williams,9,43,77.756
+SAI,Williams,9,44,80.692
+SAI,Williams,9,45,83.268
+SAI,Williams,9,46,86.02
+SAI,Williams,9,47,88.848
+SAI,Williams,9,48,91.164
+SAI,Williams,9,49,93.663
+SAI,Williams,9,50,97.034
+SAI,Williams,9,51,99.004
+SAI,Williams,9,52,102.153
+SAI,Williams,9,53,104.71
+SAI,Williams,9,54,106.788
+SAI,Williams,9,55,108.638
+COL,Alpine,10,1,5.361
+COL,Alpine,10,2,6.364
+COL,Alpine,10,3,7.276
+COL,Alpine,10,4,8.747
+COL,Alpine,10,5,10.122
+COL,Alpine,10,6,11.684
+COL,Alpine,10,7,13.077
+COL,Alpine,10,8,14.714
+COL,Alpine,10,9,16.394
+COL,Alpine,10,10,21.194
+COL,Alpine,10,11,0.647
+COL,Alpine,10,12,0.715
+COL,Alpine,10,13,0.749
+COL,Alpine,10,14,1.257
+COL,Alpine,10,15,1.864
+COL,Alpine,10,16,5.366
+COL,Alpine,10,17,7.194
+COL,Alpine,10,18,9.081
+COL,Alpine,10,19,11.831
+COL,Alpine,10,20,14.024
+COL,Alpine,10,21,16.419
+COL,Alpine,10,22,18.989
+COL,Alpine,10,23,20.676
+COL,Alpine,10,24,22.61
+COL,Alpine,10,25,24.48
+COL,Alpine,10,26,25.962
+COL,Alpine,10,27,27.66
+COL,Alpine,10,28,30.37
+COL,Alpine,10,29,32.713
+COL,Alpine,10,30,34.782
+COL,Alpine,10,31,36.476
+COL,Alpine,10,32,43.312
+COL,Alpine,10,33,70.986
+COL,Alpine,10,34,72.198
+COL,Alpine,10,35,72.944
+COL,Alpine,10,36,73.953
+COL,Alpine,10,37,74.752
+COL,Alpine,10,38,76.045
+COL,Alpine,10,39,77.768
+COL,Alpine,10,40,78.459
+COL,Alpine,10,41,80.564
+COL,Alpine,10,42,82.164
+COL,Alpine,10,43,83.609
+COL,Alpine,10,44,85.352
+COL,Alpine,10,45,87.25
+COL,Alpine,10,46,89.107
+COL,Alpine,10,47,91.11
+COL,Alpine,10,48,93.002
+COL,Alpine,10,49,96.531
+COL,Alpine,10,50,98.464
+COL,Alpine,10,51,100.234
+COL,Alpine,10,52,102.981
+COL,Alpine,10,53,105.06
+COL,Alpine,10,54,107.569
+COL,Alpine,10,55,109.428
+HUL,Audi,11,1,8.582
+HUL,Audi,11,2,11.911
+HUL,Audi,11,3,13.805
+HUL,Audi,11,4,15.928
+HUL,Audi,11,5,17.657
+HUL,Audi,11,6,19.26
+HUL,Audi,11,7,21.238
+HUL,Audi,11,8,22.943
+HUL,Audi,11,9,24.751
+HUL,Audi,11,10,31.889
+HUL,Audi,11,11,6.698
+HUL,Audi,11,12,7.706
+HUL,Audi,11,13,2.796
+HUL,Audi,11,14,4.784
+HUL,Audi,11,15,5.76
+HUL,Audi,11,16,8.722
+HUL,Audi,11,17,11.402
+HUL,Audi,11,18,13.217
+HUL,Audi,11,19,14.783
+HUL,Audi,11,20,16.845
+HUL,Audi,11,21,18.31
+HUL,Audi,11,22,20.141
+HUL,Audi,11,23,22.831
+HUL,Audi,11,24,25.03
+HUL,Audi,11,25,27.104
+HUL,Audi,11,26,28.818
+HUL,Audi,11,27,30.187
+HUL,Audi,11,28,31.748
+HUL,Audi,11,29,34.044
+HUL,Audi,11,30,35.737
+HUL,Audi,11,31,37.391
+HUL,Audi,11,32,39.704
+HUL,Audi,11,33,41.924
+HUL,Audi,11,34,44.33
+HUL,Audi,11,35,53.206
+HUL,Audi,11,36,89.402
+HUL,Audi,11,37,89.863
+HUL,Audi,11,38,90.517
+HUL,Audi,11,39,92.139
+HUL,Audi,11,40,92.862
+HUL,Audi,11,41,94.144
+HUL,Audi,11,42,96.889
+HUL,Audi,11,43,97.714
+HUL,Audi,11,44,99.25
+HUL,Audi,11,45,100.623
+HUL,Audi,11,46,102.326
+HUL,Audi,11,47,105.588
+HUL,Audi,11,48,106.658
+HUL,Audi,11,49,109.199
+HUL,Audi,11,50,111.236
+HUL,Audi,11,51,112.73
+HUL,Audi,11,52,115.069
+HUL,Audi,11,53,115.509
+HUL,Audi,11,54,116.942
+HUL,Audi,11,55,118.135
+LIN,Racing Bulls,12,1,6.376
+LIN,Racing Bulls,12,2,9.12
+LIN,Racing Bulls,12,3,10.415
+LIN,Racing Bulls,12,4,12.319
+LIN,Racing Bulls,12,5,14.179
+LIN,Racing Bulls,12,6,16.37
+LIN,Racing Bulls,12,7,18.156
+LIN,Racing Bulls,12,8,20.284
+LIN,Racing Bulls,12,9,22.787
+LIN,Racing Bulls,12,10,29.254
+LIN,Racing Bulls,12,11,5.121
+LIN,Racing Bulls,12,12,5.035
+LIN,Racing Bulls,12,13,2.088
+LIN,Racing Bulls,12,14,4.004
+LIN,Racing Bulls,12,15,4.866
+LIN,Racing Bulls,12,16,7.59
+LIN,Racing Bulls,12,17,10.322
+LIN,Racing Bulls,12,18,12.733
+LIN,Racing Bulls,12,19,15.28
+LIN,Racing Bulls,12,20,17.984
+LIN,Racing Bulls,12,21,20.835
+LIN,Racing Bulls,12,22,23.529
+LIN,Racing Bulls,12,23,25.179
+LIN,Racing Bulls,12,24,27.641
+LIN,Racing Bulls,12,25,30.656
+LIN,Racing Bulls,12,26,33.207
+LIN,Racing Bulls,12,27,46.771
+LIN,Racing Bulls,12,28,50.025
+LIN,Racing Bulls,12,29,52.304
+LIN,Racing Bulls,12,30,54.641
+LIN,Racing Bulls,12,31,57.076
+LIN,Racing Bulls,12,32,59.48
+LIN,Racing Bulls,12,33,61.26
+LIN,Racing Bulls,12,34,63.71
+LIN,Racing Bulls,12,35,65.994
+LIN,Racing Bulls,12,36,68.032
+LIN,Racing Bulls,12,37,69.94
+LIN,Racing Bulls,12,38,72.384
+LIN,Racing Bulls,12,39,74.921
+LIN,Racing Bulls,12,40,76.808
+LIN,Racing Bulls,12,41,81.526
+LIN,Racing Bulls,12,42,89.233
+LIN,Racing Bulls,12,43,110.325
+LIN,Racing Bulls,12,44,111.331
+LIN,Racing Bulls,12,45,111.907
+LIN,Racing Bulls,12,46,112.724
+LIN,Racing Bulls,12,47,113.37
+LIN,Racing Bulls,12,48,113.888
+LIN,Racing Bulls,12,49,114.568
+LIN,Racing Bulls,12,50,115.291
+LIN,Racing Bulls,12,51,116.062
+LIN,Racing Bulls,12,52,117.732
+LIN,Racing Bulls,12,53,117.366
+LIN,Racing Bulls,12,54,118.667
+LIN,Racing Bulls,12,55,119.793
+BOT,Cadillac,13,1,8.198
+BOT,Cadillac,13,2,11.494
+BOT,Cadillac,13,3,15.31
+BOT,Cadillac,13,4,18.82
+BOT,Cadillac,13,5,22.681
+BOT,Cadillac,13,6,25.787
+BOT,Cadillac,13,7,29.25
+BOT,Cadillac,13,8,33.186
+BOT,Cadillac,13,9,37.179
+BOT,Cadillac,13,10,55.639
+BOT,Cadillac,13,11,45.232
+BOT,Cadillac,13,12,16.77
+BOT,Cadillac,13,13,6.071
+BOT,Cadillac,13,14,8.408
+BOT,Cadillac,13,15,10.192
+BOT,Cadillac,13,16,13.327
+BOT,Cadillac,13,17,17.002
+BOT,Cadillac,13,18,20.042
+BOT,Cadillac,13,19,23.39
+BOT,Cadillac,13,20,26.604
+BOT,Cadillac,13,21,29.72
+BOT,Cadillac,13,22,32.921
+BOT,Cadillac,13,23,36.082
+BOT,Cadillac,13,24,39.415
+BOT,Cadillac,13,25,42.714
+BOT,Cadillac,13,26,45.87
+BOT,Cadillac,13,27,50.085
+BOT,Cadillac,13,28,53.132
+BOT,Cadillac,13,29,56.317
+BOT,Cadillac,13,30,59.843
+BOT,Cadillac,13,31,63.503
+BOT,Cadillac,13,32,67.062
+BOT,Cadillac,13,33,71.765
+BOT,Cadillac,13,34,75.439
+BOT,Cadillac,13,35,78.941
+BOT,Cadillac,13,36,83.479
+BOT,Cadillac,13,37,86.764
+BOT,Cadillac,13,38,91.285
+BOT,Cadillac,13,39,95.525
+BOT,Cadillac,13,40,99.946
+BOT,Cadillac,13,41,104.68
+BOT,Cadillac,13,42,107.77
+BOT,Cadillac,13,43,111.295
+BOT,Cadillac,13,44,114.877
+BOT,Cadillac,13,45,119.728
+BOT,Cadillac,13,46,124.104
+BOT,Cadillac,13,47,127.533
+BOT,Cadillac,13,48,130.962
+BOT,Cadillac,13,49,134.651
+BOT,Cadillac,13,50,138.319
+BOT,Cadillac,13,51,141.889
+BOT,Cadillac,13,52,146.037
+BOT,Cadillac,13,53,147.86
+BOT,Cadillac,13,54,151.107
+BOT,Cadillac,13,55,153.122
+OCO,Haas F1 Team,14,1,6.556
+OCO,Haas F1 Team,14,2,7.987
+OCO,Haas F1 Team,14,3,9.056
+OCO,Haas F1 Team,14,4,10.764
+OCO,Haas F1 Team,14,5,12.075
+OCO,Haas F1 Team,14,6,13.661
+OCO,Haas F1 Team,14,7,15.335
+OCO,Haas F1 Team,14,8,17.028
+OCO,Haas F1 Team,14,9,18.69
+OCO,Haas F1 Team,14,10,24.394
+OCO,Haas F1 Team,14,11,1.449
+OCO,Haas F1 Team,14,12,1.393
+OCO,Haas F1 Team,14,13,0.845
+OCO,Haas F1 Team,14,14,2.213
+OCO,Haas F1 Team,14,15,3.034
+OCO,Haas F1 Team,14,16,5.847
+OCO,Haas F1 Team,14,17,7.649
+OCO,Haas F1 Team,14,18,9.261
+OCO,Haas F1 Team,14,19,12.356
+OCO,Haas F1 Team,14,20,14.585
+OCO,Haas F1 Team,14,21,17.478
+OCO,Haas F1 Team,14,22,19.566
+OCO,Haas F1 Team,14,23,21.094
+OCO,Haas F1 Team,14,24,23.431
+OCO,Haas F1 Team,14,25,25.248
+OCO,Haas F1 Team,14,26,26.485
+OCO,Haas F1 Team,14,27,28.016
+OCO,Haas F1 Team,14,28,30.096
+OCO,Haas F1 Team,14,29,38.282
+OCO,Haas F1 Team,14,30,61.112
+OCO,Haas F1 Team,14,31,61.93
+OCO,Haas F1 Team,14,32,63.051
+OCO,Haas F1 Team,14,33,75.025
+OCO,Haas F1 Team,14,34,77.478
+OCO,Haas F1 Team,14,35,79.478
+OCO,Haas F1 Team,14,36,82.281
+OCO,Haas F1 Team,14,37,83.952
+OCO,Haas F1 Team,14,38,86.12
+OCO,Haas F1 Team,14,39,88.643
+OCO,Haas F1 Team,14,40,90.561
+OCO,Haas F1 Team,14,41,93.119
+OCO,Haas F1 Team,14,42,95.203
+OCO,Haas F1 Team,14,43,99.025
+OCO,Haas F1 Team,14,44,101.539
+OCO,Haas F1 Team,14,45,105.157
+OCO,Haas F1 Team,14,46,113.425
+OCO,Haas F1 Team,14,47,158.811
+OCO,Haas F1 Team,14,48,159.566
+OCO,Haas F1 Team,14,49,160.789
+OCO,Haas F1 Team,14,50,161.557
+OCO,Haas F1 Team,14,51,162.022
+OCO,Haas F1 Team,14,52,164.418
+OCO,Haas F1 Team,14,53,163.53
+OCO,Haas F1 Team,14,54,163.318
+OCO,Haas F1 Team,14,55,163.221
+PER,Cadillac,15,1,14.952
+PER,Cadillac,15,2,17.713
+PER,Cadillac,15,3,20.924
+PER,Cadillac,15,4,24.464
+PER,Cadillac,15,5,27.907
+PER,Cadillac,15,6,31.292
+PER,Cadillac,15,7,34.798
+PER,Cadillac,15,8,38.579
+PER,Cadillac,15,9,43.004
+PER,Cadillac,15,10,57.95
+PER,Cadillac,15,11,29.48
+PER,Cadillac,15,12,17.505
+PER,Cadillac,15,13,6.653
+PER,Cadillac,15,14,9.455
+PER,Cadillac,15,15,11.237
+PER,Cadillac,15,16,14.254
+PER,Cadillac,15,17,19.902
+PER,Cadillac,15,18,22.164
+PER,Cadillac,15,19,25.079
+PER,Cadillac,15,20,28.451
+PER,Cadillac,15,21,31.204
+PER,Cadillac,15,22,34.214
+PER,Cadillac,15,23,37.158
+PER,Cadillac,15,24,40.381
+PER,Cadillac,15,25,44.409
+PER,Cadillac,15,26,47.831
+PER,Cadillac,15,27,51.548
+PER,Cadillac,15,28,54.542
+PER,Cadillac,15,29,58.598
+PER,Cadillac,15,30,62.448
+PER,Cadillac,15,31,66.317
+PER,Cadillac,15,32,70.133
+PER,Cadillac,15,33,73.796
+PER,Cadillac,15,34,77.96
+PER,Cadillac,15,35,81.403
+PER,Cadillac,15,36,84.94
+PER,Cadillac,15,37,88.387
+PER,Cadillac,15,38,92.972
+PER,Cadillac,15,39,97.094
+PER,Cadillac,15,40,100.535
+PER,Cadillac,15,41,105.749
+PER,Cadillac,15,42,108.946
+PER,Cadillac,15,43,114.161
+PER,Cadillac,15,44,122.793
+PER,Cadillac,15,45,136.099
+PER,Cadillac,15,46,141.8
+PER,Cadillac,15,47,146.179
+PER,Cadillac,15,48,150.7
+PER,Cadillac,15,49,154.639
+PER,Cadillac,15,50,157.503
+PER,Cadillac,15,51,160.506
+PER,Cadillac,15,52,164.757
+PER,Cadillac,15,53,166.186
+PER,Cadillac,15,54,169.086
+PER,Cadillac,15,55,171.606
+VER,Red Bull Racing,16,1,7.782
+VER,Red Bull Racing,16,2,9.772
+VER,Red Bull Racing,16,3,10.839
+VER,Red Bull Racing,16,4,12.565
+VER,Red Bull Racing,16,5,14.612
+VER,Red Bull Racing,16,6,16.646
+VER,Red Bull Racing,16,7,18.808
+VER,Red Bull Racing,16,8,20.951
+VER,Red Bull Racing,16,9,29.12
+VER,Red Bull Racing,16,10,65.601
+VER,Red Bull Racing,16,11,33.48
+VER,Red Bull Racing,16,12,13.239
+VER,Red Bull Racing,16,13,5.068
+VER,Red Bull Racing,16,14,5.684
+VER,Red Bull Racing,16,15,6.53
+VER,Red Bull Racing,16,16,8.879
+VER,Red Bull Racing,16,17,10.591
+VER,Red Bull Racing,16,18,10.882
+VER,Red Bull Racing,16,19,13.101
+VER,Red Bull Racing,16,20,14.87
+VER,Red Bull Racing,16,21,16.709
+VER,Red Bull Racing,16,22,18.244
+VER,Red Bull Racing,16,23,19.477
+VER,Red Bull Racing,16,24,20.844
+VER,Red Bull Racing,16,25,22.199
+VER,Red Bull Racing,16,26,22.991
+VER,Red Bull Racing,16,27,24.046
+VER,Red Bull Racing,16,28,24.825
+VER,Red Bull Racing,16,29,26.116
+VER,Red Bull Racing,16,30,27.537
+VER,Red Bull Racing,16,31,28.947
+VER,Red Bull Racing,16,32,30.724
+VER,Red Bull Racing,16,33,31.662
+VER,Red Bull Racing,16,34,33.051
+VER,Red Bull Racing,16,35,34.504
+VER,Red Bull Racing,16,36,35.719
+VER,Red Bull Racing,16,37,36.71
+VER,Red Bull Racing,16,38,38.247
+VER,Red Bull Racing,16,39,39.799
+VER,Red Bull Racing,16,40,40.904
+VER,Red Bull Racing,16,41,42.966
+VER,Red Bull Racing,16,42,44.419
+VER,Red Bull Racing,16,43,45.606
+VER,Red Bull Racing,16,44,47.366
+VER,Red Bull Racing,16,45,106.773
+ALO,Aston Martin,17,1,7.093
+ALO,Aston Martin,17,2,11.079
+ALO,Aston Martin,17,3,14.654
+ALO,Aston Martin,17,4,17.731
+ALO,Aston Martin,17,5,21.75
+ALO,Aston Martin,17,6,26.402
+ALO,Aston Martin,17,7,30.649
+ALO,Aston Martin,17,8,34.44
+ALO,Aston Martin,17,9,38.715
+ALO,Aston Martin,17,10,51.963
+ALO,Aston Martin,17,11,20.167
+ALO,Aston Martin,17,12,11.255
+ALO,Aston Martin,17,13,4.483
+ALO,Aston Martin,17,14,9.026
+ALO,Aston Martin,17,15,11.987
+ALO,Aston Martin,17,16,15.643
+ALO,Aston Martin,17,17,19.451
+ALO,Aston Martin,17,18,23.633
+ALO,Aston Martin,17,19,27.173
+ALO,Aston Martin,17,20,30.665
+ALO,Aston Martin,17,21,33.548
+ALO,Aston Martin,17,22,36.874
+ALO,Aston Martin,17,23,39.869
+ALO,Aston Martin,17,24,43.123
+ALO,Aston Martin,17,25,46.33
+ALO,Aston Martin,17,26,49.497
+ALO,Aston Martin,17,27,53.149
+ALO,Aston Martin,17,28,56.305
+ALO,Aston Martin,17,29,59.869
+ALO,Aston Martin,17,30,64.052
+ALO,Aston Martin,17,31,74.363
+ALO,Aston Martin,17,32,105.895
+STR,Aston Martin,18,1,9.334
+STR,Aston Martin,18,2,12.859
+STR,Aston Martin,18,3,16.644
+STR,Aston Martin,18,4,21.104
+STR,Aston Martin,18,5,24.561
+STR,Aston Martin,18,6,28.36
+STR,Aston Martin,18,7,31.904
+STR,Aston Martin,18,8,35.756
+STR,Aston Martin,18,9,39.283
+STR,Aston Martin,18,10,82.612

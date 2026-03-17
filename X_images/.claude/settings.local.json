@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(fc-list:*)",
+      "Bash(python -c \"import matplotlib.font_manager as fm; fonts = [f.name for f in fm.fontManager.ttflist]; jp = [f for f in fonts if any\\(k in f.lower\\(\\) for k in [''gothic'', ''meiryo'', ''noto'', ''yu '']\\)]; print\\(sorted\\(set\\(jp\\)\\)\\)\")",
+      "Bash(python years_to_first_win.py:*)",
+      "Bash(PYTHONIOENCODING=utf-8 python:*)",
+      "WebSearch",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.the-race.com)",
+      "WebFetch(domain:www.motorsport.com)",
+      "WebFetch(domain:media.alpinecars.com)",
+      "WebFetch(domain:www.formula1.com)",
+      "WebFetch(domain:teamcolorcodes.com)",
+      "WebFetch(domain:www.brandcolorcode.com)",
+      "WebFetch(domain:f1hex.com)",
+      "WebFetch(domain:x.com)",
+      "WebFetch(domain:forums.ea.com)",
+      "WebFetch(domain:docs.fastf1.dev)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pip show:*)",
+      "Bash(python:*)",
+      "WebFetch(domain:www.statsf1.com)",
+      "WebFetch(domain:www.formulaonehistory.com)",
+      "WebFetch(domain:www.racefans.net)",
+      "WebFetch(domain:pitwall.app)",
+      "Bash(git add:*)"
+    ]
+  }
+}

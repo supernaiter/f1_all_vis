@@ -5,5 +5,11 @@ goal: F1データ分析コンテンツ制作・収益化（YouTube/X向け日本
 [STATUS]
 - R01 Australia: 完了（PNG=11, CSV=14, HTML=4, Parquet=1）
 - R02 China: 部分完了（PNG=2, CSV=1, Parquet=1）
+- クロスGP分析: 完了（PNG=6, CSV=3）→ data/cross_gp_analysis/
 - 記事テキスト: 未作成（チャート・データのみ）
 - FP分析/Fantasy: スクリプト未リポジトリ
+
+[LATEST]
+- cross_gp_pace_compare_r01_r02.py: R01×R02のレースペース正規化比較
+- MERが両レース最速、FERはR02でギャップ拡大、ALPが最大躍進(8位→3位)
+- デグチャートは燃料補正未適用のため見かけのデグ（要再評価）

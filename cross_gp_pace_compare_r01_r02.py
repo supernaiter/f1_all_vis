@@ -95,14 +95,12 @@ TYRE_COLORS = {
 }
 
 # 日本語フォント
-for font_name in ['Noto Sans JP', 'Yu Gothic', 'Meiryo', 'MS Gothic',
-                   'Hiragino Sans', 'Hiragino Kaku Gothic Pro']:
-    try:
-        matplotlib.font_manager.FontProperties(family=font_name)
+for font_name in ['Hiragino Sans', 'Hiragino Kaku Gothic Pro', 'Noto Sans JP',
+                   'Yu Gothic', 'Meiryo', 'MS Gothic']:
+    available = {f.name for f in matplotlib.font_manager.fontManager.ttflist}
+    if font_name in available:
         plt.rcParams['font.family'] = font_name
         break
-    except Exception:
-        continue
 
 # ============================================================
 # データ読み込み

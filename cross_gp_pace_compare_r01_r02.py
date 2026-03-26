@@ -689,33 +689,28 @@ print('\n--- Chart 6: マシン能力ギャップ サマリーテーブル ---')
 # テーブルデータ作成
 table_rows = []
 for team in plot_teams:
-    r01 = all_team_pace['R01'][all_team_pace['R01']['Team'] == team]
-    r02 = all_team_pace['R02'][all_team_pace['R02']['Team'] == team]
+    # df_teamから取得（GapToLeader_pctはdf_teamに存在）
+    r01_row = df_team[(df_team['GP'] == 'R01') & (df_team['Team'] == team)]
+    r02_row = df_team[(df_team['GP'] == 'R02') & (df_team['Team'] == team)]
 
-    pace_r01 = r01['TeamNormPace'].values[0] if not r01.empty else np.nan
-    pace_r02 = r02['TeamNormPace'].values[0] if not r02.empty else np.nan
-    rank_r01 = int(r01['Rank'].values[0]) if not r01.empty else '-'
-    rank_r02 = int(r02['Rank'].values[0]) if not r02.empty else '-'
-    gap_r01 = r01['GapToLeader_pct'].values[0] if 'GapToLeader_pct' in df_team.columns else np.nan
-    gap_r02 = r02['GapToLeader_pct'].values[0] if 'GapToLeader_pct' in df_team.columns else np.nan
-
-    # df_teamからギャップを取得
-    r01_gap_row = df_team[(df_team['GP'] == 'R01') & (df_team['Team'] == team)]
-    r02_gap_row = df_team[(df_team['GP'] == 'R02') & (df_team['Team'] == team)]
-    gap_r01 = r01_gap_row['GapToLeader_pct'].values[0] if not r01_gap_row.empty else np.nan
-    gap_r02 = r02_gap_row['GapToLeader_pct'].values[0] if not r02_gap_row.empty else np.nan
+    pace_r01 = r01_row['TeamNormPace'].values[0] if not r01_row.empty else np.nan
+    pace_r02 = r02_row['TeamNormPace'].values[0] if not r02_row.empty else np.nan
+    rank_r01 = int(r01_row['Rank'].values[0]) if not r01_row.empty else '-'
+    rank_r02 = int(r02_row['Rank'].values[0]) if not r02_row.empty else '-'
+    gap_r01 = r01_row['GapToLeader_pct'].values[0] if not r01_row.empty else np.nan
+    gap_r02 = r02_row['GapToLeader_pct'].values[0] if not r02_row.empty else np.nan
 
     delta = pace_r02 - pace_r01 if not (np.isnan(pace_r01) or np.isnan(pace_r02)) else np.nan
     rank_change = (rank_r01 - rank_r02) if isinstance(rank_r01, int) and isinstance(rank_r02, int) else '-'
 
-    drivers_r01 = r01['Drivers'].values[0] if not r01.empty else ''
-    drivers_r02 = r02['Drivers'].values[0] if not r02.empty else ''
+    drivers_r01 = r01_row['Drivers'].values[0] if not r01_row.empty else ''
+    drivers_r02 = r02_row['Drivers'].values[0] if not r02_row.empty else ''
 
     table_rows.append({
         'Team': TEAM_SHORT.get(team, team[:3]),
         'TeamFull': team,
-        'R01 Gap%': f'+{gap_r01:.2f}' if not np.isnan(gap_r01) else '-',
-        'R02 Gap%': f'+{gap_r02:.2f}' if not np.isnan(gap_r02) else '-',
+        'R01 Gap%': f'+{gap_r01:.2f}' if not (isinstance(gap_r01, float) and np.isnan(gap_r01)) else '-',
+        'R02 Gap%': f'+{gap_r02:.2f}' if not (isinstance(gap_r02, float) and np.isnan(gap_r02)) else '-',
         'Delta': delta,
         'R01 Rank': rank_r01,
         'R02 Rank': rank_r02,

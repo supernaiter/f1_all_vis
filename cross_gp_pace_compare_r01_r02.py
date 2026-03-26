@@ -698,7 +698,8 @@ for team in plot_teams:
     gap_r01 = r01_row['GapToLeader_pct'].values[0] if not r01_row.empty else np.nan
     gap_r02 = r02_row['GapToLeader_pct'].values[0] if not r02_row.empty else np.nan
 
-    delta = pace_r02 - pace_r01 if not (np.isnan(pace_r01) or np.isnan(pace_r02)) else np.nan
+    # GapToLeaderの変化（正=悪化、負=改善）
+    delta = gap_r02 - gap_r01 if not (np.isnan(gap_r01) or np.isnan(gap_r02)) else np.nan
     rank_change = (rank_r01 - rank_r02) if isinstance(rank_r01, int) and isinstance(rank_r02, int) else '-'
 
     drivers_r01 = r01_row['Drivers'].values[0] if not r01_row.empty else ''

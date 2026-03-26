@@ -31,3 +31,6 @@ data/*/*.db
 
 # Generated report PNGs (large)
 data/*/*.png
+
+# Claude Code 会話ログ
+.claude/conversations/

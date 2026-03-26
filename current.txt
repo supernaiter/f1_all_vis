@@ -1,0 +1,9 @@
+project: Motorsports-Visualised
+updated: 2026-03-26
+goal: F1データ分析コンテンツ制作・収益化（YouTube/X向け日本語F1分析）
+
+[STATUS]
+- R01 Australia: 完了（PNG=11, CSV=14, HTML=4, Parquet=1）
+- R02 China: 部分完了（PNG=2, CSV=1, Parquet=1）
+- 記事テキスト: 未作成（チャート・データのみ）
+- FP分析/Fantasy: スクリプト未リポジトリ

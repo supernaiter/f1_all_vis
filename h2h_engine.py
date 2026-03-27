@@ -838,15 +838,16 @@ class H2HAnalysis:
 
     # --- メイン実行 ---
 
-    def run(self):
-        """全分析を実行し、JSON + PNGを出力"""
+    def run(self, generate_png=False):
+        """全分析を実行し、JSONを出力（--png指定時はPNGも生成）"""
         print(f'  {self.drv1} vs {self.drv2} ...')
 
-        # チャート生成
-        self.generate_chart_laptime_delta()
-        self.generate_chart_speed_boxplot()
-        self.generate_chart_sector_compare()
-        self.generate_chart_sector_table()
+        # チャート生成（オプション）
+        if generate_png:
+            self.generate_chart_laptime_delta()
+            self.generate_chart_speed_boxplot()
+            self.generate_chart_sector_compare()
+            self.generate_chart_sector_table()
 
         # JSON出力
         analysis = self.build_json()

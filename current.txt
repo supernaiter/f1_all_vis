@@ -1,22 +1,19 @@
 project: Motorsports-Visualised
-updated: 2026-03-26
-goal: F1データ分析コンテンツ制作・収益化（YouTube/X向け日本語F1分析）
+updated: 2026-03-27
+
+goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 
 [STATUS]
-- R01 Australia: 完了（PNG=11, CSV=14, HTML=4, Parquet=1）
-- R02 China: 部分完了（PNG=2, CSV=1, Parquet=1）
-- クロスGP分析: 完了（PNG=6, CSV=3）→ data/cross_gp_analysis/
-- 記事テキスト: 未作成（チャート・データのみ）
-- FP分析/Fantasy: スクリプト未リポジトリ
+- pSEO 2.0パイプライン: h2h_engine.py → JSON+PNG → Astro静的サイト
+- R01 Australia: H2H 45ペア生成済（Top10全組み合わせ）
+- R02 China: H2H 7ペア生成済（チームメイトのみ）
+- Astroサイト: 53ページ静的ビルド済（site/dist/）、未デプロイ
+- クロスGP分析: R01×R02正規化比較完了
+- base64画像埋め込みのため68MB（最適化前）
 
-[LATEST]
-- site/: Astroフロントエンド完成（pSEO 2.0）
-  - 53ページ静的生成（13.6秒ビルド）
-  - JSON→HTMLの自動変換パイプライン
-  - ダークテーマ、チームカラー、セクター/スピード/ペース表示
-  - schema.org構造化データ付き
-- h2h_engine.py: pSEO 2.0汎用H2Hエンジン
-  - 任意のGP×ドライバーペアでJSON+4PNG自動生成
-  - --teammates / --top10 / --all モード対応
-  - R01 Top10=45ペア: 1分44秒で生成
-- cross_gp_pace_compare_r01_r02.py: R01×R02正規化比較
+[次のアクション]
+- チャート画像を外部ファイル参照に切替（68MB→推定10MB）
+- R02 Chinaも--top10で全ペア生成
+- 他の分析エンジン追加（ポジション変動、チーム間比較、予選セクター等）
+- Vercel/Cloudflareデプロイ
+- R03鈴鹿GPデータ取得後、パイプライン実行で自動ページ追加を検証

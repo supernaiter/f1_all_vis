@@ -105,13 +105,14 @@ export function loadH2HAnalysis(dirName: string, pairDir: string): H2HAnalysis |
 }
 
 /**
- * チャート画像をbase64で読み込む
+ * チャート画像のURLパスを返す（prebuildでpublic/charts/にコピー済み前提）
  */
-export function loadChartBase64(dirName: string, pairDir: string, chartFile: string): string | null {
+export function getChartUrl(dirName: string, pairDir: string, chartFile: string): string | null {
   const chartPath = path.join(DATA_ROOT, dirName, pairDir, chartFile);
   if (!fs.existsSync(chartPath)) return null;
-  const buffer = fs.readFileSync(chartPath);
-  return `data:image/png;base64,${buffer.toString('base64')}`;
+  // pairDir = "h2h/ANT_vs_NOR/" → pairSlug = "ANT_vs_NOR"
+  const pairSlug = pairDir.replace(/^h2h\//, '').replace(/\/$/, '');
+  return `/charts/${dirName}/${pairSlug}/${chartFile}`;
 }
 
 /**

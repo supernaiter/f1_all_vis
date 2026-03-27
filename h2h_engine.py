@@ -545,6 +545,7 @@ class H2HAnalysis:
             'speed': speed,
             'stints': stints,
             'degradation': degradation,
+            'per_lap': per_lap,
             'charts': [
                 'chart_laptime_delta.png',
                 'chart_speed_boxplot.png',

@@ -1,0 +1,153 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SubNav from '../../../components/SubNav.astro';
+import ChartGuide from '../../../components/ChartGuide.astro';
+import InsightBox from '../../../components/InsightBox.astro';
+import { getH2HStaticPaths, loadH2HAnalysis, TEAM_COLORS } from '../../../lib/data';
+import { speedInsight } from '../../../lib/insights';
+
+export function getStaticPaths() { return getH2HStaticPaths(); }
+
+const { dirName, pairDir } = Astro.props;
+const analysis = loadH2HAnalysis(dirName, pairDir);
+if (!analysis) return Astro.redirect('/');
+
+const { meta, seo } = analysis;
+const drv1 = meta.driver1, drv2 = meta.driver2;
+const color1 = TEAM_COLORS[meta.team1] || '#999';
+const color2 = TEAM_COLORS[meta.team2] || '#999';
+const basePath = `/h2h/${meta.year}-r${String(meta.round).padStart(2, '0')}-${meta.gp_name.toLowerCase()}/${drv1.toLowerCase()}-vs-${drv2.toLowerCase()}/`;
+
+const insight = speedInsight(analysis);
+
+const chartData = {
+  speed: analysis.per_lap.speed,
+  meta: { driver1: drv1, driver2: drv2 },
+  color1, color2,
+  summary: analysis.speed,
+};
+---
+
+<Base title={`${drv1} vs ${drv2} スピード比較 — ${meta.year} ${meta.gp_name}GP`} description={seo.description} keywords={seo.keywords}>
+
+<nav class="breadcrumb">
+  <a href="/">Home</a> &rsaquo;
+  <a href={basePath}>{drv1} vs {drv2}</a> &rsaquo;
+  <span>Speed</span>
+</nav>
+
+<header class="page-header">
+  <h1>
+    <span style={`color: ${color1};`}>{drv1}</span>
+    <span class="vs">vs</span>
+    <span style={`color: ${color2};`}>{drv2}</span>
+    <span class="page-type">Speed</span>
+  </h1>
+  <p class="subtitle">{meta.year} R{String(meta.round).padStart(2, '0')} {meta.gp_name} GP</p>
+</header>
+
+<SubNav basePath={basePath} current="speed" drv1={drv1} drv2={drv2} />
+
+<ChartGuide text="箱ひげ図は速度の分布を表示。箱の中央線=中央値、箱の端=25%・75%、ひげ=最小・最大値。各計測ポイントで2ドライバーを並べて比較。" />
+
+<InsightBox text={insight} />
+
+<div id="chart-speed" style="width:100%;height:500px;"></div>
+
+<script type="application/json" id="chart-data" set:html={JSON.stringify(chartData)} />
+
+<script>
+  import * as echarts from 'echarts/core';
+  import { BoxplotChart } from 'echarts/charts';
+  import { GridComponent, TooltipComponent, LegendComponent } from 'echarts/components';
+  import { CanvasRenderer } from 'echarts/renderers';
+
+  echarts.use([BoxplotChart, GridComponent, TooltipComponent, LegendComponent, CanvasRenderer]);
+
+  const data = JSON.parse(document.getElementById('chart-data')!.textContent!);
+  const { speed, meta, color1, color2, summary } = data;
+
+  function calcBoxplot(values: number[]) {
+    const sorted = [...values].sort((a, b) => a - b);
+    const n = sorted.length;
+    const q1 = sorted[Math.floor(n * 0.25)];
+    const median = sorted[Math.floor(n * 0.5)];
+    const q3 = sorted[Math.floor(n * 0.75)];
+    const min = sorted[0];
+    const max = sorted[n - 1];
+    return [min, q1, median, q3, max];
+  }
+
+  const labels = Object.keys(speed);
+  const drv1Data: number[][] = [];
+  const drv2Data: number[][] = [];
+
+  for (const label of labels) {
+    drv1Data.push(calcBoxplot(speed[label].drv1_values));
+    drv2Data.push(calcBoxplot(speed[label].drv2_values));
+  }
+
+  const chart = echarts.init(document.getElementById('chart-speed')!, undefined, { renderer: 'canvas' });
+
+  chart.setOption({
+    textStyle: { color: '#8899AA', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
+    tooltip: {
+      backgroundColor: '#1a1a2e', borderColor: '#333355', borderWidth: 1, textStyle: { color: '#EEE', fontSize: 13 },
+      trigger: 'item',
+      formatter: (params: any) => {
+        const d = params.data;
+        const name = params.seriesName;
+        return `<strong>${name}</strong> — ${labels[params.dataIndex]}<br/>` +
+          `Min: ${d[1]} km/h<br/>Q1: ${d[2]} km/h<br/>Median: ${d[3]} km/h<br/>Q3: ${d[4]} km/h<br/>Max: ${d[5]} km/h`;
+      },
+    },
+    legend: {
+      data: [meta.driver1, meta.driver2],
+      textStyle: { color: '#8899AA' },
+      top: 0,
+    },
+    grid: { left: 80, right: 30, top: 40, bottom: 40 },
+    xAxis: {
+      type: 'category',
+      data: labels,
+      axisLine: { lineStyle: { color: '#333355' } },
+      axisLabel: { color: '#EEEEEE', fontSize: 13 },
+    },
+    yAxis: {
+      type: 'value',
+      name: 'Speed (km/h)',
+      nameTextStyle: { color: '#8899AA' },
+      axisLine: { lineStyle: { color: '#333355' } },
+      axisLabel: { color: '#8899AA' },
+      splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
+    },
+    series: [
+      {
+        name: meta.driver1,
+        type: 'boxplot',
+        data: drv1Data,
+        itemStyle: { color: color1, borderColor: color1 },
+      },
+      {
+        name: meta.driver2,
+        type: 'boxplot',
+        data: drv2Data,
+        itemStyle: { color: color2, borderColor: color2 },
+      },
+    ],
+  });
+
+  window.addEventListener('resize', () => chart.resize());
+</script>
+
+</Base>
+
+<style>
+  .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-dim); }
+  .page-header { margin-bottom: 24px; }
+  .page-header h1 { font-size: 2rem; font-weight: 800; display: flex; align-items: baseline; gap: 12px; }
+  .vs { color: var(--text-dim); font-size: 1rem; font-weight: 400; }
+  .page-type { font-size: 1rem; font-weight: 400; color: var(--accent); background: rgba(0,184,159,0.1); padding: 2px 10px; border-radius: 4px; }
+  .subtitle { color: var(--text-dim); font-size: 0.95rem; margin-top: 4px; }
+</style>

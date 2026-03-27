@@ -934,16 +934,20 @@ if __name__ == '__main__':
         print('  python h2h_engine.py 2026 Australia 1 --all')
         sys.exit(1)
 
-    year = int(sys.argv[1])
-    gp_name = sys.argv[2]
-    round_num = int(sys.argv[3])
+    # --pngフラグの検出
+    args = [a for a in sys.argv[1:] if a != '--png']
+    generate_png = '--png' in sys.argv
 
-    if len(sys.argv) == 6:
+    year = int(args[0])
+    gp_name = args[1]
+    round_num = int(args[2])
+
+    if len(args) == 5:
         # 単一ペア
-        drv1, drv2 = sys.argv[4].upper(), sys.argv[5].upper()
+        drv1, drv2 = args[3].upper(), args[4].upper()
         pairs = [(drv1, drv2)]
-    elif len(sys.argv) == 5:
-        mode = sys.argv[4]
+    elif len(args) == 4:
+        mode = args[3]
         gp = GPData(year, gp_name, round_num)
 
         if mode == '--all':
@@ -951,7 +955,6 @@ if __name__ == '__main__':
         elif mode == '--teammates':
             pairs = gp.get_teammates()
         elif mode == '--top10':
-            # トップ10の全ペア
             from itertools import combinations
             top10 = sorted(gp.valid_drivers,
                           key=lambda d: gp.drv_pos.get(d, 99))[:10]
@@ -963,4 +966,4 @@ if __name__ == '__main__':
         print('引数が不足しています。')
         sys.exit(1)
 
-    run_batch(year, gp_name, round_num, pairs)
+    run_batch(year, gp_name, round_num, pairs, generate_png=generate_png)

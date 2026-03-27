@@ -4,16 +4,17 @@ updated: 2026-03-27
 goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 
 [STATUS]
-- pSEO 2.0パイプライン: h2h_engine.py → JSON+PNG → Astro静的サイト
-- R01 Australia: H2H 45ペア生成済（Top10全組み合わせ）
-- R02 China: H2H 45ペア生成済（Top10全組み合わせ）★完了
-- Astroサイト: 91ページ静的ビルド済（site/dist/）、未デプロイ
-- 画像外部化: base64→PNG参照に切替完了（HTML 68MB→624KB）★完了
-- クロスGP分析: R01×R02正規化比較完了
-- exportスクリプト汎用化: export_race_data.py作成済★完了
+- pSEO 2.0パイプライン: h2h_engine.py → JSON(per_lap付) → ECharts Astro
+- R01 Australia: H2H 45ペア × 5ページ = 225ページ
+- R02 China: H2H 45ペア × 5ページ = 225ページ
+- Astroサイト: 451ページ静的ビルド済（hub+pace+sectors+speed+stints）
+- ECharts: インタラクティブチャート（ツールチップ、SC/VSC帯、タイヤ色分け）
+- 自動インサイト: 各ページにデータ駆動の日本語テキスト
+- チャートガイド: 各ページに「このチャートの見方」ボックス
 
 [次のアクション]
-- Vercel/Cloudflareデプロイ
-- R03鈴鹿GPデータ取得後、パイプライン実行で自動ページ追加を検証
-- 他の分析エンジン追加（ポジション変動、チーム間比較、予選セクター等）
-- クロスGP分析の汎用化
+- ブラウザで全ページの表示・操作確認
+- デプロイ（Cloudflare Pages）
+- R03鈴鹿GPパイプライン実行（レース後）
+- index.astroのstats更新（Charts→Pages）
+- copy-charts.mjsの不要化検討（EChartsで完結するため）

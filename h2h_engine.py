@@ -861,7 +861,7 @@ class H2HAnalysis:
 # ============================================================
 # バッチ実行
 # ============================================================
-def run_batch(year, gp_name, round_number, pairs):
+def run_batch(year, gp_name, round_number, pairs, generate_png=False):
     """複数ペアのH2H分析をバッチ実行"""
     print('=' * 60)
     print(f'{year} R{round_number:02d} {gp_name} — H2Hレースペース比較エンジン')

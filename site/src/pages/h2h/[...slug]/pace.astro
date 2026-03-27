@@ -1,0 +1,258 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SubNav from '../../../components/SubNav.astro';
+import ChartGuide from '../../../components/ChartGuide.astro';
+import InsightBox from '../../../components/InsightBox.astro';
+import { getH2HStaticPaths, loadH2HAnalysis, TEAM_COLORS } from '../../../lib/data';
+import { paceInsight } from '../../../lib/insights';
+
+export function getStaticPaths() { return getH2HStaticPaths(); }
+
+const { dirName, pairDir } = Astro.props;
+const analysis = loadH2HAnalysis(dirName, pairDir);
+if (!analysis) return Astro.redirect('/');
+
+const { meta, pace, seo } = analysis;
+const drv1 = meta.driver1, drv2 = meta.driver2;
+const color1 = TEAM_COLORS[meta.team1] || '#999';
+const color2 = TEAM_COLORS[meta.team2] || '#999';
+const basePath = `/h2h/${meta.year}-r${String(meta.round).padStart(2, '0')}-${meta.gp_name.toLowerCase()}/${drv1.toLowerCase()}-vs-${drv2.toLowerCase()}/`;
+
+const insight = paceInsight(analysis);
+
+const chartData = {
+  per_lap: analysis.per_lap.pace,
+  meta: { driver1: drv1, driver2: drv2, vsc_periods: meta.vsc_periods, sc_periods: meta.sc_periods, total_laps: meta.total_laps },
+  color1, color2,
+  pace: { delta_median_sec: pace.delta_median_sec, faster: pace.faster },
+};
+---
+
+<Base title={`${drv1} vs ${drv2} ペース分析 — ${meta.year} ${meta.gp_name}GP`} description={seo.description} keywords={seo.keywords}>
+
+<nav class="breadcrumb">
+  <a href="/">Home</a> &rsaquo;
+  <a href={basePath}>{drv1} vs {drv2}</a> &rsaquo;
+  <span>Pace</span>
+</nav>
+
+<header class="page-header">
+  <h1>
+    <span style={`color: ${color1};`}>{drv1}</span>
+    <span class="vs">vs</span>
+    <span style={`color: ${color2};`}>{drv2}</span>
+    <span class="page-type">Pace</span>
+  </h1>
+  <p class="subtitle">{meta.year} R{String(meta.round).padStart(2, '0')} {meta.gp_name} GP</p>
+</header>
+
+<SubNav basePath={basePath} current="pace" drv1={drv1} drv2={drv2} />
+
+<ChartGuide text={`上のチャートは各ラップのタイム推移（色=タイヤ種別）。下のバーは各ラップの差を表示。0より下なら${drv1}が速い周、上なら${drv2}が速い周。黄色の帯はSC/VSC区間。`} />
+
+<InsightBox text={insight} />
+
+<div id="chart-laptimes" style="width:100%;height:400px;"></div>
+<div id="chart-delta" style="width:100%;height:250px;margin-top:8px;"></div>
+
+<script type="application/json" id="chart-data" set:html={JSON.stringify(chartData)} />
+
+<script>
+  import * as echarts from 'echarts/core';
+  import { LineChart, BarChart } from 'echarts/charts';
+  import { GridComponent, TooltipComponent, LegendComponent, MarkAreaComponent, DataZoomComponent } from 'echarts/components';
+  import { CanvasRenderer } from 'echarts/renderers';
+
+  echarts.use([LineChart, BarChart, GridComponent, TooltipComponent, LegendComponent, MarkAreaComponent, DataZoomComponent, CanvasRenderer]);
+
+  const data = JSON.parse(document.getElementById('chart-data')!.textContent!);
+  const { per_lap, meta, color1, color2 } = data;
+
+  const COMPOUND_COLORS: Record<string, string> = {
+    SOFT: '#FF3333', MEDIUM: '#FFD700', HARD: '#FFFFFF',
+    INTERMEDIATE: '#39B54A', WET: '#0072CE',
+  };
+
+  const themeBase = {
+    textStyle: { color: '#8899AA', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
+    tooltip: { backgroundColor: '#1a1a2e', borderColor: '#333355', borderWidth: 1, textStyle: { color: '#EEE', fontSize: 13 } },
+  };
+
+  // SC/VSC markArea
+  function buildNeutralAreas() {
+    const areas: any[] = [];
+    for (const [start, end] of meta.vsc_periods) {
+      areas.push([
+        { xAxis: start, itemStyle: { color: 'rgba(255,200,0,0.05)' } },
+        { xAxis: end },
+      ]);
+    }
+    for (const [start, end] of meta.sc_periods) {
+      areas.push([
+        { xAxis: start, itemStyle: { color: 'rgba(255,200,0,0.1)' } },
+        { xAxis: end },
+      ]);
+    }
+    return areas;
+  }
+
+  // ラップタイムチャート
+  const laptimeChart = echarts.init(document.getElementById('chart-laptimes')!, undefined, { renderer: 'canvas' });
+
+  const drv1Laps = per_lap.drv1_laps.filter((d: any) => d.is_clean);
+  const drv2Laps = per_lap.drv2_laps.filter((d: any) => d.is_clean);
+
+  laptimeChart.setOption({
+    ...themeBase,
+    grid: { left: 60, right: 20, top: 30, bottom: 50 },
+    legend: {
+      data: [meta.driver1, meta.driver2],
+      textStyle: { color: '#8899AA' },
+      top: 0,
+    },
+    tooltip: {
+      ...themeBase.tooltip,
+      trigger: 'axis',
+      formatter: (params: any) => {
+        if (!Array.isArray(params)) return '';
+        const lap = params[0]?.axisValue;
+        let html = `<strong>Lap ${lap}</strong><br/>`;
+        for (const p of params) {
+          const entry = p.seriesName === meta.driver1
+            ? per_lap.drv1_laps.find((d: any) => d.lap === lap)
+            : per_lap.drv2_laps.find((d: any) => d.lap === lap);
+          const compound = entry?.compound || '';
+          const tyreLife = entry?.tyre_life ?? '';
+          html += `<span style="color:${p.color}">\u25CF</span> ${p.seriesName}: ${p.value[1]}s`;
+          if (compound) html += ` (${compound} TL:${tyreLife})`;
+          html += '<br/>';
+        }
+        const delta = per_lap.deltas.find((d: any) => d.lap === lap);
+        if (delta) {
+          const sign = delta.delta > 0 ? '+' : '';
+          html += `\u0394 ${sign}${delta.delta.toFixed(3)}s`;
+        }
+        return html;
+      },
+    },
+    xAxis: {
+      type: 'value',
+      name: 'Lap',
+      nameLocation: 'center',
+      nameGap: 30,
+      nameTextStyle: { color: '#8899AA' },
+      min: 1,
+      max: meta.total_laps,
+      axisLine: { lineStyle: { color: '#333355' } },
+      axisLabel: { color: '#8899AA' },
+      splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
+    },
+    yAxis: {
+      type: 'value',
+      name: 'Lap Time (s)',
+      nameTextStyle: { color: '#8899AA' },
+      axisLine: { lineStyle: { color: '#333355' } },
+      axisLabel: { color: '#8899AA', formatter: (v: number) => v.toFixed(1) },
+      splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
+    },
+    series: [
+      {
+        name: meta.driver1,
+        type: 'line',
+        data: drv1Laps.map((d: any) => [d.lap, d.time]),
+        lineStyle: { color: color1, width: 2 },
+        itemStyle: {
+          color: (params: any) => {
+            const entry = drv1Laps[params.dataIndex];
+            return COMPOUND_COLORS[entry?.compound] || color1;
+          },
+        },
+        symbol: 'circle',
+        symbolSize: 6,
+        markArea: { silent: true, data: buildNeutralAreas() },
+      },
+      {
+        name: meta.driver2,
+        type: 'line',
+        data: drv2Laps.map((d: any) => [d.lap, d.time]),
+        lineStyle: { color: color2, width: 2 },
+        itemStyle: {
+          color: (params: any) => {
+            const entry = drv2Laps[params.dataIndex];
+            return COMPOUND_COLORS[entry?.compound] || color2;
+          },
+        },
+        symbol: 'circle',
+        symbolSize: 6,
+      },
+    ],
+    dataZoom: [{ type: 'inside', xAxisIndex: 0 }],
+  });
+
+  // デルタバーチャート
+  const deltaChart = echarts.init(document.getElementById('chart-delta')!, undefined, { renderer: 'canvas' });
+
+  deltaChart.setOption({
+    ...themeBase,
+    grid: { left: 60, right: 20, top: 10, bottom: 50 },
+    tooltip: {
+      ...themeBase.tooltip,
+      trigger: 'axis',
+      formatter: (params: any) => {
+        const p = Array.isArray(params) ? params[0] : params;
+        const delta = p.value[1];
+        const sign = delta > 0 ? '+' : '';
+        const faster = delta < 0 ? meta.driver1 : meta.driver2;
+        return `Lap ${p.value[0]}: ${sign}${delta.toFixed(3)}s<br/>${faster} faster`;
+      },
+    },
+    xAxis: {
+      type: 'value',
+      name: 'Lap',
+      nameLocation: 'center',
+      nameGap: 30,
+      nameTextStyle: { color: '#8899AA' },
+      min: 1,
+      max: meta.total_laps,
+      axisLine: { lineStyle: { color: '#333355' } },
+      axisLabel: { color: '#8899AA' },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      name: `\u2190 ${meta.driver1}  |  ${meta.driver2} \u2192`,
+      nameTextStyle: { color: '#8899AA', fontSize: 11 },
+      axisLine: { lineStyle: { color: '#333355' } },
+      axisLabel: { color: '#8899AA', formatter: (v: number) => v.toFixed(1) },
+      splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
+    },
+    series: [{
+      type: 'bar',
+      data: per_lap.deltas.map((d: any) => ({
+        value: [d.lap, d.delta],
+        itemStyle: { color: d.delta < 0 ? color1 : color2 },
+      })),
+      barMaxWidth: 8,
+      markArea: { silent: true, data: buildNeutralAreas() },
+    }],
+    dataZoom: [{ type: 'inside', xAxisIndex: 0 }],
+  });
+
+  // レスポンシブ
+  window.addEventListener('resize', () => {
+    laptimeChart.resize();
+    deltaChart.resize();
+  });
+</script>
+
+</Base>
+
+<style>
+  .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-dim); }
+  .page-header { margin-bottom: 24px; }
+  .page-header h1 { font-size: 2rem; font-weight: 800; display: flex; align-items: baseline; gap: 12px; }
+  .vs { color: var(--text-dim); font-size: 1rem; font-weight: 400; }
+  .page-type { font-size: 1rem; font-weight: 400; color: var(--accent); background: rgba(0,184,159,0.1); padding: 2px 10px; border-radius: 4px; }
+  .subtitle { color: var(--text-dim); font-size: 0.95rem; margin-top: 4px; }
+</style>

@@ -1,0 +1,152 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SubNav from '../../../components/SubNav.astro';
+import ChartGuide from '../../../components/ChartGuide.astro';
+import InsightBox from '../../../components/InsightBox.astro';
+import { getH2HStaticPaths, loadH2HAnalysis, TEAM_COLORS } from '../../../lib/data';
+import { sectorInsight } from '../../../lib/insights';
+
+export function getStaticPaths() { return getH2HStaticPaths(); }
+
+const { dirName, pairDir } = Astro.props;
+const analysis = loadH2HAnalysis(dirName, pairDir);
+if (!analysis) return Astro.redirect('/');
+
+const { meta, seo } = analysis;
+const drv1 = meta.driver1, drv2 = meta.driver2;
+const color1 = TEAM_COLORS[meta.team1] || '#999';
+const color2 = TEAM_COLORS[meta.team2] || '#999';
+const basePath = `/h2h/${meta.year}-r${String(meta.round).padStart(2, '0')}-${meta.gp_name.toLowerCase()}/${drv1.toLowerCase()}-vs-${drv2.toLowerCase()}/`;
+
+const insight = sectorInsight(analysis);
+
+const chartData = {
+  sectors: analysis.per_lap.sectors,
+  meta: { driver1: drv1, driver2: drv2, vsc_periods: meta.vsc_periods, sc_periods: meta.sc_periods, total_laps: meta.total_laps },
+  color1, color2,
+  summary: analysis.sectors,
+};
+---
+
+<Base title={`${drv1} vs ${drv2} セクター分析 — ${meta.year} ${meta.gp_name}GP`} description={seo.description} keywords={seo.keywords}>
+
+<nav class="breadcrumb">
+  <a href="/">Home</a> &rsaquo;
+  <a href={basePath}>{drv1} vs {drv2}</a> &rsaquo;
+  <span>Sectors</span>
+</nav>
+
+<header class="page-header">
+  <h1>
+    <span style={`color: ${color1};`}>{drv1}</span>
+    <span class="vs">vs</span>
+    <span style={`color: ${color2};`}>{drv2}</span>
+    <span class="page-type">Sectors</span>
+  </h1>
+  <p class="subtitle">{meta.year} R{String(meta.round).padStart(2, '0')} {meta.gp_name} GP</p>
+</header>
+
+<SubNav basePath={basePath} current="sectors" drv1={drv1} drv2={drv2} />
+
+<ChartGuide text={`各セクターの所要時間を比較。下のバーが0より下なら${drv1}が速い、上なら${drv2}が速い。`} />
+
+<InsightBox text={insight} />
+
+<div id="chart-s1" style="width:100%;height:350px;"></div>
+<div id="chart-s2" style="width:100%;height:350px;margin-top:16px;"></div>
+<div id="chart-s3" style="width:100%;height:350px;margin-top:16px;"></div>
+
+<script type="application/json" id="chart-data" set:html={JSON.stringify(chartData)} />
+
+<script>
+  import * as echarts from 'echarts/core';
+  import { BarChart } from 'echarts/charts';
+  import { GridComponent, TooltipComponent, LegendComponent, MarkAreaComponent } from 'echarts/components';
+  import { CanvasRenderer } from 'echarts/renderers';
+
+  echarts.use([BarChart, GridComponent, TooltipComponent, LegendComponent, MarkAreaComponent, CanvasRenderer]);
+
+  const data = JSON.parse(document.getElementById('chart-data')!.textContent!);
+  const { sectors, meta, color1, color2, summary } = data;
+
+  const charts: echarts.ECharts[] = [];
+
+  function neutralAreas() {
+    const areas: any[] = [];
+    for (const [s, e] of meta.vsc_periods) areas.push([{ xAxis: s, itemStyle: { color: 'rgba(255,200,0,0.05)' } }, { xAxis: e }]);
+    for (const [s, e] of meta.sc_periods) areas.push([{ xAxis: s, itemStyle: { color: 'rgba(255,200,0,0.1)' } }, { xAxis: e }]);
+    return areas;
+  }
+
+  for (const [secName, secData] of Object.entries(sectors) as [string, any][]) {
+    const el = document.getElementById(`chart-${secName.toLowerCase()}`);
+    if (!el) continue;
+
+    const chart = echarts.init(el, undefined, { renderer: 'canvas' });
+    const secSummary = summary[secName];
+    const deltaSign = secSummary.delta_sec < 0 ? '' : '+';
+    const winner = secSummary.delta_sec < 0 ? meta.driver1 : meta.driver2;
+
+    chart.setOption({
+      textStyle: { color: '#8899AA', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
+      tooltip: {
+        backgroundColor: '#1a1a2e', borderColor: '#333355', borderWidth: 1, textStyle: { color: '#EEE', fontSize: 13 },
+        trigger: 'axis',
+        formatter: (params: any) => {
+          const p = Array.isArray(params) ? params[0] : params;
+          const d = p.value;
+          const sign = d[1] > 0 ? '+' : '';
+          const f = d[1] < 0 ? meta.driver1 : meta.driver2;
+          return `${secName} Lap ${d[0]}: ${sign}${d[1].toFixed(3)}s<br/>${f} faster`;
+        },
+      },
+      title: {
+        text: `${secName}  ${deltaSign}${secSummary.delta_sec.toFixed(3)}s (${winner})`,
+        left: 'center',
+        textStyle: { color: '#EEEEEE', fontSize: 14, fontWeight: 'bold' },
+      },
+      grid: { left: 60, right: 20, top: 40, bottom: 40 },
+      xAxis: {
+        type: 'value', min: 1, max: meta.total_laps,
+        name: 'Lap', nameLocation: 'center', nameGap: 25,
+        nameTextStyle: { color: '#8899AA' },
+        axisLine: { lineStyle: { color: '#333355' } },
+        axisLabel: { color: '#8899AA' },
+        splitLine: { show: false },
+      },
+      yAxis: {
+        type: 'value',
+        name: `\u2190 ${meta.driver1}  |  ${meta.driver2} \u2192`,
+        nameTextStyle: { color: '#8899AA', fontSize: 11 },
+        axisLine: { lineStyle: { color: '#333355' } },
+        axisLabel: { color: '#8899AA', formatter: (v: number) => v.toFixed(2) },
+        splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
+      },
+      series: [{
+        type: 'bar',
+        data: secData.deltas.map((d: any) => ({
+          value: [d.lap, d.delta],
+          itemStyle: { color: d.delta < 0 ? color1 : color2 },
+        })),
+        barMaxWidth: 8,
+        markArea: { silent: true, data: neutralAreas() },
+      }],
+    });
+
+    charts.push(chart);
+  }
+
+  window.addEventListener('resize', () => charts.forEach(c => c.resize()));
+</script>
+
+</Base>
+
+<style>
+  .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-dim); }
+  .page-header { margin-bottom: 24px; }
+  .page-header h1 { font-size: 2rem; font-weight: 800; display: flex; align-items: baseline; gap: 12px; }
+  .vs { color: var(--text-dim); font-size: 1rem; font-weight: 400; }
+  .page-type { font-size: 1rem; font-weight: 400; color: var(--accent); background: rgba(0,184,159,0.1); padding: 2px 10px; border-radius: 4px; }
+  .subtitle { color: var(--text-dim); font-size: 0.95rem; margin-top: 4px; }
+</style>

@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "BEA",
+    "driver2": "HAD",
+    "team1": "Haas F1 Team",
+    "team2": "Red Bull Racing",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "BEA": {
+      "grid": 10,
+      "finish": 5,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "HAD": {
+      "grid": 9,
+      "finish": 8,
+      "status": "Finished",
+      "pit_laps": [
+        1,
+        10
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 97.48,
+      "mean": 97.818,
+      "std": 0.993,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.006,
+      "mean": 98.183,
+      "std": 0.571,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "delta_median_sec": -0.526,
+    "faster": "BEA"
+  },
+  "sectors": {
+    "S1": {
+      "BEA_avg": 25.826,
+      "HAD_avg": 26.003,
+      "delta_sec": -0.177,
+      "cumulative_delta_sec": -8.576,
+      "BEA_wins": 34,
+      "HAD_wins": 7,
+      "common_laps": 42
+    },
+    "S2": {
+      "BEA_avg": 29.589,
+      "HAD_avg": 29.954,
+      "delta_sec": -0.365,
+      "cumulative_delta_sec": -16.592,
+      "BEA_wins": 35,
+      "HAD_wins": 7,
+      "common_laps": 42
+    },
+    "S3": {
+      "BEA_avg": 42.403,
+      "HAD_avg": 42.226,
+      "delta_sec": 0.177,
+      "cumulative_delta_sec": 6.577,
+      "BEA_wins": 7,
+      "HAD_wins": 35,
+      "common_laps": 42
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "BEA_median": 270.0,
+      "HAD_median": 274.0,
+      "delta_kmh": -4.0
+    },
+    "S2末端": {
+      "BEA_median": 258.0,
+      "HAD_median": 266.0,
+      "delta_kmh": -8.0
+    },
+    "FL": {
+      "BEA_median": 273.0,
+      "HAD_median": 277.0,
+      "delta_kmh": -4.0
+    },
+    "ST": {
+      "BEA_median": 302.0,
+      "HAD_median": 321.0,
+      "delta_kmh": -19.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 99.436,
+        "mean_pace": 99.558
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 97.4,
+        "mean_pace": 97.498
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "total_laps": 1,
+        "clean_laps": 0,
+        "median_pace": null,
+        "mean_pace": null
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 9,
+        "clean_laps": 6,
+        "median_pace": 98.736,
+        "mean_pace": 98.684
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 37,
+        "median_pace": 97.935,
+        "mean_pace": 98.102
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.2305,
+        "fuel_corrected_deg": -0.1705,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0435,
+        "fuel_corrected_deg": 0.0165,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0917,
+        "fuel_corrected_deg": -0.0317,
+        "clean_laps": 6
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0373,
+        "fuel_corrected_deg": 0.0227,
+        "clean_laps": 37
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "BEA vs HAD Race Pace — 2026 China GP",
+    "title_ja": "BEA vs HAD レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: BEAが0.526秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "BEA",
+      "HAD",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Haas F1 Team",
+      "Red Bull Racing"
+    ]
+  }
+}

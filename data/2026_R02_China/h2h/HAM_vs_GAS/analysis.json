@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "HAM",
+    "driver2": "GAS",
+    "team1": "Ferrari",
+    "team2": "Alpine",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "HAM": {
+      "grid": 3,
+      "finish": 3,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "GAS": {
+      "grid": 7,
+      "finish": 6,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 96.771,
+      "mean": 97.031,
+      "std": 0.85,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 97.43,
+      "mean": 97.699,
+      "std": 0.927,
+      "clean_laps": 44,
+      "total_laps": 56
+    },
+    "delta_median_sec": -0.659,
+    "faster": "HAM"
+  },
+  "sectors": {
+    "S1": {
+      "HAM_avg": 25.668,
+      "GAS_avg": 25.817,
+      "delta_sec": -0.149,
+      "cumulative_delta_sec": -7.063,
+      "HAM_wins": 33,
+      "GAS_wins": 11,
+      "common_laps": 44
+    },
+    "S2": {
+      "HAM_avg": 29.253,
+      "GAS_avg": 29.637,
+      "delta_sec": -0.384,
+      "cumulative_delta_sec": -17.669,
+      "HAM_wins": 43,
+      "GAS_wins": 1,
+      "common_laps": 44
+    },
+    "S3": {
+      "HAM_avg": 42.11,
+      "GAS_avg": 42.245,
+      "delta_sec": -0.135,
+      "cumulative_delta_sec": -6.875,
+      "HAM_wins": 31,
+      "GAS_wins": 13,
+      "common_laps": 44
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "HAM_median": 269.0,
+      "GAS_median": 276.0,
+      "delta_kmh": -7.0
+    },
+    "S2末端": {
+      "HAM_median": 258.0,
+      "GAS_median": 262.0,
+      "delta_kmh": -4.0
+    },
+    "FL": {
+      "HAM_median": 273.0,
+      "GAS_median": 273.0,
+      "delta_kmh": 0.0
+    },
+    "ST": {
+      "HAM_median": 306.0,
+      "GAS_median": 314.0,
+      "delta_kmh": -8.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 98.221,
+        "mean_pace": 98.304
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 96.691,
+        "mean_pace": 96.796
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 98.635,
+        "mean_pace": 98.627
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 37,
+        "median_pace": 97.193,
+        "mean_pace": 97.524
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.2107,
+        "fuel_corrected_deg": -0.1507,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0301,
+        "fuel_corrected_deg": 0.0299,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.088,
+        "fuel_corrected_deg": -0.028,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.064,
+        "fuel_corrected_deg": -0.004,
+        "clean_laps": 37
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "HAM vs GAS Race Pace — 2026 China GP",
+    "title_ja": "HAM vs GAS レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: HAMが0.659秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "HAM",
+      "GAS",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Ferrari",
+      "Alpine"
+    ]
+  }
+}

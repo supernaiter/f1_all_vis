@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "RUS",
+    "driver2": "SAI",
+    "team1": "Mercedes",
+    "team2": "Williams",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "RUS": {
+      "grid": 2,
+      "finish": 2,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "SAI": {
+      "grid": 17,
+      "finish": 9,
+      "status": "Lapped",
+      "pit_laps": [
+        9
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 96.407,
+      "mean": 96.487,
+      "std": 0.889,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.708,
+      "mean": 98.892,
+      "std": 0.737,
+      "clean_laps": 43,
+      "total_laps": 55
+    },
+    "delta_median_sec": -2.301,
+    "faster": "RUS"
+  },
+  "sectors": {
+    "S1": {
+      "RUS_avg": 25.508,
+      "SAI_avg": 26.22,
+      "delta_sec": -0.712,
+      "cumulative_delta_sec": -29.35,
+      "RUS_wins": 41,
+      "SAI_wins": 0,
+      "common_laps": 41
+    },
+    "S2": {
+      "RUS_avg": 29.183,
+      "SAI_avg": 30.07,
+      "delta_sec": -0.886,
+      "cumulative_delta_sec": -35.972,
+      "RUS_wins": 40,
+      "SAI_wins": 1,
+      "common_laps": 41
+    },
+    "S3": {
+      "RUS_avg": 41.796,
+      "SAI_avg": 42.603,
+      "delta_sec": -0.806,
+      "cumulative_delta_sec": -31.495,
+      "RUS_wins": 40,
+      "SAI_wins": 1,
+      "common_laps": 41
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "RUS_median": 276.0,
+      "SAI_median": 277.0,
+      "delta_kmh": -1.0
+    },
+    "S2末端": {
+      "RUS_median": 261.0,
+      "SAI_median": 263.0,
+      "delta_kmh": -2.0
+    },
+    "FL": {
+      "RUS_median": 275.0,
+      "SAI_median": 270.0,
+      "delta_kmh": 5.0
+    },
+    "ST": {
+      "RUS_median": 314.0,
+      "SAI_median": 319.0,
+      "delta_kmh": -5.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 97.383,
+        "mean_pace": 97.54
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 96.126,
+        "mean_pace": 96.293
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.987,
+        "mean_pace": 100.022
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 36,
+        "median_pace": 98.547,
+        "mean_pace": 98.673
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1296,
+        "fuel_corrected_deg": -0.0696,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0474,
+        "fuel_corrected_deg": 0.0126,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0019,
+        "fuel_corrected_deg": 0.0581,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0256,
+        "fuel_corrected_deg": 0.0344,
+        "clean_laps": 36
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "RUS vs SAI Race Pace — 2026 China GP",
+    "title_ja": "RUS vs SAI レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: RUSが2.301秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "RUS",
+      "SAI",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Williams"
+    ]
+  }
+}

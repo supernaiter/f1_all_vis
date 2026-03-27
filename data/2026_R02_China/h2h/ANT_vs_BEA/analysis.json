@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "ANT",
+    "driver2": "BEA",
+    "team1": "Mercedes",
+    "team2": "Haas F1 Team",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "ANT": {
+      "grid": 1,
+      "finish": 1,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "BEA": {
+      "grid": 10,
+      "finish": 5,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 96.176,
+      "mean": 96.382,
+      "std": 0.78,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 97.48,
+      "mean": 97.818,
+      "std": 0.993,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "delta_median_sec": -1.304,
+    "faster": "ANT"
+  },
+  "sectors": {
+    "S1": {
+      "ANT_avg": 25.5,
+      "BEA_avg": 25.826,
+      "delta_sec": -0.326,
+      "cumulative_delta_sec": -14.662,
+      "ANT_wins": 42,
+      "BEA_wins": 3,
+      "common_laps": 45
+    },
+    "S2": {
+      "ANT_avg": 29.086,
+      "BEA_avg": 29.589,
+      "delta_sec": -0.503,
+      "cumulative_delta_sec": -22.631,
+      "ANT_wins": 45,
+      "BEA_wins": 0,
+      "common_laps": 45
+    },
+    "S3": {
+      "ANT_avg": 41.796,
+      "BEA_avg": 42.403,
+      "delta_sec": -0.607,
+      "cumulative_delta_sec": -27.312,
+      "ANT_wins": 43,
+      "BEA_wins": 2,
+      "common_laps": 45
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "ANT_median": 273.0,
+      "BEA_median": 270.0,
+      "delta_kmh": 3.0
+    },
+    "S2末端": {
+      "ANT_median": 260.0,
+      "BEA_median": 258.0,
+      "delta_kmh": 2.0
+    },
+    "FL": {
+      "ANT_median": 272.0,
+      "BEA_median": 273.0,
+      "delta_kmh": -1.0
+    },
+    "ST": {
+      "ANT_median": 308.0,
+      "BEA_median": 302.0,
+      "delta_kmh": 6.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 97.412,
+        "mean_pace": 97.593
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 96.129,
+        "mean_pace": 96.159
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 99.436,
+        "mean_pace": 99.558
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 97.4,
+        "mean_pace": 97.498
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1562,
+        "fuel_corrected_deg": -0.0962,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0326,
+        "fuel_corrected_deg": 0.0274,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.2305,
+        "fuel_corrected_deg": -0.1705,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0435,
+        "fuel_corrected_deg": 0.0165,
+        "clean_laps": 38
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "ANT vs BEA Race Pace — 2026 China GP",
+    "title_ja": "ANT vs BEA レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: ANTが1.304秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "ANT",
+      "BEA",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Haas F1 Team"
+    ]
+  }
+}

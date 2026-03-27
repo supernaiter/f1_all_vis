@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "ANT",
+    "driver2": "HAD",
+    "team1": "Mercedes",
+    "team2": "Red Bull Racing",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "ANT": {
+      "grid": 1,
+      "finish": 1,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "HAD": {
+      "grid": 9,
+      "finish": 8,
+      "status": "Finished",
+      "pit_laps": [
+        1,
+        10
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 96.176,
+      "mean": 96.382,
+      "std": 0.78,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.006,
+      "mean": 98.183,
+      "std": 0.571,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "delta_median_sec": -1.83,
+    "faster": "ANT"
+  },
+  "sectors": {
+    "S1": {
+      "ANT_avg": 25.5,
+      "HAD_avg": 26.003,
+      "delta_sec": -0.503,
+      "cumulative_delta_sec": -21.698,
+      "ANT_wins": 42,
+      "HAD_wins": 0,
+      "common_laps": 42
+    },
+    "S2": {
+      "ANT_avg": 29.086,
+      "HAD_avg": 29.954,
+      "delta_sec": -0.868,
+      "cumulative_delta_sec": -37.807,
+      "ANT_wins": 42,
+      "HAD_wins": 0,
+      "common_laps": 42
+    },
+    "S3": {
+      "ANT_avg": 41.796,
+      "HAD_avg": 42.226,
+      "delta_sec": -0.43,
+      "cumulative_delta_sec": -18.257,
+      "ANT_wins": 41,
+      "HAD_wins": 1,
+      "common_laps": 42
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "ANT_median": 273.0,
+      "HAD_median": 274.0,
+      "delta_kmh": -1.0
+    },
+    "S2末端": {
+      "ANT_median": 260.0,
+      "HAD_median": 266.0,
+      "delta_kmh": -6.0
+    },
+    "FL": {
+      "ANT_median": 272.0,
+      "HAD_median": 277.0,
+      "delta_kmh": -5.0
+    },
+    "ST": {
+      "ANT_median": 308.0,
+      "HAD_median": 321.0,
+      "delta_kmh": -13.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 97.412,
+        "mean_pace": 97.593
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 96.129,
+        "mean_pace": 96.159
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "total_laps": 1,
+        "clean_laps": 0,
+        "median_pace": null,
+        "mean_pace": null
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 9,
+        "clean_laps": 6,
+        "median_pace": 98.736,
+        "mean_pace": 98.684
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 37,
+        "median_pace": 97.935,
+        "mean_pace": 98.102
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1562,
+        "fuel_corrected_deg": -0.0962,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0326,
+        "fuel_corrected_deg": 0.0274,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0917,
+        "fuel_corrected_deg": -0.0317,
+        "clean_laps": 6
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0373,
+        "fuel_corrected_deg": 0.0227,
+        "clean_laps": 37
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "ANT vs HAD Race Pace — 2026 China GP",
+    "title_ja": "ANT vs HAD レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: ANTが1.830秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "ANT",
+      "HAD",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Red Bull Racing"
+    ]
+  }
+}

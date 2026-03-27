@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "RUS",
+    "driver2": "HAD",
+    "team1": "Mercedes",
+    "team2": "Red Bull Racing",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "RUS": {
+      "grid": 2,
+      "finish": 2,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "HAD": {
+      "grid": 9,
+      "finish": 8,
+      "status": "Finished",
+      "pit_laps": [
+        1,
+        10
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 96.407,
+      "mean": 96.487,
+      "std": 0.889,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.006,
+      "mean": 98.183,
+      "std": 0.571,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "delta_median_sec": -1.599,
+    "faster": "RUS"
+  },
+  "sectors": {
+    "S1": {
+      "RUS_avg": 25.508,
+      "HAD_avg": 26.003,
+      "delta_sec": -0.496,
+      "cumulative_delta_sec": -21.663,
+      "RUS_wins": 40,
+      "HAD_wins": 2,
+      "common_laps": 42
+    },
+    "S2": {
+      "RUS_avg": 29.183,
+      "HAD_avg": 29.954,
+      "delta_sec": -0.771,
+      "cumulative_delta_sec": -33.247,
+      "RUS_wins": 41,
+      "HAD_wins": 1,
+      "common_laps": 42
+    },
+    "S3": {
+      "RUS_avg": 41.796,
+      "HAD_avg": 42.226,
+      "delta_sec": -0.429,
+      "cumulative_delta_sec": -18.953,
+      "RUS_wins": 41,
+      "HAD_wins": 1,
+      "common_laps": 42
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "RUS_median": 276.0,
+      "HAD_median": 274.0,
+      "delta_kmh": 2.0
+    },
+    "S2末端": {
+      "RUS_median": 261.0,
+      "HAD_median": 266.0,
+      "delta_kmh": -5.0
+    },
+    "FL": {
+      "RUS_median": 275.0,
+      "HAD_median": 277.0,
+      "delta_kmh": -2.0
+    },
+    "ST": {
+      "RUS_median": 314.0,
+      "HAD_median": 321.0,
+      "delta_kmh": -7.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 97.383,
+        "mean_pace": 97.54
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 96.126,
+        "mean_pace": 96.293
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "total_laps": 1,
+        "clean_laps": 0,
+        "median_pace": null,
+        "mean_pace": null
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 9,
+        "clean_laps": 6,
+        "median_pace": 98.736,
+        "mean_pace": 98.684
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 37,
+        "median_pace": 97.935,
+        "mean_pace": 98.102
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1296,
+        "fuel_corrected_deg": -0.0696,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0474,
+        "fuel_corrected_deg": 0.0126,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0917,
+        "fuel_corrected_deg": -0.0317,
+        "clean_laps": 6
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0373,
+        "fuel_corrected_deg": 0.0227,
+        "clean_laps": 37
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "RUS vs HAD Race Pace — 2026 China GP",
+    "title_ja": "RUS vs HAD レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: RUSが1.599秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "RUS",
+      "HAD",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Red Bull Racing"
+    ]
+  }
+}

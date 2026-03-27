@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "LAW",
+    "driver2": "SAI",
+    "team1": "Racing Bulls",
+    "team2": "Williams",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "LAW": {
+      "grid": 14,
+      "finish": 7,
+      "status": "Finished",
+      "pit_laps": [
+        9
+      ]
+    },
+    "SAI": {
+      "grid": 17,
+      "finish": 9,
+      "status": "Lapped",
+      "pit_laps": [
+        9
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 97.981,
+      "mean": 98.215,
+      "std": 0.853,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.708,
+      "mean": 98.892,
+      "std": 0.737,
+      "clean_laps": 43,
+      "total_laps": 55
+    },
+    "delta_median_sec": -0.727,
+    "faster": "LAW"
+  },
+  "sectors": {
+    "S1": {
+      "LAW_avg": 25.845,
+      "SAI_avg": 26.22,
+      "delta_sec": -0.374,
+      "cumulative_delta_sec": -14.799,
+      "LAW_wins": 41,
+      "SAI_wins": 0,
+      "common_laps": 41
+    },
+    "S2": {
+      "LAW_avg": 29.835,
+      "SAI_avg": 30.07,
+      "delta_sec": -0.234,
+      "cumulative_delta_sec": -9.203,
+      "LAW_wins": 36,
+      "SAI_wins": 4,
+      "common_laps": 41
+    },
+    "S3": {
+      "LAW_avg": 42.534,
+      "SAI_avg": 42.603,
+      "delta_sec": -0.069,
+      "cumulative_delta_sec": -0.792,
+      "LAW_wins": 24,
+      "SAI_wins": 17,
+      "common_laps": 41
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "LAW_median": 278.0,
+      "SAI_median": 277.0,
+      "delta_kmh": 1.0
+    },
+    "S2末端": {
+      "LAW_median": 264.0,
+      "SAI_median": 263.0,
+      "delta_kmh": 1.0
+    },
+    "FL": {
+      "LAW_median": 274.0,
+      "SAI_median": 270.0,
+      "delta_kmh": 4.0
+    },
+    "ST": {
+      "LAW_median": 314.0,
+      "SAI_median": 319.0,
+      "delta_kmh": -5.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.709,
+        "mean_pace": 99.573
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 47,
+        "clean_laps": 36,
+        "median_pace": 97.852,
+        "mean_pace": 97.951
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.987,
+        "mean_pace": 100.022
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 36,
+        "median_pace": 98.547,
+        "mean_pace": 98.673
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.0771,
+        "fuel_corrected_deg": 0.1371,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.051,
+        "fuel_corrected_deg": 0.009,
+        "clean_laps": 36
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0019,
+        "fuel_corrected_deg": 0.0581,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0256,
+        "fuel_corrected_deg": 0.0344,
+        "clean_laps": 36
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "LAW vs SAI Race Pace — 2026 China GP",
+    "title_ja": "LAW vs SAI レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: LAWが0.727秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "LAW",
+      "SAI",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Racing Bulls",
+      "Williams"
+    ]
+  }
+}

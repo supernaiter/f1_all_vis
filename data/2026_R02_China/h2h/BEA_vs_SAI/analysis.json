@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "BEA",
+    "driver2": "SAI",
+    "team1": "Haas F1 Team",
+    "team2": "Williams",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "BEA": {
+      "grid": 10,
+      "finish": 5,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "SAI": {
+      "grid": 17,
+      "finish": 9,
+      "status": "Lapped",
+      "pit_laps": [
+        9
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 97.48,
+      "mean": 97.818,
+      "std": 0.993,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.708,
+      "mean": 98.892,
+      "std": 0.737,
+      "clean_laps": 43,
+      "total_laps": 55
+    },
+    "delta_median_sec": -1.228,
+    "faster": "BEA"
+  },
+  "sectors": {
+    "S1": {
+      "BEA_avg": 25.826,
+      "SAI_avg": 26.22,
+      "delta_sec": -0.394,
+      "cumulative_delta_sec": -15.432,
+      "BEA_wins": 37,
+      "SAI_wins": 4,
+      "common_laps": 41
+    },
+    "S2": {
+      "BEA_avg": 29.589,
+      "SAI_avg": 30.07,
+      "delta_sec": -0.48,
+      "cumulative_delta_sec": -18.933,
+      "BEA_wins": 37,
+      "SAI_wins": 4,
+      "common_laps": 41
+    },
+    "S3": {
+      "BEA_avg": 42.403,
+      "SAI_avg": 42.603,
+      "delta_sec": -0.2,
+      "cumulative_delta_sec": -6.379,
+      "BEA_wins": 31,
+      "SAI_wins": 10,
+      "common_laps": 41
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "BEA_median": 270.0,
+      "SAI_median": 277.0,
+      "delta_kmh": -7.0
+    },
+    "S2末端": {
+      "BEA_median": 258.0,
+      "SAI_median": 263.0,
+      "delta_kmh": -5.0
+    },
+    "FL": {
+      "BEA_median": 273.0,
+      "SAI_median": 270.0,
+      "delta_kmh": 3.0
+    },
+    "ST": {
+      "BEA_median": 302.0,
+      "SAI_median": 319.0,
+      "delta_kmh": -17.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 99.436,
+        "mean_pace": 99.558
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 97.4,
+        "mean_pace": 97.498
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.987,
+        "mean_pace": 100.022
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 36,
+        "median_pace": 98.547,
+        "mean_pace": 98.673
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.2305,
+        "fuel_corrected_deg": -0.1705,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0435,
+        "fuel_corrected_deg": 0.0165,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0019,
+        "fuel_corrected_deg": 0.0581,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0256,
+        "fuel_corrected_deg": 0.0344,
+        "clean_laps": 36
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "BEA vs SAI Race Pace — 2026 China GP",
+    "title_ja": "BEA vs SAI レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: BEAが1.228秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "BEA",
+      "SAI",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Haas F1 Team",
+      "Williams"
+    ]
+  }
+}

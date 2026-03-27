@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "LAW",
+    "driver2": "COL",
+    "team1": "Racing Bulls",
+    "team2": "Alpine",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "LAW": {
+      "grid": 14,
+      "finish": 7,
+      "status": "Finished",
+      "pit_laps": [
+        9
+      ]
+    },
+    "COL": {
+      "grid": 12,
+      "finish": 10,
+      "status": "Lapped",
+      "pit_laps": [
+        32
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 97.981,
+      "mean": 98.215,
+      "std": 0.853,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.31,
+      "mean": 98.189,
+      "std": 0.896,
+      "clean_laps": 42,
+      "total_laps": 55
+    },
+    "delta_median_sec": -0.329,
+    "faster": "LAW"
+  },
+  "sectors": {
+    "S1": {
+      "LAW_avg": 25.845,
+      "COL_avg": 25.893,
+      "delta_sec": -0.048,
+      "cumulative_delta_sec": -1.113,
+      "LAW_wins": 22,
+      "COL_wins": 18,
+      "common_laps": 40
+    },
+    "S2": {
+      "LAW_avg": 29.835,
+      "COL_avg": 29.794,
+      "delta_sec": 0.041,
+      "cumulative_delta_sec": 2.676,
+      "LAW_wins": 16,
+      "COL_wins": 24,
+      "common_laps": 40
+    },
+    "S3": {
+      "LAW_avg": 42.534,
+      "COL_avg": 42.501,
+      "delta_sec": 0.033,
+      "cumulative_delta_sec": 3.345,
+      "LAW_wins": 11,
+      "COL_wins": 29,
+      "common_laps": 40
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "LAW_median": 278.0,
+      "COL_median": 276.0,
+      "delta_kmh": 2.0
+    },
+    "S2末端": {
+      "LAW_median": 264.0,
+      "COL_median": 261.0,
+      "delta_kmh": 3.0
+    },
+    "FL": {
+      "LAW_median": 274.0,
+      "COL_median": 273.0,
+      "delta_kmh": 1.0
+    },
+    "ST": {
+      "LAW_median": 314.0,
+      "COL_median": 314.5,
+      "delta_kmh": -0.5
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.709,
+        "mean_pace": 99.573
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 47,
+        "clean_laps": 36,
+        "median_pace": 97.852,
+        "mean_pace": 97.951
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "total_laps": 32,
+        "clean_laps": 21,
+        "median_pace": 98.829,
+        "mean_pace": 98.81
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "total_laps": 23,
+        "clean_laps": 21,
+        "median_pace": 97.426,
+        "mean_pace": 97.568
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.0771,
+        "fuel_corrected_deg": 0.1371,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.051,
+        "fuel_corrected_deg": 0.009,
+        "clean_laps": 36
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.024,
+        "fuel_corrected_deg": 0.036,
+        "clean_laps": 21
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.0892,
+        "fuel_corrected_deg": 0.1492,
+        "clean_laps": 21
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "LAW vs COL Race Pace — 2026 China GP",
+    "title_ja": "LAW vs COL レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: LAWが0.329秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "LAW",
+      "COL",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Racing Bulls",
+      "Alpine"
+    ]
+  }
+}

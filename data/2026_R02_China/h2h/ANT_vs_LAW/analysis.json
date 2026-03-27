@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "ANT",
+    "driver2": "LAW",
+    "team1": "Mercedes",
+    "team2": "Racing Bulls",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "ANT": {
+      "grid": 1,
+      "finish": 1,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "LAW": {
+      "grid": 14,
+      "finish": 7,
+      "status": "Finished",
+      "pit_laps": [
+        9
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 96.176,
+      "mean": 96.382,
+      "std": 0.78,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 97.981,
+      "mean": 98.215,
+      "std": 0.853,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "delta_median_sec": -1.805,
+    "faster": "ANT"
+  },
+  "sectors": {
+    "S1": {
+      "ANT_avg": 25.5,
+      "LAW_avg": 25.845,
+      "delta_sec": -0.345,
+      "cumulative_delta_sec": -14.949,
+      "ANT_wins": 41,
+      "LAW_wins": 2,
+      "common_laps": 43
+    },
+    "S2": {
+      "ANT_avg": 29.086,
+      "LAW_avg": 29.835,
+      "delta_sec": -0.749,
+      "cumulative_delta_sec": -32.369,
+      "ANT_wins": 43,
+      "LAW_wins": 0,
+      "common_laps": 43
+    },
+    "S3": {
+      "ANT_avg": 41.796,
+      "LAW_avg": 42.534,
+      "delta_sec": -0.738,
+      "cumulative_delta_sec": -31.847,
+      "ANT_wins": 42,
+      "LAW_wins": 1,
+      "common_laps": 43
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "ANT_median": 273.0,
+      "LAW_median": 278.0,
+      "delta_kmh": -5.0
+    },
+    "S2末端": {
+      "ANT_median": 260.0,
+      "LAW_median": 264.0,
+      "delta_kmh": -4.0
+    },
+    "FL": {
+      "ANT_median": 272.0,
+      "LAW_median": 274.0,
+      "delta_kmh": -2.0
+    },
+    "ST": {
+      "ANT_median": 308.0,
+      "LAW_median": 314.0,
+      "delta_kmh": -6.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 97.412,
+        "mean_pace": 97.593
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 96.129,
+        "mean_pace": 96.159
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.709,
+        "mean_pace": 99.573
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 47,
+        "clean_laps": 36,
+        "median_pace": 97.852,
+        "mean_pace": 97.951
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1562,
+        "fuel_corrected_deg": -0.0962,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0326,
+        "fuel_corrected_deg": 0.0274,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.0771,
+        "fuel_corrected_deg": 0.1371,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.051,
+        "fuel_corrected_deg": 0.009,
+        "clean_laps": 36
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "ANT vs LAW Race Pace — 2026 China GP",
+    "title_ja": "ANT vs LAW レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: ANTが1.805秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "ANT",
+      "LAW",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Racing Bulls"
+    ]
+  }
+}

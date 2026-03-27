@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "RUS",
+    "driver2": "GAS",
+    "team1": "Mercedes",
+    "team2": "Alpine",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "RUS": {
+      "grid": 2,
+      "finish": 2,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "GAS": {
+      "grid": 7,
+      "finish": 6,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 96.407,
+      "mean": 96.487,
+      "std": 0.889,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 97.43,
+      "mean": 97.699,
+      "std": 0.927,
+      "clean_laps": 44,
+      "total_laps": 56
+    },
+    "delta_median_sec": -1.023,
+    "faster": "RUS"
+  },
+  "sectors": {
+    "S1": {
+      "RUS_avg": 25.508,
+      "GAS_avg": 25.817,
+      "delta_sec": -0.309,
+      "cumulative_delta_sec": -13.959,
+      "RUS_wins": 43,
+      "GAS_wins": 1,
+      "common_laps": 44
+    },
+    "S2": {
+      "RUS_avg": 29.183,
+      "GAS_avg": 29.637,
+      "delta_sec": -0.454,
+      "cumulative_delta_sec": -20.339,
+      "RUS_wins": 43,
+      "GAS_wins": 1,
+      "common_laps": 44
+    },
+    "S3": {
+      "RUS_avg": 41.796,
+      "GAS_avg": 42.245,
+      "delta_sec": -0.449,
+      "cumulative_delta_sec": -20.316,
+      "RUS_wins": 41,
+      "GAS_wins": 3,
+      "common_laps": 44
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "RUS_median": 276.0,
+      "GAS_median": 276.0,
+      "delta_kmh": 0.0
+    },
+    "S2末端": {
+      "RUS_median": 261.0,
+      "GAS_median": 262.0,
+      "delta_kmh": -1.0
+    },
+    "FL": {
+      "RUS_median": 275.0,
+      "GAS_median": 273.0,
+      "delta_kmh": 2.0
+    },
+    "ST": {
+      "RUS_median": 314.0,
+      "GAS_median": 314.0,
+      "delta_kmh": 0.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 97.383,
+        "mean_pace": 97.54
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 96.126,
+        "mean_pace": 96.293
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 98.635,
+        "mean_pace": 98.627
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 37,
+        "median_pace": 97.193,
+        "mean_pace": 97.524
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1296,
+        "fuel_corrected_deg": -0.0696,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0474,
+        "fuel_corrected_deg": 0.0126,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.088,
+        "fuel_corrected_deg": -0.028,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.064,
+        "fuel_corrected_deg": -0.004,
+        "clean_laps": 37
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "RUS vs GAS Race Pace — 2026 China GP",
+    "title_ja": "RUS vs GAS レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: RUSが1.023秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "RUS",
+      "GAS",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Alpine"
+    ]
+  }
+}

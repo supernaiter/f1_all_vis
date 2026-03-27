@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "LAW",
+    "driver2": "HAD",
+    "team1": "Racing Bulls",
+    "team2": "Red Bull Racing",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "LAW": {
+      "grid": 14,
+      "finish": 7,
+      "status": "Finished",
+      "pit_laps": [
+        9
+      ]
+    },
+    "HAD": {
+      "grid": 9,
+      "finish": 8,
+      "status": "Finished",
+      "pit_laps": [
+        1,
+        10
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 97.981,
+      "mean": 98.215,
+      "std": 0.853,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.006,
+      "mean": 98.183,
+      "std": 0.571,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "delta_median_sec": -0.025,
+    "faster": "LAW"
+  },
+  "sectors": {
+    "S1": {
+      "LAW_avg": 25.845,
+      "HAD_avg": 26.003,
+      "delta_sec": -0.158,
+      "cumulative_delta_sec": -6.889,
+      "LAW_wins": 34,
+      "HAD_wins": 8,
+      "common_laps": 42
+    },
+    "S2": {
+      "LAW_avg": 29.835,
+      "HAD_avg": 29.954,
+      "delta_sec": -0.119,
+      "cumulative_delta_sec": -5.717,
+      "LAW_wins": 31,
+      "HAD_wins": 11,
+      "common_laps": 42
+    },
+    "S3": {
+      "LAW_avg": 42.534,
+      "HAD_avg": 42.226,
+      "delta_sec": 0.308,
+      "cumulative_delta_sec": 12.516,
+      "LAW_wins": 2,
+      "HAD_wins": 40,
+      "common_laps": 42
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "LAW_median": 278.0,
+      "HAD_median": 274.0,
+      "delta_kmh": 4.0
+    },
+    "S2末端": {
+      "LAW_median": 264.0,
+      "HAD_median": 266.0,
+      "delta_kmh": -2.0
+    },
+    "FL": {
+      "LAW_median": 274.0,
+      "HAD_median": 277.0,
+      "delta_kmh": -3.0
+    },
+    "ST": {
+      "LAW_median": 314.0,
+      "HAD_median": 321.0,
+      "delta_kmh": -7.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.709,
+        "mean_pace": 99.573
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 47,
+        "clean_laps": 36,
+        "median_pace": 97.852,
+        "mean_pace": 97.951
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "total_laps": 1,
+        "clean_laps": 0,
+        "median_pace": null,
+        "mean_pace": null
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 9,
+        "clean_laps": 6,
+        "median_pace": 98.736,
+        "mean_pace": 98.684
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 37,
+        "median_pace": 97.935,
+        "mean_pace": 98.102
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.0771,
+        "fuel_corrected_deg": 0.1371,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.051,
+        "fuel_corrected_deg": 0.009,
+        "clean_laps": 36
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0917,
+        "fuel_corrected_deg": -0.0317,
+        "clean_laps": 6
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0373,
+        "fuel_corrected_deg": 0.0227,
+        "clean_laps": 37
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "LAW vs HAD Race Pace — 2026 China GP",
+    "title_ja": "LAW vs HAD レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: LAWが0.025秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "LAW",
+      "HAD",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Racing Bulls",
+      "Red Bull Racing"
+    ]
+  }
+}

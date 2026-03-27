@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "HAM",
+    "driver2": "SAI",
+    "team1": "Ferrari",
+    "team2": "Williams",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "HAM": {
+      "grid": 3,
+      "finish": 3,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "SAI": {
+      "grid": 17,
+      "finish": 9,
+      "status": "Lapped",
+      "pit_laps": [
+        9
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 96.771,
+      "mean": 97.031,
+      "std": 0.85,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.708,
+      "mean": 98.892,
+      "std": 0.737,
+      "clean_laps": 43,
+      "total_laps": 55
+    },
+    "delta_median_sec": -1.937,
+    "faster": "HAM"
+  },
+  "sectors": {
+    "S1": {
+      "HAM_avg": 25.668,
+      "SAI_avg": 26.22,
+      "delta_sec": -0.552,
+      "cumulative_delta_sec": -22.422,
+      "HAM_wins": 39,
+      "SAI_wins": 2,
+      "common_laps": 41
+    },
+    "S2": {
+      "HAM_avg": 29.253,
+      "SAI_avg": 30.07,
+      "delta_sec": -0.816,
+      "cumulative_delta_sec": -33.756,
+      "HAM_wins": 41,
+      "SAI_wins": 0,
+      "common_laps": 41
+    },
+    "S3": {
+      "HAM_avg": 42.11,
+      "SAI_avg": 42.603,
+      "delta_sec": -0.493,
+      "cumulative_delta_sec": -19.361,
+      "HAM_wins": 38,
+      "SAI_wins": 3,
+      "common_laps": 41
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "HAM_median": 269.0,
+      "SAI_median": 277.0,
+      "delta_kmh": -8.0
+    },
+    "S2末端": {
+      "HAM_median": 258.0,
+      "SAI_median": 263.0,
+      "delta_kmh": -5.0
+    },
+    "FL": {
+      "HAM_median": 273.0,
+      "SAI_median": 270.0,
+      "delta_kmh": 3.0
+    },
+    "ST": {
+      "HAM_median": 306.0,
+      "SAI_median": 319.0,
+      "delta_kmh": -13.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 98.221,
+        "mean_pace": 98.304
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 96.691,
+        "mean_pace": 96.796
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.987,
+        "mean_pace": 100.022
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 36,
+        "median_pace": 98.547,
+        "mean_pace": 98.673
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.2107,
+        "fuel_corrected_deg": -0.1507,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0301,
+        "fuel_corrected_deg": 0.0299,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0019,
+        "fuel_corrected_deg": 0.0581,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0256,
+        "fuel_corrected_deg": 0.0344,
+        "clean_laps": 36
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "HAM vs SAI Race Pace — 2026 China GP",
+    "title_ja": "HAM vs SAI レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: HAMが1.937秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "HAM",
+      "SAI",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Ferrari",
+      "Williams"
+    ]
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "HAD",
+    "driver2": "SAI",
+    "team1": "Red Bull Racing",
+    "team2": "Williams",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "HAD": {
+      "grid": 9,
+      "finish": 8,
+      "status": "Finished",
+      "pit_laps": [
+        1,
+        10
+      ]
+    },
+    "SAI": {
+      "grid": 17,
+      "finish": 9,
+      "status": "Lapped",
+      "pit_laps": [
+        9
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 98.006,
+      "mean": 98.183,
+      "std": 0.571,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.708,
+      "mean": 98.892,
+      "std": 0.737,
+      "clean_laps": 43,
+      "total_laps": 55
+    },
+    "delta_median_sec": -0.702,
+    "faster": "HAD"
+  },
+  "sectors": {
+    "S1": {
+      "HAD_avg": 26.003,
+      "SAI_avg": 26.22,
+      "delta_sec": -0.217,
+      "cumulative_delta_sec": -8.673,
+      "HAD_wins": 34,
+      "SAI_wins": 6,
+      "common_laps": 41
+    },
+    "S2": {
+      "HAD_avg": 29.954,
+      "SAI_avg": 30.07,
+      "delta_sec": -0.115,
+      "cumulative_delta_sec": -3.546,
+      "HAD_wins": 26,
+      "SAI_wins": 15,
+      "common_laps": 41
+    },
+    "S3": {
+      "HAD_avg": 42.226,
+      "SAI_avg": 42.603,
+      "delta_sec": -0.377,
+      "cumulative_delta_sec": -12.782,
+      "HAD_wins": 38,
+      "SAI_wins": 3,
+      "common_laps": 41
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "HAD_median": 274.0,
+      "SAI_median": 277.0,
+      "delta_kmh": -3.0
+    },
+    "S2末端": {
+      "HAD_median": 266.0,
+      "SAI_median": 263.0,
+      "delta_kmh": 3.0
+    },
+    "FL": {
+      "HAD_median": 277.0,
+      "SAI_median": 270.0,
+      "delta_kmh": 7.0
+    },
+    "ST": {
+      "HAD_median": 321.0,
+      "SAI_median": 319.0,
+      "delta_kmh": 2.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "total_laps": 1,
+        "clean_laps": 0,
+        "median_pace": null,
+        "mean_pace": null
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 9,
+        "clean_laps": 6,
+        "median_pace": 98.736,
+        "mean_pace": 98.684
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 37,
+        "median_pace": 97.935,
+        "mean_pace": 98.102
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.987,
+        "mean_pace": 100.022
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 36,
+        "median_pace": 98.547,
+        "mean_pace": 98.673
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0917,
+        "fuel_corrected_deg": -0.0317,
+        "clean_laps": 6
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0373,
+        "fuel_corrected_deg": 0.0227,
+        "clean_laps": 37
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0019,
+        "fuel_corrected_deg": 0.0581,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0256,
+        "fuel_corrected_deg": 0.0344,
+        "clean_laps": 36
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "HAD vs SAI Race Pace — 2026 China GP",
+    "title_ja": "HAD vs SAI レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: HADが0.702秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "HAD",
+      "SAI",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Red Bull Racing",
+      "Williams"
+    ]
+  }
+}

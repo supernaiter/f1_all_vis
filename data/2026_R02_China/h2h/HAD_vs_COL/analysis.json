@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "HAD",
+    "driver2": "COL",
+    "team1": "Red Bull Racing",
+    "team2": "Alpine",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "HAD": {
+      "grid": 9,
+      "finish": 8,
+      "status": "Finished",
+      "pit_laps": [
+        1,
+        10
+      ]
+    },
+    "COL": {
+      "grid": 12,
+      "finish": 10,
+      "status": "Lapped",
+      "pit_laps": [
+        32
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 98.006,
+      "mean": 98.183,
+      "std": 0.571,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.31,
+      "mean": 98.189,
+      "std": 0.896,
+      "clean_laps": 42,
+      "total_laps": 55
+    },
+    "delta_median_sec": -0.304,
+    "faster": "HAD"
+  },
+  "sectors": {
+    "S1": {
+      "HAD_avg": 26.003,
+      "COL_avg": 25.893,
+      "delta_sec": 0.11,
+      "cumulative_delta_sec": 4.776,
+      "HAD_wins": 12,
+      "COL_wins": 27,
+      "common_laps": 39
+    },
+    "S2": {
+      "HAD_avg": 29.954,
+      "COL_avg": 29.794,
+      "delta_sec": 0.16,
+      "cumulative_delta_sec": 7.284,
+      "HAD_wins": 10,
+      "COL_wins": 29,
+      "common_laps": 39
+    },
+    "S3": {
+      "HAD_avg": 42.226,
+      "COL_avg": 42.501,
+      "delta_sec": -0.276,
+      "cumulative_delta_sec": -8.611,
+      "HAD_wins": 31,
+      "COL_wins": 8,
+      "common_laps": 39
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "HAD_median": 274.0,
+      "COL_median": 276.0,
+      "delta_kmh": -2.0
+    },
+    "S2末端": {
+      "HAD_median": 266.0,
+      "COL_median": 261.0,
+      "delta_kmh": 5.0
+    },
+    "FL": {
+      "HAD_median": 277.0,
+      "COL_median": 273.0,
+      "delta_kmh": 4.0
+    },
+    "ST": {
+      "HAD_median": 321.0,
+      "COL_median": 314.5,
+      "delta_kmh": 6.5
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "total_laps": 1,
+        "clean_laps": 0,
+        "median_pace": null,
+        "mean_pace": null
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 9,
+        "clean_laps": 6,
+        "median_pace": 98.736,
+        "mean_pace": 98.684
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 37,
+        "median_pace": 97.935,
+        "mean_pace": 98.102
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "total_laps": 32,
+        "clean_laps": 21,
+        "median_pace": 98.829,
+        "mean_pace": 98.81
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "total_laps": 23,
+        "clean_laps": 21,
+        "median_pace": 97.426,
+        "mean_pace": 97.568
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0917,
+        "fuel_corrected_deg": -0.0317,
+        "clean_laps": 6
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0373,
+        "fuel_corrected_deg": 0.0227,
+        "clean_laps": 37
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.024,
+        "fuel_corrected_deg": 0.036,
+        "clean_laps": 21
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.0892,
+        "fuel_corrected_deg": 0.1492,
+        "clean_laps": 21
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "HAD vs COL Race Pace — 2026 China GP",
+    "title_ja": "HAD vs COL レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: HADが0.304秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "HAD",
+      "COL",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Red Bull Racing",
+      "Alpine"
+    ]
+  }
+}

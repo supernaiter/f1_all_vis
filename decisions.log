@@ -3,3 +3,5 @@
 2026-03-27|フロントエンド|Astro選択（Next.jsではなく）|静的コンテンツ100%のためAstroが最適。ビルド速度も速い|画像base64埋め込みでサイズ68MB→外部ファイル参照に要切替
 2026-03-27|正規化手法|フィールド中央値比率%をクロスGP比較に採用|サーキット差を除去しつつ相対順位変動を直感的に見せられる|絶対値に意味はない（99%と101%の差がサーキットごとに異なる）
 2026-03-27|Python環境|/usr/bin/python3を使用（pandas/matplotlib入り）|/opt/homebrew/python3にはpandasなし。pip installはhookで禁止|環境依存のため別マシンでは要確認
+2026-03-27|画像外部化|base64埋め込み→PNG静的ファイル参照に切替|HTML 68MB→624KB（99%削減）。CDNキャッシュ可能、ページ読み込み高速化|copy-charts.mjsをビルド前に実行する必要あり（package.jsonのbuildスクリプトに組み込み済）
+2026-03-27|exportスクリプト|汎用版export_race_data.pyを作成|CLI引数でYEAR/GP/ROUNDを受け取り任意のGPに対応。R01固有のREADME内容もパラメータ化|gp_weekend.dbがないGPではFPデータはスキップされる

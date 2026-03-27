@@ -199,6 +199,3530 @@
       }
     ]
   },
+  "per_lap": {
+    "pace": {
+      "drv1_laps": [
+        {
+          "lap": 1,
+          "time": 96.081,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 1,
+          "is_clean": false
+        },
+        {
+          "lap": 2,
+          "time": 87.218,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 2,
+          "is_clean": true
+        },
+        {
+          "lap": 3,
+          "time": 85.497,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 3,
+          "is_clean": true
+        },
+        {
+          "lap": 4,
+          "time": 86.072,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 4,
+          "is_clean": true
+        },
+        {
+          "lap": 5,
+          "time": 86.235,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 5,
+          "is_clean": true
+        },
+        {
+          "lap": 6,
+          "time": 85.392,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 6,
+          "is_clean": true
+        },
+        {
+          "lap": 7,
+          "time": 85.194,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 7,
+          "is_clean": true
+        },
+        {
+          "lap": 8,
+          "time": 85.26,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 8,
+          "is_clean": true
+        },
+        {
+          "lap": 9,
+          "time": 85.337,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 9,
+          "is_clean": true
+        },
+        {
+          "lap": 10,
+          "time": 85.565,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 10,
+          "is_clean": true
+        },
+        {
+          "lap": 11,
+          "time": 92.238,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 11,
+          "is_clean": false
+        },
+        {
+          "lap": 12,
+          "time": 112.0,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 12,
+          "is_clean": false
+        },
+        {
+          "lap": 13,
+          "time": 114.878,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 13,
+          "is_clean": false
+        },
+        {
+          "lap": 14,
+          "time": 88.161,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 14,
+          "is_clean": false
+        },
+        {
+          "lap": 15,
+          "time": 84.877,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 15,
+          "is_clean": false
+        },
+        {
+          "lap": 16,
+          "time": 85.898,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 16,
+          "is_clean": true
+        },
+        {
+          "lap": 17,
+          "time": 85.096,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 17,
+          "is_clean": false
+        },
+        {
+          "lap": 18,
+          "time": 108.224,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 18,
+          "is_clean": false
+        },
+        {
+          "lap": 19,
+          "time": 117.225,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 1,
+          "is_clean": false
+        },
+        {
+          "lap": 20,
+          "time": 85.424,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 2,
+          "is_clean": false
+        },
+        {
+          "lap": 21,
+          "time": 84.182,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 3,
+          "is_clean": false
+        },
+        {
+          "lap": 22,
+          "time": 84.29,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 4,
+          "is_clean": true
+        },
+        {
+          "lap": 23,
+          "time": 84.909,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 5,
+          "is_clean": true
+        },
+        {
+          "lap": 24,
+          "time": 84.554,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 6,
+          "is_clean": true
+        },
+        {
+          "lap": 25,
+          "time": 84.263,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 7,
+          "is_clean": true
+        },
+        {
+          "lap": 26,
+          "time": 84.205,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 8,
+          "is_clean": true
+        },
+        {
+          "lap": 27,
+          "time": 84.361,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 9,
+          "is_clean": true
+        },
+        {
+          "lap": 28,
+          "time": 84.475,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 10,
+          "is_clean": true
+        },
+        {
+          "lap": 29,
+          "time": 84.916,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 11,
+          "is_clean": true
+        },
+        {
+          "lap": 30,
+          "time": 84.282,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 12,
+          "is_clean": true
+        },
+        {
+          "lap": 31,
+          "time": 84.876,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 13,
+          "is_clean": true
+        },
+        {
+          "lap": 32,
+          "time": 84.671,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 14,
+          "is_clean": true
+        },
+        {
+          "lap": 33,
+          "time": 89.426,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 15,
+          "is_clean": false
+        },
+        {
+          "lap": 34,
+          "time": 93.812,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 16,
+          "is_clean": false
+        },
+        {
+          "lap": 35,
+          "time": 84.536,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 17,
+          "is_clean": false
+        },
+        {
+          "lap": 36,
+          "time": 84.698,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 18,
+          "is_clean": true
+        },
+        {
+          "lap": 37,
+          "time": 84.523,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 19,
+          "is_clean": true
+        },
+        {
+          "lap": 38,
+          "time": 84.797,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 20,
+          "is_clean": true
+        },
+        {
+          "lap": 39,
+          "time": 85.955,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 21,
+          "is_clean": true
+        },
+        {
+          "lap": 40,
+          "time": 88.242,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 22,
+          "is_clean": true
+        },
+        {
+          "lap": 41,
+          "time": 85.406,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 23,
+          "is_clean": true
+        },
+        {
+          "lap": 42,
+          "time": 85.409,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 24,
+          "is_clean": true
+        },
+        {
+          "lap": 43,
+          "time": 84.862,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 25,
+          "is_clean": true
+        },
+        {
+          "lap": 44,
+          "time": 84.747,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 26,
+          "is_clean": true
+        },
+        {
+          "lap": 45,
+          "time": 84.645,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 27,
+          "is_clean": true
+        },
+        {
+          "lap": 46,
+          "time": 84.688,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 28,
+          "is_clean": true
+        },
+        {
+          "lap": 47,
+          "time": 84.773,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 29,
+          "is_clean": true
+        },
+        {
+          "lap": 48,
+          "time": 84.863,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 30,
+          "is_clean": true
+        },
+        {
+          "lap": 49,
+          "time": 84.774,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 31,
+          "is_clean": true
+        },
+        {
+          "lap": 50,
+          "time": 84.715,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 32,
+          "is_clean": true
+        },
+        {
+          "lap": 51,
+          "time": 84.374,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 33,
+          "is_clean": true
+        },
+        {
+          "lap": 52,
+          "time": 85.21,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 34,
+          "is_clean": true
+        },
+        {
+          "lap": 53,
+          "time": 86.148,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 35,
+          "is_clean": true
+        },
+        {
+          "lap": 54,
+          "time": 88.167,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 36,
+          "is_clean": true
+        },
+        {
+          "lap": 55,
+          "time": 84.614,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 37,
+          "is_clean": true
+        },
+        {
+          "lap": 56,
+          "time": 84.688,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 38,
+          "is_clean": true
+        },
+        {
+          "lap": 57,
+          "time": 84.689,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 39,
+          "is_clean": true
+        }
+      ],
+      "drv2_laps": [
+        {
+          "lap": 1,
+          "time": 98.755,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 1,
+          "is_clean": false
+        },
+        {
+          "lap": 2,
+          "time": 87.538,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 2,
+          "is_clean": true
+        },
+        {
+          "lap": 3,
+          "time": 86.324,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 3,
+          "is_clean": true
+        },
+        {
+          "lap": 4,
+          "time": 86.032,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 4,
+          "is_clean": true
+        },
+        {
+          "lap": 5,
+          "time": 86.327,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 5,
+          "is_clean": true
+        },
+        {
+          "lap": 6,
+          "time": 87.463,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 6,
+          "is_clean": true
+        },
+        {
+          "lap": 7,
+          "time": 85.785,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 7,
+          "is_clean": true
+        },
+        {
+          "lap": 8,
+          "time": 85.47,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 8,
+          "is_clean": true
+        },
+        {
+          "lap": 9,
+          "time": 85.224,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 9,
+          "is_clean": true
+        },
+        {
+          "lap": 10,
+          "time": 85.561,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 10,
+          "is_clean": true
+        },
+        {
+          "lap": 11,
+          "time": 91.862,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 11,
+          "is_clean": false
+        },
+        {
+          "lap": 12,
+          "time": 114.364,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 12,
+          "is_clean": false
+        },
+        {
+          "lap": 13,
+          "time": 114.445,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 13,
+          "is_clean": false
+        },
+        {
+          "lap": 14,
+          "time": 85.958,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 14,
+          "is_clean": false
+        },
+        {
+          "lap": 15,
+          "time": 84.819,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 15,
+          "is_clean": false
+        },
+        {
+          "lap": 16,
+          "time": 84.98,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 16,
+          "is_clean": true
+        },
+        {
+          "lap": 17,
+          "time": 85.061,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 17,
+          "is_clean": false
+        },
+        {
+          "lap": 18,
+          "time": 110.359,
+          "stint": 1,
+          "compound": "MEDIUM",
+          "tyre_life": 18,
+          "is_clean": false
+        },
+        {
+          "lap": 19,
+          "time": 115.679,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 1,
+          "is_clean": false
+        },
+        {
+          "lap": 20,
+          "time": 85.201,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 2,
+          "is_clean": false
+        },
+        {
+          "lap": 21,
+          "time": 85.044,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 3,
+          "is_clean": false
+        },
+        {
+          "lap": 22,
+          "time": 84.428,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 4,
+          "is_clean": true
+        },
+        {
+          "lap": 23,
+          "time": 84.335,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 5,
+          "is_clean": true
+        },
+        {
+          "lap": 24,
+          "time": 84.327,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 6,
+          "is_clean": true
+        },
+        {
+          "lap": 25,
+          "time": 84.37,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 7,
+          "is_clean": true
+        },
+        {
+          "lap": 26,
+          "time": 84.533,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 8,
+          "is_clean": true
+        },
+        {
+          "lap": 27,
+          "time": 84.535,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 9,
+          "is_clean": true
+        },
+        {
+          "lap": 28,
+          "time": 84.44,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 10,
+          "is_clean": true
+        },
+        {
+          "lap": 29,
+          "time": 84.694,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 11,
+          "is_clean": true
+        },
+        {
+          "lap": 30,
+          "time": 84.364,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 12,
+          "is_clean": true
+        },
+        {
+          "lap": 31,
+          "time": 84.153,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 13,
+          "is_clean": true
+        },
+        {
+          "lap": 32,
+          "time": 83.978,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 14,
+          "is_clean": true
+        },
+        {
+          "lap": 33,
+          "time": 104.235,
+          "stint": 2,
+          "compound": "HARD",
+          "tyre_life": 15,
+          "is_clean": false
+        },
+        {
+          "lap": 34,
+          "time": 93.286,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 1,
+          "is_clean": false
+        },
+        {
+          "lap": 35,
+          "time": 83.954,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 2,
+          "is_clean": false
+        },
+        {
+          "lap": 36,
+          "time": 83.655,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 3,
+          "is_clean": true
+        },
+        {
+          "lap": 37,
+          "time": 83.732,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 4,
+          "is_clean": true
+        },
+        {
+          "lap": 38,
+          "time": 85.119,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 5,
+          "is_clean": true
+        },
+        {
+          "lap": 39,
+          "time": 84.83,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 6,
+          "is_clean": true
+        },
+        {
+          "lap": 40,
+          "time": 84.696,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 7,
+          "is_clean": true
+        },
+        {
+          "lap": 41,
+          "time": 84.47,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 8,
+          "is_clean": true
+        },
+        {
+          "lap": 42,
+          "time": 83.803,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 9,
+          "is_clean": true
+        },
+        {
+          "lap": 43,
+          "time": 83.643,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 10,
+          "is_clean": true
+        },
+        {
+          "lap": 44,
+          "time": 83.736,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 11,
+          "is_clean": true
+        },
+        {
+          "lap": 45,
+          "time": 83.257,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 12,
+          "is_clean": true
+        },
+        {
+          "lap": 46,
+          "time": 83.346,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 13,
+          "is_clean": true
+        },
+        {
+          "lap": 47,
+          "time": 83.976,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 14,
+          "is_clean": true
+        },
+        {
+          "lap": 48,
+          "time": 85.008,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 15,
+          "is_clean": true
+        },
+        {
+          "lap": 49,
+          "time": 84.889,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 16,
+          "is_clean": true
+        },
+        {
+          "lap": 50,
+          "time": 84.324,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 17,
+          "is_clean": true
+        },
+        {
+          "lap": 51,
+          "time": 85.635,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 18,
+          "is_clean": true
+        },
+        {
+          "lap": 52,
+          "time": 84.359,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 19,
+          "is_clean": true
+        },
+        {
+          "lap": 53,
+          "time": 86.063,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 20,
+          "is_clean": true
+        },
+        {
+          "lap": 54,
+          "time": 84.548,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 21,
+          "is_clean": true
+        },
+        {
+          "lap": 55,
+          "time": 85.268,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 22,
+          "is_clean": true
+        },
+        {
+          "lap": 56,
+          "time": 84.515,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 23,
+          "is_clean": true
+        },
+        {
+          "lap": 57,
+          "time": 84.821,
+          "stint": 3,
+          "compound": "HARD",
+          "tyre_life": 24,
+          "is_clean": true
+        }
+      ],
+      "deltas": [
+        {
+          "lap": 2,
+          "delta": -0.32
+        },
+        {
+          "lap": 3,
+          "delta": -0.827
+        },
+        {
+          "lap": 4,
+          "delta": 0.04
+        },
+        {
+          "lap": 5,
+          "delta": -0.092
+        },
+        {
+          "lap": 6,
+          "delta": -2.071
+        },
+        {
+          "lap": 7,
+          "delta": -0.591
+        },
+        {
+          "lap": 8,
+          "delta": -0.21
+        },
+        {
+          "lap": 9,
+          "delta": 0.113
+        },
+        {
+          "lap": 10,
+          "delta": 0.004
+        },
+        {
+          "lap": 16,
+          "delta": 0.918
+        },
+        {
+          "lap": 22,
+          "delta": -0.138
+        },
+        {
+          "lap": 23,
+          "delta": 0.574
+        },
+        {
+          "lap": 24,
+          "delta": 0.227
+        },
+        {
+          "lap": 25,
+          "delta": -0.107
+        },
+        {
+          "lap": 26,
+          "delta": -0.328
+        },
+        {
+          "lap": 27,
+          "delta": -0.174
+        },
+        {
+          "lap": 28,
+          "delta": 0.035
+        },
+        {
+          "lap": 29,
+          "delta": 0.222
+        },
+        {
+          "lap": 30,
+          "delta": -0.082
+        },
+        {
+          "lap": 31,
+          "delta": 0.723
+        },
+        {
+          "lap": 32,
+          "delta": 0.693
+        },
+        {
+          "lap": 36,
+          "delta": 1.043
+        },
+        {
+          "lap": 37,
+          "delta": 0.791
+        },
+        {
+          "lap": 38,
+          "delta": -0.322
+        },
+        {
+          "lap": 39,
+          "delta": 1.125
+        },
+        {
+          "lap": 40,
+          "delta": 3.546
+        },
+        {
+          "lap": 41,
+          "delta": 0.936
+        },
+        {
+          "lap": 42,
+          "delta": 1.606
+        },
+        {
+          "lap": 43,
+          "delta": 1.219
+        },
+        {
+          "lap": 44,
+          "delta": 1.011
+        },
+        {
+          "lap": 45,
+          "delta": 1.388
+        },
+        {
+          "lap": 46,
+          "delta": 1.342
+        },
+        {
+          "lap": 47,
+          "delta": 0.797
+        },
+        {
+          "lap": 48,
+          "delta": -0.145
+        },
+        {
+          "lap": 49,
+          "delta": -0.115
+        },
+        {
+          "lap": 50,
+          "delta": 0.391
+        },
+        {
+          "lap": 51,
+          "delta": -1.261
+        },
+        {
+          "lap": 52,
+          "delta": 0.851
+        },
+        {
+          "lap": 53,
+          "delta": 0.085
+        },
+        {
+          "lap": 54,
+          "delta": 3.619
+        },
+        {
+          "lap": 55,
+          "delta": -0.654
+        },
+        {
+          "lap": 56,
+          "delta": 0.173
+        },
+        {
+          "lap": 57,
+          "delta": -0.132
+        }
+      ]
+    },
+    "sectors": {
+      "S1": {
+        "drv1": [
+          {
+            "lap": 2,
+            "time": 30.8
+          },
+          {
+            "lap": 3,
+            "time": 30.171
+          },
+          {
+            "lap": 4,
+            "time": 30.126
+          },
+          {
+            "lap": 5,
+            "time": 30.966
+          },
+          {
+            "lap": 6,
+            "time": 30.162
+          },
+          {
+            "lap": 7,
+            "time": 30.025
+          },
+          {
+            "lap": 8,
+            "time": 30.164
+          },
+          {
+            "lap": 9,
+            "time": 30.236
+          },
+          {
+            "lap": 10,
+            "time": 30.168
+          },
+          {
+            "lap": 16,
+            "time": 30.82
+          },
+          {
+            "lap": 22,
+            "time": 29.605
+          },
+          {
+            "lap": 23,
+            "time": 29.687
+          },
+          {
+            "lap": 24,
+            "time": 29.834
+          },
+          {
+            "lap": 25,
+            "time": 29.548
+          },
+          {
+            "lap": 26,
+            "time": 29.551
+          },
+          {
+            "lap": 27,
+            "time": 29.508
+          },
+          {
+            "lap": 28,
+            "time": 29.902
+          },
+          {
+            "lap": 29,
+            "time": 29.977
+          },
+          {
+            "lap": 30,
+            "time": 29.767
+          },
+          {
+            "lap": 31,
+            "time": 29.785
+          },
+          {
+            "lap": 32,
+            "time": 29.694
+          },
+          {
+            "lap": 36,
+            "time": 29.762
+          },
+          {
+            "lap": 37,
+            "time": 29.871
+          },
+          {
+            "lap": 38,
+            "time": 29.796
+          },
+          {
+            "lap": 39,
+            "time": 30.718
+          },
+          {
+            "lap": 40,
+            "time": 31.551
+          },
+          {
+            "lap": 41,
+            "time": 30.136
+          },
+          {
+            "lap": 42,
+            "time": 30.221
+          },
+          {
+            "lap": 43,
+            "time": 29.977
+          },
+          {
+            "lap": 44,
+            "time": 29.887
+          },
+          {
+            "lap": 45,
+            "time": 29.827
+          },
+          {
+            "lap": 46,
+            "time": 29.891
+          },
+          {
+            "lap": 47,
+            "time": 29.868
+          },
+          {
+            "lap": 48,
+            "time": 29.958
+          },
+          {
+            "lap": 49,
+            "time": 29.859
+          },
+          {
+            "lap": 50,
+            "time": 29.829
+          },
+          {
+            "lap": 51,
+            "time": 29.802
+          },
+          {
+            "lap": 52,
+            "time": 29.876
+          },
+          {
+            "lap": 53,
+            "time": 29.84
+          },
+          {
+            "lap": 54,
+            "time": 31.949
+          },
+          {
+            "lap": 55,
+            "time": 30.016
+          },
+          {
+            "lap": 56,
+            "time": 29.961
+          },
+          {
+            "lap": 57,
+            "time": 29.872
+          }
+        ],
+        "drv2": [
+          {
+            "lap": 2,
+            "time": 31.092
+          },
+          {
+            "lap": 3,
+            "time": 30.546
+          },
+          {
+            "lap": 4,
+            "time": 30.416
+          },
+          {
+            "lap": 5,
+            "time": 30.512
+          },
+          {
+            "lap": 6,
+            "time": 31.563
+          },
+          {
+            "lap": 7,
+            "time": 30.465
+          },
+          {
+            "lap": 8,
+            "time": 30.114
+          },
+          {
+            "lap": 9,
+            "time": 30.146
+          },
+          {
+            "lap": 10,
+            "time": 30.476
+          },
+          {
+            "lap": 16,
+            "time": 29.821
+          },
+          {
+            "lap": 22,
+            "time": 29.747
+          },
+          {
+            "lap": 23,
+            "time": 29.835
+          },
+          {
+            "lap": 24,
+            "time": 29.815
+          },
+          {
+            "lap": 25,
+            "time": 29.685
+          },
+          {
+            "lap": 26,
+            "time": 29.804
+          },
+          {
+            "lap": 27,
+            "time": 29.947
+          },
+          {
+            "lap": 28,
+            "time": 29.912
+          },
+          {
+            "lap": 29,
+            "time": 29.861
+          },
+          {
+            "lap": 30,
+            "time": 29.865
+          },
+          {
+            "lap": 31,
+            "time": 29.79
+          },
+          {
+            "lap": 32,
+            "time": 29.576
+          },
+          {
+            "lap": 36,
+            "time": 29.478
+          },
+          {
+            "lap": 37,
+            "time": 29.506
+          },
+          {
+            "lap": 38,
+            "time": 29.421
+          },
+          {
+            "lap": 39,
+            "time": 30.093
+          },
+          {
+            "lap": 40,
+            "time": 29.516
+          },
+          {
+            "lap": 41,
+            "time": 29.94
+          },
+          {
+            "lap": 42,
+            "time": 29.508
+          },
+          {
+            "lap": 43,
+            "time": 29.475
+          },
+          {
+            "lap": 44,
+            "time": 29.581
+          },
+          {
+            "lap": 45,
+            "time": 29.395
+          },
+          {
+            "lap": 46,
+            "time": 29.447
+          },
+          {
+            "lap": 47,
+            "time": 29.482
+          },
+          {
+            "lap": 48,
+            "time": 30.382
+          },
+          {
+            "lap": 49,
+            "time": 29.559
+          },
+          {
+            "lap": 50,
+            "time": 29.719
+          },
+          {
+            "lap": 51,
+            "time": 29.804
+          },
+          {
+            "lap": 52,
+            "time": 29.711
+          },
+          {
+            "lap": 53,
+            "time": 29.756
+          },
+          {
+            "lap": 54,
+            "time": 29.857
+          },
+          {
+            "lap": 55,
+            "time": 30.15
+          },
+          {
+            "lap": 56,
+            "time": 29.823
+          },
+          {
+            "lap": 57,
+            "time": 29.522
+          }
+        ],
+        "deltas": [
+          {
+            "lap": 2,
+            "delta": -0.292
+          },
+          {
+            "lap": 3,
+            "delta": -0.375
+          },
+          {
+            "lap": 4,
+            "delta": -0.29
+          },
+          {
+            "lap": 5,
+            "delta": 0.454
+          },
+          {
+            "lap": 6,
+            "delta": -1.401
+          },
+          {
+            "lap": 7,
+            "delta": -0.44
+          },
+          {
+            "lap": 8,
+            "delta": 0.05
+          },
+          {
+            "lap": 9,
+            "delta": 0.09
+          },
+          {
+            "lap": 10,
+            "delta": -0.308
+          },
+          {
+            "lap": 16,
+            "delta": 0.999
+          },
+          {
+            "lap": 22,
+            "delta": -0.142
+          },
+          {
+            "lap": 23,
+            "delta": -0.148
+          },
+          {
+            "lap": 24,
+            "delta": 0.019
+          },
+          {
+            "lap": 25,
+            "delta": -0.137
+          },
+          {
+            "lap": 26,
+            "delta": -0.253
+          },
+          {
+            "lap": 27,
+            "delta": -0.439
+          },
+          {
+            "lap": 28,
+            "delta": -0.01
+          },
+          {
+            "lap": 29,
+            "delta": 0.116
+          },
+          {
+            "lap": 30,
+            "delta": -0.098
+          },
+          {
+            "lap": 31,
+            "delta": -0.005
+          },
+          {
+            "lap": 32,
+            "delta": 0.118
+          },
+          {
+            "lap": 36,
+            "delta": 0.284
+          },
+          {
+            "lap": 37,
+            "delta": 0.365
+          },
+          {
+            "lap": 38,
+            "delta": 0.375
+          },
+          {
+            "lap": 39,
+            "delta": 0.625
+          },
+          {
+            "lap": 40,
+            "delta": 2.035
+          },
+          {
+            "lap": 41,
+            "delta": 0.196
+          },
+          {
+            "lap": 42,
+            "delta": 0.713
+          },
+          {
+            "lap": 43,
+            "delta": 0.502
+          },
+          {
+            "lap": 44,
+            "delta": 0.306
+          },
+          {
+            "lap": 45,
+            "delta": 0.432
+          },
+          {
+            "lap": 46,
+            "delta": 0.444
+          },
+          {
+            "lap": 47,
+            "delta": 0.386
+          },
+          {
+            "lap": 48,
+            "delta": -0.424
+          },
+          {
+            "lap": 49,
+            "delta": 0.3
+          },
+          {
+            "lap": 50,
+            "delta": 0.11
+          },
+          {
+            "lap": 51,
+            "delta": -0.002
+          },
+          {
+            "lap": 52,
+            "delta": 0.165
+          },
+          {
+            "lap": 53,
+            "delta": 0.084
+          },
+          {
+            "lap": 54,
+            "delta": 2.092
+          },
+          {
+            "lap": 55,
+            "delta": -0.134
+          },
+          {
+            "lap": 56,
+            "delta": 0.138
+          },
+          {
+            "lap": 57,
+            "delta": 0.35
+          }
+        ]
+      },
+      "S2": {
+        "drv1": [
+          {
+            "lap": 2,
+            "time": 18.041
+          },
+          {
+            "lap": 3,
+            "time": 17.966
+          },
+          {
+            "lap": 4,
+            "time": 17.94
+          },
+          {
+            "lap": 5,
+            "time": 17.919
+          },
+          {
+            "lap": 6,
+            "time": 17.916
+          },
+          {
+            "lap": 7,
+            "time": 17.897
+          },
+          {
+            "lap": 8,
+            "time": 17.919
+          },
+          {
+            "lap": 9,
+            "time": 17.915
+          },
+          {
+            "lap": 10,
+            "time": 17.947
+          },
+          {
+            "lap": 16,
+            "time": 17.896
+          },
+          {
+            "lap": 22,
+            "time": 17.753
+          },
+          {
+            "lap": 23,
+            "time": 17.824
+          },
+          {
+            "lap": 24,
+            "time": 17.868
+          },
+          {
+            "lap": 25,
+            "time": 17.841
+          },
+          {
+            "lap": 26,
+            "time": 17.874
+          },
+          {
+            "lap": 27,
+            "time": 17.881
+          },
+          {
+            "lap": 28,
+            "time": 17.869
+          },
+          {
+            "lap": 29,
+            "time": 18.019
+          },
+          {
+            "lap": 30,
+            "time": 17.837
+          },
+          {
+            "lap": 31,
+            "time": 18.09
+          },
+          {
+            "lap": 32,
+            "time": 17.78
+          },
+          {
+            "lap": 36,
+            "time": 17.928
+          },
+          {
+            "lap": 37,
+            "time": 17.873
+          },
+          {
+            "lap": 38,
+            "time": 17.906
+          },
+          {
+            "lap": 39,
+            "time": 17.813
+          },
+          {
+            "lap": 40,
+            "time": 18.051
+          },
+          {
+            "lap": 41,
+            "time": 17.882
+          },
+          {
+            "lap": 42,
+            "time": 17.763
+          },
+          {
+            "lap": 43,
+            "time": 17.828
+          },
+          {
+            "lap": 44,
+            "time": 17.758
+          },
+          {
+            "lap": 45,
+            "time": 17.836
+          },
+          {
+            "lap": 46,
+            "time": 17.824
+          },
+          {
+            "lap": 47,
+            "time": 17.879
+          },
+          {
+            "lap": 48,
+            "time": 17.827
+          },
+          {
+            "lap": 49,
+            "time": 17.878
+          },
+          {
+            "lap": 50,
+            "time": 17.897
+          },
+          {
+            "lap": 51,
+            "time": 17.819
+          },
+          {
+            "lap": 52,
+            "time": 17.834
+          },
+          {
+            "lap": 53,
+            "time": 18.429
+          },
+          {
+            "lap": 54,
+            "time": 18.437
+          },
+          {
+            "lap": 55,
+            "time": 17.645
+          },
+          {
+            "lap": 56,
+            "time": 17.776
+          },
+          {
+            "lap": 57,
+            "time": 17.727
+          }
+        ],
+        "drv2": [
+          {
+            "lap": 2,
+            "time": 18.428
+          },
+          {
+            "lap": 3,
+            "time": 18.125
+          },
+          {
+            "lap": 4,
+            "time": 18.415
+          },
+          {
+            "lap": 5,
+            "time": 17.836
+          },
+          {
+            "lap": 6,
+            "time": 18.038
+          },
+          {
+            "lap": 7,
+            "time": 17.945
+          },
+          {
+            "lap": 8,
+            "time": 17.925
+          },
+          {
+            "lap": 9,
+            "time": 17.839
+          },
+          {
+            "lap": 10,
+            "time": 17.834
+          },
+          {
+            "lap": 16,
+            "time": 17.96
+          },
+          {
+            "lap": 22,
+            "time": 18.079
+          },
+          {
+            "lap": 23,
+            "time": 17.95
+          },
+          {
+            "lap": 24,
+            "time": 18.001
+          },
+          {
+            "lap": 25,
+            "time": 18.019
+          },
+          {
+            "lap": 26,
+            "time": 18.015
+          },
+          {
+            "lap": 27,
+            "time": 17.963
+          },
+          {
+            "lap": 28,
+            "time": 18.051
+          },
+          {
+            "lap": 29,
+            "time": 18.058
+          },
+          {
+            "lap": 30,
+            "time": 17.935
+          },
+          {
+            "lap": 31,
+            "time": 17.858
+          },
+          {
+            "lap": 32,
+            "time": 17.889
+          },
+          {
+            "lap": 36,
+            "time": 17.963
+          },
+          {
+            "lap": 37,
+            "time": 17.848
+          },
+          {
+            "lap": 38,
+            "time": 17.884
+          },
+          {
+            "lap": 39,
+            "time": 18.191
+          },
+          {
+            "lap": 40,
+            "time": 18.522
+          },
+          {
+            "lap": 41,
+            "time": 18.115
+          },
+          {
+            "lap": 42,
+            "time": 17.946
+          },
+          {
+            "lap": 43,
+            "time": 17.879
+          },
+          {
+            "lap": 44,
+            "time": 17.856
+          },
+          {
+            "lap": 45,
+            "time": 17.8
+          },
+          {
+            "lap": 46,
+            "time": 17.774
+          },
+          {
+            "lap": 47,
+            "time": 17.841
+          },
+          {
+            "lap": 48,
+            "time": 17.891
+          },
+          {
+            "lap": 49,
+            "time": 17.87
+          },
+          {
+            "lap": 50,
+            "time": 17.835
+          },
+          {
+            "lap": 51,
+            "time": 18.319
+          },
+          {
+            "lap": 52,
+            "time": 17.927
+          },
+          {
+            "lap": 53,
+            "time": 17.889
+          },
+          {
+            "lap": 54,
+            "time": 17.721
+          },
+          {
+            "lap": 55,
+            "time": 17.991
+          },
+          {
+            "lap": 56,
+            "time": 17.878
+          },
+          {
+            "lap": 57,
+            "time": 18.166
+          }
+        ],
+        "deltas": [
+          {
+            "lap": 2,
+            "delta": -0.387
+          },
+          {
+            "lap": 3,
+            "delta": -0.159
+          },
+          {
+            "lap": 4,
+            "delta": -0.475
+          },
+          {
+            "lap": 5,
+            "delta": 0.083
+          },
+          {
+            "lap": 6,
+            "delta": -0.122
+          },
+          {
+            "lap": 7,
+            "delta": -0.048
+          },
+          {
+            "lap": 8,
+            "delta": -0.006
+          },
+          {
+            "lap": 9,
+            "delta": 0.076
+          },
+          {
+            "lap": 10,
+            "delta": 0.113
+          },
+          {
+            "lap": 16,
+            "delta": -0.064
+          },
+          {
+            "lap": 22,
+            "delta": -0.326
+          },
+          {
+            "lap": 23,
+            "delta": -0.126
+          },
+          {
+            "lap": 24,
+            "delta": -0.133
+          },
+          {
+            "lap": 25,
+            "delta": -0.178
+          },
+          {
+            "lap": 26,
+            "delta": -0.141
+          },
+          {
+            "lap": 27,
+            "delta": -0.082
+          },
+          {
+            "lap": 28,
+            "delta": -0.182
+          },
+          {
+            "lap": 29,
+            "delta": -0.039
+          },
+          {
+            "lap": 30,
+            "delta": -0.098
+          },
+          {
+            "lap": 31,
+            "delta": 0.232
+          },
+          {
+            "lap": 32,
+            "delta": -0.109
+          },
+          {
+            "lap": 36,
+            "delta": -0.035
+          },
+          {
+            "lap": 37,
+            "delta": 0.025
+          },
+          {
+            "lap": 38,
+            "delta": 0.022
+          },
+          {
+            "lap": 39,
+            "delta": -0.378
+          },
+          {
+            "lap": 40,
+            "delta": -0.471
+          },
+          {
+            "lap": 41,
+            "delta": -0.233
+          },
+          {
+            "lap": 42,
+            "delta": -0.183
+          },
+          {
+            "lap": 43,
+            "delta": -0.051
+          },
+          {
+            "lap": 44,
+            "delta": -0.098
+          },
+          {
+            "lap": 45,
+            "delta": 0.036
+          },
+          {
+            "lap": 46,
+            "delta": 0.05
+          },
+          {
+            "lap": 47,
+            "delta": 0.038
+          },
+          {
+            "lap": 48,
+            "delta": -0.064
+          },
+          {
+            "lap": 49,
+            "delta": 0.008
+          },
+          {
+            "lap": 50,
+            "delta": 0.062
+          },
+          {
+            "lap": 51,
+            "delta": -0.5
+          },
+          {
+            "lap": 52,
+            "delta": -0.093
+          },
+          {
+            "lap": 53,
+            "delta": 0.54
+          },
+          {
+            "lap": 54,
+            "delta": 0.716
+          },
+          {
+            "lap": 55,
+            "delta": -0.346
+          },
+          {
+            "lap": 56,
+            "delta": -0.102
+          },
+          {
+            "lap": 57,
+            "delta": -0.439
+          }
+        ]
+      },
+      "S3": {
+        "drv1": [
+          {
+            "lap": 2,
+            "time": 38.377
+          },
+          {
+            "lap": 3,
+            "time": 37.36
+          },
+          {
+            "lap": 4,
+            "time": 38.006
+          },
+          {
+            "lap": 5,
+            "time": 37.35
+          },
+          {
+            "lap": 6,
+            "time": 37.314
+          },
+          {
+            "lap": 7,
+            "time": 37.272
+          },
+          {
+            "lap": 8,
+            "time": 37.177
+          },
+          {
+            "lap": 9,
+            "time": 37.186
+          },
+          {
+            "lap": 10,
+            "time": 37.45
+          },
+          {
+            "lap": 16,
+            "time": 37.182
+          },
+          {
+            "lap": 22,
+            "time": 36.932
+          },
+          {
+            "lap": 23,
+            "time": 37.398
+          },
+          {
+            "lap": 24,
+            "time": 36.852
+          },
+          {
+            "lap": 25,
+            "time": 36.874
+          },
+          {
+            "lap": 26,
+            "time": 36.78
+          },
+          {
+            "lap": 27,
+            "time": 36.972
+          },
+          {
+            "lap": 28,
+            "time": 36.704
+          },
+          {
+            "lap": 29,
+            "time": 36.92
+          },
+          {
+            "lap": 30,
+            "time": 36.678
+          },
+          {
+            "lap": 31,
+            "time": 37.001
+          },
+          {
+            "lap": 32,
+            "time": 37.197
+          },
+          {
+            "lap": 36,
+            "time": 37.008
+          },
+          {
+            "lap": 37,
+            "time": 36.779
+          },
+          {
+            "lap": 38,
+            "time": 37.095
+          },
+          {
+            "lap": 39,
+            "time": 37.424
+          },
+          {
+            "lap": 40,
+            "time": 38.64
+          },
+          {
+            "lap": 41,
+            "time": 37.388
+          },
+          {
+            "lap": 42,
+            "time": 37.425
+          },
+          {
+            "lap": 43,
+            "time": 37.057
+          },
+          {
+            "lap": 44,
+            "time": 37.102
+          },
+          {
+            "lap": 45,
+            "time": 36.982
+          },
+          {
+            "lap": 46,
+            "time": 36.973
+          },
+          {
+            "lap": 47,
+            "time": 37.026
+          },
+          {
+            "lap": 48,
+            "time": 37.078
+          },
+          {
+            "lap": 49,
+            "time": 37.037
+          },
+          {
+            "lap": 50,
+            "time": 36.989
+          },
+          {
+            "lap": 51,
+            "time": 36.753
+          },
+          {
+            "lap": 52,
+            "time": 37.5
+          },
+          {
+            "lap": 53,
+            "time": 37.879
+          },
+          {
+            "lap": 54,
+            "time": 37.781
+          },
+          {
+            "lap": 55,
+            "time": 36.953
+          },
+          {
+            "lap": 56,
+            "time": 36.951
+          },
+          {
+            "lap": 57,
+            "time": 37.09
+          }
+        ],
+        "drv2": [
+          {
+            "lap": 2,
+            "time": 38.018
+          },
+          {
+            "lap": 3,
+            "time": 37.653
+          },
+          {
+            "lap": 4,
+            "time": 37.201
+          },
+          {
+            "lap": 5,
+            "time": 37.979
+          },
+          {
+            "lap": 6,
+            "time": 37.862
+          },
+          {
+            "lap": 7,
+            "time": 37.375
+          },
+          {
+            "lap": 8,
+            "time": 37.431
+          },
+          {
+            "lap": 9,
+            "time": 37.239
+          },
+          {
+            "lap": 10,
+            "time": 37.251
+          },
+          {
+            "lap": 16,
+            "time": 37.199
+          },
+          {
+            "lap": 22,
+            "time": 36.602
+          },
+          {
+            "lap": 23,
+            "time": 36.55
+          },
+          {
+            "lap": 24,
+            "time": 36.511
+          },
+          {
+            "lap": 25,
+            "time": 36.666
+          },
+          {
+            "lap": 26,
+            "time": 36.714
+          },
+          {
+            "lap": 27,
+            "time": 36.625
+          },
+          {
+            "lap": 28,
+            "time": 36.477
+          },
+          {
+            "lap": 29,
+            "time": 36.775
+          },
+          {
+            "lap": 30,
+            "time": 36.564
+          },
+          {
+            "lap": 31,
+            "time": 36.505
+          },
+          {
+            "lap": 32,
+            "time": 36.513
+          },
+          {
+            "lap": 36,
+            "time": 36.214
+          },
+          {
+            "lap": 37,
+            "time": 36.378
+          },
+          {
+            "lap": 38,
+            "time": 37.814
+          },
+          {
+            "lap": 39,
+            "time": 36.546
+          },
+          {
+            "lap": 40,
+            "time": 36.658
+          },
+          {
+            "lap": 41,
+            "time": 36.415
+          },
+          {
+            "lap": 42,
+            "time": 36.349
+          },
+          {
+            "lap": 43,
+            "time": 36.289
+          },
+          {
+            "lap": 44,
+            "time": 36.299
+          },
+          {
+            "lap": 45,
+            "time": 36.062
+          },
+          {
+            "lap": 46,
+            "time": 36.125
+          },
+          {
+            "lap": 47,
+            "time": 36.653
+          },
+          {
+            "lap": 48,
+            "time": 36.735
+          },
+          {
+            "lap": 49,
+            "time": 37.46
+          },
+          {
+            "lap": 50,
+            "time": 36.77
+          },
+          {
+            "lap": 51,
+            "time": 37.512
+          },
+          {
+            "lap": 52,
+            "time": 36.721
+          },
+          {
+            "lap": 53,
+            "time": 38.418
+          },
+          {
+            "lap": 54,
+            "time": 36.97
+          },
+          {
+            "lap": 55,
+            "time": 37.127
+          },
+          {
+            "lap": 56,
+            "time": 36.814
+          },
+          {
+            "lap": 57,
+            "time": 37.133
+          }
+        ],
+        "deltas": [
+          {
+            "lap": 2,
+            "delta": 0.359
+          },
+          {
+            "lap": 3,
+            "delta": -0.293
+          },
+          {
+            "lap": 4,
+            "delta": 0.805
+          },
+          {
+            "lap": 5,
+            "delta": -0.629
+          },
+          {
+            "lap": 6,
+            "delta": -0.548
+          },
+          {
+            "lap": 7,
+            "delta": -0.103
+          },
+          {
+            "lap": 8,
+            "delta": -0.254
+          },
+          {
+            "lap": 9,
+            "delta": -0.053
+          },
+          {
+            "lap": 10,
+            "delta": 0.199
+          },
+          {
+            "lap": 16,
+            "delta": -0.017
+          },
+          {
+            "lap": 22,
+            "delta": 0.33
+          },
+          {
+            "lap": 23,
+            "delta": 0.848
+          },
+          {
+            "lap": 24,
+            "delta": 0.341
+          },
+          {
+            "lap": 25,
+            "delta": 0.208
+          },
+          {
+            "lap": 26,
+            "delta": 0.066
+          },
+          {
+            "lap": 27,
+            "delta": 0.347
+          },
+          {
+            "lap": 28,
+            "delta": 0.227
+          },
+          {
+            "lap": 29,
+            "delta": 0.145
+          },
+          {
+            "lap": 30,
+            "delta": 0.114
+          },
+          {
+            "lap": 31,
+            "delta": 0.496
+          },
+          {
+            "lap": 32,
+            "delta": 0.684
+          },
+          {
+            "lap": 36,
+            "delta": 0.794
+          },
+          {
+            "lap": 37,
+            "delta": 0.401
+          },
+          {
+            "lap": 38,
+            "delta": -0.719
+          },
+          {
+            "lap": 39,
+            "delta": 0.878
+          },
+          {
+            "lap": 40,
+            "delta": 1.982
+          },
+          {
+            "lap": 41,
+            "delta": 0.973
+          },
+          {
+            "lap": 42,
+            "delta": 1.076
+          },
+          {
+            "lap": 43,
+            "delta": 0.768
+          },
+          {
+            "lap": 44,
+            "delta": 0.803
+          },
+          {
+            "lap": 45,
+            "delta": 0.92
+          },
+          {
+            "lap": 46,
+            "delta": 0.848
+          },
+          {
+            "lap": 47,
+            "delta": 0.373
+          },
+          {
+            "lap": 48,
+            "delta": 0.343
+          },
+          {
+            "lap": 49,
+            "delta": -0.423
+          },
+          {
+            "lap": 50,
+            "delta": 0.219
+          },
+          {
+            "lap": 51,
+            "delta": -0.759
+          },
+          {
+            "lap": 52,
+            "delta": 0.779
+          },
+          {
+            "lap": 53,
+            "delta": -0.539
+          },
+          {
+            "lap": 54,
+            "delta": 0.811
+          },
+          {
+            "lap": 55,
+            "delta": -0.174
+          },
+          {
+            "lap": 56,
+            "delta": 0.137
+          },
+          {
+            "lap": 57,
+            "delta": -0.043
+          }
+        ]
+      }
+    },
+    "speed": {
+      "S1末端": {
+        "drv1_values": [
+          254.0,
+          255.0,
+          252.0,
+          256.0,
+          253.0,
+          253.0,
+          251.0,
+          252.0,
+          251.0,
+          256.0,
+          258.0,
+          251.0,
+          252.0,
+          252.0,
+          255.0,
+          254.0,
+          252.0,
+          252.0,
+          252.0,
+          251.0,
+          253.0,
+          252.0,
+          251.0,
+          252.0,
+          253.0,
+          252.0,
+          259.0,
+          252.0,
+          252.0,
+          253.0,
+          252.0,
+          252.0,
+          262.0,
+          252.0,
+          253.0,
+          253.0,
+          253.0,
+          253.0,
+          253.0,
+          219.0,
+          251.0,
+          254.0,
+          254.0
+        ],
+        "drv2_values": [
+          261.0,
+          263.0,
+          251.0,
+          250.0,
+          263.0,
+          264.0,
+          267.0,
+          256.0,
+          266.0,
+          254.0,
+          256.0,
+          254.0,
+          255.0,
+          258.0,
+          259.0,
+          260.0,
+          256.0,
+          251.0,
+          256.0,
+          258.0,
+          251.0,
+          255.0,
+          256.0,
+          262.0,
+          259.0,
+          258.0,
+          253.0,
+          256.0,
+          256.0,
+          256.0,
+          257.0,
+          259.0,
+          258.0,
+          255.0,
+          256.0,
+          269.0,
+          250.0,
+          255.0,
+          255.0,
+          262.0,
+          269.0,
+          270.0,
+          265.0
+        ]
+      },
+      "S2末端": {
+        "drv1_values": [
+          298.0,
+          304.0,
+          302.0,
+          308.0,
+          304.0,
+          304.0,
+          304.0,
+          305.0,
+          303.0,
+          307.0,
+          306.0,
+          305.0,
+          303.0,
+          303.0,
+          303.0,
+          302.0,
+          302.0,
+          302.0,
+          303.0,
+          300.0,
+          307.0,
+          300.0,
+          301.0,
+          300.0,
+          309.0,
+          310.0,
+          307.0,
+          310.0,
+          306.0,
+          306.0,
+          304.0,
+          305.0,
+          302.0,
+          304.0,
+          303.0,
+          303.0,
+          304.0,
+          305.0,
+          236.0,
+          315.0,
+          312.0,
+          306.0,
+          305.0
+        ],
+        "drv2_values": [
+          284.0,
+          292.0,
+          295.0,
+          306.0,
+          298.0,
+          298.0,
+          299.0,
+          301.0,
+          301.0,
+          294.0,
+          289.0,
+          290.0,
+          290.0,
+          291.0,
+          290.0,
+          291.0,
+          288.0,
+          290.0,
+          293.0,
+          294.0,
+          292.0,
+          288.0,
+          294.0,
+          303.0,
+          290.0,
+          278.0,
+          284.0,
+          288.0,
+          289.0,
+          289.0,
+          291.0,
+          292.0,
+          289.0,
+          290.0,
+          287.0,
+          292.0,
+          274.0,
+          291.0,
+          291.0,
+          296.0,
+          293.0,
+          293.0,
+          291.0
+        ]
+      },
+      "FL": {
+        "drv1_values": [
+          300.0,
+          301.0,
+          293.0,
+          296.0,
+          295.0,
+          295.0,
+          294.0,
+          295.0,
+          293.0,
+          298.0,
+          299.0,
+          294.0,
+          296.0,
+          296.0,
+          297.0,
+          291.0,
+          295.0,
+          293.0,
+          297.0,
+          297.0,
+          293.0,
+          294.0,
+          296.0,
+          293.0,
+          298.0,
+          297.0,
+          298.0,
+          297.0,
+          296.0,
+          298.0,
+          295.0,
+          295.0,
+          297.0,
+          297.0,
+          296.0,
+          298.0,
+          299.0,
+          297.0,
+          298.0,
+          306.0,
+          305.0,
+          300.0,
+          301.0
+        ],
+        "drv2_values": [
+          294.0,
+          289.0,
+          294.0,
+          299.0,
+          299.0,
+          297.0,
+          297.0,
+          299.0,
+          298.0,
+          294.0,
+          293.0,
+          293.0,
+          295.0,
+          294.0,
+          289.0,
+          293.0,
+          291.0,
+          291.0,
+          294.0,
+          295.0,
+          294.0,
+          295.0,
+          298.0,
+          318.0,
+          319.0,
+          284.0,
+          291.0,
+          292.0,
+          293.0,
+          295.0,
+          293.0,
+          295.0,
+          295.0,
+          295.0,
+          300.0,
+          296.0,
+          298.0,
+          294.0,
+          301.0,
+          323.0,
+          299.0,
+          301.0,
+          292.0
+        ]
+      },
+      "ST": {
+        "drv1_values": [
+          260.0,
+          289.0,
+          293.0,
+          264.0,
+          289.0,
+          288.0,
+          286.0,
+          287.0,
+          287.0,
+          259.0,
+          291.0,
+          291.0,
+          289.0,
+          291.0,
+          292.0,
+          294.0,
+          285.0,
+          289.0,
+          286.0,
+          292.0,
+          293.0,
+          287.0,
+          287.0,
+          288.0,
+          259.0,
+          275.0,
+          293.0,
+          288.0,
+          292.0,
+          290.0,
+          295.0,
+          292.0,
+          291.0,
+          291.0,
+          291.0,
+          290.0,
+          293.0,
+          296.0,
+          292.0,
+          272.0,
+          290.0,
+          299.0,
+          296.0
+        ],
+        "drv2_values": [
+          274.0,
+          276.0,
+          283.0,
+          286.0,
+          277.0,
+          300.0,
+          290.0,
+          285.0,
+          300.0,
+          293.0,
+          283.0,
+          287.0,
+          286.0,
+          291.0,
+          290.0,
+          278.0,
+          289.0,
+          288.0,
+          283.0,
+          286.0,
+          291.0,
+          286.0,
+          289.0,
+          293.0,
+          293.0,
+          306.0,
+          279.0,
+          286.0,
+          287.0,
+          286.0,
+          290.0,
+          288.0,
+          292.0,
+          291.0,
+          290.0,
+          301.0,
+          293.0,
+          294.0,
+          290.0,
+          305.0,
+          279.0,
+          300.0,
+          304.0
+        ]
+      }
+    },
+    "stints": {
+      "drv1": [
+        {
+          "stint": 1,
+          "compound": "MEDIUM",
+          "laps": [
+            {
+              "tyre_life": 2,
+              "time": 87.218,
+              "lap": 2
+            },
+            {
+              "tyre_life": 3,
+              "time": 85.497,
+              "lap": 3
+            },
+            {
+              "tyre_life": 4,
+              "time": 86.072,
+              "lap": 4
+            },
+            {
+              "tyre_life": 5,
+              "time": 86.235,
+              "lap": 5
+            },
+            {
+              "tyre_life": 6,
+              "time": 85.392,
+              "lap": 6
+            },
+            {
+              "tyre_life": 7,
+              "time": 85.194,
+              "lap": 7
+            },
+            {
+              "tyre_life": 8,
+              "time": 85.26,
+              "lap": 8
+            },
+            {
+              "tyre_life": 9,
+              "time": 85.337,
+              "lap": 9
+            },
+            {
+              "tyre_life": 10,
+              "time": 85.565,
+              "lap": 10
+            },
+            {
+              "tyre_life": 16,
+              "time": 85.898,
+              "lap": 16
+            }
+          ],
+          "trend": {
+            "slope": -0.0563,
+            "intercept": 86.161
+          }
+        },
+        {
+          "stint": 2,
+          "compound": "HARD",
+          "laps": [
+            {
+              "tyre_life": 4,
+              "time": 84.29,
+              "lap": 22
+            },
+            {
+              "tyre_life": 5,
+              "time": 84.909,
+              "lap": 23
+            },
+            {
+              "tyre_life": 6,
+              "time": 84.554,
+              "lap": 24
+            },
+            {
+              "tyre_life": 7,
+              "time": 84.263,
+              "lap": 25
+            },
+            {
+              "tyre_life": 8,
+              "time": 84.205,
+              "lap": 26
+            },
+            {
+              "tyre_life": 9,
+              "time": 84.361,
+              "lap": 27
+            },
+            {
+              "tyre_life": 10,
+              "time": 84.475,
+              "lap": 28
+            },
+            {
+              "tyre_life": 11,
+              "time": 84.916,
+              "lap": 29
+            },
+            {
+              "tyre_life": 12,
+              "time": 84.282,
+              "lap": 30
+            },
+            {
+              "tyre_life": 13,
+              "time": 84.876,
+              "lap": 31
+            },
+            {
+              "tyre_life": 14,
+              "time": 84.671,
+              "lap": 32
+            },
+            {
+              "tyre_life": 18,
+              "time": 84.698,
+              "lap": 36
+            },
+            {
+              "tyre_life": 19,
+              "time": 84.523,
+              "lap": 37
+            },
+            {
+              "tyre_life": 20,
+              "time": 84.797,
+              "lap": 38
+            },
+            {
+              "tyre_life": 21,
+              "time": 85.955,
+              "lap": 39
+            },
+            {
+              "tyre_life": 22,
+              "time": 88.242,
+              "lap": 40
+            },
+            {
+              "tyre_life": 23,
+              "time": 85.406,
+              "lap": 41
+            },
+            {
+              "tyre_life": 24,
+              "time": 85.409,
+              "lap": 42
+            },
+            {
+              "tyre_life": 25,
+              "time": 84.862,
+              "lap": 43
+            },
+            {
+              "tyre_life": 26,
+              "time": 84.747,
+              "lap": 44
+            },
+            {
+              "tyre_life": 27,
+              "time": 84.645,
+              "lap": 45
+            },
+            {
+              "tyre_life": 28,
+              "time": 84.688,
+              "lap": 46
+            },
+            {
+              "tyre_life": 29,
+              "time": 84.773,
+              "lap": 47
+            },
+            {
+              "tyre_life": 30,
+              "time": 84.863,
+              "lap": 48
+            },
+            {
+              "tyre_life": 31,
+              "time": 84.774,
+              "lap": 49
+            },
+            {
+              "tyre_life": 32,
+              "time": 84.715,
+              "lap": 50
+            },
+            {
+              "tyre_life": 33,
+              "time": 84.374,
+              "lap": 51
+            },
+            {
+              "tyre_life": 34,
+              "time": 85.21,
+              "lap": 52
+            },
+            {
+              "tyre_life": 35,
+              "time": 86.148,
+              "lap": 53
+            },
+            {
+              "tyre_life": 36,
+              "time": 88.167,
+              "lap": 54
+            },
+            {
+              "tyre_life": 37,
+              "time": 84.614,
+              "lap": 55
+            },
+            {
+              "tyre_life": 38,
+              "time": 84.688,
+              "lap": 56
+            },
+            {
+              "tyre_life": 39,
+              "time": 84.689,
+              "lap": 57
+            }
+          ],
+          "trend": {
+            "slope": 0.0263,
+            "intercept": 84.415
+          }
+        }
+      ],
+      "drv2": [
+        {
+          "stint": 1,
+          "compound": "MEDIUM",
+          "laps": [
+            {
+              "tyre_life": 2,
+              "time": 87.538,
+              "lap": 2
+            },
+            {
+              "tyre_life": 3,
+              "time": 86.324,
+              "lap": 3
+            },
+            {
+              "tyre_life": 4,
+              "time": 86.032,
+              "lap": 4
+            },
+            {
+              "tyre_life": 5,
+              "time": 86.327,
+              "lap": 5
+            },
+            {
+              "tyre_life": 6,
+              "time": 87.463,
+              "lap": 6
+            },
+            {
+              "tyre_life": 7,
+              "time": 85.785,
+              "lap": 7
+            },
+            {
+              "tyre_life": 8,
+              "time": 85.47,
+              "lap": 8
+            },
+            {
+              "tyre_life": 9,
+              "time": 85.224,
+              "lap": 9
+            },
+            {
+              "tyre_life": 10,
+              "time": 85.561,
+              "lap": 10
+            },
+            {
+              "tyre_life": 16,
+              "time": 84.98,
+              "lap": 16
+            }
+          ],
+          "trend": {
+            "slope": -0.1585,
+            "intercept": 87.18
+          }
+        },
+        {
+          "stint": 2,
+          "compound": "HARD",
+          "laps": [
+            {
+              "tyre_life": 4,
+              "time": 84.428,
+              "lap": 22
+            },
+            {
+              "tyre_life": 5,
+              "time": 84.335,
+              "lap": 23
+            },
+            {
+              "tyre_life": 6,
+              "time": 84.327,
+              "lap": 24
+            },
+            {
+              "tyre_life": 7,
+              "time": 84.37,
+              "lap": 25
+            },
+            {
+              "tyre_life": 8,
+              "time": 84.533,
+              "lap": 26
+            },
+            {
+              "tyre_life": 9,
+              "time": 84.535,
+              "lap": 27
+            },
+            {
+              "tyre_life": 10,
+              "time": 84.44,
+              "lap": 28
+            },
+            {
+              "tyre_life": 11,
+              "time": 84.694,
+              "lap": 29
+            },
+            {
+              "tyre_life": 12,
+              "time": 84.364,
+              "lap": 30
+            },
+            {
+              "tyre_life": 13,
+              "time": 84.153,
+              "lap": 31
+            },
+            {
+              "tyre_life": 14,
+              "time": 83.978,
+              "lap": 32
+            }
+          ],
+          "trend": {
+            "slope": -0.021,
+            "intercept": 84.567
+          }
+        },
+        {
+          "stint": 3,
+          "compound": "HARD",
+          "laps": [
+            {
+              "tyre_life": 3,
+              "time": 83.655,
+              "lap": 36
+            },
+            {
+              "tyre_life": 4,
+              "time": 83.732,
+              "lap": 37
+            },
+            {
+              "tyre_life": 5,
+              "time": 85.119,
+              "lap": 38
+            },
+            {
+              "tyre_life": 6,
+              "time": 84.83,
+              "lap": 39
+            },
+            {
+              "tyre_life": 7,
+              "time": 84.696,
+              "lap": 40
+            },
+            {
+              "tyre_life": 8,
+              "time": 84.47,
+              "lap": 41
+            },
+            {
+              "tyre_life": 9,
+              "time": 83.803,
+              "lap": 42
+            },
+            {
+              "tyre_life": 10,
+              "time": 83.643,
+              "lap": 43
+            },
+            {
+              "tyre_life": 11,
+              "time": 83.736,
+              "lap": 44
+            },
+            {
+              "tyre_life": 12,
+              "time": 83.257,
+              "lap": 45
+            },
+            {
+              "tyre_life": 13,
+              "time": 83.346,
+              "lap": 46
+            },
+            {
+              "tyre_life": 14,
+              "time": 83.976,
+              "lap": 47
+            },
+            {
+              "tyre_life": 15,
+              "time": 85.008,
+              "lap": 48
+            },
+            {
+              "tyre_life": 16,
+              "time": 84.889,
+              "lap": 49
+            },
+            {
+              "tyre_life": 17,
+              "time": 84.324,
+              "lap": 50
+            },
+            {
+              "tyre_life": 18,
+              "time": 85.635,
+              "lap": 51
+            },
+            {
+              "tyre_life": 19,
+              "time": 84.359,
+              "lap": 52
+            },
+            {
+              "tyre_life": 20,
+              "time": 86.063,
+              "lap": 53
+            },
+            {
+              "tyre_life": 21,
+              "time": 84.548,
+              "lap": 54
+            },
+            {
+              "tyre_life": 22,
+              "time": 85.268,
+              "lap": 55
+            },
+            {
+              "tyre_life": 23,
+              "time": 84.515,
+              "lap": 56
+            },
+            {
+              "tyre_life": 24,
+              "time": 84.821,
+              "lap": 57
+            }
+          ],
+          "trend": {
+            "slope": 0.0492,
+            "intercept": 83.776
+          }
+        }
+      ]
+    }
+  },
   "charts": [
     "chart_laptime_delta.png",
     "chart_speed_boxplot.png",

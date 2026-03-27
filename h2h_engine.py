@@ -880,7 +880,7 @@ def run_batch(year, gp_name, round_number, pairs):
             print(f'  スキップ: {drv1} vs {drv2}（ドライバー不在）')
             continue
         h2h = H2HAnalysis(gp, drv1, drv2)
-        analysis = h2h.run()
+        analysis = h2h.run(generate_png=generate_png)
         results.append(analysis)
 
     # インデックスJSON出力

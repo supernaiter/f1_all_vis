@@ -1,7 +1,9 @@
 # Lessons
 
 ## General
-- /usr/bin/python3を使うこと（/opt/homebrew/python3にはpandas/matplotlibなし）
+- /usr/bin/python3を使うこと（pandas/matplotlibあり、fastf1なし）
+- fastf1はどのPythonにもグローバルインストールされていない
+- fastf1が必要なスクリプトは `uv run --with fastf1 --with pyarrow python script.py` で実行
 - pip installはdeny-check.shフックで禁止されている
 
 ## フォント
@@ -15,8 +17,10 @@
 - VSC検出: "VSC DEPLOYED"+"VSC ENDING"のペアで期間特定
 - TrackStatusの'1'はstr比較が必要（数値と文字列が混在する場合あり）
 - GapToLeader_pctはdf_team（concat後）に追加されるため、元のall_team_pace辞書には存在しない
+- --pngフラグでPNG生成はオプション。デフォルトはJSON only
 
 ## Astro
-- チャート画像のbase64埋め込みは1ページ1MB超になる→外部ファイル参照に切替推奨
-- getStaticPaths()でJSONを読み込み、ビルド時に全ページ生成
+- EChartsに移行済み。PNGは不要（copy-charts.mjsも不要化予定）
+- getStaticPaths()はgetH2HStaticPaths()ヘルパーで5ページ共通化
+- define:varsはモジュールscriptで使えない→script type="application/json"でデータ受け渡し
 - site/dist/にビルド出力。npx astro previewでローカル確認

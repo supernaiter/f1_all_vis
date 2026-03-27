@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { listGPs, loadH2HIndex, loadH2HAnalysis, loadChartBase64, TEAM_COLORS } from '../../lib/data';
+import { listGPs, loadH2HIndex, loadH2HAnalysis, getChartUrl, TEAM_COLORS } from '../../lib/data';
 
 export function getStaticPaths() {
   const gps = listGPs();

@@ -1,0 +1,174 @@
+---
+import Base from '../../../layouts/Base.astro';
+import SubNav from '../../../components/SubNav.astro';
+import ChartGuide from '../../../components/ChartGuide.astro';
+import InsightBox from '../../../components/InsightBox.astro';
+import { getH2HStaticPaths, loadH2HAnalysis, TEAM_COLORS } from '../../../lib/data';
+import { stintInsight } from '../../../lib/insights';
+
+export function getStaticPaths() { return getH2HStaticPaths(); }
+
+const { dirName, pairDir } = Astro.props;
+const analysis = loadH2HAnalysis(dirName, pairDir);
+if (!analysis) return Astro.redirect('/');
+
+const { meta, seo } = analysis;
+const drv1 = meta.driver1, drv2 = meta.driver2;
+const color1 = TEAM_COLORS[meta.team1] || '#999';
+const color2 = TEAM_COLORS[meta.team2] || '#999';
+const basePath = `/h2h/${meta.year}-r${String(meta.round).padStart(2, '0')}-${meta.gp_name.toLowerCase()}/${drv1.toLowerCase()}-vs-${drv2.toLowerCase()}/`;
+
+const insight = stintInsight(analysis);
+
+const chartData = {
+  stints: analysis.per_lap.stints,
+  meta: { driver1: drv1, driver2: drv2 },
+  color1, color2,
+  degradation: analysis.degradation,
+};
+---
+
+<Base title={`${drv1} vs ${drv2} スティント分析 — ${meta.year} ${meta.gp_name}GP`} description={seo.description} keywords={seo.keywords}>
+
+<nav class="breadcrumb">
+  <a href="/">Home</a> &rsaquo;
+  <a href={basePath}>{drv1} vs {drv2}</a> &rsaquo;
+  <span>Stints</span>
+</nav>
+
+<header class="page-header">
+  <h1>
+    <span style={`color: ${color1};`}>{drv1}</span>
+    <span class="vs">vs</span>
+    <span style={`color: ${color2};`}>{drv2}</span>
+    <span class="page-type">Stints</span>
+  </h1>
+  <p class="subtitle">{meta.year} R{String(meta.round).padStart(2, '0')} {meta.gp_name} GP</p>
+</header>
+
+<SubNav basePath={basePath} current="stints" drv1={drv1} drv2={drv2} />
+
+<ChartGuide text="横軸はタイヤ使用周回数、縦軸はラップタイム。点の色=タイヤ種別。直線の傾きがデグラデーション（急なほどタイヤが厳しい）。上段と下段でドライバーを比較。" />
+
+<InsightBox text={insight} />
+
+<h3 class="drv-label" style={`color: ${color1};`}>{drv1}</h3>
+<div id="chart-drv1" style="width:100%;height:350px;"></div>
+
+<h3 class="drv-label" style={`color: ${color2}; margin-top:24px;`}>{drv2}</h3>
+<div id="chart-drv2" style="width:100%;height:350px;"></div>
+
+<script type="application/json" id="chart-data" set:html={JSON.stringify(chartData)} />
+
+<script>
+  import * as echarts from 'echarts/core';
+  import { ScatterChart, LineChart } from 'echarts/charts';
+  import { GridComponent, TooltipComponent, LegendComponent, MarkLineComponent } from 'echarts/components';
+  import { CanvasRenderer } from 'echarts/renderers';
+
+  echarts.use([ScatterChart, LineChart, GridComponent, TooltipComponent, LegendComponent, MarkLineComponent, CanvasRenderer]);
+
+  const data = JSON.parse(document.getElementById('chart-data')!.textContent!);
+  const { stints, meta, color1, color2 } = data;
+
+  const COMPOUND_COLORS: Record<string, string> = {
+    SOFT: '#FF3333', MEDIUM: '#FFD700', HARD: '#FFFFFF',
+    INTERMEDIATE: '#39B54A', WET: '#0072CE',
+  };
+
+  function buildStintChart(el: HTMLElement, drvStints: any[], drvColor: string, drvName: string) {
+    const chart = echarts.init(el, undefined, { renderer: 'canvas' });
+
+    const series: any[] = [];
+    for (const stint of drvStints) {
+      const compColor = COMPOUND_COLORS[stint.compound] || drvColor;
+      const seriesData = stint.laps.map((l: any) => [l.tyre_life, l.time]);
+
+      // 散布図
+      series.push({
+        name: `S${stint.stint} ${stint.compound}`,
+        type: 'scatter',
+        data: seriesData,
+        symbolSize: 8,
+        itemStyle: { color: compColor },
+      });
+
+      // トレンドライン
+      if (stint.trend) {
+        const { slope, intercept } = stint.trend;
+        const xMin = stint.laps[0].tyre_life;
+        const xMax = stint.laps[stint.laps.length - 1].tyre_life;
+        series.push({
+          name: `S${stint.stint} trend`,
+          type: 'line',
+          data: [[xMin, slope * xMin + intercept], [xMax, slope * xMax + intercept]],
+          lineStyle: { color: compColor, width: 2, type: 'dashed' },
+          symbol: 'none',
+          tooltip: {
+            formatter: () => `${stint.compound} deg: ${(Math.abs(slope) * 1000).toFixed(1)}ms/lap`,
+          },
+        });
+      }
+    }
+
+    chart.setOption({
+      textStyle: { color: '#8899AA', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
+      tooltip: {
+        backgroundColor: '#1a1a2e', borderColor: '#333355', borderWidth: 1, textStyle: { color: '#EEE', fontSize: 13 },
+        trigger: 'item',
+        formatter: (params: any) => {
+          if (params.componentSubType === 'line') return '';
+          const [tl, time] = params.value;
+          return `${params.seriesName}<br/>TyreLife: ${tl}, Time: ${time}s`;
+        },
+      },
+      legend: {
+        data: drvStints.map((s: any) => `S${s.stint} ${s.compound}`),
+        textStyle: { color: '#8899AA' },
+        top: 0,
+      },
+      grid: { left: 60, right: 20, top: 35, bottom: 40 },
+      xAxis: {
+        type: 'value',
+        name: 'Tyre Life (laps)',
+        nameLocation: 'center',
+        nameGap: 25,
+        nameTextStyle: { color: '#8899AA' },
+        axisLine: { lineStyle: { color: '#333355' } },
+        axisLabel: { color: '#8899AA' },
+        splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
+      },
+      yAxis: {
+        type: 'value',
+        name: 'Lap Time (s)',
+        nameTextStyle: { color: '#8899AA' },
+        axisLine: { lineStyle: { color: '#333355' } },
+        axisLabel: { color: '#8899AA', formatter: (v: number) => v.toFixed(1) },
+        splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
+      },
+      series,
+    });
+
+    return chart;
+  }
+
+  const charts = [
+    buildStintChart(document.getElementById('chart-drv1')!, stints.drv1, color1, meta.driver1),
+    buildStintChart(document.getElementById('chart-drv2')!, stints.drv2, color2, meta.driver2),
+  ];
+
+  window.addEventListener('resize', () => charts.forEach(c => c.resize()));
+</script>
+
+</Base>
+
+<style>
+  .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb a { color: var(--text-dim); }
+  .page-header { margin-bottom: 24px; }
+  .page-header h1 { font-size: 2rem; font-weight: 800; display: flex; align-items: baseline; gap: 12px; }
+  .vs { color: var(--text-dim); font-size: 1rem; font-weight: 400; }
+  .page-type { font-size: 1rem; font-weight: 400; color: var(--accent); background: rgba(0,184,159,0.1); padding: 2px 10px; border-radius: 4px; }
+  .subtitle { color: var(--text-dim); font-size: 0.95rem; margin-top: 4px; }
+  .drv-label { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+</style>

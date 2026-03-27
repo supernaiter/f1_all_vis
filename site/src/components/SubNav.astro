@@ -1,0 +1,54 @@
+---
+interface Props {
+  basePath: string;
+  current: 'hub' | 'pace' | 'sectors' | 'speed' | 'stints';
+  drv1: string;
+  drv2: string;
+}
+const { basePath, current, drv1, drv2 } = Astro.props;
+
+const links = [
+  { id: 'hub', href: `${basePath}`, label: 'Overview' },
+  { id: 'pace', href: `${basePath}pace/`, label: 'Pace' },
+  { id: 'sectors', href: `${basePath}sectors/`, label: 'Sectors' },
+  { id: 'speed', href: `${basePath}speed/`, label: 'Speed' },
+  { id: 'stints', href: `${basePath}stints/`, label: 'Stints' },
+] as const;
+---
+<nav class="sub-nav">
+  {links.map(link => (
+    <a href={link.href} class:list={['sub-nav-link', { active: link.id === current }]}>
+      {link.label}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .sub-nav {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 28px;
+    padding: 4px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  .sub-nav-link {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+  }
+  .sub-nav-link:hover {
+    background: var(--bg-card-hover);
+    color: var(--text);
+  }
+  .sub-nav-link.active {
+    background: var(--accent);
+    color: #0f0f1a;
+  }
+</style>

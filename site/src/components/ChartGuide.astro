@@ -1,0 +1,26 @@
+---
+interface Props { text: string; }
+const { text } = Astro.props;
+---
+<div class="chart-guide">
+  <span class="guide-label">見方</span>
+  <span>{text}</span>
+</div>
+
+<style>
+  .chart-guide {
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    border-radius: 0 8px 8px 0;
+    line-height: 1.6;
+  }
+  .guide-label {
+    color: var(--accent);
+    font-weight: 700;
+    margin-right: 8px;
+  }
+</style>

@@ -1,0 +1,6 @@
+project: Motorsports-Visualised (Astro SSG site)
+updated: 2026-03-27
+goal: Build F1 data visualization site with Astro SSG
+[STATUS]
+- Researching charting libraries for F1 data viz
+- Comparing Chart.js, ECharts, Plotly.js, uPlot, Observable Plot, ApexCharts, D3, Lightweight Charts

@@ -10,10 +10,13 @@ goal: F1データ分析コンテンツ制作・収益化（YouTube/X向け日本
 - FP分析/Fantasy: スクリプト未リポジトリ
 
 [LATEST]
-- h2h_engine.py: pSEO 2.0汎用H2Hエンジン完成
+- site/: Astroフロントエンド完成（pSEO 2.0）
+  - 53ページ静的生成（13.6秒ビルド）
+  - JSON→HTMLの自動変換パイプライン
+  - ダークテーマ、チームカラー、セクター/スピード/ペース表示
+  - schema.org構造化データ付き
+- h2h_engine.py: pSEO 2.0汎用H2Hエンジン
   - 任意のGP×ドライバーペアでJSON+4PNG自動生成
   - --teammates / --top10 / --all モード対応
   - R01 Top10=45ペア: 1分44秒で生成
-  - 出力: data/{GP}/h2h/{DRV1}_vs_{DRV2}/analysis.json + 4チャート
-  - index.json: 全ペアの一覧+ペース差サマリー
-- cross_gp_pace_compare_r01_r02.py: R01×R02のレースペース正規化比較
+- cross_gp_pace_compare_r01_r02.py: R01×R02正規化比較

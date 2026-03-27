@@ -1,0 +1,20 @@
+---
+interface Props { text: string; }
+const { text } = Astro.props;
+---
+<div class="insight-box">
+  {text}
+</div>
+
+<style>
+  .insight-box {
+    background: linear-gradient(135deg, rgba(0, 184, 159, 0.08), rgba(59, 163, 224, 0.08));
+    border: 1px solid rgba(0, 184, 159, 0.2);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+</style>

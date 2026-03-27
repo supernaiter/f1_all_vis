@@ -511,6 +511,7 @@ class H2HAnalysis:
         speed = self.compute_speed()
         stints = self.compute_stints()
         degradation = self.compute_degradation()
+        per_lap = self.build_per_lap_data()
 
         return {
             'meta': {

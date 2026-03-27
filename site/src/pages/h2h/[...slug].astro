@@ -39,12 +39,12 @@ const drv2 = meta.driver2;
 const color1 = TEAM_COLORS[meta.team1] || '#999';
 const color2 = TEAM_COLORS[meta.team2] || '#999';
 
-// チャート画像をbase64で読み込み
+// チャート画像のURLパスを取得（PNGはpublic/charts/にコピー済み）
 const charts = {
-  laptime: loadChartBase64(dirName, pairDir, 'chart_laptime_delta.png'),
-  speed: loadChartBase64(dirName, pairDir, 'chart_speed_boxplot.png'),
-  sector: loadChartBase64(dirName, pairDir, 'chart_sector_compare.png'),
-  sectorTable: loadChartBase64(dirName, pairDir, 'chart_sector_table.png'),
+  laptime: getChartUrl(dirName, pairDir, 'chart_laptime_delta.png'),
+  speed: getChartUrl(dirName, pairDir, 'chart_speed_boxplot.png'),
+  sector: getChartUrl(dirName, pairDir, 'chart_sector_compare.png'),
+  sectorTable: getChartUrl(dirName, pairDir, 'chart_sector_table.png'),
 };
 
 const r1 = race_result[drv1];

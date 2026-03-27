@@ -1,0 +1,108 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  keywords?: string[];
+}
+
+const { title, description = 'F1 Data Analysis', keywords = [] } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+  <style is:global>
+    :root {
+      --bg: #0f0f1a;
+      --bg-card: #1a1a2e;
+      --bg-card-hover: #222244;
+      --text: #EEEEEE;
+      --text-dim: #8899AA;
+      --accent: #00B89F;
+      --accent-2: #DC0000;
+      --border: #333355;
+      --font: 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      margin-bottom: 32px;
+    }
+
+    header nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    header .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    header .nav-link {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    header .nav-link:hover {
+      color: var(--text);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      margin-top: 48px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="logo">F1 Data Lab</a>
+        <a href="/" class="nav-link">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <slot />
+  </main>
+
+  <footer>
+    <div class="container">
+      Data: FastF1 API | Built with Astro
+    </div>
+  </footer>
+</body>
+</html>

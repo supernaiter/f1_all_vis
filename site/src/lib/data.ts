@@ -1,6 +1,6 @@
 /**
  * データ読み込みユーティリティ
- * h2h_engine.pyが出力したJSON+PNGを読み込む
+ * h2h_engine.pyが出力したJSONを読み込む
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -26,6 +26,49 @@ export interface H2HIndex {
     total_laps: number;
   };
   pairs: H2HPair[];
+}
+
+export interface LapEntry {
+  lap: number;
+  time: number;
+  stint: number | null;
+  compound: string | null;
+  tyre_life: number | null;
+  is_clean: boolean;
+}
+
+export interface DeltaEntry {
+  lap: number;
+  delta: number;
+}
+
+export interface StintLapEntry {
+  tyre_life: number;
+  time: number;
+  lap: number;
+}
+
+export interface PerLapData {
+  pace: {
+    drv1_laps: LapEntry[];
+    drv2_laps: LapEntry[];
+    deltas: DeltaEntry[];
+  };
+  sectors: Record<string, {
+    drv1: { lap: number; time: number }[];
+    drv2: { lap: number; time: number }[];
+    deltas: DeltaEntry[];
+  }>;
+  speed: Record<string, {
+    drv1_values: number[];
+    drv2_values: number[];
+  }>;
+  stints: Record<string, {
+    stint: number;
+    compound: string;
+    laps: StintLapEntry[];
+    trend: { slope: number; intercept: number } | null;
+  }[]>;
 }
 
 export interface H2HAnalysis {
@@ -57,6 +100,7 @@ export interface H2HAnalysis {
   speed: Record<string, any>;
   stints: Record<string, any[]>;
   degradation: Record<string, any[]>;
+  per_lap: PerLapData;
   charts: string[];
   seo: {
     title: string;
@@ -105,14 +149,30 @@ export function loadH2HAnalysis(dirName: string, pairDir: string): H2HAnalysis |
 }
 
 /**
- * チャート画像のURLパスを返す（prebuildでpublic/charts/にコピー済み前提）
+ * H2H全ページ共通のgetStaticPaths
  */
-export function getChartUrl(dirName: string, pairDir: string, chartFile: string): string | null {
-  const chartPath = path.join(DATA_ROOT, dirName, pairDir, chartFile);
-  if (!fs.existsSync(chartPath)) return null;
-  // pairDir = "h2h/ANT_vs_NOR/" → pairSlug = "ANT_vs_NOR"
-  const pairSlug = pairDir.replace(/^h2h\//, '').replace(/\/$/, '');
-  return `/charts/${dirName}/${pairSlug}/${chartFile}`;
+export function getH2HStaticPaths() {
+  const gps = listGPs();
+  const paths: any[] = [];
+
+  for (const gp of gps) {
+    const index = loadH2HIndex(gp.dir_name);
+    if (!index) continue;
+
+    for (const pair of index.pairs) {
+      const slug = `${gp.year}-r${String(gp.round).padStart(2, '0')}-${gp.gp_name.toLowerCase()}/${pair.driver1.toLowerCase()}-vs-${pair.driver2.toLowerCase()}`;
+      paths.push({
+        params: { slug },
+        props: {
+          dirName: gp.dir_name,
+          pairDir: pair.path,
+          gpMeta: index.meta,
+        },
+      });
+    }
+  }
+
+  return paths;
 }
 
 /**

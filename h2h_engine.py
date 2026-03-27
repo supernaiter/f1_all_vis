@@ -399,6 +399,109 @@ class H2HAnalysis:
             deg[label] = drv_deg
         return deg
 
+    # --- ECharts用 per-lapデータ ---
+
+    def build_per_lap_data(self):
+        """クライアント側ECharts描画用のper-lap配列を構築"""
+        common_laps = sorted(
+            set(self.clean1['LapNumber'].astype(int)) &
+            set(self.clean2['LapNumber'].astype(int))
+        )
+        clean1_set = set(self.clean1['LapNumber'].astype(int))
+        clean2_set = set(self.clean2['LapNumber'].astype(int))
+
+        # --- ペースデータ ---
+        def lap_series(laps_df, clean_set):
+            valid = laps_df.dropna(subset=['LapTime_sec']).copy()
+            valid = valid[valid['LapTime_sec'] < valid['LapTime_sec'].quantile(0.98) * 1.15]
+            valid = valid.sort_values('LapNumber')
+            out = []
+            for _, r in valid.iterrows():
+                out.append({
+                    'lap': int(r['LapNumber']),
+                    'time': round(r['LapTime_sec'], 3),
+                    'stint': int(r['Stint']) if pd.notna(r.get('Stint')) else None,
+                    'compound': r['Compound'] if pd.notna(r.get('Compound')) else None,
+                    'tyre_life': int(r['TyreLife']) if pd.notna(r.get('TyreLife')) else None,
+                    'is_clean': int(r['LapNumber']) in clean_set,
+                })
+            return out
+
+        deltas = []
+        c1_map = self.clean1.set_index(self.clean1['LapNumber'].astype(int))
+        c2_map = self.clean2.set_index(self.clean2['LapNumber'].astype(int))
+        for lap in common_laps:
+            t1 = c1_map.loc[lap, 'LapTime_sec']
+            t2 = c2_map.loc[lap, 'LapTime_sec']
+            if isinstance(t1, pd.Series):
+                t1 = t1.iloc[0]
+            if isinstance(t2, pd.Series):
+                t2 = t2.iloc[0]
+            deltas.append({'lap': int(lap), 'delta': round(float(t1 - t2), 3)})
+
+        pace_data = {
+            'drv1_laps': lap_series(self.laps1, clean1_set),
+            'drv2_laps': lap_series(self.laps2, clean2_set),
+            'deltas': deltas,
+        }
+
+        # --- セクターデータ ---
+        sector_data = {}
+        for sec_name, col in [('S1', 'Sector1Time_sec'), ('S2', 'Sector2Time_sec'), ('S3', 'Sector3Time_sec')]:
+            s1 = self.clean1.dropna(subset=[col])[['LapNumber', col]].sort_values('LapNumber')
+            s2 = self.clean2.dropna(subset=[col])[['LapNumber', col]].sort_values('LapNumber')
+
+            sec_deltas = []
+            for lap in common_laps:
+                v1_rows = self.clean1[self.clean1['LapNumber'].astype(int) == lap]
+                v2_rows = self.clean2[self.clean2['LapNumber'].astype(int) == lap]
+                if len(v1_rows) > 0 and len(v2_rows) > 0:
+                    v1 = v1_rows[col].iloc[0]
+                    v2 = v2_rows[col].iloc[0]
+                    if pd.notna(v1) and pd.notna(v2):
+                        sec_deltas.append({'lap': int(lap), 'delta': round(float(v1 - v2), 3)})
+
+            sector_data[sec_name] = {
+                'drv1': [{'lap': int(r['LapNumber']), 'time': round(r[col], 3)} for _, r in s1.iterrows()],
+                'drv2': [{'lap': int(r['LapNumber']), 'time': round(r[col], 3)} for _, r in s2.iterrows()],
+                'deltas': sec_deltas,
+            }
+
+        # --- スピードデータ（ボックスプロット用の生配列）---
+        speed_data = {}
+        for col, label in zip(SPEED_COLS, SPEED_LABELS):
+            c1 = self.clean1[col].dropna()
+            c2 = self.clean2[col].dropna()
+            speed_data[label] = {
+                'drv1_values': [round(float(v), 1) for v in c1.tolist()],
+                'drv2_values': [round(float(v), 1) for v in c2.tolist()],
+            }
+
+        # --- スティントデータ（デグラデーション可視化用）---
+        stint_data = {}
+        for label, clean_df in [('drv1', self.clean1), ('drv2', self.clean2)]:
+            drv_stints = []
+            for (stint, compound), grp in clean_df.groupby(['Stint', 'Compound']):
+                grp = grp.sort_values('TyreLife')
+                laps_arr = [{'tyre_life': int(r['TyreLife']), 'time': round(r['LapTime_sec'], 3),
+                             'lap': int(r['LapNumber'])} for _, r in grp.iterrows()]
+                trend = None
+                if len(grp) >= 5:
+                    coeffs = np.polyfit(grp['TyreLife'].values, grp['LapTime_sec'].values, 1)
+                    trend = {'slope': round(float(coeffs[0]), 4), 'intercept': round(float(coeffs[1]), 3)}
+                drv_stints.append({
+                    'stint': int(stint), 'compound': compound,
+                    'laps': laps_arr, 'trend': trend,
+                })
+            stint_data[label] = drv_stints
+
+        return {
+            'pace': pace_data,
+            'sectors': sector_data,
+            'speed': speed_data,
+            'stints': stint_data,
+        }
+
     # --- JSON出力 ---
 
     def build_json(self):

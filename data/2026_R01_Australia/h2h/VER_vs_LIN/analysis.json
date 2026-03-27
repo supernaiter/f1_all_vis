@@ -1,0 +1,224 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 1,
+    "gp_name": "Australia",
+    "driver1": "VER",
+    "driver2": "LIN",
+    "team1": "Red Bull Racing",
+    "team2": "Racing Bulls",
+    "total_laps": 58,
+    "vsc_periods": [
+      [
+        12,
+        14
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "sc_periods": []
+  },
+  "race_result": {
+    "VER": {
+      "grid": 20,
+      "finish": 6,
+      "status": "Finished",
+      "pit_laps": [
+        18,
+        41
+      ]
+    },
+    "LIN": {
+      "grid": 9,
+      "finish": 8,
+      "status": "Lapped",
+      "pit_laps": [
+        18
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 83.491,
+      "mean": 83.796,
+      "std": 1.165,
+      "clean_laps": 42,
+      "total_laps": 58
+    },
+    "drv2": {
+      "median": 84.862,
+      "mean": 85.173,
+      "std": 0.926,
+      "clean_laps": 43,
+      "total_laps": 57
+    },
+    "delta_median_sec": -1.371,
+    "faster": "VER"
+  },
+  "sectors": {
+    "S1": {
+      "VER_avg": 29.437,
+      "LIN_avg": 30.069,
+      "delta_sec": -0.632,
+      "cumulative_delta_sec": -25.508,
+      "VER_wins": 37,
+      "LIN_wins": 4,
+      "common_laps": 41
+    },
+    "S2": {
+      "VER_avg": 17.881,
+      "LIN_avg": 17.898,
+      "delta_sec": -0.017,
+      "cumulative_delta_sec": -0.802,
+      "VER_wins": 19,
+      "LIN_wins": 22,
+      "common_laps": 41
+    },
+    "S3": {
+      "VER_avg": 36.479,
+      "LIN_avg": 37.207,
+      "delta_sec": -0.728,
+      "cumulative_delta_sec": -29.426,
+      "VER_wins": 37,
+      "LIN_wins": 4,
+      "common_laps": 41
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "VER_median": 252.5,
+      "LIN_median": 252.0,
+      "delta_kmh": 0.5
+    },
+    "S2末端": {
+      "VER_median": 300.0,
+      "LIN_median": 304.0,
+      "delta_kmh": -4.0
+    },
+    "FL": {
+      "VER_median": 304.0,
+      "LIN_median": 297.0,
+      "delta_kmh": 7.0
+    },
+    "ST": {
+      "VER_median": 302.0,
+      "LIN_median": 290.0,
+      "delta_kmh": 12.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "total_laps": 18,
+        "clean_laps": 10,
+        "median_pace": 85.102,
+        "mean_pace": 85.524
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "total_laps": 23,
+        "clean_laps": 16,
+        "median_pace": 83.535,
+        "mean_pace": 83.647
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "total_laps": 17,
+        "clean_laps": 16,
+        "median_pace": 82.858,
+        "mean_pace": 82.865
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 18,
+        "clean_laps": 10,
+        "median_pace": 85.531,
+        "mean_pace": 85.767
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 39,
+        "clean_laps": 33,
+        "median_pace": 84.715,
+        "mean_pace": 84.994
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.1684,
+        "fuel_corrected_deg": -0.1084,
+        "clean_laps": 10
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.0363,
+        "fuel_corrected_deg": 0.0963,
+        "clean_laps": 16
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": 0.0724,
+        "fuel_corrected_deg": 0.1324,
+        "clean_laps": 16
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0563,
+        "fuel_corrected_deg": 0.0037,
+        "clean_laps": 10
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": 0.0263,
+        "fuel_corrected_deg": 0.0863,
+        "clean_laps": 33
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "VER vs LIN Race Pace — 2026 Australia GP",
+    "title_ja": "VER vs LIN レースペース比較 — 2026 AustraliaGP",
+    "description": "2026 AustraliaGP: VERが1.371秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "VER",
+      "LIN",
+      "Australia",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Red Bull Racing",
+      "Racing Bulls"
+    ]
+  }
+}

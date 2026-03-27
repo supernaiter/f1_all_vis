@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 1,
+    "gp_name": "Australia",
+    "driver1": "RUS",
+    "driver2": "LEC",
+    "team1": "Mercedes",
+    "team2": "Ferrari",
+    "total_laps": 58,
+    "vsc_periods": [
+      [
+        12,
+        14
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "sc_periods": []
+  },
+  "race_result": {
+    "RUS": {
+      "grid": 1,
+      "finish": 1,
+      "status": "Finished",
+      "pit_laps": [
+        12
+      ]
+    },
+    "LEC": {
+      "grid": 4,
+      "finish": 3,
+      "status": "Finished",
+      "pit_laps": [
+        25
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 83.096,
+      "mean": 83.445,
+      "std": 0.873,
+      "clean_laps": 44,
+      "total_laps": 58
+    },
+    "drv2": {
+      "median": 83.096,
+      "mean": 83.492,
+      "std": 0.884,
+      "clean_laps": 42,
+      "total_laps": 58
+    },
+    "delta_median_sec": 0.0,
+    "faster": "LEC"
+  },
+  "sectors": {
+    "S1": {
+      "RUS_avg": 29.31,
+      "LEC_avg": 29.433,
+      "delta_sec": -0.123,
+      "cumulative_delta_sec": -4.556,
+      "RUS_wins": 32,
+      "LEC_wins": 10,
+      "common_laps": 42
+    },
+    "S2": {
+      "RUS_avg": 17.747,
+      "LEC_avg": 17.788,
+      "delta_sec": -0.042,
+      "cumulative_delta_sec": -1.764,
+      "RUS_wins": 30,
+      "LEC_wins": 12,
+      "common_laps": 42
+    },
+    "S3": {
+      "RUS_avg": 36.388,
+      "LEC_avg": 36.27,
+      "delta_sec": 0.118,
+      "cumulative_delta_sec": 5.262,
+      "RUS_wins": 14,
+      "LEC_wins": 28,
+      "common_laps": 42
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "RUS_median": 262.5,
+      "LEC_median": 253.5,
+      "delta_kmh": 9.0
+    },
+    "S2末端": {
+      "RUS_median": 304.0,
+      "LEC_median": 292.0,
+      "delta_kmh": 12.0
+    },
+    "FL": {
+      "RUS_median": 300.0,
+      "LEC_median": 300.0,
+      "delta_kmh": 0.0
+    },
+    "ST": {
+      "RUS_median": 301.0,
+      "LEC_median": 294.0,
+      "delta_kmh": 7.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 12,
+        "clean_laps": 9,
+        "median_pace": 84.789,
+        "mean_pace": 84.919
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 35,
+        "median_pace": 83.054,
+        "mean_pace": 83.066
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 25,
+        "clean_laps": 13,
+        "median_pace": 84.034,
+        "mean_pace": 84.482
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 33,
+        "clean_laps": 29,
+        "median_pace": 82.995,
+        "mean_pace": 83.048
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0682,
+        "fuel_corrected_deg": -0.0082,
+        "clean_laps": 9
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0023,
+        "fuel_corrected_deg": 0.0577,
+        "clean_laps": 35
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0876,
+        "fuel_corrected_deg": -0.0276,
+        "clean_laps": 13
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0009,
+        "fuel_corrected_deg": 0.0591,
+        "clean_laps": 29
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "RUS vs LEC Race Pace — 2026 Australia GP",
+    "title_ja": "RUS vs LEC レースペース比較 — 2026 AustraliaGP",
+    "description": "2026 AustraliaGP: LECが0.000秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "RUS",
+      "LEC",
+      "Australia",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Ferrari"
+    ]
+  }
+}

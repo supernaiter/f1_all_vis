@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "LAW",
+    "driver2": "LIN",
+    "team1": "Racing Bulls",
+    "team2": "Racing Bulls",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "LAW": {
+      "grid": 14,
+      "finish": 7,
+      "status": "Finished",
+      "pit_laps": [
+        9
+      ]
+    },
+    "LIN": {
+      "grid": 15,
+      "finish": 12,
+      "status": "Lapped",
+      "pit_laps": [
+        42
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 97.981,
+      "mean": 98.215,
+      "std": 0.853,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.503,
+      "mean": 98.362,
+      "std": 1.279,
+      "clean_laps": 41,
+      "total_laps": 55
+    },
+    "delta_median_sec": -0.522,
+    "faster": "LAW"
+  },
+  "sectors": {
+    "S1": {
+      "LAW_avg": 25.845,
+      "LIN_avg": 25.777,
+      "delta_sec": 0.068,
+      "cumulative_delta_sec": 4.123,
+      "LAW_wins": 14,
+      "LIN_wins": 25,
+      "common_laps": 39
+    },
+    "S2": {
+      "LAW_avg": 29.835,
+      "LIN_avg": 29.899,
+      "delta_sec": -0.063,
+      "cumulative_delta_sec": -1.132,
+      "LAW_wins": 24,
+      "LIN_wins": 15,
+      "common_laps": 39
+    },
+    "S3": {
+      "LAW_avg": 42.534,
+      "LIN_avg": 42.687,
+      "delta_sec": -0.153,
+      "cumulative_delta_sec": -5.146,
+      "LAW_wins": 25,
+      "LIN_wins": 14,
+      "common_laps": 39
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "LAW_median": 278.0,
+      "LIN_median": 273.0,
+      "delta_kmh": 5.0
+    },
+    "S2末端": {
+      "LAW_median": 264.0,
+      "LIN_median": 263.0,
+      "delta_kmh": 1.0
+    },
+    "FL": {
+      "LAW_median": 274.0,
+      "LIN_median": 276.0,
+      "delta_kmh": -2.0
+    },
+    "ST": {
+      "LAW_median": 314.0,
+      "LIN_median": 311.0,
+      "delta_kmh": 3.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.709,
+        "mean_pace": 99.573
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 47,
+        "clean_laps": 36,
+        "median_pace": 97.852,
+        "mean_pace": 97.951
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "total_laps": 42,
+        "clean_laps": 30,
+        "median_pace": 99.168,
+        "mean_pace": 99.014
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "total_laps": 13,
+        "clean_laps": 11,
+        "median_pace": 96.338,
+        "mean_pace": 96.584
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.0771,
+        "fuel_corrected_deg": 0.1371,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.051,
+        "fuel_corrected_deg": 0.009,
+        "clean_laps": 36
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0367,
+        "fuel_corrected_deg": 0.0233,
+        "clean_laps": 30
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.1347,
+        "fuel_corrected_deg": 0.1947,
+        "clean_laps": 11
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "LAW vs LIN Race Pace — 2026 China GP",
+    "title_ja": "LAW vs LIN レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: LAWが0.522秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "LAW",
+      "LIN",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Racing Bulls",
+      "Racing Bulls"
+    ]
+  }
+}

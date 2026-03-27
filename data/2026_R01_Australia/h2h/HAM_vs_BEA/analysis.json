@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 1,
+    "gp_name": "Australia",
+    "driver1": "HAM",
+    "driver2": "BEA",
+    "team1": "Ferrari",
+    "team2": "Haas F1 Team",
+    "total_laps": 58,
+    "vsc_periods": [
+      [
+        12,
+        14
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "sc_periods": []
+  },
+  "race_result": {
+    "HAM": {
+      "grid": 7,
+      "finish": 4,
+      "status": "Finished",
+      "pit_laps": [
+        28
+      ]
+    },
+    "BEA": {
+      "grid": 12,
+      "finish": 7,
+      "status": "Lapped",
+      "pit_laps": [
+        18
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 83.147,
+      "mean": 83.386,
+      "std": 0.861,
+      "clean_laps": 42,
+      "total_laps": 58
+    },
+    "drv2": {
+      "median": 84.615,
+      "mean": 84.997,
+      "std": 0.845,
+      "clean_laps": 43,
+      "total_laps": 57
+    },
+    "delta_median_sec": -1.468,
+    "faster": "HAM"
+  },
+  "sectors": {
+    "S1": {
+      "HAM_avg": 29.409,
+      "BEA_avg": 30.036,
+      "delta_sec": -0.627,
+      "cumulative_delta_sec": -25.284,
+      "HAM_wins": 40,
+      "BEA_wins": 1,
+      "common_laps": 41
+    },
+    "S2": {
+      "HAM_avg": 17.792,
+      "BEA_avg": 17.829,
+      "delta_sec": -0.037,
+      "cumulative_delta_sec": -1.469,
+      "HAM_wins": 23,
+      "BEA_wins": 18,
+      "common_laps": 41
+    },
+    "S3": {
+      "HAM_avg": 36.184,
+      "BEA_avg": 37.132,
+      "delta_sec": -0.948,
+      "cumulative_delta_sec": -39.027,
+      "HAM_wins": 41,
+      "BEA_wins": 0,
+      "common_laps": 41
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "HAM_median": 252.0,
+      "BEA_median": 266.0,
+      "delta_kmh": -14.0
+    },
+    "S2末端": {
+      "HAM_median": 296.0,
+      "BEA_median": 299.0,
+      "delta_kmh": -3.0
+    },
+    "FL": {
+      "HAM_median": 301.0,
+      "BEA_median": 296.0,
+      "delta_kmh": 5.0
+    },
+    "ST": {
+      "HAM_median": 304.0,
+      "BEA_median": 289.0,
+      "delta_kmh": 15.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 28,
+        "clean_laps": 16,
+        "median_pace": 84.347,
+        "mean_pace": 84.299
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 30,
+        "clean_laps": 26,
+        "median_pace": 82.702,
+        "mean_pace": 82.824
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 18,
+        "clean_laps": 10,
+        "median_pace": 85.944,
+        "mean_pace": 85.847
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 39,
+        "clean_laps": 33,
+        "median_pace": 84.55,
+        "mean_pace": 84.739
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0489,
+        "fuel_corrected_deg": 0.0111,
+        "clean_laps": 16
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0166,
+        "fuel_corrected_deg": 0.0434,
+        "clean_laps": 26
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1531,
+        "fuel_corrected_deg": -0.0931,
+        "clean_laps": 10
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": 0.0165,
+        "fuel_corrected_deg": 0.0765,
+        "clean_laps": 33
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "HAM vs BEA Race Pace — 2026 Australia GP",
+    "title_ja": "HAM vs BEA レースペース比較 — 2026 AustraliaGP",
+    "description": "2026 AustraliaGP: HAMが1.468秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "HAM",
+      "BEA",
+      "Australia",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Ferrari",
+      "Haas F1 Team"
+    ]
+  }
+}

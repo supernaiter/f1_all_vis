@@ -1,0 +1,224 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 1,
+    "gp_name": "Australia",
+    "driver1": "ANT",
+    "driver2": "BOR",
+    "team1": "Mercedes",
+    "team2": "Audi",
+    "total_laps": 58,
+    "vsc_periods": [
+      [
+        12,
+        14
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "sc_periods": []
+  },
+  "race_result": {
+    "ANT": {
+      "grid": 2,
+      "finish": 2,
+      "status": "Finished",
+      "pit_laps": [
+        12
+      ]
+    },
+    "BOR": {
+      "grid": 10,
+      "finish": 9,
+      "status": "Lapped",
+      "pit_laps": [
+        18,
+        33
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 83.004,
+      "mean": 83.319,
+      "std": 0.906,
+      "clean_laps": 44,
+      "total_laps": 58
+    },
+    "drv2": {
+      "median": 84.535,
+      "mean": 84.804,
+      "std": 0.973,
+      "clean_laps": 43,
+      "total_laps": 57
+    },
+    "delta_median_sec": -1.531,
+    "faster": "ANT"
+  },
+  "sectors": {
+    "S1": {
+      "ANT_avg": 29.337,
+      "BOR_avg": 29.91,
+      "delta_sec": -0.573,
+      "cumulative_delta_sec": -24.576,
+      "ANT_wins": 42,
+      "BOR_wins": 1,
+      "common_laps": 43
+    },
+    "S2": {
+      "ANT_avg": 17.805,
+      "BOR_avg": 17.983,
+      "delta_sec": -0.178,
+      "cumulative_delta_sec": -7.361,
+      "ANT_wins": 37,
+      "BOR_wins": 6,
+      "common_laps": 43
+    },
+    "S3": {
+      "ANT_avg": 36.177,
+      "BOR_avg": 36.911,
+      "delta_sec": -0.734,
+      "cumulative_delta_sec": -31.222,
+      "ANT_wins": 40,
+      "BOR_wins": 3,
+      "common_laps": 43
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "ANT_median": 264.0,
+      "BOR_median": 256.0,
+      "delta_kmh": 8.0
+    },
+    "S2末端": {
+      "ANT_median": 303.0,
+      "BOR_median": 291.0,
+      "delta_kmh": 12.0
+    },
+    "FL": {
+      "ANT_median": 296.0,
+      "BOR_median": 295.0,
+      "delta_kmh": 1.0
+    },
+    "ST": {
+      "ANT_median": 299.5,
+      "BOR_median": 289.0,
+      "delta_kmh": 10.5
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 12,
+        "clean_laps": 9,
+        "median_pace": 84.037,
+        "mean_pace": 84.665
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 35,
+        "median_pace": 82.942,
+        "mean_pace": 82.973
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 18,
+        "clean_laps": 10,
+        "median_pace": 85.908,
+        "mean_pace": 86.07
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 15,
+        "clean_laps": 11,
+        "median_pace": 84.37,
+        "mean_pace": 84.378
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "total_laps": 24,
+        "clean_laps": 22,
+        "median_pace": 84.492,
+        "mean_pace": 84.441
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.3525,
+        "fuel_corrected_deg": -0.2925,
+        "clean_laps": 9
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0154,
+        "fuel_corrected_deg": 0.0446,
+        "clean_laps": 35
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1585,
+        "fuel_corrected_deg": -0.0985,
+        "clean_laps": 10
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.021,
+        "fuel_corrected_deg": 0.039,
+        "clean_laps": 11
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": 0.0492,
+        "fuel_corrected_deg": 0.1092,
+        "clean_laps": 22
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "ANT vs BOR Race Pace — 2026 Australia GP",
+    "title_ja": "ANT vs BOR レースペース比較 — 2026 AustraliaGP",
+    "description": "2026 AustraliaGP: ANTが1.531秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "ANT",
+      "BOR",
+      "Australia",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Audi"
+    ]
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 1,
+    "gp_name": "Australia",
+    "driver1": "RUS",
+    "driver2": "ANT",
+    "team1": "Mercedes",
+    "team2": "Mercedes",
+    "total_laps": 58,
+    "vsc_periods": [
+      [
+        12,
+        14
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "sc_periods": []
+  },
+  "race_result": {
+    "RUS": {
+      "grid": 1,
+      "finish": 1,
+      "status": "Finished",
+      "pit_laps": [
+        12
+      ]
+    },
+    "ANT": {
+      "grid": 2,
+      "finish": 2,
+      "status": "Finished",
+      "pit_laps": [
+        12
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 83.096,
+      "mean": 83.445,
+      "std": 0.873,
+      "clean_laps": 44,
+      "total_laps": 58
+    },
+    "drv2": {
+      "median": 83.004,
+      "mean": 83.319,
+      "std": 0.906,
+      "clean_laps": 44,
+      "total_laps": 58
+    },
+    "delta_median_sec": 0.092,
+    "faster": "ANT"
+  },
+  "sectors": {
+    "S1": {
+      "RUS_avg": 29.31,
+      "ANT_avg": 29.337,
+      "delta_sec": -0.027,
+      "cumulative_delta_sec": -1.179,
+      "RUS_wins": 25,
+      "ANT_wins": 19,
+      "common_laps": 44
+    },
+    "S2": {
+      "RUS_avg": 17.747,
+      "ANT_avg": 17.805,
+      "delta_sec": -0.058,
+      "cumulative_delta_sec": -2.571,
+      "RUS_wins": 34,
+      "ANT_wins": 10,
+      "common_laps": 44
+    },
+    "S3": {
+      "RUS_avg": 36.388,
+      "ANT_avg": 36.177,
+      "delta_sec": 0.211,
+      "cumulative_delta_sec": 9.27,
+      "RUS_wins": 9,
+      "ANT_wins": 35,
+      "common_laps": 44
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "RUS_median": 262.5,
+      "ANT_median": 264.0,
+      "delta_kmh": -1.5
+    },
+    "S2末端": {
+      "RUS_median": 304.0,
+      "ANT_median": 303.0,
+      "delta_kmh": 1.0
+    },
+    "FL": {
+      "RUS_median": 300.0,
+      "ANT_median": 296.0,
+      "delta_kmh": 4.0
+    },
+    "ST": {
+      "RUS_median": 301.0,
+      "ANT_median": 299.5,
+      "delta_kmh": 1.5
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 12,
+        "clean_laps": 9,
+        "median_pace": 84.789,
+        "mean_pace": 84.919
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 35,
+        "median_pace": 83.054,
+        "mean_pace": 83.066
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 12,
+        "clean_laps": 9,
+        "median_pace": 84.037,
+        "mean_pace": 84.665
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 35,
+        "median_pace": 82.942,
+        "mean_pace": 82.973
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0682,
+        "fuel_corrected_deg": -0.0082,
+        "clean_laps": 9
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0023,
+        "fuel_corrected_deg": 0.0577,
+        "clean_laps": 35
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.3525,
+        "fuel_corrected_deg": -0.2925,
+        "clean_laps": 9
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0154,
+        "fuel_corrected_deg": 0.0446,
+        "clean_laps": 35
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "RUS vs ANT Race Pace — 2026 Australia GP",
+    "title_ja": "RUS vs ANT レースペース比較 — 2026 AustraliaGP",
+    "description": "2026 AustraliaGP: ANTが0.092秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "RUS",
+      "ANT",
+      "Australia",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Mercedes"
+    ]
+  }
+}

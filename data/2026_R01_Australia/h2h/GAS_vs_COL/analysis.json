@@ -1,0 +1,224 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 1,
+    "gp_name": "Australia",
+    "driver1": "GAS",
+    "driver2": "COL",
+    "team1": "Alpine",
+    "team2": "Alpine",
+    "total_laps": 58,
+    "vsc_periods": [
+      [
+        12,
+        14
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "sc_periods": []
+  },
+  "race_result": {
+    "GAS": {
+      "grid": 14,
+      "finish": 10,
+      "status": "Lapped",
+      "pit_laps": [
+        11
+      ]
+    },
+    "COL": {
+      "grid": 16,
+      "finish": 14,
+      "status": "Lapped",
+      "pit_laps": [
+        9,
+        46
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 85.177,
+      "mean": 85.409,
+      "std": 0.799,
+      "clean_laps": 43,
+      "total_laps": 57
+    },
+    "drv2": {
+      "median": 85.67,
+      "mean": 85.771,
+      "std": 1.286,
+      "clean_laps": 38,
+      "total_laps": 56
+    },
+    "delta_median_sec": -0.493,
+    "faster": "GAS"
+  },
+  "sectors": {
+    "S1": {
+      "GAS_avg": 30.134,
+      "COL_avg": 30.193,
+      "delta_sec": -0.059,
+      "cumulative_delta_sec": -1.963,
+      "GAS_wins": 23,
+      "COL_wins": 15,
+      "common_laps": 38
+    },
+    "S2": {
+      "GAS_avg": 17.907,
+      "COL_avg": 18.042,
+      "delta_sec": -0.136,
+      "cumulative_delta_sec": -5.217,
+      "GAS_wins": 29,
+      "COL_wins": 9,
+      "common_laps": 38
+    },
+    "S3": {
+      "GAS_avg": 37.368,
+      "COL_avg": 37.536,
+      "delta_sec": -0.168,
+      "cumulative_delta_sec": -8.351,
+      "GAS_wins": 30,
+      "COL_wins": 8,
+      "common_laps": 38
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "GAS_median": 262.0,
+      "COL_median": 259.5,
+      "delta_kmh": 2.5
+    },
+    "S2末端": {
+      "GAS_median": 305.0,
+      "COL_median": 301.0,
+      "delta_kmh": 4.0
+    },
+    "FL": {
+      "GAS_median": 296.0,
+      "COL_median": 294.0,
+      "delta_kmh": 2.0
+    },
+    "ST": {
+      "GAS_median": 290.0,
+      "COL_median": 290.5,
+      "delta_kmh": -0.5
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 11,
+        "clean_laps": 9,
+        "median_pace": 85.989,
+        "mean_pace": 86.081
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 34,
+        "median_pace": 85.005,
+        "mean_pace": 85.231
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 86.935,
+        "mean_pace": 86.975
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 37,
+        "clean_laps": 22,
+        "median_pace": 85.666,
+        "mean_pace": 85.961
+      },
+      {
+        "stint": 3,
+        "compound": "SOFT",
+        "total_laps": 10,
+        "clean_laps": 9,
+        "median_pace": 83.912,
+        "mean_pace": 84.37
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.151,
+        "fuel_corrected_deg": -0.091,
+        "clean_laps": 9
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": 0.0154,
+        "fuel_corrected_deg": 0.0754,
+        "clean_laps": 34
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.2885,
+        "fuel_corrected_deg": -0.2285,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": 0.021,
+        "fuel_corrected_deg": 0.081,
+        "clean_laps": 22
+      },
+      {
+        "stint": 3,
+        "compound": "SOFT",
+        "raw_deg_sec_per_lap": 0.1127,
+        "fuel_corrected_deg": 0.1727,
+        "clean_laps": 9
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "GAS vs COL Race Pace — 2026 Australia GP",
+    "title_ja": "GAS vs COL レースペース比較 — 2026 AustraliaGP",
+    "description": "2026 AustraliaGP: GASが0.493秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "GAS",
+      "COL",
+      "Australia",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Alpine",
+      "Alpine"
+    ]
+  }
+}

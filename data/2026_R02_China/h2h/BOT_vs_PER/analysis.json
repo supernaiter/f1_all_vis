@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "BOT",
+    "driver2": "PER",
+    "team1": "Cadillac",
+    "team2": "Cadillac",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "BOT": {
+      "grid": 19,
+      "finish": 13,
+      "status": "Lapped",
+      "pit_laps": [
+        10
+      ]
+    },
+    "PER": {
+      "grid": 21,
+      "finish": 15,
+      "status": "Lapped",
+      "pit_laps": [
+        11
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 99.744,
+      "mean": 99.905,
+      "std": 0.726,
+      "clean_laps": 43,
+      "total_laps": 55
+    },
+    "drv2": {
+      "median": 99.928,
+      "mean": 100.081,
+      "std": 0.919,
+      "clean_laps": 42,
+      "total_laps": 55
+    },
+    "delta_median_sec": -0.184,
+    "faster": "BOT"
+  },
+  "sectors": {
+    "S1": {
+      "BOT_avg": 26.336,
+      "PER_avg": 26.391,
+      "delta_sec": -0.055,
+      "cumulative_delta_sec": -1.953,
+      "BOT_wins": 20,
+      "PER_wins": 22,
+      "common_laps": 42
+    },
+    "S2": {
+      "BOT_avg": 30.485,
+      "PER_avg": 30.604,
+      "delta_sec": -0.119,
+      "cumulative_delta_sec": -4.576,
+      "BOT_wins": 30,
+      "PER_wins": 12,
+      "common_laps": 42
+    },
+    "S3": {
+      "BOT_avg": 43.084,
+      "PER_avg": 43.086,
+      "delta_sec": -0.002,
+      "cumulative_delta_sec": -1.332,
+      "BOT_wins": 20,
+      "PER_wins": 22,
+      "common_laps": 42
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "BOT_median": 274.0,
+      "PER_median": 273.0,
+      "delta_kmh": 1.0
+    },
+    "S2末端": {
+      "BOT_median": 259.0,
+      "PER_median": 256.0,
+      "delta_kmh": 3.0
+    },
+    "FL": {
+      "BOT_median": 271.0,
+      "PER_median": 272.0,
+      "delta_kmh": -1.0
+    },
+    "ST": {
+      "BOT_median": 308.0,
+      "PER_median": 313.0,
+      "delta_kmh": -5.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 101.258,
+        "mean_pace": 101.163
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 45,
+        "clean_laps": 36,
+        "median_pace": 99.694,
+        "mean_pace": 99.66
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 11,
+        "clean_laps": 7,
+        "median_pace": 100.978,
+        "mean_pace": 100.969
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 44,
+        "clean_laps": 35,
+        "median_pace": 99.736,
+        "mean_pace": 99.903
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1272,
+        "fuel_corrected_deg": -0.0672,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0203,
+        "fuel_corrected_deg": 0.0397,
+        "clean_laps": 36
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0314,
+        "fuel_corrected_deg": 0.0286,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0069,
+        "fuel_corrected_deg": 0.0531,
+        "clean_laps": 35
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "BOT vs PER Race Pace — 2026 China GP",
+    "title_ja": "BOT vs PER レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: BOTが0.184秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "BOT",
+      "PER",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Cadillac",
+      "Cadillac"
+    ]
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 1,
+    "gp_name": "Australia",
+    "driver1": "HAM",
+    "driver2": "LIN",
+    "team1": "Ferrari",
+    "team2": "Racing Bulls",
+    "total_laps": 58,
+    "vsc_periods": [
+      [
+        12,
+        14
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "sc_periods": []
+  },
+  "race_result": {
+    "HAM": {
+      "grid": 7,
+      "finish": 4,
+      "status": "Finished",
+      "pit_laps": [
+        28
+      ]
+    },
+    "LIN": {
+      "grid": 9,
+      "finish": 8,
+      "status": "Lapped",
+      "pit_laps": [
+        18
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 83.147,
+      "mean": 83.386,
+      "std": 0.861,
+      "clean_laps": 42,
+      "total_laps": 58
+    },
+    "drv2": {
+      "median": 84.862,
+      "mean": 85.173,
+      "std": 0.926,
+      "clean_laps": 43,
+      "total_laps": 57
+    },
+    "delta_median_sec": -1.715,
+    "faster": "HAM"
+  },
+  "sectors": {
+    "S1": {
+      "HAM_avg": 29.409,
+      "LIN_avg": 30.069,
+      "delta_sec": -0.66,
+      "cumulative_delta_sec": -27.013,
+      "HAM_wins": 36,
+      "LIN_wins": 5,
+      "common_laps": 41
+    },
+    "S2": {
+      "HAM_avg": 17.792,
+      "LIN_avg": 17.898,
+      "delta_sec": -0.105,
+      "cumulative_delta_sec": -3.941,
+      "HAM_wins": 28,
+      "LIN_wins": 13,
+      "common_laps": 41
+    },
+    "S3": {
+      "HAM_avg": 36.184,
+      "LIN_avg": 37.207,
+      "delta_sec": -1.022,
+      "cumulative_delta_sec": -42.557,
+      "HAM_wins": 41,
+      "LIN_wins": 0,
+      "common_laps": 41
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "HAM_median": 252.0,
+      "LIN_median": 252.0,
+      "delta_kmh": 0.0
+    },
+    "S2末端": {
+      "HAM_median": 296.0,
+      "LIN_median": 304.0,
+      "delta_kmh": -8.0
+    },
+    "FL": {
+      "HAM_median": 301.0,
+      "LIN_median": 297.0,
+      "delta_kmh": 4.0
+    },
+    "ST": {
+      "HAM_median": 304.0,
+      "LIN_median": 290.0,
+      "delta_kmh": 14.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 28,
+        "clean_laps": 16,
+        "median_pace": 84.347,
+        "mean_pace": 84.299
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 30,
+        "clean_laps": 26,
+        "median_pace": 82.702,
+        "mean_pace": 82.824
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 18,
+        "clean_laps": 10,
+        "median_pace": 85.531,
+        "mean_pace": 85.767
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 39,
+        "clean_laps": 33,
+        "median_pace": 84.715,
+        "mean_pace": 84.994
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0489,
+        "fuel_corrected_deg": 0.0111,
+        "clean_laps": 16
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0166,
+        "fuel_corrected_deg": 0.0434,
+        "clean_laps": 26
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0563,
+        "fuel_corrected_deg": 0.0037,
+        "clean_laps": 10
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": 0.0263,
+        "fuel_corrected_deg": 0.0863,
+        "clean_laps": 33
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "HAM vs LIN Race Pace — 2026 Australia GP",
+    "title_ja": "HAM vs LIN レースペース比較 — 2026 AustraliaGP",
+    "description": "2026 AustraliaGP: HAMが1.715秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "HAM",
+      "LIN",
+      "Australia",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Ferrari",
+      "Racing Bulls"
+    ]
+  }
+}

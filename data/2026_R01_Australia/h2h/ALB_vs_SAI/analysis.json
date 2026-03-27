@@ -1,0 +1,256 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 1,
+    "gp_name": "Australia",
+    "driver1": "ALB",
+    "driver2": "SAI",
+    "team1": "Williams",
+    "team2": "Williams",
+    "total_laps": 58,
+    "vsc_periods": [
+      [
+        12,
+        14
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "sc_periods": []
+  },
+  "race_result": {
+    "ALB": {
+      "grid": 15,
+      "finish": 12,
+      "status": "Lapped",
+      "pit_laps": [
+        12,
+        33
+      ]
+    },
+    "SAI": {
+      "grid": 21,
+      "finish": 15,
+      "status": "Lapped",
+      "pit_laps": [
+        11,
+        33,
+        45
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 85.558,
+      "mean": 85.733,
+      "std": 1.013,
+      "clean_laps": 43,
+      "total_laps": 57
+    },
+    "drv2": {
+      "median": 85.826,
+      "mean": 85.929,
+      "std": 1.304,
+      "clean_laps": 39,
+      "total_laps": 56
+    },
+    "delta_median_sec": -0.268,
+    "faster": "ALB"
+  },
+  "sectors": {
+    "S1": {
+      "ALB_avg": 30.057,
+      "SAI_avg": 30.213,
+      "delta_sec": -0.156,
+      "cumulative_delta_sec": -5.916,
+      "ALB_wins": 26,
+      "SAI_wins": 13,
+      "common_laps": 39
+    },
+    "S2": {
+      "ALB_avg": 18.255,
+      "SAI_avg": 18.191,
+      "delta_sec": 0.064,
+      "cumulative_delta_sec": 2.86,
+      "ALB_wins": 11,
+      "SAI_wins": 28,
+      "common_laps": 39
+    },
+    "S3": {
+      "ALB_avg": 37.421,
+      "SAI_avg": 37.525,
+      "delta_sec": -0.104,
+      "cumulative_delta_sec": -2.208,
+      "ALB_wins": 21,
+      "SAI_wins": 18,
+      "common_laps": 39
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "ALB_median": 260.0,
+      "SAI_median": 262.0,
+      "delta_kmh": -2.0
+    },
+    "S2末端": {
+      "ALB_median": 300.0,
+      "SAI_median": 303.0,
+      "delta_kmh": -3.0
+    },
+    "FL": {
+      "ALB_median": 294.0,
+      "SAI_median": 295.0,
+      "delta_kmh": -1.0
+    },
+    "ST": {
+      "ALB_median": 285.0,
+      "SAI_median": 291.0,
+      "delta_kmh": -6.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 12,
+        "clean_laps": 9,
+        "median_pace": 86.436,
+        "mean_pace": 86.647
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 21,
+        "clean_laps": 12,
+        "median_pace": 86.12,
+        "mean_pace": 86.176
+      },
+      {
+        "stint": 3,
+        "compound": "SOFT",
+        "total_laps": 24,
+        "clean_laps": 22,
+        "median_pace": 84.858,
+        "mean_pace": 85.117
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "total_laps": 11,
+        "clean_laps": 9,
+        "median_pace": 86.872,
+        "mean_pace": 86.759
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 22,
+        "clean_laps": 12,
+        "median_pace": 86.132,
+        "mean_pace": 86.331
+      },
+      {
+        "stint": 3,
+        "compound": "MEDIUM",
+        "total_laps": 12,
+        "clean_laps": 9,
+        "median_pace": 85.529,
+        "mean_pace": 85.956
+      },
+      {
+        "stint": 4,
+        "compound": "SOFT",
+        "total_laps": 11,
+        "clean_laps": 9,
+        "median_pace": 83.922,
+        "mean_pace": 84.535
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.3091,
+        "fuel_corrected_deg": -0.2491,
+        "clean_laps": 9
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0344,
+        "fuel_corrected_deg": 0.0256,
+        "clean_laps": 12
+      },
+      {
+        "stint": 3,
+        "compound": "SOFT",
+        "raw_deg_sec_per_lap": 0.0101,
+        "fuel_corrected_deg": 0.0701,
+        "clean_laps": 22
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "raw_deg_sec_per_lap": -0.3215,
+        "fuel_corrected_deg": -0.2615,
+        "clean_laps": 9
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": 0.173,
+        "fuel_corrected_deg": 0.233,
+        "clean_laps": 12
+      },
+      {
+        "stint": 3,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0184,
+        "fuel_corrected_deg": 0.0416,
+        "clean_laps": 9
+      },
+      {
+        "stint": 4,
+        "compound": "SOFT",
+        "raw_deg_sec_per_lap": 0.0745,
+        "fuel_corrected_deg": 0.1345,
+        "clean_laps": 9
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "ALB vs SAI Race Pace — 2026 Australia GP",
+    "title_ja": "ALB vs SAI レースペース比較 — 2026 AustraliaGP",
+    "description": "2026 AustraliaGP: ALBが0.268秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "ALB",
+      "SAI",
+      "Australia",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Williams",
+      "Williams"
+    ]
+  }
+}

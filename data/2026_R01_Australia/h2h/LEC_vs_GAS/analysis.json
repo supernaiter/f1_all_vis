@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 1,
+    "gp_name": "Australia",
+    "driver1": "LEC",
+    "driver2": "GAS",
+    "team1": "Ferrari",
+    "team2": "Alpine",
+    "total_laps": 58,
+    "vsc_periods": [
+      [
+        12,
+        14
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "sc_periods": []
+  },
+  "race_result": {
+    "LEC": {
+      "grid": 4,
+      "finish": 3,
+      "status": "Finished",
+      "pit_laps": [
+        25
+      ]
+    },
+    "GAS": {
+      "grid": 14,
+      "finish": 10,
+      "status": "Lapped",
+      "pit_laps": [
+        11
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 83.096,
+      "mean": 83.492,
+      "std": 0.884,
+      "clean_laps": 42,
+      "total_laps": 58
+    },
+    "drv2": {
+      "median": 85.177,
+      "mean": 85.409,
+      "std": 0.799,
+      "clean_laps": 43,
+      "total_laps": 57
+    },
+    "delta_median_sec": -2.081,
+    "faster": "LEC"
+  },
+  "sectors": {
+    "S1": {
+      "LEC_avg": 29.433,
+      "GAS_avg": 30.134,
+      "delta_sec": -0.701,
+      "cumulative_delta_sec": -29.179,
+      "LEC_wins": 39,
+      "GAS_wins": 2,
+      "common_laps": 41
+    },
+    "S2": {
+      "LEC_avg": 17.788,
+      "GAS_avg": 17.907,
+      "delta_sec": -0.118,
+      "cumulative_delta_sec": -4.724,
+      "LEC_wins": 30,
+      "GAS_wins": 11,
+      "common_laps": 41
+    },
+    "S3": {
+      "LEC_avg": 36.27,
+      "GAS_avg": 37.368,
+      "delta_sec": -1.098,
+      "cumulative_delta_sec": -46.016,
+      "LEC_wins": 41,
+      "GAS_wins": 0,
+      "common_laps": 41
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "LEC_median": 253.5,
+      "GAS_median": 262.0,
+      "delta_kmh": -8.5
+    },
+    "S2末端": {
+      "LEC_median": 292.0,
+      "GAS_median": 305.0,
+      "delta_kmh": -13.0
+    },
+    "FL": {
+      "LEC_median": 300.0,
+      "GAS_median": 296.0,
+      "delta_kmh": 4.0
+    },
+    "ST": {
+      "LEC_median": 294.0,
+      "GAS_median": 290.0,
+      "delta_kmh": 4.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 25,
+        "clean_laps": 13,
+        "median_pace": 84.034,
+        "mean_pace": 84.482
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 33,
+        "clean_laps": 29,
+        "median_pace": 82.995,
+        "mean_pace": 83.048
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 11,
+        "clean_laps": 9,
+        "median_pace": 85.989,
+        "mean_pace": 86.081
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 34,
+        "median_pace": 85.005,
+        "mean_pace": 85.231
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0876,
+        "fuel_corrected_deg": -0.0276,
+        "clean_laps": 13
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0009,
+        "fuel_corrected_deg": 0.0591,
+        "clean_laps": 29
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.151,
+        "fuel_corrected_deg": -0.091,
+        "clean_laps": 9
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": 0.0154,
+        "fuel_corrected_deg": 0.0754,
+        "clean_laps": 34
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "LEC vs GAS Race Pace — 2026 Australia GP",
+    "title_ja": "LEC vs GAS レースペース比較 — 2026 AustraliaGP",
+    "description": "2026 AustraliaGP: LECが2.081秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "LEC",
+      "GAS",
+      "Australia",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Ferrari",
+      "Alpine"
+    ]
+  }
+}

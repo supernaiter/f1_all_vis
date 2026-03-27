@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "ANT",
+    "driver2": "RUS",
+    "team1": "Mercedes",
+    "team2": "Mercedes",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "ANT": {
+      "grid": 1,
+      "finish": 1,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "RUS": {
+      "grid": 2,
+      "finish": 2,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 96.176,
+      "mean": 96.382,
+      "std": 0.78,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 96.407,
+      "mean": 96.487,
+      "std": 0.889,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "delta_median_sec": -0.231,
+    "faster": "ANT"
+  },
+  "sectors": {
+    "S1": {
+      "ANT_avg": 25.5,
+      "RUS_avg": 25.508,
+      "delta_sec": -0.007,
+      "cumulative_delta_sec": -0.334,
+      "ANT_wins": 29,
+      "RUS_wins": 16,
+      "common_laps": 45
+    },
+    "S2": {
+      "ANT_avg": 29.086,
+      "RUS_avg": 29.183,
+      "delta_sec": -0.097,
+      "cumulative_delta_sec": -4.361,
+      "ANT_wins": 29,
+      "RUS_wins": 16,
+      "common_laps": 45
+    },
+    "S3": {
+      "ANT_avg": 41.796,
+      "RUS_avg": 41.796,
+      "delta_sec": -0.0,
+      "cumulative_delta_sec": -0.02,
+      "ANT_wins": 20,
+      "RUS_wins": 25,
+      "common_laps": 45
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "ANT_median": 273.0,
+      "RUS_median": 276.0,
+      "delta_kmh": -3.0
+    },
+    "S2末端": {
+      "ANT_median": 260.0,
+      "RUS_median": 261.0,
+      "delta_kmh": -1.0
+    },
+    "FL": {
+      "ANT_median": 272.0,
+      "RUS_median": 275.0,
+      "delta_kmh": -3.0
+    },
+    "ST": {
+      "ANT_median": 308.0,
+      "RUS_median": 314.0,
+      "delta_kmh": -6.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 97.412,
+        "mean_pace": 97.593
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 96.129,
+        "mean_pace": 96.159
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 97.383,
+        "mean_pace": 97.54
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 96.126,
+        "mean_pace": 96.293
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1562,
+        "fuel_corrected_deg": -0.0962,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0326,
+        "fuel_corrected_deg": 0.0274,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1296,
+        "fuel_corrected_deg": -0.0696,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0474,
+        "fuel_corrected_deg": 0.0126,
+        "clean_laps": 38
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "ANT vs RUS Race Pace — 2026 China GP",
+    "title_ja": "ANT vs RUS レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: ANTが0.231秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "ANT",
+      "RUS",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Mercedes"
+    ]
+  }
+}

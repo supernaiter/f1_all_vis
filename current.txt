@@ -10,6 +10,10 @@ goal: F1データ分析コンテンツ制作・収益化（YouTube/X向け日本
 - FP分析/Fantasy: スクリプト未リポジトリ
 
 [LATEST]
+- h2h_engine.py: pSEO 2.0汎用H2Hエンジン完成
+  - 任意のGP×ドライバーペアでJSON+4PNG自動生成
+  - --teammates / --top10 / --all モード対応
+  - R01 Top10=45ペア: 1分44秒で生成
+  - 出力: data/{GP}/h2h/{DRV1}_vs_{DRV2}/analysis.json + 4チャート
+  - index.json: 全ペアの一覧+ペース差サマリー
 - cross_gp_pace_compare_r01_r02.py: R01×R02のレースペース正規化比較
-- MERが両レース最速、FERはR02でギャップ拡大、ALPが最大躍進(8位→3位)
-- デグチャートは燃料補正未適用のため見かけのデグ（要再評価）

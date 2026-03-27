@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "HAD",
+    "driver2": "VER",
+    "team1": "Red Bull Racing",
+    "team2": "Red Bull Racing",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "HAD": {
+      "grid": 9,
+      "finish": 8,
+      "status": "Finished",
+      "pit_laps": [
+        1,
+        10
+      ]
+    },
+    "VER": {
+      "grid": 8,
+      "finish": 16,
+      "status": "Retired",
+      "pit_laps": [
+        9,
+        45
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 98.006,
+      "mean": 98.183,
+      "std": 0.571,
+      "clean_laps": 43,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 97.76,
+      "mean": 98.116,
+      "std": 0.928,
+      "clean_laps": 33,
+      "total_laps": 45
+    },
+    "delta_median_sec": 0.246,
+    "faster": "VER"
+  },
+  "sectors": {
+    "S1": {
+      "HAD_avg": 26.003,
+      "VER_avg": 25.879,
+      "delta_sec": 0.124,
+      "cumulative_delta_sec": 5.169,
+      "HAD_wins": 6,
+      "VER_wins": 25,
+      "common_laps": 31
+    },
+    "S2": {
+      "HAD_avg": 29.954,
+      "VER_avg": 29.979,
+      "delta_sec": -0.025,
+      "cumulative_delta_sec": 1.941,
+      "HAD_wins": 8,
+      "VER_wins": 23,
+      "common_laps": 31
+    },
+    "S3": {
+      "HAD_avg": 42.226,
+      "VER_avg": 42.257,
+      "delta_sec": -0.032,
+      "cumulative_delta_sec": 0.802,
+      "HAD_wins": 10,
+      "VER_wins": 21,
+      "common_laps": 31
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "HAD_median": 274.0,
+      "VER_median": 271.0,
+      "delta_kmh": 3.0
+    },
+    "S2末端": {
+      "HAD_median": 266.0,
+      "VER_median": 262.0,
+      "delta_kmh": 4.0
+    },
+    "FL": {
+      "HAD_median": 277.0,
+      "VER_median": 276.0,
+      "delta_kmh": 1.0
+    },
+    "ST": {
+      "HAD_median": 321.0,
+      "VER_median": 313.0,
+      "delta_kmh": 8.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "total_laps": 1,
+        "clean_laps": 0,
+        "median_pace": null,
+        "mean_pace": null
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 9,
+        "clean_laps": 6,
+        "median_pace": 98.736,
+        "mean_pace": 98.684
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 37,
+        "median_pace": 97.935,
+        "mean_pace": 98.102
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 99.465,
+        "mean_pace": 99.475
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 36,
+        "clean_laps": 26,
+        "median_pace": 97.553,
+        "mean_pace": 97.75
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0917,
+        "fuel_corrected_deg": -0.0317,
+        "clean_laps": 6
+      },
+      {
+        "stint": 3,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0373,
+        "fuel_corrected_deg": 0.0227,
+        "clean_laps": 37
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "SOFT",
+        "raw_deg_sec_per_lap": -0.0506,
+        "fuel_corrected_deg": 0.0094,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0649,
+        "fuel_corrected_deg": -0.0049,
+        "clean_laps": 26
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "HAD vs VER Race Pace — 2026 China GP",
+    "title_ja": "HAD vs VER レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: VERが0.246秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "HAD",
+      "VER",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Red Bull Racing",
+      "Red Bull Racing"
+    ]
+  }
+}

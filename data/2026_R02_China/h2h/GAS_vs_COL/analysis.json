@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "GAS",
+    "driver2": "COL",
+    "team1": "Alpine",
+    "team2": "Alpine",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "GAS": {
+      "grid": 7,
+      "finish": 6,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "COL": {
+      "grid": 12,
+      "finish": 10,
+      "status": "Lapped",
+      "pit_laps": [
+        32
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 97.43,
+      "mean": 97.699,
+      "std": 0.927,
+      "clean_laps": 44,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.31,
+      "mean": 98.189,
+      "std": 0.896,
+      "clean_laps": 42,
+      "total_laps": 55
+    },
+    "delta_median_sec": -0.88,
+    "faster": "GAS"
+  },
+  "sectors": {
+    "S1": {
+      "GAS_avg": 25.817,
+      "COL_avg": 25.893,
+      "delta_sec": -0.076,
+      "cumulative_delta_sec": -2.246,
+      "GAS_wins": 26,
+      "COL_wins": 15,
+      "common_laps": 41
+    },
+    "S2": {
+      "GAS_avg": 29.637,
+      "COL_avg": 29.794,
+      "delta_sec": -0.157,
+      "cumulative_delta_sec": -5.395,
+      "GAS_wins": 28,
+      "COL_wins": 13,
+      "common_laps": 41
+    },
+    "S3": {
+      "GAS_avg": 42.245,
+      "COL_avg": 42.501,
+      "delta_sec": -0.256,
+      "cumulative_delta_sec": -8.381,
+      "GAS_wins": 34,
+      "COL_wins": 7,
+      "common_laps": 41
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "GAS_median": 276.0,
+      "COL_median": 276.0,
+      "delta_kmh": 0.0
+    },
+    "S2末端": {
+      "GAS_median": 262.0,
+      "COL_median": 261.0,
+      "delta_kmh": 1.0
+    },
+    "FL": {
+      "GAS_median": 273.0,
+      "COL_median": 273.0,
+      "delta_kmh": 0.0
+    },
+    "ST": {
+      "GAS_median": 314.0,
+      "COL_median": 314.5,
+      "delta_kmh": -0.5
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 98.635,
+        "mean_pace": 98.627
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 37,
+        "median_pace": 97.193,
+        "mean_pace": 97.524
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "total_laps": 32,
+        "clean_laps": 21,
+        "median_pace": 98.829,
+        "mean_pace": 98.81
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "total_laps": 23,
+        "clean_laps": 21,
+        "median_pace": 97.426,
+        "mean_pace": 97.568
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.088,
+        "fuel_corrected_deg": -0.028,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.064,
+        "fuel_corrected_deg": -0.004,
+        "clean_laps": 37
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.024,
+        "fuel_corrected_deg": 0.036,
+        "clean_laps": 21
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.0892,
+        "fuel_corrected_deg": 0.1492,
+        "clean_laps": 21
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "GAS vs COL Race Pace — 2026 China GP",
+    "title_ja": "GAS vs COL レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: GASが0.880秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "GAS",
+      "COL",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Alpine",
+      "Alpine"
+    ]
+  }
+}

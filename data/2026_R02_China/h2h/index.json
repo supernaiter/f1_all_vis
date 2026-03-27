@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "total_pairs": 7,
+    "total_laps": 56
+  },
+  "pairs": [
+    {
+      "driver1": "ANT",
+      "driver2": "RUS",
+      "team1": "Mercedes",
+      "team2": "Mercedes",
+      "delta_median_sec": -0.231,
+      "faster": "ANT",
+      "path": "h2h/ANT_vs_RUS/"
+    },
+    {
+      "driver1": "HAM",
+      "driver2": "LEC",
+      "team1": "Ferrari",
+      "team2": "Ferrari",
+      "delta_median_sec": -0.062,
+      "faster": "HAM",
+      "path": "h2h/HAM_vs_LEC/"
+    },
+    {
+      "driver1": "BEA",
+      "driver2": "OCO",
+      "team1": "Haas F1 Team",
+      "team2": "Haas F1 Team",
+      "delta_median_sec": -0.854,
+      "faster": "BEA",
+      "path": "h2h/BEA_vs_OCO/"
+    },
+    {
+      "driver1": "GAS",
+      "driver2": "COL",
+      "team1": "Alpine",
+      "team2": "Alpine",
+      "delta_median_sec": -0.88,
+      "faster": "GAS",
+      "path": "h2h/GAS_vs_COL/"
+    },
+    {
+      "driver1": "LAW",
+      "driver2": "LIN",
+      "team1": "Racing Bulls",
+      "team2": "Racing Bulls",
+      "delta_median_sec": -0.522,
+      "faster": "LAW",
+      "path": "h2h/LAW_vs_LIN/"
+    },
+    {
+      "driver1": "HAD",
+      "driver2": "VER",
+      "team1": "Red Bull Racing",
+      "team2": "Red Bull Racing",
+      "delta_median_sec": 0.246,
+      "faster": "VER",
+      "path": "h2h/HAD_vs_VER/"
+    },
+    {
+      "driver1": "BOT",
+      "driver2": "PER",
+      "team1": "Cadillac",
+      "team2": "Cadillac",
+      "delta_median_sec": -0.184,
+      "faster": "BOT",
+      "path": "h2h/BOT_vs_PER/"
+    }
+  ]
+}

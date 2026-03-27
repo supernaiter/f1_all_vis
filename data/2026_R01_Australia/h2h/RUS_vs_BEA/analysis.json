@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 1,
+    "gp_name": "Australia",
+    "driver1": "RUS",
+    "driver2": "BEA",
+    "team1": "Mercedes",
+    "team2": "Haas F1 Team",
+    "total_laps": 58,
+    "vsc_periods": [
+      [
+        12,
+        14
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "sc_periods": []
+  },
+  "race_result": {
+    "RUS": {
+      "grid": 1,
+      "finish": 1,
+      "status": "Finished",
+      "pit_laps": [
+        12
+      ]
+    },
+    "BEA": {
+      "grid": 12,
+      "finish": 7,
+      "status": "Lapped",
+      "pit_laps": [
+        18
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 83.096,
+      "mean": 83.445,
+      "std": 0.873,
+      "clean_laps": 44,
+      "total_laps": 58
+    },
+    "drv2": {
+      "median": 84.615,
+      "mean": 84.997,
+      "std": 0.845,
+      "clean_laps": 43,
+      "total_laps": 57
+    },
+    "delta_median_sec": -1.519,
+    "faster": "RUS"
+  },
+  "sectors": {
+    "S1": {
+      "RUS_avg": 29.31,
+      "BEA_avg": 30.036,
+      "delta_sec": -0.725,
+      "cumulative_delta_sec": -31.197,
+      "RUS_wins": 42,
+      "BEA_wins": 1,
+      "common_laps": 43
+    },
+    "S2": {
+      "RUS_avg": 17.747,
+      "BEA_avg": 17.829,
+      "delta_sec": -0.082,
+      "cumulative_delta_sec": -3.415,
+      "RUS_wins": 26,
+      "BEA_wins": 17,
+      "common_laps": 43
+    },
+    "S3": {
+      "RUS_avg": 36.388,
+      "BEA_avg": 37.132,
+      "delta_sec": -0.745,
+      "cumulative_delta_sec": -32.037,
+      "RUS_wins": 40,
+      "BEA_wins": 3,
+      "common_laps": 43
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "RUS_median": 262.5,
+      "BEA_median": 266.0,
+      "delta_kmh": -3.5
+    },
+    "S2末端": {
+      "RUS_median": 304.0,
+      "BEA_median": 299.0,
+      "delta_kmh": 5.0
+    },
+    "FL": {
+      "RUS_median": 300.0,
+      "BEA_median": 296.0,
+      "delta_kmh": 4.0
+    },
+    "ST": {
+      "RUS_median": 301.0,
+      "BEA_median": 289.0,
+      "delta_kmh": 12.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 12,
+        "clean_laps": 9,
+        "median_pace": 84.789,
+        "mean_pace": 84.919
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 35,
+        "median_pace": 83.054,
+        "mean_pace": 83.066
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 18,
+        "clean_laps": 10,
+        "median_pace": 85.944,
+        "mean_pace": 85.847
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 39,
+        "clean_laps": 33,
+        "median_pace": 84.55,
+        "mean_pace": 84.739
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.0682,
+        "fuel_corrected_deg": -0.0082,
+        "clean_laps": 9
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0023,
+        "fuel_corrected_deg": 0.0577,
+        "clean_laps": 35
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.1531,
+        "fuel_corrected_deg": -0.0931,
+        "clean_laps": 10
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": 0.0165,
+        "fuel_corrected_deg": 0.0765,
+        "clean_laps": 33
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "RUS vs BEA Race Pace — 2026 Australia GP",
+    "title_ja": "RUS vs BEA レースペース比較 — 2026 AustraliaGP",
+    "description": "2026 AustraliaGP: RUSが1.519秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "RUS",
+      "BEA",
+      "Australia",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Mercedes",
+      "Haas F1 Team"
+    ]
+  }
+}

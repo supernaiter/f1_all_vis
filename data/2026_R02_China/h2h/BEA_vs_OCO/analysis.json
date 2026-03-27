@@ -1,0 +1,216 @@
+{
+  "meta": {
+    "year": 2026,
+    "round": 2,
+    "gp_name": "China",
+    "driver1": "BEA",
+    "driver2": "OCO",
+    "team1": "Haas F1 Team",
+    "team2": "Haas F1 Team",
+    "total_laps": 56,
+    "vsc_periods": [],
+    "sc_periods": [
+      [
+        10,
+        13
+      ]
+    ]
+  },
+  "race_result": {
+    "BEA": {
+      "grid": 10,
+      "finish": 5,
+      "status": "Finished",
+      "pit_laps": [
+        10
+      ]
+    },
+    "OCO": {
+      "grid": 13,
+      "finish": 14,
+      "status": "Lapped",
+      "pit_laps": [
+        29,
+        46
+      ]
+    }
+  },
+  "pace": {
+    "drv1": {
+      "median": 97.48,
+      "mean": 97.818,
+      "std": 0.993,
+      "clean_laps": 45,
+      "total_laps": 56
+    },
+    "drv2": {
+      "median": 98.334,
+      "mean": 98.201,
+      "std": 1.089,
+      "clean_laps": 39,
+      "total_laps": 55
+    },
+    "delta_median_sec": -0.854,
+    "faster": "BEA"
+  },
+  "sectors": {
+    "S1": {
+      "BEA_avg": 25.826,
+      "OCO_avg": 25.915,
+      "delta_sec": -0.089,
+      "cumulative_delta_sec": -2.005,
+      "BEA_wins": 25,
+      "OCO_wins": 13,
+      "common_laps": 38
+    },
+    "S2": {
+      "BEA_avg": 29.589,
+      "OCO_avg": 29.742,
+      "delta_sec": -0.152,
+      "cumulative_delta_sec": -4.382,
+      "BEA_wins": 22,
+      "OCO_wins": 16,
+      "common_laps": 38
+    },
+    "S3": {
+      "BEA_avg": 42.403,
+      "OCO_avg": 42.545,
+      "delta_sec": -0.142,
+      "cumulative_delta_sec": -4.667,
+      "BEA_wins": 24,
+      "OCO_wins": 14,
+      "common_laps": 38
+    }
+  },
+  "speed": {
+    "S1末端": {
+      "BEA_median": 270.0,
+      "OCO_median": 266.0,
+      "delta_kmh": 4.0
+    },
+    "S2末端": {
+      "BEA_median": 258.0,
+      "OCO_median": 259.0,
+      "delta_kmh": -1.0
+    },
+    "FL": {
+      "BEA_median": 273.0,
+      "OCO_median": 271.0,
+      "delta_kmh": 2.0
+    },
+    "ST": {
+      "BEA_median": 302.0,
+      "OCO_median": 306.0,
+      "delta_kmh": -4.0
+    }
+  },
+  "stints": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "total_laps": 10,
+        "clean_laps": 7,
+        "median_pace": 99.436,
+        "mean_pace": 99.558
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "total_laps": 46,
+        "clean_laps": 38,
+        "median_pace": 97.4,
+        "mean_pace": 97.498
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "total_laps": 29,
+        "clean_laps": 18,
+        "median_pace": 99.003,
+        "mean_pace": 98.956
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "total_laps": 17,
+        "clean_laps": 14,
+        "median_pace": 98.016,
+        "mean_pace": 98.117
+      },
+      {
+        "stint": 3,
+        "compound": "SOFT",
+        "total_laps": 9,
+        "clean_laps": 7,
+        "median_pace": 96.461,
+        "mean_pace": 96.428
+      }
+    ]
+  },
+  "degradation": {
+    "drv1": [
+      {
+        "stint": 1,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": -0.2305,
+        "fuel_corrected_deg": -0.1705,
+        "clean_laps": 7
+      },
+      {
+        "stint": 2,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0435,
+        "fuel_corrected_deg": 0.0165,
+        "clean_laps": 38
+      }
+    ],
+    "drv2": [
+      {
+        "stint": 1,
+        "compound": "HARD",
+        "raw_deg_sec_per_lap": -0.0244,
+        "fuel_corrected_deg": 0.0356,
+        "clean_laps": 18
+      },
+      {
+        "stint": 2,
+        "compound": "MEDIUM",
+        "raw_deg_sec_per_lap": 0.0973,
+        "fuel_corrected_deg": 0.1573,
+        "clean_laps": 14
+      },
+      {
+        "stint": 3,
+        "compound": "SOFT",
+        "raw_deg_sec_per_lap": -0.0548,
+        "fuel_corrected_deg": 0.0052,
+        "clean_laps": 7
+      }
+    ]
+  },
+  "charts": [
+    "chart_laptime_delta.png",
+    "chart_speed_boxplot.png",
+    "chart_sector_compare.png",
+    "chart_sector_table.png"
+  ],
+  "seo": {
+    "title": "BEA vs OCO Race Pace — 2026 China GP",
+    "title_ja": "BEA vs OCO レースペース比較 — 2026 ChinaGP",
+    "description": "2026 ChinaGP: BEAが0.854秒/ラップ速いペース。セクター・スピード・デグラデーションの詳細比較。",
+    "keywords": [
+      "BEA",
+      "OCO",
+      "China",
+      "F1",
+      "2026",
+      "race pace",
+      "comparison",
+      "Haas F1 Team",
+      "Haas F1 Team"
+    ]
+  }
+}

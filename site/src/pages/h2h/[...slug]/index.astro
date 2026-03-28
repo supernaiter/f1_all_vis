@@ -128,7 +128,26 @@ const speedRows = (Object.entries(speed) as [string, any][]).map(([label, data])
   );
 });
 
-const allRows = [paceRow, ...sectorRows, ...speedRows];
+// 予選
+const qualRow = qualifying ? (() => {
+  const q1 = qualifying[drv1];
+  const q2 = qualifying[drv2];
+  const t1 = q1?.best_time;
+  const t2 = q2?.best_time;
+  const delta = qualifying.delta_sec ?? 0;
+  const pos1 = q1?.position;
+  const pos2 = q2?.position;
+  return makeRow(
+    'Qualifying',
+    `${Math.abs(delta).toFixed(3)}s`,
+    qualifying.faster === drv1 ? color1 : color2,
+    t1 ? `P${pos1} ${t1.toFixed(3)}s` : '—',
+    t2 ? `P${pos2} ${t2.toFixed(3)}s` : '—',
+    t1 ?? 0, t2 ?? 0, 1.0, true
+  );
+})() : null;
+
+const allRows = [...(qualRow ? [qualRow] : []), paceRow, ...sectorRows, ...speedRows];
 
 // スコアカード用の顔画像URL
 const face1 = DRIVER_HEADSHOTS[drv1] || '';

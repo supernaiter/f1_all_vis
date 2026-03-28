@@ -191,3 +191,29 @@ export const TEAM_SHORT: Record<string, string> = {
   'Racing Bulls': 'RBU', 'Alpine': 'ALP', 'Haas F1 Team': 'HAS',
   'Audi': 'AUD', 'Cadillac': 'CAD',
 };
+
+// F1公式ドライバーヘッドショット（開発用・一時利用）
+const F1_IMG_BASE = 'https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/v1740000001/common/f1/2025';
+export const DRIVER_HEADSHOTS: Record<string, string> = {
+  'VER': `${F1_IMG_BASE}/redbullracing/maxver01/2025redbullracingmaxver01right.webp`,
+  'NOR': `${F1_IMG_BASE}/mclaren/lannor01/2025mclarenlannor01right.webp`,
+  'LEC': `${F1_IMG_BASE}/ferrari/chalec01/2025ferrarichalec01right.webp`,
+  'HAM': `${F1_IMG_BASE}/ferrari/lewham01/2025ferrarilewham01right.webp`,
+  'RUS': `${F1_IMG_BASE}/mercedes/georus01/2025mercedesgeorus01right.webp`,
+  'PIA': `${F1_IMG_BASE}/mclaren/oscpia01/2025mclarenoscpia01right.webp`,
+  'TSU': `${F1_IMG_BASE}/redbullracing/yuktsu01/2025redbullracingyuktsu01right.webp`,
+  'ALO': `${F1_IMG_BASE}/astonmartin/feralo01/2025astonmartinferalo01right.webp`,
+  'STR': `${F1_IMG_BASE}/astonmartin/lanstr01/2025astonmartinlanstr01right.webp`,
+  'SAI': `${F1_IMG_BASE}/williams/carsai01/2025williamscarsai01right.webp`,
+  'ALB': `${F1_IMG_BASE}/williams/alealb01/2025williamsalealb01right.webp`,
+  'LAW': `${F1_IMG_BASE}/racingbulls/lialaw01/2025racingbullslialaw01right.webp`,
+  'HAD': `${F1_IMG_BASE}/racingbulls/isahad01/2025racingbullsisahad01right.webp`,
+  'GAS': `${F1_IMG_BASE}/alpine/piegas01/2025alpinepiegas01right.webp`,
+  'COL': `${F1_IMG_BASE}/alpine/fracol01/2025alpinefracol01right.webp`,
+  'OCO': `${F1_IMG_BASE}/haasf1team/estoco01/2025haasf1teamestoco01right.webp`,
+  'BEA': `${F1_IMG_BASE}/haasf1team/olibea01/2025haasf1teamolibea01right.webp`,
+  'HUL': `${F1_IMG_BASE}/kicksauber/nichul01/2025kicksaubernichul01right.webp`,
+  'BOR': `${F1_IMG_BASE}/kicksauber/gabbor01/2025kicksaubergabbor01right.webp`,
+  'ANT': `${F1_IMG_BASE}/mercedes/andant01/2025mercedesandant01right.webp`,
+  'LIN': `${F1_IMG_BASE}/mclaren/lannor01/2025mclarenlannor01right.webp`,
+};

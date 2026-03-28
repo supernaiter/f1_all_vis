@@ -3718,5 +3718,34 @@
       "Mercedes",
       "Ferrari"
     ]
+  },
+  "qualifying": {
+    "RUS": {
+      "best_time": 78.518,
+      "sector1": 27.498,
+      "sector2": 17.284,
+      "sector3": 33.736,
+      "compound": "SOFT",
+      "position": 1,
+      "Q1": 79.507,
+      "Q2": 78.934,
+      "Q3": 78.518
+    },
+    "LEC": {
+      "best_time": 79.327,
+      "sector1": 27.761,
+      "sector2": 17.505,
+      "sector3": 34.061,
+      "compound": "SOFT",
+      "position": 4,
+      "Q1": 80.226,
+      "Q2": 79.357,
+      "Q3": 79.327
+    },
+    "delta_sec": -0.809,
+    "faster": "RUS",
+    "delta_sector1": -0.263,
+    "delta_sector2": -0.221,
+    "delta_sector3": -0.325
   }
 }

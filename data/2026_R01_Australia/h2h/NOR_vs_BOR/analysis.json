@@ -3799,5 +3799,34 @@
       "McLaren",
       "Audi"
     ]
+  },
+  "qualifying": {
+    "NOR": {
+      "best_time": 79.475,
+      "sector1": 27.754,
+      "sector2": 17.568,
+      "sector3": 34.153,
+      "compound": "SOFT",
+      "position": 6,
+      "Q1": 80.01,
+      "Q2": 79.882,
+      "Q3": 79.475
+    },
+    "BOR": {
+      "best_time": 80.221,
+      "sector1": 28.272,
+      "sector2": 17.418,
+      "sector3": 34.531,
+      "compound": "SOFT",
+      "position": 10,
+      "Q1": 80.495,
+      "Q2": 80.221,
+      "Q3": null
+    },
+    "delta_sec": -0.746,
+    "faster": "NOR",
+    "delta_sector1": -0.518,
+    "delta_sector2": 0.15,
+    "delta_sector3": -0.378
   }
 }

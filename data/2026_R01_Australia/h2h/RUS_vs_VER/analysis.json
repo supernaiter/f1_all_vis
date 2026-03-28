@@ -3744,5 +3744,34 @@
       "Mercedes",
       "Red Bull Racing"
     ]
+  },
+  "qualifying": {
+    "RUS": {
+      "best_time": 78.518,
+      "sector1": 27.498,
+      "sector2": 17.284,
+      "sector3": 33.736,
+      "compound": "SOFT",
+      "position": 1,
+      "Q1": 79.507,
+      "Q2": 78.934,
+      "Q3": 78.518
+    },
+    "VER": {
+      "best_time": 102.025,
+      "sector1": 41.429,
+      "sector2": 19.065,
+      "sector3": 41.531,
+      "compound": "SOFT",
+      "position": null,
+      "Q1": null,
+      "Q2": null,
+      "Q3": null
+    },
+    "delta_sec": -23.507,
+    "faster": "RUS",
+    "delta_sector1": -13.931,
+    "delta_sector2": -1.781,
+    "delta_sector3": -7.795
   }
 }

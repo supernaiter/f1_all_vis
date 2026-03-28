@@ -3744,5 +3744,34 @@
       "Ferrari",
       "McLaren"
     ]
+  },
+  "qualifying": {
+    "LEC": {
+      "best_time": 79.327,
+      "sector1": 27.761,
+      "sector2": 17.505,
+      "sector3": 34.061,
+      "compound": "SOFT",
+      "position": 4,
+      "Q1": 80.226,
+      "Q2": 79.357,
+      "Q3": 79.327
+    },
+    "NOR": {
+      "best_time": 79.475,
+      "sector1": 27.754,
+      "sector2": 17.568,
+      "sector3": 34.153,
+      "compound": "SOFT",
+      "position": 6,
+      "Q1": 80.01,
+      "Q2": 79.882,
+      "Q3": 79.475
+    },
+    "delta_sec": -0.148,
+    "faster": "LEC",
+    "delta_sector1": 0.007,
+    "delta_sector2": -0.063,
+    "delta_sector3": -0.092
   }
 }

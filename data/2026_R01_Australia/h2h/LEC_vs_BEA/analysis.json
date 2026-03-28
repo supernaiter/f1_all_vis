@@ -3673,5 +3673,34 @@
       "Ferrari",
       "Haas F1 Team"
     ]
+  },
+  "qualifying": {
+    "LEC": {
+      "best_time": 79.327,
+      "sector1": 27.761,
+      "sector2": 17.505,
+      "sector3": 34.061,
+      "compound": "SOFT",
+      "position": 4,
+      "Q1": 80.226,
+      "Q2": 79.357,
+      "Q3": 79.327
+    },
+    "BEA": {
+      "best_time": 80.311,
+      "sector1": 28.492,
+      "sector2": 17.439,
+      "sector3": 34.38,
+      "compound": "SOFT",
+      "position": 12,
+      "Q1": 81.247,
+      "Q2": 80.311,
+      "Q3": null
+    },
+    "delta_sec": -0.984,
+    "faster": "LEC",
+    "delta_sector1": -0.731,
+    "delta_sector2": 0.066,
+    "delta_sector3": -0.319
   }
 }

@@ -3773,5 +3773,34 @@
       "McLaren",
       "Racing Bulls"
     ]
+  },
+  "qualifying": {
+    "NOR": {
+      "best_time": 79.475,
+      "sector1": 27.754,
+      "sector2": 17.568,
+      "sector3": 34.153,
+      "compound": "SOFT",
+      "position": 6,
+      "Q1": 80.01,
+      "Q2": 79.882,
+      "Q3": 79.475
+    },
+    "LIN": {
+      "best_time": 79.971,
+      "sector1": 28.173,
+      "sector2": 17.38,
+      "sector3": 34.418,
+      "compound": "SOFT",
+      "position": 9,
+      "Q1": 80.409,
+      "Q2": 79.971,
+      "Q3": 81.247
+    },
+    "delta_sec": -0.496,
+    "faster": "NOR",
+    "delta_sector1": -0.419,
+    "delta_sector2": 0.188,
+    "delta_sector3": -0.265
   }
 }

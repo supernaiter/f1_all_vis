@@ -3670,5 +3670,34 @@
       "Ferrari",
       "Red Bull Racing"
     ]
+  },
+  "qualifying": {
+    "LEC": {
+      "best_time": 79.327,
+      "sector1": 27.761,
+      "sector2": 17.505,
+      "sector3": 34.061,
+      "compound": "SOFT",
+      "position": 4,
+      "Q1": 80.226,
+      "Q2": 79.357,
+      "Q3": 79.327
+    },
+    "VER": {
+      "best_time": 102.025,
+      "sector1": 41.429,
+      "sector2": 19.065,
+      "sector3": 41.531,
+      "compound": "SOFT",
+      "position": null,
+      "Q1": null,
+      "Q2": null,
+      "Q3": null
+    },
+    "delta_sec": -22.698,
+    "faster": "LEC",
+    "delta_sector1": -13.668,
+    "delta_sector2": -1.56,
+    "delta_sector3": -7.47
   }
 }

@@ -204,5 +204,34 @@
       "Haas F1 Team",
       "Haas F1 Team"
     ]
+  },
+  "qualifying": {
+    "BEA": {
+      "best_time": 80.311,
+      "sector1": 28.492,
+      "sector2": 17.439,
+      "sector3": 34.38,
+      "compound": "SOFT",
+      "position": 12,
+      "Q1": 81.247,
+      "Q2": 80.311,
+      "Q3": null
+    },
+    "OCO": {
+      "best_time": 80.491,
+      "sector1": 28.499,
+      "sector2": 17.469,
+      "sector3": 34.523,
+      "compound": "SOFT",
+      "position": 13,
+      "Q1": 80.759,
+      "Q2": 80.491,
+      "Q3": null
+    },
+    "delta_sec": -0.18,
+    "faster": "BEA",
+    "delta_sector1": -0.007,
+    "delta_sector2": -0.03,
+    "delta_sector3": -0.143
   }
 }

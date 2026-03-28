@@ -3718,5 +3718,34 @@
       "Haas F1 Team",
       "Racing Bulls"
     ]
+  },
+  "qualifying": {
+    "BEA": {
+      "best_time": 80.311,
+      "sector1": 28.492,
+      "sector2": 17.439,
+      "sector3": 34.38,
+      "compound": "SOFT",
+      "position": 12,
+      "Q1": 81.247,
+      "Q2": 80.311,
+      "Q3": null
+    },
+    "LIN": {
+      "best_time": 79.971,
+      "sector1": 28.173,
+      "sector2": 17.38,
+      "sector3": 34.418,
+      "compound": "SOFT",
+      "position": 9,
+      "Q1": 80.409,
+      "Q2": 79.971,
+      "Q3": 81.247
+    },
+    "delta_sec": 0.34,
+    "faster": "LIN",
+    "delta_sector1": 0.319,
+    "delta_sector2": 0.059,
+    "delta_sector3": -0.038
   }
 }

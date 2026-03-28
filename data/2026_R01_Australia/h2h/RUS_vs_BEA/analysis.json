@@ -3747,5 +3747,34 @@
       "Mercedes",
       "Haas F1 Team"
     ]
+  },
+  "qualifying": {
+    "RUS": {
+      "best_time": 78.518,
+      "sector1": 27.498,
+      "sector2": 17.284,
+      "sector3": 33.736,
+      "compound": "SOFT",
+      "position": 1,
+      "Q1": 79.507,
+      "Q2": 78.934,
+      "Q3": 78.518
+    },
+    "BEA": {
+      "best_time": 80.311,
+      "sector1": 28.492,
+      "sector2": 17.439,
+      "sector3": 34.38,
+      "compound": "SOFT",
+      "position": 12,
+      "Q1": 81.247,
+      "Q2": 80.311,
+      "Q3": null
+    },
+    "delta_sec": -1.793,
+    "faster": "RUS",
+    "delta_sector1": -0.994,
+    "delta_sector2": -0.155,
+    "delta_sector3": -0.644
   }
 }

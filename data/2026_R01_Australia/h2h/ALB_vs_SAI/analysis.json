@@ -252,5 +252,34 @@
       "Williams",
       "Williams"
     ]
+  },
+  "qualifying": {
+    "ALB": {
+      "best_time": 80.941,
+      "sector1": 28.292,
+      "sector2": 17.74,
+      "sector3": 34.909,
+      "compound": "SOFT",
+      "position": 15,
+      "Q1": 81.051,
+      "Q2": 80.941,
+      "Q3": null
+    },
+    "SAI": {
+      "best_time": null,
+      "sector1": null,
+      "sector2": null,
+      "sector3": null,
+      "compound": null,
+      "position": null,
+      "Q1": null,
+      "Q2": null,
+      "Q3": null
+    },
+    "delta_sec": null,
+    "faster": null,
+    "delta_sector1": null,
+    "delta_sector2": null,
+    "delta_sector3": null
   }
 }

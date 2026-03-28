@@ -10,7 +10,7 @@ const { dirName, pairDir, gpMeta } = Astro.props;
 const analysis = loadH2HAnalysis(dirName, pairDir);
 if (!analysis) return Astro.redirect('/');
 
-const { meta, race_result, pace, sectors, speed, seo } = analysis;
+const { meta, race_result, pace, sectors, speed, qualifying, seo } = analysis;
 const drv1 = meta.driver1;
 const drv2 = meta.driver2;
 const color1 = TEAM_COLORS[meta.team1] || '#999';

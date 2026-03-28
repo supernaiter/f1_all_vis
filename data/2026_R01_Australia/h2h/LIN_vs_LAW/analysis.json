@@ -220,5 +220,34 @@
       "Racing Bulls",
       "Racing Bulls"
     ]
+  },
+  "qualifying": {
+    "LIN": {
+      "best_time": 79.971,
+      "sector1": 28.173,
+      "sector2": 17.38,
+      "sector3": 34.418,
+      "compound": "SOFT",
+      "position": 9,
+      "Q1": 80.409,
+      "Q2": 79.971,
+      "Q3": 81.247
+    },
+    "LAW": {
+      "best_time": 79.994,
+      "sector1": 28.206,
+      "sector2": 17.395,
+      "sector3": 34.393,
+      "compound": "SOFT",
+      "position": 8,
+      "Q1": 80.491,
+      "Q2": 80.144,
+      "Q3": 79.994
+    },
+    "delta_sec": -0.023,
+    "faster": "LIN",
+    "delta_sector1": -0.033,
+    "delta_sector2": -0.015,
+    "delta_sector3": 0.025
   }
 }

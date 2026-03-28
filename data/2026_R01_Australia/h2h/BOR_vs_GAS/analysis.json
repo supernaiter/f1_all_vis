@@ -3744,5 +3744,34 @@
       "Audi",
       "Alpine"
     ]
+  },
+  "qualifying": {
+    "BOR": {
+      "best_time": 80.221,
+      "sector1": 28.272,
+      "sector2": 17.418,
+      "sector3": 34.531,
+      "compound": "SOFT",
+      "position": 10,
+      "Q1": 80.495,
+      "Q2": 80.221,
+      "Q3": null
+    },
+    "GAS": {
+      "best_time": 80.501,
+      "sector1": 28.339,
+      "sector2": 17.557,
+      "sector3": 34.605,
+      "compound": "SOFT",
+      "position": 14,
+      "Q1": 81.138,
+      "Q2": 80.501,
+      "Q3": null
+    },
+    "delta_sec": -0.28,
+    "faster": "BOR",
+    "delta_sector1": -0.067,
+    "delta_sector2": -0.139,
+    "delta_sector3": -0.074
   }
 }

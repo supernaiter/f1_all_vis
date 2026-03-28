@@ -3792,5 +3792,34 @@
       "Mercedes",
       "Mercedes"
     ]
+  },
+  "qualifying": {
+    "RUS": {
+      "best_time": 78.518,
+      "sector1": 27.498,
+      "sector2": 17.284,
+      "sector3": 33.736,
+      "compound": "SOFT",
+      "position": 1,
+      "Q1": 79.507,
+      "Q2": 78.934,
+      "Q3": 78.518
+    },
+    "ANT": {
+      "best_time": 78.811,
+      "sector1": 27.556,
+      "sector2": 17.44,
+      "sector3": 33.815,
+      "compound": "SOFT",
+      "position": 2,
+      "Q1": 80.12,
+      "Q2": 79.435,
+      "Q3": 78.811
+    },
+    "delta_sec": -0.293,
+    "faster": "RUS",
+    "delta_sector1": -0.058,
+    "delta_sector2": -0.156,
+    "delta_sector3": -0.079
   }
 }

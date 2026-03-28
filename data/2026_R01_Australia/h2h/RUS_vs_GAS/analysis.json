@@ -3747,5 +3747,34 @@
       "Mercedes",
       "Alpine"
     ]
+  },
+  "qualifying": {
+    "RUS": {
+      "best_time": 78.518,
+      "sector1": 27.498,
+      "sector2": 17.284,
+      "sector3": 33.736,
+      "compound": "SOFT",
+      "position": 1,
+      "Q1": 79.507,
+      "Q2": 78.934,
+      "Q3": 78.518
+    },
+    "GAS": {
+      "best_time": 80.501,
+      "sector1": 28.339,
+      "sector2": 17.557,
+      "sector3": 34.605,
+      "compound": "SOFT",
+      "position": 14,
+      "Q1": 81.138,
+      "Q2": 80.501,
+      "Q3": null
+    },
+    "delta_sec": -1.983,
+    "faster": "RUS",
+    "delta_sector1": -0.841,
+    "delta_sector2": -0.273,
+    "delta_sector3": -0.869
   }
 }

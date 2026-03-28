@@ -3673,5 +3673,34 @@
       "Ferrari",
       "Alpine"
     ]
+  },
+  "qualifying": {
+    "HAM": {
+      "best_time": 79.478,
+      "sector1": 27.756,
+      "sector2": 17.57,
+      "sector3": 34.152,
+      "compound": "SOFT",
+      "position": 7,
+      "Q1": 79.811,
+      "Q2": 79.921,
+      "Q3": 79.478
+    },
+    "GAS": {
+      "best_time": 80.501,
+      "sector1": 28.339,
+      "sector2": 17.557,
+      "sector3": 34.605,
+      "compound": "SOFT",
+      "position": 14,
+      "Q1": 81.138,
+      "Q2": 80.501,
+      "Q3": null
+    },
+    "delta_sec": -1.023,
+    "faster": "HAM",
+    "delta_sector1": -0.583,
+    "delta_sector2": 0.013,
+    "delta_sector3": -0.453
   }
 }

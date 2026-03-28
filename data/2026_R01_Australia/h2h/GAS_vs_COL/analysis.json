@@ -220,5 +220,34 @@
       "Alpine",
       "Alpine"
     ]
+  },
+  "qualifying": {
+    "GAS": {
+      "best_time": 80.501,
+      "sector1": 28.339,
+      "sector2": 17.557,
+      "sector3": 34.605,
+      "compound": "SOFT",
+      "position": 14,
+      "Q1": 81.138,
+      "Q2": 80.501,
+      "Q3": null
+    },
+    "COL": {
+      "best_time": 81.2,
+      "sector1": 28.515,
+      "sector2": 17.811,
+      "sector3": 34.874,
+      "compound": "SOFT",
+      "position": 16,
+      "Q1": 81.2,
+      "Q2": 81.27,
+      "Q3": null
+    },
+    "delta_sec": -0.699,
+    "faster": "GAS",
+    "delta_sector1": -0.176,
+    "delta_sector2": -0.254,
+    "delta_sector3": -0.269
   }
 }

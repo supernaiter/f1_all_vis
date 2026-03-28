@@ -3773,5 +3773,34 @@
       "McLaren",
       "Haas F1 Team"
     ]
+  },
+  "qualifying": {
+    "NOR": {
+      "best_time": 79.475,
+      "sector1": 27.754,
+      "sector2": 17.568,
+      "sector3": 34.153,
+      "compound": "SOFT",
+      "position": 6,
+      "Q1": 80.01,
+      "Q2": 79.882,
+      "Q3": 79.475
+    },
+    "BEA": {
+      "best_time": 80.311,
+      "sector1": 28.492,
+      "sector2": 17.439,
+      "sector3": 34.38,
+      "compound": "SOFT",
+      "position": 12,
+      "Q1": 81.247,
+      "Q2": 80.311,
+      "Q3": null
+    },
+    "delta_sec": -0.836,
+    "faster": "NOR",
+    "delta_sector1": -0.738,
+    "delta_sector2": 0.129,
+    "delta_sector3": -0.227
   }
 }

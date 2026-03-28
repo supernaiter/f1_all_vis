@@ -90,7 +90,7 @@ const chartData = {
   const chart = echarts.init(document.getElementById('chart-speed')!, undefined, { renderer: 'canvas' });
 
   chart.setOption({
-    textStyle: { color: '#8899AA', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
+    textStyle: { color: '#aaaaaa', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
     tooltip: {
       backgroundColor: '#1a1a2e', borderColor: '#333355', borderWidth: 1, textStyle: { color: '#EEE', fontSize: 13 },
       trigger: 'item',
@@ -103,7 +103,7 @@ const chartData = {
     },
     legend: {
       data: [meta.driver1, meta.driver2],
-      textStyle: { color: '#8899AA' },
+      textStyle: { color: '#aaaaaa' },
       top: 0,
     },
     grid: { left: 80, right: 30, top: 40, bottom: 40 },
@@ -116,9 +116,9 @@ const chartData = {
     yAxis: {
       type: 'value',
       name: 'Speed (km/h)',
-      nameTextStyle: { color: '#8899AA' },
+      nameTextStyle: { color: '#aaaaaa' },
       axisLine: { lineStyle: { color: '#333355' } },
-      axisLabel: { color: '#8899AA' },
+      axisLabel: { color: '#aaaaaa' },
       splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
     },
     series: [

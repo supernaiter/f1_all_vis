@@ -3,24 +3,29 @@ interface Props { text: string; }
 const { text } = Astro.props;
 ---
 <div class="chart-guide">
-  <span class="guide-label">見方</span>
+  <span class="guide-icon">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+  </span>
   <span>{text}</span>
 </div>
 
 <style>
   .chart-guide {
     background: var(--bg-card);
-    border-left: 3px solid var(--accent);
+    border-left: 3px solid var(--text-dim);
     padding: 10px 16px;
     margin-bottom: 20px;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     color: var(--text-dim);
     border-radius: 0 8px 8px 0;
     line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
   }
-  .guide-label {
-    color: var(--accent);
-    font-weight: 700;
-    margin-right: 8px;
+  .guide-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    opacity: 0.7;
   }
 </style>

@@ -5,3 +5,8 @@
 2026-03-27|Python環境|/usr/bin/python3を使用（pandas/matplotlib入り）|/opt/homebrew/python3にはpandasなし。pip installはhookで禁止|環境依存のため別マシンでは要確認
 2026-03-27|画像外部化|base64埋め込み→PNG静的ファイル参照に切替|HTML 68MB→624KB（99%削減）。CDNキャッシュ可能、ページ読み込み高速化|copy-charts.mjsをビルド前に実行する必要あり（package.jsonのbuildスクリプトに組み込み済）
 2026-03-27|exportスクリプト|汎用版export_race_data.pyを作成|CLI引数でYEAR/GP/ROUNDを受け取り任意のGPに対応。R01固有のREADME内容もパラメータ化|gp_weekend.dbがないGPではFPデータはスキップされる
+2026-03-28|チャートライブラリ|Apache ECharts採用（Chart.js/Plotly却下）|tree-shaking~200KB、ダークテーマ一行、ボックスプロット標準対応、Canvas/SVG両対応。Chart.jsはboxplotプラグイン必要、Plotlyは4.7MBで論外|echarts/coreからtree-shakingインポート必須。define:varsはモジュールscriptで使えない→script type=application/jsonで受け渡し
+2026-03-28|ページ分割|1ペア=5ページ（hub/pace/sectors/speed/stints）|pSEOの原則=1ページ1検索意図。ページ数53→451で検索面積8.5倍。各ページにチャートガイド+自動インサイト|ページ間の回遊導線（SubNavコンポーネント）が重要
+2026-03-28|per_lapデータ|analysis.jsonにper_lap配列追加（3KB→33KB）|EChartsクライアント描画に必要。既存summary statsはそのまま維持|全ペア再生成が必要（--top10で実行済）
+2026-03-28|PNG生成|デフォルトOFF（--pngフラグでオプション化）|EChartsで完結するためmatplotlib不要に。ビルド時間短縮|旧PNGは残存しているがサイトからは参照されない
+2026-03-28|Python環境|fastf1はuv run経由で実行|pip installがhook禁止。uv run --with fastf1 --with pyarrow pythonで動作確認済|h2h_engine.pyはfastf1不要（CSV読み込みのみ）、export_race_data.pyのみfastf1必要

@@ -90,7 +90,7 @@ const chartData = {
     chart.setOption({
       textStyle: { color: '#aaaaaa', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
       tooltip: {
-        backgroundColor: '#1a1a2e', borderColor: '#333355', borderWidth: 1, textStyle: { color: '#EEE', fontSize: 13 },
+        backgroundColor: '#1a1a2e', borderColor: '#303037', borderWidth: 1, textStyle: { color: '#EEE', fontSize: 13 },
         trigger: 'axis',
         formatter: (params: any) => {
           const p = Array.isArray(params) ? params[0] : params;
@@ -110,7 +110,7 @@ const chartData = {
         type: 'value', min: 1, max: meta.total_laps,
         name: 'Lap', nameLocation: 'center', nameGap: 25,
         nameTextStyle: { color: '#aaaaaa' },
-        axisLine: { lineStyle: { color: '#333355' } },
+        axisLine: { lineStyle: { color: '#303037' } },
         axisLabel: { color: '#aaaaaa' },
         splitLine: { show: false },
       },
@@ -118,9 +118,9 @@ const chartData = {
         type: 'value',
         name: `\u2190 ${meta.driver1}  |  ${meta.driver2} \u2192`,
         nameTextStyle: { color: '#aaaaaa', fontSize: 11 },
-        axisLine: { lineStyle: { color: '#333355' } },
+        axisLine: { lineStyle: { color: '#303037' } },
         axisLabel: { color: '#aaaaaa', formatter: (v: number) => v.toFixed(2) },
-        splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
+        splitLine: { lineStyle: { color: '#303037', type: 'dashed' } },
       },
       series: [{
         type: 'bar',

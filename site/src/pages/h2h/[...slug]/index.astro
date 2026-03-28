@@ -131,6 +131,10 @@ const cleanRow = makeRow(
 
 const allRows = [paceRow, ...sectorRows, ...speedRows, cleanRow];
 
+// スコアカード用の顔画像URL
+const face1 = DRIVER_HEADSHOTS[drv1] || '';
+const face2 = DRIVER_HEADSHOTS[drv2] || '';
+
 // ナビカード
 const navIcons: Record<string, string> = {
   Pace: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,

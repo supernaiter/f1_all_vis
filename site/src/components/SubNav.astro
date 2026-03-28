@@ -8,16 +8,17 @@ interface Props {
 const { basePath, current, drv1, drv2 } = Astro.props;
 
 const links = [
-  { id: 'hub', href: `${basePath}`, label: 'Overview' },
-  { id: 'pace', href: `${basePath}pace/`, label: 'Pace' },
-  { id: 'sectors', href: `${basePath}sectors/`, label: 'Sectors' },
-  { id: 'speed', href: `${basePath}speed/`, label: 'Speed' },
-  { id: 'stints', href: `${basePath}stints/`, label: 'Stints' },
+  { id: 'hub', href: `${basePath}`, label: 'Overview', icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>` },
+  { id: 'pace', href: `${basePath}pace/`, label: 'Pace', icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>` },
+  { id: 'sectors', href: `${basePath}sectors/`, label: 'Sectors', icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/><line x1="12" y1="2" x2="12" y2="12"/><line x1="12" y1="12" x2="22" y2="12"/></svg>` },
+  { id: 'speed', href: `${basePath}speed/`, label: 'Speed', icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10"/><polyline points="12 6 12 12 16 14"/></svg>` },
+  { id: 'stints', href: `${basePath}stints/`, label: 'Stints', icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor"/><circle cx="4" cy="12" r="1.5" fill="currentColor"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/></svg>` },
 ] as const;
 ---
 <nav class="sub-nav">
   {links.map(link => (
     <a href={link.href} class:list={['sub-nav-link', { active: link.id === current }]}>
+      <span class="sub-nav-icon" set:html={link.icon} />
       {link.label}
     </a>
   ))}
@@ -42,13 +43,21 @@ const links = [
     text-decoration: none;
     white-space: nowrap;
     transition: background 0.15s, color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
   .sub-nav-link:hover {
     background: var(--bg-card-hover);
     color: var(--text);
+    text-decoration: none;
   }
   .sub-nav-link.active {
     background: var(--accent);
     color: #ffffff;
+  }
+  .sub-nav-icon {
+    display: flex;
+    align-items: center;
   }
 </style>

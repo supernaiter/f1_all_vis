@@ -238,6 +238,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
     </div>
   </div>
 )}
+{degRows.length === 0 && <p class="no-deg-note">同一コンパウンドのロングスティントが不足しているためデグラデーション比較は利用不可。</p>}
 
 <ChartGuide text={`横軸はタイヤ使用周回数、縦軸はラップタイム。点の色=タイヤ種別。直線の傾きがデグラデーション（急なほどタイヤが厳しい）。上段と下段でドライバーを比較。`} />
 

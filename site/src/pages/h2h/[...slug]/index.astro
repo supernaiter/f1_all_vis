@@ -201,9 +201,11 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
     <div class="score-row">
       <div class="score-side score-left" style={`opacity: ${row.opacity1};`}>
         <div
-          class="dot"
-          style={`width: ${row.size1}px; height: ${row.size1}px; background: ${color1};`}
-        />
+          class="face-dot"
+          style={`width: ${row.size1}px; height: ${row.size1}px; border-color: ${color1};`}
+        >
+          {face1 && <img src={face1} alt={drv1} />}
+        </div>
         <span class="score-val">{row.val1}</span>
       </div>
 
@@ -215,9 +217,11 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
       <div class="score-side score-right" style={`opacity: ${row.opacity2};`}>
         <span class="score-val">{row.val2}</span>
         <div
-          class="dot"
-          style={`width: ${row.size2}px; height: ${row.size2}px; background: ${color2};`}
-        />
+          class="face-dot"
+          style={`width: ${row.size2}px; height: ${row.size2}px; border-color: ${color2};`}
+        >
+          {face2 && <img src={face2} alt={drv2} />}
+        </div>
       </div>
     </div>
   ))}

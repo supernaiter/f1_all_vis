@@ -47,10 +47,13 @@ interface ScoreRow {
   subColor: string;
   val1: string;
   val2: string;
-  size1: number;
-  size2: number;
+  // 0〜1のスケール値（CSSで実サイズに変換）
+  scale1: number;
+  scale2: number;
   opacity1: number;
   opacity2: number;
+  fontSize1: number;
+  fontSize2: number;
 }
 
 function makeRow(
@@ -64,19 +67,27 @@ function makeRow(
     ? (diff < 0 ? 1 : diff > 0 ? 2 : 0)
     : (diff > 0 ? 1 : diff < 0 ? 2 : 0);
 
-  // 勝者: 20〜36px, 敗者: 20〜8px  差が大きいほど劇的に
-  const big = 20 + Math.round(intensity * 16);
-  const small = 20 - Math.round(intensity * 12);
-  // 勝者: 1.0, 敗者: 0.3〜0.7
-  const bright = 1;
-  const dim = 0.7 - intensity * 0.4;
+  // scale: 0.3(最小)〜1.0(最大)  差が大きいほど勝者が大きく敗者が小さい
+  const winScale = 0.6 + intensity * 0.4;   // 0.6〜1.0
+  const loseScale = 0.6 - intensity * 0.35; // 0.6〜0.25
+  const drawScale = 0.5;
+
+  // 透明度
+  const winOpacity = 1;
+  const loseOpacity = 0.7 - intensity * 0.35; // 0.7〜0.35
+
+  // フォントサイズ（rem）
+  const winFont = 0.85 + intensity * 0.25;  // 0.85〜1.1rem
+  const loseFont = 0.85 - intensity * 0.15; // 0.85〜0.7rem
 
   return {
     label, sub, subColor, val1, val2,
-    size1: winner === 1 ? big : winner === 2 ? small : 20,
-    size2: winner === 2 ? big : winner === 1 ? small : 20,
-    opacity1: winner === 2 ? dim : bright,
-    opacity2: winner === 1 ? dim : bright,
+    scale1: winner === 1 ? winScale : winner === 2 ? loseScale : drawScale,
+    scale2: winner === 2 ? winScale : winner === 1 ? loseScale : drawScale,
+    opacity1: winner === 2 ? loseOpacity : winOpacity,
+    opacity2: winner === 1 ? loseOpacity : winOpacity,
+    fontSize1: winner === 1 ? winFont : winner === 2 ? loseFont : 0.85,
+    fontSize2: winner === 2 ? winFont : winner === 1 ? loseFont : 0.85,
   };
 }
 

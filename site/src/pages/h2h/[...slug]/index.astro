@@ -276,18 +276,18 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   /* ===== ヒーロー ===== */
   .hero {
     display: flex; align-items: center; justify-content: center; gap: 20px;
-    margin-bottom: 32px; padding: 20px 0;
+    margin-bottom: 24px; padding: 12px 0;
   }
   .hero-driver {
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
-    min-width: 100px; transition: all 0.3s;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    min-width: 80px; transition: all 0.3s;
   }
-  .hero-driver.winner .hero-portrait { width: 96px; height: 96px; }
-  .hero-driver.winner .hero-name { font-size: 1.8rem; }
-  .hero-driver.loser .hero-portrait { width: 64px; height: 64px; opacity: 0.6; }
-  .hero-driver.loser .hero-name { font-size: 1.1rem; opacity: 0.6; }
-  .hero-driver:not(.winner):not(.loser) .hero-portrait { width: 80px; height: 80px; }
-  .hero-driver:not(.winner):not(.loser) .hero-name { font-size: 1.5rem; }
+  .hero-driver.winner .hero-portrait { width: 56px; height: 56px; }
+  .hero-driver.winner .hero-name { font-size: 1.3rem; }
+  .hero-driver.loser .hero-portrait { width: 44px; height: 44px; opacity: 0.6; }
+  .hero-driver.loser .hero-name { font-size: 1rem; opacity: 0.6; }
+  .hero-driver:not(.winner):not(.loser) .hero-portrait { width: 48px; height: 48px; }
+  .hero-driver:not(.winner):not(.loser) .hero-name { font-size: 1.15rem; }
 
   .hero-portrait {
     border-radius: 50%; overflow: hidden; border: 3px solid;

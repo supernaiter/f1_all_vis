@@ -112,7 +112,7 @@ const chartData = {
     }
 
     chart.setOption({
-      textStyle: { color: '#8899AA', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
+      textStyle: { color: '#aaaaaa', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
       tooltip: {
         backgroundColor: '#1a1a2e', borderColor: '#333355', borderWidth: 1, textStyle: { color: '#EEE', fontSize: 13 },
         trigger: 'item',
@@ -124,7 +124,7 @@ const chartData = {
       },
       legend: {
         data: drvStints.map((s: any) => `S${s.stint} ${s.compound}`),
-        textStyle: { color: '#8899AA' },
+        textStyle: { color: '#aaaaaa' },
         top: 0,
       },
       grid: { left: 60, right: 20, top: 35, bottom: 40 },
@@ -133,17 +133,17 @@ const chartData = {
         name: 'Tyre Life (laps)',
         nameLocation: 'center',
         nameGap: 25,
-        nameTextStyle: { color: '#8899AA' },
+        nameTextStyle: { color: '#aaaaaa' },
         axisLine: { lineStyle: { color: '#333355' } },
-        axisLabel: { color: '#8899AA' },
+        axisLabel: { color: '#aaaaaa' },
         splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
       },
       yAxis: {
         type: 'value',
         name: 'Lap Time (s)',
-        nameTextStyle: { color: '#8899AA' },
+        nameTextStyle: { color: '#aaaaaa' },
         axisLine: { lineStyle: { color: '#333355' } },
-        axisLabel: { color: '#8899AA', formatter: (v: number) => v.toFixed(1) },
+        axisLabel: { color: '#aaaaaa', formatter: (v: number) => v.toFixed(1) },
         splitLine: { lineStyle: { color: '#333355', type: 'dashed' } },
       },
       series,

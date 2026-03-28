@@ -33,3 +33,13 @@
 - 比較の直感表現: アイコンの大小+透明度で勝敗、数字は補助（2層構造）
 - ドライバー画像: CDNのc_thumb,g_face で顔クロップ。c_lfillだと全身になる
 - サイズの動的変化はCSS custom properties (--s1, --s2等) + calc() + clamp()で実装。viewport連動でモバイル自動対応
+- accent色の半透明: `rgba(225,6,0,0.1)` ではなく `color-mix(in srgb, var(--accent) 10%, transparent)` を使う
+- face-dot background: Hubでは `var(--bg-card-hover)` を使用。サブページも揃えること
+
+## ハーネス設計
+- Generator+Evaluatorは別Agent subprocessで実行（自己評価バイアス排除）
+- Evaluator基準は具体的・検証可能にする（「良いデザインか」ではなく「CSS variablesを使っているか」）
+- R1でFAILする主な原因: DataZoom欠落、themeBase未抽出、json-ld欠落
+- Evaluatorのフィードバックはそのまま次のGeneratorに渡す（要約しない）
+- F1固有スキルはプロジェクトローカル(.claude/skills/)に配置。グローバルに置くと他プロジェクトに漏れる
+- pace→sectors→speed→stintsの順が効率的（paceがHubに最も構造が近い）

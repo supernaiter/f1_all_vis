@@ -186,10 +186,10 @@ const chartData = {
 <script>
   import * as echarts from 'echarts/core';
   import { BarChart } from 'echarts/charts';
-  import { GridComponent, TooltipComponent, LegendComponent, MarkAreaComponent } from 'echarts/components';
+  import { GridComponent, TooltipComponent, LegendComponent, MarkAreaComponent, DataZoomComponent } from 'echarts/components';
   import { CanvasRenderer } from 'echarts/renderers';
 
-  echarts.use([BarChart, GridComponent, TooltipComponent, LegendComponent, MarkAreaComponent, CanvasRenderer]);
+  echarts.use([BarChart, GridComponent, TooltipComponent, LegendComponent, MarkAreaComponent, DataZoomComponent, CanvasRenderer]);
 
   const data = JSON.parse(document.getElementById('chart-data')!.textContent!);
   const { sectors, meta, color1, color2, summary } = data;

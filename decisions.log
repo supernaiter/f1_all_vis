@@ -10,3 +10,6 @@
 2026-03-28|per_lapデータ|analysis.jsonにper_lap配列追加（3KB→33KB）|EChartsクライアント描画に必要。既存summary statsはそのまま維持|全ペア再生成が必要（--top10で実行済）
 2026-03-28|PNG生成|デフォルトOFF（--pngフラグでオプション化）|EChartsで完結するためmatplotlib不要に。ビルド時間短縮|旧PNGは残存しているがサイトからは参照されない
 2026-03-28|Python環境|fastf1はuv run経由で実行|pip installがhook禁止。uv run --with fastf1 --with pyarrow pythonで動作確認済|h2h_engine.pyはfastf1不要（CSV読み込みのみ）、export_race_data.pyのみfastf1必要
+2026-03-28|カラーシステム|F1公式デザイントークンに移行|formula1.comのCSSから抽出。--bg:#15151e, --bg-card:#1c1c25, --accent:#e10600(F1Red), --text:#ffffff, --border:#303037|echarts-theme.ts+全ページのハードコード色も同時更新。チームカラー(TEAM_COLORS)は変更なし
+2026-03-28|比較UI方針|アイコン(顔)の大小+透明度で勝敗を表現|文章を読まなくても直感的にわかるデザイン。バーチャートやテーブルより「前注意的処理」で速い|差の大きさ(magnitude)は補助テキストで補完する2層構造
+2026-03-28|ドライバー画像|F1公式CDN(media.formula1.com)のCloudinary URLを一時利用|c_thumb,g_face,w_440,h_440で顔フォーカスクロップ。開発用・デプロイ時は自前アセットに置き換え要|DRIVER_HEADSHOTSマッピングをdata.tsに定義

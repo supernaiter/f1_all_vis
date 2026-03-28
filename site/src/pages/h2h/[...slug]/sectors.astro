@@ -194,6 +194,11 @@ const chartData = {
   const data = JSON.parse(document.getElementById('chart-data')!.textContent!);
   const { sectors, meta, color1, color2, summary } = data;
 
+  const themeBase = {
+    textStyle: { color: '#aaaaaa', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
+    tooltip: { backgroundColor: '#1c1c25', borderColor: '#303037', borderWidth: 1, textStyle: { color: '#fff', fontSize: 13 } },
+  };
+
   const charts: echarts.ECharts[] = [];
 
   function neutralAreas() {

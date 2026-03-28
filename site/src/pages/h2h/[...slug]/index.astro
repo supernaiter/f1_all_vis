@@ -20,53 +20,8 @@ const r2 = race_result[drv2];
 const totalLaps = meta.total_laps;
 const basePath = `/h2h/${meta.year}-r${String(meta.round).padStart(2, '0')}-${meta.gp_name.toLowerCase()}/${drv1.toLowerCase()}-vs-${drv2.toLowerCase()}/`;
 
-// --- ヘッダー用：レース結果で勝った方を大きく ---
+// ヘッダー：レース結果で勝った方を大きく
 const raceWinner = r1.finish < r2.finish ? 1 : r2.finish < r1.finish ? 2 : 0;
-const headSize1 = raceWinner === 1 ? 96 : raceWinner === 2 ? 68 : 80;
-const headSize2 = raceWinner === 2 ? 96 : raceWinner === 1 ? 68 : 80;
-const headOpacity1 = raceWinner === 2 ? 0.65 : 1;
-const headOpacity2 = raceWinner === 1 ? 0.65 : 1;
-
-// --- 比較行データ構築 ---
-// 「勝者に視覚的重みを与える」ための共通計算
-// intensity: 0〜1で差の大きさ（アイコンサイズ差に使う）
-function compareMetric(v1: number, v2: number, maxDelta: number, lowerIsBetter = true) {
-  const diff = v1 - v2;
-  const absDiff = Math.abs(diff);
-  const intensity = Math.min(absDiff / maxDelta, 1);
-  const winner = lowerIsBetter
-    ? (diff < 0 ? 1 : diff > 0 ? 2 : 0)
-    : (diff > 0 ? 1 : diff < 0 ? 2 : 0);
-  return { winner, intensity, diff: absDiff };
-}
-
-// ペース
-const paceComp = compareMetric(
-  pace.drv1.median, pace.drv2.median, 0.5, true
-);
-
-// セクター
-const sectorComps = Object.entries(sectors).map(([name, data]: [string, any]) => {
-  const d1Wins = data[`${drv1}_wins`] ?? 0;
-  const d2Wins = data[`${drv2}_wins`] ?? 0;
-  const total = d1Wins + d2Wins;
-  const comp = compareMetric(d1Wins, d2Wins, total, false);
-  return { name, d1Wins, d2Wins, total, comp, delta: data.delta_sec };
-});
-
-// スピード（STがあればメイン表示）
-const speedEntries = Object.entries(speed) as [string, any][];
-const speedComps = speedEntries.map(([label, data]) => {
-  const v1 = data[`${drv1}_median`] ?? 0;
-  const v2 = data[`${drv2}_median`] ?? 0;
-  const comp = compareMetric(v1, v2, 15, false); // 15km/h差で最大
-  return { label, v1, v2, comp, delta: data.delta_kmh };
-});
-
-// クリーンラップ比率
-const cleanPct1 = pace.drv1.total_laps > 0 ? pace.drv1.clean_laps / pace.drv1.total_laps : 0;
-const cleanPct2 = pace.drv2.total_laps > 0 ? pace.drv2.clean_laps / pace.drv2.total_laps : 0;
-const cleanComp = compareMetric(cleanPct1, cleanPct2, 0.3, false);
 
 // ポジション変動
 function posChange(grid: number, finish: number) {
@@ -75,6 +30,8 @@ function posChange(grid: number, finish: number) {
   if (diff < 0) return { arrow: '▼', cls: 'pos-down', text: `${diff}` };
   return { arrow: '—', cls: 'pos-same', text: '±0' };
 }
+const pc1 = posChange(r1.grid, r1.finish);
+const pc2 = posChange(r2.grid, r2.finish);
 
 // タイヤカラー
 const TYRE_COLORS: Record<string, string> = {
@@ -82,24 +39,99 @@ const TYRE_COLORS: Record<string, string> = {
   INTERMEDIATE: '#39B54A', WET: '#0072CE',
 };
 
-// アイコンサイズ計算：勝者=大きい、敗者=小さい、差が大きいほど差が顕著
-// base: 24px, 勝者は +intensityで最大36px、敗者は -intensityで最小16px
-function iconSizes(winner: number, intensity: number): [number, number] {
-  const boost = Math.round(intensity * 10);
-  if (winner === 1) return [24 + boost, 24 - boost];
-  if (winner === 2) return [24 - boost, 24 + boost];
-  return [24, 24];
+// --- スコアカード行データ ---
+// winner: 1 or 2, size1/size2: ドットサイズ(px), opacity1/opacity2
+interface ScoreRow {
+  label: string;
+  sub: string;
+  subColor: string;
+  val1: string;
+  val2: string;
+  size1: number;
+  size2: number;
+  opacity1: number;
+  opacity2: number;
 }
 
-// 明度：勝者=明るい、敗者=暗い
-function opacities(winner: number, intensity: number): [number, number] {
-  const dim = 0.35 + (1 - intensity) * 0.3; // 0.35〜0.65
-  if (winner === 1) return [1, dim];
-  if (winner === 2) return [dim, 1];
-  return [0.8, 0.8];
+function makeRow(
+  label: string, sub: string, subColor: string,
+  val1: string, val2: string,
+  v1: number, v2: number, maxDelta: number, lowerIsBetter: boolean
+): ScoreRow {
+  const diff = v1 - v2;
+  const intensity = Math.min(Math.abs(diff) / maxDelta, 1);
+  const winner = lowerIsBetter
+    ? (diff < 0 ? 1 : diff > 0 ? 2 : 0)
+    : (diff > 0 ? 1 : diff < 0 ? 2 : 0);
+
+  // 勝者: 20〜36px, 敗者: 20〜8px  差が大きいほど劇的に
+  const big = 20 + Math.round(intensity * 16);
+  const small = 20 - Math.round(intensity * 12);
+  // 勝者: 1.0, 敗者: 0.3〜0.7
+  const bright = 1;
+  const dim = 0.7 - intensity * 0.4;
+
+  return {
+    label, sub, subColor, val1, val2,
+    size1: winner === 1 ? big : winner === 2 ? small : 20,
+    size2: winner === 2 ? big : winner === 1 ? small : 20,
+    opacity1: winner === 2 ? dim : bright,
+    opacity2: winner === 1 ? dim : bright,
+  };
 }
 
-// ナビカードアイコン
+// ペース
+const paceRow = makeRow(
+  'Pace', `${Math.abs(pace.delta_median_sec ?? 0).toFixed(3)}s/lap`,
+  pace.faster === drv1 ? color1 : color2,
+  `${pace.drv1.median.toFixed(3)}s`, `${pace.drv2.median.toFixed(3)}s`,
+  pace.drv1.median, pace.drv2.median, 0.5, true
+);
+
+// セクター
+const sectorRows = Object.entries(sectors).map(([name, data]: [string, any]) => {
+  const d1W = data[`${drv1}_wins`] ?? 0;
+  const d2W = data[`${drv2}_wins`] ?? 0;
+  const total = d1W + d2W;
+  const delta = data.delta_sec ?? 0;
+  return makeRow(
+    name,
+    `${delta > 0 ? '+' : ''}${delta.toFixed(3)}s`,
+    delta < 0 ? color1 : color2,
+    `${d1W} wins`, `${d2W} wins`,
+    d1W, d2W, Math.max(total, 1), false
+  );
+});
+
+// スピード
+const speedRows = (Object.entries(speed) as [string, any][]).map(([label, data]) => {
+  const v1 = data[`${drv1}_median`] ?? 0;
+  const v2 = data[`${drv2}_median`] ?? 0;
+  const delta = data.delta_kmh ?? 0;
+  return makeRow(
+    label,
+    `${delta > 0 ? '+' : ''}${delta} km/h`,
+    delta > 0 ? color1 : color2,
+    `${v1}`, `${v2}`,
+    v1, v2, 15, false
+  );
+});
+
+// クリーンラップ
+const cl1 = pace.drv1.total_laps > 0 ? pace.drv1.clean_laps / pace.drv1.total_laps : 0;
+const cl2 = pace.drv2.total_laps > 0 ? pace.drv2.clean_laps / pace.drv2.total_laps : 0;
+const cleanRow = makeRow(
+  'Clean Laps',
+  `${Math.round(cl1 * 100)}% vs ${Math.round(cl2 * 100)}%`,
+  cl1 > cl2 ? color1 : color2,
+  `${pace.drv1.clean_laps}/${pace.drv1.total_laps}`,
+  `${pace.drv2.clean_laps}/${pace.drv2.total_laps}`,
+  cl1, cl2, 0.3, false
+);
+
+const allRows = [paceRow, ...sectorRows, ...speedRows, cleanRow];
+
+// ナビカード
 const navIcons: Record<string, string> = {
   Pace: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
   Sectors: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/><line x1="12" y1="2" x2="12" y2="12"/><line x1="12" y1="12" x2="22" y2="12"/></svg>`,
@@ -126,22 +158,16 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   <span>{drv1} vs {drv2}</span>
 </nav>
 
-<!-- ===== ヒーロー：勝者が大きい ===== -->
+<!-- ===== ヒーロー ===== -->
 <header class="hero">
-  <div class="hero-driver">
-    <div class="hero-portrait" style={`
-      width: ${headSize1}px; height: ${headSize1}px;
-      border-color: ${color1};
-      opacity: ${headOpacity1};
-    `}>
+  <div class={`hero-driver ${raceWinner === 1 ? 'winner' : raceWinner === 2 ? 'loser' : ''}`}>
+    <div class="hero-portrait" style={`border-color: ${color1};`}>
       {DRIVER_HEADSHOTS[drv1] && <img src={DRIVER_HEADSHOTS[drv1]} alt={drv1} />}
     </div>
-    <span class="hero-name" style={`color: ${color1}; opacity: ${headOpacity1}; font-size: ${raceWinner === 1 ? '1.8rem' : raceWinner === 2 ? '1.2rem' : '1.5rem'};`}>{drv1}</span>
+    <span class="hero-name" style={`color: ${color1};`}>{drv1}</span>
     <div class="hero-result">
       <span class="hero-pos" style={`background: ${color1};`}>P{r1.finish}</span>
-      <span class={`hero-change ${posChange(r1.grid, r1.finish).cls}`}>
-        {posChange(r1.grid, r1.finish).arrow}{posChange(r1.grid, r1.finish).text}
-      </span>
+      <span class={pc1.cls}>{pc1.arrow}{pc1.text}</span>
     </div>
   </div>
 
@@ -151,121 +177,46 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
     <span class="hero-gp-name">{meta.gp_name} GP</span>
   </div>
 
-  <div class="hero-driver">
-    <div class="hero-portrait" style={`
-      width: ${headSize2}px; height: ${headSize2}px;
-      border-color: ${color2};
-      opacity: ${headOpacity2};
-    `}>
+  <div class={`hero-driver ${raceWinner === 2 ? 'winner' : raceWinner === 1 ? 'loser' : ''}`}>
+    <div class="hero-portrait" style={`border-color: ${color2};`}>
       {DRIVER_HEADSHOTS[drv2] && <img src={DRIVER_HEADSHOTS[drv2]} alt={drv2} />}
     </div>
-    <span class="hero-name" style={`color: ${color2}; opacity: ${headOpacity2}; font-size: ${raceWinner === 2 ? '1.8rem' : raceWinner === 1 ? '1.2rem' : '1.5rem'};`}>{drv2}</span>
+    <span class="hero-name" style={`color: ${color2};`}>{drv2}</span>
     <div class="hero-result">
       <span class="hero-pos" style={`background: ${color2};`}>P{r2.finish}</span>
-      <span class={`hero-change ${posChange(r2.grid, r2.finish).cls}`}>
-        {posChange(r2.grid, r2.finish).arrow}{posChange(r2.grid, r2.finish).text}
-      </span>
+      <span class={pc2.cls}>{pc2.arrow}{pc2.text}</span>
     </div>
   </div>
 </header>
 
 <SubNav basePath={basePath} current="hub" drv1={drv1} drv2={drv2} />
 
-<!-- ===== スコアカード：全比較を統一フォーマットで ===== -->
+<!-- ===== スコアカード ===== -->
 <div class="scorecard">
-
-  <!-- ペース -->
-  {(() => {
-    const [s1, s2] = iconSizes(paceComp.winner, paceComp.intensity);
-    const [o1, o2] = opacities(paceComp.winner, paceComp.intensity);
-    return (
-      <div class="score-row">
-        <div class="score-left" style={`opacity: ${o1};`}>
-          <svg width={s1} height={s1} viewBox="0 0 24 24" fill={color1} opacity="0.9"><circle cx="12" cy="12" r="10"/></svg>
-          <span class="score-val">{pace.drv1.median.toFixed(3)}s</span>
-        </div>
-        <div class="score-label">
-          <span class="score-title">Pace</span>
-          <span class="score-sub">median lap</span>
-        </div>
-        <div class="score-right" style={`opacity: ${o2};`}>
-          <span class="score-val">{pace.drv2.median.toFixed(3)}s</span>
-          <svg width={s2} height={s2} viewBox="0 0 24 24" fill={color2} opacity="0.9"><circle cx="12" cy="12" r="10"/></svg>
-        </div>
+  {allRows.map((row) => (
+    <div class="score-row">
+      <div class="score-side score-left" style={`opacity: ${row.opacity1};`}>
+        <div
+          class="dot"
+          style={`width: ${row.size1}px; height: ${row.size1}px; background: ${color1};`}
+        />
+        <span class="score-val">{row.val1}</span>
       </div>
-    );
-  })()}
 
-  <!-- セクター -->
-  {sectorComps.map(sec => {
-    const [s1, s2] = iconSizes(sec.comp.winner, sec.comp.intensity);
-    const [o1, o2] = opacities(sec.comp.winner, sec.comp.intensity);
-    return (
-      <div class="score-row">
-        <div class="score-left" style={`opacity: ${o1};`}>
-          <svg width={s1} height={s1} viewBox="0 0 24 24" fill={color1} opacity="0.9"><circle cx="12" cy="12" r="10"/></svg>
-          <span class="score-val">{sec.d1Wins} wins</span>
-        </div>
-        <div class="score-label">
-          <span class="score-title">{sec.name}</span>
-          <span class="score-sub" style={`color: ${sec.delta < 0 ? color1 : color2};`}>
-            {sec.delta !== null ? `${sec.delta > 0 ? '+' : ''}${sec.delta.toFixed(3)}s` : ''}
-          </span>
-        </div>
-        <div class="score-right" style={`opacity: ${o2};`}>
-          <span class="score-val">{sec.d2Wins} wins</span>
-          <svg width={s2} height={s2} viewBox="0 0 24 24" fill={color2} opacity="0.9"><circle cx="12" cy="12" r="10"/></svg>
-        </div>
+      <div class="score-center">
+        <span class="score-title">{row.label}</span>
+        <span class="score-sub" style={`color: ${row.subColor};`}>{row.sub}</span>
       </div>
-    );
-  })}
 
-  <!-- スピード -->
-  {speedComps.map(sp => {
-    const [s1, s2] = iconSizes(sp.comp.winner, sp.comp.intensity);
-    const [o1, o2] = opacities(sp.comp.winner, sp.comp.intensity);
-    return (
-      <div class="score-row">
-        <div class="score-left" style={`opacity: ${o1};`}>
-          <svg width={s1} height={s1} viewBox="0 0 24 24" fill={color1} opacity="0.9"><circle cx="12" cy="12" r="10"/></svg>
-          <span class="score-val">{sp.v1} km/h</span>
-        </div>
-        <div class="score-label">
-          <span class="score-title">{sp.label}</span>
-          <span class="score-sub" style={`color: ${sp.delta > 0 ? color1 : color2};`}>
-            {sp.delta !== null ? `${sp.delta > 0 ? '+' : ''}${sp.delta} km/h` : ''}
-          </span>
-        </div>
-        <div class="score-right" style={`opacity: ${o2};`}>
-          <span class="score-val">{sp.v2} km/h</span>
-          <svg width={s2} height={s2} viewBox="0 0 24 24" fill={color2} opacity="0.9"><circle cx="12" cy="12" r="10"/></svg>
-        </div>
+      <div class="score-side score-right" style={`opacity: ${row.opacity2};`}>
+        <span class="score-val">{row.val2}</span>
+        <div
+          class="dot"
+          style={`width: ${row.size2}px; height: ${row.size2}px; background: ${color2};`}
+        />
       </div>
-    );
-  })}
-
-  <!-- クリーンラップ -->
-  {(() => {
-    const [s1, s2] = iconSizes(cleanComp.winner, cleanComp.intensity);
-    const [o1, o2] = opacities(cleanComp.winner, cleanComp.intensity);
-    return (
-      <div class="score-row">
-        <div class="score-left" style={`opacity: ${o1};`}>
-          <svg width={s1} height={s1} viewBox="0 0 24 24" fill={color1} opacity="0.9"><circle cx="12" cy="12" r="10"/></svg>
-          <span class="score-val">{pace.drv1.clean_laps}/{pace.drv1.total_laps}</span>
-        </div>
-        <div class="score-label">
-          <span class="score-title">Clean Laps</span>
-          <span class="score-sub">{Math.round(cleanPct1 * 100)}% vs {Math.round(cleanPct2 * 100)}%</span>
-        </div>
-        <div class="score-right" style={`opacity: ${o2};`}>
-          <span class="score-val">{pace.drv2.clean_laps}/{pace.drv2.total_laps}</span>
-          <svg width={s2} height={s2} viewBox="0 0 24 24" fill={color2} opacity="0.9"><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-      </div>
-    );
-  })()}
-
+    </div>
+  ))}
 </div>
 
 <!-- ===== ストラテジータイムライン ===== -->
@@ -274,7 +225,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   {[
     { drv: drv1, color: color1, stints: analysis.stints.drv1, result: r1 },
     { drv: drv2, color: color2, stints: analysis.stints.drv2, result: r2 },
-  ].map(({ drv, color, stints, result }) => (
+  ].map(({ drv, color, stints }) => (
     <div class="stint-row">
       <span class="stint-drv" style={`color: ${color};`}>{drv}</span>
       <div class="stint-timeline">
@@ -301,7 +252,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   </div>
 </div>
 
-<!-- ===== 詳細分析へ ===== -->
+<!-- ===== 詳細分析ナビ ===== -->
 <h2 class="section-title">Detailed Analysis</h2>
 <div class="nav-cards">
   {subPages.map(page => (
@@ -324,29 +275,37 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
 
   /* ===== ヒーロー ===== */
   .hero {
-    display: flex; align-items: center; justify-content: center; gap: 24px;
-    margin-bottom: 32px; padding: 24px 0;
+    display: flex; align-items: center; justify-content: center; gap: 20px;
+    margin-bottom: 32px; padding: 20px 0;
   }
-  .hero-driver { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 100px; }
+  .hero-driver {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    min-width: 100px; transition: all 0.3s;
+  }
+  .hero-driver.winner .hero-portrait { width: 96px; height: 96px; }
+  .hero-driver.winner .hero-name { font-size: 1.8rem; }
+  .hero-driver.loser .hero-portrait { width: 64px; height: 64px; opacity: 0.6; }
+  .hero-driver.loser .hero-name { font-size: 1.1rem; opacity: 0.6; }
+  .hero-driver:not(.winner):not(.loser) .hero-portrait { width: 80px; height: 80px; }
+  .hero-driver:not(.winner):not(.loser) .hero-name { font-size: 1.5rem; }
+
   .hero-portrait {
     border-radius: 50%; overflow: hidden; border: 3px solid;
-    background: var(--bg-card); transition: all 0.3s;
+    background: var(--bg-card);
   }
-  .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-  .hero-name { font-weight: 800; transition: all 0.3s; }
-  .hero-result { display: flex; align-items: center; gap: 6px; }
+  .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .hero-name { font-weight: 800; }
+  .hero-result { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
   .hero-pos {
-    font-size: 0.85rem; font-weight: 900; color: #fff;
-    padding: 3px 10px; border-radius: 4px;
+    font-weight: 900; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;
   }
-  .hero-change { font-size: 0.75rem; font-weight: 700; }
-  .pos-up { color: #28973e; }
-  .pos-down { color: #ff2d27; }
+  .pos-up { color: #28973e; font-weight: 700; }
+  .pos-down { color: #ff2d27; font-weight: 700; }
   .pos-same { color: var(--text-dim); }
 
   .hero-center { display: flex; flex-direction: column; align-items: center; gap: 2px; }
   .hero-vs { font-size: 1.6rem; font-weight: 900; color: var(--text-dim); letter-spacing: 0.1em; }
-  .hero-gp { font-size: 0.75rem; color: var(--text-dim); }
+  .hero-gp { font-size: 0.7rem; color: var(--text-dim); }
   .hero-gp-name { font-size: 0.85rem; color: var(--text-dim); font-weight: 600; }
 
   /* ===== スコアカード ===== */
@@ -354,41 +313,51 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
     background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
     overflow: hidden; margin-bottom: 32px;
   }
+
   .score-row {
-    display: flex; align-items: center; padding: 14px 20px;
+    display: flex; align-items: center; padding: 12px 20px;
     border-bottom: 1px solid var(--border);
   }
   .score-row:last-child { border-bottom: none; }
-  .score-row:hover { background: var(--bg-card-hover); }
 
-  .score-left {
+  .score-side {
     flex: 1; display: flex; align-items: center; gap: 10px;
     transition: opacity 0.3s;
   }
-  .score-right {
-    flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 10px;
-    transition: opacity 0.3s;
-  }
-  .score-val {
-    font-size: 0.85rem; font-family: 'SF Mono', 'Fira Code', monospace;
-    color: var(--text);
+  .score-left { justify-content: flex-start; }
+  .score-right { justify-content: flex-end; }
+
+  .dot {
+    border-radius: 50%; flex-shrink: 0;
+    /* サイズはinline styleで制御 */
   }
 
-  .score-label {
-    min-width: 100px; text-align: center; display: flex; flex-direction: column; gap: 1px;
+  .score-val {
+    font-size: 0.82rem; font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--text); white-space: nowrap;
   }
-  .score-title { font-size: 0.8rem; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.04em; }
-  .score-sub { font-size: 0.7rem; font-weight: 600; }
+
+  .score-center {
+    min-width: 110px; text-align: center; display: flex; flex-direction: column;
+    gap: 1px; flex-shrink: 0;
+  }
+  .score-title {
+    font-size: 0.78rem; font-weight: 700; color: var(--text);
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .score-sub { font-size: 0.68rem; font-weight: 700; }
 
   /* ===== ストラテジー ===== */
-  .section-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-
+  .section-title {
+    font-size: 1.2rem; font-weight: 700; margin-bottom: 16px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
   .strategy-section { margin-bottom: 32px; }
   .stint-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
   .stint-drv { font-weight: 700; font-size: 0.85rem; min-width: 36px; text-align: center; }
   .stint-timeline {
     flex: 1; height: 28px; display: flex; border-radius: 4px;
-    overflow: hidden; position: relative; gap: 2px;
+    overflow: hidden; gap: 2px;
   }
   .stint-block {
     display: flex; align-items: center; justify-content: center;
@@ -419,7 +388,10 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   @media (max-width: 640px) {
     .hero { gap: 12px; }
     .hero-driver { min-width: 70px; }
-    .score-label { min-width: 70px; }
-    .score-val { font-size: 0.75rem; }
+    .hero-driver.winner .hero-portrait { width: 76px; height: 76px; }
+    .hero-driver.loser .hero-portrait { width: 52px; height: 52px; }
+    .score-center { min-width: 80px; }
+    .score-val { font-size: 0.72rem; }
+    .score-row { padding: 10px 12px; }
   }
 </style>

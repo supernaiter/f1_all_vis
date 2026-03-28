@@ -193,7 +193,8 @@ def main():
         q = q_results[drv]
         b = best_laps.get(drv, {})
         t = b.get('best_time', '-')
-        print(f"  P{q.get('position', '?'):>2} {drv:>3}  {t}")
+        pos = q.get('position') or '?'
+        print(f"  P{str(pos):>2} {drv:>3}  {t}")
 
     # 各H2Hペアのanalysis.jsonを更新
     updated = 0

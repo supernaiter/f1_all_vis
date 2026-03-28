@@ -3,7 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import SubNav from '../../../components/SubNav.astro';
 import ChartGuide from '../../../components/ChartGuide.astro';
 import InsightBox from '../../../components/InsightBox.astro';
-import { getH2HStaticPaths, loadH2HAnalysis, TEAM_COLORS } from '../../../lib/data';
+import { getH2HStaticPaths, loadH2HAnalysis, TEAM_COLORS, DRIVER_HEADSHOTS } from '../../../lib/data';
 import { stintInsight } from '../../../lib/insights';
 
 export function getStaticPaths() { return getH2HStaticPaths(); }
@@ -12,61 +12,252 @@ const { dirName, pairDir } = Astro.props;
 const analysis = loadH2HAnalysis(dirName, pairDir);
 if (!analysis) return Astro.redirect('/');
 
-const { meta, seo } = analysis;
+const { meta, stints, degradation, seo } = analysis;
 const drv1 = meta.driver1, drv2 = meta.driver2;
 const color1 = TEAM_COLORS[meta.team1] || '#999';
 const color2 = TEAM_COLORS[meta.team2] || '#999';
+const totalLaps = meta.total_laps;
 const basePath = `/h2h/${meta.year}-r${String(meta.round).padStart(2, '0')}-${meta.gp_name.toLowerCase()}/${drv1.toLowerCase()}-vs-${drv2.toLowerCase()}/`;
 
 const insight = stintInsight(analysis);
 
+// ヘッドショット
+const face1 = DRIVER_HEADSHOTS[drv1] || '';
+const face2 = DRIVER_HEADSHOTS[drv2] || '';
+
+// タイヤカラー
+const TYRE_COLORS: Record<string, string> = {
+  SOFT: '#FF3333', MEDIUM: '#FFD700', HARD: '#FFFFFF',
+  INTERMEDIATE: '#39B54A', WET: '#0072CE',
+};
+
+// --- デグラデーション勝者判定 ---
+// 同一コンパウンドのfuel_corrected_degを比較。小さい（=デグが少ない）方が勝ち
+const d1 = (degradation.drv1 || []) as any[];
+const d2 = (degradation.drv2 || []) as any[];
+
+let degWins1 = 0, degWins2 = 0;
+for (const deg1 of d1) {
+  const match = d2.find((d: any) => d.compound === deg1.compound);
+  if (match) {
+    const fc1 = Math.abs(deg1.fuel_corrected_deg);
+    const fc2 = Math.abs(match.fuel_corrected_deg);
+    if (fc1 < fc2) degWins1++;
+    else if (fc2 < fc1) degWins2++;
+  }
+}
+const degWinner = degWins1 > degWins2 ? 1 : degWins2 > degWins1 ? 2 : 0;
+
+// --- スコアカード行データ ---
+interface ScoreRow {
+  label: string;
+  sub: string;
+  subColor: string;
+  val1: string;
+  val2: string;
+  scale1: number;
+  scale2: number;
+  opacity1: number;
+  opacity2: number;
+  fontSize1: number;
+  fontSize2: number;
+}
+
+function makeRow(
+  label: string, sub: string, subColor: string,
+  val1: string, val2: string,
+  v1: number, v2: number, maxDelta: number, lowerIsBetter: boolean
+): ScoreRow {
+  const diff = v1 - v2;
+  const intensity = Math.min(Math.abs(diff) / maxDelta, 1);
+  const winner = lowerIsBetter
+    ? (diff < 0 ? 1 : diff > 0 ? 2 : 0)
+    : (diff > 0 ? 1 : diff < 0 ? 2 : 0);
+
+  const winScale = 0.6 + intensity * 0.4;
+  const loseScale = 0.6 - intensity * 0.35;
+  const drawScale = 0.5;
+
+  const winOpacity = 1;
+  const loseOpacity = 0.7 - intensity * 0.35;
+
+  const winFont = 0.85 + intensity * 0.25;
+  const loseFont = 0.85 - intensity * 0.15;
+
+  return {
+    label, sub, subColor, val1, val2,
+    scale1: winner === 1 ? winScale : winner === 2 ? loseScale : drawScale,
+    scale2: winner === 2 ? winScale : winner === 1 ? loseScale : drawScale,
+    opacity1: winner === 2 ? loseOpacity : winOpacity,
+    opacity2: winner === 1 ? loseOpacity : winOpacity,
+    fontSize1: winner === 1 ? winFont : winner === 2 ? loseFont : 0.85,
+    fontSize2: winner === 2 ? winFont : winner === 1 ? loseFont : 0.85,
+  };
+}
+
+// デグラデーション比較行（同一コンパウンドのみ）
+const degRows: ScoreRow[] = [];
+for (const deg1 of d1) {
+  const match = d2.find((d: any) => d.compound === deg1.compound);
+  if (match) {
+    const fc1 = Math.abs(deg1.fuel_corrected_deg);
+    const fc2 = Math.abs(match.fuel_corrected_deg);
+    const delta = Math.abs(fc1 - fc2);
+    const better = fc1 < fc2 ? drv1 : fc2 < fc1 ? drv2 : '';
+    const subText = delta < 0.005
+      ? 'Even'
+      : `${better} -${delta.toFixed(3)}s/lap`;
+    const subClr = delta < 0.005
+      ? 'var(--text-dim)'
+      : (fc1 < fc2 ? color1 : color2);
+
+    degRows.push(makeRow(
+      deg1.compound,
+      subText,
+      subClr,
+      `${fc1.toFixed(3)}s/lap`,
+      `${fc2.toFixed(3)}s/lap`,
+      fc1, fc2, 0.15, true
+    ));
+  }
+}
+
+// チャート用データ（既存ロジック維持）
 const chartData = {
   stints: analysis.per_lap.stints,
   meta: { driver1: drv1, driver2: drv2 },
   color1, color2,
   degradation: analysis.degradation,
 };
+
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline: seo.title, description: seo.description, keywords: seo.keywords.join(', ') };
 ---
 
-<Base title={`${drv1} vs ${drv2} スティント分析 — ${meta.year} ${meta.gp_name}GP`} description={seo.description} keywords={seo.keywords}>
+<Base title={`${drv1} vs ${drv2} Stints — ${meta.year} ${meta.gp_name}GP`} description={seo.description} keywords={seo.keywords}>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
 <nav class="breadcrumb">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
   <a href="/">Home</a> &rsaquo;
   <a href={basePath}>{drv1} vs {drv2}</a> &rsaquo;
   <span>Stints</span>
 </nav>
 
-<header class="page-header">
-  <h1>
-    <span style={`color: ${color1};`}>{drv1}</span>
-    <span class="vs">vs</span>
-    <span style={`color: ${color2};`}>{drv2}</span>
-    <span class="page-type">Stints</span>
-  </h1>
-  <p class="subtitle">{meta.year} R{String(meta.round).padStart(2, '0')} {meta.gp_name} GP</p>
+<!-- ===== ヒーロー ===== -->
+<header class="hero">
+  <div class={`hero-driver ${degWinner === 1 ? 'winner' : degWinner === 2 ? 'loser' : ''}`}>
+    <div class="hero-portrait" style={`border-color: ${color1};`}>
+      {face1 && <img src={face1} alt={drv1} />}
+    </div>
+    <span class="hero-name" style={`color: ${color1};`}>{drv1}</span>
+    <div class="hero-result">
+      <span class="hero-stat">{stints.drv1.length} stints</span>
+    </div>
+  </div>
+
+  <div class="hero-center">
+    <span class="hero-vs">VS</span>
+    <span class="hero-gp">{meta.year} R{String(meta.round).padStart(2, '0')}</span>
+    <span class="hero-gp-name">{meta.gp_name} GP</span>
+    <span class="hero-page-type">Stints</span>
+  </div>
+
+  <div class={`hero-driver ${degWinner === 2 ? 'winner' : degWinner === 1 ? 'loser' : ''}`}>
+    <div class="hero-portrait" style={`border-color: ${color2};`}>
+      {face2 && <img src={face2} alt={drv2} />}
+    </div>
+    <span class="hero-name" style={`color: ${color2};`}>{drv2}</span>
+    <div class="hero-result">
+      <span class="hero-stat">{stints.drv2.length} stints</span>
+    </div>
+  </div>
 </header>
 
 <SubNav basePath={basePath} current="stints" drv1={drv1} drv2={drv2} />
 
-<ChartGuide text="横軸はタイヤ使用周回数、縦軸はラップタイム。点の色=タイヤ種別。直線の傾きがデグラデーション（急なほどタイヤが厳しい）。上段と下段でドライバーを比較。" />
+<!-- ===== ストラテジータイムライン ===== -->
+<div class="strategy-section">
+  <h2 class="section-title">Strategy</h2>
+  {[
+    { drv: drv1, color: color1, drvStints: stints.drv1 },
+    { drv: drv2, color: color2, drvStints: stints.drv2 },
+  ].map(({ drv, color, drvStints }) => (
+    <div class="stint-row">
+      <span class="stint-drv" style={`color: ${color};`}>{drv}</span>
+      <div class="stint-timeline">
+        {(drvStints as any[]).map((s: any) => {
+          const widthPct = (s.total_laps / totalLaps) * 100;
+          const tyreColor = TYRE_COLORS[s.compound] || '#999';
+          return (
+            <div
+              class="stint-block"
+              style={`width: ${widthPct}%; background: ${tyreColor}; color: ${s.compound === 'HARD' ? '#15151e' : '#fff'};`}
+              title={`${s.compound} ${s.total_laps}laps`}
+            >
+              <span class="stint-label">{s.compound.charAt(0)}{s.total_laps}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  ))}
+  <div class="stint-axis">
+    <span>L1</span>
+    <span>L{Math.round(totalLaps / 2)}</span>
+    <span>L{totalLaps}</span>
+  </div>
+</div>
+
+<!-- ===== デグラデーション比較サマリーカード ===== -->
+{degRows.length > 0 && (
+  <div class="deg-section">
+    <h2 class="section-title">Degradation</h2>
+    <div class="scorecard">
+      {degRows.map((row) => (
+        <div class="score-row" style={`--s1: ${row.scale1}; --s2: ${row.scale2}; --o1: ${row.opacity1}; --o2: ${row.opacity2}; --fs1: ${row.fontSize1}rem; --fs2: ${row.fontSize2}rem;`}>
+          <div class="score-side score-left">
+            <div class="face-dot face-dot-1" style={`border-color: ${color1};`}>
+              {face1 && <img src={face1} alt={drv1} />}
+            </div>
+            <span class="score-val score-val-1">{row.val1}</span>
+          </div>
+
+          <div class="score-center">
+            <span class="score-title">{row.label}</span>
+            <span class="score-sub" style={`color: ${row.subColor};`}>{row.sub}</span>
+          </div>
+
+          <div class="score-side score-right">
+            <span class="score-val score-val-2">{row.val2}</span>
+            <div class="face-dot face-dot-2" style={`border-color: ${color2};`}>
+              {face2 && <img src={face2} alt={drv2} />}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+<ChartGuide text={`横軸はタイヤ使用周回数、縦軸はラップタイム。点の色=タイヤ種別。直線の傾きがデグラデーション（急なほどタイヤが厳しい）。上段と下段でドライバーを比較。`} />
 
 <InsightBox text={insight} />
 
 <h3 class="drv-label" style={`color: ${color1};`}>{drv1}</h3>
-<div id="chart-drv1" style="width:100%;height:350px;"></div>
+<div id="chart-drv1" class="chart-container"></div>
 
 <h3 class="drv-label" style={`color: ${color2}; margin-top:24px;`}>{drv2}</h3>
-<div id="chart-drv2" style="width:100%;height:350px;"></div>
+<div id="chart-drv2" class="chart-container"></div>
 
 <script type="application/json" id="chart-data" set:html={JSON.stringify(chartData)} />
 
 <script>
   import * as echarts from 'echarts/core';
   import { ScatterChart, LineChart } from 'echarts/charts';
-  import { GridComponent, TooltipComponent, LegendComponent, MarkLineComponent } from 'echarts/components';
+  import { GridComponent, TooltipComponent, LegendComponent, MarkLineComponent, DataZoomComponent } from 'echarts/components';
   import { CanvasRenderer } from 'echarts/renderers';
 
-  echarts.use([ScatterChart, LineChart, GridComponent, TooltipComponent, LegendComponent, MarkLineComponent, CanvasRenderer]);
+  echarts.use([ScatterChart, LineChart, GridComponent, TooltipComponent, LegendComponent, MarkLineComponent, DataZoomComponent, CanvasRenderer]);
 
   const data = JSON.parse(document.getElementById('chart-data')!.textContent!);
   const { stints, meta, color1, color2 } = data;
@@ -74,6 +265,11 @@ const chartData = {
   const COMPOUND_COLORS: Record<string, string> = {
     SOFT: '#FF3333', MEDIUM: '#FFD700', HARD: '#FFFFFF',
     INTERMEDIATE: '#39B54A', WET: '#0072CE',
+  };
+
+  const themeBase = {
+    textStyle: { color: '#aaaaaa', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
+    tooltip: { backgroundColor: '#1c1c25', borderColor: '#303037', borderWidth: 1, textStyle: { color: '#fff', fontSize: 13 } },
   };
 
   function buildStintChart(el: HTMLElement, drvStints: any[], drvColor: string, drvName: string) {
@@ -112,9 +308,9 @@ const chartData = {
     }
 
     chart.setOption({
-      textStyle: { color: '#aaaaaa', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
+      ...themeBase,
       tooltip: {
-        backgroundColor: '#1c1c25', borderColor: '#303037', borderWidth: 1, textStyle: { color: '#fff', fontSize: 13 },
+        ...themeBase.tooltip,
         trigger: 'item',
         formatter: (params: any) => {
           if (params.componentSubType === 'line') return '';
@@ -127,7 +323,7 @@ const chartData = {
         textStyle: { color: '#aaaaaa' },
         top: 0,
       },
-      grid: { left: 60, right: 20, top: 35, bottom: 40 },
+      grid: { left: '8%', right: 20, top: 35, bottom: 50 },
       xAxis: {
         type: 'value',
         name: 'Tyre Life (laps)',
@@ -146,6 +342,7 @@ const chartData = {
         axisLabel: { color: '#aaaaaa', formatter: (v: number) => v.toFixed(1) },
         splitLine: { lineStyle: { color: '#303037', type: 'dashed' } },
       },
+      dataZoom: [{ type: 'inside', xAxisIndex: 0 }],
       series,
     });
 
@@ -163,12 +360,143 @@ const chartData = {
 </Base>
 
 <style>
-  .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px; display: flex; align-items: center; gap: 6px; }
   .breadcrumb a { color: var(--text-dim); }
-  .page-header { margin-bottom: 24px; }
-  .page-header h1 { font-size: 2rem; font-weight: 800; display: flex; align-items: baseline; gap: 12px; }
-  .vs { color: var(--text-dim); font-size: 1rem; font-weight: 400; }
-  .page-type { font-size: 1rem; font-weight: 400; color: var(--accent); background: rgba(225,6,0,0.1); padding: 2px 10px; border-radius: 4px; }
-  .subtitle { color: var(--text-dim); font-size: 0.95rem; margin-top: 4px; }
+
+  /* ===== ヒーロー ===== */
+  .hero {
+    display: flex; align-items: center; justify-content: center; gap: 20px;
+    margin-bottom: 24px; padding: 12px 0;
+  }
+  .hero-driver {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    min-width: 80px; transition: all 0.3s;
+  }
+  .hero-driver.winner .hero-portrait { width: 56px; height: 56px; }
+  .hero-driver.winner .hero-name { font-size: 1.3rem; }
+  .hero-driver.loser .hero-portrait { width: 44px; height: 44px; opacity: 0.6; }
+  .hero-driver.loser .hero-name { font-size: 1rem; opacity: 0.6; }
+  .hero-driver:not(.winner):not(.loser) .hero-portrait { width: 48px; height: 48px; }
+  .hero-driver:not(.winner):not(.loser) .hero-name { font-size: 1.15rem; }
+
+  .hero-portrait {
+    border-radius: 50%; overflow: hidden; border: 3px solid;
+    background: var(--bg-card);
+  }
+  .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .hero-name { font-weight: 800; }
+  .hero-result { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
+  .hero-stat {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.8rem; color: var(--text-dim); font-weight: 600;
+  }
+
+  .hero-center { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .hero-vs { font-size: 1.2rem; font-weight: 900; color: var(--text-dim); letter-spacing: 0.1em; }
+  .hero-gp { font-size: 0.7rem; color: var(--text-dim); }
+  .hero-gp-name { font-size: 0.85rem; color: var(--text-dim); font-weight: 600; }
+  .hero-page-type {
+    font-size: 0.75rem; font-weight: 600; color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    padding: 1px 8px; border-radius: 4px; margin-top: 2px;
+  }
+
+  /* ===== ストラテジー ===== */
+  .section-title {
+    font-size: 1.2rem; font-weight: 700; margin-bottom: 16px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+  .strategy-section { margin-bottom: 32px; }
+  .stint-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .stint-drv { font-weight: 700; font-size: 0.85rem; min-width: 36px; text-align: center; }
+  .stint-timeline {
+    flex: 1; height: 28px; display: flex; border-radius: 4px;
+    overflow: hidden; gap: 2px;
+  }
+  .stint-block {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700; border-radius: 3px;
+  }
+  .stint-label { white-space: nowrap; }
+  .stint-axis {
+    display: flex; justify-content: space-between; margin-top: 4px; margin-left: 48px;
+    font-size: 0.65rem; color: var(--text-dim);
+  }
+
+  /* ===== デグラデーション比較カード ===== */
+  .deg-section { margin-bottom: 32px; }
+  .scorecard {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; margin-bottom: 24px;
+  }
+
+  .score-row {
+    display: flex; align-items: center; padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    --face-base: clamp(28px, 6vw, 44px);
+  }
+  .score-row:last-child { border-bottom: none; }
+
+  .score-side {
+    flex: 1; display: flex; align-items: center; gap: clamp(6px, 1.5vw, 12px);
+  }
+  .score-left { justify-content: flex-start; opacity: var(--o1); }
+  .score-right { justify-content: flex-end; opacity: var(--o2); }
+
+  .face-dot {
+    border-radius: 50%; flex-shrink: 0; overflow: hidden;
+    border: 2px solid; background: var(--bg-card-hover);
+    transition: all 0.3s ease;
+  }
+  .face-dot-1 {
+    width: calc(var(--face-base) * var(--s1));
+    height: calc(var(--face-base) * var(--s1));
+  }
+  .face-dot-2 {
+    width: calc(var(--face-base) * var(--s2));
+    height: calc(var(--face-base) * var(--s2));
+  }
+  .face-dot img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    display: block;
+  }
+
+  .score-val {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--text); white-space: nowrap;
+    transition: font-size 0.3s;
+  }
+  .score-val-1 { font-size: var(--fs1); font-weight: calc(400 + var(--s1) * 400); }
+  .score-val-2 { font-size: var(--fs2); font-weight: calc(400 + var(--s2) * 400); }
+
+  .score-center {
+    min-width: clamp(70px, 12vw, 110px); text-align: center;
+    display: flex; flex-direction: column; gap: 1px; flex-shrink: 0;
+  }
+  .score-title {
+    font-size: clamp(0.65rem, 1.5vw, 0.8rem); font-weight: 700; color: var(--text);
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .score-sub { font-size: clamp(0.58rem, 1.2vw, 0.7rem); font-weight: 700; }
+
+  /* ===== チャート ===== */
+  .chart-container {
+    width: 100%;
+    height: clamp(280px, 40vw, 400px);
+    aspect-ratio: 16 / 9;
+  }
   .drv-label { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+
+  /* ===== レスポンシブ ===== */
+  @media (max-width: 640px) {
+    .hero { gap: 10px; padding: 8px 0; }
+    .hero-driver { min-width: 60px; }
+    .hero-driver.winner .hero-portrait { width: 44px; height: 44px; }
+    .hero-driver.winner .hero-name { font-size: 1.1rem; }
+    .hero-driver.loser .hero-portrait { width: 32px; height: 32px; }
+    .hero-driver.loser .hero-name { font-size: 0.85rem; }
+    .hero-vs { font-size: 1rem; }
+
+    .score-row { padding: 10px 12px; --face-base: 32px; }
+  }
 </style>

@@ -13,3 +13,5 @@
 2026-03-28|カラーシステム|F1公式デザイントークンに移行|formula1.comのCSSから抽出。--bg:#15151e, --bg-card:#1c1c25, --accent:#e10600(F1Red), --text:#ffffff, --border:#303037|echarts-theme.ts+全ページのハードコード色も同時更新。チームカラー(TEAM_COLORS)は変更なし
 2026-03-28|比較UI方針|アイコン(顔)の大小+透明度で勝敗を表現|文章を読まなくても直感的にわかるデザイン。バーチャートやテーブルより「前注意的処理」で速い|差の大きさ(magnitude)は補助テキストで補完する2層構造
 2026-03-28|ドライバー画像|F1公式CDN(media.formula1.com)のCloudinary URLを一時利用|c_thumb,g_face,w_440,h_440で顔フォーカスクロップ。開発用・デプロイ時は自前アセットに置き換え要|DRIVER_HEADSHOTSマッピングをdata.tsに定義
+2026-03-28|UI改善手法|Generator+Evaluatorハーネス（GAN風）採用|Anthropicブログのパターン。自己評価バイアスを排除し5軸の具体的基準で反復改善。sectors/speed/stintsはR1 FAILからR2でPASS|スキルはプロジェクトローカル(.claude/skills/)に配置。グローバルにF1固有スキルを置かない
+2026-03-28|Evaluator基準|5軸: Visual Consistency/Hub-Page Parity/Chart Quality/Data Integrity/Mobile|加重スコア>=2.5でPASS、軸0=自動FAIL。主な減点パターン: DataZoom欠落、themeBase未抽出、json-ld欠落、face-dot背景色不一致|基準は.claude/skills/f1-ui-evaluate/SKILL.mdに定義

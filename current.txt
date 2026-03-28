@@ -4,17 +4,15 @@ updated: 2026-03-28
 goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 
 [STATUS]
-- ECharts移行完了: matplotlib PNG → インタラクティブJS チャート
-- ワンページワンアイデア: 1ペア5ページ（hub/pace/sectors/speed/stints）
-- 451ページ静的ビルド済（R01 45ペア + R02 45ペア × 5ページ + index）
-- 自動インサイト + チャートガイド実装済
-- R03鈴鹿FP1/FP2データ取得済（FastF1 via uv run）
-- R03鈴鹿FP予選シミュ+ロングラン分析HTML生成済（ブラウザ確認待ち）
+- Hub(Overview)ページのデザインリファクタリング中
+- F1公式デザイントークンに移行済（カラー全体）
+- スコアカード：顔アイコンの大小+透明度で勝敗を直感表示する方式を実装済
+- Strategy（タイヤタイムライン）は完成・ユーザー承認済
+- 残り4ページ（pace/sectors/speed/stints）はまだ旧カラーのチャート色は更新済だがUIリファクタリング未着手
 
 [次のアクション]
-- ブラウザでEChartsサイト(localhost:4322)の表示確認・フィードバック対応
-- R03鈴鹿レース後: uv run --with fastf1 python export_race_data.py 2026 Japan 3 → h2h_engine.py → site build
-- デプロイ（Cloudflare Pages直接アップロード）
-- index.astroのstats更新
-- FP分析をAstroサイトに統合するか検討
-- copy-charts.mjs不要化（EChartsで完結）
+- Hubページの微調整（ユーザーフィードバック待ち）
+- pace/sectors/speed/stintsページの直感的UI改善（Hubと同じ方針で）
+- ブラウザでの全ページ最終確認
+- R03鈴鹿レース後パイプライン実行（2026-03-29）
+- Cloudflare Pagesデプロイ

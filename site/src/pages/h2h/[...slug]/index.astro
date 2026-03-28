@@ -209,15 +209,12 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
 <!-- ===== スコアカード ===== -->
 <div class="scorecard">
   {allRows.map((row) => (
-    <div class="score-row">
-      <div class="score-side score-left" style={`opacity: ${row.opacity1};`}>
-        <div
-          class="face-dot"
-          style={`width: ${row.size1}px; height: ${row.size1}px; border-color: ${color1};`}
-        >
+    <div class="score-row" style={`--s1: ${row.scale1}; --s2: ${row.scale2}; --o1: ${row.opacity1}; --o2: ${row.opacity2}; --fs1: ${row.fontSize1}rem; --fs2: ${row.fontSize2}rem;`}>
+      <div class="score-side score-left">
+        <div class="face-dot face-dot-1" style={`border-color: ${color1};`}>
           {face1 && <img src={face1} alt={drv1} />}
         </div>
-        <span class="score-val">{row.val1}</span>
+        <span class="score-val score-val-1">{row.val1}</span>
       </div>
 
       <div class="score-center">
@@ -225,12 +222,9 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
         <span class="score-sub" style={`color: ${row.subColor};`}>{row.sub}</span>
       </div>
 
-      <div class="score-side score-right" style={`opacity: ${row.opacity2};`}>
-        <span class="score-val">{row.val2}</span>
-        <div
-          class="face-dot"
-          style={`width: ${row.size2}px; height: ${row.size2}px; border-color: ${color2};`}
-        >
+      <div class="score-side score-right">
+        <span class="score-val score-val-2">{row.val2}</span>
+        <div class="face-dot face-dot-2" style={`border-color: ${color2};`}>
           {face2 && <img src={face2} alt={drv2} />}
         </div>
       </div>

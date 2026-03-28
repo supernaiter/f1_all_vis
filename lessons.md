@@ -24,3 +24,12 @@
 - getStaticPaths()はgetH2HStaticPaths()ヘルパーで5ページ共通化
 - define:varsはモジュールscriptで使えない→script type="application/json"でデータ受け渡し
 - site/dist/にビルド出力。npx astro previewでローカル確認
+- AstroテンプレートでSVGに動的width/height属性を渡すと壊れる場合がある→CSS custom propertiesかdivのinline styleで制御する方が安全
+- IIFE `{(() => { ... })()}` パターンはAstroで問題が起きやすい→frontmatterで事前計算してmapで回す
+
+## デザイン
+- F1公式カラー: bg=#15151e, card=#1c1c25, accent=#e10600, text=#ffffff, dim=#aaaaaa, border=#303037
+- チームメイト比較ではチームカラーのドットだと区別不可→顔アイコン必須
+- 比較の直感表現: アイコンの大小+透明度で勝敗、数字は補助（2層構造）
+- ドライバー画像: CDNのc_thumb,g_face で顔クロップ。c_lfillだと全身になる
+- サイズの動的変化はCSS custom properties (--s1, --s2等) + calc() + clamp()で実装。viewport連動でモバイル自動対応

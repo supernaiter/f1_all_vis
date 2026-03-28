@@ -8,11 +8,12 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
 - F1公式デザイントークンに移行済（カラー全体）
 - スコアカード：顔アイコンの大小+透明度で勝敗を直感表示する方式を実装済
 - Strategy（タイヤタイムライン）は完成・ユーザー承認済
-- 残り4ページ（pace/sectors/speed/stints）はまだ旧カラーのチャート色は更新済だがUIリファクタリング未着手
+- pace: Hub準拠UIリファクタリング済（ヒーロー/スコアカード/DataZoom/themeBase）
+- stints: Hub準拠UIリファクタリング済（ヒーロー/ストラテジータイムライン/デグ比較カード/DataZoom/themeBase/json-ld）
+- 残り2ページ（sectors/speed）はUIリファクタリング未着手
 
 [次のアクション]
-- Hubページの微調整（ユーザーフィードバック待ち）
-- pace/sectors/speed/stintsページの直感的UI改善（Hubと同じ方針で）
+- sectors/speedページの直感的UI改善（Hubと同じ方針で）
 - ブラウザでの全ページ最終確認
 - R03鈴鹿レース後パイプライン実行（2026-03-29）
 - Cloudflare Pagesデプロイ

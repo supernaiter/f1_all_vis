@@ -2,36 +2,36 @@
  * ECharts F1ダークテーマ — サイトCSS変数に合わせた配色
  */
 export const F1_DARK_THEME = {
-  color: ['#00B89F', '#DC0000', '#3BA3E0', '#FFD700', '#FF3333', '#7A7A7A'],
+  color: ['#e10600', '#28973e', '#3BA3E0', '#FFD700', '#FF3333', '#7A7A7A'],
   backgroundColor: 'transparent',
   textStyle: {
-    color: '#EEEEEE',
+    color: '#ffffff',
     fontFamily: 'Hiragino Sans, Yu Gothic, system-ui, sans-serif',
   },
   title: {
-    textStyle: { color: '#EEEEEE', fontWeight: 'bold' },
-    subtextStyle: { color: '#8899AA' },
+    textStyle: { color: '#ffffff', fontWeight: 'bold' },
+    subtextStyle: { color: '#aaaaaa' },
   },
   legend: {
-    textStyle: { color: '#8899AA' },
+    textStyle: { color: '#aaaaaa' },
   },
   tooltip: {
-    backgroundColor: '#1a1a2e',
-    borderColor: '#333355',
+    backgroundColor: '#1c1c25',
+    borderColor: '#303037',
     borderWidth: 1,
-    textStyle: { color: '#EEEEEE', fontSize: 13 },
+    textStyle: { color: '#ffffff', fontSize: 13 },
   },
   xAxis: {
-    axisLine: { lineStyle: { color: '#333355' } },
-    axisLabel: { color: '#8899AA' },
-    splitLine: { lineStyle: { color: '#333355', type: 'dashed' as const } },
-    axisTick: { lineStyle: { color: '#333355' } },
+    axisLine: { lineStyle: { color: '#303037' } },
+    axisLabel: { color: '#aaaaaa' },
+    splitLine: { lineStyle: { color: '#303037', type: 'dashed' as const } },
+    axisTick: { lineStyle: { color: '#303037' } },
   },
   yAxis: {
-    axisLine: { lineStyle: { color: '#333355' } },
-    axisLabel: { color: '#8899AA' },
-    splitLine: { lineStyle: { color: '#333355', type: 'dashed' as const } },
-    axisTick: { lineStyle: { color: '#333355' } },
+    axisLine: { lineStyle: { color: '#303037' } },
+    axisLabel: { color: '#aaaaaa' },
+    splitLine: { lineStyle: { color: '#303037', type: 'dashed' as const } },
+    axisTick: { lineStyle: { color: '#303037' } },
   },
 };
 

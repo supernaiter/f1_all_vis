@@ -128,19 +128,7 @@ const speedRows = (Object.entries(speed) as [string, any][]).map(([label, data])
   );
 });
 
-// クリーンラップ
-const cl1 = pace.drv1.total_laps > 0 ? pace.drv1.clean_laps / pace.drv1.total_laps : 0;
-const cl2 = pace.drv2.total_laps > 0 ? pace.drv2.clean_laps / pace.drv2.total_laps : 0;
-const cleanRow = makeRow(
-  'Clean Laps',
-  `${Math.round(cl1 * 100)}% vs ${Math.round(cl2 * 100)}%`,
-  cl1 > cl2 ? color1 : color2,
-  `${pace.drv1.clean_laps}/${pace.drv1.total_laps}`,
-  `${pace.drv2.clean_laps}/${pace.drv2.total_laps}`,
-  cl1, cl2, 0.3, false
-);
-
-const allRows = [paceRow, ...sectorRows, ...speedRows, cleanRow];
+const allRows = [paceRow, ...sectorRows, ...speedRows];
 
 // スコアカード用の顔画像URL
 const face1 = DRIVER_HEADSHOTS[drv1] || '';

@@ -4,17 +4,14 @@ updated: 2026-03-28
 goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 
 [STATUS]
-- Hub(Overview)ページのデザインリファクタリング完了・承認済
-- F1公式デザイントークンに移行済（カラー全体）
-- スコアカード：顔アイコンの大小+透明度で勝敗を直感表示する方式を実装済
-- Strategy（タイヤタイムライン）は完成・ユーザー承認済
-- pace/sectors/speed/stints 4ページのUIリファクタリング完了
-  - Generator+Evaluatorハーネスで反復改善（全ページPASS）
-  - pace: R1 PASS 2.65, sectors: R2 PASS 2.70, speed: R2 PASS 2.50, stints: R2 PASS 2.70
-- f1-ui-harness/f1-ui-generate/f1-ui-evaluateスキルをプロジェクト.claude/skills/に作成
+- 全5ページ（hub/pace/sectors/speed/stints）のUIリファクタリング完了
+- Generator+Evaluatorハーネスで4サブページを反復改善→全PASS
+- ハーネススキル3つをプロジェクト.claude/skills/に作成済
+- ビルド成功（451ページ）、プレビューサーバー動作確認済
+- ブラウザでの最終目視確認はユーザー未実施
 
 [次のアクション]
-- ブラウザでの全ページ最終確認（npx astro preview）
-- pace.astroの軽微な改善（accent色ハードコード、チャート固定高さ）
+- ブラウザで全ページ最終確認（http://localhost:4321）
+- pace.astroの軽微改善（accent色ハードコード rgba(225,6,0,0.1) → color-mix）
 - R03鈴鹿レース後パイプライン実行（2026-03-29）
 - Cloudflare Pagesデプロイ

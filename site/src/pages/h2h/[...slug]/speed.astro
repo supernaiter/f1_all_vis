@@ -20,6 +20,9 @@ const basePath = `/h2h/${meta.year}-r${String(meta.round).padStart(2, '0')}-${me
 
 const insight = speedInsight(analysis);
 
+// --- JSON-LD 構造化データ ---
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline: seo.title, description: seo.description, keywords: seo.keywords.join(', ') };
+
 // --- ヒーロー: スピードトラップ（ST）のdelta_kmhで勝者判定 ---
 const stData = speed['ST'];
 const speedWinner = stData?.delta_kmh > 0 ? 1 : stData?.delta_kmh < 0 ? 2 : 0;

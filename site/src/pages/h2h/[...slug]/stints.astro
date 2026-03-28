@@ -417,7 +417,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
     display: flex; align-items: center; justify-content: center;
     font-size: 0.7rem; font-weight: 700; border-radius: 3px;
   }
-  .stint-label { white-space: nowrap; }
+  .stint-label { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
   .stint-axis {
     display: flex; justify-content: space-between; margin-top: 4px; margin-left: 48px;
     font-size: 0.65rem; color: var(--text-dim);
@@ -482,8 +482,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   /* ===== チャート ===== */
   .chart-container {
     width: 100%;
-    height: clamp(280px, 40vw, 400px);
-    aspect-ratio: 16 / 9;
+    height: clamp(280px, 45vw, 380px);
   }
   .drv-label { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
 

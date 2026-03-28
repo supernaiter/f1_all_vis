@@ -315,7 +315,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
         formatter: (params: any) => {
           if (params.componentSubType === 'line') return '';
           const [tl, time] = params.value;
-          return `${params.seriesName}<br/>TyreLife: ${tl}, Time: ${time}s`;
+          return `<strong>${drvName}</strong><br/>${params.seriesName}<br/>TyreLife: ${tl}, Time: ${time}s`;
         },
       },
       legend: {

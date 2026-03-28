@@ -1,20 +1,20 @@
 project: Motorsports-Visualised
-updated: 2026-03-27
+updated: 2026-03-28
 
 goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 
 [STATUS]
-- pSEO 2.0パイプライン: h2h_engine.py → JSON(per_lap付) → ECharts Astro
-- R01 Australia: H2H 45ペア × 5ページ = 225ページ
-- R02 China: H2H 45ペア × 5ページ = 225ページ
-- Astroサイト: 451ページ静的ビルド済（hub+pace+sectors+speed+stints）
-- ECharts: インタラクティブチャート（ツールチップ、SC/VSC帯、タイヤ色分け）
-- 自動インサイト: 各ページにデータ駆動の日本語テキスト
-- チャートガイド: 各ページに「このチャートの見方」ボックス
+- ECharts移行完了: matplotlib PNG → インタラクティブJS チャート
+- ワンページワンアイデア: 1ペア5ページ（hub/pace/sectors/speed/stints）
+- 451ページ静的ビルド済（R01 45ペア + R02 45ペア × 5ページ + index）
+- 自動インサイト + チャートガイド実装済
+- R03鈴鹿FP1/FP2データ取得済（FastF1 via uv run）
+- R03鈴鹿FP予選シミュ+ロングラン分析HTML生成済（ブラウザ確認待ち）
 
 [次のアクション]
-- ブラウザで全ページの表示・操作確認
-- デプロイ（Cloudflare Pages）
-- R03鈴鹿GPパイプライン実行（レース後）
-- index.astroのstats更新（Charts→Pages）
-- copy-charts.mjsの不要化検討（EChartsで完結するため）
+- ブラウザでEChartsサイト(localhost:4322)の表示確認・フィードバック対応
+- R03鈴鹿レース後: uv run --with fastf1 python export_race_data.py 2026 Japan 3 → h2h_engine.py → site build
+- デプロイ（Cloudflare Pages直接アップロード）
+- index.astroのstats更新
+- FP分析をAstroサイトに統合するか検討
+- copy-charts.mjs不要化（EChartsで完結）

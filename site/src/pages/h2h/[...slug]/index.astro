@@ -19,11 +19,28 @@ const r1 = race_result[drv1];
 const r2 = race_result[drv2];
 const basePath = `/h2h/${meta.year}-r${String(meta.round).padStart(2, '0')}-${meta.gp_name.toLowerCase()}/${drv1.toLowerCase()}-vs-${drv2.toLowerCase()}/`;
 
+// ポジション変動の矢印
+function posChange(grid: number, finish: number) {
+  const diff = grid - finish;
+  if (diff > 0) return { arrow: '▲', class: 'pos-up', text: `+${diff}` };
+  if (diff < 0) return { arrow: '▼', class: 'pos-down', text: `${diff}` };
+  return { arrow: '—', class: 'pos-same', text: '±0' };
+}
+const r1Change = posChange(r1.grid, r1.finish);
+const r2Change = posChange(r2.grid, r2.finish);
+
+const navIcons: Record<string, string> = {
+  Pace: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+  Sectors: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/><line x1="12" y1="2" x2="12" y2="12"/><line x1="12" y1="12" x2="22" y2="12"/></svg>`,
+  Speed: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  Stints: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor"/><circle cx="4" cy="12" r="1.5" fill="currentColor"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/></svg>`,
+};
+
 const subPages = [
-  { href: `${basePath}pace/`, label: 'Pace', desc: hubPaceOneLiner(analysis) },
-  { href: `${basePath}sectors/`, label: 'Sectors', desc: hubSectorOneLiner(analysis) },
-  { href: `${basePath}speed/`, label: 'Speed', desc: hubSpeedOneLiner(analysis) },
-  { href: `${basePath}stints/`, label: 'Stints', desc: hubStintOneLiner(analysis) },
+  { href: `${basePath}pace/`, label: 'Pace', desc: hubPaceOneLiner(analysis), icon: navIcons.Pace },
+  { href: `${basePath}sectors/`, label: 'Sectors', desc: hubSectorOneLiner(analysis), icon: navIcons.Sectors },
+  { href: `${basePath}speed/`, label: 'Speed', desc: hubSpeedOneLiner(analysis), icon: navIcons.Speed },
+  { href: `${basePath}stints/`, label: 'Stints', desc: hubStintOneLiner(analysis), icon: navIcons.Stints },
 ];
 
 const jsonLd = {
@@ -40,6 +57,7 @@ const jsonLd = {
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
 <nav class="breadcrumb">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
   <a href="/">Home</a> &rsaquo;
   <a href="/">R{String(meta.round).padStart(2, '0')} {meta.gp_name}</a> &rsaquo;
   <span>{drv1} vs {drv2}</span>
@@ -59,48 +77,78 @@ const jsonLd = {
 <!-- サマリーカード -->
 <div class="summary-grid">
   <div class="summary-card">
-    <div class="card-label">Race Result</div>
+    <div class="card-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+      Race Result
+    </div>
     <div class="card-row">
       <span class="drv-tag" style={`border-color: ${color1};`}>{drv1}</span>
-      <span>P{r1.finish} (Grid P{r1.grid})</span>
+      <span class="result-info">
+        <strong>P{r1.finish}</strong>
+        <span class="grid-info">Grid P{r1.grid}</span>
+        <span class={`pos-change ${r1Change.class}`}>{r1Change.arrow} {r1Change.text}</span>
+      </span>
     </div>
     <div class="card-row">
       <span class="drv-tag" style={`border-color: ${color2};`}>{drv2}</span>
-      <span>P{r2.finish} (Grid P{r2.grid})</span>
+      <span class="result-info">
+        <strong>P{r2.finish}</strong>
+        <span class="grid-info">Grid P{r2.grid}</span>
+        <span class={`pos-change ${r2Change.class}`}>{r2Change.arrow} {r2Change.text}</span>
+      </span>
     </div>
   </div>
 
   <div class="summary-card">
-    <div class="card-label">Pace Delta</div>
+    <div class="card-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Pace Delta
+    </div>
     {pace.delta_median_sec !== null && (
       <div class="delta-big" style={`color: ${pace.faster === drv1 ? color1 : color2};`}>
-        {pace.delta_median_sec > 0 ? '+' : ''}{pace.delta_median_sec.toFixed(3)}s/lap
+        {pace.delta_median_sec > 0 ? '+' : ''}{pace.delta_median_sec.toFixed(3)}s
+        <span class="delta-unit">/lap</span>
       </div>
     )}
-    <div class="card-note">{pace.faster} faster (median)</div>
-  </div>
-
-  <div class="summary-card">
-    <div class="card-label">Clean Laps</div>
-    <div class="card-row">
-      <span class="drv-tag" style={`border-color: ${color1};`}>{drv1}</span>
-      <span>{pace.drv1.clean_laps} / {pace.drv1.total_laps}</span>
-    </div>
-    <div class="card-row">
-      <span class="drv-tag" style={`border-color: ${color2};`}>{drv2}</span>
-      <span>{pace.drv2.clean_laps} / {pace.drv2.total_laps}</span>
+    <div class="card-note">
+      <span class="winner-dot" style={`background: ${pace.faster === drv1 ? color1 : color2};`}></span>
+      {pace.faster} faster (median)
     </div>
   </div>
 
   <div class="summary-card">
-    <div class="card-label">Strategy</div>
+    <div class="card-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Clean Laps
+    </div>
+    <div class="clean-laps-row">
+      <span class="drv-tag" style={`border-color: ${color1};`}>{drv1}</span>
+      <div class="clean-bar-wrap">
+        <div class="clean-bar" style={`width: ${(pace.drv1.clean_laps / pace.drv1.total_laps) * 100}%; background: ${color1};`}></div>
+      </div>
+      <span class="clean-num">{pace.drv1.clean_laps}/{pace.drv1.total_laps}</span>
+    </div>
+    <div class="clean-laps-row">
+      <span class="drv-tag" style={`border-color: ${color2};`}>{drv2}</span>
+      <div class="clean-bar-wrap">
+        <div class="clean-bar" style={`width: ${(pace.drv2.clean_laps / pace.drv2.total_laps) * 100}%; background: ${color2};`}></div>
+      </div>
+      <span class="clean-num">{pace.drv2.clean_laps}/{pace.drv2.total_laps}</span>
+    </div>
+  </div>
+
+  <div class="summary-card">
+    <div class="card-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Strategy
+    </div>
     <div class="card-row">
       <span class="drv-tag" style={`border-color: ${color1};`}>{drv1}</span>
-      <span>Pit: L{r1.pit_laps.join(', L')}</span>
+      <span class="pit-info">Pit: L{r1.pit_laps.join(', L')}</span>
     </div>
     <div class="card-row">
       <span class="drv-tag" style={`border-color: ${color2};`}>{drv2}</span>
-      <span>Pit: L{r2.pit_laps.join(', L')}</span>
+      <span class="pit-info">Pit: L{r2.pit_laps.join(', L')}</span>
     </div>
   </div>
 </div>
@@ -110,7 +158,10 @@ const jsonLd = {
 <div class="nav-cards">
   {subPages.map(page => (
     <a href={page.href} class="nav-card">
-      <div class="nav-card-title">{page.label}</div>
+      <div class="nav-card-header">
+        <span class="nav-card-icon" set:html={page.icon} />
+        <span class="nav-card-title">{page.label}</span>
+      </div>
       <div class="nav-card-desc">{page.desc}</div>
       <span class="nav-card-arrow">&rarr;</span>
     </a>
@@ -120,19 +171,28 @@ const jsonLd = {
 <!-- セクターサマリー -->
 <h2 class="section-title">Sector Summary</h2>
 <div class="sector-grid">
-  {Object.entries(sectors).map(([secName, data]: [string, any]) => (
-    <div class="sector-card">
-      <div class="sec-name">{secName}</div>
-      <div class="sec-delta" style={`color: ${(data.delta_sec ?? 0) < 0 ? color1 : color2};`}>
-        {data.delta_sec !== null ? `${data.delta_sec > 0 ? '+' : ''}${data.delta_sec.toFixed(3)}s` : '-'}
+  {Object.entries(sectors).map(([secName, data]: [string, any]) => {
+    const d1Wins = data[`${drv1}_wins`] ?? 0;
+    const d2Wins = data[`${drv2}_wins`] ?? 0;
+    const total = d1Wins + d2Wins;
+    const d1Pct = total > 0 ? (d1Wins / total) * 100 : 50;
+    return (
+      <div class="sector-card">
+        <div class="sec-name">{secName}</div>
+        <div class="sec-delta" style={`color: ${(data.delta_sec ?? 0) < 0 ? color1 : color2};`}>
+          {data.delta_sec !== null ? `${data.delta_sec > 0 ? '+' : ''}${data.delta_sec.toFixed(3)}s` : '-'}
+        </div>
+        <div class="sec-wins-bar">
+          <div class="sec-bar-fill sec-bar-d1" style={`width: ${d1Pct}%; background: ${color1};`}></div>
+          <div class="sec-bar-fill sec-bar-d2" style={`width: ${100 - d1Pct}%; background: ${color2};`}></div>
+        </div>
+        <div class="sec-wins-labels">
+          <span style={`color: ${color1};`}>{d1Wins}</span>
+          <span style={`color: ${color2};`}>{d2Wins}</span>
+        </div>
       </div>
-      <div class="sec-wins">
-        <span style={`color: ${color1};`}>{data[`${drv1}_wins`]}</span>
-        <span class="sec-wins-sep">-</span>
-        <span style={`color: ${color2};`}>{data[`${drv2}_wins`]}</span>
-      </div>
-    </div>
-  ))}
+    );
+  })}
 </div>
 
 <!-- スピードサマリー -->
@@ -148,16 +208,26 @@ const jsonLd = {
       </tr>
     </thead>
     <tbody>
-      {Object.entries(speed).map(([label, data]: [string, any]) => (
-        <tr>
-          <td>{label}</td>
-          <td>{data[`${drv1}_median`] ?? '-'} km/h</td>
-          <td>{data[`${drv2}_median`] ?? '-'} km/h</td>
-          <td class={data.delta_kmh > 0 ? 'delta-pos' : 'delta-neg'}>
-            {data.delta_kmh !== null ? `${data.delta_kmh > 0 ? '+' : ''}${data.delta_kmh}` : '-'}
-          </td>
-        </tr>
-      ))}
+      {Object.entries(speed).map(([label, data]: [string, any]) => {
+        const delta = data.delta_kmh;
+        const absDelta = Math.abs(delta ?? 0);
+        const winner = delta > 0 ? drv1 : drv2;
+        const winColor = delta > 0 ? color1 : color2;
+        return (
+          <tr>
+            <td>{label}</td>
+            <td>{data[`${drv1}_median`] ?? '-'} km/h</td>
+            <td>{data[`${drv2}_median`] ?? '-'} km/h</td>
+            <td>
+              {delta !== null ? (
+                <span class="speed-delta" style={`color: ${winColor};`}>
+                  {delta > 0 ? '▲' : '▼'} {absDelta} km/h
+                </span>
+              ) : '-'}
+            </td>
+          </tr>
+        );
+      })}
     </tbody>
   </table>
 </div>
@@ -165,7 +235,7 @@ const jsonLd = {
 </Base>
 
 <style>
-  .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px; }
+  .breadcrumb { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px; display: flex; align-items: center; gap: 6px; }
   .breadcrumb a { color: var(--text-dim); }
   .page-header { margin-bottom: 24px; }
   .page-header h1 { font-size: 2.4rem; font-weight: 800; display: flex; align-items: baseline; gap: 16px; }
@@ -174,11 +244,29 @@ const jsonLd = {
 
   .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 40px; }
   .summary-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-  .card-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 12px; }
+  .card-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
   .card-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 0.95rem; }
   .drv-tag { font-weight: 700; border-left: 3px solid; padding-left: 8px; }
+
+  .result-info { display: flex; align-items: center; gap: 8px; }
+  .result-info strong { font-size: 1.1rem; }
+  .grid-info { color: var(--text-dim); font-size: 0.8rem; }
+  .pos-change { font-size: 0.75rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; }
+  .pos-up { color: #28973e; background: rgba(40, 151, 62, 0.15); }
+  .pos-down { color: #ff2d27; background: rgba(255, 45, 39, 0.15); }
+  .pos-same { color: var(--text-dim); background: rgba(170, 170, 170, 0.1); }
+
   .delta-big { font-size: 1.8rem; font-weight: 800; font-family: 'SF Mono', 'Fira Code', monospace; }
-  .card-note { font-size: 0.85rem; color: var(--text-dim); margin-top: 4px; }
+  .delta-unit { font-size: 0.9rem; font-weight: 400; opacity: 0.7; }
+  .card-note { font-size: 0.85rem; color: var(--text-dim); margin-top: 4px; display: flex; align-items: center; gap: 6px; }
+  .winner-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  .clean-laps-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+  .clean-bar-wrap { flex: 1; height: 6px; background: var(--bg-card-hover); border-radius: 3px; overflow: hidden; }
+  .clean-bar { height: 100%; border-radius: 3px; transition: width 0.3s; }
+  .clean-num { font-size: 0.8rem; color: var(--text-dim); min-width: 40px; text-align: right; font-family: 'SF Mono', 'Fira Code', monospace; }
+
+  .pit-info { font-size: 0.85rem; font-family: 'SF Mono', 'Fira Code', monospace; }
 
   .section-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
 
@@ -189,7 +277,9 @@ const jsonLd = {
     display: flex; flex-direction: column; gap: 8px; position: relative;
     transition: border-color 0.15s, background 0.15s;
   }
-  .nav-card:hover { border-color: var(--accent); background: var(--bg-card-hover); }
+  .nav-card:hover { border-color: var(--accent); background: var(--bg-card-hover); text-decoration: none; }
+  .nav-card-header { display: flex; align-items: center; gap: 8px; }
+  .nav-card-icon { color: var(--accent); display: flex; align-items: center; }
   .nav-card-title { font-size: 1.1rem; font-weight: 700; }
   .nav-card-desc { font-size: 0.85rem; color: var(--text-dim); }
   .nav-card-arrow { position: absolute; top: 20px; right: 20px; color: var(--text-dim); font-size: 1.2rem; }
@@ -198,13 +288,16 @@ const jsonLd = {
   .sector-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center; }
   .sec-name { font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
   .sec-delta { font-size: 1.6rem; font-weight: 800; font-family: 'SF Mono', 'Fira Code', monospace; }
-  .sec-wins { margin-top: 8px; font-size: 1rem; font-weight: 600; }
-  .sec-wins-sep { color: var(--text-dim); margin: 0 4px; }
+
+  .sec-wins-bar { display: flex; height: 6px; border-radius: 3px; overflow: hidden; margin-top: 12px; }
+  .sec-bar-fill { height: 100%; }
+  .sec-bar-d1 { border-radius: 3px 0 0 3px; }
+  .sec-bar-d2 { border-radius: 0 3px 3px 0; }
+  .sec-wins-labels { display: flex; justify-content: space-between; margin-top: 6px; font-size: 0.85rem; font-weight: 700; }
 
   .speed-table { overflow-x: auto; margin-bottom: 40px; }
   .speed-table table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 8px; overflow: hidden; }
   .speed-table th, .speed-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
   .speed-table th { background: #1c1c25; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); }
-  .delta-pos { color: var(--accent); }
-  .delta-neg { color: var(--accent-2); }
+  .speed-delta { font-weight: 600; font-size: 0.9rem; }
 </style>

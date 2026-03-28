@@ -64,11 +64,21 @@ const jsonLd = {
 </nav>
 
 <header class="page-header">
-  <h1>
-    <span class="drv-name" style={`color: ${color1};`}>{drv1}</span>
-    <span class="vs-text">vs</span>
-    <span class="drv-name" style={`color: ${color2};`}>{drv2}</span>
-  </h1>
+  <div class="matchup">
+    <div class="matchup-driver">
+      <div class="driver-portrait" style={`border-color: ${color1};`}>
+        {DRIVER_HEADSHOTS[drv1] && <img src={DRIVER_HEADSHOTS[drv1]} alt={drv1} loading="eager" />}
+      </div>
+      <span class="drv-name" style={`color: ${color1};`}>{drv1}</span>
+    </div>
+    <span class="vs-text">VS</span>
+    <div class="matchup-driver">
+      <div class="driver-portrait" style={`border-color: ${color2};`}>
+        {DRIVER_HEADSHOTS[drv2] && <img src={DRIVER_HEADSHOTS[drv2]} alt={drv2} loading="eager" />}
+      </div>
+      <span class="drv-name" style={`color: ${color2};`}>{drv2}</span>
+    </div>
+  </div>
   <p class="page-subtitle">{meta.year} R{String(meta.round).padStart(2, '0')} {meta.gp_name} GP</p>
 </header>
 

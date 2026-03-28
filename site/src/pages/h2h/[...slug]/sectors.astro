@@ -218,9 +218,9 @@ const chartData = {
     const winner = secSummary.delta_sec < 0 ? meta.driver1 : meta.driver2;
 
     chart.setOption({
-      textStyle: { color: '#aaaaaa', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
+      ...themeBase,
       tooltip: {
-        backgroundColor: '#1c1c25', borderColor: '#303037', borderWidth: 1, textStyle: { color: '#fff', fontSize: 13 },
+        ...themeBase.tooltip,
         trigger: 'axis',
         formatter: (params: any) => {
           const p = Array.isArray(params) ? params[0] : params;
@@ -261,6 +261,7 @@ const chartData = {
         barMaxWidth: 8,
         markArea: { silent: true, data: neutralAreas() },
       }],
+      dataZoom: [{ type: 'inside', xAxisIndex: 0 }],
     });
 
     charts.push(chart);

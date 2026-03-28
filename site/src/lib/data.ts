@@ -193,7 +193,7 @@ export const TEAM_SHORT: Record<string, string> = {
 };
 
 // F1公式ドライバーヘッドショット（開発用・一時利用）
-const F1_IMG_BASE = 'https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/v1740000001/common/f1/2025';
+const F1_IMG_BASE = 'https://media.formula1.com/image/upload/c_thumb,g_face,w_440,h_440/q_auto/v1740000001/common/f1/2025';
 export const DRIVER_HEADSHOTS: Record<string, string> = {
   'VER': `${F1_IMG_BASE}/redbullracing/maxver01/2025redbullracingmaxver01right.webp`,
   'NOR': `${F1_IMG_BASE}/mclaren/lannor01/2025mclarenlannor01right.webp`,

@@ -1,13 +1,14 @@
 {
   "date": "2026-03-31",
-  "iteration": 2,
+  "iteration": 1,
+  "task": "OGP meta tags for SNS sharing",
   "lint_pass": null,
   "test_pass": null,
   "build_pass": true,
   "scores": {
-    "functionality": 90,
+    "functionality": 78,
     "craft": 82,
-    "design_quality": 80,
+    "design_quality": 72,
     "originality": 55
   },
   "weights": {
@@ -16,21 +17,20 @@
     "design_quality": 0.25,
     "originality": 0.25
   },
-  "overall_score": 76.75,
+  "overall_score": 71.75,
   "improvements": [
-    "pipeline.sh: Consider adding --parallel flag to run export + H2H concurrently when both need regeneration",
-    "Breadcrumb GP link currently points to / (no GP index page exists yet) — create a race index page at /h2h/{year}-r{round}-{gp}/",
-    "Breadcrumb component is duplicated across 5 files — extract into shared Astro component",
-    "OGP meta tags missing for social sharing (og:image, og:title, og:description)"
+    "R03 Japan has no chart images in site/public/charts/ — og:image will 404 for all R03 H2H pages. Generate charts or add fallback logic to omit og:image when chart file doesn't exist",
+    "Chart images are 2861x2502 (nearly 1:1) — OGP recommends 1200x630 (1.91:1). Social platforms will crop poorly. Consider generating SNS-specific images or at minimum documenting the mismatch",
+    "Top page (/) has no og:image — sharing the homepage on Twitter/LINE shows no preview image. Add a site-wide default OGP image",
+    "Missing og:site_name meta tag — adds brand consistency when links are shared across platforms"
   ],
   "improvements_resolved": [
-    "Step counter dynamic [1/N] based on --build flag",
-    "Atomic H2H swap with backup/restore on failure",
-    "Input validation for YEAR (4-digit) and ROUND (1-24)",
-    "--dry-run flag added",
-    "Elapsed time and pair count in summary",
-    "ROUND zero-padding error guard",
-    "Breadcrumb on sub-pages shows GP context"
+    "OGP meta tags (og:title, og:description, og:image, og:url, og:type) added to all pages",
+    "Twitter Card meta tags (twitter:card, twitter:title, twitter:description, twitter:image) added",
+    "og:image uses per-pair chart_laptime_delta.png",
+    "og:url points to canonical page URL",
+    "og:type correctly set (article for H2H, website for top)",
+    "twitter:card switches between summary_large_image and summary based on image availability"
   ],
   "passed": true
 }

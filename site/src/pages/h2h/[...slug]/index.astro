@@ -170,7 +170,7 @@ const subPages = [
 const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline: seo.title, description: seo.description, keywords: seo.keywords.join(', ') };
 ---
 
-<Base title={seo.title_ja} description={seo.description} keywords={seo.keywords}>
+<Base title={seo.title_ja} description={seo.description} keywords={seo.keywords} image={`/charts/${dirName}/${pairDir.replace('h2h/', '')}chart_laptime_delta.png`} url={basePath} type="article">
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
 <nav class="breadcrumb">

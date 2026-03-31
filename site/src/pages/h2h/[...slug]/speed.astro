@@ -105,7 +105,7 @@ const chartData = {
 };
 ---
 
-<Base title={`${drv1} vs ${drv2} スピード比較 — ${meta.year} ${meta.gp_name}GP`} description={seo.description} keywords={seo.keywords}>
+<Base title={`${drv1} vs ${drv2} スピード比較 — ${meta.year} ${meta.gp_name}GP`} description={seo.description} keywords={seo.keywords} image={`/charts/${dirName}/${pairDir.replace('h2h/', '')}chart_laptime_delta.png`} url={`${basePath}speed/`} type="article">
 
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 

@@ -3,9 +3,23 @@ interface Props {
   title: string;
   description?: string;
   keywords?: string[];
+  image?: string;
+  url?: string;
+  type?: 'website' | 'article';
 }
 
-const { title, description = 'F1 Data Analysis', keywords = [] } = Astro.props;
+const {
+  title,
+  description = 'F1 Data Analysis',
+  keywords = [],
+  image,
+  url,
+  type = 'website',
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || '';
+const ogImage = image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : undefined;
+const ogUrl = url ? (url.startsWith('http') ? url : `${siteUrl}${url}`) : undefined;
 ---
 
 <!DOCTYPE html>
@@ -16,6 +30,15 @@ const { title, description = 'F1 Data Analysis', keywords = [] } = Astro.props;
   <title>{title}</title>
   <meta name="description" content={description} />
   {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={type} />
+  {ogUrl && <meta property="og:url" content={ogUrl} />}
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  {ogImage && <meta name="twitter:image" content={ogImage} />}
   <style is:global>
     :root {
       --bg: #15151e;

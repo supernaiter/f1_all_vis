@@ -133,7 +133,7 @@ const chartData = {
 const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline: seo.title, description: seo.description, keywords: seo.keywords.join(', ') };
 ---
 
-<Base title={`${drv1} vs ${drv2} Stints — ${meta.year} ${meta.gp_name}GP`} description={seo.description} keywords={seo.keywords}>
+<Base title={`${drv1} vs ${drv2} Stints — ${meta.year} ${meta.gp_name}GP`} description={seo.description} keywords={seo.keywords} image={`/charts/${dirName}/${pairDir.replace('h2h/', '')}chart_laptime_delta.png`} url={`${basePath}stints/`} type="article">
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
 <nav class="breadcrumb">

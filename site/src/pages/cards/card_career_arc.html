@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Career Arc — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:24px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">CAREER ARC</div>
+  <div class="sub">CUMULATIVE WINS FROM F1 DEBUT</div>
+  <canvas id="chart" width="968" height="900"></canvas>
+</div>
+<script>
+const drivers = {
+  HAM: { color:'#27f4d2', wins:[4,9,11,14,17,21,32,42,52,61,72,83,85,93,93] },
+  MSC: { color:'#e80020', wins:[0,1,2,3,3,6,11,17,19,20,29,40,41,54,55] },
+  VER: { color:'#3366ff', wins:[0,0,1,2,5,7,17,32,51,55] },
+  SEN: { color:'#ffd700', wins:[0,0,2,8,16,22,29,34,37,40,41] },
+  VET: { color:'#555555', wins:[1,1,5,10,21,25,38,38,41,43,43,43,43,44] }
+};
+
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+const pad = { top: 30, right: 90, bottom: 60, left: 60 };
+const w = canvas.width - pad.left - pad.right;
+const h = canvas.height - pad.top - pad.bottom;
+
+const maxYear = 15;
+const maxWins = 95;
+
+function x(yr) { return pad.left + (yr / maxYear) * w; }
+function y(wins) { return pad.top + h - (wins / maxWins) * h; }
+
+// Grid
+ctx.strokeStyle = '#0e0e14';
+ctx.lineWidth = 1;
+for (let i = 0; i <= maxWins; i += 10) {
+  ctx.beginPath();
+  ctx.moveTo(pad.left, y(i));
+  ctx.lineTo(pad.left + w, y(i));
+  ctx.stroke();
+  ctx.fillStyle = '#333';
+  ctx.font = '12px IBM Plex Mono';
+  ctx.textAlign = 'right';
+  ctx.fillText(i, pad.left - 10, y(i) + 4);
+}
+for (let i = 0; i <= maxYear; i += 1) {
+  ctx.beginPath();
+  ctx.moveTo(x(i), pad.top);
+  ctx.lineTo(x(i), pad.top + h);
+  ctx.stroke();
+  if (i % 2 === 0 || i === 1) {
+    ctx.fillStyle = '#333';
+    ctx.font = '12px IBM Plex Mono';
+    ctx.textAlign = 'center';
+    ctx.fillText('Y' + (i + 1), x(i), pad.top + h + 24);
+  }
+}
+
+// Axis labels
+ctx.fillStyle = '#333';
+ctx.font = '11px IBM Plex Mono';
+ctx.textAlign = 'center';
+ctx.fillText('YEARS IN F1', pad.left + w / 2, pad.top + h + 50);
+ctx.save();
+ctx.translate(16, pad.top + h / 2);
+ctx.rotate(-Math.PI / 2);
+ctx.fillText('CUMULATIVE WINS', 0, 0);
+ctx.restore();
+
+// Lines
+const order = ['VET','MSC','SEN','VER','HAM'];
+order.forEach(code => {
+  const d = drivers[code];
+  ctx.strokeStyle = d.color;
+  ctx.lineWidth = 2.5;
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  d.wins.forEach((v, i) => {
+    const px = x(i);
+    const py = y(v);
+    if (i === 0) ctx.moveTo(px, py);
+    else ctx.lineTo(px, py);
+  });
+  ctx.stroke();
+
+  // End label
+  const lastI = d.wins.length - 1;
+  const lastX = x(lastI);
+  const lastY = y(d.wins[lastI]);
+  ctx.fillStyle = d.color;
+  ctx.font = '600 14px IBM Plex Mono';
+  ctx.textAlign = 'left';
+  ctx.fillText(code, lastX + 8, lastY + 5);
+
+  // End dot
+  ctx.beginPath();
+  ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
+  ctx.fillStyle = d.color;
+  ctx.fill();
+});
+</script>
+</body>
+</html>

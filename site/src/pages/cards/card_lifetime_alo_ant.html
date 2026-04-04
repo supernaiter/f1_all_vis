@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Lifetime Timeline: ALO vs ANT — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px 40px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.header{display:flex;margin-top:28px;padding-bottom:12px;border-bottom:1px solid #0e0e14}
+.header .age-col{width:70px;flex-shrink:0}
+.header .driver-col{flex:1;text-align:center}
+.driver-name{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1}
+.driver-span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#333;letter-spacing:0.1em;margin-top:2px}
+.timeline{margin-top:8px;position:relative}
+.row{display:flex;align-items:flex-start;min-height:42px;position:relative}
+.age-col{width:70px;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:28px;color:#1a1a1a;padding-top:8px;text-align:center}
+.age-col.highlight{color:#333}
+.col-left,.col-right{flex:1;position:relative;padding:8px 16px;min-height:42px}
+.col-left{border-right:2px solid #0e0e14}
+.event{display:flex;align-items:center;gap:10px}
+.col-right .event{flex-direction:row-reverse}
+.dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.dot.title{background:#ffd700}
+.dot.win{background:#0f6e56}
+.dot.debut{background:#534ab7}
+.dot.career{background:#333}
+.dot.life{background:#27f4d2}
+.label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#777;line-height:1.4;letter-spacing:0.02em}
+.col-right .label{text-align:right}
+.born-highlight{background:rgba(39,244,210,0.04);border-radius:4px}
+.center-line{position:absolute;left:calc(70px + 50% - 71px);top:0;bottom:0;width:2px}
+.row-sep{border-bottom:1px solid #0a0a0a}
+.footnote{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#222;margin-top:16px;letter-spacing:0.06em;text-align:center}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">LIFETIME TIMELINE</div>
+  <div class="sub">25 YEARS APART — SAME TEAM, SAME GRID</div>
+
+  <div class="header">
+    <div class="age-col"></div>
+    <div class="driver-col">
+      <div class="driver-name" style="color:#00665f">ALONSO</div>
+      <div class="driver-span">B.1981 — DEBUT 2001</div>
+    </div>
+    <div class="driver-col">
+      <div class="driver-name" style="color:#27f4d2">ANTONELLI</div>
+      <div class="driver-span">B.2006 — DEBUT 2025</div>
+    </div>
+  </div>
+
+  <div class="timeline" id="timeline"></div>
+  <div class="footnote">AGE = SEASON AGE &nbsp;|&nbsp; 2026: ALONSO 44, ANTONELLI 19</div>
+</div>
+<script>
+const ages = [
+  { age:0, alo:null, ant:{label:'BORN — ALO ALREADY 2 YRS IN F1',type:'life'}, highlight:true },
+  { age:12, alo:null, ant:{label:'ITALIAN F4 CHAMPION',type:'career'} },
+  { age:16, alo:null, ant:{label:'FORMULA REGIONAL CHAMPION',type:'career'} },
+  { age:18, alo:null, ant:{label:'F1 DEBUT (MERCEDES)',type:'debut'} },
+  { age:19, alo:{label:'F1 DEBUT (MINARDI)',type:'debut'}, ant:{label:'YEAR 2 — TEAMMATES WITH ALO',type:'career'} },
+  { age:22, alo:{label:'FIRST WIN (HUNGARY 2003)',type:'win'}, ant:null },
+  { age:24, alo:{label:'WORLD CHAMPION (RENAULT)',type:'title'}, ant:null },
+  { age:25, alo:{label:'BACK-TO-BACK TITLES',type:'title'}, ant:null },
+  { age:26, alo:{label:'MCLAREN — TIED WITH ROOKIE HAM',type:'career'}, ant:null },
+  { age:37, alo:{label:'LEAVES F1',type:'career'}, ant:null },
+  { age:40, alo:{label:'F1 RETURN (ALPINE)',type:'career'}, ant:null },
+  { age:43, alo:{label:'STILL RACING AGE 43, TEAMMATE IS 18',type:'career'}, ant:null },
+  { age:44, alo:{label:'2026: ASTON MARTIN — OLDEST ON GRID',type:'career'}, ant:null }
+];
+
+const container = document.getElementById('timeline');
+
+ages.forEach(row => {
+  const div = document.createElement('div');
+  div.className = 'row row-sep' + (row.highlight ? ' born-highlight' : '');
+
+  const ageClass = (row.alo || row.ant) ? 'age-col highlight' : 'age-col';
+
+  const renderEvent = (ev, side) => {
+    if (!ev) return '<div class="' + side + '"></div>';
+    return `<div class="${side}"><div class="event"><span class="dot ${ev.type}"></span><span class="label">${ev.label}</span></div></div>`;
+  };
+
+  div.innerHTML = `
+    <div class="${ageClass}">${row.age}</div>
+    ${renderEvent(row.alo, 'col-left')}
+    ${renderEvent(row.ant, 'col-right')}
+  `;
+  container.appendChild(div);
+});
+</script>
+</body>
+</html>

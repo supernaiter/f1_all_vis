@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Overachiever Tier — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.desc{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#333;margin-top:10px;letter-spacing:0.04em}
+.tiers{margin-top:36px;display:flex;flex-direction:column;gap:20px}
+.tier-row{display:flex;align-items:stretch;gap:20px}
+.tier-label{width:72px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:64px;border-radius:6px;line-height:1}
+.tier-cards{flex:1;display:flex;gap:14px;flex-wrap:wrap}
+.driver-card{background:#0a0a0a;border:1px solid #0e0e14;border-radius:4px;padding:16px 20px;flex:1;min-width:160px;display:flex;flex-direction:column;gap:8px}
+.driver-card .code{font-family:'Bebas Neue',sans-serif;font-size:40px;line-height:1}
+.driver-card .note{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;line-height:1.5;letter-spacing:0.02em}
+.tier-bar{height:4px;background:#111;border-radius:2px;margin-top:auto}
+.tier-fill{height:100%;border-radius:2px}
+.skip-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#222;text-align:center;padding:8px 0;letter-spacing:0.2em}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">OVERACHIEVER TIER LIST</div>
+  <div class="sub">WHO EXTRACTED THE MOST FROM THE LEAST?</div>
+  <div class="desc">S = MIRACLE WORKER &nbsp; D = HAD THE BEST CAR ANYWAY</div>
+  <div class="tiers" id="tiers"></div>
+</div>
+<script>
+const tiers = [
+  { tier:'S', bg:'#27f4d2', level:100, drivers:[
+    {c:'ALO',n:'DRAGGED BAD CARS TO WINS',color:'#00665f'},
+    {c:'HAM',n:'09 MCLAREN / 22 MERC',color:'#27f4d2'},
+    {c:'SAT',n:'INDY 500 ×2 AFTER MIDFIELD F1',color:'#e80020'}
+  ]},
+  { tier:'A', bg:'#3366ff', level:75, drivers:[
+    {c:'RIC',n:'MADE RENAULT LOOK GOOD',color:'#ffd700'},
+    {c:'GAS',n:'MONZA 2020 ALPHATAURI',color:'#ff87bc'}
+  ]},
+  { tier:'B', bg:'#ffb800', level:50, drivers:[
+    {c:'RUS',n:'WILLIAMS QUALI HEROICS',color:'#27f4d2'},
+    {c:'HUL',n:'PERENNIAL BEST-OF-REST',color:'#ff2d00'}
+  ]},
+  { tier:'skip', label:'— C TIER EMPTY — NO ONE IS AVERAGE —' },
+  { tier:'D', bg:'#e80020', level:10, drivers:[
+    {c:'VER',n:'ALWAYS HAD THE BEST CAR',color:'#0600ef'},
+    {c:'MSC',n:'USUALLY HAD THE BEST CAR',color:'#e80020'}
+  ]}
+];
+
+const container = document.getElementById('tiers');
+tiers.forEach(t => {
+  if (t.tier === 'skip') {
+    const skip = document.createElement('div');
+    skip.className = 'skip-label';
+    skip.textContent = t.label;
+    container.appendChild(skip);
+    return;
+  }
+  const row = document.createElement('div');
+  row.className = 'tier-row';
+  row.innerHTML = `
+    <div class="tier-label" style="background:${t.bg}15;color:${t.bg}">${t.tier}</div>
+    <div class="tier-cards">
+      ${t.drivers.map(d => `
+        <div class="driver-card">
+          <div class="code" style="color:${d.color}">${d.c}</div>
+          <div class="note">${d.n}</div>
+          <div class="tier-bar"><div class="tier-fill" style="width:${t.level}%;background:${t.bg}"></div></div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  container.appendChild(row);
+});
+</script>
+</body>
+</html>

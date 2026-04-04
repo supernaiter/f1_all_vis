@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Braking Point Overlay — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:20px}
+.bars{margin-top:20px}
+.bar-row{display:flex;align-items:center;margin-bottom:8px}
+.bar-label{font-family:'Bebas Neue',sans-serif;font-size:20px;width:80px}
+.bar-track{flex:1;height:20px;background:#0a0a0a;border-radius:2px;position:relative}
+.bar-fill{height:100%;border-radius:2px;position:relative}
+.bar-val{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;position:absolute;right:8px;top:3px}
+.corner-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;width:48px;text-align:right;margin-right:8px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">BRAKING POINT OVERLAY</div>
+  <div class="sub">2024 · BAHRAIN GP · VER vs LEC · KEY BRAKING ZONES</div>
+  <canvas id="map" width="968" height="520"></canvas>
+  <div class="bars" id="bars"></div>
+</div>
+<script>
+const canvas = document.getElementById('map');
+const ctx = canvas.getContext('2d');
+
+// バーレーン簡略トラック（SVGパス的な座標）
+const track = [
+  [484,40],[780,40],[860,80],[880,160],[880,300],[860,360],[780,380],
+  [700,380],[660,420],[660,480],[700,500],[780,500],[820,480],
+  [820,420],[780,380],[700,340],[620,340],[580,380],[580,460],
+  [540,500],[460,500],[420,460],[420,380],[380,340],[300,340],
+  [220,380],[180,420],[180,480],[220,500],[300,500],[340,480],
+  [340,420],[300,380],[220,340],[140,300],[120,200],[140,100],[200,60],[484,40]
+];
+
+// トラック描画
+ctx.strokeStyle = '#1a1a2e'; ctx.lineWidth = 12; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+ctx.beginPath();
+track.forEach(([px,py],i) => { if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py); });
+ctx.stroke();
+
+// ブレーキングゾーン
+const zones = [
+  {name:'T1',x:820,y:80,ver:108,lec:112},
+  {name:'T4',x:860,y:320,ver:82,lec:86},
+  {name:'T8',x:580,y:420,ver:64,lec:62},
+  {name:'T10',x:420,y:420,ver:74,lec:78},
+  {name:'T14',x:140,y:240,ver:92,lec:88}
+];
+
+zones.forEach(z => {
+  // VER ドット
+  ctx.beginPath(); ctx.arc(z.x-8, z.y, 8, 0, Math.PI*2);
+  ctx.fillStyle = '#0600ef'; ctx.fill();
+  // LEC ドット
+  ctx.beginPath(); ctx.arc(z.x+8, z.y, 8, 0, Math.PI*2);
+  ctx.fillStyle = '#e80020'; ctx.fill();
+  // ラベル
+  ctx.fillStyle = '#555'; ctx.font = '600 12px IBM Plex Mono'; ctx.textAlign = 'center';
+  ctx.fillText(z.name, z.x, z.y - 16);
+});
+
+// 下部バーチャート
+const bars = document.getElementById('bars');
+const maxDist = 120;
+
+zones.forEach(z => {
+  const row = document.createElement('div');
+  row.className = 'bar-row';
+  row.innerHTML = `
+    <div class="corner-label">${z.name}</div>
+    <div class="bar-label" style="color:#0600ef">VER</div>
+    <div class="bar-track"><div class="bar-fill" style="width:${z.ver/maxDist*100}%;background:#0600ef"><div class="bar-val">${z.ver}m</div></div></div>
+  `;
+  bars.appendChild(row);
+
+  const row2 = document.createElement('div');
+  row2.className = 'bar-row';
+  row2.style.marginBottom = '16px';
+  row2.innerHTML = `
+    <div class="corner-label"></div>
+    <div class="bar-label" style="color:#e80020">LEC</div>
+    <div class="bar-track"><div class="bar-fill" style="width:${z.lec/maxDist*100}%;background:#e80020"><div class="bar-val">${z.lec}m</div></div></div>
+  `;
+  bars.appendChild(row2);
+});
+</script>
+</body>
+</html>

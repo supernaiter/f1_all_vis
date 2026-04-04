@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>H2H Simulator — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.matchup{display:flex;justify-content:center;align-items:center;gap:40px;margin-top:36px}
+.driver{text-align:center}
+.driver .name{font-family:'Bebas Neue',sans-serif;font-size:88px;line-height:1}
+.driver .full{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#555;letter-spacing:0.15em;margin-top:2px}
+.vs{font-family:'Bebas Neue',sans-serif;font-size:40px;color:#252525}
+.bars{margin-top:32px;display:flex;flex-direction:column;gap:20px}
+.bar-group{display:flex;flex-direction:column;gap:6px}
+.bar-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;letter-spacing:0.12em;text-align:center}
+.bar-row{display:flex;height:40px}
+.bar-left{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;border-radius:4px 0 0 4px}
+.bar-right{height:100%;display:flex;align-items:center;justify-content:flex-start;padding-left:10px;border-radius:0 4px 4px 0}
+.bar-val{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff}
+canvas{margin-top:28px}
+.radar-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;text-align:center;letter-spacing:0.12em;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">H2H SIMULATOR</div>
+  <div class="sub">HYPOTHETICAL TEAMMATE BATTLE · SAME MACHINERY</div>
+  <div class="matchup">
+    <div class="driver"><div class="name" style="color:#ffd700">SEN</div><div class="full">SENNA</div></div>
+    <div class="vs">VS</div>
+    <div class="driver"><div class="name" style="color:#0600ef">VER</div><div class="full">VERSTAPPEN</div></div>
+  </div>
+  <div class="bars" id="bars"></div>
+  <canvas id="radar" width="968" height="380"></canvas>
+  <div class="radar-label">5-AXIS SKILL COMPARISON</div>
+</div>
+<script>
+const bars = [
+  {label:'QUALIFYING H2H PREDICTION',leftPct:45,rightPct:55,leftColor:'#ffd700',rightColor:'#0600ef'},
+  {label:'RACE H2H PREDICTION',leftPct:42,rightPct:58,leftColor:'#ffd700',rightColor:'#0600ef'},
+  {label:'WIN PROBABILITY (OVER 20 RACES)',leftPct:40,rightPct:60,leftColor:'#ffd700',rightColor:'#0600ef'}
+];
+
+const container = document.getElementById('bars');
+bars.forEach(b => {
+  const g = document.createElement('div');
+  g.className = 'bar-group';
+  g.innerHTML = `
+    <div class="bar-label">${b.label}</div>
+    <div class="bar-row">
+      <div class="bar-left" style="width:${b.leftPct}%;background:${b.leftColor}"><div class="bar-val">${b.leftPct}%</div></div>
+      <div class="bar-right" style="width:${b.rightPct}%;background:${b.rightColor}"><div class="bar-val">${b.rightPct}%</div></div>
+    </div>
+  `;
+  container.appendChild(g);
+});
+
+// 5軸レーダー
+const canvas = document.getElementById('radar');
+const ctx = canvas.getContext('2d');
+const axes = ['QUALIFYING','RACE CRAFT','WET SKILL','CONSISTENCY','PRESSURE'];
+const senVals = [95,90,98,85,92];
+const verVals = [92,94,88,96,95];
+
+const cx = canvas.width / 2;
+const cy = 195;
+const maxR = 150;
+
+for (let l = 1; l <= 5; l++) {
+  const r = (l / 5) * maxR;
+  ctx.beginPath();
+  for (let i = 0; i <= axes.length; i++) {
+    const angle = (Math.PI * 2 * (i % axes.length)) / axes.length - Math.PI / 2;
+    if (i === 0) ctx.moveTo(cx + r * Math.cos(angle), cy + r * Math.sin(angle));
+    else ctx.lineTo(cx + r * Math.cos(angle), cy + r * Math.sin(angle));
+  }
+  ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1; ctx.stroke();
+}
+
+axes.forEach((label, i) => {
+  const angle = (Math.PI * 2 * i) / axes.length - Math.PI / 2;
+  ctx.beginPath(); ctx.moveTo(cx, cy);
+  ctx.lineTo(cx + maxR * Math.cos(angle), cy + maxR * Math.sin(angle));
+  ctx.strokeStyle = '#0e0e14'; ctx.stroke();
+  const lx = cx + (maxR + 24) * Math.cos(angle);
+  const ly = cy + (maxR + 24) * Math.sin(angle);
+  ctx.fillStyle = '#555'; ctx.font = '600 10px IBM Plex Mono'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(label, lx, ly);
+});
+
+[{vals:senVals,color:'#ffd700'},{vals:verVals,color:'#0600ef'}].forEach(d => {
+  ctx.beginPath();
+  d.vals.forEach((v, i) => {
+    const angle = (Math.PI * 2 * i) / axes.length - Math.PI / 2;
+    const r = (v / 100) * maxR;
+    if (i === 0) ctx.moveTo(cx + r * Math.cos(angle), cy + r * Math.sin(angle));
+    else ctx.lineTo(cx + r * Math.cos(angle), cy + r * Math.sin(angle));
+  });
+  ctx.closePath();
+  ctx.fillStyle = d.color + '18'; ctx.fill();
+  ctx.strokeStyle = d.color; ctx.lineWidth = 2; ctx.stroke();
+});
+</script>
+</body>
+</html>

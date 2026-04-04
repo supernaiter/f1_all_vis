@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>GOAT Index — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.formula{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#333;letter-spacing:0.1em;margin-top:8px}
+.rows{margin-top:24px}
+.row{display:flex;align-items:center;margin-bottom:8px}
+.rank{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#333;width:40px;text-align:right;margin-right:16px}
+.code{font-family:'Bebas Neue',sans-serif;font-size:28px;width:80px;margin-right:8px}
+.season{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#555;width:40px;margin-right:16px}
+.bar-track{flex:1;height:28px;background:#0a0a0a;border-radius:3px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:12px}
+.bar-score{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#fff}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">GOAT INDEX</div>
+  <div class="sub">PEAK SEASON RANKING · COMPOSITE SCORE</div>
+  <div class="formula">SCORE = WIN_RATE×30 + POLE_RATE×20 + GAP_SCORE×30 + TM_RATE×20</div>
+  <div class="rows" id="rows"></div>
+</div>
+<script>
+const data = [
+  {code:'VER',year:"'23",color:'#0600ef',score:96.2,winRate:83,poleRate:39,gapScore:98,tmRate:95},
+  {code:'HAM',year:"'20",color:'#27f4d2',score:91.5,winRate:69,poleRate:56,gapScore:88,tmRate:92},
+  {code:'MSC',year:"'04",color:'#e80020',score:90.8,winRate:72,poleRate:44,gapScore:90,tmRate:90},
+  {code:'VET',year:"'13",color:'#555555',score:87.4,winRate:68,poleRate:56,gapScore:85,tmRate:88},
+  {code:'SEN',year:"'91",color:'#ffd700',score:85.1,winRate:50,poleRate:62,gapScore:82,tmRate:85},
+  {code:'HAM',year:"'14",color:'#27f4d2',score:83.6,winRate:69,poleRate:50,gapScore:78,tmRate:80},
+  {code:'VER',year:"'22",color:'#0600ef',score:82.9,winRate:65,poleRate:35,gapScore:82,tmRate:88},
+  {code:'MSC',year:"'02",color:'#e80020',score:81.4,winRate:65,poleRate:35,gapScore:80,tmRate:85},
+  {code:'PRO',year:"'51",color:'#e80020',score:78.2,winRate:62,poleRate:25,gapScore:78,tmRate:82},
+  {code:'ALO',year:"'05",color:'#00665f',score:76.8,winRate:37,poleRate:32,gapScore:75,tmRate:90},
+  {code:'HAM',year:"'18",color:'#27f4d2',score:75.1,winRate:61,poleRate:39,gapScore:70,tmRate:78},
+  {code:'VET',year:"'11",color:'#555555',score:74.5,winRate:58,poleRate:74,gapScore:72,tmRate:70}
+];
+
+const maxScore = 100;
+const rows = document.getElementById('rows');
+
+data.forEach((d, i) => {
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.innerHTML = `
+    <div class="rank">${i + 1}</div>
+    <div class="code" style="color:${d.color}">${d.code}</div>
+    <div class="season">${d.year}</div>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:${d.score/maxScore*100}%;background:${d.color}">
+        <div class="bar-score">${d.score.toFixed(1)}</div>
+      </div>
+    </div>
+  `;
+  rows.appendChild(row);
+});
+</script>
+</body>
+</html>

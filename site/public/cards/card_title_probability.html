@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Title Probability — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.bars{margin-top:28px}
+.bar-row{display:flex;align-items:center;margin-bottom:10px}
+.bar-code{font-family:'Bebas Neue',sans-serif;font-size:28px;width:72px;text-align:right;margin-right:16px}
+.bar-track{flex:1;height:32px;background:#0a0a0a;border-radius:3px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:12px}
+.bar-pct{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff}
+canvas{margin-top:24px}
+.chart-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;letter-spacing:0.15em;text-align:center;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">TITLE PROBABILITY</div>
+  <div class="sub">2024 · AFTER R15 · MONTE CARLO SIMULATION (10,000 RUNS)</div>
+  <div class="bars" id="bars"></div>
+  <canvas id="chart" width="968" height="320"></canvas>
+  <div class="chart-label">PROBABILITY TREND — TOP 4 DRIVERS (R1 → R15)</div>
+</div>
+<script>
+const drivers = [
+  {code:'VER',color:'#0600ef',pct:62,trend:[45,50,55,58,60,62,58,55,58,60,62,64,63,62,62]},
+  {code:'NOR',color:'#ff8000',pct:22,trend:[8,10,12,14,16,18,22,28,26,24,22,20,22,22,22]},
+  {code:'LEC',color:'#e80020',pct:10,trend:[20,18,15,14,12,10,10,8,8,8,9,9,9,10,10]},
+  {code:'PIA',color:'#ff8000',pct:4,trend:[0,0,1,1,2,2,3,4,4,4,4,4,4,4,4]},
+  {code:'SAI',color:'#e80020',pct:1.5,trend:[15,12,10,8,6,5,4,3,2,2,2,2,1.5,1.5,1.5]},
+  {code:'HAM',color:'#27f4d2',pct:0.5,trend:[8,6,4,3,2,2,1.5,1,1,0.5,0.5,0.5,0.5,0.5,0.5]}
+];
+// 合計: 62+22+10+4+1.5+0.5 = 100
+
+const bars = document.getElementById('bars');
+const maxPct = 65;
+
+drivers.forEach(d => {
+  const row = document.createElement('div');
+  row.className = 'bar-row';
+  row.innerHTML = `
+    <div class="bar-code" style="color:${d.color}">${d.code}</div>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:${d.pct/maxPct*100}%;background:${d.color}">
+        <div class="bar-pct">${d.pct}%</div>
+      </div>
+    </div>
+  `;
+  bars.appendChild(row);
+});
+
+// ミニ折れ線（top4）
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+const pad = {top:20,right:60,bottom:30,left:50};
+const w = canvas.width - pad.left - pad.right;
+const h = canvas.height - pad.top - pad.bottom;
+
+function x(i) { return pad.left + (i / 14) * w; }
+function y(p) { return pad.top + h - (p / 70) * h; }
+
+// グリッド
+ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1;
+for (let p = 0; p <= 70; p += 20) {
+  ctx.beginPath(); ctx.moveTo(pad.left, y(p)); ctx.lineTo(pad.left+w, y(p)); ctx.stroke();
+  ctx.fillStyle = '#333'; ctx.font = '10px IBM Plex Mono'; ctx.textAlign = 'right';
+  ctx.fillText(p + '%', pad.left - 8, y(p) + 3);
+}
+
+const top4 = drivers.slice(0, 4);
+top4.forEach(d => {
+  ctx.strokeStyle = d.color; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  d.trend.forEach((p, i) => { if(i===0) ctx.moveTo(x(i),y(p)); else ctx.lineTo(x(i),y(p)); });
+  ctx.stroke();
+  ctx.fillStyle = d.color; ctx.font = '600 11px IBM Plex Mono'; ctx.textAlign = 'left';
+  ctx.fillText(d.code, x(14) + 8, y(d.trend[14]) + 4);
+});
+</script>
+</body>
+</html>

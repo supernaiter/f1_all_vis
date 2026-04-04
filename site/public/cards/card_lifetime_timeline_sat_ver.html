@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Lifetime Timeline SAT vs VER — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.names{display:flex;justify-content:space-between;margin-top:20px;padding:0 40px}
+.driver-name{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.04em}
+.timeline{margin-top:16px;position:relative;padding:0 40px}
+.center-line{position:absolute;left:50%;top:0;bottom:0;width:1px;background:#0e0e14}
+.age-row{display:flex;align-items:center;min-height:44px;position:relative}
+.age-label{position:absolute;left:50%;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:11px;color:#333;z-index:1}
+.left-event{flex:1;text-align:right;padding-right:40px}
+.right-event{flex:1;text-align:left;padding-left:40px}
+.event{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.05em;line-height:1.4}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;vertical-align:middle;margin:0 6px}
+.type-debut{background:#534ab7}
+.type-win{background:#0f6e56}
+.type-title{background:#ffd700}
+.type-career{background:#333}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">LIFETIME TIMELINE</div>
+  <div class="sub">DIFFERENT PATHS TO GREATNESS</div>
+  <div class="names">
+    <div class="driver-name" style="color:#e80020">SATO</div>
+    <div class="driver-name" style="color:#0600ef">VERSTAPPEN</div>
+  </div>
+  <div class="timeline" id="timeline"><div class="center-line"></div></div>
+</div>
+<script>
+const SAT={name:'SATO',color:'#e80020',birth:1977,events:[
+  {age:19,label:'STARTS RACING (UK)',type:'career'},
+  {age:24,label:'F1 DEBUT (JORDAN)',type:'debut'},
+  {age:27,label:'BEST F1 SEASON P8 WDC',type:'career'},
+  {age:28,label:'130R ATTEMPT ON ALO',type:'career'},
+  {age:31,label:'LAST F1 RACE',type:'career'},
+  {age:33,label:'INDYCAR DEBUT',type:'debut'},
+  {age:35,label:'FIRST INDYCAR WIN',type:'win'},
+  {age:40,label:'INDY 500 WINNER',type:'title'},
+  {age:43,label:'2ND INDY 500 WIN',type:'title'},
+  {age:45,label:'FINAL INDYCAR SEASON',type:'career'}
+]};
+const VER={name:'VERSTAPPEN',color:'#0600ef',birth:1997,events:[
+  {age:17,label:'F1 DEBUT YOUNGEST EVER',type:'debut'},
+  {age:18,label:'YOUNGEST RACE WINNER',type:'win'},
+  {age:23,label:'1ST TITLE',type:'title'},
+  {age:24,label:'2ND TITLE 15 WINS',type:'title'},
+  {age:25,label:'3RD TITLE 19 WINS RECORD',type:'title'},
+  {age:26,label:'4TH CONSECUTIVE TITLE',type:'title'}
+]};
+
+const minAge = 17;
+const maxAge = 46;
+const timeline = document.getElementById('timeline');
+
+// 全年齢のマップを作成
+const satMap = {}; SAT.events.forEach(e => satMap[e.age] = e);
+const verMap = {}; VER.events.forEach(e => verMap[e.age] = e);
+
+const allAges = new Set([...SAT.events.map(e=>e.age), ...VER.events.map(e=>e.age)]);
+const sortedAges = [...allAges].sort((a,b) => a - b);
+
+sortedAges.forEach(age => {
+  const row = document.createElement('div');
+  row.className = 'age-row';
+
+  const left = satMap[age];
+  const right = verMap[age];
+
+  row.innerHTML = `
+    <div class="left-event">
+      ${left ? `<span class="event" style="color:${SAT.color}">${left.label}<span class="dot type-${left.type}"></span></span>` : ''}
+    </div>
+    <div class="age-label">${age}</div>
+    <div class="right-event">
+      ${right ? `<span class="event" style="color:${VER.color}"><span class="dot type-${right.type}"></span>${right.label}</span>` : ''}
+    </div>
+  `;
+  timeline.appendChild(row);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Teammate Chain Elo — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.desc{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#333;letter-spacing:0.1em;margin-top:8px}
+.rows{margin-top:24px}
+.row{display:flex;align-items:center;margin-bottom:10px}
+.rank{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#333;width:36px;text-align:right;margin-right:12px}
+.code{font-family:'Bebas Neue',sans-serif;font-size:28px;width:72px;margin-right:12px}
+.bar-track{flex:1;height:28px;background:#0a0a0a;border-radius:3px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:10px}
+.elo{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#fff}
+.chain{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#555;margin-left:auto;margin-right:8px;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">TEAMMATE CHAIN ELO</div>
+  <div class="sub">TRANSITIVE RATING VIA SHARED TEAMMATES</div>
+  <div class="desc">BASE 1500 · K=32 · QUALIFYING H2H AS INPUT</div>
+  <div class="rows" id="rows"></div>
+</div>
+<script>
+const data = [
+  {code:'VER',color:'#0600ef',elo:1842,chain:'→RIC→SAI→LEC→VET→RAI→HAM'},
+  {code:'HAM',color:'#27f4d2',elo:1818,chain:'→ROS→VET→LEC→SAI→NOR'},
+  {code:'SEN',color:'#ffd700',elo:1795,chain:'→PRO→MSC→RAI→VET→RIC'},
+  {code:'ALO',color:'#00665f',elo:1782,chain:'→HAM→ROS→MSC→RAI→VET'},
+  {code:'MSC',color:'#e80020',elo:1768,chain:'→RAI→VET→RIC→VER'},
+  {code:'LEC',color:'#e80020',elo:1754,chain:'→VET→RIC→VER→PER→BUT'},
+  {code:'NOR',color:'#ff8000',elo:1741,chain:'→SAI→LEC→VET→RAI'},
+  {code:'VET',color:'#555555',elo:1728,chain:'→RIC→VER→PER→BUT→HAM'},
+  {code:'ROS',color:'#00d2be',elo:1715,chain:'→HAM→ALO→BUT→RAI'},
+  {code:'RAI',color:'#b6babd',elo:1698,chain:'→VET→RIC→VER→HAM'},
+  {code:'RIC',color:'#ffd700',elo:1685,chain:'→VER→PER→BUT→HAM'},
+  {code:'BUT',color:'#ef87b4',elo:1672,chain:'→HAM→ROS→MSC→VET'},
+  {code:'SAI',color:'#e80020',elo:1658,chain:'→NOR→LEC→VET→RIC'},
+  {code:'PER',color:'#0600ef',elo:1625,chain:'→VER→RIC→VET→RAI'}
+];
+
+const minElo = 1600;
+const maxElo = 1900;
+const rows = document.getElementById('rows');
+
+data.forEach((d, i) => {
+  const pct = (d.elo - minElo) / (maxElo - minElo) * 100;
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.innerHTML = `
+    <div class="rank">${i + 1}</div>
+    <div class="code" style="color:${d.color}">${d.code}</div>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:${pct}%;background:${d.color}">
+        <div class="elo">${d.elo}</div>
+        <div class="chain">${d.chain}</div>
+      </div>
+    </div>
+  `;
+  rows.appendChild(row);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Tyre Cliff Detector — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:24px}
+.legend{display:flex;gap:24px;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend .swatch{width:16px;height:3px;border-radius:1px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">TYRE CLIFF DETECTOR</div>
+  <div class="sub">VER · 2024 BAHRAIN GP · STINT 1 (MEDIUM) &amp; STINT 2 (HARD)</div>
+  <canvas id="chart" width="968" height="820"></canvas>
+  <div class="legend">
+    <span><div class="swatch" style="background:#FFD700"></div>STINT 1 — MEDIUM</span>
+    <span><div class="swatch" style="background:#FFFFFF"></div>STINT 2 — HARD</span>
+    <span><div class="swatch" style="background:#e80020;width:10px;height:10px;border-radius:50%"></div>CLIFF POINT</span>
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+const stint1 = {compound:'MEDIUM',color:'#FFD700',laps:[
+  92.3,92.1,92.0,92.2,92.4,92.5,92.6,92.8,93.0,93.2,93.5,93.9,94.5,95.3,96.8
+]};
+const stint2 = {compound:'HARD',color:'#FFFFFF',laps:[
+  93.0,92.8,92.7,92.9,93.0,93.1,93.2,93.3,93.5,93.6,93.8,93.9,94.0,94.1,94.3,94.5,94.7,94.9,95.2,95.5,95.9,96.5,97.4
+]};
+
+const pad = {top:30,right:60,bottom:50,left:70};
+const w = canvas.width - pad.left - pad.right;
+const h = canvas.height - pad.top - pad.bottom;
+
+const maxLap = Math.max(stint1.laps.length, stint2.laps.length);
+const allTimes = [...stint1.laps, ...stint2.laps];
+const minT = Math.floor(Math.min(...allTimes) - 0.5);
+const maxT = Math.ceil(Math.max(...allTimes) + 0.5);
+
+function x(lap) { return pad.left + (lap / maxLap) * w; }
+function y(t) { return pad.top + h - ((t - minT) / (maxT - minT)) * h; }
+
+// グリッド
+ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1;
+for (let t = minT; t <= maxT; t += 1) {
+  ctx.beginPath(); ctx.moveTo(pad.left, y(t)); ctx.lineTo(pad.left+w, y(t)); ctx.stroke();
+  ctx.fillStyle='#333'; ctx.font='12px IBM Plex Mono'; ctx.textAlign='right';
+  ctx.fillText(t.toFixed(1)+'s', pad.left-10, y(t)+4);
+}
+for (let i = 0; i <= maxLap; i += 5) {
+  ctx.beginPath(); ctx.moveTo(x(i), pad.top); ctx.lineTo(x(i), pad.top+h); ctx.stroke();
+  ctx.fillStyle='#333'; ctx.font='12px IBM Plex Mono'; ctx.textAlign='center';
+  ctx.fillText('L'+(i+1), x(i), pad.top+h+24);
+}
+
+// 軸ラベル
+ctx.fillStyle='#333'; ctx.font='11px IBM Plex Mono'; ctx.textAlign='center';
+ctx.fillText('STINT LAP', pad.left+w/2, pad.top+h+44);
+ctx.save(); ctx.translate(14, pad.top+h/2); ctx.rotate(-Math.PI/2);
+ctx.fillText('LAP TIME (s)', 0, 0); ctx.restore();
+
+// クリフ検出: デグ率が前ラップの2倍以上
+function findCliffs(laps) {
+  const cliffs = [];
+  for (let i = 2; i < laps.length; i++) {
+    const deg1 = laps[i-1] - laps[i-2];
+    const deg2 = laps[i] - laps[i-1];
+    if (deg2 > 0.3 && deg2 > deg1 * 2) cliffs.push(i);
+  }
+  return cliffs;
+}
+
+// 描画
+[stint1, stint2].forEach(stint => {
+  ctx.strokeStyle = stint.color; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  stint.laps.forEach((t, i) => {
+    if (i === 0) ctx.moveTo(x(i), y(t)); else ctx.lineTo(x(i), y(t));
+  });
+  ctx.stroke();
+
+  // ドット
+  stint.laps.forEach((t, i) => {
+    ctx.beginPath(); ctx.arc(x(i), y(t), 3, 0, Math.PI*2);
+    ctx.fillStyle = stint.color; ctx.fill();
+  });
+
+  // クリフマーカー
+  const cliffs = findCliffs(stint.laps);
+  cliffs.forEach(i => {
+    ctx.beginPath(); ctx.arc(x(i), y(stint.laps[i]), 10, 0, Math.PI*2);
+    ctx.strokeStyle = '#e80020'; ctx.lineWidth = 2.5; ctx.stroke();
+    ctx.fillStyle = '#e80020'; ctx.font = '600 11px IBM Plex Mono'; ctx.textAlign = 'center';
+    ctx.fillText('CLIFF', x(i), y(stint.laps[i]) - 16);
+  });
+});
+</script>
+</body>
+</html>

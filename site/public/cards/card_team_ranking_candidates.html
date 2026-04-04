@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Team Ranking Card — 3 Candidates</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#111;display:flex;flex-direction:column;align-items:center;gap:48px;padding:40px 20px;min-height:100vh;}
+h2{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:0.2em;color:#444;text-transform:uppercase;margin-bottom:8px;text-align:center;}
+.desc{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#333;text-align:center;margin-bottom:16px;max-width:600px;line-height:1.6;}
+
+/* ═══ SHARED CARD BASE ═══ */
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+
+/* ═══ CANDIDATE A — HORIZONTAL BAR RANKING ═══ */
+.cA{padding:64px 64px 56px;}
+.cA .header{flex-shrink:0;margin-bottom:18px;display:flex;justify-content:space-between;align-items:flex-start;}
+.cA .title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.cA .subtitle{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.cA .wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+.cA .chart{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;position:relative;}
+.cA .team-row{display:grid;grid-template-columns:48px 180px 1fr 100px;align-items:center;gap:0;}
+.cA .rank{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.04em;text-align:center;}
+.cA .team-info{padding-right:16px;text-align:right;}
+.cA .team-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.06em;line-height:1;}
+.cA .drivers{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:#2a2a2a;margin-top:2px;}
+.cA .bar-track{height:32px;background:#0a0a0a;border-radius:0 3px 3px 0;overflow:hidden;}
+.cA .bar-fill{height:100%;border-radius:0 3px 3px 0;transition:width 0.6s;}
+.cA .val{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.06em;padding-left:14px;white-space:nowrap;}
+
+/* ═══ CANDIDATE B — TIER CARD ═══ */
+.cB{padding:64px 64px 48px;}
+.cB .header{flex-shrink:0;margin-bottom:22px;display:flex;justify-content:space-between;align-items:flex-start;}
+.cB .title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.cB .subtitle{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.cB .wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+.cB .tiers{flex:1;display:flex;flex-direction:column;gap:10px;}
+.cB .tier{display:flex;align-items:stretch;gap:0;flex:1;}
+.cB .tier-label{width:56px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.04em;flex-shrink:0;border-right:2px solid;}
+.cB .tier-content{flex:1;display:flex;align-items:center;gap:0;padding:0 16px;overflow:hidden;}
+.cB .tier-team{display:flex;align-items:center;gap:12px;padding:8px 16px;border-radius:3px;flex-shrink:0;}
+.cB .tier-team .t-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.06em;line-height:1;}
+.cB .tier-team .t-gap{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;}
+.cB .tier-team .t-drivers{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:#2a2a2a;margin-top:1px;}
+.cB .tier-divider{width:1px;height:60%;align-self:center;background:#111;margin:0 8px;flex-shrink:0;}
+
+/* ═══ CANDIDATE C — DELTA STACK ═══ */
+.cC{padding:64px 64px 48px;}
+.cC .header{flex-shrink:0;margin-bottom:16px;display:flex;justify-content:space-between;align-items:flex-start;}
+.cC .title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.cC .subtitle{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.cC .wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+.cC .leader-strip{flex-shrink:0;display:flex;align-items:center;gap:20px;padding:20px 24px;background:#0a0a0a;border:1px solid #141420;border-radius:4px;margin-bottom:16px;}
+.cC .leader-rank{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:0.04em;line-height:1;color:#222;}
+.cC .leader-info{flex:1;}
+.cC .leader-name{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.06em;line-height:1;}
+.cC .leader-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#2a2a2a;margin-top:4px;}
+.cC .leader-pace{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;letter-spacing:0.04em;}
+.cC .stack{flex:1;display:flex;flex-direction:column;gap:0;}
+.cC .stack-row{display:grid;grid-template-columns:44px 160px 1fr 80px;align-items:center;padding:0;border-top:1px solid #0d0d14;}
+.cC .stack-row:last-child{border-bottom:1px solid #0d0d14;}
+.cC .s-rank{font-family:'Bebas Neue',sans-serif;font-size:24px;text-align:center;}
+.cC .s-team{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.06em;padding:14px 12px;line-height:1;}
+.cC .s-drivers{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.1em;color:#2a2a2a;margin-top:2px;}
+.cC .s-bar-wrap{height:24px;position:relative;}
+.cC .s-bar{position:absolute;left:0;top:0;height:100%;border-radius:0 2px 2px 0;}
+.cC .s-val{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.06em;text-align:right;padding-right:8px;white-space:nowrap;}
+</style></head>
+<body>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- CANDIDATE A — HORIZONTAL BAR RANKING          -->
+<!-- ══════════════════════════════════════════════ -->
+<h2>CANDIDATE A — HORIZONTAL BAR RANKING</h2>
+<div class="desc">RaceSimカードと同じ構造。Race Pace gap横バー＋順位番号。既存パターンの延長で最も実装コストが低い。リスク：RaceSimカードと差別化が薄い。</div>
+<div class="card cA">
+  <div class="header">
+    <div><div class="title">TEAM POWER RANKING</div>
+    <div class="subtitle">2026 · R02 · CHINA GP · RACE PACE — FastF1 DATA</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="chart" id="chartA"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- CANDIDATE B — TIER CARD                       -->
+<!-- ══════════════════════════════════════════════ -->
+<h2>CANDIDATE B — TIER CARD</h2>
+<div class="desc">S/A/B/C/Dティア分け。gap閾値で自動グルーピング。SNS議論燃料として最もポテンシャルが高い（「RBがBティア!?」）。リスク：閾値設定が恣意的に見える。</div>
+<div class="card cB">
+  <div class="header">
+    <div><div class="title">TEAM TIER LIST</div>
+    <div class="subtitle">2026 · R02 · CHINA GP · RACE PACE TIERS — FastF1 DATA</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="tiers" id="chartB"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- CANDIDATE C — DELTA STACK                     -->
+<!-- ══════════════════════════════════════════════ -->
+<h2>CANDIDATE C — DELTA STACK</h2>
+<div class="desc">リーダーを大きく見せ、以下は差分バー。リーダーが視覚的に支配しSNSで「今◯◯が最強」が即座に伝わる。リスク：下位チームの情報が圧縮される。</div>
+<div class="card cC">
+  <div class="header">
+    <div><div class="title">PACE HIERARCHY</div>
+    <div class="subtitle">2026 · R02 · CHINA GP · RACE PACE DELTA — FastF1 DATA</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="leader-strip" id="leader"></div>
+  <div class="stack" id="chartC"></div>
+</div>
+
+<script>
+const teams=[
+  {team:"Mercedes",color:"#27f4d2",median:96.413,gap:0.0,d1:"ANT",d2:"RUS"},
+  {team:"Ferrari",color:"#e80020",median:96.837,gap:0.424,d1:"LEC",d2:"HAM"},
+  {team:"Haas F1 Team",color:"#b6babd",median:97.496,gap:1.083,d1:"BEA",d2:"OCO"},
+  {team:"Alpine",color:"#ff87bc",median:97.589,gap:1.176,d1:"GAS",d2:"COL"},
+  {team:"Red Bull Racing",color:"#0600ef",median:97.716,gap:1.303,d1:"VER",d2:"HAD"},
+  {team:"Racing Bulls",color:"#fcd700",median:98.047,gap:1.634,d1:"LAW",d2:"LIN"},
+  {team:"Audi",color:"#ff2d00",median:98.388,gap:1.975,d1:"HUL",d2:"???"},
+  {team:"Williams",color:"#00a0dd",median:98.708,gap:2.295,d1:"SAI",d2:"???"},
+  {team:"Cadillac",color:"#444444",median:99.813,gap:3.400,d1:"BOT",d2:"PER"},
+  {team:"Aston Martin",color:"#00665f",median:100.356,gap:3.943,d1:"ALO",d2:"STR"}
+];
+const FOCUS_TEAMS=new Set(["Mercedes","Ferrari"]);
+const MAX_GAP=Math.max(...teams.map(t=>t.gap))+0.3;
+
+// ═══ CANDIDATE A ═══
+(function(){
+  const chart=document.getElementById('chartA');
+  teams.forEach((t,i)=>{
+    const isHL=FOCUS_TEAMS.has(t.team);
+    const pct=i===0?100:Math.max((1-t.gap/MAX_GAP)*100,2);
+    const nameOp=isHL?1:t.gap<1?0.4:t.gap<2?0.25:0.12;
+    const barOp=isHL?1:t.gap<1?0.55:t.gap<2?0.3:0.15;
+    const valCol=isHL?t.color:t.gap<1?'#444':'#1a1a1a';
+    const rankCol=isHL?t.color:'#1a1a1a';
+    const glow=i===0?`box-shadow:0 0 18px ${t.color}50;`:'';
+    const row=document.createElement('div');row.className='team-row';
+    row.innerHTML=`
+      <div class="rank" style="color:${rankCol};">${i+1}</div>
+      <div class="team-info">
+        <div class="team-name" style="color:${t.color};opacity:${nameOp};">${t.team}</div>
+        <div class="drivers">${t.d1} / ${t.d2}</div>
+      </div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${t.color};opacity:${barOp};${glow}"></div></div>
+      <div class="val" style="color:${valCol};font-weight:${isHL?600:400};">${i===0?'LEADER':'+'+t.gap.toFixed(3)+'s'}</div>`;
+    chart.appendChild(row);
+  });
+})();
+
+// ═══ CANDIDATE B ═══
+(function(){
+  const TIERS=[
+    {label:'S',color:'#FFD700',border:'#FFD70050',bg:'#FFD70008',max:0.5},
+    {label:'A',color:'#27f4d2',border:'#27f4d240',bg:'#27f4d206',max:1.2},
+    {label:'B',color:'#6a6aff',border:'#6a6aff30',bg:'#6a6aff05',max:2.0},
+    {label:'C',color:'#ff6a3d',border:'#ff6a3d28',bg:'#ff6a3d04',max:3.5},
+    {label:'D',color:'#444',border:'#44444430',bg:'#44444406',max:Infinity}
+  ];
+  const chart=document.getElementById('chartB');
+  TIERS.forEach(tier=>{
+    const inTier=teams.filter(t=>t.gap<tier.max&&!TIERS.slice(0,TIERS.indexOf(tier)).some(prev=>t.gap<prev.max));
+    if(inTier.length===0)return;
+    const tierEl=document.createElement('div');tierEl.className='tier';
+    const label=document.createElement('div');label.className='tier-label';
+    label.style.color=tier.color;label.style.borderColor=tier.border;
+    label.textContent=tier.label;
+    const content=document.createElement('div');content.className='tier-content';
+    content.style.background=tier.bg;
+    inTier.forEach((t,i)=>{
+      if(i>0){const d=document.createElement('div');d.className='tier-divider';content.appendChild(d);}
+      const isHL=FOCUS_TEAMS.has(t.team);
+      const teamEl=document.createElement('div');teamEl.className='tier-team';
+      const nameOp=isHL?1:0.3;
+      const gapCol=t.gap===0?tier.color:'#2a2a2a';
+      teamEl.innerHTML=`
+        <div>
+          <div class="t-name" style="color:${t.color};opacity:${nameOp};">${t.team}</div>
+          <div class="t-drivers">${t.d1} / ${t.d2}</div>
+        </div>
+        <div class="t-gap" style="color:${gapCol};">${t.gap===0?'REF':'+'+t.gap.toFixed(3)+'s'}</div>`;
+      content.appendChild(teamEl);
+    });
+    tierEl.appendChild(label);
+    tierEl.appendChild(content);
+    chart.appendChild(tierEl);
+  });
+})();
+
+// ═══ CANDIDATE C ═══
+(function(){
+  const leader=teams[0];
+  const leaderEl=document.getElementById('leader');
+  leaderEl.innerHTML=`
+    <div class="leader-rank" style="color:${leader.color}30;">P1</div>
+    <div class="leader-info">
+      <div class="leader-name" style="color:${leader.color};">${leader.team}</div>
+      <div class="leader-sub">${leader.d1} / ${leader.d2}</div>
+    </div>
+    <div class="leader-pace" style="color:${leader.color};">${leader.median.toFixed(3)}s</div>`;
+  leaderEl.style.borderColor=leader.color+'30';
+
+  const stack=document.getElementById('chartC');
+  teams.slice(1).forEach((t,i)=>{
+    const isHL=FOCUS_TEAMS.has(t.team);
+    const pct=Math.min((t.gap/MAX_GAP)*100,95);
+    const nameOp=isHL?1:t.gap<1?0.5:t.gap<2?0.3:0.15;
+    const barOp=isHL?0.8:t.gap<1?0.4:t.gap<2?0.25:0.12;
+    const valCol=isHL?t.color:t.gap<1?'#444':'#1a1a1a';
+    const row=document.createElement('div');row.className='stack-row';
+    row.innerHTML=`
+      <div class="s-rank" style="color:${isHL?t.color:'#1a1a1a'};">${i+2}</div>
+      <div>
+        <div class="s-team" style="color:${t.color};opacity:${nameOp};">${t.team}</div>
+        <div class="s-drivers" style="padding-left:12px;">${t.d1} / ${t.d2}</div>
+      </div>
+      <div class="s-bar-wrap"><div class="s-bar" style="width:${pct}%;background:${t.color};opacity:${barOp};"></div></div>
+      <div class="s-val" style="color:${valCol};">+${t.gap.toFixed(3)}s</div>`;
+    stack.appendChild(row);
+  });
+})();
+</script>
+</body></html>

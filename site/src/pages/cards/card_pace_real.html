@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Driver Pace</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:1rem;}
+.card{width:1080px;background:#060606;position:relative;padding:60px 56px 56px;font-family:'IBM Plex Mono',monospace;}
+.title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.subtitle{font-size:10px;letter-spacing:0.2em;color:#252525;margin-top:6px;}
+.wm{position:absolute;top:60px;right:56px;font-size:10px;letter-spacing:0.15em;color:#181818;}
+.chart-wrap{display:flex;gap:0;position:relative;margin-top:24px;}
+.y-axis{width:64px;flex-shrink:0;position:relative;}
+.bars-area{flex:1;position:relative;}
+.bars{display:flex;align-items:flex-start;gap:4px;position:relative;z-index:2;}
+.car-col{flex:1;display:flex;flex-direction:column;align-items:center;}
+.driver-code{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:0.08em;margin-bottom:3px;line-height:1;}
+.bar-container{width:100%;display:flex;justify-content:center;}
+.bar{width:80%;border-radius:2px 2px 0 0;}
+.pct-label{font-size:7px;letter-spacing:0.03em;margin-top:3px;text-align:center;line-height:1.3;}
+</style></head><body>
+<div class="card">
+  <div class="title">DRIVER PACE — MEDIAN LAP TIME</div>
+  <div class="subtitle">2026 · R02 · CHINA GP · RACE (ACCURATE LAPS, EXCL. PIT)</div>
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="chart-wrap"><div class="y-axis" id="yax"></div><div class="bars-area" id="bars-area"><div class="bars" id="bars"></div></div></div>
+</div>
+<script>
+const data = [{"driver": "RUS", "team": "Mercedes", "color": "#27f4d2", "median": 96.407, "pct_gap": 0.0}, {"driver": "ANT", "team": "Mercedes", "color": "#27f4d2", "median": 96.443, "pct_gap": 0.037}, {"driver": "LEC", "team": "Ferrari", "color": "#e80020", "median": 96.833, "pct_gap": 0.442}, {"driver": "HAM", "team": "Ferrari", "color": "#e80020", "median": 96.876, "pct_gap": 0.486}, {"driver": "BEA", "team": "Haas F1 Team", "color": "#b6babd", "median": 97.496, "pct_gap": 1.13}, {"driver": "GAS", "team": "Alpine", "color": "#ff87bc", "median": 97.584, "pct_gap": 1.221}, {"driver": "VER", "team": "Red Bull Racing", "color": "#0600ef", "median": 97.716, "pct_gap": 1.358}, {"driver": "LAW", "team": "Racing Bulls", "color": "#fcd700", "median": 98.047, "pct_gap": 1.701}, {"driver": "HAD", "team": "Red Bull Racing", "color": "#0600ef", "median": 98.06, "pct_gap": 1.715}, {"driver": "COL", "team": "Alpine", "color": "#ff87bc", "median": 98.383, "pct_gap": 2.05}, {"driver": "HUL", "team": "Audi", "color": "#ff2d00", "median": 98.388, "pct_gap": 2.055}, {"driver": "OCO", "team": "Haas F1 Team", "color": "#b6babd", "median": 98.416, "pct_gap": 2.084}, {"driver": "LIN", "team": "Racing Bulls", "color": "#fcd700", "median": 98.602, "pct_gap": 2.277}, {"driver": "SAI", "team": "Williams", "color": "#00a0dd", "median": 98.708, "pct_gap": 2.387}, {"driver": "BOT", "team": "Cadillac", "color": "#444444", "median": 99.813, "pct_gap": 3.533}, {"driver": "PER", "team": "Cadillac", "color": "#444444", "median": 100.007, "pct_gap": 3.734}, {"driver": "ALO", "team": "Aston Martin", "color": "#00665f", "median": 100.356, "pct_gap": 4.096}, {"driver": "STR", "team": "Aston Martin", "color": "#00665f", "median": 101.083, "pct_gap": 4.85}];
+const highlights = ['ANT','RUS'];
+const CHART_H = 580;
+const maxPct = Math.max(...data.map(d=>d.pct_gap)) + 0.2;
+const PX_PER_PCT = CHART_H / maxPct;
+const yax = document.getElementById('yax');
+yax.style.height = CHART_H+'px'; yax.style.position='relative';
+[0,1,2,3,4].forEach(p=>{
+  if(p*PX_PER_PCT>CHART_H) return;
+  const t=document.createElement('div');
+  t.style.cssText=`position:absolute;right:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1e1e1e;transform:translateY(-50%);top:${p*PX_PER_PCT}px`;
+  t.textContent=p===0?'100%':'+'+p+'%'; yax.appendChild(t);
+});
+const barsArea=document.getElementById('bars-area');
+barsArea.style.position='relative';
+[0,1,2,3].forEach(p=>{
+  const gl=document.createElement('div');
+  gl.style.cssText=`position:absolute;left:0;right:0;height:1px;background:rgba(255,255,255,0.025);top:${p*PX_PER_PCT}px`;
+  barsArea.appendChild(gl);
+});
+const barsEl=document.getElementById('bars');
+barsEl.style.height=CHART_H+'px';
+data.forEach(car=>{
+  const barH=car.pct_gap*PX_PER_PCT;
+  const isHL=highlights.includes(car.driver);
+  const op=isHL?1:0.25; const nameCol=isHL?car.color:'#252525'; const pctCol=isHL?car.color:'#1e1e1e';
+  const col=document.createElement('div'); col.className='car-col';
+  col.innerHTML=`<div class="driver-code" style="color:${nameCol}">${car.driver}</div>
+    <div class="bar-container"><div class="bar" style="height:${barH}px;background:${car.color};opacity:${op};${isHL?`box-shadow:0 0 14px ${car.color}40`:''}"></div></div>
+    <div class="pct-label" style="color:${pctCol}">${car.pct_gap===0?'100%':'+'+car.pct_gap.toFixed(2)+'%'}</div>`;
+  barsEl.appendChild(col);
+});
+</script></body></html>

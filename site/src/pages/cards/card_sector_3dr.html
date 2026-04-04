@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sector Dominance 3-Driver</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:64px 72px 56px;}
+.header{flex-shrink:0;margin-bottom:20px;display:flex;justify-content:space-between;align-items:flex-start;}
+.title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.subtitle{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+.legend{display:flex;gap:28px;margin-bottom:20px;flex-shrink:0;}
+.leg-item{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.12em;}
+.leg-dot{width:9px;height:9px;border-radius:50%;}
+.body{flex:1;display:flex;gap:40px;}
+.sector-panel{flex:1;display:flex;flex-direction:column;gap:0;justify-content:space-around;}
+.sec-block{padding:18px 0;border-top:1px solid #111;}
+.sec-block:last-child{border-bottom:1px solid #111;}
+.sec-header{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+.sec-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#2a2a2a;}
+.win-badge{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.14em;padding:2px 8px;border-radius:2px;}
+.dbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.dbar-row:last-child{margin-bottom:0;}
+.dbar-name{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:0.08em;width:40px;text-align:right;flex-shrink:0;}
+.dbar-track{flex:1;height:26px;background:#0a0a0a;border-radius:0 3px 3px 0;overflow:hidden;}
+.dbar-fill{height:100%;border-radius:0 3px 3px 0;}
+.dbar-time{font-family:'IBM Plex Mono',monospace;font-size:12px;width:68px;flex-shrink:0;white-space:nowrap;text-align:right;}
+.dbar-delta{font-family:'IBM Plex Mono',monospace;font-size:10px;width:52px;flex-shrink:0;text-align:right;color:#2a2a2a;white-space:nowrap;}
+.radar-panel{width:340px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+.radar-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.2em;color:#2a2a2a;text-align:center;}
+.summary-bar{flex-shrink:0;margin-top:16px;display:flex;gap:0;border:1px solid #111;border-radius:3px;overflow:hidden;}
+.sc{flex:1;padding:12px 16px;background:#0a0a0a;text-align:center;}
+.sc+.sc{border-left:1px solid #111;}
+.sc-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.18em;color:#2a2a2a;margin-bottom:5px;}
+.sc-val{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.06em;line-height:1;}
+.sc-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;margin-top:2px;color:#333;}
+</style></head>
+<body><div class="card">
+  <div class="header">
+    <div><div class="title">SECTOR DOMINANCE</div>
+    <div class="subtitle">2026 · R02 · CHINA GP · QUALIFYING · PERSONAL BEST SECTOR TIMES — FastF1 DATA</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:#FFD700;box-shadow:0 0 5px #FFD70070;"></div><span style="color:#FFD700;">ANT</span><span style="color:#2a2a2a;font-size:10px;margin-left:4px;">MERCEDES</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#27f4d2;"></div><span style="color:#27f4d2;">RUS</span><span style="color:#2a2a2a;font-size:10px;margin-left:4px;">MERCEDES</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:#e80020;"></div><span style="color:#e80020;">LEC</span><span style="color:#2a2a2a;font-size:10px;margin-left:4px;">FERRARI</span></div>
+  </div>
+  <div class="body">
+    <div class="sector-panel" id="sectorPanel"></div>
+    <div class="radar-panel">
+      <div class="radar-lbl">SECTOR PERFORMANCE PROFILE</div>
+      <canvas id="rc" width="320" height="320"></canvas>
+    </div>
+  </div>
+  <div class="summary-bar">
+    <div class="sc"><div class="sc-lbl">POLE LAP</div><div class="sc-val" style="color:#FFD700;">ANT</div><div class="sc-sub">92.064s</div></div>
+    <div class="sc"><div class="sc-lbl">RUS LAP</div><div class="sc-val" style="color:#27f4d2;">P2</div><div class="sc-sub">92.286s (+0.222s)</div></div>
+    <div class="sc"><div class="sc-lbl">LEC LAP</div><div class="sc-val" style="color:#e80020;">P?</div><div class="sc-sub">92.428s (+0.364s)</div></div>
+    <div class="sc"><div class="sc-lbl">THEORETICAL BEST</div><div class="sc-val" style="color:#ccc;">92.059s</div><div class="sc-sub">COMBINED SECTORS</div></div>
+  </div>
+</div>
+<script>
+const sec={"ANT": {"s1": 24.013, "s2": 27.664, "s3": 40.387, "laptime": 92.064}, "RUS": {"s1": 24.012, "s2": 27.783, "s3": 40.491, "laptime": 92.286}, "LEC": {"s1": 24.118, "s2": 27.66, "s3": 40.65, "laptime": 92.428}};
+const COLORS={'ANT':'#FFD700','RUS':'#27f4d2','LEC':'#e80020'};
+const DRIVERS=['ANT','RUS','LEC'];
+const SKEYS=['s1','s2','s3'];
+const SLABELS=['SECTOR 1','SECTOR 2','SECTOR 3'];
+
+// Build sector bars
+const panel=document.getElementById('sectorPanel');
+SKEYS.forEach((sk,si)=>{
+  const times=DRIVERS.map(d=>sec[d][sk]);
+  const fastest=Math.min(...times);
+  const slowest=Math.max(...times);
+  const winnerIdx=times.indexOf(fastest);
+  const winner=DRIVERS[winnerIdx];
+  const wCol=COLORS[winner];
+
+  const block=document.createElement('div');block.className='sec-block';
+  const barsHTML=DRIVERS.map((d,i)=>{
+    const t=times[i];
+    const delta=t-fastest;
+    const isW=(delta===0);
+    const barW=100-((t-fastest)/(slowest-fastest+0.001))*55;
+    const op=isW?1:0.45;
+    const glow=isW?`box-shadow:0 0 10px ${COLORS[d]}55;`:'';
+    const dStr=delta===0?'—':`+${delta.toFixed(3)}s`;
+    return `<div class="dbar-row">
+      <div class="dbar-name" style="color:${COLORS[d]};opacity:${op};">${d}</div>
+      <div class="dbar-track"><div class="dbar-fill" style="width:${barW}%;background:${COLORS[d]};opacity:${op};${glow}"></div></div>
+      <div class="dbar-time" style="color:${isW?COLORS[d]:'#2a2a2a'};">${t.toFixed(3)}s</div>
+      <div class="dbar-delta" style="color:${isW?'#333':'#222'};">${dStr}</div>
+    </div>`;
+  }).join('');
+
+  block.innerHTML=`
+    <div class="sec-header">
+      <div class="sec-label">${SLABELS[si]}</div>
+      <span class="win-badge" style="background:${wCol}18;border:1px solid ${wCol}40;color:${wCol};">▲ ${winner} FASTEST</span>
+    </div>
+    ${barsHTML}`;
+  panel.appendChild(block);
+});
+
+// Radar
+const canvas=document.getElementById('rc');
+const ctx=canvas.getContext('2d');
+const W=canvas.width,H=canvas.height,cx=W/2,cy=H/2,R=Math.min(W,H)/2-44;
+const axes=[
+  {label:'S1',angle:-Math.PI/2},
+  {label:'S2',angle:-Math.PI/2+2*Math.PI/3},
+  {label:'S3',angle:-Math.PI/2+4*Math.PI/3}
+];
+function score(drv,sk){
+  const ts=DRIVERS.map(d=>sec[d][sk]);
+  const f=Math.min(...ts),s=Math.max(...ts);
+  if(s===f)return 1;
+  return 1-(sec[drv][sk]-f)/(s-f);
+}
+// Grid
+for(let r=0.25;r<=1;r+=0.25){
+  ctx.beginPath();
+  axes.forEach((ax,i)=>{const x=cx+Math.cos(ax.angle)*R*r,y=cy+Math.sin(ax.angle)*R*r;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.closePath();ctx.strokeStyle='#111';ctx.lineWidth=1;ctx.stroke();
+}
+axes.forEach(ax=>{ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(ax.angle)*R,cy+Math.sin(ax.angle)*R);ctx.strokeStyle='#181818';ctx.stroke();});
+// Labels
+ctx.font='600 12px "IBM Plex Mono"';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#2a2a2a';
+axes.forEach(ax=>ctx.fillText(ax.label,cx+Math.cos(ax.angle)*(R+20),cy+Math.sin(ax.angle)*(R+20)));
+// Polygons
+DRIVERS.forEach(d=>{
+  const scores=axes.map((ax,i)=>score(d,SKEYS[i]));
+  ctx.beginPath();
+  axes.forEach((ax,i)=>{const r=scores[i],x=cx+Math.cos(ax.angle)*R*r,y=cy+Math.sin(ax.angle)*R*r;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.closePath();
+  ctx.globalAlpha=0.1;ctx.fillStyle=COLORS[d];ctx.fill();ctx.globalAlpha=1;
+  ctx.strokeStyle=COLORS[d];ctx.lineWidth=d==='ANT'?2.5:1.8;
+  if(d==='ANT'){ctx.shadowColor=COLORS[d];ctx.shadowBlur=6;}
+  ctx.stroke();ctx.shadowBlur=0;
+  axes.forEach((ax,i)=>{const r=scores[i],x=cx+Math.cos(ax.angle)*R*r,y=cy+Math.sin(ax.angle)*R*r;ctx.beginPath();ctx.arc(x,y,3.5,0,Math.PI*2);ctx.fillStyle=COLORS[d];ctx.fill();});
+});
+</script></body></html>

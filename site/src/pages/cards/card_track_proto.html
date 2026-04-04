@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Card Proto</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+
+.card{
+  width:1080px;height:1080px;
+  background:#060606;
+  position:relative;
+  overflow:hidden;
+}
+
+/* subtle grain */
+.card::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.3;pointer-events:none;z-index:10;
+}
+
+/* header */
+.header{
+  position:absolute;top:52px;left:64px;right:64px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  z-index:5;
+}
+.event-block{}
+.event-gp{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:52px;letter-spacing:0.06em;
+  color:#f0f0f0;line-height:1;
+}
+.event-sub{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:0.2em;color:#333;
+  margin-top:4px;
+}
+.session-badge{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:0.18em;
+  color:#1a1a1a;
+  border:1px solid #1e1e1e;
+  padding:5px 12px;
+  border-radius:2px;
+}
+
+/* driver legend */
+.legend{
+  position:absolute;bottom:56px;left:64px;
+  display:flex;flex-direction:column;gap:14px;
+  z-index:5;
+}
+.legend-item{display:flex;align-items:center;gap:12px;}
+.legend-dot{
+  width:10px;height:10px;border-radius:50%;
+  box-shadow:0 0 8px currentColor;
+}
+.legend-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:32px;letter-spacing:0.08em;
+  line-height:1;
+}
+.legend-lap{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:0.08em;
+  margin-left:4px;
+  align-self:flex-end;
+  padding-bottom:3px;
+}
+
+/* delta badge */
+.delta-badge{
+  position:absolute;bottom:56px;right:64px;
+  z-index:5;
+  text-align:right;
+}
+.delta-val{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:80px;line-height:1;
+  color:#e8ff47;
+  text-shadow:0 0 40px rgba(232,255,71,0.25);
+}
+.delta-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:0.2em;color:#2a2a2a;
+  margin-top:2px;
+}
+
+/* watermark */
+.watermark{
+  position:absolute;top:56px;right:64px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:0.15em;color:#1a1a1a;
+  z-index:5;
+}
+
+/* SVG track canvas */
+.track-svg{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="event-block">
+      <div class="event-gp">BRAZIL GP</div>
+      <div class="event-sub">2023 · INTERLAGOS · QUALIFYING</div>
+    </div>
+    <div class="session-badge">Q3 · FASTEST LAP</div>
+  </div>
+
+  <!-- TRACK SVG -->
+  <svg class="track-svg" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- VER color: magenta -->
+      <!-- LEC color: yellow -->
+
+      <!-- glow filters -->
+      <filter id="glow-mag" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="glow-yel" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!--
+      Interlagos approximate layout.
+      Path broken into 3 sectors, each colored by who is faster.
+      VER=magenta faster, LEC=yellow faster, neutral=white
+      Based on real sector data: S1 VER faster, S2 LEC faster, S3 neutral
+    -->
+
+    <!-- BASE TRACK (dark underlay, full outline) -->
+    <path id="track-base"
+      d="
+        M 420 140
+        C 460 100, 530 95, 570 120
+        C 610 145, 625 175, 615 210
+        C 605 245, 570 265, 530 270
+        C 490 275, 450 260, 430 240
+        C 390 205, 385 170, 420 140 Z
+
+        M 430 240
+        C 400 265, 370 290, 355 330
+        C 335 380, 340 430, 360 470
+        C 380 510, 415 535, 445 555
+        C 480 578, 520 585, 555 595
+        C 590 605, 620 620, 640 645
+        C 665 675, 670 715, 660 750
+        C 648 788, 620 815, 585 830
+        C 548 845, 505 842, 470 828
+        C 430 812, 400 782, 385 748
+        C 368 710, 370 665, 388 630
+        C 405 596, 435 572, 450 545
+        C 465 518, 460 488, 445 465
+        C 428 440, 400 428, 385 408
+        C 365 382, 362 348, 375 318
+        C 388 288, 415 268, 430 240 Z
+      "
+      fill="none"
+      stroke="#1a1a1a"
+      stroke-width="28"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+
+    <!-- SECTOR 1: Top loop — VER faster (magenta) -->
+    <!-- Outer loop of Interlagos (S1 = Senna S through first sector) -->
+    <path
+      d="
+        M 420 140
+        C 460 100, 530 95, 570 120
+        C 610 145, 625 175, 615 210
+        C 605 245, 570 265, 530 270
+        C 490 275, 450 260, 430 240
+      "
+      fill="none"
+      stroke="#ff00cc"
+      stroke-width="16"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      filter="url(#glow-mag)"
+      opacity="0.95"
+    />
+
+    <!-- SECTOR 2: Middle snake — LEC faster (yellow) -->
+    <path
+      d="
+        M 430 240
+        C 400 265, 370 290, 355 330
+        C 335 380, 340 430, 360 470
+        C 380 510, 415 535, 445 555
+        C 480 578, 520 585, 555 595
+        C 590 605, 620 620, 640 645
+      "
+      fill="none"
+      stroke="#ffe100"
+      stroke-width="16"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      filter="url(#glow-yel)"
+      opacity="0.95"
+    />
+
+    <!-- SECTOR 3: Bottom loop — even (dim white) -->
+    <path
+      d="
+        M 640 645
+        C 665 675, 670 715, 660 750
+        C 648 788, 620 815, 585 830
+        C 548 845, 505 842, 470 828
+        C 430 812, 400 782, 385 748
+        C 368 710, 370 665, 388 630
+        C 405 596, 435 572, 450 545
+        C 465 518, 460 488, 445 465
+        C 428 440, 400 428, 385 408
+        C 365 382, 362 348, 375 318
+        C 388 288, 415 268, 430 240
+      "
+      fill="none"
+      stroke="#3a3a3a"
+      stroke-width="16"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- sector labels -->
+    <text x="600" y="185" font-family="'IBM Plex Mono',monospace" font-size="18" fill="#ff00cc" opacity="0.5" letter-spacing="3">S1</text>
+    <text x="310" y="450" font-family="'IBM Plex Mono',monospace" font-size="18" fill="#ffe100" opacity="0.5" letter-spacing="3">S2</text>
+    <text x="680" y="750" font-family="'IBM Plex Mono',monospace" font-size="18" fill="#3a3a3a" letter-spacing="3">S3</text>
+
+    <!-- start/finish marker -->
+    <rect x="407" y="132" width="3" height="20" fill="#ffffff" opacity="0.3" transform="rotate(-30 408 142)"/>
+  </svg>
+
+  <!-- DRIVER LEGEND -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#ff00cc;color:#ff00cc;"></div>
+      <div class="legend-name" style="color:#ff00cc;">VER</div>
+      <div class="legend-lap" style="color:#ff00cc;">1:10.534</div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#ffe100;color:#ffe100;"></div>
+      <div class="legend-name" style="color:#ffe100;">LEC</div>
+      <div class="legend-lap" style="color:#888;">1:10.689</div>
+    </div>
+  </div>
+
+  <!-- DELTA -->
+  <div class="delta-badge">
+    <div class="delta-val">+0.155</div>
+    <div class="delta-label">LEC GAP TO VER · SEC</div>
+  </div>
+
+  <!-- WATERMARK -->
+  <div class="watermark">MOTORSPORTS-VISUALISED</div>
+
+</div>
+</body>
+</html>

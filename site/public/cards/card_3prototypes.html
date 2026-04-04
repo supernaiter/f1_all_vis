@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3 Card Prototypes</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#111;display:flex;flex-direction:column;align-items:center;gap:48px;padding:40px 20px;min-height:100vh;}
+h2{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:0.2em;color:#444;text-transform:uppercase;margin-bottom:8px;text-align:center;}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+
+/* ═══ SHARED ═══ */
+.hdr{flex-shrink:0;display:flex;justify-content:space-between;align-items:flex-start;}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+
+/* ═══ CARD 4: GRID vs FINISH ═══ */
+.c4{padding:64px 64px 48px;}
+.c4 .gf-body{flex:1;display:flex;flex-direction:column;gap:0;margin-top:16px;}
+.c4 .gf-row{display:grid;grid-template-columns:40px 130px 60px 1fr 60px 80px;align-items:center;border-top:1px solid #0e0e14;padding:0;}
+.c4 .gf-row:last-child{border-bottom:1px solid #0e0e14;}
+.c4 .gf-pos{font-family:'Bebas Neue',sans-serif;font-size:22px;text-align:center;}
+.c4 .gf-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.06em;padding:0 8px;}
+.c4 .gf-grid{font-family:'IBM Plex Mono',monospace;font-size:12px;text-align:center;color:#555;}
+.c4 .gf-arrow-wrap{position:relative;height:20px;}
+.c4 .gf-arrow{position:absolute;top:50%;height:3px;border-radius:1px;transform:translateY(-50%);}
+.c4 .gf-arrow-head{position:absolute;top:50%;transform:translateY(-50%);font-size:10px;}
+.c4 .gf-fin{font-family:'IBM Plex Mono',monospace;font-size:12px;text-align:center;color:#555;}
+.c4 .gf-delta{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;text-align:right;padding-right:8px;}
+
+/* ═══ CARD 5: TEAMMATE BATTLE ═══ */
+.c5{padding:64px 64px 48px;}
+.c5 .tb-body{flex:1;display:flex;flex-direction:column;gap:0;margin-top:16px;}
+.c5 .tb-row{display:grid;grid-template-columns:1fr 60px 120px 60px 1fr;align-items:center;border-top:1px solid #0e0e14;padding:12px 0;}
+.c5 .tb-row:last-child{border-bottom:1px solid #0e0e14;}
+.c5 .tb-drv{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.06em;line-height:1;}
+.c5 .tb-drv-l{text-align:right;padding-right:12px;}
+.c5 .tb-drv-r{text-align:left;padding-left:12px;}
+.c5 .tb-score{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;text-align:center;}
+.c5 .tb-team{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.16em;text-align:center;color:#2a2a2a;}
+.c5 .tb-cat{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.12em;color:#333;text-align:center;margin-top:2px;}
+.c5 .tb-bar-wrap{display:flex;height:6px;gap:2px;}
+.c5 .tb-bar-l{height:100%;border-radius:2px 0 0 2px;}
+.c5 .tb-bar-r{height:100%;border-radius:0 2px 2px 0;}
+.c5 .tb-mid{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.c5 .tb-vs{font-family:'Bebas Neue',sans-serif;font-size:12px;color:#222;letter-spacing:0.1em;}
+
+/* ═══ CARD 6: PENALTY COST ═══ */
+.c6{padding:64px 64px 48px;}
+.c6 .pc-body{flex:1;display:flex;flex-direction:column;gap:0;margin-top:16px;}
+.c6 .pc-row{display:grid;grid-template-columns:130px 1fr 100px;align-items:center;border-top:1px solid #0e0e14;padding:0;}
+.c6 .pc-row:last-child{border-bottom:1px solid #0e0e14;}
+.c6 .pc-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.06em;padding:12px 8px;}
+.c6 .pc-team{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.1em;color:#555;margin-top:2px;}
+.c6 .pc-bar-wrap{height:28px;position:relative;}
+.c6 .pc-bar{position:absolute;left:0;top:0;height:100%;border-radius:0 2px 2px 0;}
+.c6 .pc-val{font-family:'IBM Plex Mono',monospace;font-size:13px;text-align:right;padding-right:8px;white-space:nowrap;}
+.c6 .pc-detail{font-family:'IBM Plex Mono',monospace;font-size:8px;color:#333;margin-top:1px;}
+</style></head>
+<body>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- CARD 4 — GRID vs FINISH                       -->
+<!-- ══════════════════════════════════════════════ -->
+<h2>CARD 4 — GRID vs FINISH</h2>
+<div class="card c4">
+  <div class="hdr">
+    <div><div class="ttl">GRID vs FINISH</div>
+    <div class="sub">2026 · R02 · CHINA GP · POSITION CHANGES — FastF1 DATA</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="gf-body" id="gf"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- CARD 5 — TEAMMATE BATTLE                      -->
+<!-- ══════════════════════════════════════════════ -->
+<h2>CARD 5 — TEAMMATE BATTLE</h2>
+<div class="card c5">
+  <div class="hdr">
+    <div><div class="ttl">TEAMMATE BATTLE</div>
+    <div class="sub">2026 · SEASON · AFTER R02 CHINA GP · QUALI + RACE HEAD-TO-HEAD</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="tb-body" id="tb"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- CARD 6 — PENALTY COST                         -->
+<!-- ══════════════════════════════════════════════ -->
+<h2>CARD 6 — PENALTY COST</h2>
+<div class="card c6">
+  <div class="hdr">
+    <div><div class="ttl">PENALTY COST</div>
+    <div class="sub">2026 · SEASON · AFTER R02 CHINA GP · ESTIMATED POINTS LOST</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="pc-body" id="pc"></div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// CARD 4 — GRID vs FINISH
+// ══════════════════════════════════════════════
+const gfData = [
+  {drv:'ANT',color:'#FFD700',team:'Mercedes',grid:1,fin:1},
+  {drv:'RUS',color:'#27f4d2',team:'Mercedes',grid:3,fin:2},
+  {drv:'VER',color:'#0600ef',team:'Red Bull',grid:5,fin:3},
+  {drv:'LEC',color:'#e80020',team:'Ferrari',grid:4,fin:4},
+  {drv:'HAM',color:'#e80020',team:'Ferrari',grid:7,fin:5},
+  {drv:'GAS',color:'#ff87bc',team:'Alpine',grid:8,fin:6},
+  {drv:'BEA',color:'#b6babd',team:'Haas',grid:11,fin:7},
+  {drv:'HAD',color:'#0600ef',team:'Red Bull',grid:2,fin:8},
+  {drv:'LAW',color:'#fcd700',team:'Racing Bulls',grid:6,fin:9},
+  {drv:'OCO',color:'#b6babd',team:'Haas',grid:12,fin:10},
+  {drv:'LIN',color:'#fcd700',team:'Racing Bulls',grid:10,fin:11},
+  {drv:'COL',color:'#ff87bc',team:'Alpine',grid:9,fin:12},
+  {drv:'HUL',color:'#ff2d00',team:'Audi',grid:13,fin:13},
+  {drv:'SAI',color:'#00a0dd',team:'Williams',grid:14,fin:14},
+  {drv:'BOT',color:'#444444',team:'Cadillac',grid:16,fin:15},
+  {drv:'PER',color:'#444444',team:'Cadillac',grid:17,fin:16},
+  {drv:'ALO',color:'#00665f',team:'Aston Martin',grid:15,fin:17},
+  {drv:'STR',color:'#00665f',team:'Aston Martin',grid:18,fin:18},
+];
+
+const gfEl = document.getElementById('gf');
+const maxDelta = Math.max(...gfData.map(d => Math.abs(d.grid - d.fin)));
+
+gfData.sort((a, b) => a.fin - b.fin);
+
+gfData.forEach(d => {
+  const delta = d.grid - d.fin; // positive = gained positions
+  const absDelta = Math.abs(delta);
+  const gained = delta > 0;
+  const neutral = delta === 0;
+  const deltaColor = neutral ? '#333' : gained ? '#00e676' : '#ff1744';
+  const deltaText = neutral ? '—' : (gained ? '▲' : '▼') + absDelta;
+  const arrowPct = neutral ? 0 : (absDelta / maxDelta) * 80;
+
+  const row = document.createElement('div');
+  row.className = 'gf-row';
+  row.innerHTML = `
+    <div class="gf-pos" style="color:${d.color};">${d.fin}</div>
+    <div class="gf-name" style="color:${d.color};">${d.drv}</div>
+    <div class="gf-grid">P${d.grid}</div>
+    <div class="gf-arrow-wrap">
+      ${!neutral ? `<div class="gf-arrow" style="width:${arrowPct}%;background:${deltaColor};opacity:0.5;${gained ? 'right:50%;' : 'left:50%;'}"></div>` : ''}
+    </div>
+    <div class="gf-fin">P${d.fin}</div>
+    <div class="gf-delta" style="color:${deltaColor};">${deltaText}</div>`;
+  gfEl.appendChild(row);
+});
+
+// ══════════════════════════════════════════════
+// CARD 5 — TEAMMATE BATTLE
+// ══════════════════════════════════════════════
+const tbData = [
+  {team:'Mercedes',color:'#27f4d2',d1:'ANT',d2:'RUS',d1c:'#FFD700',d2c:'#27f4d2',quali:[2,0],race:[1,1]},
+  {team:'Ferrari',color:'#e80020',d1:'LEC',d2:'HAM',d1c:'#e80020',d2c:'#e80020',quali:[2,0],race:[2,0]},
+  {team:'Red Bull',color:'#0600ef',d1:'VER',d2:'HAD',d1c:'#0600ef',d2c:'#0600ef',quali:[1,1],race:[2,0]},
+  {team:'Alpine',color:'#ff87bc',d1:'GAS',d2:'COL',d1c:'#ff87bc',d2c:'#ff87bc',quali:[1,1],race:[2,0]},
+  {team:'Haas',color:'#b6babd',d1:'BEA',d2:'OCO',d1c:'#b6babd',d2c:'#b6babd',quali:[1,1],race:[2,0]},
+  {team:'Racing Bulls',color:'#fcd700',d1:'LAW',d2:'LIN',d1c:'#fcd700',d2c:'#fcd700',quali:[2,0],race:[1,1]},
+  {team:'Audi',color:'#ff2d00',d1:'HUL',d2:'???',d1c:'#ff2d00',d2c:'#ff2d00',quali:[2,0],race:[2,0]},
+  {team:'Williams',color:'#00a0dd',d1:'SAI',d2:'???',d1c:'#00a0dd',d2c:'#00a0dd',quali:[1,1],race:[1,1]},
+  {team:'Cadillac',color:'#444444',d1:'BOT',d2:'PER',d1c:'#444444',d2c:'#444444',quali:[1,1],race:[1,1]},
+  {team:'Aston Martin',color:'#00665f',d1:'ALO',d2:'STR',d1c:'#00665f',d2c:'#00665f',quali:[2,0],race:[2,0]},
+];
+
+const tbEl = document.getElementById('tb');
+tbData.forEach(t => {
+  const qTotal = t.quali[0] + t.quali[1];
+  const rTotal = t.race[0] + t.race[1];
+  const q1pct = qTotal > 0 ? (t.quali[0] / qTotal) * 100 : 50;
+  const r1pct = rTotal > 0 ? (t.race[0] / rTotal) * 100 : 50;
+
+  const d1Leading = (t.quali[0] + t.race[0]) >= (t.quali[1] + t.race[1]);
+
+  const row = document.createElement('div');
+  row.className = 'tb-row';
+  row.innerHTML = `
+    <div style="text-align:right;padding-right:8px;">
+      <div class="tb-drv tb-drv-l" style="color:${t.d1c};opacity:${d1Leading?1:0.5};">${t.d1}</div>
+      <div class="tb-cat" style="text-align:right;">Q ${t.quali[0]} · R ${t.race[0]}</div>
+    </div>
+    <div class="tb-score" style="color:${t.d1c};opacity:${d1Leading?1:0.5};">${t.quali[0]+t.race[0]}</div>
+    <div class="tb-mid">
+      <div class="tb-team">${t.team.toUpperCase()}</div>
+      <div class="tb-bar-wrap" style="width:100%;">
+        <div style="display:flex;height:6px;gap:2px;width:100%;">
+          <div class="tb-bar-l" style="width:${q1pct}%;background:${t.d1c};opacity:0.7;"></div>
+          <div class="tb-bar-r" style="width:${100-q1pct}%;background:${t.d2c};opacity:0.35;"></div>
+        </div>
+      </div>
+      <div class="tb-vs">VS</div>
+    </div>
+    <div class="tb-score" style="color:${t.d2c};opacity:${d1Leading?0.5:1};">${t.quali[1]+t.race[1]}</div>
+    <div style="padding-left:8px;">
+      <div class="tb-drv tb-drv-r" style="color:${t.d2c};opacity:${d1Leading?0.5:1};">${t.d2}</div>
+      <div class="tb-cat" style="text-align:left;">Q ${t.quali[1]} · R ${t.race[1]}</div>
+    </div>`;
+  tbEl.appendChild(row);
+});
+
+// ══════════════════════════════════════════════
+// CARD 6 — PENALTY COST
+// ══════════════════════════════════════════════
+// Mock data — estimated points lost from penalties in first 2 races
+const pcData = [
+  {drv:'HAD',color:'#0600ef',team:'Red Bull',pts:8,detail:'5s penalty R01 (+3 pos), 10s penalty R02 (+5 pos)'},
+  {drv:'HAM',color:'#e80020',team:'Ferrari',pts:4,detail:'5s penalty R02 (+2 pos)'},
+  {drv:'COL',color:'#ff87bc',team:'Alpine',pts:2,detail:'3-place grid R02'},
+  {drv:'LIN',color:'#fcd700',team:'Racing Bulls',pts:1,detail:'5s penalty R01 (+1 pos)'},
+  {drv:'PER',color:'#444444',team:'Cadillac',pts:1,detail:'5s penalty R02 (+1 pos)'},
+  {drv:'STR',color:'#00665f',team:'Aston Martin',pts:0.5,detail:'Reprimand + track limits R01'},
+];
+
+const pcEl = document.getElementById('pc');
+const maxPts = Math.max(...pcData.map(d => d.pts));
+
+pcData.forEach(d => {
+  const pct = (d.pts / maxPts) * 85;
+  const row = document.createElement('div');
+  row.className = 'pc-row';
+  row.innerHTML = `
+    <div>
+      <div class="pc-name" style="color:${d.color};">${d.drv}</div>
+      <div class="pc-team" style="padding-left:8px;">${d.team}</div>
+    </div>
+    <div class="pc-bar-wrap"><div class="pc-bar" style="width:${pct}%;background:${d.color};opacity:0.6;"></div></div>
+    <div>
+      <div class="pc-val" style="color:${d.color};">−${d.pts} pts</div>
+      <div class="pc-detail" style="text-align:right;padding-right:8px;">${d.detail}</div>
+    </div>`;
+  pcEl.appendChild(row);
+});
+</script>
+</body></html>

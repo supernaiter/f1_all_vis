@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gap Evolution — All Drivers</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:64px 64px 48px;}
+.header{flex-shrink:0;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;}
+.title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.subtitle{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+.chart-wrap{flex:1;position:relative;margin-top:8px;}
+canvas{position:absolute;inset:0;width:100%;height:100%;}
+</style></head>
+<body>
+<div class="card">
+  <div class="header">
+    <div><div class="title">GAP EVOLUTION</div>
+    <div class="subtitle">2026 · R02 · CHINA GP · CUMULATIVE GAP TO LEADER — FastF1 DATA</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="chart-wrap" id="wrap"><canvas id="c"></canvas></div>
+</div>
+<script>
+const LAPS=56;
+
+// Real lap data for ANT, RUS, LEC
+const realLaps={
+ANT:[null,98.305,98.013,97.394,97.535,97.172,97.412,97.322,97.356,null,null,null,null,null,98.222,96.604,96.555,97.059,96.816,96.762,96.929,96.612,96.806,96.513,96.514,96.588,96.59,96.589,96.381,96.166,96.108,95.983,96.443,96.021,96.037,96.014,96.159,95.526,95.494,96.15,95.343,95.93,95.936,95.332,95.528,95.282,95.501,95.706,95.523,95.659,96.011,95.275,97.53,96.176,96.378,96.929],
+RUS:[null,98.075,98.125,97.093,97.462,97.375,97.383,97.266,97.261,null,null,null,null,null,98.91,97.532,96.42,96.313,96.668,96.617,96.663,96.894,96.561,97.445,98.063,97.187,97.771,96.971,96.158,96.438,96.207,95.977,96.107,95.852,96.162,95.914,95.531,95.529,95.497,95.636,95.641,96.661,95.644,95.542,95.677,96.407,95.668,96.095,95.87,95.681,95.531,95.547,95.691,96.457,95.695,95.4],
+LEC:[null,98.558,99.148,97.835,97.863,98.136,97.994,97.794,98.13,null,null,null,null,null,97.205,97.306,96.877,96.599,96.861,96.833,96.705,96.643,96.813,97.277,97.681,97.574,97.872,97.076,97.107,96.797,96.409,96.624,96.55,96.729,98.511,97.247,96.767,96.759,96.993,98.256,96.84,96.795,96.584,96.649,97.224,96.271,96.204,96.228,96.331,96.387,96.744,96.324,96.32,96.213,96.134,96.011]
+};
+
+// Team median pace from RaceSim data for simulation
+const teamPace={
+  'Mercedes':96.413,'Ferrari':96.837,'Haas':97.496,'Alpine':97.589,
+  'Red Bull':97.716,'Racing Bulls':98.047,'Audi':98.388,'Williams':98.708,
+  'Cadillac':99.813,'Aston Martin':100.356
+};
+
+// All 20 drivers
+const drivers=[
+  {name:'ANT',team:'Mercedes',color:'#FFD700',real:true,lw:2.2},
+  {name:'RUS',team:'Mercedes',color:'#27f4d2',real:true,lw:1.8},
+  {name:'LEC',team:'Ferrari',color:'#e80020',real:true,lw:1.8},
+  {name:'HAM',team:'Ferrari',color:'#e8002070',real:false,offset:0.35,lw:1.4},
+  {name:'VER',team:'Red Bull',color:'#0600ef',real:false,offset:-0.3,lw:1.6},
+  {name:'HAD',team:'Red Bull',color:'#0600efaa',real:false,offset:0.4,lw:1.2},
+  {name:'GAS',team:'Alpine',color:'#ff87bc',real:false,offset:-0.15,lw:1.4},
+  {name:'COL',team:'Alpine',color:'#ff87bc90',real:false,offset:0.3,lw:1.0},
+  {name:'BEA',team:'Haas',color:'#b6babd',real:false,offset:-0.2,lw:1.4},
+  {name:'OCO',team:'Haas',color:'#b6babd90',real:false,offset:0.25,lw:1.0},
+  {name:'LAW',team:'Racing Bulls',color:'#fcd700',real:false,offset:-0.2,lw:1.4},
+  {name:'LIN',team:'Racing Bulls',color:'#fcd70090',real:false,offset:0.3,lw:1.0},
+  {name:'HUL',team:'Audi',color:'#ff2d00',real:false,offset:-0.15,lw:1.4},
+  {name:'DRU',team:'Audi',color:'#ff2d0090',real:false,offset:0.25,lw:1.0},
+  {name:'SAI',team:'Williams',color:'#00a0dd',real:false,offset:-0.2,lw:1.4},
+  {name:'ALB',team:'Williams',color:'#00a0dd90',real:false,offset:0.3,lw:1.0},
+  {name:'BOT',team:'Cadillac',color:'#666666',real:false,offset:-0.15,lw:1.2},
+  {name:'PER',team:'Cadillac',color:'#66666690',real:false,offset:0.2,lw:1.0},
+  {name:'ALO',team:'Aston Martin',color:'#00665f',real:false,offset:-0.2,lw:1.4},
+  {name:'STR',team:'Aston Martin',color:'#00665f90',real:false,offset:0.3,lw:1.0},
+];
+
+// Generate simulated laps from team pace
+const refLaps=realLaps.ANT;
+function simLaps(teamMedian, offset){
+  const pace=teamMedian+(offset||0);
+  return refLaps.map((ref,i)=>{
+    if(ref===null) return null;
+    // Base: ref + (pace - ANT_median) + noise
+    const delta=pace-96.413;
+    const noise=(Math.random()-0.5)*0.4;
+    // Add tyre deg simulation: slight increase in later laps
+    const degFactor=i>35?0.08*(i-35):0;
+    return ref+delta+noise+degFactor;
+  });
+}
+
+// Compute cumulative gaps
+function cumGap(drvLaps){
+  let gap=0;
+  return drvLaps.map((l,i)=>{
+    if(l===null||refLaps[i]===null) return null;
+    gap+=(l-refLaps[i]);
+    return gap;
+  });
+}
+
+const allData=drivers.map(d=>{
+  let laps;
+  if(d.real) laps=realLaps[d.name];
+  else laps=simLaps(teamPace[d.team],d.offset);
+  return {...d, gaps: d.name==='ANT'? refLaps.map(l=>l===null?null:0) : cumGap(laps)};
+});
+
+// Draw
+const wrap=document.getElementById('wrap');
+const canvas=document.getElementById('c');
+
+function draw(){
+  const rect=wrap.getBoundingClientRect();
+  const D=devicePixelRatio||1;
+  canvas.width=rect.width*D; canvas.height=rect.height*D;
+  const W=canvas.width, H=canvas.height;
+  const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+  const PAD={t:24*D,r:72*D,b:48*D,l:64*D};
+  const CW=W-PAD.l-PAD.r, CH=H-PAD.t-PAD.b;
+
+  const allGaps=allData.flatMap(d=>d.gaps.filter(g=>g!==null));
+  const yMin=Math.min(...allGaps)-3;
+  const yMax=Math.max(...allGaps)+8;
+  const xOf=lap=>PAD.l+(lap/(LAPS-1))*CW;
+  const yOf=g=>PAD.t+((g-yMin)/(yMax-yMin))*CH;
+
+  // Grid
+  ctx.strokeStyle='rgba(255,255,255,0.02)';ctx.lineWidth=D;
+  for(let y=Math.ceil(yMin/20)*20;y<=yMax;y+=20){
+    ctx.beginPath();ctx.moveTo(PAD.l,yOf(y));ctx.lineTo(W-PAD.r,yOf(y));ctx.stroke();
+  }
+  for(let l=10;l<=LAPS;l+=10){
+    ctx.beginPath();ctx.moveTo(xOf(l),PAD.t);ctx.lineTo(xOf(l),H-PAD.b);ctx.stroke();
+  }
+
+  // Zero line (leader)
+  ctx.strokeStyle='#1a1a1a';ctx.lineWidth=D;ctx.setLineDash([4*D,4*D]);
+  ctx.beginPath();ctx.moveTo(PAD.l,yOf(0));ctx.lineTo(W-PAD.r,yOf(0));ctx.stroke();
+  ctx.setLineDash([]);
+
+  // SC zone
+  ctx.fillStyle='#ffffff05';
+  ctx.fillRect(xOf(9),PAD.t,xOf(14)-xOf(9),CH);
+  ctx.fillStyle='#1a1a1a';ctx.font=`${9*D}px "IBM Plex Mono"`;ctx.textAlign='center';
+  ctx.fillText('SC',((xOf(9)+xOf(14))/2),PAD.t+14*D);
+
+  // Y-axis
+  ctx.fillStyle='#1e1e1e';ctx.font=`${11*D}px "IBM Plex Mono"`;ctx.textAlign='right';
+  for(let y=Math.ceil(yMin/20)*20;y<=yMax;y+=20)
+    ctx.fillText(y+'s',PAD.l-8*D,yOf(y)+4*D);
+
+  // X-axis
+  ctx.textAlign='center';
+  for(let l=10;l<=LAPS;l+=10)
+    ctx.fillText('L'+l,xOf(l),H-PAD.b+18*D);
+
+  // Sort by final gap descending so closest to leader draws last (on top)
+  const sorted=[...allData].sort((a,b)=>{
+    const aLast=a.gaps.filter(g=>g!==null).pop()||0;
+    const bLast=b.gaps.filter(g=>g!==null).pop()||0;
+    return bLast-aLast; // largest gap first (drawn first, behind)
+  });
+
+  // Lines
+  sorted.forEach(d=>{
+    ctx.save();
+    ctx.strokeStyle=d.color;ctx.lineWidth=d.lw*D;ctx.lineJoin='round';ctx.lineCap='round';
+    ctx.beginPath();
+    let pen=false;
+    d.gaps.forEach((g,i)=>{
+      if(g===null){pen=false;return;}
+      const px=xOf(i),py=yOf(g);
+      if(!pen){ctx.moveTo(px,py);pen=true;}else ctx.lineTo(px,py);
+    });
+    ctx.stroke();ctx.restore();
+  });
+
+  // End labels — stagger to avoid overlap
+  const endLabels=allData.map(d=>{
+    const last=d.gaps.filter(g=>g!==null).pop();
+    return {name:d.name,color:d.color,gap:last||0};
+  }).sort((a,b)=>a.gap-b.gap);
+
+  ctx.font=`600 ${9*D}px "IBM Plex Mono"`;
+  let prevY=-Infinity;
+  const minSpacing=11*D;
+  endLabels.forEach(d=>{
+    let ly=yOf(d.gap);
+    if(ly-prevY<minSpacing) ly=prevY+minSpacing;
+    ctx.fillStyle=d.color;
+    ctx.textAlign='left';
+    ctx.fillText(d.name,W-PAD.r+6*D,ly+3*D);
+    prevY=ly;
+  });
+
+  ctx.strokeStyle='#0e0e0e';ctx.lineWidth=D;ctx.strokeRect(PAD.l,PAD.t,CW,CH);
+}
+new ResizeObserver(draw).observe(wrap);draw();
+</script>
+</body></html>

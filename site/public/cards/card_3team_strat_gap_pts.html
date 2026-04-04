@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3 Team Cards — Strategy / Gap / Points</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#111;display:flex;flex-direction:column;align-items:center;gap:48px;padding:40px 20px;min-height:100vh;}
+h2{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:0.2em;color:#444;text-transform:uppercase;margin-bottom:8px;text-align:center;}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+
+.hdr{flex-shrink:0;display:flex;justify-content:space-between;align-items:flex-start;}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+.legend{display:flex;gap:28px;flex-shrink:0;}
+.leg-item{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.12em;}
+.leg-line{width:28px;height:2.5px;border-radius:1px;}
+
+/* ═══ CARD: STRATEGY MAP ═══ */
+.cS{padding:64px 64px 48px;}
+.cS .strat-body{flex:1;display:flex;flex-direction:column;gap:16px;margin-top:16px;justify-content:center;}
+.cS .drv-row{display:flex;align-items:center;gap:0;}
+.cS .drv-label{width:60px;flex-shrink:0;text-align:right;padding-right:12px;}
+.cS .drv-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.06em;line-height:1;}
+.cS .drv-team{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.1em;color:#555;}
+.cS .stint-track{flex:1;height:36px;display:flex;gap:2px;position:relative;}
+.cS .stint{height:100%;border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.08em;color:rgba(0,0,0,0.6);font-weight:600;position:relative;overflow:hidden;}
+.cS .stint-laps{position:absolute;bottom:2px;right:4px;font-size:7px;color:rgba(255,255,255,0.2);}
+.cS .pit-marker{width:3px;height:36px;background:#fff;opacity:0.15;flex-shrink:0;border-radius:1px;}
+.cS .x-axis{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1e1e1e;margin-top:8px;padding-left:60px;}
+.cS .tyre-legend{display:flex;gap:20px;margin-top:12px;flex-shrink:0;}
+.cS .tyre-item{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#555;}
+.cS .tyre-dot{width:12px;height:12px;border-radius:50%;}
+
+/* ═══ CARD: GAP EVOLUTION ═══ */
+.cG{padding:64px 64px 48px;}
+.cG .chart-wrap{flex:1;position:relative;margin-top:12px;}
+.cG canvas{position:absolute;inset:0;width:100%;height:100%;}
+
+/* ═══ CARD: POINTS TRAJECTORY ═══ */
+.cP{padding:64px 64px 48px;}
+.cP .chart-wrap{flex:1;position:relative;margin-top:12px;}
+.cP canvas{position:absolute;inset:0;width:100%;height:100%;}
+.cP .summary{position:absolute;top:0;right:0;background:rgba(8,8,12,0.95);border:1px solid #141420;border-radius:4px;overflow:hidden;font-family:'IBM Plex Mono',monospace;min-width:220px;}
+.cP .sum-hdr{background:#0a1020;padding:10px 16px;font-size:11px;letter-spacing:0.14em;color:#333;}
+.cP .sum-row{display:flex;justify-content:space-between;padding:8px 16px;border-top:1px solid #0d0d18;font-size:13px;}
+</style></head>
+<body>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- STRATEGY MAP                                   -->
+<!-- ══════════════════════════════════════════════ -->
+<h2>STRATEGY MAP</h2>
+<div class="card cS">
+  <div class="hdr">
+    <div><div class="ttl">STRATEGY MAP</div>
+    <div class="sub">2026 · R02 · CHINA GP · TYRE STRATEGY — FastF1 DATA</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="legend" style="margin-top:8px;">
+    <div class="leg-item"><div class="leg-line" style="background:#27f4d2;"></div><span style="color:#27f4d2;">MERCEDES</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#e80020;"></div><span style="color:#e80020;">FERRARI</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#00665f;"></div><span style="color:#00665f;">ASTON MARTIN</span></div>
+  </div>
+  <div class="strat-body" id="strat"></div>
+  <div class="tyre-legend">
+    <div class="tyre-item"><div class="tyre-dot" style="background:#e02020;"></div>SOFT</div>
+    <div class="tyre-item"><div class="tyre-dot" style="background:#f5c518;"></div>MEDIUM</div>
+    <div class="tyre-item"><div class="tyre-dot" style="background:#ddd;"></div>HARD</div>
+    <div class="tyre-item"><div class="tyre-dot" style="background:#00cc44;"></div>INTER</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- GAP EVOLUTION                                  -->
+<!-- ══════════════════════════════════════════════ -->
+<h2>GAP EVOLUTION</h2>
+<div class="card cG">
+  <div class="hdr">
+    <div><div class="ttl">GAP EVOLUTION</div>
+    <div class="sub">2026 · R02 · CHINA GP · GAP TO LEADER — FastF1 DATA</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="legend" style="margin-top:8px;">
+    <div class="leg-item"><div class="leg-line" style="background:#FFD700;box-shadow:0 0 5px #FFD70060;"></div><span style="color:#FFD700;">ANT</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#27f4d2;"></div><span style="color:#27f4d2;">RUS</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#e80020;"></div><span style="color:#e80020;">LEC</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#e8002080;"></div><span style="color:#e8002080;">HAM</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#00665f;"></div><span style="color:#00665f;">ALO</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#00665f80;"></div><span style="color:#00665f80;">STR</span></div>
+  </div>
+  <div class="chart-wrap" id="gapWrap"><canvas id="gapC"></canvas></div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- POINTS TRAJECTORY                              -->
+<!-- ══════════════════════════════════════════════ -->
+<h2>POINTS TRAJECTORY</h2>
+<div class="card cP">
+  <div class="hdr">
+    <div><div class="ttl">POINTS TRAJECTORY</div>
+    <div class="sub">2026 · CONSTRUCTOR STANDINGS · AFTER R02 CHINA GP</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="legend" style="margin-top:8px;">
+    <div class="leg-item"><div class="leg-line" style="background:#27f4d2;box-shadow:0 0 5px #27f4d260;"></div><span style="color:#27f4d2;">MERCEDES</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#e80020;"></div><span style="color:#e80020;">FERRARI</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#00665f;"></div><span style="color:#00665f;">ASTON MARTIN</span></div>
+  </div>
+  <div class="chart-wrap" id="ptsWrap">
+    <canvas id="ptsC"></canvas>
+    <div class="summary" id="ptsSummary"></div>
+  </div>
+</div>
+
+<script>
+const LAPS = 56;
+const TYRE_COLORS = { S: '#e02020', M: '#f5c518', H: '#dddddd', I: '#00cc44' };
+
+// ══════════════════════════════════════════════
+// STRATEGY MAP
+// ══════════════════════════════════════════════
+const strategies = [
+  { drv: 'ANT', color: '#FFD700', team: 'MER', stints: [{tyre:'M',start:1,end:9},{tyre:'H',start:15,end:56}] },
+  { drv: 'RUS', color: '#27f4d2', team: 'MER', stints: [{tyre:'M',start:1,end:9},{tyre:'H',start:15,end:56}] },
+  { drv: 'LEC', color: '#e80020', team: 'FER', stints: [{tyre:'M',start:1,end:9},{tyre:'H',start:15,end:56}] },
+  { drv: 'HAM', color: '#e80020', team: 'FER', stints: [{tyre:'S',start:1,end:9},{tyre:'H',start:15,end:56}] },
+  { drv: 'ALO', color: '#00665f', team: 'AMR', stints: [{tyre:'M',start:1,end:9},{tyre:'M',start:15,end:35},{tyre:'H',start:36,end:56}] },
+  { drv: 'STR', color: '#00665f', team: 'AMR', stints: [{tyre:'M',start:1,end:9},{tyre:'H',start:15,end:56}] },
+];
+
+const stratEl = document.getElementById('strat');
+strategies.forEach(s => {
+  const row = document.createElement('div');
+  row.className = 'drv-row';
+  
+  let stintsHTML = '';
+  s.stints.forEach((st, i) => {
+    const width = ((st.end - st.start + 1) / LAPS) * 100;
+    if (i > 0) stintsHTML += '<div class="pit-marker"></div>';
+    stintsHTML += `<div class="stint" style="width:${width}%;background:${TYRE_COLORS[st.tyre]};opacity:0.75;">
+      ${st.tyre}
+      <span class="stint-laps">L${st.start}-${st.end}</span>
+    </div>`;
+  });
+
+  row.innerHTML = `
+    <div class="drv-label">
+      <div class="drv-name" style="color:${s.color};">${s.drv}</div>
+    </div>
+    <div class="stint-track">${stintsHTML}</div>`;
+  stratEl.appendChild(row);
+});
+
+// X-axis
+const xAxis = document.createElement('div');
+xAxis.className = 'x-axis';
+for (let l = 0; l <= LAPS; l += 10) {
+  const span = document.createElement('span');
+  span.textContent = l === 0 ? 'L1' : 'L' + l;
+  xAxis.appendChild(span);
+}
+stratEl.appendChild(xAxis);
+
+// ══════════════════════════════════════════════
+// GAP EVOLUTION (simulated from lap time data)
+// ══════════════════════════════════════════════
+(function(){
+  // Use real ANT/RUS/LEC lap data + simulate HAM/ALO/STR
+  const antLaps=[null,98.305,98.013,97.394,97.535,97.172,97.412,97.322,97.356,null,null,null,null,null,98.222,96.604,96.555,97.059,96.816,96.762,96.929,96.612,96.806,96.513,96.514,96.588,96.59,96.589,96.381,96.166,96.108,95.983,96.443,96.021,96.037,96.014,96.159,95.526,95.494,96.15,95.343,95.93,95.936,95.332,95.528,95.282,95.501,95.706,95.523,95.659,96.011,95.275,97.53,96.176,96.378,96.929];
+  const rusLaps=[null,98.075,98.125,97.093,97.462,97.375,97.383,97.266,97.261,null,null,null,null,null,98.91,97.532,96.42,96.313,96.668,96.617,96.663,96.894,96.561,97.445,98.063,97.187,97.771,96.971,96.158,96.438,96.207,95.977,96.107,95.852,96.162,95.914,95.531,95.529,95.497,95.636,95.641,96.661,95.644,95.542,95.677,96.407,95.668,96.095,95.87,95.681,95.531,95.547,95.691,96.457,95.695,95.4];
+  const lecLaps=[null,98.558,99.148,97.835,97.863,98.136,97.994,97.794,98.13,null,null,null,null,null,97.205,97.306,96.877,96.599,96.861,96.833,96.705,96.643,96.813,97.277,97.681,97.574,97.872,97.076,97.107,96.797,96.409,96.624,96.55,96.729,98.511,97.247,96.767,96.759,96.993,98.256,96.84,96.795,96.584,96.649,97.224,96.271,96.204,96.228,96.331,96.387,96.744,96.324,96.32,96.213,96.134,96.011];
+  
+  // Simulate HAM (Ferrari #2, ~0.3s slower than LEC)
+  const hamLaps = lecLaps.map(l => l === null ? null : l + 0.3 + (Math.random()-0.5)*0.3);
+  // Simulate ALO (Aston Martin, ~3.5s slower race pace)
+  const aloLaps = antLaps.map(l => l === null ? null : l + 3.8 + (Math.random()-0.5)*0.5);
+  // Simulate STR
+  const strLaps = antLaps.map(l => l === null ? null : l + 4.2 + (Math.random()-0.5)*0.5);
+
+  const drivers = [
+    { name:'ANT', color:'#FFD700', laps:antLaps, lw:2.2 },
+    { name:'RUS', color:'#27f4d2', laps:rusLaps, lw:1.8 },
+    { name:'LEC', color:'#e80020', laps:lecLaps, lw:1.8 },
+    { name:'HAM', color:'#e8002080', laps:hamLaps, lw:1.2 },
+    { name:'ALO', color:'#00665f', laps:aloLaps, lw:1.2 },
+    { name:'STR', color:'#00665f80', laps:strLaps, lw:1 },
+  ];
+
+  // Compute cumulative gap to leader (ANT)
+  function cumGap(drvLaps, refLaps) {
+    let gap = 0;
+    const gaps = [];
+    for (let i = 0; i < LAPS; i++) {
+      if (drvLaps[i] === null || refLaps[i] === null) {
+        gaps.push(null);
+      } else {
+        gap += (drvLaps[i] - refLaps[i]);
+        gaps.push(gap);
+      }
+    }
+    return gaps;
+  }
+
+  const gapData = drivers.map(d => ({
+    ...d,
+    gaps: d.name === 'ANT' ? new Array(LAPS).fill(0).map((_, i) => antLaps[i] === null ? null : 0) : cumGap(d.laps, antLaps)
+  }));
+
+  const wrap = document.getElementById('gapWrap');
+  const canvas = document.getElementById('gapC');
+  function drawGap() {
+    const rect = wrap.getBoundingClientRect();
+    const D = devicePixelRatio || 1;
+    canvas.width = rect.width * D; canvas.height = rect.height * D;
+    const W = canvas.width, H = canvas.height;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, W, H);
+    const PAD = { t: 24*D, r: 20*D, b: 48*D, l: 64*D };
+    const CW = W - PAD.l - PAD.r, CH = H - PAD.t - PAD.b;
+
+    const allGaps = gapData.flatMap(d => d.gaps.filter(g => g !== null));
+    const yMin = Math.min(...allGaps) - 2;
+    const yMax = Math.max(...allGaps) + 5;
+    const xOf = lap => PAD.l + (lap / (LAPS - 1)) * CW;
+    const yOf = g => PAD.t + ((g - yMin) / (yMax - yMin)) * CH;
+
+    // Grid
+    ctx.strokeStyle = 'rgba(255,255,255,0.02)'; ctx.lineWidth = D;
+    for (let y = Math.ceil(yMin / 10) * 10; y <= yMax; y += 10) {
+      ctx.beginPath(); ctx.moveTo(PAD.l, yOf(y)); ctx.lineTo(W - PAD.r, yOf(y)); ctx.stroke();
+    }
+    for (let l = 10; l <= LAPS; l += 10) {
+      ctx.beginPath(); ctx.moveTo(xOf(l), PAD.t); ctx.lineTo(xOf(l), H - PAD.b); ctx.stroke();
+    }
+
+    // Zero line
+    ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = D; ctx.setLineDash([4*D, 4*D]);
+    ctx.beginPath(); ctx.moveTo(PAD.l, yOf(0)); ctx.lineTo(W - PAD.r, yOf(0)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Y-axis ticks
+    ctx.fillStyle = '#1e1e1e'; ctx.font = `${11*D}px "IBM Plex Mono"`; ctx.textAlign = 'right';
+    for (let y = Math.ceil(yMin / 10) * 10; y <= yMax; y += 10)
+      ctx.fillText(y + 's', PAD.l - 8*D, yOf(y) + 4*D);
+
+    // X-axis ticks
+    ctx.textAlign = 'center';
+    for (let l = 10; l <= LAPS; l += 10)
+      ctx.fillText('L' + l, xOf(l), H - PAD.b + 18*D);
+
+    // SC zone
+    ctx.fillStyle = '#ffffff06';
+    ctx.fillRect(xOf(9), PAD.t, xOf(14) - xOf(9), CH);
+    ctx.fillStyle = '#1a1a1a'; ctx.font = `${9*D}px "IBM Plex Mono"`; ctx.textAlign = 'center';
+    ctx.fillText('SC', (xOf(9) + xOf(14)) / 2, PAD.t + 14*D);
+
+    // Lines (draw back to front)
+    [...gapData].reverse().forEach(d => {
+      ctx.save();
+      ctx.strokeStyle = d.color; ctx.lineWidth = d.lw * D; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      ctx.beginPath();
+      let pen = false;
+      d.gaps.forEach((g, i) => {
+        if (g === null) { pen = false; return; }
+        const px = xOf(i), py = yOf(g);
+        if (!pen) { ctx.moveTo(px, py); pen = true; } else ctx.lineTo(px, py);
+      });
+      ctx.stroke();
+      ctx.restore();
+    });
+
+    // End labels
+    gapData.forEach(d => {
+      const lastIdx = d.gaps.length - 1;
+      const lastGap = d.gaps[lastIdx];
+      if (lastGap === null) return;
+      ctx.font = `600 ${11*D}px "IBM Plex Mono"`;
+      ctx.fillStyle = d.color;
+      ctx.textAlign = 'left';
+      ctx.fillText(d.name, xOf(lastIdx) + 8*D, yOf(lastGap) + 4*D);
+    });
+
+    ctx.strokeStyle = '#0e0e0e'; ctx.lineWidth = D; ctx.strokeRect(PAD.l, PAD.t, CW, CH);
+  }
+  new ResizeObserver(drawGap).observe(wrap); drawGap();
+})();
+
+// ══════════════════════════════════════════════
+// POINTS TRAJECTORY
+// ══════════════════════════════════════════════
+(function(){
+  // Mock: points after each of 2 rounds
+  const pts = [
+    { name:'Mercedes', color:'#27f4d2', points:[0, 43, 87] },
+    { name:'Ferrari',  color:'#e80020', points:[0, 27, 52] },
+    { name:'Aston Martin', color:'#00665f', points:[0, 4, 6] },
+  ];
+  const rounds = ['START','R01 AUS','R02 CHN'];
+  const maxPts = Math.max(...pts.flatMap(t => t.points));
+
+  const wrap = document.getElementById('ptsWrap');
+  const canvas = document.getElementById('ptsC');
+  function drawPts() {
+    const rect = wrap.getBoundingClientRect();
+    const D = devicePixelRatio || 1;
+    canvas.width = rect.width * D; canvas.height = rect.height * D;
+    const W = canvas.width, H = canvas.height;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, W, H);
+    const PAD = { t: 24*D, r: 240*D, b: 56*D, l: 64*D };
+    const CW = W - PAD.l - PAD.r, CH = H - PAD.t - PAD.b;
+
+    const xOf = i => PAD.l + (i / (rounds.length - 1)) * CW;
+    const yOf = p => PAD.t + (1 - p / (maxPts + 10)) * CH;
+
+    // Grid
+    ctx.strokeStyle = 'rgba(255,255,255,0.02)'; ctx.lineWidth = D;
+    for (let p = 0; p <= maxPts + 10; p += 20) {
+      ctx.beginPath(); ctx.moveTo(PAD.l, yOf(p)); ctx.lineTo(PAD.l + CW, yOf(p)); ctx.stroke();
+    }
+
+    // Y-axis
+    ctx.fillStyle = '#1e1e1e'; ctx.font = `${11*D}px "IBM Plex Mono"`; ctx.textAlign = 'right';
+    for (let p = 0; p <= maxPts + 10; p += 20)
+      ctx.fillText(p, PAD.l - 8*D, yOf(p) + 4*D);
+
+    // X-axis
+    ctx.textAlign = 'center'; ctx.fillStyle = '#1e1e1e';
+    rounds.forEach((r, i) => ctx.fillText(r, xOf(i), H - PAD.b + 20*D));
+
+    // Lines + dots
+    pts.forEach(team => {
+      ctx.strokeStyle = team.color; ctx.lineWidth = 2.5 * D; ctx.lineJoin = 'round';
+      ctx.beginPath();
+      team.points.forEach((p, i) => {
+        const x = xOf(i), y = yOf(p);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+
+      // Dots
+      team.points.forEach((p, i) => {
+        ctx.beginPath();
+        ctx.arc(xOf(i), yOf(p), 5*D, 0, Math.PI * 2);
+        ctx.fillStyle = team.color;
+        ctx.fill();
+      });
+
+      // End label
+      const last = team.points[team.points.length - 1];
+      ctx.font = `600 ${12*D}px "IBM Plex Mono"`;
+      ctx.fillStyle = team.color;
+      ctx.textAlign = 'left';
+      ctx.fillText(team.name, xOf(rounds.length - 1) + 12*D, yOf(last) + 4*D);
+    });
+
+    ctx.strokeStyle = '#0e0e0e'; ctx.lineWidth = D; ctx.strokeRect(PAD.l, PAD.t, CW, CH);
+  }
+  new ResizeObserver(drawPts).observe(wrap); drawPts();
+
+  // Summary box
+  const sumEl = document.getElementById('ptsSummary');
+  sumEl.innerHTML = `<div class="sum-hdr">AFTER R02</div>` +
+    pts.map(t => `<div class="sum-row"><span style="color:${t.color};">${t.name}</span><span style="color:${t.color};font-weight:600;">${t.points[t.points.length-1]} pts</span></div>`).join('');
+})();
+</script>
+</body></html>

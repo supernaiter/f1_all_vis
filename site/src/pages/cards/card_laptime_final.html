@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lap Time Comparison</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.card{
+  width:1080px;height:1080px;
+  background:#060606;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  padding:64px 64px 60px;
+}
+.header{flex-shrink:0;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;}
+.title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.subtitle{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+.legend{display:flex;gap:28px;margin-bottom:14px;flex-shrink:0;}
+.leg-item{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:0.1em;}
+.leg-line{width:28px;height:2.5px;border-radius:1px;}
+.chart-wrap{flex:1;position:relative;}
+canvas{position:absolute;inset:0;width:100%;height:100%;}
+.summary{
+  position:absolute;top:0;right:0;
+  background:rgba(8,8,12,0.95);
+  border:1px solid #141420;border-radius:4px;overflow:hidden;
+  font-family:'IBM Plex Mono',monospace;min-width:240px;
+}
+.summary-header{background:#0a1020;display:grid;grid-template-columns:1fr 100px;padding:10px 16px;font-size:13px;letter-spacing:0.14em;color:#3671C6;}
+.summary-row{display:grid;grid-template-columns:1fr 100px;padding:9px 16px;border-top:1px solid #0d0d18;font-size:14px;}
+.summary-row.hl{background:#0a1020;}
+.sval{text-align:right;}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <div>
+      <div class="title">LAP TIME COMPARISON</div>
+      <div class="subtitle">2026 · R02 · CHINA GP · ANT vs RUS · RACE</div>
+    </div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="legend">
+    <div class="leg-item">
+      <div class="leg-line" style="background:#FFD700;box-shadow:0 0 5px #FFD70060;"></div>
+      <span style="color:#FFD700;">ANT</span>
+    </div>
+    <div class="leg-item">
+      <div class="leg-line" style="background:#00D2BE;"></div>
+      <span style="color:#00D2BE;">RUS</span>
+    </div>
+    <div class="leg-item">
+      <div style="width:1px;height:14px;border-left:1px dashed #444;"></div>
+      <span style="color:#333;">pit lap</span>
+    </div>
+  </div>
+  <div class="chart-wrap" id="wrap">
+    <canvas id="c"></canvas>
+    <div class="summary">
+      <div class="summary-header"><span>ANT − RUS</span><span style="text-align:right;">Gap</span></div>
+      <div class="summary-row">
+        <span style="color:#333;">L20</span>
+        <span class="sval" style="color:#00D2BE;">+0.145s</span>
+      </div>
+      <div class="summary-row">
+        <span style="color:#333;">L40</span>
+        <span class="sval" style="color:#00D2BE;">+0.514s</span>
+      </div>
+      <div class="summary-row hl">
+        <span style="color:#ccc;">FINISH</span>
+        <span class="sval" style="color:#00D2BE;">+96.88s</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const wrap   = document.getElementById('wrap');
+const LAPS   = 56;
+const ANT_COLOR = '#FFD700';
+const RUS_COLOR = '#00D2BE';
+const antLaps = [{"lap": 1, "time": 100.137, "isPit": true}, {"lap": 2, "time": 98.305, "isPit": false}, {"lap": 3, "time": 98.013, "isPit": false}, {"lap": 4, "time": 97.394, "isPit": false}, {"lap": 5, "time": 97.535, "isPit": false}, {"lap": 6, "time": 97.172, "isPit": false}, {"lap": 7, "time": 97.412, "isPit": false}, {"lap": 8, "time": 97.322, "isPit": false}, {"lap": 9, "time": 97.356, "isPit": false}, {"lap": 10, "time": 106.671, "isPit": true}, {"lap": 11, "time": null, "isPit": true}, {"lap": 12, "time": 149.91, "isPit": true}, {"lap": 13, "time": null, "isPit": true}, {"lap": 14, "time": 98.957, "isPit": false}, {"lap": 15, "time": 98.222, "isPit": false}, {"lap": 16, "time": 96.604, "isPit": false}, {"lap": 17, "time": 96.555, "isPit": false}, {"lap": 18, "time": 97.059, "isPit": false}, {"lap": 19, "time": 96.816, "isPit": false}, {"lap": 20, "time": 96.762, "isPit": false}, {"lap": 21, "time": 96.929, "isPit": false}, {"lap": 22, "time": 96.612, "isPit": false}, {"lap": 23, "time": 96.806, "isPit": false}, {"lap": 24, "time": 96.513, "isPit": false}, {"lap": 25, "time": 96.514, "isPit": false}, {"lap": 26, "time": 96.588, "isPit": false}, {"lap": 27, "time": 96.59, "isPit": false}, {"lap": 28, "time": 96.589, "isPit": false}, {"lap": 29, "time": 96.381, "isPit": false}, {"lap": 30, "time": 96.166, "isPit": false}, {"lap": 31, "time": 96.108, "isPit": false}, {"lap": 32, "time": 95.983, "isPit": false}, {"lap": 33, "time": 96.443, "isPit": false}, {"lap": 34, "time": 96.021, "isPit": false}, {"lap": 35, "time": 96.037, "isPit": false}, {"lap": 36, "time": 96.014, "isPit": false}, {"lap": 37, "time": 96.159, "isPit": false}, {"lap": 38, "time": 95.526, "isPit": false}, {"lap": 39, "time": 95.494, "isPit": false}, {"lap": 40, "time": 96.15, "isPit": false}, {"lap": 41, "time": 95.343, "isPit": false}, {"lap": 42, "time": 95.93, "isPit": false}, {"lap": 43, "time": 95.936, "isPit": false}, {"lap": 44, "time": 95.332, "isPit": false}, {"lap": 45, "time": 95.528, "isPit": false}, {"lap": 46, "time": 95.282, "isPit": false}, {"lap": 47, "time": 95.501, "isPit": false}, {"lap": 48, "time": 95.706, "isPit": false}, {"lap": 49, "time": 95.523, "isPit": false}, {"lap": 50, "time": 95.659, "isPit": false}, {"lap": 51, "time": 96.011, "isPit": false}, {"lap": 52, "time": 95.275, "isPit": false}, {"lap": 53, "time": 97.53, "isPit": false}, {"lap": 54, "time": 96.176, "isPit": false}, {"lap": 55, "time": 96.378, "isPit": false}, {"lap": 56, "time": 96.929, "isPit": false}];
+const rusLaps = [{"lap": 1, "time": 101.815, "isPit": true}, {"lap": 2, "time": 98.075, "isPit": false}, {"lap": 3, "time": 98.125, "isPit": false}, {"lap": 4, "time": 97.093, "isPit": false}, {"lap": 5, "time": 97.462, "isPit": false}, {"lap": 6, "time": 97.375, "isPit": false}, {"lap": 7, "time": 97.383, "isPit": false}, {"lap": 8, "time": 97.266, "isPit": false}, {"lap": 9, "time": 97.261, "isPit": false}, {"lap": 10, "time": 112.779, "isPit": true}, {"lap": 11, "time": null, "isPit": true}, {"lap": 12, "time": 149.667, "isPit": true}, {"lap": 13, "time": 149.28, "isPit": true}, {"lap": 14, "time": 100.588, "isPit": true}, {"lap": 15, "time": 98.91, "isPit": false}, {"lap": 16, "time": 97.532, "isPit": false}, {"lap": 17, "time": 96.42, "isPit": false}, {"lap": 18, "time": 96.313, "isPit": false}, {"lap": 19, "time": 96.668, "isPit": false}, {"lap": 20, "time": 96.617, "isPit": false}, {"lap": 21, "time": 96.663, "isPit": false}, {"lap": 22, "time": 96.894, "isPit": false}, {"lap": 23, "time": 96.561, "isPit": false}, {"lap": 24, "time": 97.445, "isPit": false}, {"lap": 25, "time": 98.063, "isPit": false}, {"lap": 26, "time": 97.187, "isPit": false}, {"lap": 27, "time": 97.771, "isPit": false}, {"lap": 28, "time": 96.971, "isPit": false}, {"lap": 29, "time": 96.158, "isPit": false}, {"lap": 30, "time": 96.438, "isPit": false}, {"lap": 31, "time": 96.207, "isPit": false}, {"lap": 32, "time": 95.977, "isPit": false}, {"lap": 33, "time": 96.107, "isPit": false}, {"lap": 34, "time": 95.852, "isPit": false}, {"lap": 35, "time": 96.162, "isPit": false}, {"lap": 36, "time": 95.914, "isPit": false}, {"lap": 37, "time": 95.531, "isPit": false}, {"lap": 38, "time": 95.529, "isPit": false}, {"lap": 39, "time": 95.497, "isPit": false}, {"lap": 40, "time": 95.636, "isPit": false}, {"lap": 41, "time": 95.641, "isPit": false}, {"lap": 42, "time": 96.661, "isPit": false}, {"lap": 43, "time": 95.644, "isPit": false}, {"lap": 44, "time": 95.542, "isPit": false}, {"lap": 45, "time": 95.677, "isPit": false}, {"lap": 46, "time": 96.407, "isPit": false}, {"lap": 47, "time": 95.668, "isPit": false}, {"lap": 48, "time": 96.095, "isPit": false}, {"lap": 49, "time": 95.87, "isPit": false}, {"lap": 50, "time": 95.681, "isPit": false}, {"lap": 51, "time": 95.531, "isPit": false}, {"lap": 52, "time": 95.547, "isPit": false}, {"lap": 53, "time": 95.691, "isPit": false}, {"lap": 54, "time": 96.457, "isPit": false}, {"lap": 55, "time": 95.695, "isPit": false}, {"lap": 56, "time": 95.4, "isPit": false}];
+
+function draw() {
+  const W = canvas.width, H = canvas.height, D = devicePixelRatio;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, W, H);
+  const PAD = { t:20*D, r:20*D, b:48*D, l:64*D };
+  const CW = W-PAD.l-PAD.r, CH = H-PAD.t-PAD.b;
+
+  // Y scale: clean laps only
+  const allClean = [...antLaps,...rusLaps].filter(l=>l.time&&!l.isPit).map(l=>l.time);
+  const yMin = Math.min(...allClean) - 0.3;
+  const yMax = Math.max(...allClean) + 0.5;
+
+  const xOf = lap  => PAD.l + ((lap-1)/(LAPS-1))*CW;
+  const yOf = time => PAD.t + (1-(time-yMin)/(yMax-yMin))*CH;
+
+  // Grid
+  ctx.strokeStyle='rgba(255,255,255,0.025)'; ctx.lineWidth=D;
+  for(let y=Math.ceil(yMin/0.5)*0.5; y<=yMax; y+=0.5){
+    const py=yOf(y); ctx.beginPath(); ctx.moveTo(PAD.l,py); ctx.lineTo(W-PAD.r,py); ctx.stroke();
+  }
+  for(let l=10;l<=LAPS;l+=10){
+    const px=xOf(l); ctx.beginPath(); ctx.moveTo(px,PAD.t); ctx.lineTo(px,H-PAD.b); ctx.stroke();
+  }
+
+  // Y ticks
+  ctx.fillStyle='#1e1e1e'; ctx.font=`${14*D}px "IBM Plex Mono"`; ctx.textAlign='right';
+  for(let y=Math.ceil(yMin); y<=Math.floor(yMax); y++){
+    ctx.fillText(y.toFixed(0), PAD.l-8*D, yOf(y)+4*D);
+  }
+  // X ticks
+  ctx.textAlign='center'; ctx.fillStyle='#1e1e1e';
+  for(let l=10;l<=LAPS;l+=10) ctx.fillText('L'+l, xOf(l), H-PAD.b+18*D);
+
+  // Pit lines — deduplicate by grouping ANT and RUS pits
+  const antPits = antLaps.filter(l=>l.isPit).map(l=>l.lap);
+  const rusPits = rusLaps.filter(l=>l.isPit).map(l=>l.lap);
+  // Only draw for actual pit in laps (not outlaps) — use first lap of each isPit streak
+  function getPitInLaps(pits) {
+    const result = [];
+    let prev = -99;
+    for(const p of pits) {
+      if(p - prev > 1) result.push(p); // first of a streak
+      prev = p;
+    }
+    return result;
+  }
+  const antPitIn = getPitInLaps(antPits);
+  const rusPitIn = getPitInLaps(rusPits);
+
+  function drawPit(lap, color, label) {
+    const px = xOf(lap);
+    ctx.save();
+    ctx.strokeStyle=color; ctx.lineWidth=1.5*D;
+    ctx.setLineDash([4*D,4*D]); ctx.globalAlpha=0.5;
+    ctx.beginPath(); ctx.moveTo(px,PAD.t); ctx.lineTo(px,H-PAD.b); ctx.stroke();
+    ctx.restore();
+    ctx.save();
+    ctx.font=`${11*D}px "IBM Plex Mono"`; ctx.fillStyle=color;
+    ctx.globalAlpha=0.7; ctx.textAlign='center';
+    ctx.fillText(label, px, PAD.t-4*D);
+    ctx.restore();
+  }
+
+  // Stagger labels if close together
+  antPitIn.filter(l=>l>1).forEach((lap,i) => drawPit(lap, ANT_COLOR, `PIT L${lap}`));
+  rusPitIn.filter(l=>l>1).forEach((lap,i) => {
+    // offset label down if same lap as ANT
+    const sameAsAnt = antPitIn.includes(lap);
+    const px = xOf(lap);
+    ctx.save();
+    ctx.strokeStyle=RUS_COLOR; ctx.lineWidth=1.5*D;
+    ctx.setLineDash([4*D,4*D]); ctx.globalAlpha=0.4;
+    ctx.beginPath(); ctx.moveTo(px,PAD.t); ctx.lineTo(px,H-PAD.b); ctx.stroke();
+    ctx.restore();
+    ctx.save();
+    ctx.font=`${11*D}px "IBM Plex Mono"`; ctx.fillStyle=RUS_COLOR;
+    ctx.globalAlpha=0.7; ctx.textAlign='center';
+    const labelY = sameAsAnt ? PAD.t+14*D : PAD.t-4*D;
+    ctx.fillText(`PIT L${lap}`, px, labelY);
+    ctx.restore();
+  });
+
+  // Delta fill — split into segments by sign
+  const validAnt = Object.fromEntries(antLaps.filter(l=>l.time&&!l.isPit).map(l=>[l.lap,l.time]));
+  const validRus = Object.fromEntries(rusLaps.filter(l=>l.time&&!l.isPit).map(l=>[l.lap,l.time]));
+  const commonLaps = Object.keys(validAnt).filter(k=>validRus[k]).map(Number).sort((a,b)=>a-b);
+
+  // Draw filled area lap by lap with correct color per sign
+  for(let i=0; i<commonLaps.length-1; i++) {
+    const l1=commonLaps[i], l2=commonLaps[i+1];
+    const a1=validAnt[l1], a2=validAnt[l2];
+    const r1=validRus[l1], r2=validRus[l2];
+    const antFaster1=a1<r1, antFaster2=a2<r2;
+    const color = (antFaster1||antFaster2) ? ANT_COLOR : RUS_COLOR;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(xOf(l1),yOf(a1));
+    ctx.lineTo(xOf(l2),yOf(a2));
+    ctx.lineTo(xOf(l2),yOf(r2));
+    ctx.lineTo(xOf(l1),yOf(r1));
+    ctx.closePath();
+    ctx.fillStyle=color; ctx.globalAlpha=0.08;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // White bracket annotation at midpoint
+  const midLap = commonLaps[Math.floor(commonLaps.length*0.65)];
+  if(midLap && validAnt[midLap] && validRus[midLap]) {
+    const diff = validRus[midLap] - validAnt[midLap];
+    const px=xOf(midLap), pyA=yOf(validAnt[midLap]), pyR=yOf(validRus[midLap]);
+    const pyMid=(pyA+pyR)/2;
+    ctx.save();
+    ctx.strokeStyle='rgba(255,255,255,0.3)'; ctx.lineWidth=0.5*D; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(px-6*D,pyA); ctx.lineTo(px+6*D,pyA); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(px-6*D,pyR); ctx.lineTo(px+6*D,pyR); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(px,pyA); ctx.lineTo(px,pyR); ctx.stroke();
+    ctx.restore();
+    ctx.save();
+    ctx.font=`${13*D}px "IBM Plex Mono"`; ctx.fillStyle='rgba(255,255,255,0.55)';
+    ctx.textAlign='left';
+    ctx.fillText((diff>0?'+':'')+diff.toFixed(2)+'s', px+10*D, pyMid+4*D);
+    ctx.restore();
+  }
+
+  // Draw series
+  function drawSeries(laps, color) {
+    ctx.save();
+    ctx.strokeStyle=color; ctx.lineWidth=2.5*D;
+    ctx.lineJoin='round'; ctx.lineCap='round'; ctx.globalAlpha=0.9;
+    let pen=false;
+    ctx.beginPath();
+    laps.forEach(l=>{
+      if(!l.time||l.isPit){pen=false;return;}
+      const px=xOf(l.lap),py=yOf(l.time);
+      if(!pen){ctx.moveTo(px,py);pen=true;}else ctx.lineTo(px,py);
+    });
+    ctx.stroke(); ctx.restore();
+    laps.forEach(l=>{
+      if(!l.time||l.isPit) return;
+      ctx.save(); ctx.fillStyle=color; ctx.globalAlpha=0.75;
+      ctx.beginPath(); ctx.arc(xOf(l.lap),yOf(l.time),3*D,0,Math.PI*2); ctx.fill(); ctx.restore();
+    });
+  }
+
+  drawSeries(rusLaps, RUS_COLOR);
+  drawSeries(antLaps, ANT_COLOR);
+
+  // Border
+  ctx.strokeStyle='#111'; ctx.lineWidth=D; ctx.setLineDash([]);
+  ctx.strokeRect(PAD.l,PAD.t,CW,CH);
+
+  // Y label
+  ctx.save(); ctx.translate(16*D,PAD.t+CH/2); ctx.rotate(-Math.PI/2);
+  ctx.fillStyle='#1a1a1a'; ctx.font=`${12*D}px "IBM Plex Mono"`; ctx.textAlign='center';
+  ctx.fillText('LAP TIME (sec)',0,0); ctx.restore();
+}
+
+function resize() {
+  canvas.width=wrap.offsetWidth*devicePixelRatio;
+  canvas.height=wrap.offsetHeight*devicePixelRatio;
+  draw();
+}
+window.addEventListener('load',resize);
+window.addEventListener('resize',resize);
+</script>
+</body>
+</html>

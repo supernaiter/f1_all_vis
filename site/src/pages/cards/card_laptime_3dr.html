@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lap Time 3-Driver</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:64px 64px 60px;}
+.header{flex-shrink:0;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;}
+.title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.subtitle{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+.legend{display:flex;gap:28px;margin-bottom:14px;flex-shrink:0;}
+.leg-item{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:0.1em;}
+.leg-line{width:28px;height:2.5px;border-radius:1px;}
+.chart-wrap{flex:1;position:relative;}
+canvas{position:absolute;inset:0;width:100%;height:100%;}
+.summary{position:absolute;top:0;right:0;background:rgba(8,8,12,0.95);border:1px solid #141420;border-radius:4px;overflow:hidden;font-family:'IBM Plex Mono',monospace;min-width:260px;}
+.sum-hdr{background:#0a1020;display:grid;grid-template-columns:1fr 100px;padding:10px 16px;font-size:11px;letter-spacing:0.14em;color:#333;}
+.sum-row{display:grid;grid-template-columns:1fr 100px;padding:8px 16px;border-top:1px solid #0d0d18;font-size:13px;}
+.sum-row.hl{background:#0a1020;}
+.sv{text-align:right;}
+</style></head>
+<body><div class="card">
+  <div class="header">
+    <div><div class="title">LAP TIME COMPARISON</div>
+    <div class="subtitle">2026 · R02 · CHINA GP · ANT vs RUS vs LEC · RACE</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="legend">
+    <div class="leg-item"><div class="leg-line" style="background:#FFD700;box-shadow:0 0 5px #FFD70060;"></div><span style="color:#FFD700;">ANT</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#27f4d2;"></div><span style="color:#27f4d2;">RUS</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#e80020;"></div><span style="color:#e80020;">LEC</span></div>
+    <div class="leg-item"><div style="width:1px;height:14px;border-left:1px dashed #2a2a2a;"></div><span style="color:#2a2a2a;font-size:11px;">pit / SC</span></div>
+  </div>
+  <div class="chart-wrap" id="wrap">
+    <canvas id="c"></canvas>
+    <div class="summary">
+      <div class="sum-hdr"><span>MEDIAN PACE</span><span style="text-align:right;">SEC/LAP</span></div>
+      <div class="sum-row"><span style="color:#FFD700;">ANT</span><span class="sv" style="color:#FFD700;" id="a-med">—</span></div>
+      <div class="sum-row"><span style="color:#27f4d2;">RUS</span><span class="sv" style="color:#27f4d2;" id="r-med">—</span></div>
+      <div class="sum-row"><span style="color:#e80020;">LEC</span><span class="sv" style="color:#e80020;" id="l-med">—</span></div>
+      <div class="sum-row hl"><span style="color:#444;">FASTEST LAP</span><span class="sv" style="color:#ccc;" id="fl">—</span></div>
+    </div>
+  </div>
+</div>
+<script>
+const LAPS=56;
+const antLaps=[{"lap": 1, "time": null, "isPit": true}, {"lap": 2, "time": 98.305, "isPit": false}, {"lap": 3, "time": 98.013, "isPit": false}, {"lap": 4, "time": 97.394, "isPit": false}, {"lap": 5, "time": 97.535, "isPit": false}, {"lap": 6, "time": 97.172, "isPit": false}, {"lap": 7, "time": 97.412, "isPit": false}, {"lap": 8, "time": 97.322, "isPit": false}, {"lap": 9, "time": 97.356, "isPit": false}, {"lap": 10, "time": null, "isPit": true}, {"lap": 11, "time": null, "isPit": true}, {"lap": 12, "time": null, "isPit": true}, {"lap": 13, "time": null, "isPit": true}, {"lap": 14, "time": null, "isPit": true}, {"lap": 15, "time": 98.222, "isPit": false}, {"lap": 16, "time": 96.604, "isPit": false}, {"lap": 17, "time": 96.555, "isPit": false}, {"lap": 18, "time": 97.059, "isPit": false}, {"lap": 19, "time": 96.816, "isPit": false}, {"lap": 20, "time": 96.762, "isPit": false}, {"lap": 21, "time": 96.929, "isPit": false}, {"lap": 22, "time": 96.612, "isPit": false}, {"lap": 23, "time": 96.806, "isPit": false}, {"lap": 24, "time": 96.513, "isPit": false}, {"lap": 25, "time": 96.514, "isPit": false}, {"lap": 26, "time": 96.588, "isPit": false}, {"lap": 27, "time": 96.59, "isPit": false}, {"lap": 28, "time": 96.589, "isPit": false}, {"lap": 29, "time": 96.381, "isPit": false}, {"lap": 30, "time": 96.166, "isPit": false}, {"lap": 31, "time": 96.108, "isPit": false}, {"lap": 32, "time": 95.983, "isPit": false}, {"lap": 33, "time": 96.443, "isPit": false}, {"lap": 34, "time": 96.021, "isPit": false}, {"lap": 35, "time": 96.037, "isPit": false}, {"lap": 36, "time": 96.014, "isPit": false}, {"lap": 37, "time": 96.159, "isPit": false}, {"lap": 38, "time": 95.526, "isPit": false}, {"lap": 39, "time": 95.494, "isPit": false}, {"lap": 40, "time": 96.15, "isPit": false}, {"lap": 41, "time": 95.343, "isPit": false}, {"lap": 42, "time": 95.93, "isPit": false}, {"lap": 43, "time": 95.936, "isPit": false}, {"lap": 44, "time": 95.332, "isPit": false}, {"lap": 45, "time": 95.528, "isPit": false}, {"lap": 46, "time": 95.282, "isPit": false}, {"lap": 47, "time": 95.501, "isPit": false}, {"lap": 48, "time": 95.706, "isPit": false}, {"lap": 49, "time": 95.523, "isPit": false}, {"lap": 50, "time": 95.659, "isPit": false}, {"lap": 51, "time": 96.011, "isPit": false}, {"lap": 52, "time": 95.275, "isPit": false}, {"lap": 53, "time": 97.53, "isPit": false}, {"lap": 54, "time": 96.176, "isPit": false}, {"lap": 55, "time": 96.378, "isPit": false}, {"lap": 56, "time": 96.929, "isPit": false}];
+const rusLaps=[{"lap": 1, "time": null, "isPit": true}, {"lap": 2, "time": 98.075, "isPit": false}, {"lap": 3, "time": 98.125, "isPit": false}, {"lap": 4, "time": 97.093, "isPit": false}, {"lap": 5, "time": 97.462, "isPit": false}, {"lap": 6, "time": 97.375, "isPit": false}, {"lap": 7, "time": 97.383, "isPit": false}, {"lap": 8, "time": 97.266, "isPit": false}, {"lap": 9, "time": 97.261, "isPit": false}, {"lap": 10, "time": null, "isPit": true}, {"lap": 11, "time": null, "isPit": true}, {"lap": 12, "time": null, "isPit": true}, {"lap": 13, "time": null, "isPit": true}, {"lap": 14, "time": null, "isPit": true}, {"lap": 15, "time": 98.91, "isPit": false}, {"lap": 16, "time": 97.532, "isPit": false}, {"lap": 17, "time": 96.42, "isPit": false}, {"lap": 18, "time": 96.313, "isPit": false}, {"lap": 19, "time": 96.668, "isPit": false}, {"lap": 20, "time": 96.617, "isPit": false}, {"lap": 21, "time": 96.663, "isPit": false}, {"lap": 22, "time": 96.894, "isPit": false}, {"lap": 23, "time": 96.561, "isPit": false}, {"lap": 24, "time": 97.445, "isPit": false}, {"lap": 25, "time": 98.063, "isPit": false}, {"lap": 26, "time": 97.187, "isPit": false}, {"lap": 27, "time": 97.771, "isPit": false}, {"lap": 28, "time": 96.971, "isPit": false}, {"lap": 29, "time": 96.158, "isPit": false}, {"lap": 30, "time": 96.438, "isPit": false}, {"lap": 31, "time": 96.207, "isPit": false}, {"lap": 32, "time": 95.977, "isPit": false}, {"lap": 33, "time": 96.107, "isPit": false}, {"lap": 34, "time": 95.852, "isPit": false}, {"lap": 35, "time": 96.162, "isPit": false}, {"lap": 36, "time": 95.914, "isPit": false}, {"lap": 37, "time": 95.531, "isPit": false}, {"lap": 38, "time": 95.529, "isPit": false}, {"lap": 39, "time": 95.497, "isPit": false}, {"lap": 40, "time": 95.636, "isPit": false}, {"lap": 41, "time": 95.641, "isPit": false}, {"lap": 42, "time": 96.661, "isPit": false}, {"lap": 43, "time": 95.644, "isPit": false}, {"lap": 44, "time": 95.542, "isPit": false}, {"lap": 45, "time": 95.677, "isPit": false}, {"lap": 46, "time": 96.407, "isPit": false}, {"lap": 47, "time": 95.668, "isPit": false}, {"lap": 48, "time": 96.095, "isPit": false}, {"lap": 49, "time": 95.87, "isPit": false}, {"lap": 50, "time": 95.681, "isPit": false}, {"lap": 51, "time": 95.531, "isPit": false}, {"lap": 52, "time": 95.547, "isPit": false}, {"lap": 53, "time": 95.691, "isPit": false}, {"lap": 54, "time": 96.457, "isPit": false}, {"lap": 55, "time": 95.695, "isPit": false}, {"lap": 56, "time": 95.4, "isPit": false}];
+const lecLaps=[{"lap": 1, "time": null, "isPit": true}, {"lap": 2, "time": 98.558, "isPit": false}, {"lap": 3, "time": 99.148, "isPit": false}, {"lap": 4, "time": 97.835, "isPit": false}, {"lap": 5, "time": 97.863, "isPit": false}, {"lap": 6, "time": 98.136, "isPit": false}, {"lap": 7, "time": 97.994, "isPit": false}, {"lap": 8, "time": 97.794, "isPit": false}, {"lap": 9, "time": 98.13, "isPit": false}, {"lap": 10, "time": null, "isPit": true}, {"lap": 11, "time": null, "isPit": true}, {"lap": 12, "time": null, "isPit": true}, {"lap": 13, "time": null, "isPit": true}, {"lap": 14, "time": null, "isPit": true}, {"lap": 15, "time": 97.205, "isPit": false}, {"lap": 16, "time": 97.306, "isPit": false}, {"lap": 17, "time": 96.877, "isPit": false}, {"lap": 18, "time": 96.599, "isPit": false}, {"lap": 19, "time": 96.861, "isPit": false}, {"lap": 20, "time": 96.833, "isPit": false}, {"lap": 21, "time": 96.705, "isPit": false}, {"lap": 22, "time": 96.643, "isPit": false}, {"lap": 23, "time": 96.813, "isPit": false}, {"lap": 24, "time": 97.277, "isPit": false}, {"lap": 25, "time": 97.681, "isPit": false}, {"lap": 26, "time": 97.574, "isPit": false}, {"lap": 27, "time": 97.872, "isPit": false}, {"lap": 28, "time": 97.076, "isPit": false}, {"lap": 29, "time": 97.107, "isPit": false}, {"lap": 30, "time": 96.797, "isPit": false}, {"lap": 31, "time": 96.409, "isPit": false}, {"lap": 32, "time": 96.624, "isPit": false}, {"lap": 33, "time": 96.55, "isPit": false}, {"lap": 34, "time": 96.729, "isPit": false}, {"lap": 35, "time": 98.511, "isPit": false}, {"lap": 36, "time": 97.247, "isPit": false}, {"lap": 37, "time": 96.767, "isPit": false}, {"lap": 38, "time": 96.759, "isPit": false}, {"lap": 39, "time": 96.993, "isPit": false}, {"lap": 40, "time": 98.256, "isPit": false}, {"lap": 41, "time": 96.84, "isPit": false}, {"lap": 42, "time": 96.795, "isPit": false}, {"lap": 43, "time": 96.584, "isPit": false}, {"lap": 44, "time": 96.649, "isPit": false}, {"lap": 45, "time": 97.224, "isPit": false}, {"lap": 46, "time": 96.271, "isPit": false}, {"lap": 47, "time": 96.204, "isPit": false}, {"lap": 48, "time": 96.228, "isPit": false}, {"lap": 49, "time": 96.331, "isPit": false}, {"lap": 50, "time": 96.387, "isPit": false}, {"lap": 51, "time": 96.744, "isPit": false}, {"lap": 52, "time": 96.324, "isPit": false}, {"lap": 53, "time": 96.32, "isPit": false}, {"lap": 54, "time": 96.213, "isPit": false}, {"lap": 55, "time": 96.134, "isPit": false}, {"lap": 56, "time": 96.011, "isPit": false}];
+const wrap=document.getElementById('wrap');
+const canvas=document.getElementById('c');
+function median(a){const s=[...a].sort((x,y)=>x-y);const m=Math.floor(s.length/2);return s.length%2?s[m]:(s[m-1]+s[m])/2;}
+function draw(){
+  const rect=wrap.getBoundingClientRect();
+  const D=devicePixelRatio||1;
+  canvas.width=rect.width*D;canvas.height=rect.height*D;
+  const W=canvas.width,H=canvas.height;
+  const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+  const PAD={t:24*D,r:20*D,b:48*D,l:64*D};
+  const CW=W-PAD.l-PAD.r,CH=H-PAD.t-PAD.b;
+  const all=[...antLaps,...rusLaps,...lecLaps].filter(l=>l.time!==null&&!l.isPit).map(l=>l.time);
+  const yMin=Math.min(...all)-0.2,yMax=Math.max(...all)+0.3;
+  const xOf=lap=>PAD.l+((lap-1)/(LAPS-1))*CW;
+  const yOf=t=>PAD.t+(1-(t-yMin)/(yMax-yMin))*CH;
+  // grid
+  ctx.strokeStyle='rgba(255,255,255,0.02)';ctx.lineWidth=D;
+  for(let y=Math.ceil(yMin*2)/2;y<=yMax;y+=0.5){ctx.beginPath();ctx.moveTo(PAD.l,yOf(y));ctx.lineTo(W-PAD.r,yOf(y));ctx.stroke();}
+  for(let l=10;l<=LAPS;l+=10){ctx.beginPath();ctx.moveTo(xOf(l),PAD.t);ctx.lineTo(xOf(l),H-PAD.b);ctx.stroke();}
+  // ticks
+  ctx.fillStyle='#1e1e1e';ctx.font=`${11*D}px "IBM Plex Mono"`;ctx.textAlign='right';
+  for(let y=Math.ceil(yMin);y<=Math.floor(yMax);y++)ctx.fillText(y,PAD.l-8*D,yOf(y)+4*D);
+  ctx.textAlign='center';
+  for(let l=10;l<=LAPS;l+=10)ctx.fillText('L'+l,xOf(l),H-PAD.b+18*D);
+  // pit marker lines
+  function pitEntries(laps){
+    const r=[];let prev=-99;
+    laps.forEach(l=>{if(l.isPit){if(l.lap-prev>1)r.push(l.lap);prev=l.lap;}else prev=-99;});
+    return r;
+  }
+  function drawPitLine(lap,col,yOff){
+    const px=xOf(lap);
+    ctx.save();ctx.strokeStyle=col;ctx.lineWidth=1*D;ctx.setLineDash([2*D,4*D]);ctx.globalAlpha=0.3;
+    ctx.beginPath();ctx.moveTo(px,PAD.t);ctx.lineTo(px,H-PAD.b);ctx.stroke();ctx.restore();
+    ctx.save();ctx.font=`${8*D}px "IBM Plex Mono"`;ctx.fillStyle=col;ctx.globalAlpha=0.45;ctx.textAlign='center';
+    ctx.fillText('PIT',px,PAD.t+yOff*D);ctx.restore();
+  }
+  pitEntries(antLaps).filter(l=>l>1).forEach(l=>drawPitLine(l,'#FFD700',6));
+  pitEntries(rusLaps).filter(l=>l>1).forEach(l=>drawPitLine(l,'#27f4d2',16));
+  pitEntries(lecLaps).filter(l=>l>1).forEach(l=>drawPitLine(l,'#e80020',26));
+  // series
+  function drawSeries(laps,col,lw,glow){
+    ctx.save();ctx.strokeStyle=col;ctx.lineWidth=lw*D;ctx.lineJoin='round';ctx.lineCap='round';
+    if(glow){ctx.shadowColor=col;ctx.shadowBlur=6*D;}
+    ctx.beginPath();let pen=false;
+    laps.forEach(l=>{
+      if(l.time===null||l.isPit){pen=false;return;}
+      const px=xOf(l.lap),py=yOf(l.time);
+      if(!pen){ctx.moveTo(px,py);pen=true;}else ctx.lineTo(px,py);
+    });
+    ctx.stroke();ctx.restore();
+  }
+  drawSeries(lecLaps,'#e80020',1.8,false);
+  drawSeries(rusLaps,'#27f4d2',1.8,false);
+  drawSeries(antLaps,'#FFD700',2.2,true);
+  ctx.strokeStyle='#0e0e0e';ctx.lineWidth=D;ctx.setLineDash([]);ctx.strokeRect(PAD.l,PAD.t,CW,CH);
+  // summary
+  const ac=antLaps.filter(l=>l.time!==null&&!l.isPit).map(l=>l.time);
+  const rc=rusLaps.filter(l=>l.time!==null&&!l.isPit).map(l=>l.time);
+  const lc=lecLaps.filter(l=>l.time!==null&&!l.isPit).map(l=>l.time);
+  document.getElementById('a-med').textContent=median(ac).toFixed(3)+'s';
+  document.getElementById('r-med').textContent=median(rc).toFixed(3)+'s';
+  document.getElementById('l-med').textContent=median(lc).toFixed(3)+'s';
+  document.getElementById('fl').textContent=Math.min(...ac,...rc,...lc).toFixed(3)+'s';
+}
+new ResizeObserver(draw).observe(wrap);draw();
+</script></body></html>

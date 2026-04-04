@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar H2H</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#080808;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.card{
+  width:1080px;height:1080px;
+  background:#080808;
+  position:relative;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  padding:64px;
+}
+.title-row{
+  display:flex;align-items:baseline;gap:16px;
+  margin-bottom:6px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:52px;letter-spacing:0.04em;line-height:1;
+}
+.subtitle{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:24px;letter-spacing:0.1em;
+  color:rgba(255,255,255,0.25);
+  margin-bottom:0;
+}
+.chart-wrap{flex:1;position:relative;}
+svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+.wm{
+  position:absolute;bottom:0;right:0;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:0.15em;color:#1a1a1a;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="title-row">
+    <span style="color:#FFD700;">ANT</span>
+    <span style="color:rgba(255,255,255,0.3);font-size:36px;">vs</span>
+    <span style="color:#00D2BE;">RUS</span>
+  </div>
+  <div class="subtitle">2026 · R01–R02 · SEASON HEAD TO HEAD</div>
+  <div class="chart-wrap">
+    <svg id="radar" viewBox="0 0 800 800"></svg>
+  </div>
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+</div>
+
+<script>
+const metrics = [
+  { label:"POINTS",          ant:43,   rus:18,   max:50,   higherBetter:true  },
+  { label:"RACE WINS",       ant:2,    rus:0,    max:2,    higherBetter:true  },
+  { label:"QUALIFYING",      ant:1,    rus:1,    max:2,    higherBetter:true  },
+  { label:"FASTEST LAP",     ant:1,    rus:0,    max:2,    higherBetter:true  },
+  { label:"LAPS LED",        ant:89,   rus:12,   max:100,  higherBetter:true  },
+  { label:"BEST RESULT",     ant:1,    rus:2,    max:1,    higherBetter:false },
+];
+
+const N = metrics.length;
+const CX = 400, CY = 420;
+const R = 290;
+const LEVELS = 5;
+
+const svg = document.getElementById('radar');
+
+function polar(angle, r) {
+  const a = angle - Math.PI / 2;
+  return [CX + r * Math.cos(a), CY + r * Math.sin(a)];
+}
+
+function angleOf(i) { return (2 * Math.PI * i) / N; }
+
+// ── Grid rings ──
+for (let l = 1; l <= LEVELS; l++) {
+  const r = (R / LEVELS) * l;
+  const pts = Array.from({length:N}, (_,i) => polar(angleOf(i), r));
+  const d = pts.map((p,i) => (i===0?'M':'L')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')+'Z';
+  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+  path.setAttribute('d', d);
+  path.setAttribute('fill', 'none');
+  path.setAttribute('stroke', 'rgba(255,255,255,0.07)');
+  path.setAttribute('stroke-width', '1');
+  svg.appendChild(path);
+}
+
+// ── Spokes ──
+for (let i = 0; i < N; i++) {
+  const [x,y] = polar(angleOf(i), R);
+  const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+  line.setAttribute('x1', CX); line.setAttribute('y1', CY);
+  line.setAttribute('x2', x);  line.setAttribute('y2', y);
+  line.setAttribute('stroke', 'rgba(255,255,255,0.08)');
+  line.setAttribute('stroke-width', '1');
+  svg.appendChild(line);
+}
+
+// ── Data polygon helper ──
+function makePolygon(color, fillOpacity, strokeW, data) {
+  const pts = data.map((val, i) => {
+    const m = metrics[i];
+    let pct;
+    if (m.higherBetter) {
+      pct = Math.min(val / m.max, 1);
+    } else {
+      // lower is better: invert (e.g. best result P1=max, P20=min)
+      pct = Math.min((m.max * 2 - val) / (m.max * 2) + 0.5, 1);
+      pct = Math.max(pct, 0.05);
+    }
+    return polar(angleOf(i), R * Math.max(pct, 0.04));
+  });
+  const d = pts.map((p,i)=>(i===0?'M':'L')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')+'Z';
+  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+  path.setAttribute('d', d);
+  path.setAttribute('fill', color);
+  path.setAttribute('fill-opacity', fillOpacity);
+  path.setAttribute('stroke', color);
+  path.setAttribute('stroke-width', strokeW);
+  path.setAttribute('stroke-linejoin', 'round');
+  svg.appendChild(path);
+
+  // dots
+  pts.forEach(p => {
+    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx', p[0]); c.setAttribute('cy', p[1]); c.setAttribute('r', '5');
+    c.setAttribute('fill', color);
+    svg.appendChild(c);
+  });
+}
+
+// RUS first (behind)
+makePolygon('#00D2BE', 0.15, 2.5, metrics.map(m=>m.rus));
+// ANT on top
+makePolygon('#FFD700', 0.2, 2.5, metrics.map(m=>m.ant));
+
+// ── Labels ──
+metrics.forEach((m, i) => {
+  const angle = angleOf(i);
+  const [lx, ly] = polar(angle, R + 48);
+
+  // label
+  const txt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  txt.setAttribute('x', lx); txt.setAttribute('y', ly);
+  txt.setAttribute('text-anchor', 'middle');
+  txt.setAttribute('dominant-baseline', 'middle');
+  txt.setAttribute('font-family', 'Bebas Neue');
+  txt.setAttribute('font-size', '22');
+  txt.setAttribute('fill', 'rgba(255,255,255,0.5)');
+  txt.setAttribute('letter-spacing', '2');
+  txt.textContent = m.label;
+  svg.appendChild(txt);
+
+  // ANT value
+  const [ax, ay] = polar(angle, R * Math.min(m.ant / m.max, 1) + 20);
+  const antTxt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  antTxt.setAttribute('x', ax); antTxt.setAttribute('y', ay);
+  antTxt.setAttribute('text-anchor', 'middle');
+  antTxt.setAttribute('dominant-baseline', 'middle');
+  antTxt.setAttribute('font-family', 'Bebas Neue');
+  antTxt.setAttribute('font-size', '28');
+  antTxt.setAttribute('fill', '#FFD700');
+  antTxt.textContent = m.ant + (m.label==='BEST RESULT' ? 'st' : '');
+  svg.appendChild(antTxt);
+
+  // RUS value
+  const rusPct = m.higherBetter ? m.rus/m.max : Math.max((m.max*2-m.rus)/(m.max*2)+0.5,0.05);
+  const [rx2, ry2] = polar(angle, R * Math.min(rusPct,1) - 22);
+  const rusTxt = document.createElementNS('http://www.w3.org/2000/svg','text');
+  rusTxt.setAttribute('x', rx2); rusTxt.setAttribute('y', ry2);
+  rusTxt.setAttribute('text-anchor', 'middle');
+  rusTxt.setAttribute('dominant-baseline', 'middle');
+  rusTxt.setAttribute('font-family', 'Bebas Neue');
+  rusTxt.setAttribute('font-size', '28');
+  rusTxt.setAttribute('fill', '#00D2BE');
+  rusTxt.textContent = m.rus + (m.label==='BEST RESULT' ? 'nd' : '');
+  svg.appendChild(rusTxt);
+});
+</script>
+</body>
+</html>

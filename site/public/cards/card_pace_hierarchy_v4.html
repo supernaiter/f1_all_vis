@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pace Hierarchy — v4</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:64px 64px 48px;}
+.header{flex-shrink:0;margin-bottom:20px;display:flex;justify-content:space-between;align-items:flex-start;}
+.title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.subtitle{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+
+.stack{flex:1;display:flex;flex-direction:column;gap:0;}
+.stack-row{display:grid;grid-template-columns:44px 170px 1fr 90px;align-items:center;border-top:1px solid #0e0e14;min-height:0;}
+.stack-row:last-child{border-bottom:1px solid #0e0e14;}
+.s-rank{font-family:'Bebas Neue',sans-serif;font-size:26px;text-align:center;}
+.s-info{padding:10px 12px;}
+.s-team{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.06em;line-height:1;}
+.s-drivers{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:#555;margin-top:3px;}
+.s-bar-wrap{height:26px;position:relative;}
+.s-bar{position:absolute;left:0;top:0;height:100%;border-radius:0 2px 2px 0;}
+.s-val{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.06em;text-align:right;padding-right:8px;white-space:nowrap;}
+</style></head>
+<body>
+<div class="card">
+  <div class="header">
+    <div><div class="title">PACE HIERARCHY</div>
+    <div class="subtitle">2026 · R02 · CHINA GP · RACE PACE DELTA — FastF1 DATA</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="stack" id="stack"></div>
+</div>
+<script>
+const teams=[
+  {team:"Mercedes",color:"#27f4d2",median:96.413,gap:0.0,d1:"ANT",d2:"RUS"},
+  {team:"Ferrari",color:"#e80020",median:96.837,gap:0.424,d1:"LEC",d2:"HAM"},
+  {team:"Haas F1 Team",color:"#b6babd",median:97.496,gap:1.083,d1:"BEA",d2:"OCO"},
+  {team:"Alpine",color:"#ff87bc",median:97.589,gap:1.176,d1:"GAS",d2:"COL"},
+  {team:"Red Bull Racing",color:"#0600ef",median:97.716,gap:1.303,d1:"VER",d2:"HAD"},
+  {team:"Racing Bulls",color:"#fcd700",median:98.047,gap:1.634,d1:"LAW",d2:"LIN"},
+  {team:"Audi",color:"#ff2d00",median:98.388,gap:1.975,d1:"HUL",d2:"???"},
+  {team:"Williams",color:"#00a0dd",median:98.708,gap:2.295,d1:"SAI",d2:"???"},
+  {team:"Cadillac",color:"#444444",median:99.813,gap:3.400,d1:"BOT",d2:"PER"},
+  {team:"Aston Martin",color:"#00665f",median:100.356,gap:3.943,d1:"ALO",d2:"STR"}
+];
+const MAX_GAP=Math.max(...teams.map(t=>t.gap))+0.3;
+
+const stack=document.getElementById('stack');
+teams.forEach((t,i)=>{
+  const pct=i===0?0:Math.min((t.gap/MAX_GAP)*100,95);
+  const valText=i===0?'LEADER':'+'+t.gap.toFixed(3)+'s';
+  const row=document.createElement('div');row.className='stack-row';
+  row.innerHTML=`
+    <div class="s-rank" style="color:${t.color};">${i+1}</div>
+    <div class="s-info">
+      <div class="s-team" style="color:${t.color};">${t.team}</div>
+      <div class="s-drivers">${t.d1} / ${t.d2}</div>
+    </div>
+    <div class="s-bar-wrap"><div class="s-bar" style="width:${pct}%;background:${t.color};opacity:0.7;"></div></div>
+    <div class="s-val" style="color:${t.color};">${valText}</div>`;
+  stack.appendChild(row);
+});
+</script>
+</body></html>

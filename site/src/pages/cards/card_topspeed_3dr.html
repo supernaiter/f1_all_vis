@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Top Speed 3-Driver</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:72px 72px 64px 64px;}
+.title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.subtitle{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#252525;margin-top:6px;}
+.wm{position:absolute;top:72px;right:64px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.15em;color:#181818;}
+.chart{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;position:relative;}
+.vgrid{position:absolute;top:0;bottom:40px;left:180px;right:0;pointer-events:none;}
+.vgl{position:absolute;top:0;bottom:0;width:1px;background:#0e0e0e;}
+.team-row{display:grid;grid-template-columns:170px 1fr 110px;align-items:center;position:relative;z-index:2;}
+.team-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.06em;text-align:right;padding-right:16px;line-height:1;}
+.bar-track{height:32px;background:#0a0a0a;border-radius:0 3px 3px 0;overflow:hidden;position:relative;}
+.bar-fill{height:100%;border-radius:0 3px 3px 0;}
+.bar-track.hl-ant{outline:1px solid rgba(255,215,0,0.35);}
+.bar-track.hl-rus{outline:1px solid rgba(39,244,210,0.25);}
+.bar-track.hl-lec{outline:1px solid rgba(232,0,32,0.35);}
+.val{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.06em;padding-left:12px;white-space:nowrap;}
+.x-axis{flex-shrink:0;display:grid;grid-template-columns:170px 1fr;margin-top:6px;}
+.x-ticks{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:#1e1e1e;}
+.x-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1a1a1a;text-align:center;margin-top:4px;grid-column:2;}
+</style></head><body>
+<div class="card">
+  <div style="flex-shrink:0;margin-bottom:12px;">
+    <div class="title">TOP SPEED</div>
+    <div class="subtitle">2026 · R02 · CHINA GP · RACE · SPEED TRAP MAX — FastF1 DATA</div>
+  </div>
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="chart" id="chart"><div class="vgrid" id="vgrid"></div></div>
+  <div class="x-axis"><div></div><div><div class="x-ticks" id="xticks"></div><div class="x-label">TOP SPEED — KM/H</div></div></div>
+</div>
+<script>
+const data=[{"driver": "GAS", "team": "Alpine", "color": "#ff87bc", "speed": 353.0}, {"driver": "SAI", "team": "Williams", "color": "#00a0dd", "speed": 349.0}, {"driver": "RUS", "team": "Mercedes", "color": "#27f4d2", "speed": 345.0}, {"driver": "LAW", "team": "Racing Bulls", "color": "#fcd700", "speed": 345.0}, {"driver": "HAD", "team": "Red Bull Racing", "color": "#0600ef", "speed": 344.0}, {"driver": "HUL", "team": "Audi", "color": "#ff2d00", "speed": 344.0}, {"driver": "BEA", "team": "Haas F1 Team", "color": "#b6babd", "speed": 343.0}, {"driver": "VER", "team": "Red Bull Racing", "color": "#0600ef", "speed": 341.0}, {"driver": "LIN", "team": "Racing Bulls", "color": "#fcd700", "speed": 339.0}, {"driver": "COL", "team": "Alpine", "color": "#ff87bc", "speed": 338.0}, {"driver": "LEC", "team": "Ferrari", "color": "#e80020", "speed": 336.0}, {"driver": "BOT", "team": "Cadillac", "color": "#444444", "speed": 335.0}, {"driver": "PER", "team": "Cadillac", "color": "#444444", "speed": 335.0}, {"driver": "OCO", "team": "Haas F1 Team", "color": "#b6babd", "speed": 333.0}, {"driver": "ANT", "team": "Mercedes", "color": "#27f4d2", "speed": 332.0}, {"driver": "HAM", "team": "Ferrari", "color": "#e80020", "speed": 328.0}, {"driver": "ALO", "team": "Aston Martin", "color": "#00665f", "speed": 325.0}, {"driver": "STR", "team": "Aston Martin", "color": "#00665f", "speed": 321.0}];
+const FOCUS={"ANT": "#FFD700", "RUS": "#27f4d2", "LEC": "#e80020"};
+const hlCls={'ANT':'hl-ant','RUS':'hl-rus','LEC':'hl-lec'};
+const MIN=Math.floor(Math.min(...data.map(d=>d.speed))/5)*5-5;
+const MAX=Math.ceil(Math.max(...data.map(d=>d.speed))/5)*5+5;
+const RANGE=MAX-MIN;
+const vgrid=document.getElementById('vgrid');
+const ticks=[];
+for(let v=Math.ceil(MIN/10)*10;v<=MAX;v+=10)ticks.push(v);
+ticks.forEach(t=>{const gl=document.createElement('div');gl.className='vgl';gl.style.left=((t-MIN)/RANGE*100)+'%';vgrid.appendChild(gl);});
+document.getElementById('xticks').innerHTML=ticks.map(t=>`<span>${t}</span>`).join('');
+const chart=document.getElementById('chart');
+data.forEach(car=>{
+  const pct=(car.speed-MIN)/RANGE*100;
+  const fc=FOCUS[car.driver];
+  const isHL=!!fc;
+  const col=fc||car.color;
+  const nameOp=isHL?1:0.15;
+  const barOp=isHL?1:0.1;
+  const valCol=isHL?col:'#141414';
+  const glow=isHL?`box-shadow:0 0 14px ${col}55;`:'';
+  const cls=isHL?(hlCls[car.driver]||''):'';
+  const row=document.createElement('div');row.className='team-row';
+  row.innerHTML=`<div class="team-name" style="color:${col};opacity:${nameOp};">${car.driver}</div>
+    <div class="bar-track ${cls}"><div class="bar-fill" style="width:${pct}%;background:${col};opacity:${barOp};${glow}"></div></div>
+    <div class="val" style="color:${valCol};font-weight:${isHL?600:400};">${car.speed}</div>`;
+  chart.appendChild(row);
+});
+</script></body></html>

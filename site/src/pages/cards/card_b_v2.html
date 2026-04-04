@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card B v2 — Mirror Arrows</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+
+.card{
+  width:1080px;height:1080px;
+  background:#060606;
+  position:relative;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+}
+
+/* ── meta ── */
+.top-meta{
+  position:absolute;top:52px;left:64px;right:64px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.event{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:0.2em;color:#222;
+}
+.wm{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:0.15em;color:#1a1a1a;
+}
+
+/* ── driver legend top ── */
+.driver-legend{
+  position:absolute;top:96px;left:64px;right:64px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.drv-tag{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28px;letter-spacing:0.1em;
+}
+.drv-dot{
+  width:8px;height:8px;border-radius:50%;
+}
+
+/* ── column headers ── */
+.col-headers{
+  position:absolute;top:160px;left:64px;right:64px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;
+}
+.col-h{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:0.22em;color:#252525;
+}
+.col-h.right{text-align:right;}
+
+/* ── main grid ── */
+.main{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  width:calc(100% - 128px);
+  gap:0;
+  position:relative;
+}
+
+/* ── value blocks ── */
+.val-block{
+  display:flex;flex-direction:column;
+  gap:6px;
+}
+.val-block.right{align-items:flex-end;}
+
+.driver-name{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:0.18em;
+}
+
+/* winner = big, loser = small+dim */
+.num-winner{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:200px;line-height:0.85;
+  letter-spacing:-0.02em;
+}
+.num-loser{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:96px;line-height:0.85;
+  letter-spacing:-0.02em;
+  opacity:0.2;
+}
+.unit{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:0.18em;
+  opacity:0.5;
+}
+
+/* ── divider ── */
+.h-divider{
+  width:calc(100% - 128px);
+  height:1px;
+  background:linear-gradient(90deg,transparent,#1e1e1e 20%,#1e1e1e 80%,transparent);
+  margin:0;
+  position:relative;
+}
+.h-divider-label{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:0.2em;color:#1a1a1a;
+  background:#060606;
+  padding:0 12px;
+  white-space:nowrap;
+}
+
+/* ── vertical separator ── */
+.v-sep{
+  position:absolute;
+  left:50%;top:0;bottom:0;
+  width:1px;
+  background:#0e0e0e;
+  pointer-events:none;
+}
+
+/* ── bottom note ── */
+.bottom-note{
+  position:absolute;bottom:52px;left:64px;right:64px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:0.14em;color:#1e1e1e;
+  display:flex;justify-content:space-between;
+}
+
+/* spacing helpers */
+.gap-top{height:220px;}
+.gap-mid{height:48px;}
+.gap-bot{height:220px;}
+
+/* ANT = teal #00c896, RUS = white/gray */
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- META -->
+  <div class="top-meta">
+    <div class="event">2026 · R02 · CHINA GP</div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+
+  <!-- DRIVER LEGEND -->
+  <div class="driver-legend">
+    <div class="drv-tag">
+      <div class="drv-dot" style="background:#00c896;box-shadow:0 0 6px #00c896;"></div>
+      <span style="color:#00c896;">ANT</span>
+    </div>
+    <div class="drv-tag">
+      <div class="drv-dot" style="background:#aaa;"></div>
+      <span style="color:#aaa;">RUS</span>
+    </div>
+  </div>
+
+  <!-- COL HEADERS -->
+  <div class="col-headers">
+    <div class="col-h">TOP SPEED</div>
+    <div class="col-h right">LAP TIME</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="v-sep"></div>
+
+    <!-- TOP ROW: Speed winner=RUS / Laptime winner=ANT -->
+    <div style="display:flex;flex-direction:column;gap:8px;padding:0 40px 0 0;padding-top:200px;">
+      <div class="driver-name" style="color:#aaa;">RUS · FASTER</div>
+      <div class="num-winner" style="color:#aaa;">314</div>
+      <div class="unit" style="color:#aaa;">km/h</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;padding:0 0 0 40px;padding-top:200px;">
+      <div class="driver-name" style="color:#00c896;">ANT · FASTER</div>
+      <div class="num-winner" style="color:#00c896;">96.2</div>
+      <div class="unit" style="color:#00c896;">sec</div>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="h-divider" style="margin:32px 0;">
+    <div class="h-divider-label">BUT</div>
+  </div>
+
+  <!-- MAIN BOTTOM -->
+  <div class="main">
+    <div class="v-sep"></div>
+
+    <!-- Speed loser=ANT / Laptime loser=RUS -->
+    <div style="display:flex;flex-direction:column;gap:8px;padding:0 40px 0 0;padding-bottom:200px;">
+      <div class="driver-name" style="color:#00c896;opacity:0.3;">ANT</div>
+      <div class="num-loser" style="color:#00c896;">308</div>
+      <div class="unit" style="color:#00c896;">km/h</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;padding:0 0 0 40px;padding-bottom:200px;">
+      <div class="driver-name" style="color:#aaa;opacity:0.3;">RUS</div>
+      <div class="num-loser" style="color:#aaa;">96.4</div>
+      <div class="unit" style="color:#aaa;">sec</div>
+    </div>
+  </div>
+
+  <!-- BOTTOM NOTE -->
+  <div class="bottom-note">
+    <span>faster on straights</span>
+    <span>slower on the clock</span>
+  </div>
+
+</div>
+</body>
+</html>

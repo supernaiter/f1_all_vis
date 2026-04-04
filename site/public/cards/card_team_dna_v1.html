@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Team DNA — Mercedes vs Ferrari</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:64px 64px 48px;}
+.header{flex-shrink:0;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;}
+.title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.subtitle{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;margin-top:5px;}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;align-self:flex-end;}
+
+.legend{display:flex;gap:32px;margin-bottom:8px;flex-shrink:0;}
+.leg-item{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.12em;}
+.leg-line{width:28px;height:2.5px;border-radius:1px;}
+
+.body{flex:1;display:flex;gap:0;align-items:center;}
+.radar-wrap{flex:1;display:flex;align-items:center;justify-content:center;position:relative;}
+
+.stats-panel{width:300px;flex-shrink:0;display:flex;flex-direction:column;gap:0;}
+.stat-block{padding:16px 0;border-top:1px solid #111;}
+.stat-block:last-child{border-bottom:1px solid #111;}
+.stat-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#2a2a2a;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.stat-winner-badge{font-size:8px;letter-spacing:0.12em;padding:2px 6px;border-radius:2px;}
+.stat-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.stat-row:last-child{margin-bottom:0;}
+.stat-name{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:0.06em;width:90px;}
+.stat-bar-track{flex:1;height:10px;background:#0a0a0a;border-radius:2px;overflow:hidden;}
+.stat-bar-fill{height:100%;border-radius:2px;}
+.stat-val{font-family:'IBM Plex Mono',monospace;font-size:11px;width:80px;text-align:right;white-space:nowrap;}
+</style></head>
+<body>
+<div class="card">
+  <div class="header">
+    <div><div class="title">TEAM DNA</div>
+    <div class="subtitle">2026 · R02 · CHINA GP · 5-AXIS PERFORMANCE PROFILE — FastF1 DATA</div></div>
+    <div class="wm">MOTORSPORTS-VISUALISED</div>
+  </div>
+  <div class="legend">
+    <div class="leg-item"><div class="leg-line" style="background:#27f4d2;box-shadow:0 0 5px #27f4d260;"></div><span style="color:#27f4d2;">MERCEDES</span></div>
+    <div class="leg-item"><div class="leg-line" style="background:#e80020;"></div><span style="color:#e80020;">FERRARI</span></div>
+  </div>
+  <div class="body">
+    <div class="radar-wrap"><canvas id="rc" width="600" height="600"></canvas></div>
+    <div class="stats-panel" id="stats"></div>
+  </div>
+</div>
+<script>
+// ── DATA ──
+// Race Pace & Top Speed: real China GP data
+// Low-Speed, High-Speed, Tyre Deg: mock data for prototype
+const AXES = [
+  { key: 'race_pace', label: 'RACE PACE', unit: 's/lap' },
+  { key: 'straight',  label: 'STRAIGHT SPEED', unit: 'km/h' },
+  { key: 'high',      label: 'HIGH-SPEED', unit: 's' },
+  { key: 'low',       label: 'LOW-SPEED', unit: 's' },
+  { key: 'deg',       label: 'TYRE DEG', unit: 's/lap' }
+];
+
+const TEAMS = [
+  {
+    name: 'Mercedes', abbr: 'MER', color: '#27f4d2',
+    raw: { race_pace: 96.413, straight: 345, high: 18.2, low: 22.1, deg: 0.032 }
+  },
+  {
+    name: 'Ferrari', abbr: 'FER', color: '#e80020',
+    raw: { race_pace: 96.837, straight: 336, high: 18.5, low: 21.8, deg: 0.048 }
+  }
+];
+
+// All 10 teams' ranges for normalization (real + mock)
+const FIELD = {
+  race_pace: { best: 96.413, worst: 100.356 },
+  straight:  { best: 353, worst: 321 },
+  high:      { best: 17.9, worst: 19.8 },
+  low:       { best: 21.5, worst: 23.4 },
+  deg:       { best: 0.025, worst: 0.072 }
+};
+
+// Higher-is-better flags
+const HIGHER_BETTER = { race_pace: false, straight: true, high: false, low: false, deg: false };
+
+function normalize(key, val) {
+  const f = FIELD[key];
+  const range = f.worst - f.best;
+  if (range === 0) return 1;
+  const raw = HIGHER_BETTER[key]
+    ? (val - f.worst) / (f.best - f.worst)
+    : (f.worst - val) / (f.worst - f.best);
+  return Math.max(0.08, Math.min(1, raw));
+}
+
+// ── RADAR ──
+const canvas = document.getElementById('rc');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+const cx = W / 2, cy = H / 2;
+const R = Math.min(W, H) / 2 - 70;
+const N = AXES.length;
+const angles = AXES.map((_, i) => -Math.PI / 2 + (2 * Math.PI * i) / N);
+
+// Grid rings
+for (let r = 0.2; r <= 1; r += 0.2) {
+  ctx.beginPath();
+  angles.forEach((a, i) => {
+    const x = cx + Math.cos(a) * R * r;
+    const y = cy + Math.sin(a) * R * r;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.closePath();
+  ctx.strokeStyle = '#111';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+}
+
+// Axis lines
+angles.forEach(a => {
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R);
+  ctx.strokeStyle = '#181818';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+});
+
+// Axis labels
+ctx.font = '600 13px "IBM Plex Mono"';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillStyle = '#444';
+angles.forEach((a, i) => {
+  const lx = cx + Math.cos(a) * (R + 36);
+  const ly = cy + Math.sin(a) * (R + 36);
+  ctx.fillText(AXES[i].label, lx, ly);
+});
+
+// Team polygons
+TEAMS.forEach(team => {
+  const scores = AXES.map(ax => normalize(ax.key, team.raw[ax.key]));
+  
+  // Fill
+  ctx.beginPath();
+  angles.forEach((a, i) => {
+    const x = cx + Math.cos(a) * R * scores[i];
+    const y = cy + Math.sin(a) * R * scores[i];
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.closePath();
+  ctx.globalAlpha = 0.12;
+  ctx.fillStyle = team.color;
+  ctx.fill();
+  ctx.globalAlpha = 1;
+
+  // Stroke
+  ctx.beginPath();
+  angles.forEach((a, i) => {
+    const x = cx + Math.cos(a) * R * scores[i];
+    const y = cy + Math.sin(a) * R * scores[i];
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.closePath();
+  ctx.strokeStyle = team.color;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Dots
+  angles.forEach((a, i) => {
+    const x = cx + Math.cos(a) * R * scores[i];
+    const y = cy + Math.sin(a) * R * scores[i];
+    ctx.beginPath();
+    ctx.arc(x, y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = team.color;
+    ctx.fill();
+  });
+});
+
+// ── STATS PANEL ──
+const statsEl = document.getElementById('stats');
+
+AXES.forEach(ax => {
+  const vals = TEAMS.map(t => t.raw[ax.key]);
+  const winIdx = HIGHER_BETTER[ax.key]
+    ? vals.indexOf(Math.max(...vals))
+    : vals.indexOf(Math.min(...vals));
+  const winner = TEAMS[winIdx];
+
+  const block = document.createElement('div');
+  block.className = 'stat-block';
+
+  // Format display values
+  function fmt(key, v) {
+    if (key === 'race_pace') return v.toFixed(3) + 's';
+    if (key === 'straight') return v + ' km/h';
+    if (key === 'high' || key === 'low') return v.toFixed(1) + 's';
+    if (key === 'deg') return '+' + v.toFixed(3) + ' s/lap';
+    return v;
+  }
+
+  const rows = TEAMS.map(t => {
+    const score = normalize(ax.key, t.raw[ax.key]);
+    const isW = t === winner;
+    return `<div class="stat-row">
+      <div class="stat-name" style="color:${t.color};">${t.abbr}</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" style="width:${score*100}%;background:${t.color};opacity:${isW?0.85:0.5};"></div></div>
+      <div class="stat-val" style="color:${isW?t.color:'#333'};">${fmt(ax.key, t.raw[ax.key])}</div>
+    </div>`;
+  }).join('');
+
+  block.innerHTML = `
+    <div class="stat-label">${ax.label}
+      <span class="stat-winner-badge" style="background:${winner.color}15;border:1px solid ${winner.color}35;color:${winner.color};">▲ ${winner.abbr}</span>
+    </div>
+    ${rows}`;
+  statsEl.appendChild(block);
+});
+</script>
+</body></html>

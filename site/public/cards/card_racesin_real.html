@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Race Sim</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#060606;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:72px 72px 64px 64px;}
+.title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;}
+.subtitle{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#252525;margin-top:6px;}
+.wm{position:absolute;top:72px;right:64px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.15em;color:#181818;}
+.chart{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;position:relative;}
+.team-row{display:grid;grid-template-columns:200px 1fr 160px;align-items:center;position:relative;z-index:2;}
+.team-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.06em;text-align:right;padding-right:16px;line-height:1;}
+.bar-track{height:36px;background:#0a0a0a;border-radius:0 3px 3px 0;overflow:hidden;}
+.bar-fill{height:100%;border-radius:0 3px 3px 0;}
+.val{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.06em;padding-left:14px;white-space:nowrap;}
+.x-axis{flex-shrink:0;display:grid;grid-template-columns:200px 1fr;margin-top:6px;}
+.x-ticks{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:#1e1e1e;}
+.x-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#1a1a1a;text-align:center;margin-top:4px;grid-column:2;}
+</style></head><body>
+<div class="card">
+  <div style="flex-shrink:0;margin-bottom:12px;">
+    <div class="title">RACE SIMULATION PACE</div>
+    <div class="subtitle">2026 · R02 · CHINA GP · SPRINT LONG RUN ANALYSIS (5+ LAP STINTS)</div>
+  </div>
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="chart" id="chart"></div>
+  <div class="x-axis"><div></div><div><div class="x-ticks" id="xticks"></div><div class="x-label">GAP TO FASTEST — SEC / LAP</div></div></div>
+</div>
+<script>
+const data = [{"team": "Mercedes", "color": "#27f4d2", "median": 97.236, "gap": 0.0}, {"team": "Ferrari", "color": "#e80020", "median": 97.612, "gap": 0.376}, {"team": "McLaren", "color": "#ff8000", "median": 97.982, "gap": 0.746}, {"team": "Audi", "color": "#ff2d00", "median": 99.087, "gap": 1.851}, {"team": "Racing Bulls", "color": "#fcd700", "median": 99.111, "gap": 1.875}, {"team": "Williams", "color": "#00a0dd", "median": 99.268, "gap": 2.032}, {"team": "Alpine", "color": "#ff87bc", "median": 99.367, "gap": 2.131}, {"team": "Red Bull Racing", "color": "#0600ef", "median": 99.383, "gap": 2.147}, {"team": "Haas F1 Team", "color": "#b6babd", "median": 99.389, "gap": 2.153}, {"team": "Aston Martin", "color": "#00665f", "median": 99.861, "gap": 2.625}, {"team": "Cadillac", "color": "#444444", "median": 99.952, "gap": 2.716}];
+const MAX_GAP = Math.ceil(Math.max(...data.map(d=>d.gap))*10)/10 + 0.2;
+const ticks=[];
+for(let v=0;v<=MAX_GAP;v+=0.5) ticks.push(v);
+document.getElementById('xticks').innerHTML=ticks.map(t=>`<span>${t.toFixed(1)}</span>`).join('');
+const chart=document.getElementById('chart');
+data.forEach(t=>{
+  const pct=t.gap/MAX_GAP*100;
+  const isFast=t.gap===0;
+  const nameOp=isFast?1:t.gap<0.5?0.8:t.gap<1?0.5:0.3;
+  const barOp=isFast?1:t.gap<0.5?0.85:t.gap<1?0.55:0.35;
+  const valCol=isFast?t.color:t.gap<0.5?t.color:'#2a2a2a';
+  const row=document.createElement('div'); row.className='team-row';
+  row.innerHTML=`<div class="team-name" style="color:${t.color};opacity:${nameOp}">${t.team}</div>
+    <div class="bar-track"><div class="bar-fill" style="width:${Math.max(pct,0.3)}%;background:${t.color};opacity:${barOp};${isFast?`box-shadow:0 0 20px ${t.color}60`:''}"></div></div>
+    <div class="val" style="color:${valCol}">+${t.gap.toFixed(3)}s</div>`;
+  chart.appendChild(row);
+});
+</script></body></html>

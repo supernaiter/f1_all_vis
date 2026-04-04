@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Championship Swing Chart — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:24px}
+.legend{display:flex;gap:24px;justify-content:center;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555}
+.legend span{display:flex;align-items:center;gap:6px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">CHAMPIONSHIP SWING</div>
+  <div class="sub">2024 · VER vs NOR · POINTS GAP PER RACE + CUMULATIVE</div>
+  <canvas id="chart" width="968" height="860"></canvas>
+  <div class="legend">
+    <span><div style="width:16px;height:12px;background:#0600ef40;border:1px solid #0600ef;border-radius:2px"></div>VER SWING</span>
+    <span><div style="width:16px;height:12px;background:#ff800040;border:1px solid #ff8000;border-radius:2px"></div>NOR SWING</span>
+    <span><div style="width:16px;height:3px;background:#e0e0e0;border-radius:1px"></div>CUMULATIVE GAP</span>
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+const races = ['BHR','SAU','AUS','JPN','CHN','MIA','EMI','MON','CAN','ESP'];
+const swings = [18,7,25,-1,-8,-14,10,12,-4,7]; // positive = VER gained
+const cumulative = [];
+swings.reduce((acc, s, i) => { cumulative[i] = acc + s; return cumulative[i]; }, 0);
+
+const pad = {top:40,right:40,bottom:50,left:60};
+const w = canvas.width - pad.left - pad.right;
+const h = canvas.height - pad.top - pad.bottom;
+const barW = w / races.length * 0.65;
+
+const maxSwing = 30;
+const maxCum = Math.max(...cumulative.map(Math.abs), maxSwing);
+
+function x(i) { return pad.left + (i + 0.5) / races.length * w; }
+function yBar(v) { return pad.top + h / 2 - (v / maxSwing) * (h / 2); }
+function yLine(v) { return pad.top + h / 2 - (v / (maxCum + 10)) * (h / 2); }
+
+// ゼロライン
+ctx.strokeStyle = '#252525'; ctx.lineWidth = 1;
+ctx.beginPath(); ctx.moveTo(pad.left, pad.top + h/2); ctx.lineTo(pad.left + w, pad.top + h/2); ctx.stroke();
+
+// グリッド
+ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1;
+for (let v = -maxSwing; v <= maxSwing; v += 10) {
+  if (v === 0) continue;
+  ctx.beginPath(); ctx.moveTo(pad.left, yBar(v)); ctx.lineTo(pad.left+w, yBar(v)); ctx.stroke();
+}
+
+// レースラベル
+races.forEach((r, i) => {
+  ctx.fillStyle = '#333'; ctx.font = '12px IBM Plex Mono'; ctx.textAlign = 'center';
+  ctx.fillText(r, x(i), pad.top + h + 24);
+});
+
+// 棒グラフ
+swings.forEach((s, i) => {
+  const bx = x(i) - barW / 2;
+  const by = s >= 0 ? yBar(s) : yBar(0);
+  const bh = Math.abs(yBar(s) - yBar(0));
+  const color = s >= 0 ? '#0600ef' : '#ff8000';
+  ctx.fillStyle = color + '40'; ctx.fillRect(bx, by, barW, bh);
+  ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.strokeRect(bx, by, barW, bh);
+
+  // 値ラベル
+  ctx.fillStyle = color; ctx.font = '600 12px IBM Plex Mono'; ctx.textAlign = 'center';
+  ctx.fillText((s >= 0 ? '+' : '') + s, x(i), s >= 0 ? yBar(s) - 8 : yBar(s) + 16);
+});
+
+// 累積折れ線
+ctx.strokeStyle = '#e0e0e0'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+ctx.beginPath();
+cumulative.forEach((c, i) => { if(i===0) ctx.moveTo(x(i), yLine(c)); else ctx.lineTo(x(i), yLine(c)); });
+ctx.stroke();
+cumulative.forEach((c, i) => {
+  ctx.beginPath(); ctx.arc(x(i), yLine(c), 4, 0, Math.PI*2);
+  ctx.fillStyle = '#e0e0e0'; ctx.fill();
+});
+
+// Y軸ラベル
+ctx.fillStyle = '#333'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'center';
+ctx.save(); ctx.translate(14, pad.top + h/2); ctx.rotate(-Math.PI/2);
+ctx.fillText('← NOR GAINED    VER GAINED →', 0, 0); ctx.restore();
+</script>
+</body>
+</html>

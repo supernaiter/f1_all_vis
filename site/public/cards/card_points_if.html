@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Points If... — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.seasons{margin-top:36px;display:flex;flex-direction:column;gap:0}
+.season{padding:28px 0;border-bottom:1px solid #0e0e14}
+.season:last-child{border-bottom:none}
+.season-year{font-family:'Bebas Neue',sans-serif;font-size:72px;color:#1a1a1a;line-height:1;margin-bottom:4px}
+.season-title{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#333;margin-bottom:18px}
+.compare{display:flex;gap:40px}
+.col{flex:1}
+.col-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#333;text-transform:uppercase;margin-bottom:10px}
+.bar-row{display:flex;align-items:center;margin-bottom:6px;height:26px}
+.bar-code{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#e0e0e0;width:40px;flex-shrink:0}
+.bar-track{flex:1;height:20px;background:#0a0a0a;border-radius:2px;position:relative;margin:0 8px}
+.bar-fill{height:100%;border-radius:2px;min-width:2px}
+.bar-pts{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#555;width:36px;text-align:right;flex-shrink:0}
+.verdict{margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;padding:6px 12px;display:inline-block;border-radius:2px}
+.verdict.change{background:#e80020;color:#fff}
+.verdict.nochange{background:#111;color:#555}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">POINTS IF...</div>
+  <div class="sub">HISTORIC SEASONS RECALCULATED WITH MODERN POINTS</div>
+  <div class="seasons" id="seasons"></div>
+</div>
+<script>
+const seasons = [
+  {
+    year: 2007, title: 'RÄIKKÖNEN vs HAMILTON vs ALONSO',
+    actual: [{d:'RAI',pts:110,c:'#b6babd'},{d:'HAM',pts:109,c:'#c0c0c0'},{d:'ALO',pts:109,c:'#c0c0c0'}],
+    modern: [{d:'HAM',pts:192,c:'#c0c0c0'},{d:'ALO',pts:190,c:'#c0c0c0'},{d:'RAI',pts:186,c:'#b6babd'}],
+    verdict: 'CHAMPION CHANGES: HAMILTON WINS 2007', change: true
+  },
+  {
+    year: 1986, title: 'PROST vs MANSELL vs PIQUET',
+    actual: [{d:'PRO',pts:72,c:'#e80020'},{d:'MAN',pts:70,c:'#ffd700'},{d:'PIQ',pts:69,c:'#ffd700'}],
+    modern: [{d:'MAN',pts:141,c:'#ffd700'},{d:'PRO',pts:137,c:'#e80020'},{d:'PIQ',pts:130,c:'#ffd700'}],
+    verdict: 'CHAMPION CHANGES: MANSELL WINS 1986', change: true
+  },
+  {
+    year: 1994, title: 'SCHUMACHER vs HILL',
+    actual: [{d:'MSC',pts:92,c:'#006633'},{d:'HIL',pts:91,c:'#003399'}],
+    modern: [{d:'MSC',pts:157,c:'#006633'},{d:'HIL',pts:139,c:'#003399'}],
+    verdict: 'NO CHANGE: MSC MARGIN GROWS 1→18 PTS', change: false
+  }
+];
+
+const container = document.getElementById('seasons');
+
+seasons.forEach(s => {
+  const maxActual = Math.max(...s.actual.map(d => d.pts));
+  const maxModern = Math.max(...s.modern.map(d => d.pts));
+
+  const div = document.createElement('div');
+  div.className = 'season';
+  div.innerHTML = `
+    <div class="season-year">${s.year}</div>
+    <div class="season-title">${s.title}</div>
+    <div class="compare">
+      <div class="col">
+        <div class="col-label">Actual Points</div>
+        ${s.actual.map(d => `
+          <div class="bar-row">
+            <span class="bar-code">${d.d}</span>
+            <div class="bar-track"><div class="bar-fill" style="width:${(d.pts/maxActual)*100}%;background:${d.c}"></div></div>
+            <span class="bar-pts">${d.pts}</span>
+          </div>
+        `).join('')}
+      </div>
+      <div class="col">
+        <div class="col-label">Modern Points (25-18-15...)</div>
+        ${s.modern.map(d => `
+          <div class="bar-row">
+            <span class="bar-code">${d.d}</span>
+            <div class="bar-track"><div class="bar-fill" style="width:${(d.pts/maxModern)*100}%;background:${d.c}"></div></div>
+            <span class="bar-pts">${d.pts}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    <div class="verdict ${s.change?'change':'nochange'}">${s.verdict}</div>
+  `;
+  container.appendChild(div);
+});
+</script>
+</body>
+</html>

@@ -1,17 +1,17 @@
 project: Motorsports-Visualised
-updated: 2026-03-28
+updated: 2026-03-31
 
 goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 
 [STATUS]
-- 全5ページ（hub/pace/sectors/speed/stints）のUIリファクタリング完了
-- Generator+Evaluatorハーネスで4サブページを反復改善→全PASS
-- ハーネススキル3つをプロジェクト.claude/skills/に作成済
-- ビルド成功（451ページ）、プレビューサーバー動作確認済
-- ブラウザでの最終目視確認はユーザー未実施
+- R03日本GP: export完了（53周、22ドライバー、SC 22-27周）
+- R03日本GP: H2H top10分析完了（45ペア）、index.json生成済
+- pipeline.sh作成済: export→H2H→(optional)buildの一括実行
+- サイトビルド成功（676ページ、R01+R02+R03）
+- ブランチ harness/2026-03-31-r03-pipeline にコミット済
 
 [次のアクション]
-- ブラウザで全ページ最終確認（http://localhost:4321）
-- pace.astroの軽微改善（accent色ハードコード rgba(225,6,0,0.1) → color-mix）
-- R03鈴鹿レース後パイプライン実行（2026-03-29）
+- mainにマージ
 - Cloudflare Pagesデプロイ
+- R04バーレーン（4/10-12）レース後に ./pipeline.sh 2026 Bahrain 4 --build 実行
+- クロスGP分析スクリプトのR03対応（現在R01-R02固定）

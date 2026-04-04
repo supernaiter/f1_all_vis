@@ -1,0 +1,36 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-edit-lint.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)",
+      "Bash(node:*)",
+      "Bash(npx:*)",
+      "Bash(git:*)",
+      "Bash(python:*)",
+      "Bash(pip:*)",
+      "Bash(kill:*)",
+      "Read",
+      "Write",
+      "Edit",
+      "Grep",
+      "Glob"
+    ],
+    "deny": [
+      "Bash(rm -rf /)*",
+      "Bash(sudo:*)"
+    ]
+  }
+}

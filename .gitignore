@@ -34,3 +34,6 @@ data/*/*.png
 
 # Claude Code 会話ログ
 .claude/conversations/
+current.txt
+decisions.log
+lessons.md

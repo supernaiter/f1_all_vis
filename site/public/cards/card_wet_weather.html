@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Wet Weather Index — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.desc{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#333;letter-spacing:0.1em;margin-top:8px}
+.rows{margin-top:28px}
+.row{display:flex;align-items:center;margin-bottom:12px}
+.rank{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#333;width:40px;text-align:right;margin-right:16px}
+.code{font-family:'Bebas Neue',sans-serif;font-size:32px;width:80px;margin-right:12px}
+.bar-track{flex:1;height:32px;background:#0a0a0a;border-radius:3px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:12px}
+.score{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff}
+.detail{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#fff;opacity:0.6;margin-left:auto;margin-right:8px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">WET WEATHER INDEX</div>
+  <div class="sub">ALL-TIME RAIN MASTER COMPOSITE RANKING</div>
+  <div class="desc">SCORE = WET_WIN_RATE×40 + WET_GAIN×30 + ICONIC_MOMENTS×30</div>
+  <div class="rows" id="rows"></div>
+</div>
+<script>
+const data = [
+  {code:'SEN',color:'#ffd700',score:97.5,wetWins:8,iconic:'DONINGTON 93, MONACO 84'},
+  {code:'HAM',color:'#27f4d2',score:92.1,wetWins:12,iconic:'SILVERSTONE 08, TURKEY 20'},
+  {code:'VER',color:'#0600ef',score:88.4,wetWins:5,iconic:'BRAZIL 16, SPA 21 POLE'},
+  {code:'MSC',color:'#e80020',score:85.7,wetWins:10,iconic:'SPAIN 96, MONACO 97'},
+  {code:'BUT',color:'#ef87b4',score:82.3,wetWins:6,iconic:'CANADA 11, HUNGARY 06'},
+  {code:'ALO',color:'#00665f',score:78.9,wetWins:4,iconic:'MALAYSIA 12, JAPAN 07'},
+  {code:'RIC',color:'#ffd700',score:74.2,wetWins:3,iconic:'CHINA 18, MONACO 18'},
+  {code:'VET',color:'#555555',score:70.8,wetWins:5,iconic:'MONZA 08, JAPAN 09'},
+  {code:'NOR',color:'#ff8000',score:65.4,wetWins:1,iconic:'RUSSIA 21 (ALMOST)'},
+  {code:'LEC',color:'#e80020',score:58.2,wetWins:1,iconic:'DEVELOPING'},
+  {code:'PER',color:'#0600ef',score:55.8,wetWins:2,iconic:'TURKEY 20, SAKHIR 20'}
+];
+
+const maxScore = 100;
+const rows = document.getElementById('rows');
+
+data.forEach((d, i) => {
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.innerHTML = `
+    <div class="rank">${i + 1}</div>
+    <div class="code" style="color:${d.color}">${d.code}</div>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:${d.score/maxScore*100}%;background:#0072CE">
+        <div class="score">${d.score.toFixed(1)}</div>
+        <div class="detail">${d.wetWins}W · ${d.iconic}</div>
+      </div>
+    </div>
+  `;
+  rows.appendChild(row);
+});
+</script>
+</body>
+</html>

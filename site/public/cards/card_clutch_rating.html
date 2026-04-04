@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Clutch Rating — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.desc{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#333;letter-spacing:0.1em;margin-top:8px}
+.rows{margin-top:28px}
+.row{display:flex;align-items:center;margin-bottom:10px;height:36px}
+.code{font-family:'Bebas Neue',sans-serif;font-size:24px;width:56px;text-align:right;margin-right:8px}
+.season{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;width:36px;margin-right:12px}
+.bar-area{flex:1;position:relative;height:100%}
+.zero{position:absolute;left:50%;top:0;bottom:0;width:1px;background:#252525}
+.bar{position:absolute;top:4px;bottom:4px;border-radius:3px}
+.val{position:absolute;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600}
+.labels{display:flex;justify-content:space-between;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;letter-spacing:0.1em;padding:0 96px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">CLUTCH RATING</div>
+  <div class="sub">PERFORMANCE UNDER CHAMPIONSHIP PRESSURE</div>
+  <div class="desc">POSITIVE = ELEVATED UNDER PRESSURE · NEGATIVE = CHOKED</div>
+  <div class="rows" id="rows"></div>
+  <div class="labels"><span>← CHOKE</span><span>CLUTCH →</span></div>
+</div>
+<script>
+const data = [
+  {code:'VER',year:"'21",color:'#0600ef',rating:+42},
+  {code:'HAM',year:"'18",color:'#27f4d2',rating:+38},
+  {code:'MSC',year:"'00",color:'#e80020',rating:+35},
+  {code:'SEN',year:"'91",color:'#ffd700',rating:+32},
+  {code:'ALO',year:"'05",color:'#00665f',rating:+28},
+  {code:'PRO',year:"'51",color:'#e80020',rating:+25},
+  {code:'RAI',year:"'07",color:'#b6babd',rating:+18},
+  {code:'BUT',year:"'09",color:'#ef87b4',rating:+12},
+  {code:'ROS',year:"'16",color:'#00d2be',rating:+8},
+  {code:'NOR',year:"'24",color:'#ff8000',rating:-15},
+  {code:'LEC',year:"'22",color:'#e80020',rating:-22},
+  {code:'VET',year:"'18",color:'#555555',rating:-35},
+  {code:'HAM',year:"'07",color:'#27f4d2',rating:-28},
+  {code:'MAS',year:"'08",color:'#e80020',rating:-18}
+];
+
+const maxR = 50;
+const rows = document.getElementById('rows');
+
+data.forEach(d => {
+  const row = document.createElement('div');
+  row.className = 'row';
+  const pct = Math.abs(d.rating) / maxR * 50;
+  const left = d.rating >= 0 ? 50 : 50 - pct;
+  const barColor = d.rating >= 0 ? '#39b54a' : '#e80020';
+
+  row.innerHTML = `
+    <div class="code" style="color:${d.color}">${d.code}</div>
+    <div class="season">${d.year}</div>
+    <div class="bar-area">
+      <div class="zero"></div>
+      <div class="bar" style="left:${left}%;width:${pct}%;background:${barColor}40;border:1px solid ${barColor}"></div>
+      <div class="val" style="left:${d.rating >= 0 ? left + pct + 1 : left - 1}%;color:${barColor};text-align:${d.rating >= 0 ? 'left' : 'right'};transform:translateY(-50%) translateX(${d.rating >= 0 ? '4px' : '-100%'})">
+        ${d.rating > 0 ? '+' : ''}${d.rating}
+      </div>
+    </div>
+  `;
+  rows.appendChild(row);
+});
+</script>
+</body>
+</html>

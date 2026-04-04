@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Win Style DNA — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:24px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em}
+.legend span{display:flex;align-items:center;gap:4px}
+.legend .sw{width:12px;height:12px;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">WIN STYLE DNA</div>
+  <div class="sub">HOW THE GREATS WON THEIR RACES · STACKED BREAKDOWN</div>
+  <canvas id="chart" width="968" height="840"></canvas>
+  <div class="legend">
+    <span><div class="sw" style="background:#0600ef"></div><span style="color:#0600ef">DOMINANT</span></span>
+    <span><div class="sw" style="background:#39b54a"></div><span style="color:#39b54a">STRATEGIC</span></span>
+    <span><div class="sw" style="background:#ff8000"></div><span style="color:#ff8000">OVERTAKE</span></span>
+    <span><div class="sw" style="background:#00a0dd"></div><span style="color:#00a0dd">WET</span></span>
+    <span><div class="sw" style="background:#e80020"></div><span style="color:#e80020">CLOSE</span></span>
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+const categories = ['DOMINANT','STRATEGIC','OVERTAKE','WET','CLOSE'];
+const colors = ['#0600ef','#39b54a','#ff8000','#00a0dd','#e80020'];
+
+const drivers = [
+  {code:'HAM',color:'#27f4d2',totalWins:103,styles:[38,22,18,12,13]},
+  {code:'VER',color:'#0600ef',totalWins:62,styles:[32,10,9,5,6]},
+  {code:'MSC',color:'#e80020',totalWins:91,styles:[35,20,15,10,11]},
+  {code:'SEN',color:'#ffd700',totalWins:41,styles:[12,8,9,7,5]},
+  {code:'VET',color:'#555555',totalWins:53,styles:[24,12,8,4,5]},
+  {code:'ALO',color:'#00665f',totalWins:32,styles:[8,10,6,4,4]},
+  {code:'PRO',color:'#e80020',totalWins:51,styles:[20,14,8,3,6]},
+  {code:'LEC',color:'#e80020',totalWins:8,styles:[3,2,1,1,1]}
+];
+
+const pad = {top:20,right:40,bottom:30,left:72};
+const w = canvas.width - pad.left - pad.right;
+const h = canvas.height - pad.top - pad.bottom;
+const rowH = h / drivers.length;
+const barH = 32;
+const maxWins = Math.max(...drivers.map(d => d.totalWins));
+
+drivers.forEach((d, i) => {
+  const cy = pad.top + i * rowH + rowH / 2;
+
+  // ドライバーコード
+  ctx.fillStyle = d.color; ctx.font = '600 20px Bebas Neue'; ctx.textAlign = 'right';
+  ctx.fillText(d.code, pad.left - 12, cy + 7);
+
+  // 積み上げ棒
+  let xOff = pad.left;
+  d.styles.forEach((count, ci) => {
+    const bw = (count / maxWins) * w;
+    ctx.fillStyle = colors[ci];
+    ctx.fillRect(xOff, cy - barH / 2, bw, barH);
+    if (bw > 24) {
+      ctx.fillStyle = '#fff'; ctx.font = '600 11px IBM Plex Mono'; ctx.textAlign = 'center';
+      ctx.fillText(count, xOff + bw / 2, cy + 4);
+    }
+    xOff += bw;
+  });
+
+  // 合計
+  ctx.fillStyle = '#555'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'left';
+  ctx.fillText(d.totalWins + ' WINS', xOff + 8, cy + 4);
+});
+</script>
+</body>
+</html>

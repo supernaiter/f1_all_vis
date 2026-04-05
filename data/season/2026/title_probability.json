@@ -1,0 +1,89 @@
+{
+  "type": "title_probability",
+  "drivers": [
+    {
+      "code": "ANT",
+      "name": "Kimi Antonelli",
+      "color": "#00D7B6",
+      "points": 68.0,
+      "probability": 50.6
+    },
+    {
+      "code": "RUS",
+      "name": "George Russell",
+      "color": "#00D7B6",
+      "points": 55.0,
+      "probability": 26.8
+    },
+    {
+      "code": "LEC",
+      "name": "Charles Leclerc",
+      "color": "#ED1131",
+      "points": 42.0,
+      "probability": 11.9
+    },
+    {
+      "code": "HAM",
+      "name": "Lewis Hamilton",
+      "color": "#ED1131",
+      "points": 35.0,
+      "probability": 6.9
+    },
+    {
+      "code": "NOR",
+      "name": "Lando Norris",
+      "color": "#F47600",
+      "points": 20.0,
+      "probability": 1.3
+    },
+    {
+      "code": "PIA",
+      "name": "Oscar Piastri",
+      "color": "#F47600",
+      "points": 18.0,
+      "probability": 1.0
+    },
+    {
+      "code": "BEA",
+      "name": "Oliver Bearman",
+      "color": "#9C9FA2",
+      "points": 16.0,
+      "probability": 0.7
+    },
+    {
+      "code": "GAS",
+      "name": "Pierre Gasly",
+      "color": "#00A1E8",
+      "points": 15.0,
+      "probability": 0.6
+    },
+    {
+      "code": "VER",
+      "name": "Max Verstappen",
+      "color": "#4781D7",
+      "points": 12.0,
+      "probability": 0.3
+    },
+    {
+      "code": "LAW",
+      "name": "Liam Lawson",
+      "color": "#6C98FF",
+      "points": 8.0,
+      "probability": 0.1
+    },
+    {
+      "code": "LIN",
+      "name": "Arvid Lindblad",
+      "color": "#6C98FF",
+      "points": 4.0,
+      "probability": 0.0
+    },
+    {
+      "code": "HAD",
+      "name": "Isack Hadjar",
+      "color": "#4781D7",
+      "points": 4.0,
+      "probability": 0.0
+    }
+  ]
+}

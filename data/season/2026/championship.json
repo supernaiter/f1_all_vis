@@ -1,0 +1,472 @@
+{
+  "type": "championship",
+  "rounds": [
+    1,
+    2,
+    3
+  ],
+  "drivers": [
+    {
+      "code": "ANT",
+      "name": "Kimi Antonelli",
+      "team": "Mercedes",
+      "color": "#00D7B6",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 18.0
+        },
+        {
+          "round": 2,
+          "points": 43.0
+        },
+        {
+          "round": 3,
+          "points": 68.0
+        }
+      ],
+      "total": 68.0
+    },
+    {
+      "code": "RUS",
+      "name": "George Russell",
+      "team": "Mercedes",
+      "color": "#00D7B6",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 25.0
+        },
+        {
+          "round": 2,
+          "points": 43.0
+        },
+        {
+          "round": 3,
+          "points": 55.0
+        }
+      ],
+      "total": 55.0
+    },
+    {
+      "code": "LEC",
+      "name": "Charles Leclerc",
+      "team": "Ferrari",
+      "color": "#ED1131",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 15.0
+        },
+        {
+          "round": 2,
+          "points": 27.0
+        },
+        {
+          "round": 3,
+          "points": 42.0
+        }
+      ],
+      "total": 42.0
+    },
+    {
+      "code": "HAM",
+      "name": "Lewis Hamilton",
+      "team": "Ferrari",
+      "color": "#ED1131",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 12.0
+        },
+        {
+          "round": 2,
+          "points": 27.0
+        },
+        {
+          "round": 3,
+          "points": 35.0
+        }
+      ],
+      "total": 35.0
+    },
+    {
+      "code": "NOR",
+      "name": "Lando Norris",
+      "team": "McLaren",
+      "color": "#F47600",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 10.0
+        },
+        {
+          "round": 2,
+          "points": 10.0
+        },
+        {
+          "round": 3,
+          "points": 20.0
+        }
+      ],
+      "total": 20.0
+    },
+    {
+      "code": "PIA",
+      "name": "Oscar Piastri",
+      "team": "McLaren",
+      "color": "#F47600",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 0
+        },
+        {
+          "round": 3,
+          "points": 18.0
+        }
+      ],
+      "total": 18.0
+    },
+    {
+      "code": "BEA",
+      "name": "Oliver Bearman",
+      "team": "Haas F1 Team",
+      "color": "#9C9FA2",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 6.0
+        },
+        {
+          "round": 2,
+          "points": 16.0
+        },
+        {
+          "round": 3,
+          "points": 16.0
+        }
+      ],
+      "total": 16.0
+    },
+    {
+      "code": "GAS",
+      "name": "Pierre Gasly",
+      "team": "Alpine",
+      "color": "#00A1E8",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 1.0
+        },
+        {
+          "round": 2,
+          "points": 9.0
+        },
+        {
+          "round": 3,
+          "points": 15.0
+        }
+      ],
+      "total": 15.0
+    },
+    {
+      "code": "VER",
+      "name": "Max Verstappen",
+      "team": "Red Bull Racing",
+      "color": "#4781D7",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 8.0
+        },
+        {
+          "round": 2,
+          "points": 8.0
+        },
+        {
+          "round": 3,
+          "points": 12.0
+        }
+      ],
+      "total": 12.0
+    },
+    {
+      "code": "LAW",
+      "name": "Liam Lawson",
+      "team": "Racing Bulls",
+      "color": "#6C98FF",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 6.0
+        },
+        {
+          "round": 3,
+          "points": 8.0
+        }
+      ],
+      "total": 8.0
+    },
+    {
+      "code": "LIN",
+      "name": "Arvid Lindblad",
+      "team": "Racing Bulls",
+      "color": "#6C98FF",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 4.0
+        },
+        {
+          "round": 2,
+          "points": 4.0
+        },
+        {
+          "round": 3,
+          "points": 4.0
+        }
+      ],
+      "total": 4.0
+    },
+    {
+      "code": "HAD",
+      "name": "Isack Hadjar",
+      "team": "Red Bull Racing",
+      "color": "#4781D7",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 4.0
+        },
+        {
+          "round": 3,
+          "points": 4.0
+        }
+      ],
+      "total": 4.0
+    },
+    {
+      "code": "BOR",
+      "name": "Gabriel Bortoleto",
+      "team": "Audi",
+      "color": "#F50537",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 2.0
+        },
+        {
+          "round": 2,
+          "points": 2.0
+        },
+        {
+          "round": 3,
+          "points": 2.0
+        }
+      ],
+      "total": 2.0
+    },
+    {
+      "code": "SAI",
+      "name": "Carlos Sainz",
+      "team": "Williams",
+      "color": "#1868DB",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 2.0
+        },
+        {
+          "round": 3,
+          "points": 2.0
+        }
+      ],
+      "total": 2.0
+    },
+    {
+      "code": "OCO",
+      "name": "Esteban Ocon",
+      "team": "Haas F1 Team",
+      "color": "#9C9FA2",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 0
+        },
+        {
+          "round": 3,
+          "points": 1.0
+        }
+      ],
+      "total": 1.0
+    },
+    {
+      "code": "COL",
+      "name": "Franco Colapinto",
+      "team": "Alpine",
+      "color": "#00A1E8",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 1.0
+        },
+        {
+          "round": 3,
+          "points": 1.0
+        }
+      ],
+      "total": 1.0
+    },
+    {
+      "code": "ALB",
+      "name": "Alexander Albon",
+      "team": "Williams",
+      "color": "#1868DB",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 0
+        },
+        {
+          "round": 3,
+          "points": 0
+        }
+      ],
+      "total": 0
+    },
+    {
+      "code": "PER",
+      "name": "Sergio Perez",
+      "team": "Cadillac",
+      "color": "#909090",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 0
+        },
+        {
+          "round": 3,
+          "points": 0
+        }
+      ],
+      "total": 0
+    },
+    {
+      "code": "STR",
+      "name": "Lance Stroll",
+      "team": "Aston Martin",
+      "color": "#229971",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 0
+        },
+        {
+          "round": 3,
+          "points": 0
+        }
+      ],
+      "total": 0
+    },
+    {
+      "code": "ALO",
+      "name": "Fernando Alonso",
+      "team": "Aston Martin",
+      "color": "#229971",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 0
+        },
+        {
+          "round": 3,
+          "points": 0
+        }
+      ],
+      "total": 0
+    },
+    {
+      "code": "BOT",
+      "name": "Valtteri Bottas",
+      "team": "Cadillac",
+      "color": "#909090",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 0
+        },
+        {
+          "round": 3,
+          "points": 0
+        }
+      ],
+      "total": 0
+    },
+    {
+      "code": "HUL",
+      "name": "Nico Hulkenberg",
+      "team": "Audi",
+      "color": "#F50537",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 0
+        },
+        {
+          "round": 3,
+          "points": 0
+        }
+      ],
+      "total": 0
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "type": "momentum",
+  "rounds": [
+    1,
+    2,
+    3
+  ],
+  "teams": [
+    {
+      "name": "Mercedes",
+      "color": "#00B89F",
+      "series": [
+        {
+          "round": 1,
+          "delta": 0.0
+        },
+        {
+          "round": 2,
+          "delta": 0.0
+        },
+        {
+          "round": 3,
+          "delta": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Ferrari",
+      "color": "#DC0000",
+      "series": [
+        {
+          "round": 1,
+          "delta": 0.145
+        },
+        {
+          "round": 2,
+          "delta": 0.422
+        },
+        {
+          "round": 3,
+          "delta": 0.204
+        }
+      ]
+    },
+    {
+      "name": "McLaren",
+      "color": "#E07800",
+      "series": [
+        {
+          "round": 1,
+          "delta": 0.614
+        },
+        {
+          "round": 2,
+          "delta": null
+        },
+        {
+          "round": 3,
+          "delta": 0.057
+        }
+      ]
+    },
+    {
+      "name": "Red Bull Racing",
+      "color": "#2B5DAB",
+      "series": [
+        {
+          "round": 1,
+          "delta": 0.642
+        },
+        {
+          "round": 2,
+          "delta": 1.541
+        },
+        {
+          "round": 3,
+          "delta": 1.546
+        }
+      ]
+    },
+    {
+      "name": "Audi",
+      "color": "#3AAA3A",
+      "series": [
+        {
+          "round": 1,
+          "delta": 1.621
+        },
+        {
+          "round": 2,
+          "delta": 1.965
+        },
+        {
+          "round": 3,
+          "delta": 1.733
+        }
+      ]
+    },
+    {
+      "name": "Racing Bulls",
+      "color": "#4A72CC",
+      "series": [
+        {
+          "round": 1,
+          "delta": 1.998
+        },
+        {
+          "round": 2,
+          "delta": 1.959
+        },
+        {
+          "round": 3,
+          "delta": 1.413
+        }
+      ]
+    },
+    {
+      "name": "Alpine",
+      "color": "#0078AA",
+      "series": [
+        {
+          "round": 1,
+          "delta": 2.294
+        },
+        {
+          "round": 2,
+          "delta": 1.703
+        },
+        {
+          "round": 3,
+          "delta": 1.447
+        }
+      ]
+    },
+    {
+      "name": "Haas F1 Team",
+      "color": "#7A7A7A",
+      "series": [
+        {
+          "round": 1,
+          "delta": 1.974
+        },
+        {
+          "round": 2,
+          "delta": 1.455
+        },
+        {
+          "round": 3,
+          "delta": 2.3
+        }
+      ]
+    },
+    {
+      "name": "Williams",
+      "color": "#3BA3E0",
+      "series": [
+        {
+          "round": 1,
+          "delta": 2.471
+        },
+        {
+          "round": 2,
+          "delta": 2.297
+        },
+        {
+          "round": 3,
+          "delta": 2.471
+        }
+      ]
+    },
+    {
+      "name": "Cadillac",
+      "color": "#888888",
+      "series": [
+        {
+          "round": 1,
+          "delta": 4.636
+        },
+        {
+          "round": 2,
+          "delta": 3.451
+        },
+        {
+          "round": 3,
+          "delta": 3.201
+        }
+      ]
+    },
+    {
+      "name": "Aston Martin",
+      "color": "#1B7A5A",
+      "series": [
+        {
+          "round": 1,
+          "delta": 4.402
+        },
+        {
+          "round": 2,
+          "delta": 4.542
+        },
+        {
+          "round": 3,
+          "delta": 4.243
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "type": "constructors",
+  "rounds": [
+    1,
+    2,
+    3
+  ],
+  "teams": [
+    {
+      "name": "Mercedes",
+      "color": "#00B89F",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 43.0
+        },
+        {
+          "round": 2,
+          "points": 86.0
+        },
+        {
+          "round": 3,
+          "points": 123.0
+        }
+      ],
+      "total": 123.0
+    },
+    {
+      "name": "Ferrari",
+      "color": "#DC0000",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 27.0
+        },
+        {
+          "round": 2,
+          "points": 54.0
+        },
+        {
+          "round": 3,
+          "points": 77.0
+        }
+      ],
+      "total": 77.0
+    },
+    {
+      "name": "McLaren",
+      "color": "#E07800",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 10.0
+        },
+        {
+          "round": 2,
+          "points": 10.0
+        },
+        {
+          "round": 3,
+          "points": 38.0
+        }
+      ],
+      "total": 38.0
+    },
+    {
+      "name": "Haas F1 Team",
+      "color": "#7A7A7A",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 6.0
+        },
+        {
+          "round": 2,
+          "points": 16.0
+        },
+        {
+          "round": 3,
+          "points": 17.0
+        }
+      ],
+      "total": 17.0
+    },
+    {
+      "name": "Red Bull Racing",
+      "color": "#2B5DAB",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 8.0
+        },
+        {
+          "round": 2,
+          "points": 12.0
+        },
+        {
+          "round": 3,
+          "points": 16.0
+        }
+      ],
+      "total": 16.0
+    },
+    {
+      "name": "Alpine",
+      "color": "#0078AA",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 1.0
+        },
+        {
+          "round": 2,
+          "points": 10.0
+        },
+        {
+          "round": 3,
+          "points": 16.0
+        }
+      ],
+      "total": 16.0
+    },
+    {
+      "name": "Racing Bulls",
+      "color": "#4A72CC",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 4.0
+        },
+        {
+          "round": 2,
+          "points": 10.0
+        },
+        {
+          "round": 3,
+          "points": 12.0
+        }
+      ],
+      "total": 12.0
+    },
+    {
+      "name": "Audi",
+      "color": "#3AAA3A",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 2.0
+        },
+        {
+          "round": 2,
+          "points": 2.0
+        },
+        {
+          "round": 3,
+          "points": 2.0
+        }
+      ],
+      "total": 2.0
+    },
+    {
+      "name": "Williams",
+      "color": "#3BA3E0",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 2.0
+        },
+        {
+          "round": 3,
+          "points": 2.0
+        }
+      ],
+      "total": 2.0
+    },
+    {
+      "name": "Cadillac",
+      "color": "#888888",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 0
+        },
+        {
+          "round": 3,
+          "points": 0
+        }
+      ],
+      "total": 0
+    },
+    {
+      "name": "Aston Martin",
+      "color": "#1B7A5A",
+      "cumulative": [
+        {
+          "round": 1,
+          "points": 0
+        },
+        {
+          "round": 2,
+          "points": 0
+        },
+        {
+          "round": 3,
+          "points": 0
+        }
+      ],
+      "total": 0
+    }
+  ]
+}

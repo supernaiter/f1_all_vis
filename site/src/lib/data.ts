@@ -307,6 +307,75 @@ export function loadPillarData(slug: string): PillarData | null {
   return JSON.parse(fs.readFileSync(p, 'utf-8'));
 }
 
+// ============================================================
+// TYPE-A: GPカード
+// ============================================================
+export const CARD_TYPES = [
+  'lap1-delta', 'tyre-cliff', 'pace-variance', 'what-if',
+  'braking-point', 'corner-speed', 'overtake-replay',
+] as const;
+
+export function listGPsWithCards(): { dir_name: string; slug: string; gp_name: string; round: number; year: number }[] {
+  return listGPs().map(gp => {
+    const cardsDir = path.join(DATA_ROOT, gp.dir_name, 'cards');
+    if (!fs.existsSync(cardsDir)) return null;
+    const slug = `${gp.year}-r${String(gp.round).padStart(2, '0')}-${gp.gp_name.toLowerCase()}`;
+    return { ...gp, slug };
+  }).filter(Boolean) as any[];
+}
+
+export function loadCardData(dirName: string, cardType: string): any | null {
+  // cardType は kebab-case。ファイル名は snake_case
+  const fname = cardType.replace(/-/g, '_') + '.json';
+  const p = path.join(DATA_ROOT, dirName, 'cards', fname);
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
+// ============================================================
+// TYPE-E: チーム2者比較（GP単位）
+// ============================================================
+export const TEAM_COMPARE_TYPES = ['dna', 'variance'] as const;
+
+export function listTeamGpSlugs(): string[] {
+  const dir = path.join(DATA_ROOT, 'teams');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter(e => e.isDirectory())
+    .map(e => e.name)
+    .sort();
+}
+
+export function listTeamPairs(gpSlug: string): string[] {
+  const dir = path.join(DATA_ROOT, 'teams', gpSlug);
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter(e => e.isDirectory())
+    .map(e => e.name)
+    .sort();
+}
+
+export function loadTeamCompare(gpSlug: string, pair: string, type: 'dna' | 'variance'): any | null {
+  const p = path.join(DATA_ROOT, 'teams', gpSlug, pair, `${type}.json`);
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
+// ============================================================
+// TYPE-F: シーズン横断
+// ============================================================
+export const SEASON_TYPES = [
+  'championship', 'constructors', 'title-probability',
+  'momentum', 'power-ranking', 'upgrades',
+] as const;
+
+export function loadSeasonData(type: string, year = 2026): any | null {
+  const fname = type.replace(/-/g, '_') + '.json';
+  const p = path.join(DATA_ROOT, 'season', String(year), fname);
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
 // F1公式ドライバーヘッドショット（開発用・一時利用）
 const F1_IMG_BASE = 'https://media.formula1.com/image/upload/c_thumb,g_face,w_440,h_440/q_auto/v1740000001/common/f1/2025';
 export const DRIVER_HEADSHOTS: Record<string, string> = {

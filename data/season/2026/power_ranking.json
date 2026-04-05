@@ -1,0 +1,77 @@
+{
+  "type": "power_ranking",
+  "method": "composite of pace delta + constructors points",
+  "rounds": [
+    1,
+    2,
+    3
+  ],
+  "teams": [
+    {
+      "name": "Mercedes",
+      "color": "#00B89F",
+      "score": 100.0,
+      "rank": 1
+    },
+    {
+      "name": "Ferrari",
+      "color": "#DC0000",
+      "score": 90.0,
+      "rank": 2
+    },
+    {
+      "name": "McLaren",
+      "color": "#E07800",
+      "score": 80.0,
+      "rank": 3
+    },
+    {
+      "name": "Haas F1 Team",
+      "color": "#7A7A7A",
+      "score": 70.0,
+      "rank": 4
+    },
+    {
+      "name": "Red Bull Racing",
+      "color": "#2B5DAB",
+      "score": 60.0,
+      "rank": 5
+    },
+    {
+      "name": "Alpine",
+      "color": "#0078AA",
+      "score": 50.0,
+      "rank": 6
+    },
+    {
+      "name": "Racing Bulls",
+      "color": "#4A72CC",
+      "score": 40.0,
+      "rank": 7
+    },
+    {
+      "name": "Audi",
+      "color": "#3AAA3A",
+      "score": 30.0,
+      "rank": 8
+    },
+    {
+      "name": "Williams",
+      "color": "#3BA3E0",
+      "score": 20.0,
+      "rank": 9
+    },
+    {
+      "name": "Cadillac",
+      "color": "#888888",
+      "score": 10.0,
+      "rank": 10
+    },
+    {
+      "name": "Aston Martin",
+      "color": "#1B7A5A",
+      "score": 0.0,
+      "rank": 11
+    }
+  ]
+}

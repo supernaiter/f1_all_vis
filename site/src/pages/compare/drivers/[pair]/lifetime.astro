@@ -1,0 +1,132 @@
+---
+import { listDriverPairs, loadDriverCompare } from '../../../../lib/data';
+
+export function getStaticPaths() {
+  return listDriverPairs()
+    .filter(pair => loadDriverCompare(pair, 'lifetime') !== null)
+    .map(pair => ({
+      params: { pair },
+      props: { data: loadDriverCompare(pair, 'lifetime') },
+    }));
+}
+
+const { pair } = Astro.params;
+const { data } = Astro.props;
+const { driver1, driver2 } = data;
+const title = `${driver1.name} vs ${driver2.name} — Lifetime Timeline`;
+
+// 両者の年齢範囲（birth_year から最終活動年まで）を統合して行を構築
+const currentYear = 2026;
+const last1 = driver1.last_year === 'active' ? currentYear : driver1.last_year;
+const last2 = driver2.last_year === 'active' ? currentYear : driver2.last_year;
+const maxAge = Math.max(last1 - driver1.birth_year, last2 - driver2.birth_year);
+
+// 年齢をキーに両者のイベントをマージ
+type Ev = { label: string; type: string };
+const byAge: Record<number, { left: Ev | null; right: Ev | null }> = {};
+for (const e of driver1.career_events as Ev[] & { age: number }[]) {
+  const a = (e as any).age;
+  if (!byAge[a]) byAge[a] = { left: null, right: null };
+  byAge[a].left = { label: (e as any).label, type: (e as any).type };
+}
+for (const e of driver2.career_events as Ev[] & { age: number }[]) {
+  const a = (e as any).age;
+  if (!byAge[a]) byAge[a] = { left: null, right: null };
+  byAge[a].right = { label: (e as any).label, type: (e as any).type };
+}
+// 誕生年ハイライト: d2 が d1 より遅くデビューしていたら d2 の age=0 に印
+if (driver1.birth_year !== driver2.birth_year) {
+  const younger = driver1.birth_year > driver2.birth_year ? 1 : 2;
+  const yAge = 0;
+  if (!byAge[yAge]) byAge[yAge] = { left: null, right: null };
+  // 年齢差イベントは生成ロジックに任せる（情報追加せず既存のみ表示）
+}
+
+const rows = Object.entries(byAge)
+  .map(([age, ev]) => ({ age: parseInt(age, 10), ...ev }))
+  .sort((a, b) => a.age - b.age);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{title} — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px 40px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.header{display:flex;margin-top:28px;padding-bottom:12px;border-bottom:1px solid #0e0e14}
+.header .age-col{width:70px;flex-shrink:0}
+.header .driver-col{flex:1;text-align:center}
+.driver-name{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1}
+.driver-span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#333;letter-spacing:0.1em;margin-top:2px}
+.timeline{margin-top:8px;position:relative;max-height:840px;overflow:hidden}
+.row{display:flex;align-items:flex-start;min-height:38px;position:relative}
+.age-col{width:70px;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#1a1a1a;padding-top:8px;text-align:center}
+.age-col.highlight{color:#333}
+.col-left,.col-right{flex:1;position:relative;padding:8px 16px;min-height:38px}
+.col-left{border-right:2px solid #0e0e14}
+.event{display:flex;align-items:center;gap:10px}
+.col-right .event{flex-direction:row-reverse}
+.dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.dot.title{background:#ffd700}
+.dot.win{background:#0f6e56}
+.dot.debut{background:#534ab7}
+.dot.career{background:#333}
+.dot.life{background:#27f4d2}
+.label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#777;line-height:1.4;letter-spacing:0.02em}
+.col-right .label{text-align:right}
+.row-sep{border-bottom:1px solid #0a0a0a}
+.footnote{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#222;margin-top:16px;letter-spacing:0.06em;text-align:center}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">LIFETIME TIMELINE</div>
+  <div class="sub">{Math.abs(driver1.birth_year - driver2.birth_year)} YEARS APART — CAREER BY AGE</div>
+
+  <div class="header">
+    <div class="age-col"></div>
+    <div class="driver-col">
+      <div class="driver-name" style={`color:${driver1.color}`}>{driver1.name.toUpperCase()}</div>
+      <div class="driver-span">B.{driver1.birth_year} — DEBUT {driver1.debut_year}</div>
+    </div>
+    <div class="driver-col">
+      <div class="driver-name" style={`color:${driver2.color}`}>{driver2.name.toUpperCase()}</div>
+      <div class="driver-span">B.{driver2.birth_year} — DEBUT {driver2.debut_year}</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    {rows.map(row => (
+      <div class="row row-sep">
+        <div class={(row.left || row.right) ? 'age-col highlight' : 'age-col'}>{row.age}</div>
+        {row.left ? (
+          <div class="col-left">
+            <div class="event">
+              <span class={`dot ${row.left.type}`}></span>
+              <span class="label">{row.left.label}</span>
+            </div>
+          </div>
+        ) : <div class="col-left"></div>}
+        {row.right ? (
+          <div class="col-right">
+            <div class="event">
+              <span class={`dot ${row.right.type}`}></span>
+              <span class="label">{row.right.label}</span>
+            </div>
+          </div>
+        ) : <div class="col-right"></div>}
+      </div>
+    ))}
+  </div>
+  <div class="footnote">AGE = SEASON AGE</div>
+</div>
+</body>
+</html>

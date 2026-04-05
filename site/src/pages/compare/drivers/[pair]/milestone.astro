@@ -1,0 +1,115 @@
+---
+import { listDriverPairs, loadDriverCompare } from '../../../../lib/data';
+
+export function getStaticPaths() {
+  return listDriverPairs()
+    .filter(pair => loadDriverCompare(pair, 'milestone') !== null)
+    .map(pair => ({
+      params: { pair },
+      props: { data: loadDriverCompare(pair, 'milestone') },
+    }));
+}
+
+const { pair } = Astro.params;
+const { data } = Astro.props;
+const { driver1, driver2 } = data;
+const title = `${driver1.name} vs ${driver2.name} — Race to N Wins`;
+const payload = JSON.stringify(data);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{title} — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:24px;display:block}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">RACE TO N WINS</div>
+  <div class="sub">CUMULATIVE WINS BY RACE STARTS — {driver1.code} / {driver2.code}</div>
+  <canvas id="chart" width="968" height="900"></canvas>
+</div>
+<script type="application/json" id="payload" set:html={payload}></script>
+<script is:inline>
+(() => {
+  const data = JSON.parse(document.getElementById('payload').textContent);
+  const drivers = [data.driver1, data.driver2];
+
+  const canvas = document.getElementById('chart');
+  const ctx = canvas.getContext('2d');
+
+  const pad = { top: 30, right: 90, bottom: 60, left: 65 };
+  const w = canvas.width - pad.left - pad.right;
+  const h = canvas.height - pad.top - pad.bottom;
+
+  // 軸スケール: 両者の最大 race starts と wins から
+  const maxStarts = Math.max(...drivers.map(d => (d.milestone_wins || []).length - 1), 50);
+  const maxWins = Math.max(...drivers.flatMap(d => d.milestone_wins || [0]), 10);
+
+  const winsStep = Math.max(5, Math.ceil(maxWins / 10 / 5) * 5);
+  const startsStep = Math.max(20, Math.ceil(maxStarts / 10 / 10) * 10);
+
+  const x = s => pad.left + (s / maxStarts) * w;
+  const y = v => pad.top + h - (v / maxWins) * h;
+
+  // グリッド（水平）
+  ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1;
+  for (let v = 0; v <= maxWins; v += winsStep) {
+    ctx.beginPath(); ctx.moveTo(pad.left, y(v)); ctx.lineTo(pad.left + w, y(v)); ctx.stroke();
+    ctx.fillStyle = '#333'; ctx.font = '12px IBM Plex Mono'; ctx.textAlign = 'right';
+    ctx.fillText(v, pad.left - 10, y(v) + 4);
+  }
+  // グリッド（垂直）
+  for (let s = 0; s <= maxStarts; s += startsStep) {
+    ctx.beginPath(); ctx.moveTo(x(s), pad.top); ctx.lineTo(x(s), pad.top + h); ctx.stroke();
+    ctx.fillStyle = '#333'; ctx.font = '12px IBM Plex Mono'; ctx.textAlign = 'center';
+    ctx.fillText(s, x(s), pad.top + h + 24);
+  }
+
+  // 10/25/50勝ガイドライン
+  [10, 25, 50, 75, 100].forEach(milestone => {
+    if (milestone > maxWins) return;
+    ctx.beginPath(); ctx.moveTo(pad.left, y(milestone)); ctx.lineTo(pad.left + w, y(milestone));
+    ctx.strokeStyle = '#252525'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#333'; ctx.font = '600 10px IBM Plex Mono'; ctx.textAlign = 'left';
+    ctx.fillText('WIN #' + milestone, pad.left + w + 4, y(milestone) + 4);
+  });
+
+  // 軸ラベル
+  ctx.fillStyle = '#333'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'center';
+  ctx.fillText('RACE STARTS', pad.left + w / 2, pad.top + h + 48);
+  ctx.save(); ctx.translate(14, pad.top + h / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('CUMULATIVE WINS', 0, 0); ctx.restore();
+
+  // 線描画
+  drivers.forEach(d => {
+    const wins = d.milestone_wins || [0];
+    ctx.strokeStyle = d.color; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+    ctx.beginPath();
+    wins.forEach((v, i) => {
+      if (i === 0) ctx.moveTo(x(i), y(v));
+      else ctx.lineTo(x(i), y(v));
+    });
+    ctx.stroke();
+
+    const lastI = wins.length - 1;
+    ctx.beginPath(); ctx.arc(x(lastI), y(wins[lastI]), 4, 0, Math.PI * 2);
+    ctx.fillStyle = d.color; ctx.fill();
+    ctx.font = '600 14px IBM Plex Mono'; ctx.textAlign = 'left';
+    ctx.fillText(d.code, x(lastI) + 8, y(wins[lastI]) + 5);
+  });
+})();
+</script>
+</body>
+</html>

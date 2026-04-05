@@ -1,0 +1,71 @@
+---
+import { listCircuitPairs, loadCircuitCompare, type CircuitEraAdjustedData } from '../../../../lib/data';
+
+export function getStaticPaths() {
+  return listCircuitPairs()
+    .filter(pair => loadCircuitCompare(pair, 'era_adjusted') !== null)
+    .map(pair => ({
+      params: { pair },
+      props: { data: loadCircuitCompare(pair, 'era_adjusted') as CircuitEraAdjustedData },
+    }));
+}
+
+const { pair } = Astro.params;
+const { data } = Astro.props;
+const { circuit1, circuit2 } = data;
+const title = `${circuit1.name} vs ${circuit2.name} — Era-Adjusted Qualifying`;
+const isPending = data.meta.source === 'pending';
+const payload = JSON.stringify(data);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{title} — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:24px;display:block}
+.pending{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:42px;color:#2a2a2a;letter-spacing:0.1em;text-align:center}
+.pending small{display:block;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#444;margin-top:12px;letter-spacing:0.15em}
+.legend{display:flex;gap:32px;justify-content:center;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:13px}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend .swatch{width:24px;height:4px;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">ERA-ADJUSTED QUALI</div>
+  <div class="sub">{data.meta.subtitle}</div>
+  {isPending ? (
+    <div class="pending">
+      DATA PENDING
+      <small>Phase 2 — FastF1 2018-2025 quali export required</small>
+    </div>
+  ) : (
+    <>
+      <canvas id="chart" width="968" height="860"></canvas>
+      <div class="legend">
+        <span><div class="swatch" style={`background:${circuit1.color}`}></div><span style={`color:${circuit1.color}`}>{circuit1.name}</span></span>
+        <span><div class="swatch" style={`background:${circuit2.color}`}></div><span style={`color:${circuit2.color}`}>{circuit2.name}</span></span>
+      </div>
+    </>
+  )}
+</div>
+<script type="application/json" id="payload" set:html={payload}></script>
+<script is:inline>
+(() => {
+  const data = JSON.parse(document.getElementById('payload').textContent);
+  if (data.meta.source === 'pending') return;
+  // Phase 2 実装予定: era_points を読んで折れ線描画
+})();
+</script>
+</body>
+</html>

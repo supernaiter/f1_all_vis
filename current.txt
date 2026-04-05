@@ -17,6 +17,13 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
 - site/src/pages/compare/drivers/[pair]/{h2h-sim,lifetime,milestone}.astro 作成
 - ビルド成功: 2480ページ（drivers配下1740 HTML含む）、エラー0
 - スラッグは辞書順正規化（sen-vs-ver, ham-vs-msc 等）
+- pSEO 2.0 Phase 2完了: TYPE-A 21 + TYPE-E 310 + TYPE-F 6 = 337ページ追加
+- scripts/card_data_generator.py / team_compare_generator.py / season_aggregator.py 作成
+- data.ts: loadCardData/listTeamPairs/loadTeamCompare/loadSeasonData 追加
+- site/src/pages/cards/[gp]/[card].astro / compare/teams/[gp]/[pair]/[type].astro / season/[type].astro 作成
+- ビルド成功: 3390ページ、エラー0
+- Cloudflare Pagesデプロイ完了: https://8525b2d9.motorsports-visualised.pages.dev
+- OpenF1依存カード（braking/corner/overtake）はPENDING表示のまま
 
 [次のアクション]
 - mainにマージ

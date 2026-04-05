@@ -1,5 +1,5 @@
 project: Motorsports-Visualised
-updated: 2026-04-05 (pSEO TYPE-C 3者比較 全展開)
+updated: 2026-04-05 (OpenF1統合 3カード実データ化)
 
 goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 
@@ -23,7 +23,13 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
 - site/src/pages/cards/[gp]/[card].astro / compare/teams/[gp]/[pair]/[type].astro / season/[type].astro 作成
 - ビルド成功: 3390ページ、エラー0
 - Cloudflare Pagesデプロイ完了: https://8525b2d9.motorsports-visualised.pages.dev
-- OpenF1依存カード（braking/corner/overtake）はPENDING表示のまま
+- OpenF1統合完了(2026-04-05): 3カード種(braking/corner/overtake) R01-R03実データ化
+  - scripts/openf1_client.py (f1_all_eventsから移植、etl.common依存除去)
+  - scripts/openf1_card_generator.py (上位10ドライバー、3分窓、speed極小コーナー自動検出)
+  - コーナー検出数: R01=20, R02=17, R03=13
+  - オーバーテイク: 各GP 3件ずつGPS軌跡付きで記録
+  - site/src/pages/cards/[gp]/[card].astro にCanvas描画追加
+  - デプロイ: https://7781caf5.motorsports-visualised.pages.dev
 - pSEO 2.0 Phase 3完了: TYPE-C 22C3=1,540トリプル × 2種(career_arc/lifetime)=3,080ページ全展開（キュレーションなし）
 - scripts/driver_triple_generator.py 作成、master.jsonに2026不足7名追加(HAD/STR/COL/BEA/LAW/LIN/BOR)
 - data.ts: listDriverTriples/loadDriverTriple追加

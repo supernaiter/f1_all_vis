@@ -52,3 +52,10 @@
 - Astro build メモリ: 3,000ページ超を足すときは NODE_OPTIONS="--max-old-space-size=8192" を付けるのが安全（6,470ページで約270秒）
 - cd した Bash コマンドの working directory は以降のコマンドに引き継がれる → プロジェクトルート戻し忘れに注意、絶対パス推奨
 - Cloudflare Pages デプロイの新規ファイル数で TYPE-C 拡張成否を検証可能（3,080新規 = 全トリプルが既存ハッシュに無いことの確認）
+
+## OpenF1 API
+- `/car_data` は driver_number + date範囲フィルタ必須（指定なしで422 Unprocessable Entity）
+- `brake` は 0 または 100 の離散値（FastF1の0-100連続値と異なる）→ 閾値50での立ち上がり検出で代替
+- `/location` は x,y,z の三次元。outlineは reference driver を間引きで取得可能
+- session_key は /sessions?year=YYYY&session_name=Race で取得（location文字列マッチ）
+- QPS=2.0 程度までは許容、上位10ドライバー × 2エンドポイント × 3分窓 = 約40リクエスト/GP で5分以内完了

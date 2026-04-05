@@ -1,0 +1,130 @@
+---
+import { listTeamGpSlugs, listTeamPairs, loadTeamCompare, TEAM_COMPARE_TYPES } from '../../../../../lib/data';
+
+export function getStaticPaths() {
+  const paths: any[] = [];
+  for (const gp of listTeamGpSlugs()) {
+    for (const pair of listTeamPairs(gp)) {
+      for (const type of TEAM_COMPARE_TYPES) {
+        const data = loadTeamCompare(gp, pair, type);
+        if (!data) continue;
+        paths.push({ params: { gp, pair, type }, props: { data } });
+      }
+    }
+  }
+  return paths;
+}
+
+const { gp, pair, type } = Astro.params;
+const { data } = Astro.props;
+const title = type === 'dna' ? 'TEAM DNA' : 'PACE VARIANCE BOX';
+const payload = JSON.stringify(data);
+const gpUpper = (gp as string).toUpperCase().replace(/-/g, ' ');
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{title} — {gpUpper} — {pair} — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace;color:#e0e0e0}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#6a6a6a;text-transform:uppercase;margin-top:6px}
+canvas{display:block;margin-top:32px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">{title}</div>
+  <div class="sub">{gpUpper} · {(pair as string).toUpperCase().replace(/-/g,' ')}</div>
+  <canvas id="chart" width="968" height="820"></canvas>
+</div>
+<script type="application/json" id="payload" set:html={payload}></script>
+<script is:inline define:vars={{ renderType: type }}>
+(() => {
+  const data = JSON.parse(document.getElementById('payload').textContent);
+  const canvas = document.getElementById('chart');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  if (renderType === 'dna') {
+    const cx = W / 2, cy = H / 2 + 20;
+    const R = 300;
+    const axes = data.axes;
+    const n = axes.length;
+    ctx.strokeStyle = '#222';
+    for (let r = 1; r <= 5; r++) {
+      ctx.beginPath();
+      for (let i = 0; i < n; i++) {
+        const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+        const x = cx + Math.cos(a) * (R * r / 5);
+        const y = cy + Math.sin(a) * (R * r / 5);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.closePath(); ctx.stroke();
+    }
+    // axes
+    ctx.strokeStyle = '#333';
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+      ctx.beginPath(); ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R); ctx.stroke();
+      ctx.fillStyle = '#888'; ctx.font = 'bold 14px "IBM Plex Mono"'; ctx.textAlign = 'center';
+      ctx.fillText(axes[i], cx + Math.cos(a) * (R + 24), cy + Math.sin(a) * (R + 24) + 4);
+    }
+    [data.team1, data.team2].forEach(t => {
+      ctx.beginPath();
+      t.values.forEach((v, i) => {
+        const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+        const rv = R * (v / 100);
+        const x = cx + Math.cos(a) * rv;
+        const y = cy + Math.sin(a) * rv;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.closePath();
+      ctx.fillStyle = t.color + '33';
+      ctx.strokeStyle = t.color; ctx.lineWidth = 2.5;
+      ctx.fill(); ctx.stroke();
+    });
+    // legend
+    ctx.textAlign = 'left'; ctx.font = 'bold 18px "Bebas Neue"';
+    ctx.fillStyle = data.team1.color; ctx.fillText(data.team1.name.toUpperCase(), 60, H - 30);
+    ctx.fillStyle = data.team2.color; ctx.fillText(data.team2.name.toUpperCase(), 60, H - 8);
+  }
+
+  if (renderType === 'variance') {
+    const teams = [data.team1, data.team2];
+    const vals = teams.flatMap(t => [t.min, t.max]);
+    const lo = Math.min(...vals), hi = Math.max(...vals);
+    const pad = 80;
+    const scaleX = v => pad + ((v - lo) / (hi - lo)) * (W - pad * 2);
+    teams.forEach((t, i) => {
+      const y = 220 + i * 320;
+      const h = 100;
+      // whiskers
+      ctx.strokeStyle = t.color; ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(scaleX(t.min), y + h / 2); ctx.lineTo(scaleX(t.max), y + h / 2); ctx.stroke();
+      // box
+      ctx.fillStyle = t.color + '44';
+      ctx.fillRect(scaleX(t.q1), y, scaleX(t.q3) - scaleX(t.q1), h);
+      ctx.strokeRect(scaleX(t.q1), y, scaleX(t.q3) - scaleX(t.q1), h);
+      // median
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(scaleX(t.median), y); ctx.lineTo(scaleX(t.median), y + h); ctx.stroke();
+      ctx.fillStyle = '#e0e0e0'; ctx.font = 'bold 22px "Bebas Neue"'; ctx.textAlign = 'left';
+      ctx.fillText(t.name.toUpperCase(), pad, y - 12);
+      ctx.fillStyle = '#888'; ctx.font = '12px "IBM Plex Mono"';
+      ctx.fillText('median ' + (t.median || 0).toFixed(2) + 's', pad, y + h + 22);
+    });
+  }
+})();
+</script>
+</body>
+</html>

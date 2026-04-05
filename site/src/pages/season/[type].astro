@@ -1,0 +1,156 @@
+---
+import { loadSeasonData, SEASON_TYPES } from '../../lib/data';
+
+export function getStaticPaths() {
+  return SEASON_TYPES
+    .map(type => {
+      const data = loadSeasonData(type);
+      if (!data) return null;
+      return { params: { type }, props: { data } };
+    })
+    .filter(Boolean) as any[];
+}
+
+const { type } = Astro.params;
+const { data } = Astro.props;
+const titleMap: Record<string, string> = {
+  'championship': 'DRIVERS CHAMPIONSHIP',
+  'constructors': 'CONSTRUCTORS CHAMPIONSHIP',
+  'title-probability': 'TITLE PROBABILITY',
+  'momentum': 'TEAM MOMENTUM',
+  'power-ranking': 'POWER RANKING',
+  'upgrades': 'UPGRADES IMPACT',
+};
+const title = titleMap[type as string] || (type as string).toUpperCase();
+const payload = JSON.stringify(data);
+const pending = data.status === 'pending';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{title} — 2026 SEASON — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace;color:#e0e0e0}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#6a6a6a;text-transform:uppercase;margin-top:6px}
+canvas{display:block;margin-top:32px}
+.pending{display:flex;align-items:center;justify-content:center;height:820px;border:1px dashed #252525;color:#4a4a4a;font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.1em;margin-top:32px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">{title}</div>
+  <div class="sub">2026 F1 SEASON · R01 — R03</div>
+  {pending ? (
+    <div class="pending">DATA PENDING — MANUAL CURATION REQUIRED</div>
+  ) : (
+    <canvas id="chart" width="968" height="820"></canvas>
+  )}
+</div>
+<script type="application/json" id="payload" set:html={payload}></script>
+<script is:inline define:vars={{ renderType: type }}>
+(() => {
+  const data = JSON.parse(document.getElementById('payload').textContent);
+  if (data.status === 'pending') return;
+  const canvas = document.getElementById('chart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const pad = { t: 20, r: 80, b: 60, l: 70 };
+
+  function drawLine(series, color, rounds, yMax) {
+    ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.beginPath();
+    series.forEach((pt, i) => {
+      const x = pad.l + (i / Math.max(1, rounds.length - 1)) * (W - pad.l - pad.r);
+      const v = pt.points !== undefined ? pt.points : pt.delta;
+      const y = H - pad.b - ((v || 0) / yMax) * (H - pad.t - pad.b);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+  }
+
+  if (renderType === 'championship' || renderType === 'constructors') {
+    const items = renderType === 'championship' ? data.drivers.slice(0, 10) : data.teams;
+    const maxPts = Math.max(...items.map(i => i.total)) || 1;
+    const rounds = data.rounds;
+    // axes
+    ctx.strokeStyle = '#222';
+    rounds.forEach((r, i) => {
+      const x = pad.l + (i / Math.max(1, rounds.length - 1)) * (W - pad.l - pad.r);
+      ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, H - pad.b); ctx.stroke();
+      ctx.fillStyle = '#555'; ctx.font = '11px "IBM Plex Mono"'; ctx.textAlign = 'center';
+      ctx.fillText('R' + String(r).padStart(2, '0'), x, H - pad.b + 18);
+    });
+    items.forEach((it, i) => {
+      drawLine(it.cumulative, it.color, rounds, maxPts);
+      ctx.fillStyle = it.color; ctx.font = 'bold 11px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      const label = (it.code || it.name.substring(0, 3).toUpperCase());
+      const lastY = H - pad.b - ((it.cumulative[it.cumulative.length - 1].points || 0) / maxPts) * (H - pad.t - pad.b);
+      ctx.fillText(label + ' ' + it.total, W - pad.r + 4, lastY + 4);
+    });
+  }
+
+  if (renderType === 'title-probability') {
+    const drivers = data.drivers;
+    const maxP = Math.max(...drivers.map(d => d.probability)) || 1;
+    const barH = (H - pad.t - pad.b) / drivers.length * 0.7;
+    drivers.forEach((d, i) => {
+      const y = pad.t + i * ((H - pad.t - pad.b) / drivers.length);
+      const len = (d.probability / maxP) * (W - pad.l - pad.r - 180);
+      ctx.fillStyle = d.color;
+      ctx.fillRect(pad.l + 100, y + 5, len, barH);
+      ctx.fillStyle = '#e0e0e0'; ctx.font = 'bold 20px "Bebas Neue"'; ctx.textAlign = 'right';
+      ctx.fillText(d.code, pad.l + 90, y + barH + 2);
+      ctx.fillStyle = '#888'; ctx.font = '12px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      ctx.fillText(d.probability.toFixed(1) + '%', pad.l + 100 + len + 8, y + barH + 2);
+    });
+  }
+
+  if (renderType === 'momentum') {
+    const teams = data.teams.slice(0, 10);
+    const rounds = data.rounds;
+    const allDeltas = teams.flatMap(t => t.series.map(s => s.delta || 0));
+    const maxD = Math.max(...allDeltas) || 1;
+    teams.forEach((t, i) => {
+      ctx.strokeStyle = t.color; ctx.lineWidth = 2.5; ctx.beginPath();
+      t.series.forEach((s, j) => {
+        const x = pad.l + (j / Math.max(1, rounds.length - 1)) * (W - pad.l - pad.r);
+        const y = pad.t + ((s.delta || 0) / maxD) * (H - pad.t - pad.b);
+        if (j === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+      ctx.fillStyle = t.color; ctx.font = 'bold 11px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      ctx.fillText(t.name, W - pad.r + 4, pad.t + 14 + i * 18);
+    });
+    rounds.forEach((r, i) => {
+      const x = pad.l + (i / Math.max(1, rounds.length - 1)) * (W - pad.l - pad.r);
+      ctx.fillStyle = '#555'; ctx.font = '11px "IBM Plex Mono"'; ctx.textAlign = 'center';
+      ctx.fillText('R' + String(r).padStart(2, '0'), x, H - pad.b + 18);
+    });
+  }
+
+  if (renderType === 'power-ranking') {
+    const teams = data.teams;
+    const barH = (H - pad.t - pad.b) / teams.length * 0.7;
+    teams.forEach((t, i) => {
+      const y = pad.t + i * ((H - pad.t - pad.b) / teams.length);
+      const len = (t.score / 100) * (W - pad.l - pad.r - 200);
+      ctx.fillStyle = t.color;
+      ctx.fillRect(pad.l + 160, y + 5, len, barH);
+      ctx.fillStyle = '#e0e0e0'; ctx.font = 'bold 16px "IBM Plex Mono"'; ctx.textAlign = 'right';
+      ctx.fillText('#' + t.rank + '  ' + t.name.toUpperCase(), pad.l + 150, y + barH);
+      ctx.fillStyle = '#888'; ctx.font = '11px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      ctx.fillText(t.score.toFixed(1), pad.l + 160 + len + 8, y + barH);
+    });
+  }
+})();
+</script>
+</body>
+</html>

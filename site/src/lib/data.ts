@@ -221,6 +221,38 @@ export function loadDriverCompare(pair: string, type: string): any | null {
 }
 
 // ============================================================
+// TYPE-C: ドライバー3者比較（1,540トリプル × 2種）
+// ============================================================
+export interface DriverCompareCareerArcTriple {
+  driver1: { code: string; name: string; color: string; cumWins: number[]; cumPts: number[]; debut: number };
+  driver2: { code: string; name: string; color: string; cumWins: number[]; cumPts: number[]; debut: number };
+  driver3: { code: string; name: string; color: string; cumWins: number[]; cumPts: number[]; debut: number };
+}
+
+/**
+ * ドライバー3者比較: トリプル一覧
+ * data/drivers/triples/ 配下のディレクトリ名を返す（辞書順スラッグ、例: alb-ant-bea）
+ */
+export function listDriverTriples(): string[] {
+  const dir = path.join(DATA_ROOT, 'drivers', 'triples');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter(e => e.isDirectory())
+    .map(e => e.name)
+    .sort();
+}
+
+/**
+ * ドライバー3者比較データ読み込み
+ * data/drivers/triples/{triple}/{type}.json を読む
+ */
+export function loadDriverTriple(triple: string, type: string): any | null {
+  const p = path.join(DATA_ROOT, 'drivers', 'triples', triple, `${type}.json`);
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
+// ============================================================
 // TYPE-D: サーキット2者比較
 // ============================================================
 export interface CircuitRadarData {

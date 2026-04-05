@@ -17,3 +17,6 @@
 2026-03-28|Evaluator基準|5軸: Visual Consistency/Hub-Page Parity/Chart Quality/Data Integrity/Mobile|加重スコア>=2.5でPASS、軸0=自動FAIL。主な減点パターン: DataZoom欠落、themeBase未抽出、json-ld欠落、face-dot背景色不一致|基準は.claude/skills/f1-ui-evaluate/SKILL.mdに定義
 2026-03-31|pipeline|pipeline.sh作成（export+H2H+build統合）|R04以降の手動2段階実行を排除、ワンコマンド化|--forceで再生成、デフォルトはスキップ（冪等）
 2026-04-05|pSEO Phase0|TYPE-B動的ルート[pair]/career-arc.astro採用|getStaticPathsでlistDriverPairs()から自動展開、JSON差し替えだけで新ペア追加可能|data/drivers/pairs/配下にディレクトリ+career_arc.json作成すればビルド時自動生成
+2026-04-05|pSEO Phase1|30ドライバー×435ペア×4種JSON自動生成(driver_compare_generator.py)|歴代比較ページ量産で検索面積拡大、マスター更新だけで1740ファイル再生成可能|数値は近似値、Jolpica-F1で後続補正必要
+2026-04-05|スラッグ正規化|ペアdirを辞書順(ham-vs-msc等)に統一|VER起点の逆順問題回避、URL予測可能|既存3ディレクトリ(ver-vs-ham等)は再生成で上書き
+2026-04-05|[pair]/[type]統合却下|4テンプレ個別getStaticPaths維持|career-arc.astroと同型で保守容易、ビルド時間差は微小|テンプレ横断変更時は4ファイル同期要

@@ -1,5 +1,5 @@
 project: Motorsports-Visualised
-updated: 2026-04-05
+updated: 2026-04-05 (pSEO TYPE-A/E/F 追加)
 
 goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 

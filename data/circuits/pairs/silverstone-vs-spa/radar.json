@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "silverstone",
+    "name": "SILVERSTONE",
+    "country": "GBR",
+    "color": "#012169",
+    "values": [
+      72,
+      55,
+      95,
+      70,
+      72,
+      75
+    ]
+  },
+  "circuit2": {
+    "slug": "spa",
+    "name": "SPA",
+    "country": "BEL",
+    "color": "#FAE042",
+    "values": [
+      92,
+      55,
+      92,
+      72,
+      65,
+      85
+    ]
+  },
+  "meta": {
+    "subtitle": "SILVERSTONE vs SPA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

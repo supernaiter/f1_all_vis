@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "bahrain",
+    "name": "BAHRAIN",
+    "country": "BHR",
+    "color": "#E80020",
+    "values": [
+      85,
+      60,
+      68,
+      88,
+      78,
+      80
+    ]
+  },
+  "circuit2": {
+    "slug": "suzuka",
+    "name": "SUZUKA",
+    "country": "JPN",
+    "color": "#BC002D",
+    "values": [
+      65,
+      55,
+      92,
+      75,
+      70,
+      55
+    ]
+  },
+  "meta": {
+    "subtitle": "BAHRAIN vs SUZUKA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

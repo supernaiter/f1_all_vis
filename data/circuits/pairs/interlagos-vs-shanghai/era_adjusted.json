@@ -1,0 +1,20 @@
+{
+  "type": "era_adjusted_qualifying",
+  "circuit1": {
+    "slug": "interlagos",
+    "name": "INTERLAGOS",
+    "color": "#FEDD00",
+    "era_points": []
+  },
+  "circuit2": {
+    "slug": "shanghai",
+    "name": "SHANGHAI",
+    "color": "#EE1C25",
+    "era_points": []
+  },
+  "meta": {
+    "subtitle": "INTERLAGOS vs SHANGHAI · ERA-ADJUSTED POLE TIMES",
+    "source": "pending",
+    "note": "This card is a Phase-2 placeholder. Real data requires FastF1 quali export."
+  }
+}

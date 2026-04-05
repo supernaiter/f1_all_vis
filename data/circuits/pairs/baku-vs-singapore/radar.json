@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "baku",
+    "name": "BAKU",
+    "country": "AZE",
+    "color": "#00B9E4",
+    "values": [
+      92,
+      78,
+      55,
+      85,
+      55,
+      80
+    ]
+  },
+  "circuit2": {
+    "slug": "singapore",
+    "name": "SINGAPORE",
+    "country": "SGP",
+    "color": "#EF3340",
+    "values": [
+      55,
+      88,
+      60,
+      80,
+      78,
+      55
+    ]
+  },
+  "meta": {
+    "subtitle": "BAKU vs SINGAPORE · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

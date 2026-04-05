@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "baku",
+    "name": "BAKU",
+    "country": "AZE",
+    "color": "#00B9E4",
+    "values": [
+      92,
+      78,
+      55,
+      85,
+      55,
+      80
+    ]
+  },
+  "circuit2": {
+    "slug": "suzuka",
+    "name": "SUZUKA",
+    "country": "JPN",
+    "color": "#BC002D",
+    "values": [
+      65,
+      55,
+      92,
+      75,
+      70,
+      55
+    ]
+  },
+  "meta": {
+    "subtitle": "BAKU vs SUZUKA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

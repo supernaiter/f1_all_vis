@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "mexico",
+    "name": "MEXICO CITY",
+    "country": "MEX",
+    "color": "#006847",
+    "values": [
+      85,
+      68,
+      65,
+      82,
+      55,
+      78
+    ]
+  },
+  "circuit2": {
+    "slug": "singapore",
+    "name": "SINGAPORE",
+    "country": "SGP",
+    "color": "#EF3340",
+    "values": [
+      55,
+      88,
+      60,
+      80,
+      78,
+      55
+    ]
+  },
+  "meta": {
+    "subtitle": "MEXICO CITY vs SINGAPORE · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

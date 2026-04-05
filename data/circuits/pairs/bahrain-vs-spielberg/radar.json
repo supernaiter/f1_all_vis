@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "bahrain",
+    "name": "BAHRAIN",
+    "country": "BHR",
+    "color": "#E80020",
+    "values": [
+      85,
+      60,
+      68,
+      88,
+      78,
+      80
+    ]
+  },
+  "circuit2": {
+    "slug": "spielberg",
+    "name": "SPIELBERG",
+    "country": "AUT",
+    "color": "#ED2939",
+    "values": [
+      80,
+      55,
+      70,
+      80,
+      60,
+      82
+    ]
+  },
+  "meta": {
+    "subtitle": "BAHRAIN vs SPIELBERG · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

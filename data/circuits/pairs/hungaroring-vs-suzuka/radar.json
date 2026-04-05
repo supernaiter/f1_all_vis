@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "hungaroring",
+    "name": "HUNGARORING",
+    "country": "HUN",
+    "color": "#477050",
+    "values": [
+      50,
+      85,
+      70,
+      75,
+      70,
+      40
+    ]
+  },
+  "circuit2": {
+    "slug": "suzuka",
+    "name": "SUZUKA",
+    "country": "JPN",
+    "color": "#BC002D",
+    "values": [
+      65,
+      55,
+      92,
+      75,
+      70,
+      55
+    ]
+  },
+  "meta": {
+    "subtitle": "HUNGARORING vs SUZUKA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

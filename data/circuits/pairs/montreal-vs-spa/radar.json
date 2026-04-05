@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "montreal",
+    "name": "MONTREAL",
+    "country": "CAN",
+    "color": "#FF0000",
+    "values": [
+      82,
+      70,
+      60,
+      90,
+      60,
+      85
+    ]
+  },
+  "circuit2": {
+    "slug": "spa",
+    "name": "SPA",
+    "country": "BEL",
+    "color": "#FAE042",
+    "values": [
+      92,
+      55,
+      92,
+      72,
+      65,
+      85
+    ]
+  },
+  "meta": {
+    "subtitle": "MONTREAL vs SPA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

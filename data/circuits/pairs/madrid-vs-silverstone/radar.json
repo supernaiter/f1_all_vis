@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "madrid",
+    "name": "MADRID",
+    "country": "ESP",
+    "color": "#C60B1E",
+    "values": [
+      78,
+      70,
+      72,
+      75,
+      65,
+      70
+    ]
+  },
+  "circuit2": {
+    "slug": "silverstone",
+    "name": "SILVERSTONE",
+    "country": "GBR",
+    "color": "#012169",
+    "values": [
+      72,
+      55,
+      95,
+      70,
+      72,
+      75
+    ]
+  },
+  "meta": {
+    "subtitle": "MADRID vs SILVERSTONE · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

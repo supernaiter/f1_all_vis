@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "hungaroring",
+    "name": "HUNGARORING",
+    "country": "HUN",
+    "color": "#477050",
+    "values": [
+      50,
+      85,
+      70,
+      75,
+      70,
+      40
+    ]
+  },
+  "circuit2": {
+    "slug": "las_vegas",
+    "name": "LAS VEGAS",
+    "country": "USA",
+    "color": "#C8102E",
+    "values": [
+      92,
+      55,
+      65,
+      82,
+      55,
+      82
+    ]
+  },
+  "meta": {
+    "subtitle": "HUNGARORING vs LAS VEGAS · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

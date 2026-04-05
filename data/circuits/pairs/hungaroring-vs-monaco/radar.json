@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "hungaroring",
+    "name": "HUNGARORING",
+    "country": "HUN",
+    "color": "#477050",
+    "values": [
+      50,
+      85,
+      70,
+      75,
+      70,
+      40
+    ]
+  },
+  "circuit2": {
+    "slug": "monaco",
+    "name": "MONACO",
+    "country": "MON",
+    "color": "#FFD700",
+    "values": [
+      30,
+      95,
+      45,
+      70,
+      40,
+      8
+    ]
+  },
+  "meta": {
+    "subtitle": "HUNGARORING vs MONACO · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

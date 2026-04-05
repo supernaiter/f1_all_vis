@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "interlagos",
+    "name": "INTERLAGOS",
+    "country": "BRA",
+    "color": "#FEDD00",
+    "values": [
+      78,
+      62,
+      80,
+      75,
+      72,
+      88
+    ]
+  },
+  "circuit2": {
+    "slug": "yas_marina",
+    "name": "YAS MARINA",
+    "country": "UAE",
+    "color": "#00732F",
+    "values": [
+      75,
+      70,
+      72,
+      78,
+      60,
+      65
+    ]
+  },
+  "meta": {
+    "subtitle": "INTERLAGOS vs YAS MARINA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

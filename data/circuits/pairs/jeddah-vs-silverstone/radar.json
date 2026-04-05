@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "jeddah",
+    "name": "JEDDAH",
+    "country": "SAU",
+    "color": "#006C35",
+    "values": [
+      90,
+      30,
+      90,
+      70,
+      60,
+      55
+    ]
+  },
+  "circuit2": {
+    "slug": "silverstone",
+    "name": "SILVERSTONE",
+    "country": "GBR",
+    "color": "#012169",
+    "values": [
+      72,
+      55,
+      95,
+      70,
+      72,
+      75
+    ]
+  },
+  "meta": {
+    "subtitle": "JEDDAH vs SILVERSTONE · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

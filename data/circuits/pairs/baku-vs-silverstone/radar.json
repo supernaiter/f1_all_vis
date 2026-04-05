@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "baku",
+    "name": "BAKU",
+    "country": "AZE",
+    "color": "#00B9E4",
+    "values": [
+      92,
+      78,
+      55,
+      85,
+      55,
+      80
+    ]
+  },
+  "circuit2": {
+    "slug": "silverstone",
+    "name": "SILVERSTONE",
+    "country": "GBR",
+    "color": "#012169",
+    "values": [
+      72,
+      55,
+      95,
+      70,
+      72,
+      75
+    ]
+  },
+  "meta": {
+    "subtitle": "BAKU vs SILVERSTONE · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "miami",
+    "name": "MIAMI",
+    "country": "USA",
+    "color": "#FF6600",
+    "values": [
+      80,
+      60,
+      75,
+      82,
+      65,
+      78
+    ]
+  },
+  "circuit2": {
+    "slug": "spielberg",
+    "name": "SPIELBERG",
+    "country": "AUT",
+    "color": "#ED2939",
+    "values": [
+      80,
+      55,
+      70,
+      80,
+      60,
+      82
+    ]
+  },
+  "meta": {
+    "subtitle": "MIAMI vs SPIELBERG · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

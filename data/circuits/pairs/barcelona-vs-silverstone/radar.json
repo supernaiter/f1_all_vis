@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "barcelona",
+    "name": "BARCELONA",
+    "country": "ESP",
+    "color": "#AA151B",
+    "values": [
+      65,
+      60,
+      85,
+      70,
+      75,
+      50
+    ]
+  },
+  "circuit2": {
+    "slug": "silverstone",
+    "name": "SILVERSTONE",
+    "country": "GBR",
+    "color": "#012169",
+    "values": [
+      72,
+      55,
+      95,
+      70,
+      72,
+      75
+    ]
+  },
+  "meta": {
+    "subtitle": "BARCELONA vs SILVERSTONE · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

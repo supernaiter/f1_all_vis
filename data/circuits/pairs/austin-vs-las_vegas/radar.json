@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "austin",
+    "name": "AUSTIN",
+    "country": "USA",
+    "color": "#3C3B6E",
+    "values": [
+      72,
+      65,
+      88,
+      78,
+      65,
+      75
+    ]
+  },
+  "circuit2": {
+    "slug": "las_vegas",
+    "name": "LAS VEGAS",
+    "country": "USA",
+    "color": "#C8102E",
+    "values": [
+      92,
+      55,
+      65,
+      82,
+      55,
+      82
+    ]
+  },
+  "meta": {
+    "subtitle": "AUSTIN vs LAS VEGAS · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

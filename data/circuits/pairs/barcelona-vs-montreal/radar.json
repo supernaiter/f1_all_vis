@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "barcelona",
+    "name": "BARCELONA",
+    "country": "ESP",
+    "color": "#AA151B",
+    "values": [
+      65,
+      60,
+      85,
+      70,
+      75,
+      50
+    ]
+  },
+  "circuit2": {
+    "slug": "montreal",
+    "name": "MONTREAL",
+    "country": "CAN",
+    "color": "#FF0000",
+    "values": [
+      82,
+      70,
+      60,
+      90,
+      60,
+      85
+    ]
+  },
+  "meta": {
+    "subtitle": "BARCELONA vs MONTREAL · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

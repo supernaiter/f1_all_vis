@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "shanghai",
+    "name": "SHANGHAI",
+    "country": "CHN",
+    "color": "#EE1C25",
+    "values": [
+      78,
+      70,
+      68,
+      75,
+      60,
+      78
+    ]
+  },
+  "circuit2": {
+    "slug": "spielberg",
+    "name": "SPIELBERG",
+    "country": "AUT",
+    "color": "#ED2939",
+    "values": [
+      80,
+      55,
+      70,
+      80,
+      60,
+      82
+    ]
+  },
+  "meta": {
+    "subtitle": "SHANGHAI vs SPIELBERG · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

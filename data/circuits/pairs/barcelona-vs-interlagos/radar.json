@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "barcelona",
+    "name": "BARCELONA",
+    "country": "ESP",
+    "color": "#AA151B",
+    "values": [
+      65,
+      60,
+      85,
+      70,
+      75,
+      50
+    ]
+  },
+  "circuit2": {
+    "slug": "interlagos",
+    "name": "INTERLAGOS",
+    "country": "BRA",
+    "color": "#FEDD00",
+    "values": [
+      78,
+      62,
+      80,
+      75,
+      72,
+      88
+    ]
+  },
+  "meta": {
+    "subtitle": "BARCELONA vs INTERLAGOS · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

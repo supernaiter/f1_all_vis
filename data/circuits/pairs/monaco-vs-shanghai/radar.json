@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "monaco",
+    "name": "MONACO",
+    "country": "MON",
+    "color": "#FFD700",
+    "values": [
+      30,
+      95,
+      45,
+      70,
+      40,
+      8
+    ]
+  },
+  "circuit2": {
+    "slug": "shanghai",
+    "name": "SHANGHAI",
+    "country": "CHN",
+    "color": "#EE1C25",
+    "values": [
+      78,
+      70,
+      68,
+      75,
+      60,
+      78
+    ]
+  },
+  "meta": {
+    "subtitle": "MONACO vs SHANGHAI · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

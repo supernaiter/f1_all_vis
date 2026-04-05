@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "silverstone",
+    "name": "SILVERSTONE",
+    "country": "GBR",
+    "color": "#012169",
+    "values": [
+      72,
+      55,
+      95,
+      70,
+      72,
+      75
+    ]
+  },
+  "circuit2": {
+    "slug": "zandvoort",
+    "name": "ZANDVOORT",
+    "country": "NED",
+    "color": "#FF4F00",
+    "values": [
+      55,
+      70,
+      88,
+      65,
+      75,
+      35
+    ]
+  },
+  "meta": {
+    "subtitle": "SILVERSTONE vs ZANDVOORT · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

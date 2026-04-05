@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "madrid",
+    "name": "MADRID",
+    "country": "ESP",
+    "color": "#C60B1E",
+    "values": [
+      78,
+      70,
+      72,
+      75,
+      65,
+      70
+    ]
+  },
+  "circuit2": {
+    "slug": "suzuka",
+    "name": "SUZUKA",
+    "country": "JPN",
+    "color": "#BC002D",
+    "values": [
+      65,
+      55,
+      92,
+      75,
+      70,
+      55
+    ]
+  },
+  "meta": {
+    "subtitle": "MADRID vs SUZUKA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

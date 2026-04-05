@@ -1,0 +1,20 @@
+{
+  "type": "era_adjusted_qualifying",
+  "circuit1": {
+    "slug": "austin",
+    "name": "AUSTIN",
+    "color": "#3C3B6E",
+    "era_points": []
+  },
+  "circuit2": {
+    "slug": "baku",
+    "name": "BAKU",
+    "color": "#00B9E4",
+    "era_points": []
+  },
+  "meta": {
+    "subtitle": "AUSTIN vs BAKU · ERA-ADJUSTED POLE TIMES",
+    "source": "pending",
+    "note": "This card is a Phase-2 placeholder. Real data requires FastF1 quali export."
+  }
+}

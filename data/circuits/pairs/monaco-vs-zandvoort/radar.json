@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "monaco",
+    "name": "MONACO",
+    "country": "MON",
+    "color": "#FFD700",
+    "values": [
+      30,
+      95,
+      45,
+      70,
+      40,
+      8
+    ]
+  },
+  "circuit2": {
+    "slug": "zandvoort",
+    "name": "ZANDVOORT",
+    "country": "NED",
+    "color": "#FF4F00",
+    "values": [
+      55,
+      70,
+      88,
+      65,
+      75,
+      35
+    ]
+  },
+  "meta": {
+    "subtitle": "MONACO vs ZANDVOORT · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

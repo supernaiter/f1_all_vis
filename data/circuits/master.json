@@ -1,0 +1,458 @@
+{
+  "albert_park": {
+    "slug": "albert_park",
+    "name": "Albert Park",
+    "country": "AUS",
+    "length_km": 5.278,
+    "corners": 14,
+    "drs_zones": 4,
+    "avg_speed_kmh": 237,
+    "downforce": 3,
+    "color": "#00843D",
+    "axes": {
+      "STRAIGHT SPEED": 70,
+      "LOW-SPEED": 55,
+      "HIGH-SPEED": 75,
+      "BRAKING": 60,
+      "TYRE DEG": 55,
+      "OVERTAKING": 65
+    }
+  },
+  "shanghai": {
+    "slug": "shanghai",
+    "name": "Shanghai",
+    "country": "CHN",
+    "length_km": 5.451,
+    "corners": 16,
+    "drs_zones": 2,
+    "avg_speed_kmh": 206,
+    "downforce": 3,
+    "color": "#EE1C25",
+    "axes": {
+      "STRAIGHT SPEED": 78,
+      "LOW-SPEED": 70,
+      "HIGH-SPEED": 68,
+      "BRAKING": 75,
+      "TYRE DEG": 60,
+      "OVERTAKING": 78
+    }
+  },
+  "suzuka": {
+    "slug": "suzuka",
+    "name": "Suzuka",
+    "country": "JPN",
+    "length_km": 5.807,
+    "corners": 18,
+    "drs_zones": 1,
+    "avg_speed_kmh": 227,
+    "downforce": 4,
+    "color": "#BC002D",
+    "axes": {
+      "STRAIGHT SPEED": 65,
+      "LOW-SPEED": 55,
+      "HIGH-SPEED": 92,
+      "BRAKING": 75,
+      "TYRE DEG": 70,
+      "OVERTAKING": 55
+    }
+  },
+  "bahrain": {
+    "slug": "bahrain",
+    "name": "Bahrain",
+    "country": "BHR",
+    "length_km": 5.412,
+    "corners": 15,
+    "drs_zones": 3,
+    "avg_speed_kmh": 208,
+    "downforce": 3,
+    "color": "#E80020",
+    "axes": {
+      "STRAIGHT SPEED": 85,
+      "LOW-SPEED": 60,
+      "HIGH-SPEED": 68,
+      "BRAKING": 88,
+      "TYRE DEG": 78,
+      "OVERTAKING": 80
+    }
+  },
+  "jeddah": {
+    "slug": "jeddah",
+    "name": "Jeddah",
+    "country": "SAU",
+    "length_km": 6.174,
+    "corners": 27,
+    "drs_zones": 3,
+    "avg_speed_kmh": 252,
+    "downforce": 2,
+    "color": "#006C35",
+    "axes": {
+      "STRAIGHT SPEED": 90,
+      "LOW-SPEED": 30,
+      "HIGH-SPEED": 90,
+      "BRAKING": 70,
+      "TYRE DEG": 60,
+      "OVERTAKING": 55
+    }
+  },
+  "miami": {
+    "slug": "miami",
+    "name": "Miami",
+    "country": "USA",
+    "length_km": 5.412,
+    "corners": 19,
+    "drs_zones": 3,
+    "avg_speed_kmh": 221,
+    "downforce": 3,
+    "color": "#FF6600",
+    "axes": {
+      "STRAIGHT SPEED": 80,
+      "LOW-SPEED": 60,
+      "HIGH-SPEED": 75,
+      "BRAKING": 82,
+      "TYRE DEG": 65,
+      "OVERTAKING": 78
+    }
+  },
+  "montreal": {
+    "slug": "montreal",
+    "name": "Montreal",
+    "country": "CAN",
+    "length_km": 4.361,
+    "corners": 14,
+    "drs_zones": 3,
+    "avg_speed_kmh": 207,
+    "downforce": 2,
+    "color": "#FF0000",
+    "axes": {
+      "STRAIGHT SPEED": 82,
+      "LOW-SPEED": 70,
+      "HIGH-SPEED": 60,
+      "BRAKING": 90,
+      "TYRE DEG": 60,
+      "OVERTAKING": 85
+    }
+  },
+  "monaco": {
+    "slug": "monaco",
+    "name": "Monaco",
+    "country": "MON",
+    "length_km": 3.337,
+    "corners": 19,
+    "drs_zones": 1,
+    "avg_speed_kmh": 166,
+    "downforce": 5,
+    "color": "#FFD700",
+    "axes": {
+      "STRAIGHT SPEED": 30,
+      "LOW-SPEED": 95,
+      "HIGH-SPEED": 45,
+      "BRAKING": 70,
+      "TYRE DEG": 40,
+      "OVERTAKING": 8
+    }
+  },
+  "barcelona": {
+    "slug": "barcelona",
+    "name": "Barcelona",
+    "country": "ESP",
+    "length_km": 4.657,
+    "corners": 14,
+    "drs_zones": 2,
+    "avg_speed_kmh": 209,
+    "downforce": 4,
+    "color": "#AA151B",
+    "axes": {
+      "STRAIGHT SPEED": 65,
+      "LOW-SPEED": 60,
+      "HIGH-SPEED": 85,
+      "BRAKING": 70,
+      "TYRE DEG": 75,
+      "OVERTAKING": 50
+    }
+  },
+  "spielberg": {
+    "slug": "spielberg",
+    "name": "Spielberg",
+    "country": "AUT",
+    "length_km": 4.318,
+    "corners": 10,
+    "drs_zones": 3,
+    "avg_speed_kmh": 225,
+    "downforce": 2,
+    "color": "#ED2939",
+    "axes": {
+      "STRAIGHT SPEED": 80,
+      "LOW-SPEED": 55,
+      "HIGH-SPEED": 70,
+      "BRAKING": 80,
+      "TYRE DEG": 60,
+      "OVERTAKING": 82
+    }
+  },
+  "silverstone": {
+    "slug": "silverstone",
+    "name": "Silverstone",
+    "country": "GBR",
+    "length_km": 5.891,
+    "corners": 18,
+    "drs_zones": 2,
+    "avg_speed_kmh": 237,
+    "downforce": 3,
+    "color": "#012169",
+    "axes": {
+      "STRAIGHT SPEED": 72,
+      "LOW-SPEED": 55,
+      "HIGH-SPEED": 95,
+      "BRAKING": 70,
+      "TYRE DEG": 72,
+      "OVERTAKING": 75
+    }
+  },
+  "spa": {
+    "slug": "spa",
+    "name": "Spa",
+    "country": "BEL",
+    "length_km": 7.004,
+    "corners": 20,
+    "drs_zones": 2,
+    "avg_speed_kmh": 234,
+    "downforce": 2,
+    "color": "#FAE042",
+    "axes": {
+      "STRAIGHT SPEED": 92,
+      "LOW-SPEED": 55,
+      "HIGH-SPEED": 92,
+      "BRAKING": 72,
+      "TYRE DEG": 65,
+      "OVERTAKING": 85
+    }
+  },
+  "hungaroring": {
+    "slug": "hungaroring",
+    "name": "Hungaroring",
+    "country": "HUN",
+    "length_km": 4.381,
+    "corners": 14,
+    "drs_zones": 2,
+    "avg_speed_kmh": 189,
+    "downforce": 4,
+    "color": "#477050",
+    "axes": {
+      "STRAIGHT SPEED": 50,
+      "LOW-SPEED": 85,
+      "HIGH-SPEED": 70,
+      "BRAKING": 75,
+      "TYRE DEG": 70,
+      "OVERTAKING": 40
+    }
+  },
+  "zandvoort": {
+    "slug": "zandvoort",
+    "name": "Zandvoort",
+    "country": "NED",
+    "length_km": 4.259,
+    "corners": 14,
+    "drs_zones": 2,
+    "avg_speed_kmh": 200,
+    "downforce": 4,
+    "color": "#FF4F00",
+    "axes": {
+      "STRAIGHT SPEED": 55,
+      "LOW-SPEED": 70,
+      "HIGH-SPEED": 88,
+      "BRAKING": 65,
+      "TYRE DEG": 75,
+      "OVERTAKING": 35
+    }
+  },
+  "monza": {
+    "slug": "monza",
+    "name": "Monza",
+    "country": "ITA",
+    "length_km": 5.793,
+    "corners": 11,
+    "drs_zones": 3,
+    "avg_speed_kmh": 264,
+    "downforce": 1,
+    "color": "#008C45",
+    "axes": {
+      "STRAIGHT SPEED": 98,
+      "LOW-SPEED": 45,
+      "HIGH-SPEED": 60,
+      "BRAKING": 92,
+      "TYRE DEG": 55,
+      "OVERTAKING": 85
+    }
+  },
+  "madrid": {
+    "slug": "madrid",
+    "name": "Madrid",
+    "country": "ESP",
+    "length_km": 5.474,
+    "corners": 22,
+    "drs_zones": 3,
+    "avg_speed_kmh": 215,
+    "downforce": 3,
+    "color": "#C60B1E",
+    "axes": {
+      "STRAIGHT SPEED": 78,
+      "LOW-SPEED": 70,
+      "HIGH-SPEED": 72,
+      "BRAKING": 75,
+      "TYRE DEG": 65,
+      "OVERTAKING": 70
+    }
+  },
+  "baku": {
+    "slug": "baku",
+    "name": "Baku",
+    "country": "AZE",
+    "length_km": 6.003,
+    "corners": 20,
+    "drs_zones": 2,
+    "avg_speed_kmh": 215,
+    "downforce": 2,
+    "color": "#00B9E4",
+    "axes": {
+      "STRAIGHT SPEED": 92,
+      "LOW-SPEED": 78,
+      "HIGH-SPEED": 55,
+      "BRAKING": 85,
+      "TYRE DEG": 55,
+      "OVERTAKING": 80
+    }
+  },
+  "singapore": {
+    "slug": "singapore",
+    "name": "Singapore",
+    "country": "SGP",
+    "length_km": 4.94,
+    "corners": 19,
+    "drs_zones": 3,
+    "avg_speed_kmh": 172,
+    "downforce": 4,
+    "color": "#EF3340",
+    "axes": {
+      "STRAIGHT SPEED": 55,
+      "LOW-SPEED": 88,
+      "HIGH-SPEED": 60,
+      "BRAKING": 80,
+      "TYRE DEG": 78,
+      "OVERTAKING": 55
+    }
+  },
+  "austin": {
+    "slug": "austin",
+    "name": "Austin",
+    "country": "USA",
+    "length_km": 5.513,
+    "corners": 20,
+    "drs_zones": 2,
+    "avg_speed_kmh": 205,
+    "downforce": 3,
+    "color": "#3C3B6E",
+    "axes": {
+      "STRAIGHT SPEED": 72,
+      "LOW-SPEED": 65,
+      "HIGH-SPEED": 88,
+      "BRAKING": 78,
+      "TYRE DEG": 65,
+      "OVERTAKING": 75
+    }
+  },
+  "mexico": {
+    "slug": "mexico",
+    "name": "Mexico City",
+    "country": "MEX",
+    "length_km": 4.304,
+    "corners": 17,
+    "drs_zones": 3,
+    "avg_speed_kmh": 223,
+    "downforce": 3,
+    "color": "#006847",
+    "axes": {
+      "STRAIGHT SPEED": 85,
+      "LOW-SPEED": 68,
+      "HIGH-SPEED": 65,
+      "BRAKING": 82,
+      "TYRE DEG": 55,
+      "OVERTAKING": 78
+    }
+  },
+  "interlagos": {
+    "slug": "interlagos",
+    "name": "Interlagos",
+    "country": "BRA",
+    "length_km": 4.309,
+    "corners": 15,
+    "drs_zones": 2,
+    "avg_speed_kmh": 215,
+    "downforce": 3,
+    "color": "#FEDD00",
+    "axes": {
+      "STRAIGHT SPEED": 78,
+      "LOW-SPEED": 62,
+      "HIGH-SPEED": 80,
+      "BRAKING": 75,
+      "TYRE DEG": 72,
+      "OVERTAKING": 88
+    }
+  },
+  "las_vegas": {
+    "slug": "las_vegas",
+    "name": "Las Vegas",
+    "country": "USA",
+    "length_km": 6.201,
+    "corners": 17,
+    "drs_zones": 2,
+    "avg_speed_kmh": 240,
+    "downforce": 2,
+    "color": "#C8102E",
+    "axes": {
+      "STRAIGHT SPEED": 92,
+      "LOW-SPEED": 55,
+      "HIGH-SPEED": 65,
+      "BRAKING": 82,
+      "TYRE DEG": 55,
+      "OVERTAKING": 82
+    }
+  },
+  "lusail": {
+    "slug": "lusail",
+    "name": "Lusail",
+    "country": "QAT",
+    "length_km": 5.419,
+    "corners": 16,
+    "drs_zones": 2,
+    "avg_speed_kmh": 213,
+    "downforce": 3,
+    "color": "#8B1538",
+    "axes": {
+      "STRAIGHT SPEED": 68,
+      "LOW-SPEED": 55,
+      "HIGH-SPEED": 90,
+      "BRAKING": 70,
+      "TYRE DEG": 88,
+      "OVERTAKING": 50
+    }
+  },
+  "yas_marina": {
+    "slug": "yas_marina",
+    "name": "Yas Marina",
+    "country": "UAE",
+    "length_km": 5.281,
+    "corners": 16,
+    "drs_zones": 2,
+    "avg_speed_kmh": 198,
+    "downforce": 3,
+    "color": "#00732F",
+    "axes": {
+      "STRAIGHT SPEED": 75,
+      "LOW-SPEED": 70,
+      "HIGH-SPEED": 72,
+      "BRAKING": 78,
+      "TYRE DEG": 60,
+      "OVERTAKING": 65
+    }
+  }
+}

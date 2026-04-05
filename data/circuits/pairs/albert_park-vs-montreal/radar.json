@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "albert_park",
+    "name": "ALBERT PARK",
+    "country": "AUS",
+    "color": "#00843D",
+    "values": [
+      70,
+      55,
+      75,
+      60,
+      55,
+      65
+    ]
+  },
+  "circuit2": {
+    "slug": "montreal",
+    "name": "MONTREAL",
+    "country": "CAN",
+    "color": "#FF0000",
+    "values": [
+      82,
+      70,
+      60,
+      90,
+      60,
+      85
+    ]
+  },
+  "meta": {
+    "subtitle": "ALBERT PARK vs MONTREAL · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

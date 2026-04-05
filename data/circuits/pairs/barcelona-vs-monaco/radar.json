@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "barcelona",
+    "name": "BARCELONA",
+    "country": "ESP",
+    "color": "#AA151B",
+    "values": [
+      65,
+      60,
+      85,
+      70,
+      75,
+      50
+    ]
+  },
+  "circuit2": {
+    "slug": "monaco",
+    "name": "MONACO",
+    "country": "MON",
+    "color": "#FFD700",
+    "values": [
+      30,
+      95,
+      45,
+      70,
+      40,
+      8
+    ]
+  },
+  "meta": {
+    "subtitle": "BARCELONA vs MONACO · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

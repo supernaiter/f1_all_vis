@@ -1,0 +1,20 @@
+{
+  "type": "era_adjusted_qualifying",
+  "circuit1": {
+    "slug": "jeddah",
+    "name": "JEDDAH",
+    "color": "#006C35",
+    "era_points": []
+  },
+  "circuit2": {
+    "slug": "las_vegas",
+    "name": "LAS VEGAS",
+    "color": "#C8102E",
+    "era_points": []
+  },
+  "meta": {
+    "subtitle": "JEDDAH vs LAS VEGAS · ERA-ADJUSTED POLE TIMES",
+    "source": "pending",
+    "note": "This card is a Phase-2 placeholder. Real data requires FastF1 quali export."
+  }
+}

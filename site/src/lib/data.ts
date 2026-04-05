@@ -220,6 +220,93 @@ export function loadDriverCompare(pair: string, type: string): any | null {
   return JSON.parse(fs.readFileSync(p, 'utf-8'));
 }
 
+// ============================================================
+// TYPE-D: サーキット2者比較
+// ============================================================
+export interface CircuitRadarData {
+  type: 'radar';
+  axes: string[];
+  circuit1: { slug: string; name: string; country: string; color: string; values: number[] };
+  circuit2: { slug: string; name: string; country: string; color: string; values: number[] };
+  meta: { subtitle: string; source: string };
+}
+
+export interface CircuitEraAdjustedData {
+  type: 'era_adjusted_qualifying';
+  circuit1: { slug: string; name: string; color: string; era_points: any[] };
+  circuit2: { slug: string; name: string; color: string; era_points: any[] };
+  meta: { subtitle: string; source: string; note?: string };
+}
+
+export function listCircuitPairs(): string[] {
+  const dir = path.join(DATA_ROOT, 'circuits', 'pairs');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter(e => e.isDirectory())
+    .map(e => e.name)
+    .sort();
+}
+
+export function loadCircuitCompare(pair: string, type: 'radar' | 'era_adjusted'): any | null {
+  const p = path.join(DATA_ROOT, 'circuits', 'pairs', pair, `${type}.json`);
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
+// ============================================================
+// TYPE-H: ティア表
+// ============================================================
+export interface TierData {
+  title: string;
+  subtitle: string;
+  tiers: { label: string; color: string; drivers: { code: string; name: string; note?: string }[] }[];
+}
+
+export function listTierPages(): string[] {
+  const dir = path.join(DATA_ROOT, 'tiers');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.json'))
+    .map(f => f.replace(/\.json$/, '').replace(/_/g, '-'))
+    .sort();
+}
+
+export function loadTierData(slug: string): TierData | null {
+  const fname = slug.replace(/-/g, '_') + '.json';
+  const p = path.join(DATA_ROOT, 'tiers', fname);
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
+// ============================================================
+// TYPE-G: ピラー / 単体分析
+// ============================================================
+export interface PillarData {
+  slug: string;
+  title: string;
+  subtitle: string;
+  source: 'static' | 'pending';
+  kind: string;
+  entries: { rank?: number; code: string; name: string; value: number | string; note?: string }[];
+  meta?: Record<string, any>;
+}
+
+export function listPillarPages(): string[] {
+  const dir = path.join(DATA_ROOT, 'insights');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.json'))
+    .map(f => f.replace(/\.json$/, '').replace(/_/g, '-'))
+    .sort();
+}
+
+export function loadPillarData(slug: string): PillarData | null {
+  const fname = slug.replace(/-/g, '_') + '.json';
+  const p = path.join(DATA_ROOT, 'insights', fname);
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
 // F1公式ドライバーヘッドショット（開発用・一時利用）
 const F1_IMG_BASE = 'https://media.formula1.com/image/upload/c_thumb,g_face,w_440,h_440/q_auto/v1740000001/common/f1/2025';
 export const DRIVER_HEADSHOTS: Record<string, string> = {

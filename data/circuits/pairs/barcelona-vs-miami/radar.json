@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "barcelona",
+    "name": "BARCELONA",
+    "country": "ESP",
+    "color": "#AA151B",
+    "values": [
+      65,
+      60,
+      85,
+      70,
+      75,
+      50
+    ]
+  },
+  "circuit2": {
+    "slug": "miami",
+    "name": "MIAMI",
+    "country": "USA",
+    "color": "#FF6600",
+    "values": [
+      80,
+      60,
+      75,
+      82,
+      65,
+      78
+    ]
+  },
+  "meta": {
+    "subtitle": "BARCELONA vs MIAMI · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

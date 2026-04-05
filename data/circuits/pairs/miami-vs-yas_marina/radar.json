@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "miami",
+    "name": "MIAMI",
+    "country": "USA",
+    "color": "#FF6600",
+    "values": [
+      80,
+      60,
+      75,
+      82,
+      65,
+      78
+    ]
+  },
+  "circuit2": {
+    "slug": "yas_marina",
+    "name": "YAS MARINA",
+    "country": "UAE",
+    "color": "#00732F",
+    "values": [
+      75,
+      70,
+      72,
+      78,
+      60,
+      65
+    ]
+  },
+  "meta": {
+    "subtitle": "MIAMI vs YAS MARINA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

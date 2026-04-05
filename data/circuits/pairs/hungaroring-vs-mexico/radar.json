@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "hungaroring",
+    "name": "HUNGARORING",
+    "country": "HUN",
+    "color": "#477050",
+    "values": [
+      50,
+      85,
+      70,
+      75,
+      70,
+      40
+    ]
+  },
+  "circuit2": {
+    "slug": "mexico",
+    "name": "MEXICO CITY",
+    "country": "MEX",
+    "color": "#006847",
+    "values": [
+      85,
+      68,
+      65,
+      82,
+      55,
+      78
+    ]
+  },
+  "meta": {
+    "subtitle": "HUNGARORING vs MEXICO CITY · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

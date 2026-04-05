@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "las_vegas",
+    "name": "LAS VEGAS",
+    "country": "USA",
+    "color": "#C8102E",
+    "values": [
+      92,
+      55,
+      65,
+      82,
+      55,
+      82
+    ]
+  },
+  "circuit2": {
+    "slug": "madrid",
+    "name": "MADRID",
+    "country": "ESP",
+    "color": "#C60B1E",
+    "values": [
+      78,
+      70,
+      72,
+      75,
+      65,
+      70
+    ]
+  },
+  "meta": {
+    "subtitle": "LAS VEGAS vs MADRID · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

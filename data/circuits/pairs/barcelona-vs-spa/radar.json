@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "barcelona",
+    "name": "BARCELONA",
+    "country": "ESP",
+    "color": "#AA151B",
+    "values": [
+      65,
+      60,
+      85,
+      70,
+      75,
+      50
+    ]
+  },
+  "circuit2": {
+    "slug": "spa",
+    "name": "SPA",
+    "country": "BEL",
+    "color": "#FAE042",
+    "values": [
+      92,
+      55,
+      92,
+      72,
+      65,
+      85
+    ]
+  },
+  "meta": {
+    "subtitle": "BARCELONA vs SPA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

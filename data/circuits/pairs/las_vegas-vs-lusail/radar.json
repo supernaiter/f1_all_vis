@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "las_vegas",
+    "name": "LAS VEGAS",
+    "country": "USA",
+    "color": "#C8102E",
+    "values": [
+      92,
+      55,
+      65,
+      82,
+      55,
+      82
+    ]
+  },
+  "circuit2": {
+    "slug": "lusail",
+    "name": "LUSAIL",
+    "country": "QAT",
+    "color": "#8B1538",
+    "values": [
+      68,
+      55,
+      90,
+      70,
+      88,
+      50
+    ]
+  },
+  "meta": {
+    "subtitle": "LAS VEGAS vs LUSAIL · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

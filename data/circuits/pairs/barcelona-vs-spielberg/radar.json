@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "barcelona",
+    "name": "BARCELONA",
+    "country": "ESP",
+    "color": "#AA151B",
+    "values": [
+      65,
+      60,
+      85,
+      70,
+      75,
+      50
+    ]
+  },
+  "circuit2": {
+    "slug": "spielberg",
+    "name": "SPIELBERG",
+    "country": "AUT",
+    "color": "#ED2939",
+    "values": [
+      80,
+      55,
+      70,
+      80,
+      60,
+      82
+    ]
+  },
+  "meta": {
+    "subtitle": "BARCELONA vs SPIELBERG · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

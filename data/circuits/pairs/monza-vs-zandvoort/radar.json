@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "monza",
+    "name": "MONZA",
+    "country": "ITA",
+    "color": "#008C45",
+    "values": [
+      98,
+      45,
+      60,
+      92,
+      55,
+      85
+    ]
+  },
+  "circuit2": {
+    "slug": "zandvoort",
+    "name": "ZANDVOORT",
+    "country": "NED",
+    "color": "#FF4F00",
+    "values": [
+      55,
+      70,
+      88,
+      65,
+      75,
+      35
+    ]
+  },
+  "meta": {
+    "subtitle": "MONZA vs ZANDVOORT · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

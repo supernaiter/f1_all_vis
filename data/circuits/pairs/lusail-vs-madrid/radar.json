@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "lusail",
+    "name": "LUSAIL",
+    "country": "QAT",
+    "color": "#8B1538",
+    "values": [
+      68,
+      55,
+      90,
+      70,
+      88,
+      50
+    ]
+  },
+  "circuit2": {
+    "slug": "madrid",
+    "name": "MADRID",
+    "country": "ESP",
+    "color": "#C60B1E",
+    "values": [
+      78,
+      70,
+      72,
+      75,
+      65,
+      70
+    ]
+  },
+  "meta": {
+    "subtitle": "LUSAIL vs MADRID · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

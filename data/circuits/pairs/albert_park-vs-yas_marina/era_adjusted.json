@@ -1,0 +1,20 @@
+{
+  "type": "era_adjusted_qualifying",
+  "circuit1": {
+    "slug": "albert_park",
+    "name": "ALBERT PARK",
+    "color": "#00843D",
+    "era_points": []
+  },
+  "circuit2": {
+    "slug": "yas_marina",
+    "name": "YAS MARINA",
+    "color": "#00732F",
+    "era_points": []
+  },
+  "meta": {
+    "subtitle": "ALBERT PARK vs YAS MARINA · ERA-ADJUSTED POLE TIMES",
+    "source": "pending",
+    "note": "This card is a Phase-2 placeholder. Real data requires FastF1 quali export."
+  }
+}

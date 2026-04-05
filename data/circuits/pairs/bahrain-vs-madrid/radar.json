@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "bahrain",
+    "name": "BAHRAIN",
+    "country": "BHR",
+    "color": "#E80020",
+    "values": [
+      85,
+      60,
+      68,
+      88,
+      78,
+      80
+    ]
+  },
+  "circuit2": {
+    "slug": "madrid",
+    "name": "MADRID",
+    "country": "ESP",
+    "color": "#C60B1E",
+    "values": [
+      78,
+      70,
+      72,
+      75,
+      65,
+      70
+    ]
+  },
+  "meta": {
+    "subtitle": "BAHRAIN vs MADRID · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

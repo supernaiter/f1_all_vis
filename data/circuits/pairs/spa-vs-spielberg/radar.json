@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "spa",
+    "name": "SPA",
+    "country": "BEL",
+    "color": "#FAE042",
+    "values": [
+      92,
+      55,
+      92,
+      72,
+      65,
+      85
+    ]
+  },
+  "circuit2": {
+    "slug": "spielberg",
+    "name": "SPIELBERG",
+    "country": "AUT",
+    "color": "#ED2939",
+    "values": [
+      80,
+      55,
+      70,
+      80,
+      60,
+      82
+    ]
+  },
+  "meta": {
+    "subtitle": "SPA vs SPIELBERG · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

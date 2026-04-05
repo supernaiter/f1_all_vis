@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "monza",
+    "name": "MONZA",
+    "country": "ITA",
+    "color": "#008C45",
+    "values": [
+      98,
+      45,
+      60,
+      92,
+      55,
+      85
+    ]
+  },
+  "circuit2": {
+    "slug": "shanghai",
+    "name": "SHANGHAI",
+    "country": "CHN",
+    "color": "#EE1C25",
+    "values": [
+      78,
+      70,
+      68,
+      75,
+      60,
+      78
+    ]
+  },
+  "meta": {
+    "subtitle": "MONZA vs SHANGHAI · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "miami",
+    "name": "MIAMI",
+    "country": "USA",
+    "color": "#FF6600",
+    "values": [
+      80,
+      60,
+      75,
+      82,
+      65,
+      78
+    ]
+  },
+  "circuit2": {
+    "slug": "shanghai",
+    "name": "SHANGHAI",
+    "country": "CHN",
+    "color": "#EE1C25",
+    "values": [
+      78,
+      70,
+      68,
+      75,
+      60,
+      78
+    ]
+  },
+  "meta": {
+    "subtitle": "MIAMI vs SHANGHAI · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

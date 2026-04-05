@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "monaco",
+    "name": "MONACO",
+    "country": "MON",
+    "color": "#FFD700",
+    "values": [
+      30,
+      95,
+      45,
+      70,
+      40,
+      8
+    ]
+  },
+  "circuit2": {
+    "slug": "singapore",
+    "name": "SINGAPORE",
+    "country": "SGP",
+    "color": "#EF3340",
+    "values": [
+      55,
+      88,
+      60,
+      80,
+      78,
+      55
+    ]
+  },
+  "meta": {
+    "subtitle": "MONACO vs SINGAPORE · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

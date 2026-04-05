@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "madrid",
+    "name": "MADRID",
+    "country": "ESP",
+    "color": "#C60B1E",
+    "values": [
+      78,
+      70,
+      72,
+      75,
+      65,
+      70
+    ]
+  },
+  "circuit2": {
+    "slug": "shanghai",
+    "name": "SHANGHAI",
+    "country": "CHN",
+    "color": "#EE1C25",
+    "values": [
+      78,
+      70,
+      68,
+      75,
+      60,
+      78
+    ]
+  },
+  "meta": {
+    "subtitle": "MADRID vs SHANGHAI · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

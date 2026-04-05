@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "baku",
+    "name": "BAKU",
+    "country": "AZE",
+    "color": "#00B9E4",
+    "values": [
+      92,
+      78,
+      55,
+      85,
+      55,
+      80
+    ]
+  },
+  "circuit2": {
+    "slug": "hungaroring",
+    "name": "HUNGARORING",
+    "country": "HUN",
+    "color": "#477050",
+    "values": [
+      50,
+      85,
+      70,
+      75,
+      70,
+      40
+    ]
+  },
+  "meta": {
+    "subtitle": "BAKU vs HUNGARORING · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

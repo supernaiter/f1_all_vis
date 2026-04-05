@@ -1,0 +1,20 @@
+{
+  "type": "era_adjusted_qualifying",
+  "circuit1": {
+    "slug": "bahrain",
+    "name": "BAHRAIN",
+    "color": "#E80020",
+    "era_points": []
+  },
+  "circuit2": {
+    "slug": "hungaroring",
+    "name": "HUNGARORING",
+    "color": "#477050",
+    "era_points": []
+  },
+  "meta": {
+    "subtitle": "BAHRAIN vs HUNGARORING · ERA-ADJUSTED POLE TIMES",
+    "source": "pending",
+    "note": "This card is a Phase-2 placeholder. Real data requires FastF1 quali export."
+  }
+}

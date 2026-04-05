@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "miami",
+    "name": "MIAMI",
+    "country": "USA",
+    "color": "#FF6600",
+    "values": [
+      80,
+      60,
+      75,
+      82,
+      65,
+      78
+    ]
+  },
+  "circuit2": {
+    "slug": "spa",
+    "name": "SPA",
+    "country": "BEL",
+    "color": "#FAE042",
+    "values": [
+      92,
+      55,
+      92,
+      72,
+      65,
+      85
+    ]
+  },
+  "meta": {
+    "subtitle": "MIAMI vs SPA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

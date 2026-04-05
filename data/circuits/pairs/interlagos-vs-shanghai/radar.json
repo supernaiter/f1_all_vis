@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "interlagos",
+    "name": "INTERLAGOS",
+    "country": "BRA",
+    "color": "#FEDD00",
+    "values": [
+      78,
+      62,
+      80,
+      75,
+      72,
+      88
+    ]
+  },
+  "circuit2": {
+    "slug": "shanghai",
+    "name": "SHANGHAI",
+    "country": "CHN",
+    "color": "#EE1C25",
+    "values": [
+      78,
+      70,
+      68,
+      75,
+      60,
+      78
+    ]
+  },
+  "meta": {
+    "subtitle": "INTERLAGOS vs SHANGHAI · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

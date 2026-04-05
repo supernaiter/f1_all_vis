@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "silverstone",
+    "name": "SILVERSTONE",
+    "country": "GBR",
+    "color": "#012169",
+    "values": [
+      72,
+      55,
+      95,
+      70,
+      72,
+      75
+    ]
+  },
+  "circuit2": {
+    "slug": "singapore",
+    "name": "SINGAPORE",
+    "country": "SGP",
+    "color": "#EF3340",
+    "values": [
+      55,
+      88,
+      60,
+      80,
+      78,
+      55
+    ]
+  },
+  "meta": {
+    "subtitle": "SILVERSTONE vs SINGAPORE · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "miami",
+    "name": "MIAMI",
+    "country": "USA",
+    "color": "#FF6600",
+    "values": [
+      80,
+      60,
+      75,
+      82,
+      65,
+      78
+    ]
+  },
+  "circuit2": {
+    "slug": "montreal",
+    "name": "MONTREAL",
+    "country": "CAN",
+    "color": "#FF0000",
+    "values": [
+      82,
+      70,
+      60,
+      90,
+      60,
+      85
+    ]
+  },
+  "meta": {
+    "subtitle": "MIAMI vs MONTREAL · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

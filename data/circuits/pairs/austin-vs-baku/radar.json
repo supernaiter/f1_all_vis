@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "austin",
+    "name": "AUSTIN",
+    "country": "USA",
+    "color": "#3C3B6E",
+    "values": [
+      72,
+      65,
+      88,
+      78,
+      65,
+      75
+    ]
+  },
+  "circuit2": {
+    "slug": "baku",
+    "name": "BAKU",
+    "country": "AZE",
+    "color": "#00B9E4",
+    "values": [
+      92,
+      78,
+      55,
+      85,
+      55,
+      80
+    ]
+  },
+  "meta": {
+    "subtitle": "AUSTIN vs BAKU · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

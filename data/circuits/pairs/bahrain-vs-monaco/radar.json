@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "bahrain",
+    "name": "BAHRAIN",
+    "country": "BHR",
+    "color": "#E80020",
+    "values": [
+      85,
+      60,
+      68,
+      88,
+      78,
+      80
+    ]
+  },
+  "circuit2": {
+    "slug": "monaco",
+    "name": "MONACO",
+    "country": "MON",
+    "color": "#FFD700",
+    "values": [
+      30,
+      95,
+      45,
+      70,
+      40,
+      8
+    ]
+  },
+  "meta": {
+    "subtitle": "BAHRAIN vs MONACO · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "baku",
+    "name": "BAKU",
+    "country": "AZE",
+    "color": "#00B9E4",
+    "values": [
+      92,
+      78,
+      55,
+      85,
+      55,
+      80
+    ]
+  },
+  "circuit2": {
+    "slug": "monza",
+    "name": "MONZA",
+    "country": "ITA",
+    "color": "#008C45",
+    "values": [
+      98,
+      45,
+      60,
+      92,
+      55,
+      85
+    ]
+  },
+  "meta": {
+    "subtitle": "BAKU vs MONZA · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

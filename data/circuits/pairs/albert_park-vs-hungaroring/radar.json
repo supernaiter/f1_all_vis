@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "albert_park",
+    "name": "ALBERT PARK",
+    "country": "AUS",
+    "color": "#00843D",
+    "values": [
+      70,
+      55,
+      75,
+      60,
+      55,
+      65
+    ]
+  },
+  "circuit2": {
+    "slug": "hungaroring",
+    "name": "HUNGARORING",
+    "country": "HUN",
+    "color": "#477050",
+    "values": [
+      50,
+      85,
+      70,
+      75,
+      70,
+      40
+    ]
+  },
+  "meta": {
+    "subtitle": "ALBERT PARK vs HUNGARORING · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

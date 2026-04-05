@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "mexico",
+    "name": "MEXICO CITY",
+    "country": "MEX",
+    "color": "#006847",
+    "values": [
+      85,
+      68,
+      65,
+      82,
+      55,
+      78
+    ]
+  },
+  "circuit2": {
+    "slug": "miami",
+    "name": "MIAMI",
+    "country": "USA",
+    "color": "#FF6600",
+    "values": [
+      80,
+      60,
+      75,
+      82,
+      65,
+      78
+    ]
+  },
+  "meta": {
+    "subtitle": "MEXICO CITY vs MIAMI · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

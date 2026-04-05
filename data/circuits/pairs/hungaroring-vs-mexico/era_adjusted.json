@@ -1,0 +1,20 @@
+{
+  "type": "era_adjusted_qualifying",
+  "circuit1": {
+    "slug": "hungaroring",
+    "name": "HUNGARORING",
+    "color": "#477050",
+    "era_points": []
+  },
+  "circuit2": {
+    "slug": "mexico",
+    "name": "MEXICO CITY",
+    "color": "#006847",
+    "era_points": []
+  },
+  "meta": {
+    "subtitle": "HUNGARORING vs MEXICO CITY · ERA-ADJUSTED POLE TIMES",
+    "source": "pending",
+    "note": "This card is a Phase-2 placeholder. Real data requires FastF1 quali export."
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "barcelona",
+    "name": "BARCELONA",
+    "country": "ESP",
+    "color": "#AA151B",
+    "values": [
+      65,
+      60,
+      85,
+      70,
+      75,
+      50
+    ]
+  },
+  "circuit2": {
+    "slug": "lusail",
+    "name": "LUSAIL",
+    "country": "QAT",
+    "color": "#8B1538",
+    "values": [
+      68,
+      55,
+      90,
+      70,
+      88,
+      50
+    ]
+  },
+  "meta": {
+    "subtitle": "BARCELONA vs LUSAIL · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

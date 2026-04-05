@@ -1,0 +1,43 @@
+{
+  "type": "radar",
+  "axes": [
+    "STRAIGHT SPEED",
+    "LOW-SPEED",
+    "HIGH-SPEED",
+    "BRAKING",
+    "TYRE DEG",
+    "OVERTAKING"
+  ],
+  "circuit1": {
+    "slug": "spa",
+    "name": "SPA",
+    "country": "BEL",
+    "color": "#FAE042",
+    "values": [
+      92,
+      55,
+      92,
+      72,
+      65,
+      85
+    ]
+  },
+  "circuit2": {
+    "slug": "zandvoort",
+    "name": "ZANDVOORT",
+    "country": "NED",
+    "color": "#FF4F00",
+    "values": [
+      55,
+      70,
+      88,
+      65,
+      75,
+      35
+    ]
+  },
+  "meta": {
+    "subtitle": "SPA vs ZANDVOORT · 6-AXIS CIRCUIT CHARACTER",
+    "source": "manual-curated"
+  }
+}

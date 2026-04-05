@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Cadillac",
+    "color": "#888888",
+    "min": 95.637,
+    "q1": 96.37,
+    "median": 97.19,
+    "q3": 98.311,
+    "max": 102.013,
+    "count": 89
+  },
+  "team2": {
+    "name": "McLaren",
+    "color": "#E07800",
+    "min": 92.996,
+    "q1": 93.509,
+    "median": 94.083,
+    "q3": 95.095,
+    "max": 98.222,
+    "count": 92
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "McLaren",
+    "color": "#E07800",
+    "min": 92.996,
+    "q1": 93.509,
+    "median": 94.083,
+    "q3": 95.095,
+    "max": 98.222,
+    "count": 92
+  },
+  "team2": {
+    "name": "Racing Bulls",
+    "color": "#4A72CC",
+    "min": 94.23,
+    "q1": 94.827,
+    "median": 95.402,
+    "q3": 96.572,
+    "max": 102.498,
+    "count": 93
+  }
+}

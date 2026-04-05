@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Haas F1 Team",
+    "color": "#7A7A7A",
+    "min": 95.964,
+    "q1": 97.242,
+    "median": 97.901,
+    "q3": 99.009,
+    "max": 104.567,
+    "count": 98
+  },
+  "team2": {
+    "name": "Mercedes",
+    "color": "#00B89F",
+    "min": 95.275,
+    "q1": 95.852,
+    "median": 96.438,
+    "q3": 97.187,
+    "max": 101.815,
+    "count": 104
+  }
+}

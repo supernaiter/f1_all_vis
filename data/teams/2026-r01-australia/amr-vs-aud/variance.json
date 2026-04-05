@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Aston Martin",
+    "color": "#1B7A5A",
+    "min": 85.41,
+    "q1": 86.376,
+    "median": 87.475,
+    "q3": 88.082,
+    "max": 92.972,
+    "count": 47
+  },
+  "team2": {
+    "name": "Audi",
+    "color": "#3AAA3A",
+    "min": 83.257,
+    "q1": 84.327,
+    "median": 84.694,
+    "q3": 85.224,
+    "max": 87.538,
+    "count": 49
+  }
+}

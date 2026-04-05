@@ -1,0 +1,32 @@
+{
+  "type": "dna",
+  "axes": [
+    "PACE",
+    "TOP SPEED",
+    "CONSISTENCY",
+    "TYRE MGMT",
+    "ENDURANCE"
+  ],
+  "team1": {
+    "name": "Aston Martin",
+    "color": "#1B7A5A",
+    "values": [
+      0.0,
+      0.0,
+      0.0,
+      36.9,
+      0.0
+    ]
+  },
+  "team2": {
+    "name": "Racing Bulls",
+    "color": "#4A72CC",
+    "values": [
+      56.9,
+      71.4,
+      46.8,
+      15.7,
+      91.3
+    ]
+  }
+}

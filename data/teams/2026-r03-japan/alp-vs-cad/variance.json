@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Alpine",
+    "color": "#0078AA",
+    "min": 93.691,
+    "q1": 94.457,
+    "median": 95.436,
+    "q3": 96.11,
+    "max": 99.651,
+    "count": 91
+  },
+  "team2": {
+    "name": "Cadillac",
+    "color": "#888888",
+    "min": 95.637,
+    "q1": 96.37,
+    "median": 97.19,
+    "q3": 98.311,
+    "max": 102.013,
+    "count": 89
+  }
+}

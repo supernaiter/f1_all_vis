@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Mercedes",
+    "color": "#00B89F",
+    "min": 92.432,
+    "q1": 93.11,
+    "median": 94.031,
+    "q3": 95.033,
+    "max": 98.784,
+    "count": 94
+  },
+  "team2": {
+    "name": "Racing Bulls",
+    "color": "#4A72CC",
+    "min": 94.23,
+    "q1": 94.827,
+    "median": 95.402,
+    "q3": 96.572,
+    "max": 102.498,
+    "count": 93
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Audi",
+    "color": "#3AAA3A",
+    "min": 83.257,
+    "q1": 84.327,
+    "median": 84.694,
+    "q3": 85.224,
+    "max": 87.538,
+    "count": 49
+  },
+  "team2": {
+    "name": "McLaren",
+    "color": "#E07800",
+    "min": 82.358,
+    "q1": 83.046,
+    "median": 83.687,
+    "q3": 84.233,
+    "max": 89.434,
+    "count": 51
+  }
+}

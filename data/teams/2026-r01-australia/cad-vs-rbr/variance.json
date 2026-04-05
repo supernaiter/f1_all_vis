@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Cadillac",
+    "color": "#888888",
+    "min": 86.07,
+    "q1": 87.093,
+    "median": 87.738,
+    "q3": 89.083,
+    "max": 93.478,
+    "count": 58
+  },
+  "team2": {
+    "name": "Red Bull Racing",
+    "color": "#2B5DAB",
+    "min": 82.091,
+    "q1": 83.363,
+    "median": 83.715,
+    "q3": 85.239,
+    "max": 87.991,
+    "count": 59
+  }
+}

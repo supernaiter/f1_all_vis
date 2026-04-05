@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Cadillac",
+    "color": "#888888",
+    "min": 98.393,
+    "q1": 99.551,
+    "median": 99.88,
+    "q3": 100.557,
+    "max": 103.964,
+    "count": 99
+  },
+  "team2": {
+    "name": "Haas F1 Team",
+    "color": "#7A7A7A",
+    "min": 95.964,
+    "q1": 97.242,
+    "median": 97.901,
+    "q3": 99.009,
+    "max": 104.567,
+    "count": 98
+  }
+}

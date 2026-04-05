@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Red Bull Racing",
+    "color": "#2B5DAB",
+    "min": 82.091,
+    "q1": 83.363,
+    "median": 83.715,
+    "q3": 85.239,
+    "max": 87.991,
+    "count": 59
+  },
+  "team2": {
+    "name": "Williams",
+    "color": "#3BA3E0",
+    "min": 83.59,
+    "q1": 84.881,
+    "median": 85.558,
+    "q3": 86.614,
+    "max": 91.589,
+    "count": 96
+  }
+}

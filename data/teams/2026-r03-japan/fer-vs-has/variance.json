@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Ferrari",
+    "color": "#DC0000",
+    "min": 92.634,
+    "q1": 93.576,
+    "median": 94.193,
+    "q3": 95.283,
+    "max": 98.386,
+    "count": 93
+  },
+  "team2": {
+    "name": "Haas F1 Team",
+    "color": "#7A7A7A",
+    "min": 94.256,
+    "q1": 94.858,
+    "median": 96.291,
+    "q3": 96.746,
+    "max": 101.913,
+    "count": 64
+  }
+}

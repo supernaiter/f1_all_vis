@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Haas F1 Team",
+    "color": "#7A7A7A",
+    "min": 84.02,
+    "q1": 84.598,
+    "median": 85.049,
+    "q3": 85.716,
+    "max": 90.647,
+    "count": 100
+  },
+  "team2": {
+    "name": "Williams",
+    "color": "#3BA3E0",
+    "min": 83.59,
+    "q1": 84.881,
+    "median": 85.558,
+    "q3": 86.614,
+    "max": 91.589,
+    "count": 96
+  }
+}

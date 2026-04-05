@@ -1,0 +1,32 @@
+{
+  "type": "dna",
+  "axes": [
+    "PACE",
+    "TOP SPEED",
+    "CONSISTENCY",
+    "TYRE MGMT",
+    "ENDURANCE"
+  ],
+  "team1": {
+    "name": "Haas F1 Team",
+    "color": "#7A7A7A",
+    "values": [
+      68.0,
+      64.3,
+      32.5,
+      0.0,
+      91.3
+    ]
+  },
+  "team2": {
+    "name": "Williams",
+    "color": "#3BA3E0",
+    "values": [
+      49.4,
+      85.7,
+      55.9,
+      73.9,
+      21.7
+    ]
+  }
+}

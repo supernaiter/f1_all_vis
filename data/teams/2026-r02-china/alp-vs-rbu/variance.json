@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Alpine",
+    "color": "#0078AA",
+    "min": 96.505,
+    "q1": 97.123,
+    "median": 98.132,
+    "q3": 98.865,
+    "max": 102.819,
+    "count": 101
+  },
+  "team2": {
+    "name": "Racing Bulls",
+    "color": "#4A72CC",
+    "min": 96.099,
+    "q1": 97.547,
+    "median": 98.389,
+    "q3": 99.298,
+    "max": 103.637,
+    "count": 98
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "type": "dna",
+  "axes": [
+    "PACE",
+    "TOP SPEED",
+    "CONSISTENCY",
+    "TYRE MGMT",
+    "ENDURANCE"
+  ],
+  "team1": {
+    "name": "Cadillac",
+    "color": "#888888",
+    "values": [
+      24.0,
+      35.7,
+      85.7,
+      68.4,
+      92.8
+    ]
+  },
+  "team2": {
+    "name": "Mercedes",
+    "color": "#00B89F",
+    "values": [
+      100.0,
+      71.4,
+      58.3,
+      28.3,
+      100.0
+    ]
+  }
+}

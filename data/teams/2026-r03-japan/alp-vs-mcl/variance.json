@@ -1,0 +1,23 @@
+{
+  "type": "variance",
+  "team1": {
+    "name": "Alpine",
+    "color": "#0078AA",
+    "min": 93.691,
+    "q1": 94.457,
+    "median": 95.436,
+    "q3": 96.11,
+    "max": 99.651,
+    "count": 91
+  },
+  "team2": {
+    "name": "McLaren",
+    "color": "#E07800",
+    "min": 92.996,
+    "q1": 93.509,
+    "median": 94.083,
+    "q3": 95.095,
+    "max": 98.222,
+    "count": 92
+  }
+}

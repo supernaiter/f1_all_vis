@@ -48,3 +48,7 @@
 - listGPs()はexport/未生成のGPも返す → getStaticPathsでdata nullフィルタ必須
 - race_laps.csv Position列は 1,6,671,71 等のトラック状態値を混在 → LapNumber==1 フィルタで Lap1 position取得時に int変換前の数値バリデーション必須
 - csv module は pandas なしで十分。Python 3.14 標準ライブラリのみで TYPE-A/E/F 全生成可
+- TYPE-C トリプル生成時は scripts/driver_triple_generator.py を master.json 更新後に再実行すること。DRIVERS_2026 配列は2026シーズン限定で年次入れ替え前提
+- Astro build メモリ: 3,000ページ超を足すときは NODE_OPTIONS="--max-old-space-size=8192" を付けるのが安全（6,470ページで約270秒）
+- cd した Bash コマンドの working directory は以降のコマンドに引き継がれる → プロジェクトルート戻し忘れに注意、絶対パス推奨
+- Cloudflare Pages デプロイの新規ファイル数で TYPE-C 拡張成否を検証可能（3,080新規 = 全トリプルが既存ハッシュに無いことの確認）

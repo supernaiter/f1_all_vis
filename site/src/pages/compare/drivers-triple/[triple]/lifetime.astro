@@ -1,0 +1,129 @@
+---
+import { listDriverTriples, loadDriverTriple } from '../../../../lib/data';
+
+export function getStaticPaths() {
+  return listDriverTriples()
+    .filter(triple => loadDriverTriple(triple, 'lifetime') !== null)
+    .map(triple => ({
+      params: { triple },
+      props: { data: loadDriverTriple(triple, 'lifetime') },
+    }));
+}
+
+const { triple } = Astro.params;
+const { data } = Astro.props;
+const { driver1, driver2, driver3 } = data;
+const title = `${driver1.name} vs ${driver2.name} vs ${driver3.name} — Lifetime Timeline`;
+
+// 年齢をキーに3名のイベントをマージ
+type Ev = { label: string; type: string };
+type Row = { age: number; col1: Ev | null; col2: Ev | null; col3: Ev | null };
+const byAge: Record<number, Row> = {};
+
+function pushEvents(events: any[], slot: 'col1' | 'col2' | 'col3') {
+  for (const e of events || []) {
+    const a = e.age;
+    if (!byAge[a]) byAge[a] = { age: a, col1: null, col2: null, col3: null };
+    byAge[a][slot] = { label: e.label, type: e.type };
+  }
+}
+pushEvents(driver1.career_events, 'col1');
+pushEvents(driver2.career_events, 'col2');
+pushEvents(driver3.career_events, 'col3');
+
+const rows = Object.values(byAge).sort((a, b) => a.age - b.age);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{title} — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:40px 48px 32px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:24px;right:48px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.header{display:flex;margin-top:22px;padding-bottom:12px;border-bottom:1px solid #0e0e14}
+.header .age-col{width:56px;flex-shrink:0}
+.header .driver-col{flex:1;text-align:center;padding:0 4px}
+.driver-name{font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1}
+.driver-span{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#333;letter-spacing:0.08em;margin-top:3px}
+.timeline{margin-top:8px;position:relative;max-height:880px;overflow:hidden}
+.row{display:flex;align-items:flex-start;min-height:34px;position:relative}
+.age-col{width:56px;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:20px;color:#1a1a1a;padding-top:8px;text-align:center}
+.age-col.highlight{color:#333}
+.col{flex:1;position:relative;padding:6px 8px;min-height:34px;border-right:1px solid #0e0e14}
+.col.last{border-right:none}
+.event{display:flex;align-items:center;gap:6px}
+.dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.dot.title{background:#ffd700}
+.dot.win{background:#0f6e56}
+.dot.debut{background:#534ab7}
+.dot.career{background:#333}
+.dot.life{background:#27f4d2}
+.label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#777;line-height:1.3;letter-spacing:0.01em}
+.row-sep{border-bottom:1px solid #0a0a0a}
+.footnote{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#222;margin-top:12px;letter-spacing:0.06em;text-align:center}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">LIFETIME TIMELINE</div>
+  <div class="sub">{driver1.code} / {driver2.code} / {driver3.code} — CAREER BY AGE</div>
+
+  <div class="header">
+    <div class="age-col"></div>
+    <div class="driver-col">
+      <div class="driver-name" style={`color:${driver1.color}`}>{driver1.name.toUpperCase()}</div>
+      <div class="driver-span">B.{driver1.birth_year} — DEBUT {driver1.debut_year}</div>
+    </div>
+    <div class="driver-col">
+      <div class="driver-name" style={`color:${driver2.color}`}>{driver2.name.toUpperCase()}</div>
+      <div class="driver-span">B.{driver2.birth_year} — DEBUT {driver2.debut_year}</div>
+    </div>
+    <div class="driver-col">
+      <div class="driver-name" style={`color:${driver3.color}`}>{driver3.name.toUpperCase()}</div>
+      <div class="driver-span">B.{driver3.birth_year} — DEBUT {driver3.debut_year}</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    {rows.map(row => (
+      <div class="row row-sep">
+        <div class={(row.col1 || row.col2 || row.col3) ? 'age-col highlight' : 'age-col'}>{row.age}</div>
+        {row.col1 ? (
+          <div class="col">
+            <div class="event">
+              <span class={`dot ${row.col1.type}`}></span>
+              <span class="label">{row.col1.label}</span>
+            </div>
+          </div>
+        ) : <div class="col"></div>}
+        {row.col2 ? (
+          <div class="col">
+            <div class="event">
+              <span class={`dot ${row.col2.type}`}></span>
+              <span class="label">{row.col2.label}</span>
+            </div>
+          </div>
+        ) : <div class="col"></div>}
+        {row.col3 ? (
+          <div class="col last">
+            <div class="event">
+              <span class={`dot ${row.col3.type}`}></span>
+              <span class="label">{row.col3.label}</span>
+            </div>
+          </div>
+        ) : <div class="col last"></div>}
+      </div>
+    ))}
+  </div>
+  <div class="footnote">AGE = SEASON AGE</div>
+</div>
+</body>
+</html>

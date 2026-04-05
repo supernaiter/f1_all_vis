@@ -1,0 +1,130 @@
+---
+import { listDriverTriples, loadDriverTriple, type DriverCompareCareerArcTriple } from '../../../../lib/data';
+
+export function getStaticPaths() {
+  return listDriverTriples()
+    .filter(triple => loadDriverTriple(triple, 'career_arc') !== null)
+    .map(triple => ({
+      params: { triple },
+      props: { data: loadDriverTriple(triple, 'career_arc') as DriverCompareCareerArcTriple },
+    }));
+}
+
+const { triple } = Astro.params;
+const { data } = Astro.props;
+const { driver1, driver2, driver3 } = data;
+const title = `${driver1.name} vs ${driver2.name} vs ${driver3.name} — Career Arc`;
+const payload = JSON.stringify(data);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{title} — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:24px;display:block}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">CAREER ARC</div>
+  <div class="sub">{driver1.code} VS {driver2.code} VS {driver3.code} — CUMULATIVE WINS FROM F1 DEBUT</div>
+  <canvas id="chart" width="968" height="900"></canvas>
+</div>
+<script type="application/json" id="payload" set:html={payload}></script>
+<script is:inline>
+(() => {
+  const data = JSON.parse(document.getElementById('payload').textContent);
+  const drivers = [data.driver1, data.driver2, data.driver3];
+  const canvas = document.getElementById('chart');
+  const ctx = canvas.getContext('2d');
+
+  const pad = { top: 30, right: 90, bottom: 60, left: 60 };
+  const w = canvas.width - pad.left - pad.right;
+  const h = canvas.height - pad.top - pad.bottom;
+
+  const maxYear = Math.max(...drivers.map(d => d.cumWins.length)) - 1 || 1;
+  const maxWins = Math.max(...drivers.flatMap(d => d.cumWins), 10);
+  const winsStep = Math.max(1, Math.ceil(maxWins / 10 / 5) * 5);
+
+  const x = yr => pad.left + (yr / maxYear) * w;
+  const y = wins => pad.top + h - (wins / maxWins) * h;
+
+  // Grid (horizontal)
+  ctx.strokeStyle = '#0e0e14';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= maxWins; i += winsStep) {
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y(i));
+    ctx.lineTo(pad.left + w, y(i));
+    ctx.stroke();
+    ctx.fillStyle = '#333';
+    ctx.font = '12px IBM Plex Mono';
+    ctx.textAlign = 'right';
+    ctx.fillText(i, pad.left - 10, y(i) + 4);
+  }
+  // Grid (vertical)
+  for (let i = 0; i <= maxYear; i += 1) {
+    ctx.beginPath();
+    ctx.moveTo(x(i), pad.top);
+    ctx.lineTo(x(i), pad.top + h);
+    ctx.stroke();
+    if (i % 2 === 0 || i === 1) {
+      ctx.fillStyle = '#333';
+      ctx.font = '12px IBM Plex Mono';
+      ctx.textAlign = 'center';
+      ctx.fillText('Y' + (i + 1), x(i), pad.top + h + 24);
+    }
+  }
+
+  // Axis labels
+  ctx.fillStyle = '#333';
+  ctx.font = '11px IBM Plex Mono';
+  ctx.textAlign = 'center';
+  ctx.fillText('YEARS IN F1', pad.left + w / 2, pad.top + h + 50);
+  ctx.save();
+  ctx.translate(16, pad.top + h / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('CUMULATIVE WINS', 0, 0);
+  ctx.restore();
+
+  // Lines（3本）
+  drivers.forEach(d => {
+    if (!d.cumWins || d.cumWins.length === 0) return;
+    ctx.strokeStyle = d.color;
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    d.cumWins.forEach((v, i) => {
+      const px = x(i);
+      const py = y(v);
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    });
+    ctx.stroke();
+
+    const lastI = d.cumWins.length - 1;
+    const lastX = x(lastI);
+    const lastY = y(d.cumWins[lastI]);
+    ctx.fillStyle = d.color;
+    ctx.font = '600 14px IBM Plex Mono';
+    ctx.textAlign = 'left';
+    ctx.fillText(d.code, lastX + 8, lastY + 5);
+    ctx.beginPath();
+    ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
+    ctx.fillStyle = d.color;
+    ctx.fill();
+  });
+})();
+</script>
+</body>
+</html>

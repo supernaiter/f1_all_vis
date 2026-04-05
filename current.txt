@@ -1,5 +1,5 @@
 project: Motorsports-Visualised
-updated: 2026-04-05 (pSEO TYPE-A/E/F 追加)
+updated: 2026-04-05 (pSEO TYPE-C 3者比較 全展開)
 
 goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 
@@ -24,6 +24,12 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
 - ビルド成功: 3390ページ、エラー0
 - Cloudflare Pagesデプロイ完了: https://8525b2d9.motorsports-visualised.pages.dev
 - OpenF1依存カード（braking/corner/overtake）はPENDING表示のまま
+- pSEO 2.0 Phase 3完了: TYPE-C 22C3=1,540トリプル × 2種(career_arc/lifetime)=3,080ページ全展開（キュレーションなし）
+- scripts/driver_triple_generator.py 作成、master.jsonに2026不足7名追加(HAD/STR/COL/BEA/LAW/LIN/BOR)
+- data.ts: listDriverTriples/loadDriverTriple追加
+- site/src/pages/compare/drivers-triple/[triple]/{career-arc,lifetime}.astro 作成
+- ビルド成功: 6,470ページ (3,390 → 6,470、+3,080)
+- Cloudflare Pagesデプロイ完了: https://e7c18eff.motorsports-visualised.pages.dev
 
 [次のアクション]
 - mainにマージ

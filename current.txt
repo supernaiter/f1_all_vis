@@ -9,6 +9,9 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
 - pipeline.sh作成済: export→H2H→(optional)buildの一括実行
 - サイトビルド成功（676ページ、R01+R02+R03）
 - ブランチ harness/2026-03-31-r03-pipeline にコミット済
+- pSEO 2.0 Phase 0貫通: TYPE-B Career Arc 3ペア自動生成成功（743ページ）
+- data.ts: listDriverPairs/loadDriverCompare追加
+- site/src/pages/compare/drivers/[pair]/career-arc.astro 作成
 
 [次のアクション]
 - mainにマージ

@@ -149,6 +149,172 @@ td{padding:8px 10px;border-bottom:1px solid #111}
     });
   }
 
+  // サーキット形状正規化ヘルパー: outline配列を canvas座標に変換
+  function fitOutline(outline, targetW, targetH, marginX, marginY) {
+    if (!outline || !outline.length) return null;
+    const xs = outline.map(p => p.x).filter(v => v != null);
+    const ys = outline.map(p => p.y).filter(v => v != null);
+    if (!xs.length || !ys.length) return null;
+    const minX = Math.min(...xs), maxX = Math.max(...xs);
+    const minY = Math.min(...ys), maxY = Math.max(...ys);
+    const rx = (targetW - marginX * 2) / Math.max(1, maxX - minX);
+    const ry = (targetH - marginY * 2) / Math.max(1, maxY - minY);
+    const r = Math.min(rx, ry);
+    const ox = marginX + ((targetW - marginX * 2) - (maxX - minX) * r) / 2;
+    const oy = marginY + ((targetH - marginY * 2) - (maxY - minY) * r) / 2;
+    return { project: (x, y) => [ox + (x - minX) * r, oy + (maxY - y) * r], minX, maxX, minY, maxY, r };
+  }
+
+  if (cardType === 'braking-point') {
+    const proj = fitOutline(data.outline, W, H - pad.b, 40, 40);
+    if (!proj) return;
+    // outline
+    ctx.strokeStyle = '#252525'; ctx.lineWidth = 2; ctx.beginPath();
+    data.outline.forEach((p, i) => {
+      if (p.x == null || p.y == null) return;
+      const [px, py] = proj.project(p.x, p.y);
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    });
+    ctx.stroke();
+    // corners
+    data.corners.forEach(c => {
+      if (c.x == null || c.y == null) return;
+      const [px, py] = proj.project(c.x, c.y);
+      ctx.fillStyle = '#444'; ctx.beginPath(); ctx.arc(px, py, 4, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#666'; ctx.font = '10px "IBM Plex Mono"'; ctx.textAlign = 'center';
+      ctx.fillText(c.name_approx, px, py - 8);
+    });
+    // braking dots per driver (spread around each corner by driver index)
+    data.drivers.forEach((d, di) => {
+      (d.braking_points || []).forEach(bp => {
+        const c = data.corners.find(cc => cc.id === bp.corner_id);
+        if (!c || c.x == null) return;
+        const [px, py] = proj.project(c.x, c.y);
+        // offset ring based on time_to_apex (earlier brake = larger ring)
+        const ring = 8 + (bp.time_to_apex_s || 0) * 4 + di * 0.8;
+        ctx.strokeStyle = d.color; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(px, py, ring, 0, Math.PI * 2); ctx.stroke();
+      });
+    });
+    // legend (top drivers)
+    data.drivers.slice(0, 10).forEach((d, i) => {
+      const y = pad.t + 10 + i * 16;
+      ctx.fillStyle = d.color; ctx.fillRect(W - pad.r - 64, y, 10, 10);
+      ctx.fillStyle = '#aaa'; ctx.font = '11px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      ctx.fillText(d.code, W - pad.r - 50, y + 9);
+    });
+  }
+
+  if (cardType === 'corner-speed') {
+    // レーダーチャート: コーナーを角度、最低速度を半径
+    const cornerLabels = data.corners || [];
+    const N = cornerLabels.length;
+    if (N === 0) return;
+    const cx = W / 2, cy = H / 2 - 10;
+    const R = Math.min(W, H - pad.t - pad.b) / 2 - 60;
+    // gather all speed values for scaling
+    const all = data.drivers.flatMap(d => (d.min_speeds || []).filter(v => v != null));
+    if (!all.length) return;
+    const maxV = Math.max(...all), minV = Math.max(0, Math.min(...all) - 20);
+    // grid rings
+    ctx.strokeStyle = '#1a1a1a';
+    for (let ring = 1; ring <= 4; ring++) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, (R * ring) / 4, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    // axis lines + labels
+    for (let i = 0; i < N; i++) {
+      const ang = (i / N) * Math.PI * 2 - Math.PI / 2;
+      const lx = cx + Math.cos(ang) * R, ly = cy + Math.sin(ang) * R;
+      ctx.strokeStyle = '#151515';
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(lx, ly); ctx.stroke();
+      ctx.fillStyle = '#555'; ctx.font = '10px "IBM Plex Mono"'; ctx.textAlign = 'center';
+      ctx.fillText(cornerLabels[i], cx + Math.cos(ang) * (R + 14), cy + Math.sin(ang) * (R + 14) + 4);
+    }
+    // polygons per driver (top 5)
+    data.drivers.slice(0, 5).forEach((d, di) => {
+      ctx.strokeStyle = d.color; ctx.lineWidth = 2;
+      ctx.fillStyle = d.color + '15';
+      ctx.beginPath();
+      let started = false;
+      for (let i = 0; i < N; i++) {
+        const v = (d.min_speeds || [])[i];
+        if (v == null) continue;
+        const ang = (i / N) * Math.PI * 2 - Math.PI / 2;
+        const r = ((v - minV) / Math.max(1, maxV - minV)) * R;
+        const px = cx + Math.cos(ang) * r, py = cy + Math.sin(ang) * r;
+        if (!started) { ctx.moveTo(px, py); started = true; } else { ctx.lineTo(px, py); }
+      }
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+      // legend
+      const ly = pad.t + 10 + di * 18;
+      ctx.fillStyle = d.color; ctx.fillRect(pad.l, ly, 12, 12);
+      ctx.fillStyle = '#aaa'; ctx.font = '12px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      ctx.fillText(d.code + ' ' + (d.team || ''), pad.l + 18, ly + 11);
+    });
+    ctx.fillStyle = '#444'; ctx.font = '10px "IBM Plex Mono"'; ctx.textAlign = 'left';
+    ctx.fillText('apex km/h ' + Math.round(minV) + '–' + Math.round(maxV), pad.l, H - pad.b + 20);
+  }
+
+  if (cardType === 'overtake-replay') {
+    const proj = fitOutline(data.outline, W, H - pad.b - 60, 40, 40);
+    if (!proj) return;
+    // outline
+    ctx.strokeStyle = '#252525'; ctx.lineWidth = 2; ctx.beginPath();
+    data.outline.forEach((p, i) => {
+      if (p.x == null || p.y == null) return;
+      const [px, py] = proj.project(p.x, p.y);
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    });
+    ctx.stroke();
+
+    const palette = ['#e80020', '#39b54a', '#3BA3E0'];
+    (data.overtakes || []).slice(0, 3).forEach((ot, i) => {
+      const col = palette[i];
+      // attacker trace
+      ctx.strokeStyle = ot.attacker.color; ctx.lineWidth = 3;
+      ctx.beginPath();
+      (ot.attacker.trace || []).forEach((p, j) => {
+        if (p.x == null || p.y == null) return;
+        const [px, py] = proj.project(p.x, p.y);
+        if (j === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      });
+      ctx.stroke();
+      // defender trace (dashed)
+      ctx.strokeStyle = ot.defender.color; ctx.lineWidth = 2;
+      ctx.setLineDash([6, 4]);
+      ctx.beginPath();
+      (ot.defender.trace || []).forEach((p, j) => {
+        if (p.x == null || p.y == null) return;
+        const [px, py] = proj.project(p.x, p.y);
+        if (j === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      });
+      ctx.stroke();
+      ctx.setLineDash([]);
+      // final dots
+      const aLast = (ot.attacker.trace || []).slice(-1)[0];
+      const dLast = (ot.defender.trace || []).slice(-1)[0];
+      if (aLast && aLast.x != null) {
+        const [px, py] = proj.project(aLast.x, aLast.y);
+        ctx.fillStyle = ot.attacker.color; ctx.beginPath(); ctx.arc(px, py, 7, 0, Math.PI * 2); ctx.fill();
+      }
+      if (dLast && dLast.x != null) {
+        const [px, py] = proj.project(dLast.x, dLast.y);
+        ctx.fillStyle = ot.defender.color; ctx.beginPath(); ctx.arc(px, py, 7, 0, Math.PI * 2); ctx.fill();
+      }
+    });
+    // list
+    (data.overtakes || []).slice(0, 3).forEach((ot, i) => {
+      const y = H - pad.b - 40 + i * 16;
+      ctx.fillStyle = ot.attacker.color; ctx.font = 'bold 13px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      ctx.fillText(ot.attacker.code, pad.l, y);
+      ctx.fillStyle = '#666'; ctx.fillText('>', pad.l + 48, y);
+      ctx.fillStyle = ot.defender.color; ctx.fillText(ot.defender.code, pad.l + 64, y);
+      ctx.fillStyle = '#888'; ctx.fillText('→ P' + ot.new_pos, pad.l + 120, y);
+    });
+  }
+
   if (cardType === 'what-if') {
     const drivers = data.drivers.slice(0, 12);
     const maxLoss = Math.max(...drivers.map(d => d.pit_loss_sum)) || 1;

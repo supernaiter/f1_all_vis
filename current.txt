@@ -12,6 +12,11 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
 - pSEO 2.0 Phase 0貫通: TYPE-B Career Arc 3ペア自動生成成功（743ページ）
 - data.ts: listDriverPairs/loadDriverCompare追加
 - site/src/pages/compare/drivers/[pair]/career-arc.astro 作成
+- pSEO 2.0 Phase 1完了: 歴代30ドライバー×435ペア×4種(career_arc/h2h_sim/lifetime/milestone)=1740 JSON自動生成
+- scripts/driver_compare_generator.py作成（master.json + pairsを一括生成）
+- site/src/pages/compare/drivers/[pair]/{h2h-sim,lifetime,milestone}.astro 作成
+- ビルド成功: 2480ページ（drivers配下1740 HTML含む）、エラー0
+- スラッグは辞書順正規化（sen-vs-ver, ham-vs-msc 等）
 
 [次のアクション]
 - mainにマージ

@@ -1,0 +1,170 @@
+---
+import { listGPsWithCards, loadCardData, CARD_TYPES } from '../../../lib/data';
+
+export function getStaticPaths() {
+  const paths: any[] = [];
+  for (const gp of listGPsWithCards()) {
+    for (const card of CARD_TYPES) {
+      const data = loadCardData(gp.dir_name, card);
+      if (!data) continue;
+      paths.push({
+        params: { gp: gp.slug, card },
+        props: { data, gpName: gp.gp_name, round: gp.round, year: gp.year },
+      });
+    }
+  }
+  return paths;
+}
+
+const { gp, card } = Astro.params;
+const { data, gpName, round, year } = Astro.props;
+const titleMap: Record<string, string> = {
+  'lap1-delta': 'LAP 1 POSITION DELTA',
+  'tyre-cliff': 'TYRE CLIFF',
+  'pace-variance': 'PACE VARIANCE',
+  'what-if': 'WHAT IF — PIT LOSS',
+  'braking-point': 'BRAKING POINT',
+  'corner-speed': 'CORNER SPEED',
+  'overtake-replay': 'OVERTAKE REPLAY',
+};
+const title = titleMap[card as string] || (card as string).toUpperCase();
+const subtitle = `${year} · R${String(round).padStart(2, '0')} ${gpName.toUpperCase()}`;
+const payload = JSON.stringify(data);
+const pending = data.status === 'pending';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{title} — {subtitle} — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace;color:#e0e0e0}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#6a6a6a;text-transform:uppercase;margin-top:6px}
+.body{margin-top:36px}
+.pending{display:flex;align-items:center;justify-content:center;height:820px;border:1px dashed #252525;color:#4a4a4a;font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.1em}
+canvas{display:block}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:8px 10px;border-bottom:1px solid #111}
+.code{font-family:'Bebas Neue',sans-serif;font-size:22px}
+.pos{color:#39b54a;font-weight:600}
+.neg{color:#e80020;font-weight:600}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">{title}</div>
+  <div class="sub">{subtitle}</div>
+  <div class="body">
+    {pending ? (
+      <div class="pending">DATA PENDING — OPENF1 INTEGRATION REQUIRED</div>
+    ) : (
+      <canvas id="chart" width="968" height="820"></canvas>
+    )}
+  </div>
+</div>
+<script type="application/json" id="payload" set:html={payload}></script>
+<script is:inline define:vars={{ cardType: card }}>
+(() => {
+  const data = JSON.parse(document.getElementById('payload').textContent);
+  if (data.status === 'pending') return;
+  const canvas = document.getElementById('chart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const pad = { t: 20, r: 40, b: 60, l: 60 };
+
+  function drawGrid(rows) {
+    ctx.strokeStyle = '#0e0e14';
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= rows; i++) {
+      const y = pad.t + (i / rows) * (H - pad.t - pad.b);
+      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
+    }
+  }
+
+  if (cardType === 'lap1-delta') {
+    const rows = data.drivers.slice(0, 20);
+    const rowH = (H - pad.t - pad.b) / rows.length;
+    const maxD = 8;
+    const midX = (pad.l + W - pad.r) / 2;
+    ctx.strokeStyle = '#252525'; ctx.beginPath(); ctx.moveTo(midX, pad.t); ctx.lineTo(midX, H - pad.b); ctx.stroke();
+    rows.forEach((d, i) => {
+      const cy = pad.t + (i + 0.5) * rowH;
+      const pct = Math.max(-1, Math.min(1, d.delta / maxD));
+      const cx = midX + pct * ((W - pad.r - midX) * 0.9);
+      const color = d.delta > 0 ? '#39b54a' : d.delta < 0 ? '#e80020' : '#555';
+      ctx.fillStyle = '#e0e0e0'; ctx.font = 'bold 20px "Bebas Neue"'; ctx.textAlign = 'right';
+      ctx.fillText(d.code, pad.l + 40, cy + 7);
+      ctx.beginPath(); ctx.arc(cx, cy, 14, 0, Math.PI * 2);
+      ctx.fillStyle = color + '33'; ctx.fill();
+      ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
+      ctx.fillStyle = color; ctx.font = 'bold 13px "IBM Plex Mono"';
+      ctx.textAlign = d.delta >= 0 ? 'left' : 'right';
+      ctx.fillText((d.delta > 0 ? '+' : '') + d.delta, cx + (d.delta >= 0 ? 20 : -20), cy + 5);
+    });
+  }
+
+  if (cardType === 'tyre-cliff') {
+    const drivers = data.drivers.slice(0, 8);
+    if (!drivers.length) return;
+    const allTimes = drivers.flatMap(d => d.times);
+    const minT = Math.min(...allTimes), maxT = Math.max(...allTimes);
+    const maxLaps = Math.max(...drivers.map(d => d.laps.length));
+    drawGrid(6);
+    const palette = ['#E07800','#DC0000','#2B5DAB','#00B89F','#1B7A5A','#3BA3E0','#4A72CC','#0078AA'];
+    drivers.forEach((d, i) => {
+      const c = palette[i % palette.length];
+      ctx.strokeStyle = c; ctx.lineWidth = 2; ctx.beginPath();
+      d.ma.forEach((t, j) => {
+        const x = pad.l + (j / Math.max(1, maxLaps - 1)) * (W - pad.l - pad.r);
+        const y = pad.t + ((t - minT) / (maxT - minT)) * (H - pad.t - pad.b);
+        if (j === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+      ctx.fillStyle = c; ctx.font = '11px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      ctx.fillText(d.code, W - pad.r + 5, pad.t + 15 + i * 14);
+    });
+  }
+
+  if (cardType === 'pace-variance') {
+    const teams = data.teams;
+    const maxStd = Math.max(...teams.map(t => t.stdev)) || 1;
+    const barH = (H - pad.t - pad.b) / teams.length * 0.75;
+    teams.forEach((t, i) => {
+      const y = pad.t + i * ((H - pad.t - pad.b) / teams.length);
+      const len = (t.stdev / maxStd) * (W - pad.l - pad.r - 200);
+      ctx.fillStyle = t.color;
+      ctx.fillRect(pad.l + 160, y + 5, len, barH);
+      ctx.fillStyle = '#e0e0e0'; ctx.font = 'bold 14px "IBM Plex Mono"'; ctx.textAlign = 'right';
+      ctx.fillText(t.team.toUpperCase(), pad.l + 150, y + barH - 2);
+      ctx.fillStyle = '#888'; ctx.font = '11px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      ctx.fillText('σ=' + t.stdev.toFixed(3) + 's  med=' + t.median.toFixed(2), pad.l + 160 + len + 8, y + barH - 2);
+    });
+  }
+
+  if (cardType === 'what-if') {
+    const drivers = data.drivers.slice(0, 12);
+    const maxLoss = Math.max(...drivers.map(d => d.pit_loss_sum)) || 1;
+    const barH = (H - pad.t - pad.b) / drivers.length * 0.7;
+    drivers.forEach((d, i) => {
+      const y = pad.t + i * ((H - pad.t - pad.b) / drivers.length);
+      const len = (d.pit_loss_sum / maxLoss) * (W - pad.l - pad.r - 160);
+      ctx.fillStyle = '#4A72CC';
+      ctx.fillRect(pad.l + 100, y + 5, len, barH);
+      ctx.fillStyle = '#e0e0e0'; ctx.font = 'bold 20px "Bebas Neue"'; ctx.textAlign = 'right';
+      ctx.fillText(d.code, pad.l + 90, y + barH + 2);
+      ctx.fillStyle = '#888'; ctx.font = '12px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      ctx.fillText('+' + d.pit_loss_sum.toFixed(1) + 's', pad.l + 100 + len + 8, y + barH + 2);
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -192,6 +192,34 @@ export const TEAM_SHORT: Record<string, string> = {
   'Audi': 'AUD', 'Cadillac': 'CAD',
 };
 
+/**
+ * ドライバー2者比較: ペア一覧
+ * data/drivers/pairs/ 配下のディレクトリ名を返す
+ */
+export function listDriverPairs(): string[] {
+  const dir = path.join(DATA_ROOT, 'drivers', 'pairs');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true })
+    .filter(e => e.isDirectory())
+    .map(e => e.name)
+    .sort();
+}
+
+export interface DriverCompareCareerArc {
+  driver1: { code: string; name: string; color: string; cumWins: number[]; cumPts: number[]; debut: number };
+  driver2: { code: string; name: string; color: string; cumWins: number[]; cumPts: number[]; debut: number };
+}
+
+/**
+ * ドライバー比較データ読み込み
+ * data/drivers/pairs/{pair}/{type}.json を読む
+ */
+export function loadDriverCompare(pair: string, type: string): any | null {
+  const p = path.join(DATA_ROOT, 'drivers', 'pairs', pair, `${type}.json`);
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
 // F1公式ドライバーヘッドショット（開発用・一時利用）
 const F1_IMG_BASE = 'https://media.formula1.com/image/upload/c_thumb,g_face,w_440,h_440/q_auto/v1740000001/common/f1/2025';
 export const DRIVER_HEADSHOTS: Record<string, string> = {

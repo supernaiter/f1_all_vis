@@ -1,0 +1,119 @@
+---
+import { listCircuitPairs, loadCircuitCompare, type CircuitRadarData } from '../../../../lib/data';
+
+export function getStaticPaths() {
+  return listCircuitPairs()
+    .filter(pair => loadCircuitCompare(pair, 'radar') !== null)
+    .map(pair => ({
+      params: { pair },
+      props: { data: loadCircuitCompare(pair, 'radar') as CircuitRadarData },
+    }));
+}
+
+const { pair } = Astro.params;
+const { data } = Astro.props;
+const { circuit1, circuit2 } = data;
+const title = `${circuit1.name} vs ${circuit2.name} — Circuit Radar`;
+const payload = JSON.stringify(data);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{title} — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:16px;display:block}
+.legend{display:flex;gap:32px;justify-content:center;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:13px}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend .swatch{width:24px;height:4px;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">CIRCUIT COMPARISON</div>
+  <div class="sub">{data.meta.subtitle}</div>
+  <canvas id="chart" width="968" height="860"></canvas>
+  <div class="legend">
+    <span><div class="swatch" style={`background:${circuit1.color}`}></div><span style={`color:${circuit1.color}`}>{circuit1.name}</span></span>
+    <span><div class="swatch" style={`background:${circuit2.color}`}></div><span style={`color:${circuit2.color}`}>{circuit2.name}</span></span>
+  </div>
+</div>
+<script type="application/json" id="payload" set:html={payload}></script>
+<script is:inline>
+(() => {
+  const data = JSON.parse(document.getElementById('payload').textContent);
+  const axes = data.axes;
+  const circuits = [data.circuit1, data.circuit2];
+  const canvas = document.getElementById('chart');
+  const ctx = canvas.getContext('2d');
+
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2 + 10;
+  const maxR = 320;
+  const levels = 5;
+
+  // Grid rings
+  for (let l = 1; l <= levels; l++) {
+    const r = (l / levels) * maxR;
+    ctx.beginPath();
+    for (let i = 0; i <= axes.length; i++) {
+      const angle = (Math.PI * 2 * (i % axes.length)) / axes.length - Math.PI / 2;
+      const px = cx + r * Math.cos(angle);
+      const py = cy + r * Math.sin(angle);
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1; ctx.stroke();
+  }
+
+  // Axis lines + labels
+  axes.forEach((label, i) => {
+    const angle = (Math.PI * 2 * i) / axes.length - Math.PI / 2;
+    const ex = cx + maxR * Math.cos(angle);
+    const ey = cy + maxR * Math.sin(angle);
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(ex, ey);
+    ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1; ctx.stroke();
+
+    const lx = cx + (maxR + 32) * Math.cos(angle);
+    const ly = cy + (maxR + 32) * Math.sin(angle);
+    ctx.fillStyle = '#555';
+    ctx.font = '600 12px IBM Plex Mono';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label, lx, ly);
+  });
+
+  // Circuit polygons
+  circuits.forEach(c => {
+    ctx.beginPath();
+    c.values.forEach((v, i) => {
+      const angle = (Math.PI * 2 * i) / axes.length - Math.PI / 2;
+      const r = (v / 100) * maxR;
+      const px = cx + r * Math.cos(angle);
+      const py = cy + r * Math.sin(angle);
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    });
+    ctx.closePath();
+    ctx.fillStyle = c.color + '22'; ctx.fill();
+    ctx.strokeStyle = c.color; ctx.lineWidth = 2.5; ctx.stroke();
+
+    c.values.forEach((v, i) => {
+      const angle = (Math.PI * 2 * i) / axes.length - Math.PI / 2;
+      const r = (v / 100) * maxR;
+      ctx.beginPath();
+      ctx.arc(cx + r * Math.cos(angle), cy + r * Math.sin(angle), 5, 0, Math.PI * 2);
+      ctx.fillStyle = c.color; ctx.fill();
+    });
+  });
+})();
+</script>
+</body>
+</html>

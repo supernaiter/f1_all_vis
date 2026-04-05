@@ -1,0 +1,57 @@
+{
+  "driver1": {
+    "code": "RIC",
+    "name": "Ricciardo",
+    "color": "#fcd700",
+    "birth_year": 1989,
+    "debut_year": 2011,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (HRT)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (CANADA 2014)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "RED BULL PEAK",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "birth_year": 1977,
+    "debut_year": 2002,
+    "last_year": 2008,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "FIRST PODIUM (USA 2004)",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "LEAVES F1",
+        "type": "career"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "elo": 1960,
+    "strengths": {
+      "wet": 84,
+      "quali": 83,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 82
+    }
+  },
+  "driver2": {
+    "code": "NOR",
+    "name": "Norris",
+    "color": "#ff8000",
+    "elo": 2070,
+    "strengths": {
+      "wet": 86,
+      "quali": 90,
+      "racecraft": 87,
+      "consistency": 88,
+      "tyre": 85
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 35,
+      "right": 65
+    }
+  }
+}

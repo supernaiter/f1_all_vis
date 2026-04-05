@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "HAM",
+    "name": "Hamilton",
+    "color": "#27f4d2",
+    "elo": 2200,
+    "strengths": {
+      "wet": 97,
+      "quali": 96,
+      "racecraft": 93,
+      "consistency": 91,
+      "tyre": 90
+    }
+  },
+  "driver2": {
+    "code": "RUS",
+    "name": "Russell",
+    "color": "#27f4d2",
+    "elo": 2020,
+    "strengths": {
+      "wet": 84,
+      "quali": 89,
+      "racecraft": 84,
+      "consistency": 87,
+      "tyre": 83
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 52,
+      "right": 48
+    },
+    "race": {
+      "left": 52,
+      "right": 48
+    },
+    "win_prob_20r": {
+      "left": 74,
+      "right": 26
+    }
+  }
+}

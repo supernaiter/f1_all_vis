@@ -1,0 +1,67 @@
+{
+  "driver1": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "birth_year": 1996,
+    "debut_year": 2017,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (TORO ROSSO)",
+        "type": "debut"
+      },
+      {
+        "age": 24,
+        "label": "SHOCK WIN AT MONZA",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "ALPINE MOVE",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "MAS",
+    "name": "Massa",
+    "color": "#e80020",
+    "birth_year": 1981,
+    "debut_year": 2002,
+    "last_year": 2017,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (SAUBER)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FERRARI PROMOTION",
+        "type": "career"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (TURKEY 2006)",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "LOST TITLE BY 1 POINT",
+        "type": "life"
+      },
+      {
+        "age": 28,
+        "label": "HUNGARY ACCIDENT",
+        "type": "life"
+      },
+      {
+        "age": 36,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

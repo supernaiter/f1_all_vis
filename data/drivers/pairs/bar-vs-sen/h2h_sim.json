@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BAR",
+    "name": "Barrichello",
+    "color": "#e80020",
+    "elo": 2020,
+    "strengths": {
+      "wet": 87,
+      "quali": 85,
+      "racecraft": 86,
+      "consistency": 88,
+      "tyre": 86
+    }
+  },
+  "driver2": {
+    "code": "SEN",
+    "name": "Senna",
+    "color": "#ffd700",
+    "elo": 2175,
+    "strengths": {
+      "wet": 99,
+      "quali": 98,
+      "racecraft": 94,
+      "consistency": 85,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 29,
+      "right": 71
+    }
+  }
+}

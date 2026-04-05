@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "MAS",
+    "name": "Massa",
+    "color": "#e80020",
+    "elo": 2030,
+    "strengths": {
+      "wet": 85,
+      "quali": 88,
+      "racecraft": 85,
+      "consistency": 85,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "PIQ",
+    "name": "Piquet",
+    "color": "#1e41ff",
+    "elo": 2140,
+    "strengths": {
+      "wet": 88,
+      "quali": 93,
+      "racecraft": 90,
+      "consistency": 88,
+      "tyre": 89
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 35,
+      "right": 65
+    }
+  }
+}

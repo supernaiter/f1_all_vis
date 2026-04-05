@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALB",
+    "name": "Albon",
+    "color": "#005bbb",
+    "elo": 1970,
+    "strengths": {
+      "wet": 83,
+      "quali": 84,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "elo": 1960,
+    "strengths": {
+      "wet": 84,
+      "quali": 83,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 82
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 50,
+      "right": 50
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 51,
+      "right": 49
+    }
+  }
+}

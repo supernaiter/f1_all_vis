@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 97,
+      "racecraft": 93,
+      "consistency": 94,
+      "tyre": 92
+    }
+  },
+  "driver2": {
+    "code": "ROS",
+    "name": "Rosberg",
+    "color": "#27f4d2",
+    "elo": 2030,
+    "strengths": {
+      "wet": 83,
+      "quali": 91,
+      "racecraft": 85,
+      "consistency": 88,
+      "tyre": 85
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 52,
+      "right": 48
+    },
+    "race": {
+      "left": 52,
+      "right": 48
+    },
+    "win_prob_20r": {
+      "left": 70,
+      "right": 30
+    }
+  }
+}

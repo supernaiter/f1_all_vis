@@ -1,0 +1,57 @@
+{
+  "driver1": {
+    "code": "ANT",
+    "name": "Antonelli",
+    "color": "#27f4d2",
+    "birth_year": 2006,
+    "debut_year": 2025,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 18,
+        "label": "F1 DEBUT (MERCEDES)",
+        "type": "debut"
+      },
+      {
+        "age": 19,
+        "label": "FIRST PODIUM",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "birth_year": 1936,
+    "debut_year": 1960,
+    "last_year": 1968,
+    "career_events": [
+      {
+        "age": 24,
+        "label": "F1 DEBUT (LOTUS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (BELGIUM 1962)",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "FIRST TITLE",
+        "type": "title"
+      },
+      {
+        "age": 29,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 32,
+        "label": "DEATH AT HOCKENHEIM",
+        "type": "life"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "HUL",
+    "name": "Hulkenberg",
+    "color": "#52e252",
+    "elo": 1970,
+    "strengths": {
+      "wet": 85,
+      "quali": 87,
+      "racecraft": 82,
+      "consistency": 83,
+      "tyre": 80
+    }
+  },
+  "driver2": {
+    "code": "RUS",
+    "name": "Russell",
+    "color": "#27f4d2",
+    "elo": 2020,
+    "strengths": {
+      "wet": 84,
+      "quali": 89,
+      "racecraft": 84,
+      "consistency": 87,
+      "tyre": 83
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 43,
+      "right": 57
+    }
+  }
+}

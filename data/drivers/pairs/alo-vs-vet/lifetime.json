@@ -1,0 +1,102 @@
+{
+  "driver1": {
+    "code": "ALO",
+    "name": "Alonso",
+    "color": "#00665f",
+    "birth_year": 1981,
+    "debut_year": 2001,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 19,
+        "label": "F1 DEBUT (MINARDI)",
+        "type": "debut"
+      },
+      {
+        "age": 22,
+        "label": "FIRST WIN (HUNGARY 2003)",
+        "type": "win"
+      },
+      {
+        "age": 24,
+        "label": "WORLD CHAMPION (RENAULT)",
+        "type": "title"
+      },
+      {
+        "age": 25,
+        "label": "BACK-TO-BACK TITLES",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "MCLAREN — TIED WITH ROOKIE HAM",
+        "type": "career"
+      },
+      {
+        "age": 37,
+        "label": "LEAVES F1",
+        "type": "career"
+      },
+      {
+        "age": 40,
+        "label": "F1 RETURN (ALPINE)",
+        "type": "career"
+      },
+      {
+        "age": 43,
+        "label": "STILL RACING AGE 43",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "birth_year": 1987,
+    "debut_year": 2007,
+    "last_year": 2022,
+    "career_events": [
+      {
+        "age": 19,
+        "label": "F1 DEBUT (BMW SUBSTITUTE)",
+        "type": "debut"
+      },
+      {
+        "age": 21,
+        "label": "FIRST WIN (MONZA 2008)",
+        "type": "win"
+      },
+      {
+        "age": 23,
+        "label": "YOUNGEST CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 24,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 25,
+        "label": "THREE IN A ROW",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "FOUR STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 27,
+        "label": "FERRARI MOVE",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

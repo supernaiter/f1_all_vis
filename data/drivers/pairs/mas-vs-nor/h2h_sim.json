@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "MAS",
+    "name": "Massa",
+    "color": "#e80020",
+    "elo": 2030,
+    "strengths": {
+      "wet": 85,
+      "quali": 88,
+      "racecraft": 85,
+      "consistency": 85,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "NOR",
+    "name": "Norris",
+    "color": "#ff8000",
+    "elo": 2070,
+    "strengths": {
+      "wet": 86,
+      "quali": 90,
+      "racecraft": 87,
+      "consistency": 88,
+      "tyre": 85
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 44,
+      "right": 56
+    }
+  }
+}

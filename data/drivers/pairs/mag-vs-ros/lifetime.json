@@ -1,0 +1,57 @@
+{
+  "driver1": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "birth_year": 1992,
+    "debut_year": 2014,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT PODIUM (AUS)",
+        "type": "debut"
+      },
+      {
+        "age": 29,
+        "label": "HAAS RETURN",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "ROS",
+    "name": "Rosberg",
+    "color": "#27f4d2",
+    "birth_year": 1985,
+    "debut_year": 2006,
+    "last_year": 2016,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (WILLIAMS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (CHINA 2012)",
+        "type": "win"
+      },
+      {
+        "age": 31,
+        "label": "WORLD CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "INSTANT RETIREMENT",
+        "type": "career"
+      }
+    ]
+  }
+}

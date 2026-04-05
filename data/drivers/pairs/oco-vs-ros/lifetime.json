@@ -1,0 +1,57 @@
+{
+  "driver1": {
+    "code": "OCO",
+    "name": "Ocon",
+    "color": "#ff87bc",
+    "birth_year": 1996,
+    "debut_year": 2016,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (MANOR)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "SHOCK WIN (HUNGARY 2021)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "HAAS MOVE",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "ROS",
+    "name": "Rosberg",
+    "color": "#27f4d2",
+    "birth_year": 1985,
+    "debut_year": 2006,
+    "last_year": 2016,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (WILLIAMS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (CHINA 2012)",
+        "type": "win"
+      },
+      {
+        "age": 31,
+        "label": "WORLD CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "INSTANT RETIREMENT",
+        "type": "career"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ANT",
+    "name": "Antonelli",
+    "color": "#27f4d2",
+    "elo": 1950,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 82,
+      "consistency": 80,
+      "tyre": 80
+    }
+  },
+  "driver2": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "elo": 1960,
+    "strengths": {
+      "wet": 84,
+      "quali": 83,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 82
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 50,
+      "right": 50
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 49,
+      "right": 51
+    }
+  }
+}

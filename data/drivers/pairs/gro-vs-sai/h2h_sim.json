@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "GRO",
+    "name": "Grosjean",
+    "color": "#ffbf00",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 80,
+      "consistency": 76,
+      "tyre": 78
+    }
+  },
+  "driver2": {
+    "code": "SAI",
+    "name": "Sainz",
+    "color": "#005bbb",
+    "elo": 2000,
+    "strengths": {
+      "wet": 80,
+      "quali": 85,
+      "racecraft": 86,
+      "consistency": 88,
+      "tyre": 84
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 48,
+      "right": 52
+    },
+    "win_prob_20r": {
+      "left": 39,
+      "right": 61
+    }
+  }
+}

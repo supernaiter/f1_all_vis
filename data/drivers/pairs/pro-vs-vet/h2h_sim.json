@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "elo": 2170,
+    "strengths": {
+      "wet": 88,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 96,
+      "tyre": 95
+    }
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "elo": 2150,
+    "strengths": {
+      "wet": 88,
+      "quali": 94,
+      "racecraft": 89,
+      "consistency": 90,
+      "tyre": 87
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 50,
+      "right": 50
+    },
+    "race": {
+      "left": 52,
+      "right": 48
+    },
+    "win_prob_20r": {
+      "left": 53,
+      "right": 47
+    }
+  }
+}

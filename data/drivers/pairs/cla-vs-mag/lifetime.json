@@ -1,0 +1,62 @@
+{
+  "driver1": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "birth_year": 1936,
+    "debut_year": 1960,
+    "last_year": 1968,
+    "career_events": [
+      {
+        "age": 24,
+        "label": "F1 DEBUT (LOTUS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (BELGIUM 1962)",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "FIRST TITLE",
+        "type": "title"
+      },
+      {
+        "age": 29,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 32,
+        "label": "DEATH AT HOCKENHEIM",
+        "type": "life"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "birth_year": 1992,
+    "debut_year": 2014,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT PODIUM (AUS)",
+        "type": "debut"
+      },
+      {
+        "age": 29,
+        "label": "HAAS RETURN",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

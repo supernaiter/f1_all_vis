@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALO",
+    "name": "Alonso",
+    "color": "#00665f",
+    "elo": 2160,
+    "strengths": {
+      "wet": 96,
+      "quali": 90,
+      "racecraft": 96,
+      "consistency": 93,
+      "tyre": 94
+    }
+  },
+  "driver2": {
+    "code": "LEC",
+    "name": "Leclerc",
+    "color": "#e8002d",
+    "elo": 2050,
+    "strengths": {
+      "wet": 85,
+      "quali": 94,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 80
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 50,
+      "right": 50
+    },
+    "race": {
+      "left": 53,
+      "right": 47
+    },
+    "win_prob_20r": {
+      "left": 65,
+      "right": 35
+    }
+  }
+}

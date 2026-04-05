@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "HUL",
+    "name": "Hulkenberg",
+    "color": "#52e252",
+    "elo": 1970,
+    "strengths": {
+      "wet": 85,
+      "quali": 87,
+      "racecraft": 82,
+      "consistency": 83,
+      "tyre": 80
+    }
+  },
+  "driver2": {
+    "code": "OCO",
+    "name": "Ocon",
+    "color": "#ff87bc",
+    "elo": 1960,
+    "strengths": {
+      "wet": 82,
+      "quali": 82,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 83
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 51,
+      "right": 49
+    }
+  }
+}

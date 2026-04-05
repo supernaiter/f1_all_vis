@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "LEC",
+    "name": "Leclerc",
+    "color": "#e8002d",
+    "elo": 2050,
+    "strengths": {
+      "wet": 85,
+      "quali": 94,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 80
+    }
+  },
+  "driver2": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 82,
+      "racecraft": 85,
+      "consistency": 78,
+      "tyre": 78
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 53,
+      "right": 47
+    },
+    "race": {
+      "left": 51,
+      "right": 49
+    },
+    "win_prob_20r": {
+      "left": 68,
+      "right": 32
+    }
+  }
+}

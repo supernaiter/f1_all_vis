@@ -1,0 +1,72 @@
+{
+  "driver1": {
+    "code": "BOT",
+    "name": "Bottas",
+    "color": "#005050",
+    "birth_year": 1989,
+    "debut_year": 2013,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 23,
+        "label": "F1 DEBUT (WILLIAMS)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "MERCEDES PROMOTION",
+        "type": "career"
+      },
+      {
+        "age": 27,
+        "label": "FIRST WIN (RUSSIA 2017)",
+        "type": "win"
+      },
+      {
+        "age": 32,
+        "label": "LEAVES MERCEDES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "SEN",
+    "name": "Senna",
+    "color": "#ffd700",
+    "birth_year": 1960,
+    "debut_year": 1984,
+    "last_year": 1994,
+    "career_events": [
+      {
+        "age": 24,
+        "label": "F1 DEBUT (TOLEMAN)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (PORTUGAL 1985)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "FIRST TITLE (MCLAREN)",
+        "type": "title"
+      },
+      {
+        "age": 30,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "THIRD TITLE",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "DEATH AT IMOLA",
+        "type": "life"
+      }
+    ]
+  }
+}

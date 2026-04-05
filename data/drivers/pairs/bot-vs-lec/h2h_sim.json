@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BOT",
+    "name": "Bottas",
+    "color": "#005050",
+    "elo": 2010,
+    "strengths": {
+      "wet": 82,
+      "quali": 88,
+      "racecraft": 82,
+      "consistency": 87,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "LEC",
+    "name": "Leclerc",
+    "color": "#e8002d",
+    "elo": 2050,
+    "strengths": {
+      "wet": 85,
+      "quali": 94,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 80
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 51,
+      "right": 49
+    },
+    "win_prob_20r": {
+      "left": 44,
+      "right": 56
+    }
+  }
+}

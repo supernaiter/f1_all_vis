@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "PER",
+    "name": "Perez",
+    "color": "#1e41ff",
+    "elo": 1990,
+    "strengths": {
+      "wet": 84,
+      "quali": 82,
+      "racecraft": 86,
+      "consistency": 81,
+      "tyre": 90
+    }
+  },
+  "driver2": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "elo": 2170,
+    "strengths": {
+      "wet": 88,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 96,
+      "tyre": 95
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 47,
+      "right": 53
+    },
+    "win_prob_20r": {
+      "left": 26,
+      "right": 74
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "driver1": {
+    "code": "BAR",
+    "name": "Barrichello",
+    "color": "#e80020",
+    "birth_year": 1972,
+    "debut_year": 1993,
+    "last_year": 2011,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "JOINS FERRARI",
+        "type": "career"
+      },
+      {
+        "age": 28,
+        "label": "FIRST WIN (GERMANY 2000)",
+        "type": "win"
+      },
+      {
+        "age": 37,
+        "label": "BRAWN GP CHALLENGE",
+        "type": "career"
+      },
+      {
+        "age": 39,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "birth_year": 1987,
+    "debut_year": 2007,
+    "last_year": 2022,
+    "career_events": [
+      {
+        "age": 19,
+        "label": "F1 DEBUT (BMW SUBSTITUTE)",
+        "type": "debut"
+      },
+      {
+        "age": 21,
+        "label": "FIRST WIN (MONZA 2008)",
+        "type": "win"
+      },
+      {
+        "age": 23,
+        "label": "YOUNGEST CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 24,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 25,
+        "label": "THREE IN A ROW",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "FOUR STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 27,
+        "label": "FERRARI MOVE",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "driver1": {
+    "code": "BUT",
+    "name": "Button",
+    "color": "#ffffff",
+    "birth_year": 1980,
+    "debut_year": 2000,
+    "last_year": 2017,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (WILLIAMS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (HUNGARY 2006)",
+        "type": "win"
+      },
+      {
+        "age": 29,
+        "label": "WORLD CHAMPION (BRAWN GP)",
+        "type": "title"
+      },
+      {
+        "age": 37,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "RIC",
+    "name": "Ricciardo",
+    "color": "#fcd700",
+    "birth_year": 1989,
+    "debut_year": 2011,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (HRT)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (CANADA 2014)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "RED BULL PEAK",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

@@ -620,7 +620,12 @@ def main():
     # 435ペア × 4 JSON
     n_pairs = 0
     n_files = 0
-    for d1, d2 in combinations(drivers, 2):
+    for a, b in combinations(drivers, 2):
+        # スラッグは辞書順に正規化（ham-vs-msc, sen-vs-ver など）
+        if a['code'].lower() <= b['code'].lower():
+            d1, d2 = a, b
+        else:
+            d1, d2 = b, a
         slug = f"{d1['code'].lower()}-vs-{d2['code'].lower()}"
         pair_dir = pairs_root / slug
         pair_dir.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "elo": 1960,
+    "strengths": {
+      "wet": 84,
+      "quali": 83,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 82
+    }
+  },
+  "driver2": {
+    "code": "VER",
+    "name": "Verstappen",
+    "color": "#0600ef",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 90,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 48,
+      "right": 52
+    },
+    "win_prob_20r": {
+      "left": 22,
+      "right": 78
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "NOR",
+    "name": "Norris",
+    "color": "#ff8000",
+    "elo": 2070,
+    "strengths": {
+      "wet": 86,
+      "quali": 90,
+      "racecraft": 87,
+      "consistency": 88,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "RUS",
+    "name": "Russell",
+    "color": "#27f4d2",
+    "elo": 2020,
+    "strengths": {
+      "wet": 84,
+      "quali": 89,
+      "racecraft": 84,
+      "consistency": 87,
+      "tyre": 83
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 50,
+      "right": 50
+    },
+    "race": {
+      "left": 51,
+      "right": 49
+    },
+    "win_prob_20r": {
+      "left": 57,
+      "right": 43
+    }
+  }
+}

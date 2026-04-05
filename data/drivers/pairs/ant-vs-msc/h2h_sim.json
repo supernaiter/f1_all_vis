@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ANT",
+    "name": "Antonelli",
+    "color": "#27f4d2",
+    "elo": 1950,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 82,
+      "consistency": 80,
+      "tyre": 80
+    }
+  },
+  "driver2": {
+    "code": "MSC",
+    "name": "Schumacher",
+    "color": "#e80020",
+    "elo": 2190,
+    "strengths": {
+      "wet": 98,
+      "quali": 95,
+      "racecraft": 95,
+      "consistency": 96,
+      "tyre": 94
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 46,
+      "right": 54
+    },
+    "win_prob_20r": {
+      "left": 20,
+      "right": 80
+    }
+  }
+}

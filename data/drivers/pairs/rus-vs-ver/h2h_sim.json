@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "RUS",
+    "name": "Russell",
+    "color": "#27f4d2",
+    "elo": 2020,
+    "strengths": {
+      "wet": 84,
+      "quali": 89,
+      "racecraft": 84,
+      "consistency": 87,
+      "tyre": 83
+    }
+  },
+  "driver2": {
+    "code": "VER",
+    "name": "Verstappen",
+    "color": "#0600ef",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 90,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 48,
+      "right": 52
+    },
+    "win_prob_20r": {
+      "left": 28,
+      "right": 72
+    }
+  }
+}

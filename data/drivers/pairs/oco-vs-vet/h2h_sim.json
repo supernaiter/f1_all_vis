@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "OCO",
+    "name": "Ocon",
+    "color": "#ff87bc",
+    "elo": 1960,
+    "strengths": {
+      "wet": 82,
+      "quali": 82,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 83
+    }
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "elo": 2150,
+    "strengths": {
+      "wet": 88,
+      "quali": 94,
+      "racecraft": 89,
+      "consistency": 90,
+      "tyre": 87
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 25,
+      "right": 75
+    }
+  }
+}

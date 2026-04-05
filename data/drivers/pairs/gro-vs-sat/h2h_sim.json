@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "GRO",
+    "name": "Grosjean",
+    "color": "#ffbf00",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 80,
+      "consistency": 76,
+      "tyre": 78
+    }
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "elo": 1830,
+    "strengths": {
+      "wet": 78,
+      "quali": 78,
+      "racecraft": 82,
+      "consistency": 72,
+      "tyre": 75
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 52,
+      "right": 48
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 63,
+      "right": 37
+    }
+  }
+}

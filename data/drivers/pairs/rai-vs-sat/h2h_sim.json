@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "RAI",
+    "name": "Raikkonen",
+    "color": "#c8102e",
+    "elo": 2100,
+    "strengths": {
+      "wet": 90,
+      "quali": 88,
+      "racecraft": 88,
+      "consistency": 85,
+      "tyre": 86
+    }
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "elo": 1830,
+    "strengths": {
+      "wet": 78,
+      "quali": 78,
+      "racecraft": 82,
+      "consistency": 72,
+      "tyre": 75
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 53,
+      "right": 47
+    },
+    "race": {
+      "left": 53,
+      "right": 47
+    },
+    "win_prob_20r": {
+      "left": 83,
+      "right": 17
+    }
+  }
+}

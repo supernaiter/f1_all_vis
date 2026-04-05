@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "OCO",
+    "name": "Ocon",
+    "color": "#ff87bc",
+    "elo": 1960,
+    "strengths": {
+      "wet": 82,
+      "quali": 82,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 83
+    }
+  },
+  "driver2": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "elo": 2170,
+    "strengths": {
+      "wet": 88,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 96,
+      "tyre": 95
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 47,
+      "right": 53
+    },
+    "win_prob_20r": {
+      "left": 23,
+      "right": 77
+    }
+  }
+}

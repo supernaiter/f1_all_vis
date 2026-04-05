@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 97,
+      "racecraft": 93,
+      "consistency": 94,
+      "tyre": 92
+    }
+  },
+  "driver2": {
+    "code": "GRO",
+    "name": "Grosjean",
+    "color": "#ffbf00",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 80,
+      "consistency": 76,
+      "tyre": 78
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 54,
+      "right": 46
+    },
+    "race": {
+      "left": 54,
+      "right": 46
+    },
+    "win_prob_20r": {
+      "left": 82,
+      "right": 18
+    }
+  }
+}

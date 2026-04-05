@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "GRO",
+    "name": "Grosjean",
+    "color": "#ffbf00",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 80,
+      "consistency": 76,
+      "tyre": 78
+    }
+  },
+  "driver2": {
+    "code": "SEN",
+    "name": "Senna",
+    "color": "#ffd700",
+    "elo": 2175,
+    "strengths": {
+      "wet": 99,
+      "quali": 98,
+      "racecraft": 94,
+      "consistency": 85,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 46,
+      "right": 54
+    },
+    "race": {
+      "left": 47,
+      "right": 53
+    },
+    "win_prob_20r": {
+      "left": 19,
+      "right": 81
+    }
+  }
+}

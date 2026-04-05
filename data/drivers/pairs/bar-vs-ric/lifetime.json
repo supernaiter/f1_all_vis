@@ -1,0 +1,67 @@
+{
+  "driver1": {
+    "code": "BAR",
+    "name": "Barrichello",
+    "color": "#e80020",
+    "birth_year": 1972,
+    "debut_year": 1993,
+    "last_year": 2011,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "JOINS FERRARI",
+        "type": "career"
+      },
+      {
+        "age": 28,
+        "label": "FIRST WIN (GERMANY 2000)",
+        "type": "win"
+      },
+      {
+        "age": 37,
+        "label": "BRAWN GP CHALLENGE",
+        "type": "career"
+      },
+      {
+        "age": 39,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "RIC",
+    "name": "Ricciardo",
+    "color": "#fcd700",
+    "birth_year": 1989,
+    "debut_year": 2011,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (HRT)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (CANADA 2014)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "RED BULL PEAK",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

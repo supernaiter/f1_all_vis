@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALB",
+    "name": "Albon",
+    "color": "#005bbb",
+    "elo": 1970,
+    "strengths": {
+      "wet": 83,
+      "quali": 84,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 82,
+      "racecraft": 85,
+      "consistency": 78,
+      "tyre": 78
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 51,
+      "right": 49
+    },
+    "win_prob_20r": {
+      "left": 57,
+      "right": 43
+    }
+  }
+}

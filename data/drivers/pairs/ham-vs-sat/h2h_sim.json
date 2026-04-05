@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "HAM",
+    "name": "Hamilton",
+    "color": "#27f4d2",
+    "elo": 2200,
+    "strengths": {
+      "wet": 97,
+      "quali": 96,
+      "racecraft": 93,
+      "consistency": 91,
+      "tyre": 90
+    }
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "elo": 1830,
+    "strengths": {
+      "wet": 78,
+      "quali": 78,
+      "racecraft": 82,
+      "consistency": 72,
+      "tyre": 75
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 55,
+      "right": 45
+    },
+    "race": {
+      "left": 54,
+      "right": 46
+    },
+    "win_prob_20r": {
+      "left": 89,
+      "right": 11
+    }
+  }
+}

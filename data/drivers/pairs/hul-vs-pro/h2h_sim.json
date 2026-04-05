@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "HUL",
+    "name": "Hulkenberg",
+    "color": "#52e252",
+    "elo": 1970,
+    "strengths": {
+      "wet": 85,
+      "quali": 87,
+      "racecraft": 82,
+      "consistency": 83,
+      "tyre": 80
+    }
+  },
+  "driver2": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "elo": 2170,
+    "strengths": {
+      "wet": 88,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 96,
+      "tyre": 95
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 46,
+      "right": 54
+    },
+    "win_prob_20r": {
+      "left": 24,
+      "right": 76
+    }
+  }
+}

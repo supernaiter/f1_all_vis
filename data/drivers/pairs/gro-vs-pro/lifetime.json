@@ -1,0 +1,72 @@
+{
+  "driver1": {
+    "code": "GRO",
+    "name": "Grosjean",
+    "color": "#ffbf00",
+    "birth_year": 1986,
+    "debut_year": 2009,
+    "last_year": 2020,
+    "career_events": [
+      {
+        "age": 23,
+        "label": "F1 DEBUT (RENAULT)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "LOTUS PODIUM STREAK",
+        "type": "career"
+      },
+      {
+        "age": 34,
+        "label": "BAHRAIN FIREBALL",
+        "type": "life"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "birth_year": 1955,
+    "debut_year": 1980,
+    "last_year": 1993,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT (MCLAREN)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (FRANCE 1981)",
+        "type": "win"
+      },
+      {
+        "age": 30,
+        "label": "FIRST TITLE (MCLAREN)",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "THIRD TITLE",
+        "type": "title"
+      },
+      {
+        "age": 38,
+        "label": "FOURTH TITLE (WILLIAMS)",
+        "type": "title"
+      },
+      {
+        "age": 38,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

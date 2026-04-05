@@ -1,0 +1,72 @@
+{
+  "driver1": {
+    "code": "ROS",
+    "name": "Rosberg",
+    "color": "#27f4d2",
+    "birth_year": 1985,
+    "debut_year": 2006,
+    "last_year": 2016,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (WILLIAMS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (CHINA 2012)",
+        "type": "win"
+      },
+      {
+        "age": 31,
+        "label": "WORLD CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "INSTANT RETIREMENT",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "SEN",
+    "name": "Senna",
+    "color": "#ffd700",
+    "birth_year": 1960,
+    "debut_year": 1984,
+    "last_year": 1994,
+    "career_events": [
+      {
+        "age": 24,
+        "label": "F1 DEBUT (TOLEMAN)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (PORTUGAL 1985)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "FIRST TITLE (MCLAREN)",
+        "type": "title"
+      },
+      {
+        "age": 30,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "THIRD TITLE",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "DEATH AT IMOLA",
+        "type": "life"
+      }
+    ]
+  }
+}

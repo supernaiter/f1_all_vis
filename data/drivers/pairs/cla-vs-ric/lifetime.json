@@ -1,0 +1,67 @@
+{
+  "driver1": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "birth_year": 1936,
+    "debut_year": 1960,
+    "last_year": 1968,
+    "career_events": [
+      {
+        "age": 24,
+        "label": "F1 DEBUT (LOTUS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (BELGIUM 1962)",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "FIRST TITLE",
+        "type": "title"
+      },
+      {
+        "age": 29,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 32,
+        "label": "DEATH AT HOCKENHEIM",
+        "type": "life"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "RIC",
+    "name": "Ricciardo",
+    "color": "#fcd700",
+    "birth_year": 1989,
+    "debut_year": 2011,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (HRT)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (CANADA 2014)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "RED BULL PEAK",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "driver1": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "cumWins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "cumPts": [
+      55,
+      55,
+      62,
+      81,
+      137,
+      157,
+      158,
+      158,
+      183,
+      186
+    ],
+    "debut": 2014
+  },
+  "driver2": {
+    "code": "PIA",
+    "name": "Piastri",
+    "color": "#ff8000",
+    "cumWins": [
+      0,
+      2,
+      6,
+      7
+    ],
+    "cumPts": [
+      97,
+      389,
+      669,
+      759
+    ],
+    "debut": 2023
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BOT",
+    "name": "Bottas",
+    "color": "#005050",
+    "elo": 2010,
+    "strengths": {
+      "wet": 82,
+      "quali": 88,
+      "racecraft": 82,
+      "consistency": 87,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 82,
+      "racecraft": 85,
+      "consistency": 78,
+      "tyre": 78
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 52,
+      "right": 48
+    },
+    "race": {
+      "left": 51,
+      "right": 49
+    },
+    "win_prob_20r": {
+      "left": 63,
+      "right": 37
+    }
+  }
+}

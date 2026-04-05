@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "elo": 1830,
+    "strengths": {
+      "wet": 78,
+      "quali": 78,
+      "racecraft": 82,
+      "consistency": 72,
+      "tyre": 75
+    }
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "elo": 2150,
+    "strengths": {
+      "wet": 88,
+      "quali": 94,
+      "racecraft": 89,
+      "consistency": 90,
+      "tyre": 87
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 45,
+      "right": 55
+    },
+    "race": {
+      "left": 46,
+      "right": 54
+    },
+    "win_prob_20r": {
+      "left": 14,
+      "right": 86
+    }
+  }
+}

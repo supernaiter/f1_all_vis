@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "NOR",
+    "name": "Norris",
+    "color": "#ff8000",
+    "elo": 2070,
+    "strengths": {
+      "wet": 86,
+      "quali": 90,
+      "racecraft": 87,
+      "consistency": 88,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "RAI",
+    "name": "Raikkonen",
+    "color": "#c8102e",
+    "elo": 2100,
+    "strengths": {
+      "wet": 90,
+      "quali": 88,
+      "racecraft": 88,
+      "consistency": 85,
+      "tyre": 86
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 46,
+      "right": 54
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALB",
+    "name": "Albon",
+    "color": "#005bbb",
+    "elo": 1970,
+    "strengths": {
+      "wet": 83,
+      "quali": 84,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "MAS",
+    "name": "Massa",
+    "color": "#e80020",
+    "elo": 2030,
+    "strengths": {
+      "wet": 85,
+      "quali": 88,
+      "racecraft": 85,
+      "consistency": 85,
+      "tyre": 84
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 41,
+      "right": 59
+    }
+  }
+}

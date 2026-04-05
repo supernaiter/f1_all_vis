@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALB",
+    "name": "Albon",
+    "color": "#005bbb",
+    "elo": 1970,
+    "strengths": {
+      "wet": 83,
+      "quali": 84,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "LEC",
+    "name": "Leclerc",
+    "color": "#e8002d",
+    "elo": 2050,
+    "strengths": {
+      "wet": 85,
+      "quali": 94,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 80
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 39,
+      "right": 61
+    }
+  }
+}

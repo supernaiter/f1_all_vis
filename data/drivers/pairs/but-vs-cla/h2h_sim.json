@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BUT",
+    "name": "Button",
+    "color": "#ffffff",
+    "elo": 2040,
+    "strengths": {
+      "wet": 96,
+      "quali": 82,
+      "racecraft": 88,
+      "consistency": 89,
+      "tyre": 92
+    }
+  },
+  "driver2": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 97,
+      "racecraft": 93,
+      "consistency": 94,
+      "tyre": 92
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 46,
+      "right": 54
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 31,
+      "right": 69
+    }
+  }
+}

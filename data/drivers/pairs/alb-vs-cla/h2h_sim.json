@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALB",
+    "name": "Albon",
+    "color": "#005bbb",
+    "elo": 1970,
+    "strengths": {
+      "wet": 83,
+      "quali": 84,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 97,
+      "racecraft": 93,
+      "consistency": 94,
+      "tyre": 92
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 47,
+      "right": 53
+    },
+    "win_prob_20r": {
+      "left": 23,
+      "right": 77
+    }
+  }
+}

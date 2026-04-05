@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "HAM",
+    "name": "Hamilton",
+    "color": "#27f4d2",
+    "elo": 2200,
+    "strengths": {
+      "wet": 97,
+      "quali": 96,
+      "racecraft": 93,
+      "consistency": 91,
+      "tyre": 90
+    }
+  },
+  "driver2": {
+    "code": "VER",
+    "name": "Verstappen",
+    "color": "#0600ef",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 90,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 53,
+      "right": 47
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "MAS",
+    "name": "Massa",
+    "color": "#e80020",
+    "elo": 2030,
+    "strengths": {
+      "wet": 85,
+      "quali": 88,
+      "racecraft": 85,
+      "consistency": 85,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "SAI",
+    "name": "Sainz",
+    "color": "#005bbb",
+    "elo": 2000,
+    "strengths": {
+      "wet": 80,
+      "quali": 85,
+      "racecraft": 86,
+      "consistency": 88,
+      "tyre": 84
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 54,
+      "right": 46
+    }
+  }
+}

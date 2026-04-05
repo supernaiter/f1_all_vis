@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALB",
+    "name": "Albon",
+    "color": "#005bbb",
+    "elo": 1970,
+    "strengths": {
+      "wet": 83,
+      "quali": 84,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "GRO",
+    "name": "Grosjean",
+    "color": "#ffbf00",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 80,
+      "consistency": 76,
+      "tyre": 78
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 50,
+      "right": 50
+    },
+    "race": {
+      "left": 52,
+      "right": 48
+    },
+    "win_prob_20r": {
+      "left": 57,
+      "right": 43
+    }
+  }
+}

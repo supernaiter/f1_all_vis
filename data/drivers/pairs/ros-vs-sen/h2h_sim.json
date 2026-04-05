@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ROS",
+    "name": "Rosberg",
+    "color": "#27f4d2",
+    "elo": 2030,
+    "strengths": {
+      "wet": 83,
+      "quali": 91,
+      "racecraft": 85,
+      "consistency": 88,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "SEN",
+    "name": "Senna",
+    "color": "#ffd700",
+    "elo": 2175,
+    "strengths": {
+      "wet": 99,
+      "quali": 98,
+      "racecraft": 94,
+      "consistency": 85,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 30,
+      "right": 70
+    }
+  }
+}

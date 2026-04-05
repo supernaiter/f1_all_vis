@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "PIQ",
+    "name": "Piquet",
+    "color": "#1e41ff",
+    "elo": 2140,
+    "strengths": {
+      "wet": 88,
+      "quali": 93,
+      "racecraft": 90,
+      "consistency": 88,
+      "tyre": 89
+    }
+  },
+  "driver2": {
+    "code": "RAI",
+    "name": "Raikkonen",
+    "color": "#c8102e",
+    "elo": 2100,
+    "strengths": {
+      "wet": 90,
+      "quali": 88,
+      "racecraft": 88,
+      "consistency": 85,
+      "tyre": 86
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 51,
+      "right": 49
+    },
+    "win_prob_20r": {
+      "left": 56,
+      "right": 44
+    }
+  }
+}

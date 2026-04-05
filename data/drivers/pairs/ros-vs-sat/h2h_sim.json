@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ROS",
+    "name": "Rosberg",
+    "color": "#27f4d2",
+    "elo": 2030,
+    "strengths": {
+      "wet": 83,
+      "quali": 91,
+      "racecraft": 85,
+      "consistency": 88,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "elo": 1830,
+    "strengths": {
+      "wet": 78,
+      "quali": 78,
+      "racecraft": 82,
+      "consistency": 72,
+      "tyre": 75
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 54,
+      "right": 46
+    },
+    "race": {
+      "left": 53,
+      "right": 47
+    },
+    "win_prob_20r": {
+      "left": 76,
+      "right": 24
+    }
+  }
+}

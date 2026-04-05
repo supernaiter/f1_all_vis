@@ -1,0 +1,52 @@
+{
+  "driver1": {
+    "code": "OCO",
+    "name": "Ocon",
+    "color": "#ff87bc",
+    "birth_year": 1996,
+    "debut_year": 2016,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (MANOR)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "SHOCK WIN (HUNGARY 2021)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "HAAS MOVE",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "birth_year": 1977,
+    "debut_year": 2002,
+    "last_year": 2008,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "FIRST PODIUM (USA 2004)",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "LEAVES F1",
+        "type": "career"
+      }
+    ]
+  }
+}

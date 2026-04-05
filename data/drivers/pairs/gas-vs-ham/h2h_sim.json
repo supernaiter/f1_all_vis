@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "elo": 1960,
+    "strengths": {
+      "wet": 84,
+      "quali": 83,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 82
+    }
+  },
+  "driver2": {
+    "code": "HAM",
+    "name": "Hamilton",
+    "color": "#27f4d2",
+    "elo": 2200,
+    "strengths": {
+      "wet": 97,
+      "quali": 96,
+      "racecraft": 93,
+      "consistency": 91,
+      "tyre": 90
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 48,
+      "right": 52
+    },
+    "win_prob_20r": {
+      "left": 20,
+      "right": 80
+    }
+  }
+}

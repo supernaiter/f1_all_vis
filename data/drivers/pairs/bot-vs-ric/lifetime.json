@@ -1,0 +1,62 @@
+{
+  "driver1": {
+    "code": "BOT",
+    "name": "Bottas",
+    "color": "#005050",
+    "birth_year": 1989,
+    "debut_year": 2013,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 23,
+        "label": "F1 DEBUT (WILLIAMS)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "MERCEDES PROMOTION",
+        "type": "career"
+      },
+      {
+        "age": 27,
+        "label": "FIRST WIN (RUSSIA 2017)",
+        "type": "win"
+      },
+      {
+        "age": 32,
+        "label": "LEAVES MERCEDES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "RIC",
+    "name": "Ricciardo",
+    "color": "#fcd700",
+    "birth_year": 1989,
+    "debut_year": 2011,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (HRT)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (CANADA 2014)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "RED BULL PEAK",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "driver1": {
+    "code": "ALB",
+    "name": "Albon",
+    "color": "#005bbb",
+    "birth_year": 1996,
+    "debut_year": 2019,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 23,
+        "label": "F1 DEBUT (TORO ROSSO)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "RED BULL PROMOTION",
+        "type": "career"
+      },
+      {
+        "age": 26,
+        "label": "WILLIAMS REVIVAL",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "birth_year": 1992,
+    "debut_year": 2014,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT PODIUM (AUS)",
+        "type": "debut"
+      },
+      {
+        "age": 29,
+        "label": "HAAS RETURN",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

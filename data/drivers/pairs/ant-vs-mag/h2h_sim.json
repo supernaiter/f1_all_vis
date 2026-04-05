@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ANT",
+    "name": "Antonelli",
+    "color": "#27f4d2",
+    "elo": 1950,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 82,
+      "consistency": 80,
+      "tyre": 80
+    }
+  },
+  "driver2": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 82,
+      "racecraft": 85,
+      "consistency": 78,
+      "tyre": 78
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 54,
+      "right": 46
+    }
+  }
+}

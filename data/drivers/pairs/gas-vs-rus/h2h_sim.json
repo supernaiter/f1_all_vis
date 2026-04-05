@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "elo": 1960,
+    "strengths": {
+      "wet": 84,
+      "quali": 83,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 82
+    }
+  },
+  "driver2": {
+    "code": "RUS",
+    "name": "Russell",
+    "color": "#27f4d2",
+    "elo": 2020,
+    "strengths": {
+      "wet": 84,
+      "quali": 89,
+      "racecraft": 84,
+      "consistency": 87,
+      "tyre": 83
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 41,
+      "right": 59
+    }
+  }
+}

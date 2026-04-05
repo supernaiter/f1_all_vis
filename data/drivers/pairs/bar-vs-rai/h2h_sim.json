@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BAR",
+    "name": "Barrichello",
+    "color": "#e80020",
+    "elo": 2020,
+    "strengths": {
+      "wet": 87,
+      "quali": 85,
+      "racecraft": 86,
+      "consistency": 88,
+      "tyre": 86
+    }
+  },
+  "driver2": {
+    "code": "RAI",
+    "name": "Raikkonen",
+    "color": "#c8102e",
+    "elo": 2100,
+    "strengths": {
+      "wet": 90,
+      "quali": 88,
+      "racecraft": 88,
+      "consistency": 85,
+      "tyre": 86
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 39,
+      "right": 61
+    }
+  }
+}

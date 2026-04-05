@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "OCO",
+    "name": "Ocon",
+    "color": "#ff87bc",
+    "elo": 1960,
+    "strengths": {
+      "wet": 82,
+      "quali": 82,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 83
+    }
+  },
+  "driver2": {
+    "code": "RIC",
+    "name": "Ricciardo",
+    "color": "#fcd700",
+    "elo": 2020,
+    "strengths": {
+      "wet": 83,
+      "quali": 86,
+      "racecraft": 92,
+      "consistency": 83,
+      "tyre": 85
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 41,
+      "right": 59
+    }
+  }
+}

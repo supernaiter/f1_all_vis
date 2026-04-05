@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "RAI",
+    "name": "Raikkonen",
+    "color": "#c8102e",
+    "elo": 2100,
+    "strengths": {
+      "wet": 90,
+      "quali": 88,
+      "racecraft": 88,
+      "consistency": 85,
+      "tyre": 86
+    }
+  },
+  "driver2": {
+    "code": "RIC",
+    "name": "Ricciardo",
+    "color": "#fcd700",
+    "elo": 2020,
+    "strengths": {
+      "wet": 83,
+      "quali": 86,
+      "racecraft": 92,
+      "consistency": 83,
+      "tyre": 85
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 61,
+      "right": 39
+    }
+  }
+}

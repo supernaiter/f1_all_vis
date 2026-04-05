@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BUT",
+    "name": "Button",
+    "color": "#ffffff",
+    "elo": 2040,
+    "strengths": {
+      "wet": 96,
+      "quali": 82,
+      "racecraft": 88,
+      "consistency": 89,
+      "tyre": 92
+    }
+  },
+  "driver2": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "elo": 2170,
+    "strengths": {
+      "wet": 88,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 96,
+      "tyre": 95
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 32,
+      "right": 68
+    }
+  }
+}

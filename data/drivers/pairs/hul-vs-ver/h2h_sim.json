@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "HUL",
+    "name": "Hulkenberg",
+    "color": "#52e252",
+    "elo": 1970,
+    "strengths": {
+      "wet": 85,
+      "quali": 87,
+      "racecraft": 82,
+      "consistency": 83,
+      "tyre": 80
+    }
+  },
+  "driver2": {
+    "code": "VER",
+    "name": "Verstappen",
+    "color": "#0600ef",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 90,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 47,
+      "right": 53
+    },
+    "win_prob_20r": {
+      "left": 23,
+      "right": 77
+    }
+  }
+}

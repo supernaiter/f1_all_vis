@@ -1,0 +1,82 @@
+{
+  "driver1": {
+    "code": "HAM",
+    "name": "Hamilton",
+    "color": "#27f4d2",
+    "birth_year": 1985,
+    "debut_year": 2007,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 22,
+        "label": "F1 DEBUT (MCLAREN)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "FIRST TITLE (BRAZIL 2008)",
+        "type": "title"
+      },
+      {
+        "age": 29,
+        "label": "MERCEDES TITLE #2",
+        "type": "title"
+      },
+      {
+        "age": 30,
+        "label": "BACK-TO-BACK WITH MERC",
+        "type": "title"
+      },
+      {
+        "age": 32,
+        "label": "FOUR-TIME CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 33,
+        "label": "FIVE-TIME",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "SIX-TIME",
+        "type": "title"
+      },
+      {
+        "age": 35,
+        "label": "EQUALS SCHUMI AT 7",
+        "type": "title"
+      },
+      {
+        "age": 40,
+        "label": "FERRARI MOVE",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "birth_year": 1977,
+    "debut_year": 2002,
+    "last_year": 2008,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "FIRST PODIUM (USA 2004)",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "LEAVES F1",
+        "type": "career"
+      }
+    ]
+  }
+}

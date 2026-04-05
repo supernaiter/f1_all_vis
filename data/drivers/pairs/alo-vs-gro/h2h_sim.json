@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALO",
+    "name": "Alonso",
+    "color": "#00665f",
+    "elo": 2160,
+    "strengths": {
+      "wet": 96,
+      "quali": 90,
+      "racecraft": 96,
+      "consistency": 93,
+      "tyre": 94
+    }
+  },
+  "driver2": {
+    "code": "GRO",
+    "name": "Grosjean",
+    "color": "#ffbf00",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 80,
+      "consistency": 76,
+      "tyre": 78
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 52,
+      "right": 48
+    },
+    "race": {
+      "left": 55,
+      "right": 45
+    },
+    "win_prob_20r": {
+      "left": 80,
+      "right": 20
+    }
+  }
+}

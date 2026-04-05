@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 97,
+      "racecraft": 93,
+      "consistency": 94,
+      "tyre": 92
+    }
+  },
+  "driver2": {
+    "code": "LEC",
+    "name": "Leclerc",
+    "color": "#e8002d",
+    "elo": 2050,
+    "strengths": {
+      "wet": 85,
+      "quali": 94,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 80
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 53,
+      "right": 47
+    },
+    "win_prob_20r": {
+      "left": 68,
+      "right": 32
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "HAM",
+    "name": "Hamilton",
+    "color": "#27f4d2",
+    "elo": 2200,
+    "strengths": {
+      "wet": 97,
+      "quali": 96,
+      "racecraft": 93,
+      "consistency": 91,
+      "tyre": 90
+    }
+  },
+  "driver2": {
+    "code": "PIQ",
+    "name": "Piquet",
+    "color": "#1e41ff",
+    "elo": 2140,
+    "strengths": {
+      "wet": 88,
+      "quali": 93,
+      "racecraft": 90,
+      "consistency": 88,
+      "tyre": 89
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 51,
+      "right": 49
+    },
+    "win_prob_20r": {
+      "left": 59,
+      "right": 41
+    }
+  }
+}

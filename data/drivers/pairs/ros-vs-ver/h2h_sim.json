@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ROS",
+    "name": "Rosberg",
+    "color": "#27f4d2",
+    "elo": 2030,
+    "strengths": {
+      "wet": 83,
+      "quali": 91,
+      "racecraft": 85,
+      "consistency": 88,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "VER",
+    "name": "Verstappen",
+    "color": "#0600ef",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 90,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 50,
+      "right": 50
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 30,
+      "right": 70
+    }
+  }
+}

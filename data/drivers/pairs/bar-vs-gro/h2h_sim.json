@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BAR",
+    "name": "Barrichello",
+    "color": "#e80020",
+    "elo": 2020,
+    "strengths": {
+      "wet": 87,
+      "quali": 85,
+      "racecraft": 86,
+      "consistency": 88,
+      "tyre": 86
+    }
+  },
+  "driver2": {
+    "code": "GRO",
+    "name": "Grosjean",
+    "color": "#ffbf00",
+    "elo": 1920,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 80,
+      "consistency": 76,
+      "tyre": 78
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 53,
+      "right": 47
+    },
+    "win_prob_20r": {
+      "left": 64,
+      "right": 36
+    }
+  }
+}

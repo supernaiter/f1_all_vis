@@ -1,0 +1,92 @@
+{
+  "driver1": {
+    "code": "RAI",
+    "name": "Raikkonen",
+    "color": "#c8102e",
+    "birth_year": 1979,
+    "debut_year": 2001,
+    "last_year": 2021,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (SAUBER)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "FIRST WIN (MALAYSIA 2003)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "WORLD CHAMPION (FERRARI)",
+        "type": "title"
+      },
+      {
+        "age": 30,
+        "label": "RALLY SABBATICAL",
+        "type": "career"
+      },
+      {
+        "age": 32,
+        "label": "F1 RETURN (LOTUS)",
+        "type": "career"
+      },
+      {
+        "age": 42,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "birth_year": 1987,
+    "debut_year": 2007,
+    "last_year": 2022,
+    "career_events": [
+      {
+        "age": 19,
+        "label": "F1 DEBUT (BMW SUBSTITUTE)",
+        "type": "debut"
+      },
+      {
+        "age": 21,
+        "label": "FIRST WIN (MONZA 2008)",
+        "type": "win"
+      },
+      {
+        "age": 23,
+        "label": "YOUNGEST CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 24,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 25,
+        "label": "THREE IN A ROW",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "FOUR STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 27,
+        "label": "FERRARI MOVE",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

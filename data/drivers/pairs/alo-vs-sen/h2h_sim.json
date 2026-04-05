@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALO",
+    "name": "Alonso",
+    "color": "#00665f",
+    "elo": 2160,
+    "strengths": {
+      "wet": 96,
+      "quali": 90,
+      "racecraft": 96,
+      "consistency": 93,
+      "tyre": 94
+    }
+  },
+  "driver2": {
+    "code": "SEN",
+    "name": "Senna",
+    "color": "#ffd700",
+    "elo": 2175,
+    "strengths": {
+      "wet": 99,
+      "quali": 98,
+      "racecraft": 94,
+      "consistency": 85,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 51,
+      "right": 49
+    },
+    "win_prob_20r": {
+      "left": 48,
+      "right": 52
+    }
+  }
+}

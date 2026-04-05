@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "PIQ",
+    "name": "Piquet",
+    "color": "#1e41ff",
+    "elo": 2140,
+    "strengths": {
+      "wet": 88,
+      "quali": 93,
+      "racecraft": 90,
+      "consistency": 88,
+      "tyre": 89
+    }
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "elo": 2150,
+    "strengths": {
+      "wet": 88,
+      "quali": 94,
+      "racecraft": 89,
+      "consistency": 90,
+      "tyre": 87
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 50,
+      "right": 50
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 49,
+      "right": 51
+    }
+  }
+}

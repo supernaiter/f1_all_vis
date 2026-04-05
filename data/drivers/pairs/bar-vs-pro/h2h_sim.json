@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BAR",
+    "name": "Barrichello",
+    "color": "#e80020",
+    "elo": 2020,
+    "strengths": {
+      "wet": 87,
+      "quali": 85,
+      "racecraft": 86,
+      "consistency": 88,
+      "tyre": 86
+    }
+  },
+  "driver2": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "elo": 2170,
+    "strengths": {
+      "wet": 88,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 96,
+      "tyre": 95
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 48,
+      "right": 52
+    },
+    "win_prob_20r": {
+      "left": 30,
+      "right": 70
+    }
+  }
+}

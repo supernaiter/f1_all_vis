@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "elo": 1830,
+    "strengths": {
+      "wet": 78,
+      "quali": 78,
+      "racecraft": 82,
+      "consistency": 72,
+      "tyre": 75
+    }
+  },
+  "driver2": {
+    "code": "SEN",
+    "name": "Senna",
+    "color": "#ffd700",
+    "elo": 2175,
+    "strengths": {
+      "wet": 99,
+      "quali": 98,
+      "racecraft": 94,
+      "consistency": 85,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 45,
+      "right": 55
+    },
+    "race": {
+      "left": 46,
+      "right": 54
+    },
+    "win_prob_20r": {
+      "left": 12,
+      "right": 88
+    }
+  }
+}

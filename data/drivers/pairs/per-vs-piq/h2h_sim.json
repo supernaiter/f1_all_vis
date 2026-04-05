@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "PER",
+    "name": "Perez",
+    "color": "#1e41ff",
+    "elo": 1990,
+    "strengths": {
+      "wet": 84,
+      "quali": 82,
+      "racecraft": 86,
+      "consistency": 81,
+      "tyre": 90
+    }
+  },
+  "driver2": {
+    "code": "PIQ",
+    "name": "Piquet",
+    "color": "#1e41ff",
+    "elo": 2140,
+    "strengths": {
+      "wet": 88,
+      "quali": 93,
+      "racecraft": 90,
+      "consistency": 88,
+      "tyre": 89
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 30,
+      "right": 70
+    }
+  }
+}

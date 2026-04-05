@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "elo": 2170,
+    "strengths": {
+      "wet": 88,
+      "quali": 92,
+      "racecraft": 94,
+      "consistency": 96,
+      "tyre": 95
+    }
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "elo": 1830,
+    "strengths": {
+      "wet": 78,
+      "quali": 78,
+      "racecraft": 82,
+      "consistency": 72,
+      "tyre": 75
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 55,
+      "right": 45
+    },
+    "race": {
+      "left": 55,
+      "right": 45
+    },
+    "win_prob_20r": {
+      "left": 88,
+      "right": 12
+    }
+  }
+}

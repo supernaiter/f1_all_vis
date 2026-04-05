@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 97,
+      "racecraft": 93,
+      "consistency": 94,
+      "tyre": 92
+    }
+  },
+  "driver2": {
+    "code": "MAS",
+    "name": "Massa",
+    "color": "#e80020",
+    "elo": 2030,
+    "strengths": {
+      "wet": 85,
+      "quali": 88,
+      "racecraft": 85,
+      "consistency": 85,
+      "tyre": 84
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 52,
+      "right": 48
+    },
+    "race": {
+      "left": 52,
+      "right": 48
+    },
+    "win_prob_20r": {
+      "left": 70,
+      "right": 30
+    }
+  }
+}

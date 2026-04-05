@@ -1,0 +1,77 @@
+{
+  "driver1": {
+    "code": "ALB",
+    "name": "Albon",
+    "color": "#005bbb",
+    "birth_year": 1996,
+    "debut_year": 2019,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 23,
+        "label": "F1 DEBUT (TORO ROSSO)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "RED BULL PROMOTION",
+        "type": "career"
+      },
+      {
+        "age": 26,
+        "label": "WILLIAMS REVIVAL",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "birth_year": 1987,
+    "debut_year": 2007,
+    "last_year": 2022,
+    "career_events": [
+      {
+        "age": 19,
+        "label": "F1 DEBUT (BMW SUBSTITUTE)",
+        "type": "debut"
+      },
+      {
+        "age": 21,
+        "label": "FIRST WIN (MONZA 2008)",
+        "type": "win"
+      },
+      {
+        "age": 23,
+        "label": "YOUNGEST CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 24,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 25,
+        "label": "THREE IN A ROW",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "FOUR STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 27,
+        "label": "FERRARI MOVE",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

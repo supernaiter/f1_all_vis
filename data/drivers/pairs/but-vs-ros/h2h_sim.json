@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BUT",
+    "name": "Button",
+    "color": "#ffffff",
+    "elo": 2040,
+    "strengths": {
+      "wet": 96,
+      "quali": 82,
+      "racecraft": 88,
+      "consistency": 89,
+      "tyre": 92
+    }
+  },
+  "driver2": {
+    "code": "ROS",
+    "name": "Rosberg",
+    "color": "#27f4d2",
+    "elo": 2030,
+    "strengths": {
+      "wet": 83,
+      "quali": 91,
+      "racecraft": 85,
+      "consistency": 88,
+      "tyre": 85
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 51,
+      "right": 49
+    },
+    "win_prob_20r": {
+      "left": 51,
+      "right": 49
+    }
+  }
+}

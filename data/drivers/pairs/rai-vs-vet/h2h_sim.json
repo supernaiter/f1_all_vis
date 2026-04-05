@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "RAI",
+    "name": "Raikkonen",
+    "color": "#c8102e",
+    "elo": 2100,
+    "strengths": {
+      "wet": 90,
+      "quali": 88,
+      "racecraft": 88,
+      "consistency": 85,
+      "tyre": 86
+    }
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "elo": 2150,
+    "strengths": {
+      "wet": 88,
+      "quali": 94,
+      "racecraft": 89,
+      "consistency": 90,
+      "tyre": 87
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 43,
+      "right": 57
+    }
+  }
+}

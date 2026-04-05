@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "SAI",
+    "name": "Sainz",
+    "color": "#005bbb",
+    "elo": 2000,
+    "strengths": {
+      "wet": 80,
+      "quali": 85,
+      "racecraft": 86,
+      "consistency": 88,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "elo": 1830,
+    "strengths": {
+      "wet": 78,
+      "quali": 78,
+      "racecraft": 82,
+      "consistency": 72,
+      "tyre": 75
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 53,
+      "right": 47
+    },
+    "race": {
+      "left": 53,
+      "right": 47
+    },
+    "win_prob_20r": {
+      "left": 73,
+      "right": 27
+    }
+  }
+}

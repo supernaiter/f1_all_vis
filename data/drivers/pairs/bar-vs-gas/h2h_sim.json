@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BAR",
+    "name": "Barrichello",
+    "color": "#e80020",
+    "elo": 2020,
+    "strengths": {
+      "wet": 87,
+      "quali": 85,
+      "racecraft": 86,
+      "consistency": 88,
+      "tyre": 86
+    }
+  },
+  "driver2": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "elo": 1960,
+    "strengths": {
+      "wet": 84,
+      "quali": 83,
+      "racecraft": 85,
+      "consistency": 82,
+      "tyre": 82
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 51,
+      "right": 49
+    },
+    "win_prob_20r": {
+      "left": 59,
+      "right": 41
+    }
+  }
+}

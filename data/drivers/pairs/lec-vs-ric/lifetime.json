@@ -1,0 +1,57 @@
+{
+  "driver1": {
+    "code": "LEC",
+    "name": "Leclerc",
+    "color": "#e8002d",
+    "birth_year": 1997,
+    "debut_year": 2018,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (SAUBER)",
+        "type": "debut"
+      },
+      {
+        "age": 21,
+        "label": "FIRST WIN (BELGIUM 2019)",
+        "type": "win"
+      },
+      {
+        "age": 26,
+        "label": "MONACO HOME WIN",
+        "type": "win"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "RIC",
+    "name": "Ricciardo",
+    "color": "#fcd700",
+    "birth_year": 1989,
+    "debut_year": 2011,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (HRT)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (CANADA 2014)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "RED BULL PEAK",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

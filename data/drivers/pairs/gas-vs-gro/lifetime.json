@@ -1,0 +1,52 @@
+{
+  "driver1": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "birth_year": 1996,
+    "debut_year": 2017,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (TORO ROSSO)",
+        "type": "debut"
+      },
+      {
+        "age": 24,
+        "label": "SHOCK WIN AT MONZA",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "ALPINE MOVE",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "GRO",
+    "name": "Grosjean",
+    "color": "#ffbf00",
+    "birth_year": 1986,
+    "debut_year": 2009,
+    "last_year": 2020,
+    "career_events": [
+      {
+        "age": 23,
+        "label": "F1 DEBUT (RENAULT)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "LOTUS PODIUM STREAK",
+        "type": "career"
+      },
+      {
+        "age": 34,
+        "label": "BAHRAIN FIREBALL",
+        "type": "life"
+      }
+    ]
+  }
+}

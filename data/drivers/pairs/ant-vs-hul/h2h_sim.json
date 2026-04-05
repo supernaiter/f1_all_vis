@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ANT",
+    "name": "Antonelli",
+    "color": "#27f4d2",
+    "elo": 1950,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 82,
+      "consistency": 80,
+      "tyre": 80
+    }
+  },
+  "driver2": {
+    "code": "HUL",
+    "name": "Hulkenberg",
+    "color": "#52e252",
+    "elo": 1970,
+    "strengths": {
+      "wet": 85,
+      "quali": 87,
+      "racecraft": 82,
+      "consistency": 83,
+      "tyre": 80
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 47,
+      "right": 53
+    }
+  }
+}

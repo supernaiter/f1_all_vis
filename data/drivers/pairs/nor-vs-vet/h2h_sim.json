@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "NOR",
+    "name": "Norris",
+    "color": "#ff8000",
+    "elo": 2070,
+    "strengths": {
+      "wet": 86,
+      "quali": 90,
+      "racecraft": 87,
+      "consistency": 88,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "elo": 2150,
+    "strengths": {
+      "wet": 88,
+      "quali": 94,
+      "racecraft": 89,
+      "consistency": 90,
+      "tyre": 87
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 39,
+      "right": 61
+    }
+  }
+}

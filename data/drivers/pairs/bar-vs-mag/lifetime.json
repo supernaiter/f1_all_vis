@@ -1,0 +1,62 @@
+{
+  "driver1": {
+    "code": "BAR",
+    "name": "Barrichello",
+    "color": "#e80020",
+    "birth_year": 1972,
+    "debut_year": 1993,
+    "last_year": 2011,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "JOINS FERRARI",
+        "type": "career"
+      },
+      {
+        "age": 28,
+        "label": "FIRST WIN (GERMANY 2000)",
+        "type": "win"
+      },
+      {
+        "age": 37,
+        "label": "BRAWN GP CHALLENGE",
+        "type": "career"
+      },
+      {
+        "age": 39,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "birth_year": 1992,
+    "debut_year": 2014,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT PODIUM (AUS)",
+        "type": "debut"
+      },
+      {
+        "age": 29,
+        "label": "HAAS RETURN",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

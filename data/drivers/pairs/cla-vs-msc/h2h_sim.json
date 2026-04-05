@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "elo": 2180,
+    "strengths": {
+      "wet": 95,
+      "quali": 97,
+      "racecraft": 93,
+      "consistency": 94,
+      "tyre": 92
+    }
+  },
+  "driver2": {
+    "code": "MSC",
+    "name": "Schumacher",
+    "color": "#e80020",
+    "elo": 2190,
+    "strengths": {
+      "wet": 98,
+      "quali": 95,
+      "racecraft": 95,
+      "consistency": 96,
+      "tyre": 94
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 50,
+      "right": 50
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 49,
+      "right": 51
+    }
+  }
+}

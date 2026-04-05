@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ANT",
+    "name": "Antonelli",
+    "color": "#27f4d2",
+    "elo": 1950,
+    "strengths": {
+      "wet": 80,
+      "quali": 84,
+      "racecraft": 82,
+      "consistency": 80,
+      "tyre": 80
+    }
+  },
+  "driver2": {
+    "code": "SAI",
+    "name": "Sainz",
+    "color": "#005bbb",
+    "elo": 2000,
+    "strengths": {
+      "wet": 80,
+      "quali": 85,
+      "racecraft": 86,
+      "consistency": 88,
+      "tyre": 84
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 48,
+      "right": 52
+    },
+    "win_prob_20r": {
+      "left": 43,
+      "right": 57
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "driver1": {
+    "code": "BAR",
+    "name": "Barrichello",
+    "color": "#e80020",
+    "birth_year": 1972,
+    "debut_year": 1993,
+    "last_year": 2011,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "JOINS FERRARI",
+        "type": "career"
+      },
+      {
+        "age": 28,
+        "label": "FIRST WIN (GERMANY 2000)",
+        "type": "win"
+      },
+      {
+        "age": 37,
+        "label": "BRAWN GP CHALLENGE",
+        "type": "career"
+      },
+      {
+        "age": 39,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "GRO",
+    "name": "Grosjean",
+    "color": "#ffbf00",
+    "birth_year": 1986,
+    "debut_year": 2009,
+    "last_year": 2020,
+    "career_events": [
+      {
+        "age": 23,
+        "label": "F1 DEBUT (RENAULT)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "LOTUS PODIUM STREAK",
+        "type": "career"
+      },
+      {
+        "age": 34,
+        "label": "BAHRAIN FIREBALL",
+        "type": "life"
+      }
+    ]
+  }
+}

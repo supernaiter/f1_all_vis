@@ -1,0 +1,97 @@
+{
+  "driver1": {
+    "code": "ALO",
+    "name": "Alonso",
+    "color": "#00665f",
+    "birth_year": 1981,
+    "debut_year": 2001,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 19,
+        "label": "F1 DEBUT (MINARDI)",
+        "type": "debut"
+      },
+      {
+        "age": 22,
+        "label": "FIRST WIN (HUNGARY 2003)",
+        "type": "win"
+      },
+      {
+        "age": 24,
+        "label": "WORLD CHAMPION (RENAULT)",
+        "type": "title"
+      },
+      {
+        "age": 25,
+        "label": "BACK-TO-BACK TITLES",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "MCLAREN — TIED WITH ROOKIE HAM",
+        "type": "career"
+      },
+      {
+        "age": 37,
+        "label": "LEAVES F1",
+        "type": "career"
+      },
+      {
+        "age": 40,
+        "label": "F1 RETURN (ALPINE)",
+        "type": "career"
+      },
+      {
+        "age": 43,
+        "label": "STILL RACING AGE 43",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "birth_year": 1955,
+    "debut_year": 1980,
+    "last_year": 1993,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT (MCLAREN)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (FRANCE 1981)",
+        "type": "win"
+      },
+      {
+        "age": 30,
+        "label": "FIRST TITLE (MCLAREN)",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "THIRD TITLE",
+        "type": "title"
+      },
+      {
+        "age": 38,
+        "label": "FOURTH TITLE (WILLIAMS)",
+        "type": "title"
+      },
+      {
+        "age": 38,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

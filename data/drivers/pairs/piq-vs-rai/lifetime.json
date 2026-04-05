@@ -1,0 +1,77 @@
+{
+  "driver1": {
+    "code": "PIQ",
+    "name": "Piquet",
+    "color": "#1e41ff",
+    "birth_year": 1952,
+    "debut_year": 1978,
+    "last_year": 1991,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT",
+        "type": "debut"
+      },
+      {
+        "age": 28,
+        "label": "FIRST TITLE (BRABHAM)",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 35,
+        "label": "THIRD TITLE (WILLIAMS)",
+        "type": "title"
+      },
+      {
+        "age": 39,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "RAI",
+    "name": "Raikkonen",
+    "color": "#c8102e",
+    "birth_year": 1979,
+    "debut_year": 2001,
+    "last_year": 2021,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (SAUBER)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "FIRST WIN (MALAYSIA 2003)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "WORLD CHAMPION (FERRARI)",
+        "type": "title"
+      },
+      {
+        "age": 30,
+        "label": "RALLY SABBATICAL",
+        "type": "career"
+      },
+      {
+        "age": 32,
+        "label": "F1 RETURN (LOTUS)",
+        "type": "career"
+      },
+      {
+        "age": 42,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

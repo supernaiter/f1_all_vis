@@ -1,0 +1,52 @@
+{
+  "driver1": {
+    "code": "LEC",
+    "name": "Leclerc",
+    "color": "#e8002d",
+    "birth_year": 1997,
+    "debut_year": 2018,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (SAUBER)",
+        "type": "debut"
+      },
+      {
+        "age": 21,
+        "label": "FIRST WIN (BELGIUM 2019)",
+        "type": "win"
+      },
+      {
+        "age": 26,
+        "label": "MONACO HOME WIN",
+        "type": "win"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "birth_year": 1992,
+    "debut_year": 2014,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT PODIUM (AUS)",
+        "type": "debut"
+      },
+      {
+        "age": 29,
+        "label": "HAAS RETURN",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

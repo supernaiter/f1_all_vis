@@ -1,0 +1,57 @@
+{
+  "driver1": {
+    "code": "SAI",
+    "name": "Sainz",
+    "color": "#005bbb",
+    "birth_year": 1994,
+    "debut_year": 2015,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (TORO ROSSO)",
+        "type": "debut"
+      },
+      {
+        "age": 28,
+        "label": "FIRST WIN (BRITAIN 2022)",
+        "type": "win"
+      },
+      {
+        "age": 29,
+        "label": "SINGAPORE BEATS RED BULL",
+        "type": "win"
+      },
+      {
+        "age": 30,
+        "label": "WILLIAMS MOVE",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "birth_year": 1977,
+    "debut_year": 2002,
+    "last_year": 2008,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "FIRST PODIUM (USA 2004)",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "LEAVES F1",
+        "type": "career"
+      }
+    ]
+  }
+}

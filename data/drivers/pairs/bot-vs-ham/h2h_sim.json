@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BOT",
+    "name": "Bottas",
+    "color": "#005050",
+    "elo": 2010,
+    "strengths": {
+      "wet": 82,
+      "quali": 88,
+      "racecraft": 82,
+      "consistency": 87,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "HAM",
+    "name": "Hamilton",
+    "color": "#27f4d2",
+    "elo": 2200,
+    "strengths": {
+      "wet": 97,
+      "quali": 96,
+      "racecraft": 93,
+      "consistency": 91,
+      "tyre": 90
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 48,
+      "right": 52
+    },
+    "win_prob_20r": {
+      "left": 25,
+      "right": 75
+    }
+  }
+}

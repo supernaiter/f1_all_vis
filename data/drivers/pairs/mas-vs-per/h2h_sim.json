@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "MAS",
+    "name": "Massa",
+    "color": "#e80020",
+    "elo": 2030,
+    "strengths": {
+      "wet": 85,
+      "quali": 88,
+      "racecraft": 85,
+      "consistency": 85,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "PER",
+    "name": "Perez",
+    "color": "#1e41ff",
+    "elo": 1990,
+    "strengths": {
+      "wet": 84,
+      "quali": 82,
+      "racecraft": 86,
+      "consistency": 81,
+      "tyre": 90
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 52,
+      "right": 48
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 56,
+      "right": 44
+    }
+  }
+}

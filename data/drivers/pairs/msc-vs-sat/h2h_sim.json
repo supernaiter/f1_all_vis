@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "MSC",
+    "name": "Schumacher",
+    "color": "#e80020",
+    "elo": 2190,
+    "strengths": {
+      "wet": 98,
+      "quali": 95,
+      "racecraft": 95,
+      "consistency": 96,
+      "tyre": 94
+    }
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "elo": 1830,
+    "strengths": {
+      "wet": 78,
+      "quali": 78,
+      "racecraft": 82,
+      "consistency": 72,
+      "tyre": 75
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 55,
+      "right": 45
+    },
+    "race": {
+      "left": 55,
+      "right": 45
+    },
+    "win_prob_20r": {
+      "left": 89,
+      "right": 11
+    }
+  }
+}

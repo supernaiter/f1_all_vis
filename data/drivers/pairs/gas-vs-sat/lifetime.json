@@ -1,0 +1,52 @@
+{
+  "driver1": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "birth_year": 1996,
+    "debut_year": 2017,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (TORO ROSSO)",
+        "type": "debut"
+      },
+      {
+        "age": 24,
+        "label": "SHOCK WIN AT MONZA",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "ALPINE MOVE",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "birth_year": 1977,
+    "debut_year": 2002,
+    "last_year": 2008,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "FIRST PODIUM (USA 2004)",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "LEAVES F1",
+        "type": "career"
+      }
+    ]
+  }
+}

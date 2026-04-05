@@ -1,0 +1,92 @@
+{
+  "driver1": {
+    "code": "SEN",
+    "name": "Senna",
+    "color": "#ffd700",
+    "birth_year": 1960,
+    "debut_year": 1984,
+    "last_year": 1994,
+    "career_events": [
+      {
+        "age": 24,
+        "label": "F1 DEBUT (TOLEMAN)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (PORTUGAL 1985)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "FIRST TITLE (MCLAREN)",
+        "type": "title"
+      },
+      {
+        "age": 30,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "THIRD TITLE",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "DEATH AT IMOLA",
+        "type": "life"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "birth_year": 1987,
+    "debut_year": 2007,
+    "last_year": 2022,
+    "career_events": [
+      {
+        "age": 19,
+        "label": "F1 DEBUT (BMW SUBSTITUTE)",
+        "type": "debut"
+      },
+      {
+        "age": 21,
+        "label": "FIRST WIN (MONZA 2008)",
+        "type": "win"
+      },
+      {
+        "age": 23,
+        "label": "YOUNGEST CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 24,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 25,
+        "label": "THREE IN A ROW",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "FOUR STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 27,
+        "label": "FERRARI MOVE",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

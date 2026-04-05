@@ -1,0 +1,67 @@
+{
+  "driver1": {
+    "code": "OCO",
+    "name": "Ocon",
+    "color": "#ff87bc",
+    "birth_year": 1996,
+    "debut_year": 2016,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (MANOR)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "SHOCK WIN (HUNGARY 2021)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "HAAS MOVE",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "RAI",
+    "name": "Raikkonen",
+    "color": "#c8102e",
+    "birth_year": 1979,
+    "debut_year": 2001,
+    "last_year": 2021,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (SAUBER)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "FIRST WIN (MALAYSIA 2003)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "WORLD CHAMPION (FERRARI)",
+        "type": "title"
+      },
+      {
+        "age": 30,
+        "label": "RALLY SABBATICAL",
+        "type": "career"
+      },
+      {
+        "age": 32,
+        "label": "F1 RETURN (LOTUS)",
+        "type": "career"
+      },
+      {
+        "age": 42,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

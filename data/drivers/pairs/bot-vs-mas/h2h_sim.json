@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BOT",
+    "name": "Bottas",
+    "color": "#005050",
+    "elo": 2010,
+    "strengths": {
+      "wet": 82,
+      "quali": 88,
+      "racecraft": 82,
+      "consistency": 87,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "MAS",
+    "name": "Massa",
+    "color": "#e80020",
+    "elo": 2030,
+    "strengths": {
+      "wet": 85,
+      "quali": 88,
+      "racecraft": 85,
+      "consistency": 85,
+      "tyre": 84
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 50,
+      "right": 50
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 47,
+      "right": 53
+    }
+  }
+}

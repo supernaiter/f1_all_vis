@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BOT",
+    "name": "Bottas",
+    "color": "#005050",
+    "elo": 2010,
+    "strengths": {
+      "wet": 82,
+      "quali": 88,
+      "racecraft": 82,
+      "consistency": 87,
+      "tyre": 85
+    }
+  },
+  "driver2": {
+    "code": "MSC",
+    "name": "Schumacher",
+    "color": "#e80020",
+    "elo": 2190,
+    "strengths": {
+      "wet": 98,
+      "quali": 95,
+      "racecraft": 95,
+      "consistency": 96,
+      "tyre": 94
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 47,
+      "right": 53
+    },
+    "win_prob_20r": {
+      "left": 26,
+      "right": 74
+    }
+  }
+}

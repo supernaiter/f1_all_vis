@@ -1,0 +1,122 @@
+{
+  "driver1": {
+    "code": "MSC",
+    "name": "Schumacher",
+    "color": "#e80020",
+    "birth_year": 1969,
+    "debut_year": 1991,
+    "last_year": 2012,
+    "career_events": [
+      {
+        "age": 22,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "FIRST WIN (BELGIUM 1992)",
+        "type": "win"
+      },
+      {
+        "age": 25,
+        "label": "FIRST TITLE (BENETTON)",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "FERRARI TITLE",
+        "type": "title"
+      },
+      {
+        "age": 32,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 33,
+        "label": "THREE STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "FOUR STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 35,
+        "label": "FIVE STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 37,
+        "label": "FIRST RETIREMENT",
+        "type": "career"
+      },
+      {
+        "age": 41,
+        "label": "F1 COMEBACK (MERCEDES)",
+        "type": "career"
+      },
+      {
+        "age": 44,
+        "label": "SKIING ACCIDENT",
+        "type": "life"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "VET",
+    "name": "Vettel",
+    "color": "#1e41ff",
+    "birth_year": 1987,
+    "debut_year": 2007,
+    "last_year": 2022,
+    "career_events": [
+      {
+        "age": 19,
+        "label": "F1 DEBUT (BMW SUBSTITUTE)",
+        "type": "debut"
+      },
+      {
+        "age": 21,
+        "label": "FIRST WIN (MONZA 2008)",
+        "type": "win"
+      },
+      {
+        "age": 23,
+        "label": "YOUNGEST CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 24,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 25,
+        "label": "THREE IN A ROW",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "FOUR STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 27,
+        "label": "FERRARI MOVE",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

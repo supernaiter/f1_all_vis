@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "BUT",
+    "name": "Button",
+    "color": "#ffffff",
+    "elo": 2040,
+    "strengths": {
+      "wet": 96,
+      "quali": 82,
+      "racecraft": 88,
+      "consistency": 89,
+      "tyre": 92
+    }
+  },
+  "driver2": {
+    "code": "HUL",
+    "name": "Hulkenberg",
+    "color": "#52e252",
+    "elo": 1970,
+    "strengths": {
+      "wet": 85,
+      "quali": 87,
+      "racecraft": 82,
+      "consistency": 83,
+      "tyre": 80
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 49,
+      "right": 51
+    },
+    "race": {
+      "left": 52,
+      "right": 48
+    },
+    "win_prob_20r": {
+      "left": 60,
+      "right": 40
+    }
+  }
+}

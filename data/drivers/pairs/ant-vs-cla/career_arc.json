@@ -1,0 +1,44 @@
+{
+  "driver1": {
+    "code": "ANT",
+    "name": "Antonelli",
+    "color": "#27f4d2",
+    "cumWins": [
+      0,
+      0
+    ],
+    "cumPts": [
+      55,
+      75
+    ],
+    "debut": 2025
+  },
+  "driver2": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "cumWins": [
+      0,
+      0,
+      3,
+      10,
+      13,
+      19,
+      20,
+      24,
+      25
+    ],
+    "cumPts": [
+      8,
+      19,
+      49,
+      103,
+      135,
+      189,
+      205,
+      246,
+      255
+    ],
+    "debut": 1960
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALO",
+    "name": "Alonso",
+    "color": "#00665f",
+    "elo": 2160,
+    "strengths": {
+      "wet": 96,
+      "quali": 90,
+      "racecraft": 96,
+      "consistency": 93,
+      "tyre": 94
+    }
+  },
+  "driver2": {
+    "code": "MAS",
+    "name": "Massa",
+    "color": "#e80020",
+    "elo": 2030,
+    "strengths": {
+      "wet": 85,
+      "quali": 88,
+      "racecraft": 85,
+      "consistency": 85,
+      "tyre": 84
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 51,
+      "right": 49
+    },
+    "race": {
+      "left": 53,
+      "right": 47
+    },
+    "win_prob_20r": {
+      "left": 68,
+      "right": 32
+    }
+  }
+}

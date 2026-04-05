@@ -1,0 +1,107 @@
+{
+  "driver1": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "birth_year": 1936,
+    "debut_year": 1960,
+    "last_year": 1968,
+    "career_events": [
+      {
+        "age": 24,
+        "label": "F1 DEBUT (LOTUS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (BELGIUM 1962)",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "FIRST TITLE",
+        "type": "title"
+      },
+      {
+        "age": 29,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 32,
+        "label": "DEATH AT HOCKENHEIM",
+        "type": "life"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "MSC",
+    "name": "Schumacher",
+    "color": "#e80020",
+    "birth_year": 1969,
+    "debut_year": 1991,
+    "last_year": 2012,
+    "career_events": [
+      {
+        "age": 22,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "FIRST WIN (BELGIUM 1992)",
+        "type": "win"
+      },
+      {
+        "age": 25,
+        "label": "FIRST TITLE (BENETTON)",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "FERRARI TITLE",
+        "type": "title"
+      },
+      {
+        "age": 32,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 33,
+        "label": "THREE STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "FOUR STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 35,
+        "label": "FIVE STRAIGHT",
+        "type": "title"
+      },
+      {
+        "age": 37,
+        "label": "FIRST RETIREMENT",
+        "type": "career"
+      },
+      {
+        "age": 41,
+        "label": "F1 COMEBACK (MERCEDES)",
+        "type": "career"
+      },
+      {
+        "age": 44,
+        "label": "SKIING ACCIDENT",
+        "type": "life"
+      }
+    ]
+  }
+}

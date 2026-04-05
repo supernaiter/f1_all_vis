@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "PER",
+    "name": "Perez",
+    "color": "#1e41ff",
+    "elo": 1990,
+    "strengths": {
+      "wet": 84,
+      "quali": 82,
+      "racecraft": 86,
+      "consistency": 81,
+      "tyre": 90
+    }
+  },
+  "driver2": {
+    "code": "RUS",
+    "name": "Russell",
+    "color": "#27f4d2",
+    "elo": 2020,
+    "strengths": {
+      "wet": 84,
+      "quali": 89,
+      "racecraft": 84,
+      "consistency": 87,
+      "tyre": 83
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 50,
+      "right": 50
+    },
+    "win_prob_20r": {
+      "left": 46,
+      "right": 54
+    }
+  }
+}

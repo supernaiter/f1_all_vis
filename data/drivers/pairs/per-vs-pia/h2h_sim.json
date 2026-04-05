@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "PER",
+    "name": "Perez",
+    "color": "#1e41ff",
+    "elo": 1990,
+    "strengths": {
+      "wet": 84,
+      "quali": 82,
+      "racecraft": 86,
+      "consistency": 81,
+      "tyre": 90
+    }
+  },
+  "driver2": {
+    "code": "PIA",
+    "name": "Piastri",
+    "color": "#ff8000",
+    "elo": 2030,
+    "strengths": {
+      "wet": 82,
+      "quali": 89,
+      "racecraft": 88,
+      "consistency": 89,
+      "tyre": 86
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 44,
+      "right": 56
+    }
+  }
+}

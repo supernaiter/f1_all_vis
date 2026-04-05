@@ -1,0 +1,62 @@
+{
+  "driver1": {
+    "code": "ALB",
+    "name": "Albon",
+    "color": "#005bbb",
+    "birth_year": 1996,
+    "debut_year": 2019,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 23,
+        "label": "F1 DEBUT (TORO ROSSO)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "RED BULL PROMOTION",
+        "type": "career"
+      },
+      {
+        "age": 26,
+        "label": "WILLIAMS REVIVAL",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "PIQ",
+    "name": "Piquet",
+    "color": "#1e41ff",
+    "birth_year": 1952,
+    "debut_year": 1978,
+    "last_year": 1991,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT",
+        "type": "debut"
+      },
+      {
+        "age": 28,
+        "label": "FIRST TITLE (BRABHAM)",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 35,
+        "label": "THIRD TITLE (WILLIAMS)",
+        "type": "title"
+      },
+      {
+        "age": 39,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

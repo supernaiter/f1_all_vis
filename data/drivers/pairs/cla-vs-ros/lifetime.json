@@ -1,0 +1,67 @@
+{
+  "driver1": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "birth_year": 1936,
+    "debut_year": 1960,
+    "last_year": 1968,
+    "career_events": [
+      {
+        "age": 24,
+        "label": "F1 DEBUT (LOTUS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (BELGIUM 1962)",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "FIRST TITLE",
+        "type": "title"
+      },
+      {
+        "age": 29,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 32,
+        "label": "DEATH AT HOCKENHEIM",
+        "type": "life"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "ROS",
+    "name": "Rosberg",
+    "color": "#27f4d2",
+    "birth_year": 1985,
+    "debut_year": 2006,
+    "last_year": 2016,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (WILLIAMS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (CHINA 2012)",
+        "type": "win"
+      },
+      {
+        "age": 31,
+        "label": "WORLD CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "INSTANT RETIREMENT",
+        "type": "career"
+      }
+    ]
+  }
+}

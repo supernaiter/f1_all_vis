@@ -1,0 +1,87 @@
+{
+  "driver1": {
+    "code": "ALO",
+    "name": "Alonso",
+    "color": "#00665f",
+    "birth_year": 1981,
+    "debut_year": 2001,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 19,
+        "label": "F1 DEBUT (MINARDI)",
+        "type": "debut"
+      },
+      {
+        "age": 22,
+        "label": "FIRST WIN (HUNGARY 2003)",
+        "type": "win"
+      },
+      {
+        "age": 24,
+        "label": "WORLD CHAMPION (RENAULT)",
+        "type": "title"
+      },
+      {
+        "age": 25,
+        "label": "BACK-TO-BACK TITLES",
+        "type": "title"
+      },
+      {
+        "age": 26,
+        "label": "MCLAREN — TIED WITH ROOKIE HAM",
+        "type": "career"
+      },
+      {
+        "age": 37,
+        "label": "LEAVES F1",
+        "type": "career"
+      },
+      {
+        "age": 40,
+        "label": "F1 RETURN (ALPINE)",
+        "type": "career"
+      },
+      {
+        "age": 43,
+        "label": "STILL RACING AGE 43",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "CLA",
+    "name": "Clark",
+    "color": "#006341",
+    "birth_year": 1936,
+    "debut_year": 1960,
+    "last_year": 1968,
+    "career_events": [
+      {
+        "age": 24,
+        "label": "F1 DEBUT (LOTUS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (BELGIUM 1962)",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "FIRST TITLE",
+        "type": "title"
+      },
+      {
+        "age": 29,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 32,
+        "label": "DEATH AT HOCKENHEIM",
+        "type": "life"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "ALB",
+    "name": "Albon",
+    "color": "#005bbb",
+    "elo": 1970,
+    "strengths": {
+      "wet": 83,
+      "quali": 84,
+      "racecraft": 84,
+      "consistency": 84,
+      "tyre": 84
+    }
+  },
+  "driver2": {
+    "code": "MSC",
+    "name": "Schumacher",
+    "color": "#e80020",
+    "elo": 2190,
+    "strengths": {
+      "wet": 98,
+      "quali": 95,
+      "racecraft": 95,
+      "consistency": 96,
+      "tyre": 94
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 47,
+      "right": 53
+    },
+    "race": {
+      "left": 47,
+      "right": 53
+    },
+    "win_prob_20r": {
+      "left": 22,
+      "right": 78
+    }
+  }
+}

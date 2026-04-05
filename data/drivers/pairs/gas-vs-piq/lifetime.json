@@ -1,0 +1,62 @@
+{
+  "driver1": {
+    "code": "GAS",
+    "name": "Gasly",
+    "color": "#0090ff",
+    "birth_year": 1996,
+    "debut_year": 2017,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (TORO ROSSO)",
+        "type": "debut"
+      },
+      {
+        "age": 24,
+        "label": "SHOCK WIN AT MONZA",
+        "type": "win"
+      },
+      {
+        "age": 27,
+        "label": "ALPINE MOVE",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "PIQ",
+    "name": "Piquet",
+    "color": "#1e41ff",
+    "birth_year": 1952,
+    "debut_year": 1978,
+    "last_year": 1991,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT",
+        "type": "debut"
+      },
+      {
+        "age": 28,
+        "label": "FIRST TITLE (BRABHAM)",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 35,
+        "label": "THIRD TITLE (WILLIAMS)",
+        "type": "title"
+      },
+      {
+        "age": 39,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

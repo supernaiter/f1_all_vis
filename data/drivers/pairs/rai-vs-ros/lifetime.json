@@ -1,0 +1,72 @@
+{
+  "driver1": {
+    "code": "RAI",
+    "name": "Raikkonen",
+    "color": "#c8102e",
+    "birth_year": 1979,
+    "debut_year": 2001,
+    "last_year": 2021,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (SAUBER)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "FIRST WIN (MALAYSIA 2003)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "WORLD CHAMPION (FERRARI)",
+        "type": "title"
+      },
+      {
+        "age": 30,
+        "label": "RALLY SABBATICAL",
+        "type": "career"
+      },
+      {
+        "age": 32,
+        "label": "F1 RETURN (LOTUS)",
+        "type": "career"
+      },
+      {
+        "age": 42,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "ROS",
+    "name": "Rosberg",
+    "color": "#27f4d2",
+    "birth_year": 1985,
+    "debut_year": 2006,
+    "last_year": 2016,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (WILLIAMS)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (CHINA 2012)",
+        "type": "win"
+      },
+      {
+        "age": 31,
+        "label": "WORLD CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "INSTANT RETIREMENT",
+        "type": "career"
+      }
+    ]
+  }
+}

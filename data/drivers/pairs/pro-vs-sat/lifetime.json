@@ -1,0 +1,72 @@
+{
+  "driver1": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "birth_year": 1955,
+    "debut_year": 1980,
+    "last_year": 1993,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT (MCLAREN)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (FRANCE 1981)",
+        "type": "win"
+      },
+      {
+        "age": 30,
+        "label": "FIRST TITLE (MCLAREN)",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "THIRD TITLE",
+        "type": "title"
+      },
+      {
+        "age": 38,
+        "label": "FOURTH TITLE (WILLIAMS)",
+        "type": "title"
+      },
+      {
+        "age": 38,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "SAT",
+    "name": "Sato",
+    "color": "#e80020",
+    "birth_year": 1977,
+    "debut_year": 2002,
+    "last_year": 2008,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "FIRST PODIUM (USA 2004)",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "LEAVES F1",
+        "type": "career"
+      }
+    ]
+  }
+}

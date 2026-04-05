@@ -1,0 +1,72 @@
+{
+  "driver1": {
+    "code": "LEC",
+    "name": "Leclerc",
+    "color": "#e8002d",
+    "birth_year": 1997,
+    "debut_year": 2018,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (SAUBER)",
+        "type": "debut"
+      },
+      {
+        "age": 21,
+        "label": "FIRST WIN (BELGIUM 2019)",
+        "type": "win"
+      },
+      {
+        "age": 26,
+        "label": "MONACO HOME WIN",
+        "type": "win"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "PRO",
+    "name": "Prost",
+    "color": "#ffbf00",
+    "birth_year": 1955,
+    "debut_year": 1980,
+    "last_year": 1993,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT (MCLAREN)",
+        "type": "debut"
+      },
+      {
+        "age": 26,
+        "label": "FIRST WIN (FRANCE 1981)",
+        "type": "win"
+      },
+      {
+        "age": 30,
+        "label": "FIRST TITLE (MCLAREN)",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "BACK-TO-BACK",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "THIRD TITLE",
+        "type": "title"
+      },
+      {
+        "age": 38,
+        "label": "FOURTH TITLE (WILLIAMS)",
+        "type": "title"
+      },
+      {
+        "age": 38,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

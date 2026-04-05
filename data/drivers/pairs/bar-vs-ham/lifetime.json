@@ -1,0 +1,92 @@
+{
+  "driver1": {
+    "code": "BAR",
+    "name": "Barrichello",
+    "color": "#e80020",
+    "birth_year": 1972,
+    "debut_year": 1993,
+    "last_year": 2011,
+    "career_events": [
+      {
+        "age": 20,
+        "label": "F1 DEBUT (JORDAN)",
+        "type": "debut"
+      },
+      {
+        "age": 27,
+        "label": "JOINS FERRARI",
+        "type": "career"
+      },
+      {
+        "age": 28,
+        "label": "FIRST WIN (GERMANY 2000)",
+        "type": "win"
+      },
+      {
+        "age": 37,
+        "label": "BRAWN GP CHALLENGE",
+        "type": "career"
+      },
+      {
+        "age": 39,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "HAM",
+    "name": "Hamilton",
+    "color": "#27f4d2",
+    "birth_year": 1985,
+    "debut_year": 2007,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 22,
+        "label": "F1 DEBUT (MCLAREN)",
+        "type": "debut"
+      },
+      {
+        "age": 23,
+        "label": "FIRST TITLE (BRAZIL 2008)",
+        "type": "title"
+      },
+      {
+        "age": 29,
+        "label": "MERCEDES TITLE #2",
+        "type": "title"
+      },
+      {
+        "age": 30,
+        "label": "BACK-TO-BACK WITH MERC",
+        "type": "title"
+      },
+      {
+        "age": 32,
+        "label": "FOUR-TIME CHAMPION",
+        "type": "title"
+      },
+      {
+        "age": 33,
+        "label": "FIVE-TIME",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "SIX-TIME",
+        "type": "title"
+      },
+      {
+        "age": 35,
+        "label": "EQUALS SCHUMI AT 7",
+        "type": "title"
+      },
+      {
+        "age": 40,
+        "label": "FERRARI MOVE",
+        "type": "career"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "driver1": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "birth_year": 1992,
+    "debut_year": 2014,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT PODIUM (AUS)",
+        "type": "debut"
+      },
+      {
+        "age": 29,
+        "label": "HAAS RETURN",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "SEN",
+    "name": "Senna",
+    "color": "#ffd700",
+    "birth_year": 1960,
+    "debut_year": 1984,
+    "last_year": 1994,
+    "career_events": [
+      {
+        "age": 24,
+        "label": "F1 DEBUT (TOLEMAN)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (PORTUGAL 1985)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "FIRST TITLE (MCLAREN)",
+        "type": "title"
+      },
+      {
+        "age": 30,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "THIRD TITLE",
+        "type": "title"
+      },
+      {
+        "age": 34,
+        "label": "DEATH AT IMOLA",
+        "type": "life"
+      }
+    ]
+  }
+}

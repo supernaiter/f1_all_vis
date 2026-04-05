@@ -1,0 +1,52 @@
+{
+  "driver1": {
+    "code": "MAG",
+    "name": "Magnussen",
+    "color": "#b6babd",
+    "birth_year": 1992,
+    "debut_year": 2014,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT PODIUM (AUS)",
+        "type": "debut"
+      },
+      {
+        "age": 29,
+        "label": "HAAS RETURN",
+        "type": "career"
+      },
+      {
+        "age": 31,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "NOR",
+    "name": "Norris",
+    "color": "#ff8000",
+    "birth_year": 1999,
+    "debut_year": 2019,
+    "last_year": "active",
+    "career_events": [
+      {
+        "age": 19,
+        "label": "F1 DEBUT (MCLAREN)",
+        "type": "debut"
+      },
+      {
+        "age": 24,
+        "label": "FIRST WIN (MIAMI 2024)",
+        "type": "win"
+      },
+      {
+        "age": 25,
+        "label": "MCLAREN COMEBACK LEADER",
+        "type": "career"
+      }
+    ]
+  }
+}

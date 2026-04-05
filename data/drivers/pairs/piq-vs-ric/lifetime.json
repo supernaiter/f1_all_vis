@@ -1,0 +1,67 @@
+{
+  "driver1": {
+    "code": "PIQ",
+    "name": "Piquet",
+    "color": "#1e41ff",
+    "birth_year": 1952,
+    "debut_year": 1978,
+    "last_year": 1991,
+    "career_events": [
+      {
+        "age": 25,
+        "label": "F1 DEBUT",
+        "type": "debut"
+      },
+      {
+        "age": 28,
+        "label": "FIRST TITLE (BRABHAM)",
+        "type": "title"
+      },
+      {
+        "age": 31,
+        "label": "SECOND TITLE",
+        "type": "title"
+      },
+      {
+        "age": 35,
+        "label": "THIRD TITLE (WILLIAMS)",
+        "type": "title"
+      },
+      {
+        "age": 39,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  },
+  "driver2": {
+    "code": "RIC",
+    "name": "Ricciardo",
+    "color": "#fcd700",
+    "birth_year": 1989,
+    "debut_year": 2011,
+    "last_year": 2024,
+    "career_events": [
+      {
+        "age": 21,
+        "label": "F1 DEBUT (HRT)",
+        "type": "debut"
+      },
+      {
+        "age": 25,
+        "label": "FIRST WIN (CANADA 2014)",
+        "type": "win"
+      },
+      {
+        "age": 28,
+        "label": "RED BULL PEAK",
+        "type": "career"
+      },
+      {
+        "age": 35,
+        "label": "RETIRES",
+        "type": "career"
+      }
+    ]
+  }
+}

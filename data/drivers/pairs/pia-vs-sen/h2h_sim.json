@@ -1,0 +1,42 @@
+{
+  "driver1": {
+    "code": "PIA",
+    "name": "Piastri",
+    "color": "#ff8000",
+    "elo": 2030,
+    "strengths": {
+      "wet": 82,
+      "quali": 89,
+      "racecraft": 88,
+      "consistency": 89,
+      "tyre": 86
+    }
+  },
+  "driver2": {
+    "code": "SEN",
+    "name": "Senna",
+    "color": "#ffd700",
+    "elo": 2175,
+    "strengths": {
+      "wet": 99,
+      "quali": 98,
+      "racecraft": 94,
+      "consistency": 85,
+      "tyre": 88
+    }
+  },
+  "predictions": {
+    "qualifying": {
+      "left": 48,
+      "right": 52
+    },
+    "race": {
+      "left": 49,
+      "right": 51
+    },
+    "win_prob_20r": {
+      "left": 30,
+      "right": 70
+    }
+  }
+}

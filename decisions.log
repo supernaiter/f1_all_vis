@@ -16,3 +16,4 @@
 2026-03-28|UI改善手法|Generator+Evaluatorハーネス（GAN風）採用|Anthropicブログのパターン。自己評価バイアスを排除し5軸の具体的基準で反復改善。sectors/speed/stintsはR1 FAILからR2でPASS|スキルはプロジェクトローカル(.claude/skills/)に配置。グローバルにF1固有スキルを置かない
 2026-03-28|Evaluator基準|5軸: Visual Consistency/Hub-Page Parity/Chart Quality/Data Integrity/Mobile|加重スコア>=2.5でPASS、軸0=自動FAIL。主な減点パターン: DataZoom欠落、themeBase未抽出、json-ld欠落、face-dot背景色不一致|基準は.claude/skills/f1-ui-evaluate/SKILL.mdに定義
 2026-03-31|pipeline|pipeline.sh作成（export+H2H+build統合）|R04以降の手動2段階実行を排除、ワンコマンド化|--forceで再生成、デフォルトはスキップ（冪等）
+2026-04-05|pSEO Phase0|TYPE-B動的ルート[pair]/career-arc.astro採用|getStaticPathsでlistDriverPairs()から自動展開、JSON差し替えだけで新ペア追加可能|data/drivers/pairs/配下にディレクトリ+career_arc.json作成すればビルド時自動生成

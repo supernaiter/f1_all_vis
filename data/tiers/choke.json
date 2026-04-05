@@ -1,0 +1,69 @@
+{
+  "title": "CHAMPIONSHIP CHOKE ARTISTS",
+  "subtitle": "TITLES LOST FROM WINNING POSITIONS",
+  "tiers": [
+    {
+      "label": "S",
+      "color": "#FFD700",
+      "drivers": [
+        {
+          "code": "HAM",
+          "name": "Hamilton",
+          "note": "2007 China pit entry"
+        },
+        {
+          "code": "COU",
+          "name": "Coulthard",
+          "note": "1997-2000 implosions"
+        },
+        {
+          "code": "MAS",
+          "name": "Massa",
+          "note": "2008 Brazil last-corner loss"
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "color": "#E0E0E0",
+      "drivers": [
+        {
+          "code": "VET",
+          "name": "Vettel",
+          "note": "2018 self-destructs"
+        },
+        {
+          "code": "RAI",
+          "name": "Räikkönen",
+          "note": "2003 reliability chain"
+        },
+        {
+          "code": "ALO",
+          "name": "Alonso",
+          "note": "2010 Abu Dhabi strategy"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "color": "#B88A3E",
+      "drivers": [
+        {
+          "code": "PRO",
+          "name": "Prost",
+          "note": "1984 by half-point"
+        },
+        {
+          "code": "HIL",
+          "name": "D. Hill",
+          "note": "1994 Adelaide"
+        },
+        {
+          "code": "ARN",
+          "name": "Arnoux",
+          "note": "1983 title fight"
+        }
+      ]
+    }
+  ]
+}

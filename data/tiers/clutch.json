@@ -1,0 +1,85 @@
+{
+  "title": "CLUTCH PERFORMANCE",
+  "subtitle": "WHO DELIVERS WHEN IT MATTERS MOST",
+  "tiers": [
+    {
+      "label": "S",
+      "color": "#FFD700",
+      "drivers": [
+        {
+          "code": "SEN",
+          "name": "Senna",
+          "note": "Wet-weather god, final-lap overtakes"
+        },
+        {
+          "code": "SCH",
+          "name": "Schumacher",
+          "note": "Title deciders"
+        },
+        {
+          "code": "VER",
+          "name": "Verstappen",
+          "note": "Final 5 races of 2021"
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "color": "#E0E0E0",
+      "drivers": [
+        {
+          "code": "HAM",
+          "name": "Hamilton",
+          "note": "2008 Brazil final corner"
+        },
+        {
+          "code": "ALO",
+          "name": "Alonso",
+          "note": "2006 Japan"
+        },
+        {
+          "code": "LAU",
+          "name": "Lauda",
+          "note": "1984 final race"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "color": "#B88A3E",
+      "drivers": [
+        {
+          "code": "VET",
+          "name": "Vettel",
+          "note": "2012 Brazil"
+        },
+        {
+          "code": "RAI",
+          "name": "Räikkönen",
+          "note": "2007 finale"
+        },
+        {
+          "code": "BUT",
+          "name": "Button",
+          "note": "2011 Canada"
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "color": "#6E6E6E",
+      "drivers": [
+        {
+          "code": "ROS",
+          "name": "N. Rosberg",
+          "note": "2016 run-in"
+        },
+        {
+          "code": "LEC",
+          "name": "Leclerc",
+          "note": "Mixed showings"
+        }
+      ]
+    }
+  ]
+}

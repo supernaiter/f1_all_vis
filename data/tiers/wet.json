@@ -1,0 +1,85 @@
+{
+  "title": "WET WEATHER KINGS",
+  "subtitle": "RAIN MASTERS RANKED",
+  "tiers": [
+    {
+      "label": "S",
+      "color": "#FFD700",
+      "drivers": [
+        {
+          "code": "SEN",
+          "name": "Senna",
+          "note": "Monaco '84, Donington '93"
+        },
+        {
+          "code": "SCH",
+          "name": "Schumacher",
+          "note": "Spain '96, USA '03"
+        },
+        {
+          "code": "VER",
+          "name": "Verstappen",
+          "note": "Brazil '16 debut"
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "color": "#E0E0E0",
+      "drivers": [
+        {
+          "code": "HAM",
+          "name": "Hamilton",
+          "note": "Silverstone '08, Turkey '20"
+        },
+        {
+          "code": "BUT",
+          "name": "Button",
+          "note": "Canada '11"
+        },
+        {
+          "code": "ALO",
+          "name": "Alonso",
+          "note": "Singapore rain stages"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "color": "#B88A3E",
+      "drivers": [
+        {
+          "code": "WEB",
+          "name": "Webber",
+          "note": "Monaco '10"
+        },
+        {
+          "code": "VET",
+          "name": "Vettel",
+          "note": "Italy '08"
+        },
+        {
+          "code": "VIL",
+          "name": "Villeneuve",
+          "note": "Europe '96"
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "color": "#6E6E6E",
+      "drivers": [
+        {
+          "code": "RIC",
+          "name": "Ricciardo",
+          "note": "Hungary '14"
+        },
+        {
+          "code": "OCO",
+          "name": "Ocon",
+          "note": "Spa '21"
+        }
+      ]
+    }
+  ]
+}

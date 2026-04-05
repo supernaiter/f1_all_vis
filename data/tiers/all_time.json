@@ -1,0 +1,125 @@
+{
+  "title": "ALL-TIME GREATEST",
+  "subtitle": "THE DEFINITIVE F1 GOAT TIER LIST",
+  "tiers": [
+    {
+      "label": "S",
+      "color": "#FFD700",
+      "drivers": [
+        {
+          "code": "SCH",
+          "name": "Schumacher",
+          "note": "7 titles, era-defining"
+        },
+        {
+          "code": "HAM",
+          "name": "Hamilton",
+          "note": "7 titles, 105 wins"
+        },
+        {
+          "code": "SEN",
+          "name": "Senna",
+          "note": "3 titles, mythical wet pace"
+        },
+        {
+          "code": "PRO",
+          "name": "Prost",
+          "note": "4 titles, The Professor"
+        },
+        {
+          "code": "VER",
+          "name": "Verstappen",
+          "note": "4 titles, dominance"
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "color": "#E0E0E0",
+      "drivers": [
+        {
+          "code": "FAN",
+          "name": "Fangio",
+          "note": "5 titles in 8 seasons"
+        },
+        {
+          "code": "CLA",
+          "name": "Clark",
+          "note": "2 titles, untouchable in era"
+        },
+        {
+          "code": "STE",
+          "name": "Stewart",
+          "note": "3 titles, safety advocate"
+        },
+        {
+          "code": "LAU",
+          "name": "Lauda",
+          "note": "3 titles, comeback legend"
+        },
+        {
+          "code": "PIQ",
+          "name": "Piquet",
+          "note": "3 titles"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "color": "#B88A3E",
+      "drivers": [
+        {
+          "code": "ALO",
+          "name": "Alonso",
+          "note": "2 titles, longevity"
+        },
+        {
+          "code": "VET",
+          "name": "Vettel",
+          "note": "4 titles"
+        },
+        {
+          "code": "MAN",
+          "name": "Mansell",
+          "note": "1 title, fighter"
+        },
+        {
+          "code": "HAK",
+          "name": "Häkkinen",
+          "note": "2 titles"
+        },
+        {
+          "code": "EMS",
+          "name": "Fittipaldi",
+          "note": "2 titles"
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "color": "#6E6E6E",
+      "drivers": [
+        {
+          "code": "ROS",
+          "name": "N. Rosberg",
+          "note": "1 title"
+        },
+        {
+          "code": "BUT",
+          "name": "Button",
+          "note": "1 title, rain master"
+        },
+        {
+          "code": "HIL",
+          "name": "D. Hill",
+          "note": "1 title"
+        },
+        {
+          "code": "VIL",
+          "name": "Villeneuve",
+          "note": "1 title"
+        }
+      ]
+    }
+  ]
+}

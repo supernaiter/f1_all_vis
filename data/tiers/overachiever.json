@@ -1,0 +1,85 @@
+{
+  "title": "OVERACHIEVER",
+  "subtitle": "PUNCHING ABOVE THE MACHINE",
+  "tiers": [
+    {
+      "label": "S",
+      "color": "#FFD700",
+      "drivers": [
+        {
+          "code": "ALO",
+          "name": "Alonso",
+          "note": "Extracted miracles from mid-pack cars"
+        },
+        {
+          "code": "VER",
+          "name": "Verstappen",
+          "note": "2016 breakthrough in STR"
+        },
+        {
+          "code": "PER",
+          "name": "Pérez",
+          "note": "Sauber/Force India podiums"
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "color": "#E0E0E0",
+      "drivers": [
+        {
+          "code": "HUL",
+          "name": "Hülkenberg",
+          "note": "Regular Q3 in midfield"
+        },
+        {
+          "code": "OCO",
+          "name": "Ocon",
+          "note": "Hungary 2021 win"
+        },
+        {
+          "code": "GAS",
+          "name": "Gasly",
+          "note": "Monza 2020 win"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "color": "#B88A3E",
+      "drivers": [
+        {
+          "code": "SAI",
+          "name": "Sainz",
+          "note": "McLaren era consistency"
+        },
+        {
+          "code": "ALB",
+          "name": "Albon",
+          "note": "Williams salvage jobs"
+        },
+        {
+          "code": "MAG",
+          "name": "Magnussen",
+          "note": "Haas peaks"
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "color": "#6E6E6E",
+      "drivers": [
+        {
+          "code": "STR",
+          "name": "Stroll",
+          "note": "Baku pole '17"
+        },
+        {
+          "code": "BOT",
+          "name": "Bottas",
+          "note": "Mercedes support role"
+        }
+      ]
+    }
+  ]
+}

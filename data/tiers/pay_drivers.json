@@ -1,0 +1,64 @@
+{
+  "title": "PAY DRIVER HALL OF SHAME",
+  "subtitle": "SEATS BOUGHT, NOT EARNED (OPINION)",
+  "tiers": [
+    {
+      "label": "F",
+      "color": "#7A1F1F",
+      "drivers": [
+        {
+          "code": "CHA",
+          "name": "Chanoch",
+          "note": "Placeholder — edit list"
+        },
+        {
+          "code": "YOO",
+          "name": "Yoong",
+          "note": "Minardi struggles"
+        },
+        {
+          "code": "IDE",
+          "name": "Ide",
+          "note": "Super Aguri exit"
+        }
+      ]
+    },
+    {
+      "label": "D",
+      "color": "#3E3E3E",
+      "drivers": [
+        {
+          "code": "MAL",
+          "name": "Maldonado",
+          "note": "Spain '12 win aside, mostly chaos"
+        },
+        {
+          "code": "MAZ",
+          "name": "Mazepin",
+          "note": "Haas 2021"
+        },
+        {
+          "code": "LAT",
+          "name": "Latifi",
+          "note": "Williams underwhelm"
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "color": "#6E6E6E",
+      "drivers": [
+        {
+          "code": "PER",
+          "name": "Pérez",
+          "note": "Partial — career turned"
+        },
+        {
+          "code": "STR",
+          "name": "Stroll",
+          "note": "Family team controversy"
+        }
+      ]
+    }
+  ]
+}

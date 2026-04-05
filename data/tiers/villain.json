@@ -1,0 +1,64 @@
+{
+  "title": "VILLAIN ERA",
+  "subtitle": "MOST-BOOED DRIVERS IN F1 HISTORY",
+  "tiers": [
+    {
+      "label": "S",
+      "color": "#FFD700",
+      "drivers": [
+        {
+          "code": "SCH",
+          "name": "Schumacher",
+          "note": "Adelaide '94, Jerez '97"
+        },
+        {
+          "code": "VER",
+          "name": "Verstappen",
+          "note": "2021 title controversy"
+        },
+        {
+          "code": "SEN",
+          "name": "Senna",
+          "note": "Prost collisions"
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "color": "#E0E0E0",
+      "drivers": [
+        {
+          "code": "PRO",
+          "name": "Prost",
+          "note": "'The Professor' calculation"
+        },
+        {
+          "code": "ALO",
+          "name": "Alonso",
+          "note": "Crashgate implication"
+        },
+        {
+          "code": "HAM",
+          "name": "Hamilton",
+          "note": "2008 Spa penalty saga"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "color": "#B88A3E",
+      "drivers": [
+        {
+          "code": "MAL",
+          "name": "Maldonado",
+          "note": "Crash reputation"
+        },
+        {
+          "code": "MAZ",
+          "name": "Mazepin",
+          "note": "Pre-F1 controversy"
+        }
+      ]
+    }
+  ]
+}

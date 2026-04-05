@@ -1,0 +1,69 @@
+{
+  "title": "WASTED TALENT",
+  "subtitle": "TITLES THEY SHOULD HAVE WON",
+  "tiers": [
+    {
+      "label": "S",
+      "color": "#FFD700",
+      "drivers": [
+        {
+          "code": "MON",
+          "name": "Montoya",
+          "note": "Raw speed without title"
+        },
+        {
+          "code": "KUB",
+          "name": "Kubica",
+          "note": "Rally injury cut career"
+        },
+        {
+          "code": "HEI",
+          "name": "Heidfeld",
+          "note": "Never won a race"
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "color": "#E0E0E0",
+      "drivers": [
+        {
+          "code": "WEB",
+          "name": "Webber",
+          "note": "Always #2 at RBR"
+        },
+        {
+          "code": "BAR",
+          "name": "Barrichello",
+          "note": "Schumacher's shadow"
+        },
+        {
+          "code": "RIC",
+          "name": "Ricciardo",
+          "note": "Post-RBR decline"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "color": "#B88A3E",
+      "drivers": [
+        {
+          "code": "DIR",
+          "name": "di Resta",
+          "note": "Promising Force India"
+        },
+        {
+          "code": "FRE",
+          "name": "Frentzen",
+          "note": "'99 title shot"
+        },
+        {
+          "code": "TRU",
+          "name": "Trulli",
+          "note": "Qualifying demon"
+        }
+      ]
+    }
+  ]
+}

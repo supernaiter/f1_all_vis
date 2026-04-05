@@ -1,0 +1,63 @@
+---
+import { listTierPages, loadTierData, type TierData } from '../../lib/data';
+
+export function getStaticPaths() {
+  return listTierPages()
+    .filter(slug => loadTierData(slug) !== null)
+    .map(slug => ({
+      params: { slug },
+      props: { data: loadTierData(slug) as TierData },
+    }));
+}
+
+const { slug } = Astro.params;
+const { data } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{data.title} — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace}
+.card{width:1080px;min-height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.tiers{margin-top:28px;display:flex;flex-direction:column;gap:10px}
+.tier-row{display:flex;align-items:stretch;background:#0b0b10;border:1px solid #111118}
+.tier-label{min-width:96px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:48px;color:#060606;letter-spacing:0.05em}
+.tier-body{flex:1;display:flex;flex-wrap:wrap;gap:10px;padding:14px 18px;align-items:center}
+.chip{background:#14141b;border:1px solid #20202a;padding:8px 12px;display:flex;flex-direction:column;gap:2px;max-width:230px}
+.chip .code{font-family:'Bebas Neue',sans-serif;font-size:18px;color:#e0e0e0;letter-spacing:0.06em;line-height:1}
+.chip .name{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6a6a6a;letter-spacing:0.1em;text-transform:uppercase}
+.chip .note{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#444;letter-spacing:0.05em;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">{data.title}</div>
+  <div class="sub">{data.subtitle}</div>
+  <div class="tiers">
+    {data.tiers.map(tier => (
+      <div class="tier-row">
+        <div class="tier-label" style={`background:${tier.color}`}>{tier.label}</div>
+        <div class="tier-body">
+          {tier.drivers.map(d => (
+            <div class="chip">
+              <div class="code">{d.code}</div>
+              <div class="name">{d.name}</div>
+              {d.note && <div class="note">{d.note}</div>}
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+</body>
+</html>

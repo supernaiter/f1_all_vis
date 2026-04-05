@@ -1,0 +1,64 @@
+{
+  "title": "TEAM ATMOSPHERE DESTROYER",
+  "subtitle": "GARAGE VIBES NUKED FROM ORBIT",
+  "tiers": [
+    {
+      "label": "S",
+      "color": "#FFD700",
+      "drivers": [
+        {
+          "code": "ALO",
+          "name": "Alonso",
+          "note": "McLaren '07, Ferrari '14"
+        },
+        {
+          "code": "SEN",
+          "name": "Senna",
+          "note": "McLaren vs Prost"
+        },
+        {
+          "code": "VET",
+          "name": "Vettel",
+          "note": "Ferrari exit"
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "color": "#E0E0E0",
+      "drivers": [
+        {
+          "code": "ROS",
+          "name": "N. Rosberg",
+          "note": "Hamilton rivalry '14-'16"
+        },
+        {
+          "code": "HAM",
+          "name": "Hamilton",
+          "note": "McLaren exit '12"
+        },
+        {
+          "code": "PIQ",
+          "name": "Piquet",
+          "note": "Williams lockerroom"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "color": "#B88A3E",
+      "drivers": [
+        {
+          "code": "MAN",
+          "name": "Mansell",
+          "note": "Williams demands"
+        },
+        {
+          "code": "RAI",
+          "name": "Räikkönen",
+          "note": "Lotus silences"
+        }
+      ]
+    }
+  ]
+}

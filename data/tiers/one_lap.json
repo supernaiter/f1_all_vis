@@ -1,0 +1,90 @@
+{
+  "title": "ONE-LAP KING",
+  "subtitle": "PURE QUALIFYING PACE RANKED",
+  "tiers": [
+    {
+      "label": "S",
+      "color": "#FFD700",
+      "drivers": [
+        {
+          "code": "SEN",
+          "name": "Senna",
+          "note": "65 poles in 161 starts"
+        },
+        {
+          "code": "HAM",
+          "name": "Hamilton",
+          "note": "104 poles"
+        },
+        {
+          "code": "VER",
+          "name": "Verstappen",
+          "note": "Ruthless single-lap"
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "color": "#E0E0E0",
+      "drivers": [
+        {
+          "code": "SCH",
+          "name": "Schumacher",
+          "note": "68 poles"
+        },
+        {
+          "code": "CLA",
+          "name": "Clark",
+          "note": "33 poles in short career"
+        },
+        {
+          "code": "LEC",
+          "name": "Leclerc",
+          "note": "Monaco specialist"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "color": "#B88A3E",
+      "drivers": [
+        {
+          "code": "PRO",
+          "name": "Prost",
+          "note": "33 poles"
+        },
+        {
+          "code": "MAN",
+          "name": "Mansell",
+          "note": "32 poles"
+        },
+        {
+          "code": "VET",
+          "name": "Vettel",
+          "note": "57 poles"
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "color": "#6E6E6E",
+      "drivers": [
+        {
+          "code": "ALO",
+          "name": "Alonso",
+          "note": "22 poles"
+        },
+        {
+          "code": "BUT",
+          "name": "Button",
+          "note": "8 poles"
+        },
+        {
+          "code": "RAI",
+          "name": "Räikkönen",
+          "note": "18 poles"
+        }
+      ]
+    }
+  ]
+}

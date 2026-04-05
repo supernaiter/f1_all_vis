@@ -1,0 +1,116 @@
+{
+  "title": "2024 SEASON",
+  "subtitle": "DRIVER RANKINGS FROM THE 2024 CAMPAIGN",
+  "tiers": [
+    {
+      "label": "S",
+      "color": "#FFD700",
+      "drivers": [
+        {
+          "code": "VER",
+          "name": "Verstappen",
+          "note": "4th title despite RB decline"
+        },
+        {
+          "code": "NOR",
+          "name": "Norris",
+          "note": "MCL leader, 4 wins"
+        }
+      ]
+    },
+    {
+      "label": "A",
+      "color": "#E0E0E0",
+      "drivers": [
+        {
+          "code": "LEC",
+          "name": "Leclerc",
+          "note": "3 wins incl. Monaco"
+        },
+        {
+          "code": "PIA",
+          "name": "Piastri",
+          "note": "2 wins, step up"
+        },
+        {
+          "code": "SAI",
+          "name": "Sainz",
+          "note": "Consistent podium-getter"
+        },
+        {
+          "code": "HAM",
+          "name": "Hamilton",
+          "note": "2 wins in swan song"
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "color": "#B88A3E",
+      "drivers": [
+        {
+          "code": "RUS",
+          "name": "Russell",
+          "note": "Qualifying edge in MER"
+        },
+        {
+          "code": "ALO",
+          "name": "Alonso",
+          "note": "Points-gathering"
+        },
+        {
+          "code": "PER",
+          "name": "Pérez",
+          "note": "Collapse from Q2"
+        }
+      ]
+    },
+    {
+      "label": "C",
+      "color": "#6E6E6E",
+      "drivers": [
+        {
+          "code": "HUL",
+          "name": "Hülkenberg",
+          "note": "Solid Haas"
+        },
+        {
+          "code": "TSU",
+          "name": "Tsunoda",
+          "note": "RB improvements"
+        },
+        {
+          "code": "ALB",
+          "name": "Albon",
+          "note": "Williams 1A"
+        }
+      ]
+    },
+    {
+      "label": "D",
+      "color": "#3E3E3E",
+      "drivers": [
+        {
+          "code": "GAS",
+          "name": "Gasly",
+          "note": "Alpine rebuild"
+        },
+        {
+          "code": "OCO",
+          "name": "Ocon",
+          "note": "Exit season"
+        },
+        {
+          "code": "STR",
+          "name": "Stroll",
+          "note": "Off the pace"
+        },
+        {
+          "code": "BOT",
+          "name": "Bottas",
+          "note": "Last Sauber year"
+        }
+      ]
+    }
+  ]
+}

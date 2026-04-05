@@ -20,3 +20,6 @@
 2026-04-05|pSEO Phase1|30ドライバー×435ペア×4種JSON自動生成(driver_compare_generator.py)|歴代比較ページ量産で検索面積拡大、マスター更新だけで1740ファイル再生成可能|数値は近似値、Jolpica-F1で後続補正必要
 2026-04-05|スラッグ正規化|ペアdirを辞書順(ham-vs-msc等)に統一|VER起点の逆順問題回避、URL予測可能|既存3ディレクトリ(ver-vs-ham等)は再生成で上書き
 2026-04-05|[pair]/[type]統合却下|4テンプレ個別getStaticPaths維持|career-arc.astroと同型で保守容易、ビルド時間差は微小|テンプレ横断変更時は4ファイル同期要
+2026-04-05|pseo-typeA-render|1枚のAstroテンプレート内で7カード種をcardType分岐描画|既存card_*.html全複製より保守性優先|個別ビジュアル精度は後工程
+2026-04-05|pseo-typeE-coverage|R01/R03は11チーム55ペア実装(spec45超過)|実データ基準のほうが未来GPへの拡張が自然|スラッグ衝突なしを確認
+2026-04-05|pseo-openf1|braking/corner/overtakeはPENDING表示で出荷|OpenF1未統合・ビルド成功優先|統合後に同スクリプトの差し替えで対応可能

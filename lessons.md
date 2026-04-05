@@ -43,3 +43,8 @@
 - Evaluatorのフィードバックはそのまま次のGeneratorに渡す（要約しない）
 - F1固有スキルはプロジェクトローカル(.claude/skills/)に配置。グローバルに置くと他プロジェクトに漏れる
 - pace→sectors→speed→stintsの順が効率的（paceがHubに最も構造が近い）
+
+## pSEO generator
+- listGPs()はexport/未生成のGPも返す → getStaticPathsでdata nullフィルタ必須
+- race_laps.csv Position列は 1,6,671,71 等のトラック状態値を混在 → LapNumber==1 フィルタで Lap1 position取得時に int変換前の数値バリデーション必須
+- csv module は pandas なしで十分。Python 3.14 標準ライブラリのみで TYPE-A/E/F 全生成可

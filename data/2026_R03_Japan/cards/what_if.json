@@ -1,0 +1,190 @@
+{
+  "type": "what_if",
+  "drivers": [
+    {
+      "code": "ALB",
+      "pit_laps": [
+        22,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "pit_loss_sum": 149.678,
+      "best_lap": 93.427
+    },
+    {
+      "code": "ALO",
+      "pit_laps": [
+        21,
+        23
+      ],
+      "pit_loss_sum": 39.667,
+      "best_lap": 96.221
+    },
+    {
+      "code": "HUL",
+      "pit_laps": [
+        23
+      ],
+      "pit_loss_sum": 35.687,
+      "best_lap": 93.732
+    },
+    {
+      "code": "SAI",
+      "pit_laps": [
+        22
+      ],
+      "pit_loss_sum": 32.357,
+      "best_lap": 94.514
+    },
+    {
+      "code": "BOR",
+      "pit_laps": [
+        22
+      ],
+      "pit_loss_sum": 32.231,
+      "best_lap": 94.164
+    },
+    {
+      "code": "LAW",
+      "pit_laps": [
+        22
+      ],
+      "pit_loss_sum": 32.084,
+      "best_lap": 94.23
+    },
+    {
+      "code": "STR",
+      "pit_laps": [
+        21,
+        24,
+        30
+      ],
+      "pit_loss_sum": 28.513,
+      "best_lap": 97.217
+    },
+    {
+      "code": "VER",
+      "pit_laps": [
+        22
+      ],
+      "pit_loss_sum": 28.204,
+      "best_lap": 93.552
+    },
+    {
+      "code": "GAS",
+      "pit_laps": [
+        22
+      ],
+      "pit_loss_sum": 27.269,
+      "best_lap": 93.691
+    },
+    {
+      "code": "HAM",
+      "pit_laps": [
+        22
+      ],
+      "pit_loss_sum": 24.142,
+      "best_lap": 92.777
+    },
+    {
+      "code": "ANT",
+      "pit_laps": [
+        22
+      ],
+      "pit_loss_sum": 20.944,
+      "best_lap": 92.432
+    },
+    {
+      "code": "PER",
+      "pit_laps": [
+        21
+      ],
+      "pit_loss_sum": 12.509,
+      "best_lap": 95.637
+    },
+    {
+      "code": "BOT",
+      "pit_laps": [
+        19
+      ],
+      "pit_loss_sum": 5.674,
+      "best_lap": 96.269
+    },
+    {
+      "code": "NOR",
+      "pit_laps": [
+        16
+      ],
+      "pit_loss_sum": 5.014,
+      "best_lap": 93.208
+    },
+    {
+      "code": "LIN",
+      "pit_laps": [
+        18
+      ],
+      "pit_loss_sum": 4.882,
+      "best_lap": 94.314
+    },
+    {
+      "code": "LEC",
+      "pit_laps": [
+        17
+      ],
+      "pit_loss_sum": 4.814,
+      "best_lap": 92.634
+    },
+    {
+      "code": "COL",
+      "pit_laps": [
+        17
+      ],
+      "pit_loss_sum": 4.746,
+      "best_lap": 94.512
+    },
+    {
+      "code": "OCO",
+      "pit_laps": [
+        19
+      ],
+      "pit_loss_sum": 4.643,
+      "best_lap": 94.256
+    },
+    {
+      "code": "PIA",
+      "pit_laps": [
+        18
+      ],
+      "pit_loss_sum": 4.331,
+      "best_lap": 92.996
+    },
+    {
+      "code": "RUS",
+      "pit_laps": [
+        21
+      ],
+      "pit_loss_sum": 3.956,
+      "best_lap": 92.549
+    },
+    {
+      "code": "HAD",
+      "pit_laps": [
+        19
+      ],
+      "pit_loss_sum": 3.898,
+      "best_lap": 93.837
+    },
+    {
+      "code": "BEA",
+      "pit_laps": [
+        16
+      ],
+      "pit_loss_sum": 3.183,
+      "best_lap": 95.604
+    }
+  ],
+  "gp": "2026_R03_Japan"
+}

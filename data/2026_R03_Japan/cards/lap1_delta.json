@@ -1,0 +1,182 @@
+{
+  "type": "lap1_delta",
+  "drivers": [
+    {
+      "code": "ANT",
+      "team": "Mercedes",
+      "color": "#00D7B6",
+      "grid": 1,
+      "lap1": 6,
+      "delta": -5
+    },
+    {
+      "code": "RUS",
+      "team": "Mercedes",
+      "color": "#00D7B6",
+      "grid": 2,
+      "lap1": 4,
+      "delta": -2
+    },
+    {
+      "code": "PIA",
+      "team": "McLaren",
+      "color": "#F47600",
+      "grid": 3,
+      "lap1": 1,
+      "delta": 2
+    },
+    {
+      "code": "LEC",
+      "team": "Ferrari",
+      "color": "#ED1131",
+      "grid": 4,
+      "lap1": 2,
+      "delta": 2
+    },
+    {
+      "code": "NOR",
+      "team": "McLaren",
+      "color": "#F47600",
+      "grid": 5,
+      "lap1": 3,
+      "delta": 2
+    },
+    {
+      "code": "HAM",
+      "team": "Ferrari",
+      "color": "#ED1131",
+      "grid": 6,
+      "lap1": 5,
+      "delta": 1
+    },
+    {
+      "code": "GAS",
+      "team": "Alpine",
+      "color": "#00A1E8",
+      "grid": 7,
+      "lap1": 7,
+      "delta": 0
+    },
+    {
+      "code": "HAD",
+      "team": "Red Bull Racing",
+      "color": "#4781D7",
+      "grid": 8,
+      "lap1": 8,
+      "delta": 0
+    },
+    {
+      "code": "BOR",
+      "team": "Audi",
+      "color": "#F50537",
+      "grid": 9,
+      "lap1": 13,
+      "delta": -4
+    },
+    {
+      "code": "LIN",
+      "team": "Racing Bulls",
+      "color": "#6C98FF",
+      "grid": 10,
+      "lap1": 9,
+      "delta": 1
+    },
+    {
+      "code": "VER",
+      "team": "Red Bull Racing",
+      "color": "#4781D7",
+      "grid": 11,
+      "lap1": 10,
+      "delta": 1
+    },
+    {
+      "code": "OCO",
+      "team": "Haas F1 Team",
+      "color": "#9C9FA2",
+      "grid": 12,
+      "lap1": 11,
+      "delta": 1
+    },
+    {
+      "code": "HUL",
+      "team": "Audi",
+      "color": "#F50537",
+      "grid": 13,
+      "lap1": 19,
+      "delta": -6
+    },
+    {
+      "code": "LAW",
+      "team": "Racing Bulls",
+      "color": "#6C98FF",
+      "grid": 14,
+      "lap1": 12,
+      "delta": 2
+    },
+    {
+      "code": "COL",
+      "team": "Alpine",
+      "color": "#00A1E8",
+      "grid": 15,
+      "lap1": 14,
+      "delta": 1
+    },
+    {
+      "code": "SAI",
+      "team": "Williams",
+      "color": "#1868DB",
+      "grid": 16,
+      "lap1": 15,
+      "delta": 1
+    },
+    {
+      "code": "ALB",
+      "team": "Williams",
+      "color": "#1868DB",
+      "grid": 17,
+      "lap1": 17,
+      "delta": 0
+    },
+    {
+      "code": "BEA",
+      "team": "Haas F1 Team",
+      "color": "#9C9FA2",
+      "grid": 18,
+      "lap1": 16,
+      "delta": 2
+    },
+    {
+      "code": "PER",
+      "team": "Cadillac",
+      "color": "#909090",
+      "grid": 19,
+      "lap1": 18,
+      "delta": 1
+    },
+    {
+      "code": "BOT",
+      "team": "Cadillac",
+      "color": "#909090",
+      "grid": 20,
+      "lap1": 21,
+      "delta": -1
+    },
+    {
+      "code": "ALO",
+      "team": "Aston Martin",
+      "color": "#229971",
+      "grid": 21,
+      "lap1": 20,
+      "delta": 1
+    },
+    {
+      "code": "STR",
+      "team": "Aston Martin",
+      "color": "#229971",
+      "grid": 22,
+      "lap1": 22,
+      "delta": 0
+    }
+  ],
+  "gp": "2026_R03_Japan"
+}

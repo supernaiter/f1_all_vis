@@ -1,0 +1,152 @@
+{
+  "type": "what_if",
+  "drivers": [
+    {
+      "code": "HAD",
+      "pit_laps": [
+        1,
+        10
+      ],
+      "pit_loss_sum": 57.059,
+      "best_lap": 97.311
+    },
+    {
+      "code": "PER",
+      "pit_laps": [
+        11
+      ],
+      "pit_loss_sum": 40.196,
+      "best_lap": 98.523
+    },
+    {
+      "code": "ALO",
+      "pit_laps": [
+        31,
+        32
+      ],
+      "pit_loss_sum": 34.492,
+      "best_lap": 99.721
+    },
+    {
+      "code": "BOT",
+      "pit_laps": [
+        10
+      ],
+      "pit_loss_sum": 26.738,
+      "best_lap": 98.393
+    },
+    {
+      "code": "BEA",
+      "pit_laps": [
+        10
+      ],
+      "pit_loss_sum": 21.001,
+      "best_lap": 96.429
+    },
+    {
+      "code": "RUS",
+      "pit_laps": [
+        10
+      ],
+      "pit_loss_sum": 17.379,
+      "best_lap": 95.4
+    },
+    {
+      "code": "GAS",
+      "pit_laps": [
+        10
+      ],
+      "pit_loss_sum": 16.489,
+      "best_lap": 96.505
+    },
+    {
+      "code": "LEC",
+      "pit_laps": [
+        10
+      ],
+      "pit_loss_sum": 16.386,
+      "best_lap": 96.011
+    },
+    {
+      "code": "OCO",
+      "pit_laps": [
+        29,
+        46
+      ],
+      "pit_loss_sum": 16.189,
+      "best_lap": 95.964
+    },
+    {
+      "code": "HAM",
+      "pit_laps": [
+        10
+      ],
+      "pit_loss_sum": 13.854,
+      "best_lap": 96.092
+    },
+    {
+      "code": "ANT",
+      "pit_laps": [
+        10
+      ],
+      "pit_loss_sum": 11.396,
+      "best_lap": 95.275
+    },
+    {
+      "code": "LAW",
+      "pit_laps": [
+        9
+      ],
+      "pit_loss_sum": 9.083,
+      "best_lap": 97.096
+    },
+    {
+      "code": "HUL",
+      "pit_laps": [
+        35
+      ],
+      "pit_loss_sum": 8.733,
+      "best_lap": 96.18
+    },
+    {
+      "code": "VER",
+      "pit_laps": [
+        9,
+        45
+      ],
+      "pit_loss_sum": 8.479,
+      "best_lap": 97.046
+    },
+    {
+      "code": "LIN",
+      "pit_laps": [
+        42
+      ],
+      "pit_loss_sum": 7.538,
+      "best_lap": 96.099
+    },
+    {
+      "code": "SAI",
+      "pit_laps": [
+        9
+      ],
+      "pit_loss_sum": 7.153,
+      "best_lap": 97.981
+    },
+    {
+      "code": "COL",
+      "pit_laps": [
+        32
+      ],
+      "pit_loss_sum": 6.036,
+      "best_lap": 96.783
+    },
+    {
+      "code": "STR",
+      "pit_laps": [],
+      "pit_loss_sum": 0,
+      "best_lap": 100.883
+    }
+  ],
+  "gp": "2026_R02_China"
+}

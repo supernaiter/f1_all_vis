@@ -1,0 +1,116 @@
+{
+  "type": "pace_variance",
+  "teams": [
+    {
+      "team": "Audi",
+      "color": "#3AAA3A",
+      "median": 84.694,
+      "mean": 84.828,
+      "stdev": 0.926,
+      "min": 83.257,
+      "max": 87.538,
+      "count": 49
+    },
+    {
+      "team": "Haas F1 Team",
+      "color": "#7A7A7A",
+      "median": 85.047,
+      "mean": 85.32,
+      "stdev": 1.081,
+      "min": 84.02,
+      "max": 90.647,
+      "count": 100
+    },
+    {
+      "team": "Mercedes",
+      "color": "#00B89F",
+      "median": 83.073,
+      "mean": 83.48,
+      "stdev": 1.083,
+      "min": 82.417,
+      "max": 88.479,
+      "count": 103
+    },
+    {
+      "team": "Ferrari",
+      "color": "#DC0000",
+      "median": 83.218,
+      "mean": 83.58,
+      "stdev": 1.103,
+      "min": 82.423,
+      "max": 89.135,
+      "count": 98
+    },
+    {
+      "team": "Alpine",
+      "color": "#0078AA",
+      "median": 85.367,
+      "mean": 85.692,
+      "stdev": 1.241,
+      "min": 82.926,
+      "max": 91.244,
+      "count": 96
+    },
+    {
+      "team": "Red Bull Racing",
+      "color": "#2B5DAB",
+      "median": 83.715,
+      "mean": 84.195,
+      "stdev": 1.286,
+      "min": 82.091,
+      "max": 87.991,
+      "count": 59
+    },
+    {
+      "team": "Racing Bulls",
+      "color": "#4A72CC",
+      "median": 85.071,
+      "mean": 85.412,
+      "stdev": 1.332,
+      "min": 83.783,
+      "max": 90.927,
+      "count": 100
+    },
+    {
+      "team": "McLaren",
+      "color": "#E07800",
+      "median": 83.687,
+      "mean": 84.009,
+      "stdev": 1.333,
+      "min": 82.358,
+      "max": 89.434,
+      "count": 51
+    },
+    {
+      "team": "Aston Martin",
+      "color": "#1B7A5A",
+      "median": 87.475,
+      "mean": 87.436,
+      "stdev": 1.347,
+      "min": 85.41,
+      "max": 92.972,
+      "count": 47
+    },
+    {
+      "team": "Williams",
+      "color": "#3BA3E0",
+      "median": 85.543,
+      "mean": 85.848,
+      "stdev": 1.35,
+      "min": 83.59,
+      "max": 91.589,
+      "count": 96
+    },
+    {
+      "team": "Cadillac",
+      "color": "#888888",
+      "median": 87.709,
+      "mean": 88.174,
+      "stdev": 1.654,
+      "min": 86.07,
+      "max": 93.478,
+      "count": 58
+    }
+  ],
+  "gp": "2026_R01_Australia"
+}

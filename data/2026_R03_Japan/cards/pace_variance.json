@@ -1,0 +1,116 @@
+{
+  "type": "pace_variance",
+  "teams": [
+    {
+      "team": "Aston Martin",
+      "color": "#1B7A5A",
+      "median": 98.232,
+      "mean": 98.043,
+      "stdev": 0.739,
+      "min": 96.221,
+      "max": 100.631,
+      "count": 66
+    },
+    {
+      "team": "McLaren",
+      "color": "#E07800",
+      "median": 94.047,
+      "mean": 94.354,
+      "stdev": 1.021,
+      "min": 92.996,
+      "max": 98.222,
+      "count": 92
+    },
+    {
+      "team": "Williams",
+      "color": "#3BA3E0",
+      "median": 96.46,
+      "mean": 96.171,
+      "stdev": 1.025,
+      "min": 93.427,
+      "max": 98.076,
+      "count": 85
+    },
+    {
+      "team": "Ferrari",
+      "color": "#DC0000",
+      "median": 94.193,
+      "mean": 94.455,
+      "stdev": 1.06,
+      "min": 92.634,
+      "max": 98.386,
+      "count": 93
+    },
+    {
+      "team": "Audi",
+      "color": "#3AAA3A",
+      "median": 95.722,
+      "mean": 95.708,
+      "stdev": 1.123,
+      "min": 93.732,
+      "max": 98.924,
+      "count": 92
+    },
+    {
+      "team": "Alpine",
+      "color": "#0078AA",
+      "median": 95.436,
+      "mean": 95.417,
+      "stdev": 1.174,
+      "min": 93.691,
+      "max": 99.651,
+      "count": 91
+    },
+    {
+      "team": "Mercedes",
+      "color": "#00B89F",
+      "median": 93.989,
+      "mean": 94.135,
+      "stdev": 1.185,
+      "min": 92.432,
+      "max": 98.784,
+      "count": 94
+    },
+    {
+      "team": "Cadillac",
+      "color": "#888888",
+      "median": 97.19,
+      "mean": 97.524,
+      "stdev": 1.243,
+      "min": 95.637,
+      "max": 102.013,
+      "count": 89
+    },
+    {
+      "team": "Haas F1 Team",
+      "color": "#7A7A7A",
+      "median": 96.29,
+      "mean": 96.055,
+      "stdev": 1.39,
+      "min": 94.256,
+      "max": 101.913,
+      "count": 64
+    },
+    {
+      "team": "Racing Bulls",
+      "color": "#4A72CC",
+      "median": 95.402,
+      "mean": 95.89,
+      "stdev": 1.464,
+      "min": 94.23,
+      "max": 102.498,
+      "count": 93
+    },
+    {
+      "team": "Red Bull Racing",
+      "color": "#2B5DAB",
+      "median": 95.535,
+      "mean": 95.47,
+      "stdev": 1.47,
+      "min": 93.552,
+      "max": 101.273,
+      "count": 93
+    }
+  ],
+  "gp": "2026_R03_Japan"
+}

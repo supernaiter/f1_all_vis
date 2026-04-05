@@ -1,0 +1,106 @@
+{
+  "type": "pace_variance",
+  "teams": [
+    {
+      "team": "Red Bull Racing",
+      "color": "#2B5DAB",
+      "median": 97.971,
+      "mean": 98.176,
+      "stdev": 0.739,
+      "min": 97.046,
+      "max": 100.295,
+      "count": 88
+    },
+    {
+      "team": "Cadillac",
+      "color": "#888888",
+      "median": 99.88,
+      "mean": 100.087,
+      "stdev": 0.867,
+      "min": 98.393,
+      "max": 103.964,
+      "count": 99
+    },
+    {
+      "team": "Ferrari",
+      "color": "#DC0000",
+      "median": 96.851,
+      "mean": 97.153,
+      "stdev": 0.945,
+      "min": 96.011,
+      "max": 101.064,
+      "count": 104
+    },
+    {
+      "team": "Mercedes",
+      "color": "#00B89F",
+      "median": 96.429,
+      "mean": 96.615,
+      "stdev": 1.113,
+      "min": 95.275,
+      "max": 101.815,
+      "count": 104
+    },
+    {
+      "team": "Williams",
+      "color": "#3BA3E0",
+      "median": 98.726,
+      "mean": 99.045,
+      "stdev": 1.134,
+      "min": 97.981,
+      "max": 105.134,
+      "count": 50
+    },
+    {
+      "team": "Alpine",
+      "color": "#0078AA",
+      "median": 98.132,
+      "mean": 98.097,
+      "stdev": 1.152,
+      "min": 96.505,
+      "max": 102.819,
+      "count": 101
+    },
+    {
+      "team": "Racing Bulls",
+      "color": "#4A72CC",
+      "median": 98.388,
+      "mean": 98.416,
+      "stdev": 1.215,
+      "min": 96.099,
+      "max": 103.637,
+      "count": 98
+    },
+    {
+      "team": "Haas F1 Team",
+      "color": "#7A7A7A",
+      "median": 97.884,
+      "mean": 98.173,
+      "stdev": 1.343,
+      "min": 95.964,
+      "max": 104.567,
+      "count": 98
+    },
+    {
+      "team": "Audi",
+      "color": "#3AAA3A",
+      "median": 98.394,
+      "mean": 98.439,
+      "stdev": 1.443,
+      "min": 96.18,
+      "max": 104.913,
+      "count": 49
+    },
+    {
+      "team": "Aston Martin",
+      "color": "#1B7A5A",
+      "median": 100.971,
+      "mean": 101.213,
+      "stdev": 1.634,
+      "min": 99.721,
+      "max": 107.23,
+      "count": 35
+    }
+  ],
+  "gp": "2026_R02_China"
+}

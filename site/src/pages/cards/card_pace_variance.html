@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Constructor Pace Variance — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:24px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">CONSTRUCTOR PACE VARIANCE</div>
+  <div class="sub">2024 · BAHRAIN GP · RACE LAP TIME DISTRIBUTION (BOX PLOT)</div>
+  <canvas id="chart" width="968" height="880"></canvas>
+</div>
+<script>
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+const teams = [
+  {name:'RED BULL',color:'#0600ef',q1:91.8,median:92.3,q3:92.9,min:91.2,max:93.8,outliers:[95.2]},
+  {name:'FERRARI',color:'#e80020',q1:92.2,median:92.7,q3:93.4,min:91.6,max:94.2,outliers:[]},
+  {name:'MCLAREN',color:'#ff8000',q1:92.5,median:93.0,q3:93.6,min:91.9,max:94.5,outliers:[96.1]},
+  {name:'MERCEDES',color:'#27f4d2',q1:92.8,median:93.3,q3:93.9,min:92.1,max:94.8,outliers:[]},
+  {name:'ASTON MARTIN',color:'#00665f',q1:93.2,median:93.8,q3:94.5,min:92.5,max:95.4,outliers:[]},
+  {name:'RACING BULLS',color:'#fcd700',q1:93.5,median:94.1,q3:94.8,min:92.8,max:95.8,outliers:[97.0]},
+  {name:'HAAS',color:'#b6babd',q1:93.8,median:94.4,q3:95.1,min:93.1,max:96.0,outliers:[]},
+  {name:'WILLIAMS',color:'#00a0dd',q1:94.0,median:94.6,q3:95.3,min:93.3,max:96.2,outliers:[]},
+  {name:'ALPINE',color:'#ff87bc',q1:94.2,median:94.8,q3:95.5,min:93.5,max:96.5,outliers:[98.1]},
+  {name:'AUDI',color:'#ff2d00',q1:94.5,median:95.1,q3:95.8,min:93.8,max:96.8,outliers:[]}
+];
+
+const pad = {top:20,right:40,bottom:30,left:160};
+const w = canvas.width - pad.left - pad.right;
+const h = canvas.height - pad.top - pad.bottom;
+const rowH = h / teams.length;
+const boxH = 28;
+
+const allVals = teams.flatMap(t => [t.min, t.max, ...t.outliers]);
+const minX = Math.floor(Math.min(...allVals) - 0.5);
+const maxX = Math.ceil(Math.max(...allVals) + 0.5);
+
+function x(v) { return pad.left + ((v - minX) / (maxX - minX)) * w; }
+
+// グリッド
+ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1;
+for (let t = minX; t <= maxX; t += 0.5) {
+  const px = x(t);
+  ctx.beginPath(); ctx.moveTo(px, pad.top); ctx.lineTo(px, pad.top+h); ctx.stroke();
+  if (t % 1 === 0) {
+    ctx.fillStyle = '#333'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'center';
+    ctx.fillText(t.toFixed(1)+'s', px, pad.top + h + 20);
+  }
+}
+
+// ボックスプロット描画
+teams.forEach((t, i) => {
+  const cy = pad.top + i * rowH + rowH / 2;
+
+  // チーム名
+  ctx.fillStyle = t.color; ctx.font = '600 16px IBM Plex Mono'; ctx.textAlign = 'right';
+  ctx.fillText(t.name, pad.left - 16, cy + 5);
+
+  // ヒゲ（min→Q1, Q3→max）
+  ctx.strokeStyle = t.color; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(x(t.min), cy); ctx.lineTo(x(t.q1), cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x(t.q3), cy); ctx.lineTo(x(t.max), cy); ctx.stroke();
+
+  // 端キャップ
+  [t.min, t.max].forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x(v), cy - boxH/4); ctx.lineTo(x(v), cy + boxH/4); ctx.stroke();
+  });
+
+  // ボックス（Q1→Q3）
+  const bx = x(t.q1);
+  const bw = x(t.q3) - bx;
+  ctx.fillStyle = t.color + '25';
+  ctx.fillRect(bx, cy - boxH/2, bw, boxH);
+  ctx.strokeStyle = t.color; ctx.lineWidth = 1.5;
+  ctx.strokeRect(bx, cy - boxH/2, bw, boxH);
+
+  // 中央値
+  ctx.beginPath(); ctx.moveTo(x(t.median), cy - boxH/2); ctx.lineTo(x(t.median), cy + boxH/2);
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+
+  // 外れ値
+  t.outliers.forEach(v => {
+    ctx.beginPath(); ctx.arc(x(v), cy, 4, 0, Math.PI*2);
+    ctx.fillStyle = t.color; ctx.fill();
+  });
+});
+</script>
+</body>
+</html>

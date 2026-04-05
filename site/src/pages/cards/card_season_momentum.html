@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Season Momentum Tracker — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.heatmap{margin-top:32px}
+.hm-header{display:flex;margin-left:140px;margin-bottom:8px}
+.hm-header span{width:76px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#333;letter-spacing:0.1em}
+.hm-row{display:flex;align-items:center;margin-bottom:4px}
+.hm-label{width:140px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-align:right;padding-right:12px}
+.hm-cell{width:72px;height:72px;margin:0 2px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#fff}
+.scale{display:flex;align-items:center;gap:8px;margin-top:16px;margin-left:140px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#555}
+.scale-bar{display:flex;height:12px;width:200px;border-radius:2px;overflow:hidden}
+.scale-bar div{flex:1}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">SEASON MOMENTUM TRACKER</div>
+  <div class="sub">2024 · CONSTRUCTORS · GAP TO LEADER BY RACE (HEATMAP)</div>
+  <div class="heatmap" id="heatmap"></div>
+  <div class="scale">
+    <span>LEADER</span>
+    <div class="scale-bar">
+      <div style="background:#0044ff"></div>
+      <div style="background:#0033aa"></div>
+      <div style="background:#002266"></div>
+      <div style="background:#111133"></div>
+      <div style="background:#0a0a0a"></div>
+    </div>
+    <span>OFF PACE</span>
+  </div>
+</div>
+<script>
+const races = ['BHR','SAU','AUS','JPN','CHN','MIA','EMI','MON','CAN','ESP'];
+const teams = [
+  {name:'RED BULL',color:'#0600ef',gaps:[0,0,0,0,0.2,0.5,0.3,0.8,1.0,1.2]},
+  {name:'FERRARI',color:'#e80020',gaps:[0.3,0.5,0.8,0.4,0.3,0.2,0.5,0.1,0.6,0.4]},
+  {name:'MCLAREN',color:'#ff8000',gaps:[0.8,0.7,0.5,0.6,0.4,0,0,0,0,0]},
+  {name:'MERCEDES',color:'#27f4d2',gaps:[1.0,0.9,0.8,0.7,0.8,0.7,0.6,0.5,0.4,0.3]},
+  {name:'ASTON MARTIN',color:'#00665f',gaps:[1.2,1.1,1.3,1.4,1.2,1.3,1.4,1.5,1.3,1.2]},
+  {name:'RB',color:'#fcd700',gaps:[1.5,1.4,1.6,1.5,1.4,1.3,1.5,1.6,1.4,1.5]},
+  {name:'HAAS',color:'#b6babd',gaps:[1.8,1.7,1.9,1.8,1.7,1.8,1.6,1.7,1.8,1.7]},
+  {name:'WILLIAMS',color:'#00a0dd',gaps:[2.0,1.9,2.1,2.0,1.9,2.0,1.8,1.9,2.0,1.9]},
+  {name:'ALPINE',color:'#ff87bc',gaps:[2.2,2.1,2.0,2.1,2.2,2.1,2.0,2.1,2.2,2.0]},
+  {name:'SAUBER',color:'#ff2d00',gaps:[2.5,2.4,2.6,2.5,2.4,2.5,2.6,2.5,2.4,2.5]}
+];
+
+const container = document.getElementById('heatmap');
+const maxGap = 2.5;
+
+// ヘッダー
+const header = document.createElement('div');
+header.className = 'hm-header';
+races.forEach(r => { const s = document.createElement('span'); s.textContent = r; header.appendChild(s); });
+container.appendChild(header);
+
+// 行
+teams.forEach(t => {
+  const row = document.createElement('div');
+  row.className = 'hm-row';
+  row.innerHTML = `<div class="hm-label" style="color:${t.color}">${t.name}</div>`;
+  t.gaps.forEach(g => {
+    const intensity = Math.max(0, 1 - g / maxGap);
+    const r = Math.round(0 * intensity);
+    const gv = Math.round(68 * intensity);
+    const b = Math.round(255 * intensity);
+    const cell = document.createElement('div');
+    cell.className = 'hm-cell';
+    cell.style.background = `rgb(${r},${gv},${b})`;
+    cell.textContent = g === 0 ? 'P1' : '+' + g.toFixed(1);
+    cell.style.color = intensity > 0.5 ? '#fff' : '#555';
+    row.appendChild(cell);
+  });
+  container.appendChild(row);
+});
+</script>
+</body>
+</html>

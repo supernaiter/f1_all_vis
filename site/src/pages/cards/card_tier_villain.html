@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>F1 Villain Tier List — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.tiers{margin-top:40px;display:flex;flex-direction:column;gap:24px}
+.tier-row{display:flex;align-items:stretch;gap:20px}
+.tier-label{width:72px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:64px;border-radius:6px;line-height:1}
+.tier-cards{flex:1;display:flex;gap:14px;flex-wrap:wrap}
+.driver-card{background:#0a0a0a;border:1px solid #0e0e14;border-radius:4px;padding:16px 20px;flex:1;min-width:180px;display:flex;flex-direction:column;gap:8px}
+.driver-card .code{font-family:'Bebas Neue',sans-serif;font-size:40px;line-height:1}
+.driver-card .note{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;line-height:1.5;letter-spacing:0.02em}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">F1 VILLAIN TIER LIST</div>
+  <div class="sub">THE MOST HATED · THE MOST FEARED</div>
+  <div class="tiers" id="tiers"></div>
+</div>
+<script>
+const tiers=[
+  {tier:'S',bg:'#e80020',drivers:[
+    {c:'MSC',n:'JEREZ 97, ADELAIDE 94.',color:'#e80020'},
+    {c:'SEN',n:'SUZUKA 90. TOOK PRO OUT.',color:'#ffd700'}
+  ]},
+  {tier:'A',bg:'#ff6b00',drivers:[
+    {c:'VER',n:'SILVERSTONE 21. NO QUARTER.',color:'#0600ef'},
+    {c:'VET',n:'MULTI-21. TURKEY 10.',color:'#555555'}
+  ]},
+  {tier:'B',bg:'#ffb800',drivers:[
+    {c:'ALO',n:'CRASHGATE. TEAM POLITICS.',color:'#00665f'},
+    {c:'ROS',n:'SPA 14. AUSTRIA 16.',color:'#00d2be'}
+  ]},
+  {tier:'C',bg:'#555',drivers:[
+    {c:'HAM',n:'LIEGATE 09. JEWELRY DRAMA.',color:'#27f4d2'},
+    {c:'MAG',n:'DIRTY DRIVING. SUCK MY BALLS.',color:'#b6babd'}
+  ]},
+  {tier:'D',bg:'#333',drivers:[
+    {c:'MAZ',n:'DANGEROUS. NOT FAST ENOUGH.',color:'#b6babd'}
+  ]}
+];
+const container=document.getElementById('tiers');
+tiers.forEach(t=>{const row=document.createElement('div');row.className='tier-row';row.innerHTML=`<div class="tier-label" style="background:${t.bg}15;color:${t.bg}">${t.tier}</div><div class="tier-cards">${t.drivers.map(d=>`<div class="driver-card"><div class="code" style="color:${d.color}">${d.c}</div><div class="note">${d.n}</div></div>`).join('')}</div>`;container.appendChild(row);});
+</script>
+</body>
+</html>

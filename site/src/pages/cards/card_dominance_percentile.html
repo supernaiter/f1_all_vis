@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Dominance Percentile — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.rows{margin-top:32px}
+.row{display:flex;align-items:center;margin-bottom:12px}
+.rank{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#333;width:36px;text-align:right;margin-right:12px}
+.code{font-family:'Bebas Neue',sans-serif;font-size:28px;width:72px;margin-right:8px}
+.season{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;width:40px;margin-right:12px}
+.bar-track{flex:1;height:32px;background:#0a0a0a;border-radius:3px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:12px}
+.pct{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:#fff}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">DOMINANCE PERCENTILE</div>
+  <div class="sub">PEAK SEASON · HOW DOMINANT VS ALL CHAMPION SEASONS</div>
+  <div class="rows" id="rows"></div>
+</div>
+<script>
+const data = [
+  {code:'VER',year:"'23",color:'#0600ef',pct:98},
+  {code:'HAM',year:"'20",color:'#27f4d2',pct:97},
+  {code:'MSC',year:"'04",color:'#e80020',pct:97},
+  {code:'VET',year:"'13",color:'#555555',pct:95},
+  {code:'HAM',year:"'14",color:'#27f4d2',pct:92},
+  {code:'MSC',year:"'02",color:'#e80020',pct:91},
+  {code:'SEN',year:"'91",color:'#ffd700',pct:89},
+  {code:'VER',year:"'22",color:'#0600ef',pct:88},
+  {code:'PRO',year:"'51",color:'#e80020',pct:85},
+  {code:'ALO',year:"'05",color:'#00665f',pct:82},
+  {code:'BUT',year:"'09",color:'#ef87b4',pct:75},
+  {code:'RAI',year:"'07",color:'#b6babd',pct:68},
+  {code:'ROS',year:"'16",color:'#00d2be',pct:62}
+];
+
+const rows = document.getElementById('rows');
+data.forEach((d, i) => {
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.innerHTML = `
+    <div class="rank">${i + 1}</div>
+    <div class="code" style="color:${d.color}">${d.code}</div>
+    <div class="season">${d.year}</div>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:${d.pct}%;background:${d.color}">
+        <div class="pct">${d.pct}%</div>
+      </div>
+    </div>
+  `;
+  rows.appendChild(row);
+});
+</script>
+</body>
+</html>

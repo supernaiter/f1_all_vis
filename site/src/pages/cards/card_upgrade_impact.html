@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Upgrade Impact Tracker — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:20px}
+.legend{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11px}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend .sw{width:16px;height:3px;border-radius:1px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">UPGRADE IMPACT TRACKER</div>
+  <div class="sub">2024 · PACE DELTA VS R1 BASELINE · ▲ = UPGRADE INTRODUCED</div>
+  <canvas id="chart" width="968" height="860"></canvas>
+  <div class="legend">
+    <span><div class="sw" style="background:#0600ef"></div><span style="color:#0600ef">RED BULL</span></span>
+    <span><div class="sw" style="background:#e80020"></div><span style="color:#e80020">FERRARI</span></span>
+    <span><div class="sw" style="background:#ff8000"></div><span style="color:#ff8000">MCLAREN</span></span>
+    <span><div class="sw" style="background:#27f4d2"></div><span style="color:#27f4d2">MERCEDES</span></span>
+    <span><div class="sw" style="background:#00665f"></div><span style="color:#00665f">ASTON MARTIN</span></span>
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+const races = ['R1','R2','R3','R4','R5','R6','R7','R8','R9','R10'];
+const teams = [
+  {code:'RBR',color:'#0600ef',deltas:[0,-0.05,-0.08,-0.10,-0.10,-0.08,-0.06,-0.05,-0.03,0],upgrades:[3,7]},
+  {code:'FER',color:'#e80020',deltas:[0,-0.10,-0.15,-0.20,-0.22,-0.28,-0.30,-0.32,-0.30,-0.28],upgrades:[2,5]},
+  {code:'MCL',color:'#ff8000',deltas:[0,-0.12,-0.20,-0.30,-0.35,-0.42,-0.48,-0.50,-0.52,-0.55],upgrades:[4,6,8]},
+  {code:'MER',color:'#27f4d2',deltas:[0,-0.05,-0.08,-0.12,-0.18,-0.22,-0.25,-0.30,-0.35,-0.38],upgrades:[5,9]},
+  {code:'AMR',color:'#00665f',deltas:[0,0.02,0.05,0.03,0.06,0.08,0.05,0.03,0.06,0.08],upgrades:[6]}
+];
+
+const pad = {top:30,right:80,bottom:50,left:70};
+const w = canvas.width - pad.left - pad.right;
+const h = canvas.height - pad.top - pad.bottom;
+
+const allD = teams.flatMap(t => t.deltas);
+const minD = Math.floor(Math.min(...allD) * 10) / 10 - 0.1;
+const maxD = Math.ceil(Math.max(...allD) * 10) / 10 + 0.1;
+
+function x(i) { return pad.left + (i / (races.length - 1)) * w; }
+function y(d) { return pad.top + h - ((d - minD) / (maxD - minD)) * h; }
+
+// ゼロライン
+ctx.strokeStyle = '#252525'; ctx.lineWidth = 1;
+ctx.beginPath(); ctx.moveTo(pad.left, y(0)); ctx.lineTo(pad.left + w, y(0)); ctx.stroke();
+
+// グリッド
+ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1;
+for (let d = Math.ceil(minD * 10) / 10; d <= maxD; d += 0.1) {
+  if (Math.abs(d) < 0.01) continue;
+  ctx.beginPath(); ctx.moveTo(pad.left, y(d)); ctx.lineTo(pad.left+w, y(d)); ctx.stroke();
+  ctx.fillStyle = '#333'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'right';
+  ctx.fillText((d >= 0 ? '+' : '') + d.toFixed(1) + 's', pad.left - 10, y(d) + 4);
+}
+
+// レースラベル
+races.forEach((r, i) => {
+  ctx.fillStyle = '#333'; ctx.font = '12px IBM Plex Mono'; ctx.textAlign = 'center';
+  ctx.fillText(r, x(i), pad.top + h + 24);
+});
+
+// 線 + アップグレードマーカー
+teams.forEach(t => {
+  ctx.strokeStyle = t.color; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  t.deltas.forEach((d, i) => { if(i===0) ctx.moveTo(x(i),y(d)); else ctx.lineTo(x(i),y(d)); });
+  ctx.stroke();
+
+  // ドット
+  t.deltas.forEach((d, i) => {
+    ctx.beginPath(); ctx.arc(x(i), y(d), 3, 0, Math.PI*2);
+    ctx.fillStyle = t.color; ctx.fill();
+  });
+
+  // アップグレード三角マーカー
+  t.upgrades.forEach(i => {
+    const px = x(i), py = y(t.deltas[i]);
+    ctx.beginPath();
+    ctx.moveTo(px, py - 14); ctx.lineTo(px - 7, py - 3); ctx.lineTo(px + 7, py - 3);
+    ctx.closePath(); ctx.fillStyle = t.color; ctx.fill();
+  });
+
+  // 終点ラベル
+  ctx.fillStyle = t.color; ctx.font = '600 13px IBM Plex Mono'; ctx.textAlign = 'left';
+  ctx.fillText(t.code, x(races.length-1) + 10, y(t.deltas[t.deltas.length-1]) + 5);
+});
+
+// Y軸ラベル
+ctx.fillStyle = '#333'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'center';
+ctx.save(); ctx.translate(14, pad.top+h/2); ctx.rotate(-Math.PI/2);
+ctx.fillText('PACE DELTA VS R1 (s)', 0, 0); ctx.restore();
+</script>
+</body>
+</html>

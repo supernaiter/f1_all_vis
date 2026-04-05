@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Lap 1 Position Delta — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.chart{margin-top:32px}
+.row{display:flex;align-items:center;height:40px;margin-bottom:6px}
+.code{font-family:'Bebas Neue',sans-serif;font-size:24px;width:56px;text-align:right;margin-right:16px}
+.bar-area{flex:1;position:relative;height:100%}
+.zero-line{position:absolute;left:50%;top:0;bottom:0;width:1px;background:#252525}
+.dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.delta-label{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;position:absolute;top:50%;transform:translateY(-50%)}
+.legend{display:flex;gap:24px;margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;letter-spacing:0.1em}
+.legend-item{display:flex;align-items:center;gap:6px}
+.legend-dot{width:8px;height:8px;border-radius:50%}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">LAP 1 POSITION DELTA</div>
+  <div class="sub">2024 · BAHRAIN GP · GRID VS LAP 1 POSITION</div>
+  <div class="chart" id="chart"></div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#39b54a"></div>GAINED</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e80020"></div>LOST</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#555"></div>NO CHANGE</div>
+  </div>
+</div>
+<script>
+const drivers=[
+  {code:'VER',team:'Red Bull',color:'#0600ef',grid:1,lap1:1},
+  {code:'LEC',team:'Ferrari',color:'#e80020',grid:2,lap1:3},
+  {code:'SAI',team:'Ferrari',color:'#e80020',grid:3,lap1:2},
+  {code:'NOR',team:'McLaren',color:'#ff8000',grid:4,lap1:5},
+  {code:'PER',team:'Red Bull',color:'#0600ef',grid:5,lap1:4},
+  {code:'RUS',team:'Mercedes',color:'#27f4d2',grid:6,lap1:6},
+  {code:'HAM',team:'Mercedes',color:'#27f4d2',grid:7,lap1:8},
+  {code:'PIA',team:'McLaren',color:'#ff8000',grid:8,lap1:7},
+  {code:'ALO',team:'Aston Martin',color:'#00665f',grid:9,lap1:5},
+  {code:'STR',team:'Aston Martin',color:'#00665f',grid:10,lap1:13},
+  {code:'GAS',team:'Alpine',color:'#ff87bc',grid:11,lap1:10},
+  {code:'OCO',team:'Alpine',color:'#ff87bc',grid:12,lap1:11},
+  {code:'TSU',team:'Racing Bulls',color:'#fcd700',grid:13,lap1:12},
+  {code:'RIC',team:'Racing Bulls',color:'#fcd700',grid:14,lap1:15},
+  {code:'HUL',team:'Haas',color:'#b6babd',grid:15,lap1:14},
+  {code:'MAG',team:'Haas',color:'#b6babd',grid:16,lap1:16},
+  {code:'ZHO',team:'Audi',color:'#ff2d00',grid:17,lap1:18},
+  {code:'BOT',team:'Audi',color:'#ff2d00',grid:18,lap1:17},
+  {code:'ALB',team:'Williams',color:'#00a0dd',grid:19,lap1:19},
+  {code:'SAR',team:'Williams',color:'#00a0dd',grid:20,lap1:20}
+];
+
+const chart = document.getElementById('chart');
+const maxDelta = 5;
+
+drivers.forEach(d => {
+  const delta = d.grid - d.lap1; // positive = gained
+  const row = document.createElement('div');
+  row.className = 'row';
+
+  const deltaColor = delta > 0 ? '#39b54a' : delta < 0 ? '#e80020' : '#555';
+  const pct = 50 + (delta / maxDelta) * 40;
+
+  row.innerHTML = `
+    <div class="code" style="color:${d.color}">${d.code}</div>
+    <div class="bar-area">
+      <div class="zero-line"></div>
+      <div class="dot" style="left:${pct}%;background:${d.color}30;border:2px solid ${d.color}"></div>
+      <div class="delta-label" style="left:${pct + (delta >= 0 ? 3 : -3)}%;color:${deltaColor};text-align:${delta >= 0 ? 'left' : 'right'}">${delta > 0 ? '+' : ''}${delta}</div>
+    </div>
+  `;
+  chart.appendChild(row);
+});
+</script>
+</body>
+</html>

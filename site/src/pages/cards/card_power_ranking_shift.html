@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Power Ranking Bump Chart — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:24px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">POWER RANKING SHIFT</div>
+  <div class="sub">2024 · CONSTRUCTORS · PERFORMANCE RANKING BY RACE</div>
+  <canvas id="chart" width="968" height="900"></canvas>
+</div>
+<script>
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+const races = ['BHR','SAU','AUS','JPN','CHN','MIA','EMI','MON','CAN','ESP'];
+const teams = [
+  {name:'RED BULL',code:'RBR',color:'#0600ef',ranks:[1,1,1,1,1,2,2,3,3,3]},
+  {name:'FERRARI',code:'FER',color:'#e80020',ranks:[2,2,3,2,2,3,3,1,2,2]},
+  {name:'MCLAREN',code:'MCL',color:'#ff8000',ranks:[4,4,4,3,3,1,1,2,1,1]},
+  {name:'MERCEDES',code:'MER',color:'#27f4d2',ranks:[3,3,2,4,4,4,4,4,4,4]},
+  {name:'ASTON MARTIN',code:'AMR',color:'#00665f',ranks:[5,5,5,5,5,5,5,5,5,5]},
+  {name:'RB',code:'RB',color:'#fcd700',ranks:[6,6,6,6,6,6,6,6,6,6]},
+  {name:'HAAS',code:'HAA',color:'#b6babd',ranks:[7,7,7,7,7,7,7,7,7,7]},
+  {name:'WILLIAMS',code:'WIL',color:'#00a0dd',ranks:[8,8,8,8,8,8,8,8,8,8]},
+  {name:'ALPINE',code:'ALP',color:'#ff87bc',ranks:[9,9,9,9,9,9,9,9,9,9]},
+  {name:'SAUBER',code:'SAU',color:'#ff2d00',ranks:[10,10,10,10,10,10,10,10,10,10]}
+];
+
+const pad = {top:30,right:100,bottom:50,left:100};
+const w = canvas.width - pad.left - pad.right;
+const h = canvas.height - pad.top - pad.bottom;
+
+function x(i) { return pad.left + (i / (races.length - 1)) * w; }
+function y(rank) { return pad.top + ((rank - 1) / 9) * h; }
+
+// グリッド
+ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1;
+for (let r = 1; r <= 10; r++) {
+  ctx.beginPath(); ctx.moveTo(pad.left, y(r)); ctx.lineTo(pad.left+w, y(r)); ctx.stroke();
+}
+
+// レースラベル
+races.forEach((r, i) => {
+  ctx.fillStyle = '#333'; ctx.font = '12px IBM Plex Mono'; ctx.textAlign = 'center';
+  ctx.fillText(r, x(i), pad.top + h + 24);
+});
+
+// 順位ラベル
+for (let r = 1; r <= 10; r++) {
+  ctx.fillStyle = '#333'; ctx.font = '12px IBM Plex Mono'; ctx.textAlign = 'right';
+  ctx.fillText('P' + r, pad.left - 16, y(r) + 4);
+}
+
+// 線描画
+teams.forEach(t => {
+  ctx.strokeStyle = t.color; ctx.lineWidth = 3; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  t.ranks.forEach((r, i) => { if(i===0) ctx.moveTo(x(i),y(r)); else ctx.lineTo(x(i),y(r)); });
+  ctx.stroke();
+
+  // 始点ラベル
+  ctx.fillStyle = t.color; ctx.font = '600 13px IBM Plex Mono'; ctx.textAlign = 'right';
+  ctx.fillText(t.code, pad.left - 32, y(t.ranks[0]) + 5);
+
+  // 終点ラベル
+  ctx.textAlign = 'left';
+  ctx.fillText(t.code, x(races.length-1) + 12, y(t.ranks[t.ranks.length-1]) + 5);
+
+  // 終点ドット
+  const lastR = t.ranks[t.ranks.length-1];
+  ctx.beginPath(); ctx.arc(x(races.length-1), y(lastR), 5, 0, Math.PI*2);
+  ctx.fillStyle = t.color; ctx.fill();
+});
+</script>
+</body>
+</html>

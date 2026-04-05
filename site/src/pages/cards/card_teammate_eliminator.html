@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Teammate Eliminator — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.matchup{display:flex;justify-content:center;align-items:center;gap:48px;margin-top:48px}
+.driver{text-align:center}
+.driver .name{font-family:'Bebas Neue',sans-serif;font-size:96px;line-height:1}
+.driver .full{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#555;letter-spacing:0.15em;margin-top:4px}
+.vs{font-family:'Bebas Neue',sans-serif;font-size:48px;color:#252525}
+.metrics{margin-top:56px;display:flex;flex-direction:column;gap:32px}
+.metric{display:flex;flex-direction:column;gap:8px}
+.metric-label{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#555;letter-spacing:0.15em;text-align:center}
+.bar-container{display:flex;align-items:center;height:48px}
+.bar-left{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:12px;border-radius:4px 0 0 4px}
+.bar-right{height:100%;display:flex;align-items:center;justify-content:flex-start;padding-left:12px;border-radius:0 4px 4px 0}
+.bar-val{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#fff}
+.bar-pct{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;opacity:0.7;margin-left:8px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">TEAMMATE ELIMINATOR</div>
+  <div class="sub">2023 SEASON · HEAD-TO-HEAD BATTLE</div>
+  <div class="matchup">
+    <div class="driver"><div class="name" style="color:#0600ef">VER</div><div class="full">VERSTAPPEN</div></div>
+    <div class="vs">VS</div>
+    <div class="driver"><div class="name" style="color:#0600ef80">PER</div><div class="full">PEREZ</div></div>
+  </div>
+  <div class="metrics" id="metrics"></div>
+</div>
+<script>
+const metrics = [
+  {label:'QUALIFYING H2H',left:21,right:1,leftColor:'#0600ef',rightColor:'#0600ef50'},
+  {label:'RACE H2H',left:19,right:3,leftColor:'#0600ef',rightColor:'#0600ef50'},
+  {label:'POINTS SHARE',left:575,right:285,leftColor:'#0600ef',rightColor:'#0600ef50'}
+];
+
+const container = document.getElementById('metrics');
+metrics.forEach(m => {
+  const total = m.left + m.right;
+  const leftPct = (m.left / total * 100);
+  const rightPct = (m.right / total * 100);
+
+  const div = document.createElement('div');
+  div.className = 'metric';
+  div.innerHTML = `
+    <div class="metric-label">${m.label}</div>
+    <div class="bar-container">
+      <div class="bar-left" style="width:${leftPct}%;background:${m.leftColor}">
+        <div class="bar-val">${m.left}</div>
+        <div class="bar-pct">${leftPct.toFixed(0)}%</div>
+      </div>
+      <div class="bar-right" style="width:${rightPct}%;background:${m.rightColor}">
+        <div class="bar-val">${m.right}</div>
+        <div class="bar-pct">${rightPct.toFixed(0)}%</div>
+      </div>
+    </div>
+  `;
+  container.appendChild(div);
+});
+</script>
+</body>
+</html>

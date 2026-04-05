@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Corner Speed Fingerprint — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+canvas{margin-top:20px}
+.legend{display:flex;gap:32px;justify-content:center;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend .swatch{width:24px;height:4px;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">CORNER SPEED FINGERPRINT</div>
+  <div class="sub">2024 · BAHRAIN GP · RED BULL vs FERRARI</div>
+  <canvas id="chart" width="968" height="860"></canvas>
+  <div class="legend">
+    <span><div class="swatch" style="background:#0600ef"></div><span style="color:#0600ef">RED BULL</span></span>
+    <span><div class="swatch" style="background:#e80020"></div><span style="color:#e80020">FERRARI</span></span>
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+const axes = ['LOW-SPEED','MID-SPEED','HIGH-SPEED','BRAKING','TRACTION'];
+const teams = [
+  {name:'RED BULL',color:'#0600ef',values:[92,88,95,90,87]},
+  {name:'FERRARI',color:'#e80020',values:[85,91,88,86,93]}
+];
+
+const cx = canvas.width / 2;
+const cy = canvas.height / 2 + 10;
+const maxR = 320;
+const levels = 5;
+
+// ウェブ描画
+for (let l = 1; l <= levels; l++) {
+  const r = (l / levels) * maxR;
+  ctx.beginPath();
+  for (let i = 0; i <= axes.length; i++) {
+    const angle = (Math.PI * 2 * (i % axes.length)) / axes.length - Math.PI / 2;
+    const px = cx + r * Math.cos(angle);
+    const py = cy + r * Math.sin(angle);
+    if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+  }
+  ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1; ctx.stroke();
+}
+
+// 軸線 + ラベル
+axes.forEach((label, i) => {
+  const angle = (Math.PI * 2 * i) / axes.length - Math.PI / 2;
+  const ex = cx + maxR * Math.cos(angle);
+  const ey = cy + maxR * Math.sin(angle);
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(ex, ey);
+  ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1; ctx.stroke();
+
+  const lx = cx + (maxR + 28) * Math.cos(angle);
+  const ly = cy + (maxR + 28) * Math.sin(angle);
+  ctx.fillStyle = '#555'; ctx.font = '600 13px IBM Plex Mono'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(label, lx, ly);
+});
+
+// データポリゴン
+teams.forEach(team => {
+  ctx.beginPath();
+  team.values.forEach((v, i) => {
+    const angle = (Math.PI * 2 * i) / axes.length - Math.PI / 2;
+    const r = (v / 100) * maxR;
+    const px = cx + r * Math.cos(angle);
+    const py = cy + r * Math.sin(angle);
+    if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+  });
+  ctx.closePath();
+  ctx.fillStyle = team.color + '20'; ctx.fill();
+  ctx.strokeStyle = team.color; ctx.lineWidth = 2.5; ctx.stroke();
+
+  // 頂点ドット
+  team.values.forEach((v, i) => {
+    const angle = (Math.PI * 2 * i) / axes.length - Math.PI / 2;
+    const r = (v / 100) * maxR;
+    ctx.beginPath(); ctx.arc(cx + r * Math.cos(angle), cy + r * Math.sin(angle), 5, 0, Math.PI * 2);
+    ctx.fillStyle = team.color; ctx.fill();
+  });
+});
+</script>
+</body>
+</html>

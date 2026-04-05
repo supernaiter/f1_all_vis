@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>What If Strategy — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.scenario{font-family:'IBM Plex Mono',monospace;font-size:15px;color:#ff8000;letter-spacing:0.1em;margin-top:24px;padding:16px;background:#ff800008;border:1px solid #ff800020;border-radius:4px}
+.metrics{display:flex;gap:24px;margin-top:28px}
+.metric{flex:1;background:#0a0a0a;border:1px solid #0e0e14;border-radius:6px;padding:24px;text-align:center}
+.metric .val{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:1}
+.metric .label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;letter-spacing:0.15em;margin-top:8px}
+canvas{margin-top:24px}
+.chart-legend{display:flex;gap:24px;justify-content:center;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555}
+.chart-legend span{display:flex;align-items:center;gap:6px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">WHAT IF STRATEGY</div>
+  <div class="sub">2024 · BAHRAIN GP · NORRIS ALTERNATE STRATEGY</div>
+  <div class="scenario">IF NORRIS PITTED LAP 10 INSTEAD OF LAP 16 → PROJECTED P2 (+2 POSITIONS)</div>
+  <div class="metrics">
+    <div class="metric"><div class="val" style="color:#555">P4</div><div class="label">ACTUAL FINISH</div></div>
+    <div class="metric"><div class="val" style="color:#39b54a">P2</div><div class="label">SIMULATED FINISH</div></div>
+    <div class="metric"><div class="val" style="color:#ff8000">+6</div><div class="label">FANTASY PTS GAIN</div></div>
+  </div>
+  <canvas id="chart" width="968" height="520"></canvas>
+  <div class="chart-legend">
+    <span><div style="width:16px;height:3px;background:#ff8000;border-radius:1px"></div>ACTUAL GAP TO LEADER</span>
+    <span><div style="width:16px;height:3px;background:#39b54a;border-radius:1px;border:1px dashed #39b54a"></div>SIMULATED GAP TO LEADER</span>
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+const actual =  [3.2,3.5,3.8,4.1,4.5,5.0,5.6,6.2,6.9,7.5,8.2,8.9,9.5,10.1,10.8,
+                 5.2,5.0,4.8,4.6,4.5,4.4,4.3,4.2,4.1,4.0,3.9,3.8,3.7,3.6,3.5];
+const simulated=[3.2,3.5,3.8,4.1,4.5,5.0,5.6,6.2,6.9,
+                 2.8,2.5,2.3,2.1,1.9,1.8,1.7,1.6,1.5,1.4,1.3,1.2,1.2,1.1,1.1,1.0,1.0,0.9,0.9,0.8,0.8];
+
+const pad = {top:20,right:40,bottom:40,left:60};
+const w = canvas.width - pad.left - pad.right;
+const h = canvas.height - pad.top - pad.bottom;
+const maxLap = Math.max(actual.length, simulated.length);
+const maxGap = 12;
+
+function x(i) { return pad.left + (i / (maxLap-1)) * w; }
+function y(g) { return pad.top + (g / maxGap) * h; }
+
+// グリッド
+ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1;
+for (let g = 0; g <= maxGap; g += 2) {
+  ctx.beginPath(); ctx.moveTo(pad.left, y(g)); ctx.lineTo(pad.left+w, y(g)); ctx.stroke();
+  ctx.fillStyle = '#333'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'right';
+  ctx.fillText(g+'s', pad.left-10, y(g)+4);
+}
+for (let i = 0; i < maxLap; i += 5) {
+  ctx.beginPath(); ctx.moveTo(x(i), pad.top); ctx.lineTo(x(i), pad.top+h); ctx.stroke();
+  ctx.fillStyle = '#333'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'center';
+  ctx.fillText('L'+(i+1), x(i), pad.top+h+20);
+}
+
+// ピットマーカー
+[{lap:9,label:'SIM PIT',color:'#39b54a'},{lap:15,label:'ACTUAL PIT',color:'#ff8000'}].forEach(p => {
+  ctx.beginPath(); ctx.moveTo(x(p.lap), pad.top); ctx.lineTo(x(p.lap), pad.top+h);
+  ctx.strokeStyle = p.color+'40'; ctx.lineWidth = 1; ctx.setLineDash([4,4]); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = p.color; ctx.font = '600 10px IBM Plex Mono'; ctx.textAlign = 'center';
+  ctx.fillText(p.label, x(p.lap), pad.top - 6);
+});
+
+// Actual折れ線
+ctx.strokeStyle = '#ff8000'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+ctx.beginPath();
+actual.forEach((g, i) => { if(i===0) ctx.moveTo(x(i),y(g)); else ctx.lineTo(x(i),y(g)); });
+ctx.stroke();
+
+// Simulated折れ線（破線）
+ctx.strokeStyle = '#39b54a'; ctx.lineWidth = 2.5; ctx.setLineDash([6,4]);
+ctx.beginPath();
+simulated.forEach((g, i) => { if(i===0) ctx.moveTo(x(i),y(g)); else ctx.lineTo(x(i),y(g)); });
+ctx.stroke(); ctx.setLineDash([]);
+</script>
+</body>
+</html>

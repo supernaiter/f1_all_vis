@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>One-Lap King — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.desc{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#333;letter-spacing:0.1em;margin-top:8px}
+.rows{margin-top:28px}
+.row{display:flex;align-items:center;margin-bottom:12px}
+.rank{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#333;width:40px;text-align:right;margin-right:16px}
+.code{font-family:'Bebas Neue',sans-serif;font-size:32px;width:80px;margin-right:12px}
+.bar-track{flex:1;height:32px;background:#0a0a0a;border-radius:3px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:12px}
+.score{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff}
+.detail{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#555;margin-left:auto;margin-right:12px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">ONE-LAP KING</div>
+  <div class="sub">ALL-TIME SINGLE LAP QUALIFYING COMPOSITE</div>
+  <div class="desc">SCORE = POLE_RATE×35 + TM_QUAL_H2H×35 + PEAK_ZSCORE×30</div>
+  <div class="rows" id="rows"></div>
+</div>
+<script>
+const data = [
+  {code:'SEN',color:'#ffd700',score:94.2,poles:65,h2h:'88%'},
+  {code:'HAM',color:'#27f4d2',score:92.8,poles:104,h2h:'82%'},
+  {code:'VER',color:'#0600ef',score:91.5,poles:40,h2h:'92%'},
+  {code:'VET',color:'#555555',score:86.4,poles:57,h2h:'78%'},
+  {code:'MSC',color:'#e80020',score:84.1,poles:68,h2h:'72%'},
+  {code:'LEC',color:'#e80020',score:82.7,poles:24,h2h:'75%'},
+  {code:'NOR',color:'#ff8000',score:79.3,poles:12,h2h:'68%'},
+  {code:'ALO',color:'#00665f',score:77.8,poles:22,h2h:'65%'},
+  {code:'ROS',color:'#00d2be',score:75.2,poles:30,h2h:'48%'},
+  {code:'RAI',color:'#b6babd',score:72.1,poles:18,h2h:'52%'}
+];
+
+const maxScore = 100;
+const rows = document.getElementById('rows');
+
+data.forEach((d, i) => {
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.innerHTML = `
+    <div class="rank">${i + 1}</div>
+    <div class="code" style="color:${d.color}">${d.code}</div>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:${d.score/maxScore*100}%;background:${d.color}">
+        <div class="score">${d.score.toFixed(1)}</div>
+        <div class="detail">${d.poles} POLES · ${d.h2h} H2H</div>
+      </div>
+    </div>
+  `;
+  rows.appendChild(row);
+});
+</script>
+</body>
+</html>

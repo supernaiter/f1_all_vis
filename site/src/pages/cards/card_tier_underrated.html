@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Underrated Tier List — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+.tiers{margin-top:40px;display:flex;flex-direction:column;gap:24px}
+.tier-row{display:flex;align-items:stretch;gap:20px}
+.tier-label{width:72px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:64px;border-radius:6px;line-height:1}
+.tier-cards{flex:1;display:flex;gap:14px;flex-wrap:wrap}
+.driver-card{background:#0a0a0a;border:1px solid #0e0e14;border-radius:4px;padding:16px 20px;flex:1;min-width:140px;display:flex;flex-direction:column;gap:8px}
+.driver-card .code{font-family:'Bebas Neue',sans-serif;font-size:40px;line-height:1}
+.driver-card .note{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;line-height:1.5;letter-spacing:0.02em}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  <div class="ttl">UNDERRATED TIER LIST</div>
+  <div class="sub">NEVER GOT THE CREDIT THEY DESERVED</div>
+  <div class="tiers" id="tiers"></div>
+</div>
+<script>
+const tiers=[
+  {tier:'S',bg:'#e80020',drivers:[
+    {c:'BUT',n:'2009 WDC. RACE IQ OFF THE CHARTS.',color:'#ef87b4'},
+    {c:'HUL',n:'0 PODIUMS. 0 LUCK.',color:'#b6babd'},
+    {c:'SAI',n:'ADAPTABLE KING. 4 TEAMS.',color:'#e80020'}
+  ]},
+  {tier:'A',bg:'#ff6b00',drivers:[
+    {c:'PRO',n:'PROFESSOR. FORGOTTEN TODAY.',color:'#e80020'},
+    {c:'BOT',n:'77 PODIUMS. DISMISSED.',color:'#ff2d00'},
+    {c:'BAR',n:'3RD IN 2009. SOLID CAREER.',color:'#00665f'}
+  ]},
+  {tier:'B',bg:'#ffb800',drivers:[
+    {c:'MAS',n:'LOST 2008 BY 1 POINT.',color:'#e80020'},
+    {c:'GAS',n:'SURVIVED RB DEMOTION.',color:'#ff87bc'},
+    {c:'SAT',n:'INDY 500 x2. LEGEND.',color:'#e80020'}
+  ]},
+  {tier:'C',bg:'#555',drivers:[
+    {c:'OCO',n:'SOLID MIDFIELDER.',color:'#ff87bc'},
+    {c:'ALB',n:'OUTPERFORMS HIS CAR.',color:'#00a0dd'},
+    {c:'MAG',n:'SUCK MY BALLS ERA.',color:'#b6babd'}
+  ]},
+  {tier:'D',bg:'#333',drivers:[
+    {c:'GRO',n:'LOTUS ERA. DECENT.',color:'#555'},
+    {c:'KAR',n:'WEC CHAMPION. F1 FORGOTTEN.',color:'#555'}
+  ]}
+];
+const container=document.getElementById('tiers');
+tiers.forEach(t=>{const row=document.createElement('div');row.className='tier-row';row.innerHTML=`<div class="tier-label" style="background:${t.bg}15;color:${t.bg}">${t.tier}</div><div class="tier-cards">${t.drivers.map(d=>`<div class="driver-card"><div class="code" style="color:${d.color}">${d.c}</div><div class="note">${d.n}</div></div>`).join('')}</div>`;container.appendChild(row);});
+</script>
+</body>
+</html>

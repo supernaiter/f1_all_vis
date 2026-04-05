@@ -1,0 +1,59 @@
+{
+  "slug": "clutch",
+  "title": "CLUTCH RATING",
+  "subtitle": "FINAL-5-RACES DELTA VS SEASON AVERAGE",
+  "source": "static",
+  "kind": "ranking",
+  "entries": [
+    {
+      "rank": 1,
+      "code": "VER",
+      "name": "Verstappen",
+      "value": "+0.42s",
+      "note": "Peaks under title pressure"
+    },
+    {
+      "rank": 2,
+      "code": "HAM",
+      "name": "Hamilton",
+      "value": "+0.38s",
+      "note": "2008 Brazil, 2014 Abu Dhabi"
+    },
+    {
+      "rank": 3,
+      "code": "SCH",
+      "name": "Schumacher",
+      "value": "+0.36s",
+      "note": "Title-deciding races"
+    },
+    {
+      "rank": 4,
+      "code": "SEN",
+      "name": "Senna",
+      "value": "+0.31s",
+      "note": "Wet finales"
+    },
+    {
+      "rank": 5,
+      "code": "ALO",
+      "name": "Alonso",
+      "value": "+0.22s",
+      "note": "Fights till the end"
+    },
+    {
+      "rank": 6,
+      "code": "LEC",
+      "name": "Leclerc",
+      "value": "-0.08s",
+      "note": "Drops off in run-in"
+    },
+    {
+      "rank": 7,
+      "code": "PER",
+      "name": "Pérez",
+      "value": "-0.15s",
+      "note": "Struggles under pressure"
+    }
+  ],
+  "meta": {}
+}

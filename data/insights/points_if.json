@@ -1,0 +1,61 @@
+{
+  "slug": "points-if",
+  "title": "POINTS IF...",
+  "subtitle": "CAREER RE-SCORED UNDER MODERN POINTS SYSTEM",
+  "source": "static",
+  "kind": "ranking",
+  "entries": [
+    {
+      "rank": 1,
+      "code": "HAM",
+      "name": "Hamilton",
+      "value": 5340,
+      "note": "Already modern system"
+    },
+    {
+      "rank": 2,
+      "code": "SCH",
+      "name": "Schumacher",
+      "value": 5120,
+      "note": "+470 vs historical"
+    },
+    {
+      "rank": 3,
+      "code": "VET",
+      "name": "Vettel",
+      "value": 3098,
+      "note": "No change"
+    },
+    {
+      "rank": 4,
+      "code": "ALO",
+      "name": "Alonso",
+      "value": 2325,
+      "note": "+138 vs historical"
+    },
+    {
+      "rank": 5,
+      "code": "PRO",
+      "name": "Prost",
+      "value": 2860,
+      "note": "+1062 vs historical"
+    },
+    {
+      "rank": 6,
+      "code": "SEN",
+      "name": "Senna",
+      "value": 1915,
+      "note": "+301 vs historical"
+    },
+    {
+      "rank": 7,
+      "code": "RAI",
+      "name": "Räikkönen",
+      "value": 1870,
+      "note": "No change"
+    }
+  ],
+  "meta": {
+    "note": "Re-scored with 25-18-15-12-10-8-6-4-2-1 system"
+  }
+}

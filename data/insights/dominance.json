@@ -1,0 +1,59 @@
+{
+  "slug": "dominance",
+  "title": "DOMINANCE PERCENTILE",
+  "subtitle": "PEAK SEASON FIELD-NORMALIZED PACE VS GRID",
+  "source": "static",
+  "kind": "ranking",
+  "entries": [
+    {
+      "rank": 1,
+      "code": "SCH",
+      "name": "Schumacher 2004",
+      "value": 99.8,
+      "note": "13 wins in 18"
+    },
+    {
+      "rank": 2,
+      "code": "VER",
+      "name": "Verstappen 2023",
+      "value": 99.6,
+      "note": "19 wins in 22"
+    },
+    {
+      "rank": 3,
+      "code": "MAN",
+      "name": "Mansell 1992",
+      "value": 98.9,
+      "note": "9 wins in 16"
+    },
+    {
+      "rank": 4,
+      "code": "HAM",
+      "name": "Hamilton 2020",
+      "value": 98.4,
+      "note": "11 wins in 17"
+    },
+    {
+      "rank": 5,
+      "code": "SEN",
+      "name": "Senna 1988",
+      "value": 98.0,
+      "note": "8 wins"
+    },
+    {
+      "rank": 6,
+      "code": "FAN",
+      "name": "Fangio 1954",
+      "value": 97.7,
+      "note": "6 wins in 8"
+    },
+    {
+      "rank": 7,
+      "code": "VET",
+      "name": "Vettel 2013",
+      "value": 97.5,
+      "note": "13 wins"
+    }
+  ],
+  "meta": {}
+}

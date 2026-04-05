@@ -1,0 +1,80 @@
+{
+  "slug": "one-lap",
+  "title": "ONE-LAP KING",
+  "subtitle": "PURE QUALIFYING SPEED INDEX",
+  "source": "static",
+  "kind": "ranking",
+  "entries": [
+    {
+      "rank": 1,
+      "code": "HAM",
+      "name": "Hamilton",
+      "value": 104,
+      "note": "All-time poles"
+    },
+    {
+      "rank": 2,
+      "code": "SCH",
+      "name": "Schumacher",
+      "value": 68,
+      "note": "68 poles"
+    },
+    {
+      "rank": 3,
+      "code": "SEN",
+      "name": "Senna",
+      "value": 65,
+      "note": "in 161 starts"
+    },
+    {
+      "rank": 4,
+      "code": "VET",
+      "name": "Vettel",
+      "value": 57,
+      "note": "Red Bull peak"
+    },
+    {
+      "rank": 5,
+      "code": "VER",
+      "name": "Verstappen",
+      "value": 40,
+      "note": "Active climber"
+    },
+    {
+      "rank": 6,
+      "code": "CLA",
+      "name": "Clark",
+      "value": 33,
+      "note": "in 72 starts"
+    },
+    {
+      "rank": 7,
+      "code": "PRO",
+      "name": "Prost",
+      "value": 33,
+      "note": ""
+    },
+    {
+      "rank": 8,
+      "code": "MAN",
+      "name": "Mansell",
+      "value": 32,
+      "note": ""
+    },
+    {
+      "rank": 9,
+      "code": "ALO",
+      "name": "Alonso",
+      "value": 22,
+      "note": ""
+    },
+    {
+      "rank": 10,
+      "code": "LEC",
+      "name": "Leclerc",
+      "value": 26,
+      "note": "Active"
+    }
+  ],
+  "meta": {}
+}

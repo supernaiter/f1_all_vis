@@ -1,0 +1,82 @@
+{
+  "slug": "goat-index",
+  "title": "GOAT INDEX",
+  "subtitle": "WEIGHTED SCORE OVER TITLES · WINS · POLES · ERA",
+  "source": "pending",
+  "kind": "ranking",
+  "entries": [
+    {
+      "rank": 1,
+      "code": "SCH",
+      "name": "Schumacher",
+      "value": 100.0,
+      "note": "7 titles, 91 wins"
+    },
+    {
+      "rank": 2,
+      "code": "HAM",
+      "name": "Hamilton",
+      "value": 98.5,
+      "note": "7 titles, 105 wins"
+    },
+    {
+      "rank": 3,
+      "code": "SEN",
+      "name": "Senna",
+      "value": 92.0,
+      "note": "3 titles, 65 poles"
+    },
+    {
+      "rank": 4,
+      "code": "PRO",
+      "name": "Prost",
+      "value": 89.0,
+      "note": "4 titles"
+    },
+    {
+      "rank": 5,
+      "code": "VER",
+      "name": "Verstappen",
+      "value": 87.5,
+      "note": "4 titles, active"
+    },
+    {
+      "rank": 6,
+      "code": "FAN",
+      "name": "Fangio",
+      "value": 86.0,
+      "note": "5 titles in 8 seasons"
+    },
+    {
+      "rank": 7,
+      "code": "CLA",
+      "name": "Clark",
+      "value": 82.0,
+      "note": "2 titles"
+    },
+    {
+      "rank": 8,
+      "code": "STE",
+      "name": "Stewart",
+      "value": 80.0,
+      "note": "3 titles"
+    },
+    {
+      "rank": 9,
+      "code": "LAU",
+      "name": "Lauda",
+      "value": 78.5,
+      "note": "3 titles"
+    },
+    {
+      "rank": 10,
+      "code": "ALO",
+      "name": "Alonso",
+      "value": 76.0,
+      "note": "2 titles, longevity"
+    }
+  ],
+  "meta": {
+    "note": "Phase 2: replace weights with f1_analysis/out/championship_* bayes posterior"
+  }
+}

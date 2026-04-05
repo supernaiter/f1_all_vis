@@ -1,0 +1,47 @@
+{
+  "slug": "win-style",
+  "title": "WIN STYLE DNA",
+  "subtitle": "HOW EACH LEGEND WON: POLE · LEAD · PASS · CHAOS",
+  "source": "static",
+  "kind": "chart",
+  "entries": [
+    {
+      "code": "VER",
+      "name": "Verstappen",
+      "value": 63,
+      "note": "POLE-to-win: 63%"
+    },
+    {
+      "code": "HAM",
+      "name": "Hamilton",
+      "value": 60,
+      "note": "POLE-to-win: 60%"
+    },
+    {
+      "code": "SCH",
+      "name": "Schumacher",
+      "value": 55,
+      "note": "POLE-to-win: 55%"
+    },
+    {
+      "code": "SEN",
+      "name": "Senna",
+      "value": 65,
+      "note": "POLE-to-win: 65%"
+    },
+    {
+      "code": "ALO",
+      "name": "Alonso",
+      "value": 32,
+      "note": "POLE-to-win: 32% (pass-and-hold)"
+    }
+  ],
+  "meta": {
+    "axes": [
+      "POLE WIN",
+      "LEAD LAP 1",
+      "OVERTAKE",
+      "CHAOS"
+    ]
+  }
+}

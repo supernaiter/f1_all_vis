@@ -1,0 +1,66 @@
+{
+  "slug": "teammate-eliminator",
+  "title": "TEAMMATE ELIMINATOR",
+  "subtitle": "CAREER H2H DOMINATION RATE (QUALI)",
+  "source": "static",
+  "kind": "ranking",
+  "entries": [
+    {
+      "rank": 1,
+      "code": "SEN",
+      "name": "Senna",
+      "value": 0.89,
+      "note": "vs 7 teammates"
+    },
+    {
+      "rank": 2,
+      "code": "SCH",
+      "name": "Schumacher",
+      "value": 0.87,
+      "note": "vs 10 teammates"
+    },
+    {
+      "rank": 3,
+      "code": "VER",
+      "name": "Verstappen",
+      "value": 0.86,
+      "note": "vs Ricciardo/Gasly/Albon/Pérez/Tsunoda"
+    },
+    {
+      "rank": 4,
+      "code": "HAM",
+      "name": "Hamilton",
+      "value": 0.84,
+      "note": "vs Alonso/Rosberg/Bottas/Russell"
+    },
+    {
+      "rank": 5,
+      "code": "ALO",
+      "name": "Alonso",
+      "value": 0.81,
+      "note": "vs Fisichella/Trulli/Massa/Raikkonen"
+    },
+    {
+      "rank": 6,
+      "code": "PRO",
+      "name": "Prost",
+      "value": 0.8,
+      "note": "vs Lauda/Rosberg/Senna/Mansell"
+    },
+    {
+      "rank": 7,
+      "code": "VET",
+      "name": "Vettel",
+      "value": 0.73,
+      "note": "vs Webber/Raikkonen/Leclerc"
+    },
+    {
+      "rank": 8,
+      "code": "LEC",
+      "name": "Leclerc",
+      "value": 0.68,
+      "note": "vs Vettel/Sainz/Hamilton"
+    }
+  ],
+  "meta": {}
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "elo",
+  "title": "TEAMMATE CHAIN ELO",
+  "subtitle": "BAYESIAN PAIRWISE CHAIN OVER 3506 PAIRS",
+  "source": "pending",
+  "kind": "ranking",
+  "entries": [
+    {
+      "rank": 1,
+      "code": "SCH",
+      "name": "Schumacher",
+      "value": 2450,
+      "note": "Placeholder"
+    },
+    {
+      "rank": 2,
+      "code": "SEN",
+      "name": "Senna",
+      "value": 2420,
+      "note": "Placeholder"
+    },
+    {
+      "rank": 3,
+      "code": "HAM",
+      "name": "Hamilton",
+      "value": 2410,
+      "note": "Placeholder"
+    },
+    {
+      "rank": 4,
+      "code": "VER",
+      "name": "Verstappen",
+      "value": 2395,
+      "note": "Placeholder"
+    },
+    {
+      "rank": 5,
+      "code": "ALO",
+      "name": "Alonso",
+      "value": 2340,
+      "note": "Placeholder"
+    }
+  ],
+  "meta": {
+    "note": "Phase 2: replace with f1_analysis/out/bayes_signal_scan/ posterior"
+  }
+}

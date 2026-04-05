@@ -1,0 +1,54 @@
+{
+  "slug": "wet-weather",
+  "title": "WET WEATHER INDEX",
+  "subtitle": "RAIN-RACE PACE DELTA VS DRY-FIELD NORM",
+  "source": "pending",
+  "kind": "ranking",
+  "entries": [
+    {
+      "rank": 1,
+      "code": "SEN",
+      "name": "Senna",
+      "value": "+1.42s",
+      "note": "Historical wet specialist"
+    },
+    {
+      "rank": 2,
+      "code": "SCH",
+      "name": "Schumacher",
+      "value": "+1.18s",
+      "note": "Spain '96, USA '03"
+    },
+    {
+      "rank": 3,
+      "code": "HAM",
+      "name": "Hamilton",
+      "value": "+0.95s",
+      "note": "Silverstone '08"
+    },
+    {
+      "rank": 4,
+      "code": "VER",
+      "name": "Verstappen",
+      "value": "+0.88s",
+      "note": "Brazil '16 debut"
+    },
+    {
+      "rank": 5,
+      "code": "BUT",
+      "name": "Button",
+      "value": "+0.72s",
+      "note": "Canada '11"
+    },
+    {
+      "rank": 6,
+      "code": "ALO",
+      "name": "Alonso",
+      "value": "+0.68s",
+      "note": "Singapore '09"
+    }
+  ],
+  "meta": {
+    "note": "Phase 2: replace with f1_analysis wet-race export"
+  }
+}

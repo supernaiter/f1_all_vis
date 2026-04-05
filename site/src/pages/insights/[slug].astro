@@ -1,0 +1,75 @@
+---
+import { listPillarPages, loadPillarData, type PillarData } from '../../lib/data';
+
+export function getStaticPaths() {
+  return listPillarPages()
+    .filter(slug => loadPillarData(slug) !== null)
+    .map(slug => ({
+      params: { slug },
+      props: { data: loadPillarData(slug) as PillarData },
+    }));
+}
+
+const { slug } = Astro.params;
+const { data } = Astro.props;
+const isPending = data.source === 'pending';
+const topValue = data.entries.length > 0 && typeof data.entries[0].value === 'number'
+  ? data.entries[0].value as number
+  : null;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>{data.title} — Motorsports Visualised</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace}
+.card{width:1080px;min-height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+.pending-tag{position:absolute;top:28px;left:56px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#7a1f1f;text-transform:uppercase;border:1px solid #7a1f1f;padding:4px 8px}
+.ttl{font-family:'Bebas Neue',sans-serif;font-size:72px;letter-spacing:0.06em;color:#e0e0e0;line-height:1;margin-top:24px}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#333;text-transform:uppercase;margin-top:8px}
+.list{margin-top:36px;display:flex;flex-direction:column;gap:8px}
+.row{display:grid;grid-template-columns:80px 120px 1fr auto;align-items:center;gap:20px;padding:14px 18px;background:#0b0b10;border:1px solid #111118}
+.rank{font-family:'Bebas Neue',sans-serif;font-size:36px;color:#6e6e6e;line-height:1}
+.code{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#e0e0e0;letter-spacing:0.06em;line-height:1}
+.name{font-family:'IBM Plex Mono',monospace;font-size:14px;color:#8a8a8a;letter-spacing:0.1em;text-transform:uppercase}
+.name .note{display:block;font-size:10px;color:#444;margin-top:4px;letter-spacing:0.05em;text-transform:none}
+.value{font-family:'IBM Plex Mono',monospace;font-size:24px;color:#FFD700;letter-spacing:0.05em;font-weight:600}
+.bar{height:4px;background:#14141b;margin-top:8px;border-radius:2px;overflow:hidden}
+.bar > i{display:block;height:100%;background:#FFD700}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="wm">MOTORSPORTS-VISUALISED</div>
+  {isPending && <div class="pending-tag">Data Pending · Phase 2</div>}
+  <div class="ttl">{data.title}</div>
+  <div class="sub">{data.subtitle}</div>
+  <div class="list">
+    {data.entries.map((e, i) => {
+      const pct = (topValue && typeof e.value === 'number')
+        ? Math.max(5, Math.round((e.value as number) / topValue * 100))
+        : 100;
+      return (
+        <div class="row">
+          <div class="rank">{e.rank ?? i + 1}</div>
+          <div class="code">{e.code}</div>
+          <div class="name">
+            {e.name}
+            {e.note && <span class="note">{e.note}</span>}
+            {typeof e.value === 'number' && (
+              <div class="bar"><i style={`width:${pct}%`}></i></div>
+            )}
+          </div>
+          <div class="value">{e.value}</div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,232 @@
 {
   "type": "corner_speed",
-  "status": "pending",
-  "note": "DATA PENDING — OPENF1 INTEGRATION REQUIRED",
-  "data": [],
-  "gp": "2026_R03_Japan"
+  "gp": "2026_R03_Japan",
+  "status": "ok",
+  "corners": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7",
+    "T8",
+    "T9",
+    "T10",
+    "T11",
+    "T12",
+    "T13"
+  ],
+  "drivers": [
+    {
+      "code": "ANT",
+      "number": 12,
+      "team": "Mercedes",
+      "color": "#00D7B6",
+      "min_speeds": [
+        135,
+        171,
+        177,
+        156,
+        129,
+        68,
+        89,
+        142,
+        176,
+        180,
+        159,
+        132,
+        70
+      ]
+    },
+    {
+      "code": "PIA",
+      "number": 81,
+      "team": "McLaren",
+      "color": "#F47600",
+      "min_speeds": [
+        142,
+        179,
+        159,
+        130,
+        161,
+        148,
+        93,
+        149,
+        142,
+        180,
+        160,
+        131,
+        143
+      ]
+    },
+    {
+      "code": "LEC",
+      "number": 16,
+      "team": "Ferrari",
+      "color": "#ED1131",
+      "min_speeds": [
+        150,
+        180,
+        166,
+        136,
+        67,
+        153,
+        94,
+        93,
+        151,
+        179,
+        165,
+        137,
+        69
+      ]
+    },
+    {
+      "code": "RUS",
+      "number": 63,
+      "team": "Mercedes",
+      "color": "#00D7B6",
+      "min_speeds": [
+        141,
+        176,
+        162,
+        127,
+        70,
+        153,
+        159,
+        88,
+        148,
+        174,
+        157,
+        131,
+        69
+      ]
+    },
+    {
+      "code": "NOR",
+      "number": 1,
+      "team": "McLaren",
+      "color": "#F47600",
+      "min_speeds": [
+        141,
+        175,
+        177,
+        153,
+        126,
+        72,
+        152,
+        80,
+        135,
+        172,
+        168,
+        152,
+        128
+      ]
+    },
+    {
+      "code": "HAM",
+      "number": 44,
+      "team": "Ferrari",
+      "color": "#ED1131",
+      "min_speeds": [
+        147,
+        177,
+        158,
+        132,
+        69,
+        149,
+        89,
+        148,
+        174,
+        161,
+        131,
+        72,
+        151
+      ]
+    },
+    {
+      "code": "GAS",
+      "number": 10,
+      "team": "Alpine",
+      "color": "#00A1E8",
+      "min_speeds": [
+        139,
+        173,
+        178,
+        153,
+        128,
+        71,
+        149,
+        89,
+        143,
+        175,
+        176,
+        156,
+        130
+      ]
+    },
+    {
+      "code": "VER",
+      "number": 3,
+      "team": "Red Bull Racing",
+      "color": "#4781D7",
+      "min_speeds": [
+        94,
+        146,
+        179,
+        178,
+        153,
+        130,
+        71,
+        149,
+        88,
+        177,
+        146,
+        179,
+        179
+      ]
+    },
+    {
+      "code": "LAW",
+      "number": 30,
+      "team": "Racing Bulls",
+      "color": "#6C98FF",
+      "min_speeds": [
+        102,
+        141,
+        178,
+        178,
+        150,
+        123,
+        68,
+        161,
+        161,
+        99,
+        138,
+        177,
+        171
+      ]
+    },
+    {
+      "code": "OCO",
+      "number": 31,
+      "team": "Haas F1 Team",
+      "color": "#9C9FA2",
+      "min_speeds": [
+        91,
+        140,
+        173,
+        178,
+        151,
+        126,
+        70,
+        149,
+        91,
+        137,
+        174,
+        179,
+        151
+      ]
+    }
+  ]
 }

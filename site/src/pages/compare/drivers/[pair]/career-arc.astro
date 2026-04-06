@@ -22,6 +22,8 @@ const payload = JSON.stringify(data);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1080">
 <title>{title} — Motorsports Visualised</title>
+<meta name="description" content={`${driver1.name} vs ${driver2.name} cumulative wins career arc comparison`}>
+<meta property="og:title" content={title}>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -38,7 +40,7 @@ canvas{margin-top:24px;display:block}
   <div class="wm">MOTORSPORTS-VISUALISED</div>
   <div class="ttl">CAREER ARC</div>
   <div class="sub">{driver1.code} VS {driver2.code} — CUMULATIVE WINS FROM F1 DEBUT</div>
-  <canvas id="chart" width="968" height="900"></canvas>
+  <canvas id="chart" width="968" height="900" role="img" aria-label={`Career arc chart comparing cumulative wins of ${driver1.name} and ${driver2.name}`}></canvas>
 </div>
 <script type="application/json" id="payload" set:html={payload}></script>
 <script is:inline>
@@ -58,6 +60,15 @@ canvas{margin-top:24px;display:block}
 
   const x = yr => pad.left + (yr / maxYear) * w;
   const y = wins => pad.top + h - (wins / maxWins) * h;
+
+  // Milestone horizontal dashed lines (10, 25, 50, 75, 100 wins)
+  [10, 25, 50, 75, 100].forEach(milestone => {
+    if (milestone > maxWins) return;
+    ctx.beginPath(); ctx.moveTo(pad.left, y(milestone)); ctx.lineTo(pad.left + w, y(milestone));
+    ctx.strokeStyle = '#252525'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#333'; ctx.font = '600 10px IBM Plex Mono'; ctx.textAlign = 'left';
+    ctx.fillText('WIN #' + milestone, pad.left + w + 4, y(milestone) + 4);
+  });
 
   // Grid (horizontal)
   ctx.strokeStyle = '#0e0e14';
@@ -117,7 +128,7 @@ canvas{margin-top:24px;display:block}
     ctx.fillStyle = d.color;
     ctx.font = '600 14px IBM Plex Mono';
     ctx.textAlign = 'left';
-    ctx.fillText(d.code, lastX + 8, lastY + 5);
+    ctx.fillText(d.code + ' (' + d.cumWins[lastI] + ')', lastX + 8, lastY + 5);
     ctx.beginPath();
     ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
     ctx.fillStyle = d.color;

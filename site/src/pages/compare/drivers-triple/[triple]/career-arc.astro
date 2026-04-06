@@ -22,6 +22,8 @@ const payload = JSON.stringify(data);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1080">
 <title>{title} — Motorsports Visualised</title>
+<meta name="description" content={`${driver1.name} vs ${driver2.name} vs ${driver3.name} cumulative wins career arc comparison`}>
+<meta property="og:title" content={title}>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -38,7 +40,7 @@ canvas{margin-top:24px;display:block}
   <div class="wm">MOTORSPORTS-VISUALISED</div>
   <div class="ttl">CAREER ARC</div>
   <div class="sub">{driver1.code} VS {driver2.code} VS {driver3.code} — CUMULATIVE WINS FROM F1 DEBUT</div>
-  <canvas id="chart" width="968" height="900"></canvas>
+  <canvas id="chart" width="968" height="900" role="img" aria-label={`Career arc chart comparing cumulative wins of ${driver1.name}, ${driver2.name}, and ${driver3.name}`}></canvas>
 </div>
 <script type="application/json" id="payload" set:html={payload}></script>
 <script is:inline>

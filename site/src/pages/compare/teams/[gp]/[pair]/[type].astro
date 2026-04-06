@@ -45,7 +45,7 @@ canvas{display:block;margin-top:32px}
   <div class="wm">MOTORSPORTS-VISUALISED</div>
   <div class="ttl">{title}</div>
   <div class="sub">{gpUpper} · {(pair as string).toUpperCase().replace(/-/g,' ')}</div>
-  <canvas id="chart" width="968" height="820"></canvas>
+  <canvas id="chart" width="968" height="820" role="img" aria-label={`${title} chart for ${(pair as string).replace(/-/g, ' ')} at ${gpUpper}`}></canvas>
 </div>
 <script type="application/json" id="payload" set:html={payload}></script>
 <script is:inline define:vars={{ renderType: type }}>

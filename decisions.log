@@ -29,3 +29,8 @@
 2026-04-05|openf1統合|3カード種(braking/corner/overtake)をOpenF1実データ化|FastF1ではx,y GPS/brake取得不能。OpenF1 car_data+location+positionで代替|R01-R03で9JSON更新、6470ページ維持
 2026-04-05|解析窓|レース25%地点から3分窓、上位10ドライバー限定|フルレース×22ドライバーはAPI負荷大。代表窓で十分|ピット/SC混入のリスクあり
 2026-04-05|コーナー検出|speed極小値を自動検出(閾値180km/h, 最小間隔2s)|手動マッピングは23サーキット分の保守コストが重い|R01=20/R02=17/R03=13コーナー検出
+2026-04-06|コード共有化|makeRow/ScoreRow→scorecard.ts、TYRE_COLORS→data.ts抽出|H2H 5ページで150行削減、変更の一貫性保証|importパス変更時は5ファイル影響
+2026-04-06|CSS統一|rgba()→color-mix(in srgb, var(--accent))に全統一|デザイントークン変更時に一箇所で済む|color-mix()はSafari 16.4+/Chrome 111+以降
+2026-04-06|空データ対応|ECharts 4ページに空データ時のフォールバック表示追加|DNF/短周回数でチャートが空白になる問題を解消|per_lapデータ構造に依存
+2026-04-06|era-adjusted実装|スタブからCanvas折れ線チャート描画を完全実装|pending以外のデータが存在すれば描画される|era_pointsの実データ生成は未実施（pending表示）
+2026-04-06|upgradesレンダリング|チーム別水平タイムライン+アップグレードマーカーで実装|他5種(championship等)と同じCanvas描画パターン|upgradesデータのJSON形式: {teams:[{name,color,upgrades:[{round,delta}]}]}

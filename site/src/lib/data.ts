@@ -408,6 +408,12 @@ export function loadSeasonData(type: string, year = 2026): any | null {
   return JSON.parse(fs.readFileSync(p, 'utf-8'));
 }
 
+// タイヤカラー（サーバーサイド用）
+export const TYRE_COLORS: Record<string, string> = {
+  SOFT: '#FF3333', MEDIUM: '#FFD700', HARD: '#FFFFFF',
+  INTERMEDIATE: '#39B54A', WET: '#0072CE',
+};
+
 // F1公式ドライバーヘッドショット（開発用・一時利用）
 const F1_IMG_BASE = 'https://media.formula1.com/image/upload/c_thumb,g_face,w_440,h_440/q_auto/v1740000001/common/f1/2025';
 export const DRIVER_HEADSHOTS: Record<string, string> = {

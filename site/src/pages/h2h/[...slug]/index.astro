@@ -34,12 +34,6 @@ function posChange(grid: number, finish: number) {
 const pc1 = posChange(r1.grid, r1.finish);
 const pc2 = posChange(r2.grid, r2.finish);
 
-// タイヤカラー
-const TYRE_COLORS: Record<string, string> = {
-  SOFT: '#FF3333', MEDIUM: '#FFD700', HARD: '#FFFFFF',
-  INTERMEDIATE: '#39B54A', WET: '#0072CE',
-};
-
 // ペース
 const paceRow = makeRow(
   'Pace', `${Math.abs(pace.delta_median_sec ?? 0).toFixed(3)}s/lap`,

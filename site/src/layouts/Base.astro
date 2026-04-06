@@ -55,11 +55,19 @@ const ogUrl = url ? (url.startsWith('http') ? url : `${siteUrl}${url}`) : undefi
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
+    ::selection {
+      background: color-mix(in srgb, var(--accent) 40%, transparent);
+      color: var(--text);
+    }
+
     body {
       font-family: var(--font);
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     a { color: var(--accent); text-decoration: none; }

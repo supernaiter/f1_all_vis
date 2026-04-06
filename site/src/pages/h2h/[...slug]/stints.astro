@@ -70,6 +70,9 @@ for (const deg1 of d1) {
   }
 }
 
+// 空データ判定
+const hasChartData = analysis.per_lap?.stints?.drv1?.length > 0 || analysis.per_lap?.stints?.drv2?.length > 0;
+
 // チャート用データ（既存ロジック維持）
 const chartData = {
   stints: analysis.per_lap.stints,
@@ -193,11 +196,17 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
 
 <InsightBox text={insight} />
 
-<h3 class="drv-label" style={`color: ${color1};`}>{drv1}</h3>
-<div id="chart-drv1" class="chart-container"></div>
+{hasChartData ? (
+  <>
+    <h3 class="drv-label" style={`color: ${color1};`}>{drv1}</h3>
+    <div id="chart-drv1" class="chart-container" role="img" aria-label={`${drv1} スティント別タイヤデグラデーション`}></div>
 
-<h3 class="drv-label" style={`color: ${color2}; margin-top:24px;`}>{drv2}</h3>
-<div id="chart-drv2" class="chart-container"></div>
+    <h3 class="drv-label" style={`color: ${color2}; margin-top:24px;`}>{drv2}</h3>
+    <div id="chart-drv2" class="chart-container" role="img" aria-label={`${drv2} スティント別タイヤデグラデーション`}></div>
+  </>
+) : (
+  <div class="no-data-note">十分なスティントデータがありません（DNF/短周回数）</div>
+)}
 
 <script type="application/json" id="chart-data" set:html={JSON.stringify(chartData)} />
 

@@ -53,9 +53,12 @@ body{background:#060606;display:flex;justify-content:center;align-items:center;m
         <div class="tier-body">
           {tier.drivers.map(d => (
             <div class="chip">
-              <div class="code">{d.code}</div>
-              <div class="name">{d.name}</div>
-              {d.note && <div class="note">{d.note}</div>}
+              {DRIVER_HEADSHOTS[d.code] && <img class="chip-img" src={DRIVER_HEADSHOTS[d.code]} alt={d.code} />}
+              <div class="chip-info">
+                <div class="code">{d.code}</div>
+                <div class="name">{d.name}</div>
+                {d.note && <div class="note">{d.note}</div>}
+              </div>
             </div>
           ))}
         </div>

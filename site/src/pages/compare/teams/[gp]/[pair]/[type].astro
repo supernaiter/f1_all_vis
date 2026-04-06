@@ -124,6 +124,15 @@ canvas{display:block;margin-top:32px}
       ctx.fillText(t.name.toUpperCase(), pad, y - 12);
       ctx.fillStyle = '#888'; ctx.font = '12px "IBM Plex Mono"';
       ctx.fillText('median ' + (t.median || 0).toFixed(2) + 's', pad, y + h + 22);
+      // 個別ラップタイムの散布点
+      if (t.lap_times && t.lap_times.length) {
+        t.lap_times.forEach(lt => {
+          const px = scaleX(lt);
+          const py = y + h / 2 + (Math.random() - 0.5) * (h * 0.6);
+          ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI * 2);
+          ctx.fillStyle = t.color + '55'; ctx.fill();
+        });
+      }
     });
   }
 })();

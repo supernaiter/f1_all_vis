@@ -59,3 +59,10 @@
 - `/location` は x,y,z の三次元。outlineは reference driver を間引きで取得可能
 - session_key は /sessions?year=YYYY&session_name=Race で取得（location文字列マッチ）
 - QPS=2.0 程度までは許容、上位10ドライバー × 2エンドポイント × 3分窓 = 約40リクエスト/GP で5分以内完了
+
+## 品質改善パターン
+- makeRow等の共通関数は lib/ に共有モジュールとして抽出→importで使用。5ファイル150行削減実績
+- Canvas系カードページの is:inline スクリプトは ES module import 不可→コンポーネント include か define:vars で対応
+- 空データハンドリングは frontmatter で判定フラグを作り、HTML テンプレート側で分岐表示
+- OGメタタグは全カードページに必須（ソーシャル共有目的のページなのに未設定だった）
+- color-mix(in srgb, var(--accent) N%, transparent) がデザイントークン対応の rgba() 代替。ブラウザ対応は Safari 16.4+

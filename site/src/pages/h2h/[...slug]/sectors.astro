@@ -51,6 +51,9 @@ const sectorRows = sectorEntries.map(([name, data]: [string, any]) => {
   );
 });
 
+// 空データ判定
+const hasChartData = analysis.per_lap?.sectors && Object.keys(analysis.per_lap.sectors).length > 0;
+
 // チャート用データ
 const chartData = {
   sectors: analysis.per_lap.sectors,
@@ -132,9 +135,15 @@ const chartData = {
 
 <InsightBox text={insight} />
 
-<div id="chart-s1" class="sector-chart"></div>
-<div id="chart-s2" class="sector-chart"></div>
-<div id="chart-s3" class="sector-chart"></div>
+{hasChartData ? (
+  <>
+    <div id="chart-s1" class="sector-chart" role="img" aria-label={`${drv1} vs ${drv2} S1タイム比較`}></div>
+    <div id="chart-s2" class="sector-chart" role="img" aria-label={`${drv1} vs ${drv2} S2タイム比較`}></div>
+    <div id="chart-s3" class="sector-chart" role="img" aria-label={`${drv1} vs ${drv2} S3タイム比較`}></div>
+  </>
+) : (
+  <div class="no-data-note">十分なセクターデータがありません（DNF/短周回数）</div>
+)}
 
 <script type="application/json" id="chart-data" set:html={JSON.stringify(chartData)} />
 

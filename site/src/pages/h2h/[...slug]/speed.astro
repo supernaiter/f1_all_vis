@@ -32,53 +32,6 @@ const speedWinner = stData?.delta_kmh > 0 ? 1 : stData?.delta_kmh < 0 ? 2 : 0;
 const face1 = DRIVER_HEADSHOTS[drv1] || '';
 const face2 = DRIVER_HEADSHOTS[drv2] || '';
 
-// --- スコアカード行データ ---
-interface ScoreRow {
-  label: string;
-  sub: string;
-  subColor: string;
-  val1: string;
-  val2: string;
-  scale1: number;
-  scale2: number;
-  opacity1: number;
-  opacity2: number;
-  fontSize1: number;
-  fontSize2: number;
-}
-
-function makeRow(
-  label: string, sub: string, subColor: string,
-  val1: string, val2: string,
-  v1: number, v2: number, maxDelta: number, lowerIsBetter: boolean
-): ScoreRow {
-  const diff = v1 - v2;
-  const intensity = Math.min(Math.abs(diff) / maxDelta, 1);
-  const winner = lowerIsBetter
-    ? (diff < 0 ? 1 : diff > 0 ? 2 : 0)
-    : (diff > 0 ? 1 : diff < 0 ? 2 : 0);
-
-  const winScale = 0.6 + intensity * 0.4;
-  const loseScale = 0.6 - intensity * 0.35;
-  const drawScale = 0.5;
-
-  const winOpacity = 1;
-  const loseOpacity = 0.7 - intensity * 0.35;
-
-  const winFont = 0.85 + intensity * 0.25;
-  const loseFont = 0.85 - intensity * 0.15;
-
-  return {
-    label, sub, subColor, val1, val2,
-    scale1: winner === 1 ? winScale : winner === 2 ? loseScale : drawScale,
-    scale2: winner === 2 ? winScale : winner === 1 ? loseScale : drawScale,
-    opacity1: winner === 2 ? loseOpacity : winOpacity,
-    opacity2: winner === 1 ? loseOpacity : winOpacity,
-    fontSize1: winner === 1 ? winFont : winner === 2 ? loseFont : 0.85,
-    fontSize2: winner === 2 ? winFont : winner === 1 ? loseFont : 0.85,
-  };
-}
-
 // スピード行（各計測ポイント）
 const speedRows = (Object.entries(speed) as [string, any][]).map(([label, data]) => {
   const v1 = data[`${drv1}_median`] ?? 0;

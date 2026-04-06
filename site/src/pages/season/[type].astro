@@ -153,6 +153,45 @@ canvas{display:block;margin-top:32px}
       ctx.fillText(t.score.toFixed(1), pad.l + 160 + len + 8, y + barH);
     });
   }
+
+  if (renderType === 'upgrades') {
+    const teams = data.teams || [];
+    if (!teams.length) return;
+    const rounds = data.rounds || [];
+    const rowH = Math.min(70, (H - pad.t - pad.b) / teams.length);
+    // ラウンド軸
+    const timelineL = pad.l + 180;
+    const timelineW = W - timelineL - pad.r;
+    ctx.strokeStyle = '#222'; ctx.lineWidth = 1;
+    rounds.forEach((r, i) => {
+      const x = timelineL + (i / Math.max(1, rounds.length - 1)) * timelineW;
+      ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, pad.t + teams.length * rowH); ctx.stroke();
+      ctx.fillStyle = '#555'; ctx.font = '10px "IBM Plex Mono"'; ctx.textAlign = 'center';
+      ctx.fillText('R' + String(r).padStart(2, '0'), x, pad.t + teams.length * rowH + 18);
+    });
+    // チーム別タイムライン
+    teams.forEach((t, i) => {
+      const y = pad.t + i * rowH + rowH / 2;
+      // ベースライン
+      ctx.strokeStyle = t.color + '44'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(timelineL, y); ctx.lineTo(timelineL + timelineW, y); ctx.stroke();
+      // チーム名
+      ctx.fillStyle = t.color; ctx.font = 'bold 13px "IBM Plex Mono"'; ctx.textAlign = 'right';
+      ctx.fillText(t.name.toUpperCase(), timelineL - 12, y + 4);
+      // アップグレードマーカー
+      (t.upgrades || []).forEach(u => {
+        const ri = rounds.indexOf(u.round);
+        if (ri < 0) return;
+        const x = timelineL + (ri / Math.max(1, rounds.length - 1)) * timelineW;
+        const size = Math.min(12, Math.max(6, Math.abs(u.delta || 0) * 40));
+        ctx.beginPath(); ctx.arc(x, y, size, 0, Math.PI * 2);
+        ctx.fillStyle = (u.delta || 0) < 0 ? '#39b54a' : '#e80020';
+        ctx.fill();
+        ctx.fillStyle = '#ddd'; ctx.font = '9px "IBM Plex Mono"'; ctx.textAlign = 'center';
+        ctx.fillText((u.delta > 0 ? '+' : '') + (u.delta || 0).toFixed(2) + 's', x, y - size - 4);
+      });
+    });
+  }
 })();
 </script>
 </body>

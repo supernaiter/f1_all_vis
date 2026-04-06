@@ -45,6 +45,12 @@ if (driver1.birth_year !== driver2.birth_year) {
 const rows = Object.entries(byAge)
   .map(([age, ev]) => ({ age: parseInt(age, 10), ...ev }))
   .sort((a, b) => a.age - b.age);
+
+// Dynamic font sizing based on row count
+const rowCount = rows.length;
+const rowMinHeight = rowCount > 22 ? 28 : rowCount > 16 ? 32 : 38;
+const labelFontSize = rowCount > 22 ? 8 : rowCount > 16 ? 9 : 10;
+const ageFontSize = rowCount > 22 ? 18 : rowCount > 16 ? 20 : 24;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +74,7 @@ body{background:#060606;display:flex;justify-content:center;align-items:center;m
 .driver-name{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1}
 .driver-span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#333;letter-spacing:0.1em;margin-top:2px}
 .timeline{margin-top:8px;position:relative}
-.row{display:flex;align-items:flex-start;min-height:38px;position:relative}
+.row{display:flex;align-items:flex-start;min-height:var(--row-min-h, 38px);position:relative}
 .row:hover{background:#0a0a0f}
 .age-col{width:70px;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#1a1a1a;padding-top:8px;text-align:center}
 .age-col.highlight{color:#333}

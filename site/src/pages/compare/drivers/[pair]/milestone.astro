@@ -22,6 +22,8 @@ const payload = JSON.stringify(data);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1080">
 <title>{title} — Motorsports Visualised</title>
+<meta name="description" content={`${driver1.name} vs ${driver2.name} race to N wins milestone comparison`}>
+<meta property="og:title" content={title}>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -38,7 +40,7 @@ canvas{margin-top:24px;display:block}
   <div class="wm">MOTORSPORTS-VISUALISED</div>
   <div class="ttl">RACE TO N WINS</div>
   <div class="sub">CUMULATIVE WINS BY RACE STARTS — {driver1.code} / {driver2.code}</div>
-  <canvas id="chart" width="968" height="900"></canvas>
+  <canvas id="chart" width="968" height="900" role="img" aria-label={`Milestone chart comparing race to N wins for ${driver1.name} and ${driver2.name}`}></canvas>
 </div>
 <script type="application/json" id="payload" set:html={payload}></script>
 <script is:inline>

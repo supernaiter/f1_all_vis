@@ -50,6 +50,9 @@ const speedRows = (Object.entries(speed) as [string, any][]).map(([label, data])
 const stDelta = stData?.delta_kmh ?? 0;
 const stWinnerName = stDelta > 0 ? drv1 : stDelta < 0 ? drv2 : null;
 
+// 空データ判定
+const hasChartData = analysis.per_lap?.speed && Object.keys(analysis.per_lap.speed).length > 0;
+
 // チャート用データ
 const chartData = {
   speed: analysis.per_lap.speed,
@@ -133,7 +136,11 @@ const chartData = {
 
 <InsightBox text={insight} />
 
-<div id="chart-speed" style="width:100%;min-height:clamp(320px, 50vw, 500px);"></div>
+{hasChartData ? (
+  <div id="chart-speed" role="img" aria-label={`${drv1} vs ${drv2} スピード分布チャート`} style="width:100%;min-height:clamp(320px, 50vw, 500px);"></div>
+) : (
+  <div class="no-data-note">十分なスピードデータがありません（DNF/短周回数）</div>
+)}
 
 <script type="application/json" id="chart-data" set:html={JSON.stringify(chartData)} />
 

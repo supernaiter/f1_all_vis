@@ -38,6 +38,8 @@ const pending = data.status === 'pending' || (Array.isArray(data.data) && data.d
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1080">
 <title>{title} — {subtitle} — Motorsports Visualised</title>
+<meta name="description" content={`${title} analysis for ${subtitle}`}>
+<meta property="og:title" content={`${title} — ${subtitle}`}>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -65,7 +67,7 @@ td{padding:8px 10px;border-bottom:1px solid #111}
     {pending ? (
       <div class="pending">DATA PENDING — OPENF1 INTEGRATION REQUIRED</div>
     ) : (
-      <canvas id="chart" width="968" height="820"></canvas>
+      <canvas id="chart" width="968" height="820" role="img" aria-label={`${title} chart for ${subtitle}`}></canvas>
     )}
   </div>
 </div>

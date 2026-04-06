@@ -4,6 +4,7 @@ import SubNav from '../../../components/SubNav.astro';
 import ChartGuide from '../../../components/ChartGuide.astro';
 import InsightBox from '../../../components/InsightBox.astro';
 import { getH2HStaticPaths, loadH2HAnalysis, TEAM_COLORS, DRIVER_HEADSHOTS } from '../../../lib/data';
+import { makeRow, type ScoreRow } from '../../../lib/scorecard';
 import { paceInsight } from '../../../lib/insights';
 
 export function getStaticPaths() { return getH2HStaticPaths(); }

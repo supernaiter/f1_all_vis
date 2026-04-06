@@ -27,6 +27,8 @@ const gpUpper = (gp as string).toUpperCase().replace(/-/g, ' ');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1080">
 <title>{title} — {gpUpper} — {pair} — Motorsports Visualised</title>
+<meta name="description" content={`${(pair as string).replace(/-/g, ' ')} team comparison — ${title} — ${gpUpper}`}>
+<meta property="og:title" content={`${title} — ${gpUpper} — ${pair}`}>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}

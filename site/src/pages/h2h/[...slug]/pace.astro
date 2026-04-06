@@ -50,6 +50,9 @@ const cleanRow = makeRow(
 
 const scoreRows = [paceRow, cleanRow];
 
+// 空データ判定（DNF/短周回数の場合）
+const hasChartData = analysis.per_lap?.pace?.drv1_laps?.length > 0 || analysis.per_lap?.pace?.drv2_laps?.length > 0;
+
 // チャート用データ
 const chartData = {
   per_lap: analysis.per_lap.pace,
@@ -131,8 +134,14 @@ const chartData = {
 
 <InsightBox text={insight} />
 
-<div id="chart-laptimes" style="width:100%;height:400px;"></div>
-<div id="chart-delta" style="width:100%;height:250px;margin-top:8px;"></div>
+{hasChartData ? (
+  <>
+    <div id="chart-laptimes" role="img" aria-label={`${drv1} vs ${drv2} ラップタイム推移チャート`} style="width:100%;height:400px;"></div>
+    <div id="chart-delta" role="img" aria-label={`${drv1} vs ${drv2} ラップタイム差チャート`} style="width:100%;height:250px;margin-top:8px;"></div>
+  </>
+) : (
+  <div class="no-data-note">十分なラップデータがありません（DNF/短周回数）</div>
+)}
 
 <script type="application/json" id="chart-data" set:html={JSON.stringify(chartData)} />
 

@@ -148,6 +148,22 @@ canvas{margin-top:28px}
     ctx.fillStyle = d.color + '18'; ctx.fill();
     ctx.strokeStyle = d.color; ctx.lineWidth = 2; ctx.stroke();
   });
+
+  // Value labels at each radar vertex
+  [{ vals: vals1, color: d1.color }, { vals: vals2, color: d2.color }].forEach((d, di) => {
+    d.vals.forEach((v, i) => {
+      const angle = (Math.PI * 2 * i) / axes.length - Math.PI / 2;
+      const r = (v / 100) * maxR;
+      const lx = cx + r * Math.cos(angle);
+      const ly = cy + r * Math.sin(angle);
+      const offsetX = di === 0 ? -12 : 12;
+      const offsetY = di === 0 ? -8 : 10;
+      ctx.fillStyle = d.color;
+      ctx.font = '600 9px IBM Plex Mono';
+      ctx.textAlign = 'center';
+      ctx.fillText(v, lx + offsetX, ly + offsetY);
+    });
+  });
 })();
 </script>
 </body>

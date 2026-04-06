@@ -3,7 +3,8 @@ import Base from '../../../layouts/Base.astro';
 import SubNav from '../../../components/SubNav.astro';
 import ChartGuide from '../../../components/ChartGuide.astro';
 import InsightBox from '../../../components/InsightBox.astro';
-import { getH2HStaticPaths, loadH2HAnalysis, TEAM_COLORS, DRIVER_HEADSHOTS } from '../../../lib/data';
+import { getH2HStaticPaths, loadH2HAnalysis, TEAM_COLORS, DRIVER_HEADSHOTS, TYRE_COLORS } from '../../../lib/data';
+import { makeRow, type ScoreRow } from '../../../lib/scorecard';
 import { stintInsight } from '../../../lib/insights';
 
 export function getStaticPaths() { return getH2HStaticPaths(); }
@@ -24,12 +25,6 @@ const insight = stintInsight(analysis);
 // ヘッドショット
 const face1 = DRIVER_HEADSHOTS[drv1] || '';
 const face2 = DRIVER_HEADSHOTS[drv2] || '';
-
-// タイヤカラー
-const TYRE_COLORS: Record<string, string> = {
-  SOFT: '#FF3333', MEDIUM: '#FFD700', HARD: '#FFFFFF',
-  INTERMEDIATE: '#39B54A', WET: '#0072CE',
-};
 
 // --- デグラデーション勝者判定 ---
 // 同一コンパウンドのfuel_corrected_degを比較。小さい（=デグが少ない）方が勝ち

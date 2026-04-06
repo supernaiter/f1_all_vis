@@ -42,7 +42,7 @@ body{background:#060606;display:flex;justify-content:center;align-items:center;m
 .name .note{display:block;font-size:10px;color:#444;margin-top:4px;letter-spacing:0.05em;text-transform:none}
 .value{font-family:'IBM Plex Mono',monospace;font-size:24px;color:#FFD700;letter-spacing:0.05em;font-weight:600}
 .bar{height:4px;background:#14141b;margin-top:8px;border-radius:2px;overflow:hidden}
-.bar > i{display:block;height:100%;background:#FFD700}
+.bar > span{display:block;height:100%;background:#FFD700}
 </style>
 </head>
 <body>
@@ -64,7 +64,7 @@ body{background:#060606;display:flex;justify-content:center;align-items:center;m
             {e.name}
             {e.note && <span class="note">{e.note}</span>}
             {typeof e.value === 'number' && (
-              <div class="bar"><i style={`width:${pct}%`}></i></div>
+              <div class="bar"><span style={`width:${pct}%`}></span></div>
             )}
           </div>
           <div class="value">{e.value}</div>

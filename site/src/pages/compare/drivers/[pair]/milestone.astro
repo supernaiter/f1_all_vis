@@ -106,10 +106,15 @@ canvas{margin-top:24px;display:block}
     ctx.stroke();
 
     const lastI = wins.length - 1;
-    ctx.beginPath(); ctx.arc(x(lastI), y(wins[lastI]), 4, 0, Math.PI * 2);
+    // Glow effect on endpoint dot
+    ctx.save();
+    ctx.shadowColor = d.color;
+    ctx.shadowBlur = 12;
+    ctx.beginPath(); ctx.arc(x(lastI), y(wins[lastI]), 6, 0, Math.PI * 2);
     ctx.fillStyle = d.color; ctx.fill();
+    ctx.restore();
     ctx.font = '600 14px IBM Plex Mono'; ctx.textAlign = 'left';
-    ctx.fillText(d.code, x(lastI) + 8, y(wins[lastI]) + 5);
+    ctx.fillText(d.code, x(lastI) + 10, y(wins[lastI]) + 5);
   });
 })();
 </script>

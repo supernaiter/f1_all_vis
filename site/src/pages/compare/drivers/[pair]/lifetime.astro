@@ -76,7 +76,7 @@ body{background:#060606;display:flex;justify-content:center;align-items:center;m
 .timeline{margin-top:8px;position:relative}
 .row{display:flex;align-items:flex-start;min-height:var(--row-min-h, 38px);position:relative}
 .row:hover{background:#0a0a0f}
-.age-col{width:70px;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#1a1a1a;padding-top:8px;text-align:center}
+.age-col{width:70px;flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:var(--age-fs, 24px);color:#1a1a1a;padding-top:8px;text-align:center}
 .age-col.highlight{color:#333}
 .col-left,.col-right{flex:1;position:relative;padding:8px 16px;min-height:38px}
 .col-left{border-right:2px solid #1a1a2a}
@@ -89,7 +89,7 @@ body{background:#060606;display:flex;justify-content:center;align-items:center;m
 .dot.debut{background:#534ab7}
 .dot.career{background:#333}
 .dot.life{background:#27f4d2}
-.label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#777;line-height:1.4;letter-spacing:0.02em}
+.label{font-family:'IBM Plex Mono',monospace;font-size:var(--label-fs, 10px);color:#777;line-height:1.4;letter-spacing:0.02em}
 .col-right .label{text-align:right}
 .row-sep{border-bottom:1px solid #0a0a0a}
 .footnote{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#222;margin-top:16px;letter-spacing:0.06em;text-align:center}
@@ -113,7 +113,7 @@ body{background:#060606;display:flex;justify-content:center;align-items:center;m
     </div>
   </div>
 
-  <div class="timeline">
+  <div class="timeline" style={`--row-min-h:${rowMinHeight}px;--age-fs:${ageFontSize}px;--label-fs:${labelFontSize}px`}>
     {rows.map(row => (
       <div class="row row-sep">
         <div class={(row.left || row.right) ? 'age-col highlight' : 'age-col'}>{row.age}</div>

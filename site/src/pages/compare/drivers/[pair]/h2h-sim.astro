@@ -46,6 +46,7 @@ body{background:#060606;display:flex;justify-content:center;align-items:center;m
 .bar-val{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff}
 canvas{margin-top:28px}
 .radar-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;text-align:center;letter-spacing:0.12em;margin-top:8px}
+.legend{display:flex;gap:32px;justify-content:center;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.08em}
 </style>
 </head>
 <body>
@@ -65,8 +66,12 @@ canvas{margin-top:28px}
     </div>
   </div>
   <div class="bars" id="bars"></div>
-  <canvas id="radar" width="968" height="380"></canvas>
+  <canvas id="radar" width="968" height="380" role="img" aria-label={`Radar chart comparing ${driver1.name} and ${driver2.name} across 5 skill axes`}></canvas>
   <div class="radar-label">5-AXIS SKILL COMPARISON</div>
+  <div class="legend" id="legend-bar">
+    <span style={`color:${driver1.color}`}>&#9632; {driver1.name}</span>
+    <span style={`color:${driver2.color}`}>&#9632; {driver2.name}</span>
+  </div>
 </div>
 <script type="application/json" id="payload" set:html={payload}></script>
 <script is:inline>

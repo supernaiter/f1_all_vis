@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { listGPs, loadH2HIndex, TEAM_COLORS, TEAM_SHORT } from '../lib/data';
+import { listGPs, loadH2HIndex, listDriverPairs, listDriverTriples, listGPsWithCards, TEAM_COLORS, TEAM_SHORT } from '../lib/data';
 
 const gps = listGPs();
 const gpData = gps
@@ -9,170 +9,433 @@ const gpData = gps
     index: loadH2HIndex(gp.dir_name),
   }))
   .filter(gp => gp.index !== null);
+
+// 統計
+const totalPairs = gpData.reduce((sum, gp) => sum + (gp.index?.meta.total_pairs ?? 0), 0);
+const driverPairCount = listDriverPairs().length;
+const tripleCount = listDriverTriples().length;
+const cardGPs = listGPsWithCards();
 ---
 
-<Base title="F1 Data Lab - Race Pace Analysis" description="F1レースペースのデータ分析。ドライバー間H2H比較、セクター分析、スピード比較。" url="/" type="website">
+<Base title="F1 Data Lab — データで読む F1" description="F1レースペース・ドライバー比較・タイヤ戦略をデータで分析。6,000+ページの自動生成分析プラットフォーム。" url="/" type="website">
 
+<!-- ===== ヒーロー ===== -->
 <section class="hero">
-  <h1>F1 Data Lab</h1>
-  <p class="subtitle">pSEO 2.0 powered race pace analysis</p>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-num">{gpData.reduce((sum, gp) => sum + (gp.index?.meta.total_pairs ?? 0), 0)}</span>
-      <span class="stat-label">H2H Comparisons</span>
+  <div class="hero-badge">2026 Season</div>
+  <h1 class="hero-title">
+    <span class="hero-line1">Data-Driven</span>
+    <span class="hero-line2">F1 Analysis</span>
+  </h1>
+  <p class="hero-sub">レースペース・予選シミュレーション・タイヤ戦略を<br>データで可視化する分析プラットフォーム</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">{gpData.length}</span>
+      <span class="hero-stat-label">Grands Prix</span>
     </div>
-    <div class="stat">
-      <span class="stat-num">{gpData.length}</span>
-      <span class="stat-label">Grand Prix</span>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">{totalPairs}</span>
+      <span class="hero-stat-label">H2H Pairs</span>
     </div>
-    <div class="stat">
-      <span class="stat-num">{gpData.reduce((sum, gp) => sum + (gp.index?.meta.total_pairs ?? 0), 0) * 4}</span>
-      <span class="stat-label">Charts</span>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">{driverPairCount}</span>
+      <span class="hero-stat-label">Driver Matchups</span>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">{tripleCount}</span>
+      <span class="hero-stat-label">Triple Comps</span>
     </div>
   </div>
 </section>
 
-{gpData.map(gp => (
-  <section class="gp-section">
-    <h2 class="gp-title">
-      R{String(gp.round).padStart(2, '0')} {gp.gp_name}
-      <span class="gp-meta">{gp.index!.meta.total_laps} Laps | {gp.index!.meta.total_pairs} Pairs</span>
-    </h2>
-
-    <div class="pairs-grid">
-      {gp.index!.pairs.map(pair => {
-        const color1 = TEAM_COLORS[pair.team1] || '#999';
-        const color2 = TEAM_COLORS[pair.team2] || '#999';
-        const delta = pair.delta_median_sec;
-        const slug = `${gp.year}-r${String(gp.round).padStart(2, '0')}-${gp.gp_name.toLowerCase()}/${pair.driver1.toLowerCase()}-vs-${pair.driver2.toLowerCase()}`;
-
-        return (
-          <a href={`/h2h/${slug}/`} class="pair-card">
-            <div class="pair-drivers">
-              <span class="driver" style={`border-left: 3px solid ${color1};`}>
-                {pair.driver1}
-                <span class="team-tag">{TEAM_SHORT[pair.team1] || pair.team1}</span>
-              </span>
-              <span class="vs">vs</span>
-              <span class="driver" style={`border-left: 3px solid ${color2};`}>
-                {pair.driver2}
-                <span class="team-tag">{TEAM_SHORT[pair.team2] || pair.team2}</span>
-              </span>
-            </div>
-            {delta !== null && (
-              <div class="pair-delta">
-                <span class={`delta-value ${delta < 0 ? 'faster-1' : delta > 0 ? 'faster-2' : ''}`}>
-                  {delta > 0 ? '+' : ''}{delta.toFixed(3)}s
-                </span>
-                <span class="delta-label">
-                  {pair.faster} faster
-                </span>
-              </div>
-            )}
-          </a>
-        );
-      })}
+<!-- ===== コンテンツタイプ ===== -->
+<section class="content-types">
+  <a href="#races" class="type-card">
+    <div class="type-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
     </div>
-  </section>
-))}
+    <div class="type-info">
+      <span class="type-name">Race H2H</span>
+      <span class="type-desc">チームメイト同士のレースペース直接比較</span>
+    </div>
+    <span class="type-count">{totalPairs} pairs</span>
+  </a>
+  <a href="/compare/drivers/" class="type-card">
+    <div class="type-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    </div>
+    <div class="type-info">
+      <span class="type-name">Driver Compare</span>
+      <span class="type-desc">歴代ドライバーのキャリア・実績比較</span>
+    </div>
+    <span class="type-count">{driverPairCount} pairs</span>
+  </a>
+  <a href="/season/" class="type-card">
+    <div class="type-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    </div>
+    <div class="type-info">
+      <span class="type-name">Season</span>
+      <span class="type-desc">シーズン通しての傾向・統計</span>
+    </div>
+    <span class="type-count">2026</span>
+  </a>
+</section>
+
+<!-- ===== レースH2Hセクション ===== -->
+<section id="races" class="races-section">
+  <h2 class="section-heading">
+    <span class="section-heading-accent"></span>
+    Race H2H Analysis
+  </h2>
+
+  {gpData.map((gp, i) => (
+    <div class="gp-block" style={`animation-delay: ${i * 60}ms;`}>
+      <div class="gp-header">
+        <div class="gp-round">R{String(gp.round).padStart(2, '0')}</div>
+        <div class="gp-info">
+          <h3 class="gp-name">{gp.gp_name} Grand Prix</h3>
+          <span class="gp-meta">{gp.index!.meta.total_laps} Laps &middot; {gp.index!.meta.total_pairs} Matchups</span>
+        </div>
+      </div>
+
+      <div class="pairs-grid">
+        {gp.index!.pairs.map(pair => {
+          const color1 = TEAM_COLORS[pair.team1] || '#999';
+          const color2 = TEAM_COLORS[pair.team2] || '#999';
+          const delta = pair.delta_median_sec;
+          const slug = `${gp.year}-r${String(gp.round).padStart(2, '0')}-${gp.gp_name.toLowerCase()}/${pair.driver1.toLowerCase()}-vs-${pair.driver2.toLowerCase()}`;
+
+          return (
+            <a href={`/h2h/${slug}/`} class="pair-card">
+              <div class="pair-top">
+                <div class="pair-driver">
+                  <span class="pair-color" style={`background: ${color1};`}></span>
+                  <span class="pair-name">{pair.driver1}</span>
+                  <span class="pair-team">{TEAM_SHORT[pair.team1] || pair.team1}</span>
+                </div>
+                <span class="pair-vs">VS</span>
+                <div class="pair-driver pair-driver-right">
+                  <span class="pair-team">{TEAM_SHORT[pair.team2] || pair.team2}</span>
+                  <span class="pair-name">{pair.driver2}</span>
+                  <span class="pair-color" style={`background: ${color2};`}></span>
+                </div>
+              </div>
+              {delta !== null && (
+                <div class="pair-bottom">
+                  <span class={`pair-delta ${delta < 0 ? 'faster-1' : delta > 0 ? 'faster-2' : ''}`}>
+                    {delta > 0 ? '+' : ''}{delta.toFixed(3)}s
+                  </span>
+                  <span class="pair-faster">{pair.faster} faster</span>
+                </div>
+              )}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  ))}
+</section>
 
 </Base>
 
 <style>
+  /* ===== ヒーロー ===== */
   .hero {
     text-align: center;
-    padding: 48px 0 40px;
+    padding: 56px 0 48px;
+    position: relative;
   }
 
-  .hero h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #e10600, #ff2d27);
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hero-line1 {
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--text);
+  }
+  .hero-line2 {
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--accent), #ff4d4d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .subtitle {
+  .hero-sub {
     color: var(--text-dim);
-    font-size: 1.1rem;
-    margin-top: 8px;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
-  .stats {
+  .hero-stats {
     display: flex;
     justify-content: center;
-    gap: 48px;
-    margin-top: 32px;
+    align-items: center;
+    gap: 24px;
+    margin-top: 36px;
+    flex-wrap: wrap;
   }
-
-  .stat { display: flex; flex-direction: column; align-items: center; }
-  .stat-num { font-size: 2rem; font-weight: 700; color: var(--accent); }
-  .stat-label { font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
-
-  .gp-section { margin-bottom: 48px; }
-
-  .gp-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
+  .hero-stat {
     display: flex;
-    align-items: baseline;
-    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .hero-stat-num {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: var(--mono);
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .hero-stat-label {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .hero-stat-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--border);
   }
 
-  .gp-meta { font-size: 0.85rem; color: var(--text-dim); font-weight: 400; }
+  /* ===== コンテンツタイプ ===== */
+  .content-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 48px;
+  }
 
+  .type-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s, background 0.15s, transform 0.15s;
+  }
+  .type-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-card-hover);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+  .type-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: var(--accent);
+  }
+  .type-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+  .type-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+  .type-desc {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+  .type-count {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ===== セクション見出し ===== */
+  .section-heading {
+    font-size: 1.3rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .section-heading-accent {
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* ===== レースセクション ===== */
+  .races-section { margin-bottom: 48px; }
+
+  .gp-block {
+    margin-bottom: 36px;
+    animation: fadeInUp 0.4s ease both;
+  }
+
+  .gp-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .gp-round {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+  }
+  .gp-info { display: flex; flex-direction: column; gap: 1px; }
+  .gp-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .gp-meta {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  /* ===== ペアカード ===== */
   .pairs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
   }
 
   .pair-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 16px;
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    transition: background 0.15s, border-color 0.15s;
+    transition: background 0.15s, border-color 0.15s, transform 0.15s;
     text-decoration: none;
     color: var(--text);
   }
-
   .pair-card:hover {
     background: var(--bg-card-hover);
-    border-color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
     text-decoration: none;
+    transform: translateY(-1px);
   }
 
-  .pair-drivers { display: flex; align-items: center; gap: 8px; }
-
-  .driver {
+  .pair-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .pair-driver {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+  }
+  .pair-driver-right {
+    justify-content: flex-end;
+    text-align: right;
+  }
+  .pair-color {
+    display: inline-block;
+    width: 3px;
+    height: 18px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .pair-name {
     font-weight: 700;
-    font-size: 1.1rem;
-    padding-left: 8px;
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+  .pair-team {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  .pair-vs {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: color-mix(in srgb, var(--text-dim) 60%, transparent);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .pair-bottom {
     display: flex;
     align-items: baseline;
-    gap: 6px;
+    gap: 8px;
   }
-
-  .team-tag { font-size: 0.7rem; color: var(--text-dim); font-weight: 400; }
-  .vs { color: var(--text-dim); font-size: 0.8rem; }
-
-  .pair-delta { display: flex; align-items: baseline; gap: 8px; }
-
-  .delta-value {
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.95rem;
+  .pair-delta {
+    font-family: var(--mono);
+    font-size: 0.9rem;
     font-weight: 600;
   }
+  .pair-delta.faster-1 { color: var(--accent); }
+  .pair-delta.faster-2 { color: var(--accent-2); }
+  .pair-faster {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
 
-  .delta-value.faster-1 { color: var(--accent); }
-  .delta-value.faster-2 { color: var(--accent-2); }
-  .delta-label { font-size: 0.8rem; color: var(--text-dim); }
+  /* ===== レスポンシブ ===== */
+  @media (max-width: 640px) {
+    .hero { padding: 36px 0 32px; }
+    .hero-stats { gap: 16px; }
+    .hero-stat-num { font-size: 1.4rem; }
+    .hero-stat-divider { height: 24px; }
+    .pairs-grid { grid-template-columns: 1fr; }
+    .content-types { grid-template-columns: 1fr; }
+  }
 </style>

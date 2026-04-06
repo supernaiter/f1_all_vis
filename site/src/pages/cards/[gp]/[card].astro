@@ -235,6 +235,18 @@ td{padding:8px 10px;border-bottom:1px solid #111}
       ctx.fillText(cornerLabels[i], cx + Math.cos(ang) * (R + 14), cy + Math.sin(ang) * (R + 14) + 4);
     }
     // polygons per driver (top 5)
+    // Legend at the top of the card body (above chart)
+    data.drivers.slice(0, 5).forEach((d, di) => {
+      const lx = pad.l + di * 160;
+      const ly = pad.t;
+      ctx.fillStyle = d.color; ctx.fillRect(lx, ly, 12, 12);
+      ctx.fillStyle = '#aaa'; ctx.font = '12px "IBM Plex Mono"'; ctx.textAlign = 'left';
+      ctx.fillText(d.code + ' ' + (d.team || ''), lx + 18, ly + 11);
+    });
+    ctx.fillStyle = '#444'; ctx.font = '10px "IBM Plex Mono"'; ctx.textAlign = 'left';
+    ctx.fillText('apex km/h ' + Math.round(minV) + '–' + Math.round(maxV), pad.l, pad.t + 24);
+
+    // Polygons per driver (top 5)
     data.drivers.slice(0, 5).forEach((d, di) => {
       ctx.strokeStyle = d.color; ctx.lineWidth = 2;
       ctx.fillStyle = d.color + '15';
@@ -249,14 +261,7 @@ td{padding:8px 10px;border-bottom:1px solid #111}
         if (!started) { ctx.moveTo(px, py); started = true; } else { ctx.lineTo(px, py); }
       }
       ctx.closePath(); ctx.fill(); ctx.stroke();
-      // legend
-      const ly = pad.t + 10 + di * 18;
-      ctx.fillStyle = d.color; ctx.fillRect(pad.l, ly, 12, 12);
-      ctx.fillStyle = '#aaa'; ctx.font = '12px "IBM Plex Mono"'; ctx.textAlign = 'left';
-      ctx.fillText(d.code + ' ' + (d.team || ''), pad.l + 18, ly + 11);
     });
-    ctx.fillStyle = '#444'; ctx.font = '10px "IBM Plex Mono"'; ctx.textAlign = 'left';
-    ctx.fillText('apex km/h ' + Math.round(minV) + '–' + Math.round(maxV), pad.l, H - pad.b + 20);
   }
 
   if (cardType === 'overtake-replay') {

@@ -23,6 +23,8 @@ const topValue = data.entries.length > 0 && typeof data.entries[0].value === 'nu
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1080">
 <title>{data.title} — Motorsports Visualised</title>
+<meta name="description" content={data.subtitle}>
+<meta property="og:title" content={data.title}>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}

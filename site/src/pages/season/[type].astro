@@ -23,6 +23,7 @@ const titleMap: Record<string, string> = {
 };
 const title = titleMap[type as string] || (type as string).toUpperCase();
 const payload = JSON.stringify(data);
+const roundLabel = data.rounds ? `R${String(data.rounds[0]).padStart(2,'0')} — R${String(data.rounds[data.rounds.length-1]).padStart(2,'0')}` : '';
 const pending = data.status === 'pending';
 ---
 <!DOCTYPE html>
@@ -49,7 +50,7 @@ canvas{display:block;margin-top:32px}
 <div class="card">
   <div class="wm">MOTORSPORTS-VISUALISED</div>
   <div class="ttl">{title}</div>
-  <div class="sub">2026 F1 SEASON · R01 — R03</div>
+  <div class="sub">2026 F1 SEASON · {roundLabel}</div>
   {pending ? (
     <div class="pending">DATA PENDING — MANUAL CURATION REQUIRED</div>
   ) : (

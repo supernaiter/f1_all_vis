@@ -211,7 +211,26 @@ const ogUrl = url ? (url.startsWith('http') ? url : `${siteUrl}${url}`) : undefi
 
   <footer>
     <div class="container">
-      Data: FastF1 API | Built with Astro
+      <div class="footer-inner">
+        <div class="footer-col">
+          <span class="footer-col-title">Analysis</span>
+          <a href="/#races">Race H2H</a>
+          <a href="/compare/drivers/">Driver Compare</a>
+          <a href="/compare/teams/">Team Compare</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Data</span>
+          <a href="/season/">Season Stats</a>
+          <a href="/tiers/">Driver Tiers</a>
+          <a href="/insights/">Insights</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">About</span>
+          <span>Data: FastF1 + OpenF1</span>
+          <span>Built with Astro</span>
+        </div>
+      </div>
+      <div class="footer-bottom">F1 Data Lab &mdash; Data-driven F1 analysis</div>
     </div>
   </footer>
 </body>

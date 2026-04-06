@@ -50,6 +50,7 @@ const ogUrl = url ? (url.startsWith('http') ? url : `${siteUrl}${url}`) : undefi
       --accent-2: #28973e;
       --border: #303037;
       --font: 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif;
+      --mono: 'SF Mono', 'Fira Code', ui-monospace, monospace;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -70,51 +71,137 @@ const ogUrl = url ? (url.startsWith('http') ? url : `${siteUrl}${url}`) : undefi
       padding: 0 20px;
     }
 
+    /* レーシングストライプ（ヘッダー上部） */
     header {
+      position: relative;
       border-bottom: 1px solid var(--border);
       padding: 16px 0;
       margin-bottom: 32px;
     }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 40%, transparent 40%, transparent 42%, var(--accent) 42%, var(--accent) 46%, transparent 46%);
+    }
 
-    header nav {
+    header .header-inner {
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     header .logo {
       font-size: 1.4rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text);
       letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    header .logo-mark {
+      display: inline-block;
+      width: 6px;
+      height: 22px;
+      background: var(--accent);
+      border-radius: 1px;
+    }
+
+    header .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     header .nav-link {
       color: var(--text-dim);
-      font-size: 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      text-decoration: none;
     }
-
     header .nav-link:hover {
       color: var(--text);
+      background: var(--bg-card);
+      text-decoration: none;
     }
 
+    /* フッター */
     footer {
       border-top: 1px solid var(--border);
-      padding: 24px 0;
+      padding: 32px 0 24px;
       margin-top: 48px;
-      text-align: center;
       color: var(--text-dim);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-col { display: flex; flex-direction: column; gap: 6px; }
+    .footer-col-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .footer-col a {
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: var(--text); text-decoration: none; }
+    .footer-bottom {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.75rem;
+      color: color-mix(in srgb, var(--text-dim) 60%, transparent);
+    }
+
+    /* グローバルアニメーション */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      header .header-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+      header .nav-links { flex-wrap: wrap; }
+      .footer-inner { flex-direction: column; gap: 16px; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <nav>
-        <a href="/" class="logo">F1 Data Lab</a>
-        <a href="/" class="nav-link">Home</a>
-      </nav>
+      <div class="header-inner">
+        <a href="/" class="logo">
+          <span class="logo-mark"></span>
+          F1 Data Lab
+        </a>
+        <nav class="nav-links">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/#races" class="nav-link">Races</a>
+          <a href="/compare/drivers/" class="nav-link">Drivers</a>
+          <a href="/compare/teams/" class="nav-link">Teams</a>
+          <a href="/season/" class="nav-link">Season</a>
+        </nav>
+      </div>
     </div>
   </header>
 

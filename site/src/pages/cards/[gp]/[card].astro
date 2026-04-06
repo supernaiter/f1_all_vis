@@ -30,7 +30,7 @@ const titleMap: Record<string, string> = {
 const title = titleMap[card as string] || (card as string).toUpperCase();
 const subtitle = `${year} · R${String(round).padStart(2, '0')} ${gpName.toUpperCase()}`;
 const payload = JSON.stringify(data);
-const pending = data.status === 'pending' || (Array.isArray(data.data) && data.data.length === 0 && !data.drivers && !data.overtakes && !data.corners);
+const pending = data.status === 'pending' || (!data.drivers?.length && !data.overtakes?.length && !data.corners?.length && !data.teams?.length && !(Array.isArray(data.data) && data.data.length > 0));
 ---
 <!DOCTYPE html>
 <html lang="en">

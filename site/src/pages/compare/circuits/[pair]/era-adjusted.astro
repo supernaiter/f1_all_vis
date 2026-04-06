@@ -66,7 +66,69 @@ canvas{margin-top:24px;display:block}
 (() => {
   const data = JSON.parse(document.getElementById('payload').textContent);
   if (data.meta.source === 'pending') return;
-  // Phase 2 実装予定: era_points を読んで折れ線描画
+
+  const canvas = document.getElementById('chart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const pad = { t: 30, r: 80, b: 60, l: 70 };
+  const cw = W - pad.l - pad.r, ch = H - pad.t - pad.b;
+
+  const c1 = data.circuit1, c2 = data.circuit2;
+  const pts1 = c1.era_points || [];
+  const pts2 = c2.era_points || [];
+  if (!pts1.length && !pts2.length) return;
+
+  // 軸スケール
+  const allYears = [...pts1.map(p => p.year), ...pts2.map(p => p.year)];
+  const allVals = [...pts1.map(p => p.normalized), ...pts2.map(p => p.normalized)];
+  const minY = Math.min(...allYears), maxY = Math.max(...allYears);
+  const minV = Math.min(...allVals) * 0.995, maxV = Math.max(...allVals) * 1.005;
+
+  const x = yr => pad.l + ((yr - minY) / Math.max(1, maxY - minY)) * cw;
+  const y = v => pad.t + ch - ((v - minV) / Math.max(0.001, maxV - minV)) * ch;
+
+  // グリッド
+  ctx.strokeStyle = '#0e0e14'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 5; i++) {
+    const gy = pad.t + (i / 5) * ch;
+    ctx.beginPath(); ctx.moveTo(pad.l, gy); ctx.lineTo(pad.l + cw, gy); ctx.stroke();
+    const val = maxV - (i / 5) * (maxV - minV);
+    ctx.fillStyle = '#333'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'right';
+    ctx.fillText(val.toFixed(3), pad.l - 8, gy + 4);
+  }
+  // 年ラベル
+  const yearStep = Math.max(1, Math.ceil((maxY - minY) / 10));
+  for (let yr = minY; yr <= maxY; yr += yearStep) {
+    const gx = x(yr);
+    ctx.beginPath(); ctx.moveTo(gx, pad.t); ctx.lineTo(gx, pad.t + ch); ctx.stroke();
+    ctx.fillStyle = '#333'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'center';
+    ctx.fillText(yr, gx, pad.t + ch + 20);
+  }
+
+  // 軸ラベル
+  ctx.fillStyle = '#444'; ctx.font = '11px IBM Plex Mono'; ctx.textAlign = 'center';
+  ctx.fillText('YEAR', pad.l + cw / 2, pad.t + ch + 45);
+  ctx.save(); ctx.translate(14, pad.t + ch / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('NORMALIZED QUALI TIME', 0, 0); ctx.restore();
+
+  // 折れ線描画
+  [{ pts: pts1, color: c1.color, code: c1.name }, { pts: pts2, color: c2.color, code: c2.name }].forEach(d => {
+    if (!d.pts.length) return;
+    ctx.strokeStyle = d.color; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+    ctx.beginPath();
+    d.pts.forEach((p, i) => {
+      const px = x(p.year), py = y(p.normalized);
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    });
+    ctx.stroke();
+    // 終点ラベル
+    const last = d.pts[d.pts.length - 1];
+    ctx.fillStyle = d.color; ctx.font = '600 12px IBM Plex Mono'; ctx.textAlign = 'left';
+    ctx.fillText(d.code, x(last.year) + 6, y(last.normalized) + 4);
+    ctx.beginPath(); ctx.arc(x(last.year), y(last.normalized), 4, 0, Math.PI * 2);
+    ctx.fill();
+  });
 })();
 </script>
 </body>

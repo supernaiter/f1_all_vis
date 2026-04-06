@@ -23,6 +23,8 @@ const payload = JSON.stringify(data);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1080">
 <title>{title} — Motorsports Visualised</title>
+<meta name="description" content={`${circuit1.name} vs ${circuit2.name} era-adjusted qualifying comparison`}>
+<meta property="og:title" content={title}>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -51,7 +53,7 @@ canvas{margin-top:24px;display:block}
     </div>
   ) : (
     <>
-      <canvas id="chart" width="968" height="860"></canvas>
+      <canvas id="chart" width="968" height="860" role="img" aria-label={`Era-adjusted qualifying chart comparing ${circuit1.name} and ${circuit2.name}`}></canvas>
       <div class="legend">
         <span><div class="swatch" style={`background:${circuit1.color}`}></div><span style={`color:${circuit1.color}`}>{circuit1.name}</span></span>
         <span><div class="swatch" style={`background:${circuit2.color}`}></div><span style={`color:${circuit2.color}`}>{circuit2.name}</span></span>

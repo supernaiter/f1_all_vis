@@ -364,19 +364,22 @@ const cardGPs = listGPsWithCards();
 
   .pair-card {
     background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    border: none;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    border-radius: 0 0 8px 0;
     padding: 14px 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    transition: background 0.15s, border-color 0.15s, transform 0.15s;
+    transition: background var(--transition-normal) var(--ease-out), border-color var(--transition-normal) var(--ease-out), transform var(--transition-normal) var(--ease-out);
     text-decoration: none;
     color: var(--text);
   }
   .pair-card:hover {
     background: var(--bg-card-hover);
-    border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+    border-right-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+    border-bottom-color: color-mix(in srgb, var(--accent) 50%, var(--border));
     text-decoration: none;
     transform: translateY(-1px);
   }
@@ -419,6 +422,7 @@ const cardGPs = listGPsWithCards();
   .pair-vs {
     font-size: 0.7rem;
     font-weight: 800;
+    font-family: var(--font-display);
     color: color-mix(in srgb, var(--text-dim) 60%, transparent);
     letter-spacing: 0.05em;
     flex-shrink: 0;

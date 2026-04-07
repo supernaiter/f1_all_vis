@@ -46,10 +46,15 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
   - ビルド: 6,470ページ、267秒、エラー0
 
 - UI改善(2026-04-07): Base.astro(ナビ5リンク/レーシングストライプ/3列フッター) + index.astro(ヒーロー刷新/コンテンツタイプ導線/GPブロック改善)
-- ビルド成功: 6,470ページ、エラー0
+- F1公式デザイン適用(2026-04-07): autonomous-harnessで4タスク全PASS
+  - T1: Titillium Web+Orbitron導入、19 CSS変数（surface 5段階+text 3段階）
+  - T2: ナビ下線ホバー+フッターレーシングストライプ+Orbitronロゴ
+  - T3: 不完全フレーム(右辺+下辺のみborder)、右下のみ角丸、uppercase見出し
+  - T4: SubNav赤下線アクティブ、surface-1背景
+  - ビルド: 6,470ページ、エラー0
 
 [次のアクション]
+- ブラウザで目視確認（npx astro preview）
 - mainにマージ
 - Cloudflare Pagesデプロイ
 - R04バーレーン（4/10-12）レース後に ./pipeline.sh 2026 Bahrain 4 --build 実行
-- クロスGP分析スクリプトのR03対応（現在R01-R02固定）

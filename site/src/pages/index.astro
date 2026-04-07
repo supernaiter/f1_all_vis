@@ -247,17 +247,20 @@ const cardGPs = listGPsWithCards();
     gap: 14px;
     padding: 16px 20px;
     background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    border: none;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    border-radius: 0 0 8px 0;
     text-decoration: none;
     color: var(--text);
-    transition: border-color 0.15s, background 0.15s, transform 0.15s;
+    transition: border-color var(--transition-normal) var(--ease-out), background var(--transition-normal) var(--ease-out), transform var(--transition-normal) var(--ease-out);
   }
   .type-card:hover {
-    border-color: var(--accent);
+    border-right-color: var(--accent);
+    border-bottom-color: var(--accent);
     background: var(--bg-card-hover);
     text-decoration: none;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
   }
   .type-icon {
     flex-shrink: 0;
@@ -297,6 +300,8 @@ const cardGPs = listGPsWithCards();
   .section-heading {
     font-size: 1.3rem;
     font-weight: 800;
+    font-family: var(--font-display);
+    text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -305,7 +310,7 @@ const cardGPs = listGPsWithCards();
   }
   .section-heading-accent {
     display: inline-block;
-    width: 4px;
+    width: var(--racing-line-md);
     height: 20px;
     background: var(--accent);
     border-radius: 2px;

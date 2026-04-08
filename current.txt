@@ -70,6 +70,13 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
   - fuel_pace_comparison.png: 384KB、4パネル分析グラフ
   - 主な知見: チームランキング変動は±1-2位程度、Spearmanρ≈0.26-0.32
 
+- T7 SC影響分析完了(2026-04-08):
+  - notebooks/t7_run.py: SC Lap22-27前後のポジション変動・ピット戦略・ペース比較・タイヤ戦略を4パネル分析
+  - notebooks/t7_safety_car_impact.ipynb: インタラクティブ版（同一ロジック）
+  - sc_impact_summary.csv: 22ドライバー、11カラム出力
+  - sc_position_change.png: 4パネルグラフ（ラップタイム/ポジション変動/ペース散布/タイヤ戦略）
+  - 主な知見: SC中ピット11名、戦略的勝者7名(PIA+3, OCO+3)、敗者6名(ALB-4, GAS-3)
+
 [次のアクション]
 - R01-R03 JSON再生成（修正ロジックで実データ更新、OpenF1 API要）
 - Cloudflare Pagesデプロイ

@@ -83,3 +83,8 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
 - R01 Australia H2H JSON再生成完了（--top10, 45ペア、CSVベース）
 - R02 China H2H JSON再生成完了（--top10, 45ペア、CSVベース、SC Lap10-13）
 - R03 Japan H2H JSON再生成完了（--top10, 45ペア、CSVベース、SC Lap22-27）
+- OpenF1 card JSON再生成完了(2026-04-08):
+  - R01 Australia: braking_point/corner_speed/overtake_replay 3ファイル更新（20コーナー、3オーバーテイク）
+  - R02 China: braking_point/corner_speed/overtake_replay 3ファイル更新（17コーナー、3オーバーテイク）
+  - R03 Japan: braking_point/corner_speed/overtake_replay 3ファイル更新（13コーナー、3オーバーテイク）
+  - 修正: GP名→OpenF1 location マッピング追加（Australia→Melbourne, China→Shanghai等）

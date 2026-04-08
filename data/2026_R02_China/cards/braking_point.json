@@ -1142,77 +1142,52 @@
       "color": "#00D7B6",
       "braking_points": [
         {
-          "corner_id": 1,
-          "time_to_apex_s": 3.32,
-          "speed_at_brake": 305
-        },
-        {
           "corner_id": 2,
-          "time_to_apex_s": 3.92,
-          "speed_at_brake": 167
-        },
-        {
-          "corner_id": 3,
           "time_to_apex_s": 2.92,
           "speed_at_brake": 109
         },
         {
           "corner_id": 4,
-          "time_to_apex_s": 3.72,
-          "speed_at_brake": 301
-        },
-        {
-          "corner_id": 5,
           "time_to_apex_s": 3.6,
           "speed_at_brake": 235
         },
         {
           "corner_id": 6,
-          "time_to_apex_s": 3.0,
-          "speed_at_brake": 164
-        },
-        {
-          "corner_id": 7,
           "time_to_apex_s": 3.4,
           "speed_at_brake": 229
         },
         {
-          "corner_id": 9,
+          "corner_id": 8,
           "time_to_apex_s": 3.52,
           "speed_at_brake": 220
         },
         {
-          "corner_id": 11,
+          "corner_id": 9,
           "time_to_apex_s": 1.04,
           "speed_at_brake": 162
         },
         {
-          "corner_id": 12,
-          "time_to_apex_s": 0.48,
-          "speed_at_brake": 94
+          "corner_id": 10,
+          "time_to_apex_s": 3.92,
+          "speed_at_brake": 167
         },
         {
-          "corner_id": 13,
-          "time_to_apex_s": 1.96,
-          "speed_at_brake": 113
+          "corner_id": 11,
+          "time_to_apex_s": 3.32,
+          "speed_at_brake": 305
+        },
+        {
+          "corner_id": 12,
+          "time_to_apex_s": 3.72,
+          "speed_at_brake": 301
         },
         {
           "corner_id": 14,
-          "time_to_apex_s": 3.6,
-          "speed_at_brake": 287
+          "time_to_apex_s": 3.0,
+          "speed_at_brake": 164
         },
         {
           "corner_id": 15,
-          "time_to_apex_s": 3.16,
-          "speed_at_brake": 241
-        },
-        {
-          "corner_id": 16,
-          "time_to_apex_s": 2.44,
-          "speed_at_brake": 185
-        },
-        {
-          "corner_id": 17,
           "time_to_apex_s": 2.92,
           "speed_at_brake": 258
         }
@@ -1225,14 +1200,9 @@
       "color": "#ED1131",
       "braking_points": [
         {
-          "corner_id": 1,
-          "time_to_apex_s": 3.24,
-          "speed_at_brake": 148
-        },
-        {
           "corner_id": 2,
-          "time_to_apex_s": 1.96,
-          "speed_at_brake": 109
+          "time_to_apex_s": 2.32,
+          "speed_at_brake": 110
         },
         {
           "corner_id": 3,
@@ -1240,64 +1210,39 @@
           "speed_at_brake": 275
         },
         {
-          "corner_id": 4,
+          "corner_id": 5,
           "time_to_apex_s": 2.32,
           "speed_at_brake": 190
         },
         {
-          "corner_id": 5,
-          "time_to_apex_s": 2.8,
-          "speed_at_brake": 254
-        },
-        {
-          "corner_id": 6,
+          "corner_id": 7,
           "time_to_apex_s": 1.08,
           "speed_at_brake": 114
         },
         {
-          "corner_id": 7,
-          "time_to_apex_s": 3.8,
-          "speed_at_brake": 288
-        },
-        {
-          "corner_id": 8,
+          "corner_id": 9,
           "time_to_apex_s": 1.48,
           "speed_at_brake": 202
         },
         {
-          "corner_id": 9,
-          "time_to_apex_s": 1.0,
-          "speed_at_brake": 97
-        },
-        {
           "corner_id": 10,
-          "time_to_apex_s": 2.32,
-          "speed_at_brake": 110
+          "time_to_apex_s": 3.24,
+          "speed_at_brake": 148
         },
         {
-          "corner_id": 11,
-          "time_to_apex_s": 3.44,
-          "speed_at_brake": 274
-        },
-        {
-          "corner_id": 12,
+          "corner_id": 13,
           "time_to_apex_s": 2.16,
           "speed_at_brake": 232
         },
         {
-          "corner_id": 13,
-          "time_to_apex_s": 2.08,
-          "speed_at_brake": 182
+          "corner_id": 15,
+          "time_to_apex_s": 2.8,
+          "speed_at_brake": 254
         },
         {
-          "corner_id": 14,
-          "time_to_apex_s": 2.32,
-          "speed_at_brake": 206
-        },
-        {
-          "corner_id": 16,
+          "corner_id": 17,
           "time_to_apex_s": 3.8,
-          "speed_at_brake": 301
+          "speed_at_brake": 288
         }
       ]
     },
@@ -1318,54 +1263,49 @@
           "speed_at_brake": 95
         },
         {
-          "corner_id": 4,
+          "corner_id": 3,
           "time_to_apex_s": 3.32,
           "speed_at_brake": 267
         },
         {
-          "corner_id": 5,
-          "time_to_apex_s": 2.48,
-          "speed_at_brake": 241
-        },
-        {
-          "corner_id": 6,
-          "time_to_apex_s": 2.2,
-          "speed_at_brake": 169
-        },
-        {
-          "corner_id": 7,
-          "time_to_apex_s": 2.96,
-          "speed_at_brake": 263
-        },
-        {
-          "corner_id": 12,
-          "time_to_apex_s": 1.44,
-          "speed_at_brake": 202
-        },
-        {
-          "corner_id": 13,
-          "time_to_apex_s": 2.64,
-          "speed_at_brake": 149
-        },
-        {
-          "corner_id": 14,
-          "time_to_apex_s": 3.44,
-          "speed_at_brake": 103
-        },
-        {
-          "corner_id": 15,
-          "time_to_apex_s": 3.28,
-          "speed_at_brake": 226
-        },
-        {
-          "corner_id": 16,
+          "corner_id": 4,
           "time_to_apex_s": 2.4,
           "speed_at_brake": 234
         },
         {
-          "corner_id": 17,
+          "corner_id": 5,
+          "time_to_apex_s": 2.2,
+          "speed_at_brake": 169
+        },
+        {
+          "corner_id": 6,
+          "time_to_apex_s": 3.08,
+          "speed_at_brake": 238
+        },
+        {
+          "corner_id": 9,
+          "time_to_apex_s": 1.44,
+          "speed_at_brake": 202
+        },
+        {
+          "corner_id": 10,
+          "time_to_apex_s": 2.64,
+          "speed_at_brake": 149
+        },
+        {
+          "corner_id": 13,
+          "time_to_apex_s": 2.48,
+          "speed_at_brake": 241
+        },
+        {
+          "corner_id": 14,
           "time_to_apex_s": 1.96,
           "speed_at_brake": 187
+        },
+        {
+          "corner_id": 15,
+          "time_to_apex_s": 2.96,
+          "speed_at_brake": 263
         }
       ]
     },
@@ -1376,49 +1316,44 @@
       "color": "#9C9FA2",
       "braking_points": [
         {
-          "corner_id": 1,
-          "time_to_apex_s": 2.64,
-          "speed_at_brake": 140
-        },
-        {
-          "corner_id": 4,
+          "corner_id": 3,
           "time_to_apex_s": 3.96,
           "speed_at_brake": 271
         },
         {
-          "corner_id": 5,
-          "time_to_apex_s": 3.0,
-          "speed_at_brake": 231
+          "corner_id": 4,
+          "time_to_apex_s": 2.44,
+          "speed_at_brake": 221
         },
         {
-          "corner_id": 6,
+          "corner_id": 5,
           "time_to_apex_s": 3.48,
           "speed_at_brake": 168
         },
         {
           "corner_id": 7,
-          "time_to_apex_s": 0.92,
-          "speed_at_brake": 260
+          "time_to_apex_s": 1.0,
+          "speed_at_brake": 88
         },
         {
-          "corner_id": 8,
+          "corner_id": 9,
           "time_to_apex_s": 3.24,
-          "speed_at_brake": 260
+          "speed_at_brake": 197
+        },
+        {
+          "corner_id": 10,
+          "time_to_apex_s": 2.64,
+          "speed_at_brake": 140
         },
         {
           "corner_id": 15,
-          "time_to_apex_s": 1.2,
-          "speed_at_brake": 197
+          "time_to_apex_s": 2.68,
+          "speed_at_brake": 264
         },
         {
           "corner_id": 16,
-          "time_to_apex_s": 3.24,
-          "speed_at_brake": 197
-        },
-        {
-          "corner_id": 17,
-          "time_to_apex_s": 2.96,
-          "speed_at_brake": 141
+          "time_to_apex_s": 3.08,
+          "speed_at_brake": 88
         }
       ]
     },
@@ -1430,43 +1365,33 @@
       "braking_points": [
         {
           "corner_id": 1,
-          "time_to_apex_s": 1.6,
-          "speed_at_brake": 304
-        },
-        {
-          "corner_id": 2,
-          "time_to_apex_s": 3.04,
-          "speed_at_brake": 180
-        },
-        {
-          "corner_id": 3,
           "time_to_apex_s": 1.72,
           "speed_at_brake": 107
         },
         {
-          "corner_id": 5,
-          "time_to_apex_s": 0.88,
-          "speed_at_brake": 158
+          "corner_id": 2,
+          "time_to_apex_s": 2.6,
+          "speed_at_brake": 99
         },
         {
           "corner_id": 6,
-          "time_to_apex_s": 3.12,
-          "speed_at_brake": 158
+          "time_to_apex_s": 3.0,
+          "speed_at_brake": 244
         },
         {
-          "corner_id": 13,
+          "corner_id": 10,
+          "time_to_apex_s": 2.24,
+          "speed_at_brake": 185
+        },
+        {
+          "corner_id": 11,
+          "time_to_apex_s": 1.6,
+          "speed_at_brake": 304
+        },
+        {
+          "corner_id": 15,
           "time_to_apex_s": 3.52,
           "speed_at_brake": 234
-        },
-        {
-          "corner_id": 16,
-          "time_to_apex_s": 1.0,
-          "speed_at_brake": 119
-        },
-        {
-          "corner_id": 17,
-          "time_to_apex_s": 3.0,
-          "speed_at_brake": 119
         }
       ]
     },
@@ -1478,73 +1403,58 @@
       "braking_points": [
         {
           "corner_id": 1,
-          "time_to_apex_s": 2.12,
-          "speed_at_brake": 313
-        },
-        {
-          "corner_id": 2,
-          "time_to_apex_s": 0.88,
-          "speed_at_brake": 169
-        },
-        {
-          "corner_id": 3,
-          "time_to_apex_s": 2.88,
-          "speed_at_brake": 169
-        },
-        {
-          "corner_id": 4,
-          "time_to_apex_s": 1.16,
-          "speed_at_brake": 95
-        },
-        {
-          "corner_id": 5,
-          "time_to_apex_s": 3.64,
-          "speed_at_brake": 95
-        },
-        {
-          "corner_id": 7,
-          "time_to_apex_s": 2.8,
-          "speed_at_brake": 217
-        },
-        {
-          "corner_id": 8,
-          "time_to_apex_s": 1.16,
-          "speed_at_brake": 157
-        },
-        {
-          "corner_id": 9,
-          "time_to_apex_s": 3.48,
-          "speed_at_brake": 157
-        },
-        {
-          "corner_id": 10,
-          "time_to_apex_s": 3.16,
-          "speed_at_brake": 239
-        },
-        {
-          "corner_id": 13,
-          "time_to_apex_s": 1.92,
-          "speed_at_brake": 194
-        },
-        {
-          "corner_id": 14,
           "time_to_apex_s": 3.24,
           "speed_at_brake": 145
         },
         {
-          "corner_id": 15,
-          "time_to_apex_s": 1.96,
-          "speed_at_brake": 110
+          "corner_id": 2,
+          "time_to_apex_s": 3.64,
+          "speed_at_brake": 95
         },
         {
-          "corner_id": 16,
+          "corner_id": 3,
           "time_to_apex_s": 3.68,
           "speed_at_brake": 254
         },
         {
-          "corner_id": 17,
+          "corner_id": 4,
           "time_to_apex_s": 3.08,
           "speed_at_brake": 231
+        },
+        {
+          "corner_id": 5,
+          "time_to_apex_s": 3.48,
+          "speed_at_brake": 157
+        },
+        {
+          "corner_id": 6,
+          "time_to_apex_s": 3.56,
+          "speed_at_brake": 245
+        },
+        {
+          "corner_id": 9,
+          "time_to_apex_s": 1.92,
+          "speed_at_brake": 194
+        },
+        {
+          "corner_id": 10,
+          "time_to_apex_s": 2.88,
+          "speed_at_brake": 169
+        },
+        {
+          "corner_id": 11,
+          "time_to_apex_s": 2.12,
+          "speed_at_brake": 313
+        },
+        {
+          "corner_id": 14,
+          "time_to_apex_s": 1.16,
+          "speed_at_brake": 175
+        },
+        {
+          "corner_id": 15,
+          "time_to_apex_s": 3.16,
+          "speed_at_brake": 239
         }
       ]
     },
@@ -1560,49 +1470,39 @@
           "speed_at_brake": 117
         },
         {
-          "corner_id": 4,
-          "time_to_apex_s": 1.12,
-          "speed_at_brake": 169
+          "corner_id": 3,
+          "time_to_apex_s": 3.96,
+          "speed_at_brake": 275
         },
         {
-          "corner_id": 5,
-          "time_to_apex_s": 3.16,
-          "speed_at_brake": 169
+          "corner_id": 4,
+          "time_to_apex_s": 3.68,
+          "speed_at_brake": 225
         },
         {
           "corner_id": 6,
-          "time_to_apex_s": 2.48,
-          "speed_at_brake": 184
-        },
-        {
-          "corner_id": 7,
-          "time_to_apex_s": 2.56,
-          "speed_at_brake": 221
-        },
-        {
-          "corner_id": 8,
-          "time_to_apex_s": 3.96,
-          "speed_at_brake": 166
-        },
-        {
-          "corner_id": 9,
           "time_to_apex_s": 3.44,
           "speed_at_brake": 248
         },
         {
-          "corner_id": 12,
-          "time_to_apex_s": 0.4,
-          "speed_at_brake": 140
-        },
-        {
-          "corner_id": 13,
+          "corner_id": 9,
           "time_to_apex_s": 1.76,
           "speed_at_brake": 233
         },
         {
+          "corner_id": 12,
+          "time_to_apex_s": 3.16,
+          "speed_at_brake": 169
+        },
+        {
+          "corner_id": 13,
+          "time_to_apex_s": 2.56,
+          "speed_at_brake": 221
+        },
+        {
           "corner_id": 17,
-          "time_to_apex_s": 3.96,
-          "speed_at_brake": 275
+          "time_to_apex_s": 0.4,
+          "speed_at_brake": 140
         }
       ]
     },
@@ -1619,13 +1519,13 @@
         },
         {
           "corner_id": 3,
-          "time_to_apex_s": 4.0,
-          "speed_at_brake": 290
+          "time_to_apex_s": 3.6,
+          "speed_at_brake": 257
         },
         {
           "corner_id": 4,
-          "time_to_apex_s": 2.52,
-          "speed_at_brake": 221
+          "time_to_apex_s": 2.44,
+          "speed_at_brake": 207
         },
         {
           "corner_id": 5,
@@ -1634,8 +1534,13 @@
         },
         {
           "corner_id": 6,
-          "time_to_apex_s": 3.28,
-          "speed_at_brake": 268
+          "time_to_apex_s": 3.48,
+          "speed_at_brake": 254
+        },
+        {
+          "corner_id": 7,
+          "time_to_apex_s": 0.8,
+          "speed_at_brake": 108
         },
         {
           "corner_id": 8,
@@ -1643,7 +1548,7 @@
           "speed_at_brake": 349
         },
         {
-          "corner_id": 10,
+          "corner_id": 9,
           "time_to_apex_s": 1.68,
           "speed_at_brake": 223
         },
@@ -1653,29 +1558,9 @@
           "speed_at_brake": 286
         },
         {
-          "corner_id": 13,
-          "time_to_apex_s": 2.56,
-          "speed_at_brake": 106
-        },
-        {
-          "corner_id": 14,
-          "time_to_apex_s": 3.6,
-          "speed_at_brake": 257
-        },
-        {
           "corner_id": 15,
-          "time_to_apex_s": 2.44,
-          "speed_at_brake": 207
-        },
-        {
-          "corner_id": 16,
           "time_to_apex_s": 3.28,
-          "speed_at_brake": 158
-        },
-        {
-          "corner_id": 17,
-          "time_to_apex_s": 3.48,
-          "speed_at_brake": 254
+          "speed_at_brake": 268
         }
       ]
     },
@@ -1687,28 +1572,18 @@
       "braking_points": [
         {
           "corner_id": 1,
-          "time_to_apex_s": 1.72,
-          "speed_at_brake": 107
+          "time_to_apex_s": 2.24,
+          "speed_at_brake": 112
         },
         {
           "corner_id": 2,
-          "time_to_apex_s": 1.76,
-          "speed_at_brake": 102
-        },
-        {
-          "corner_id": 3,
-          "time_to_apex_s": 3.76,
-          "speed_at_brake": 276
-        },
-        {
-          "corner_id": 4,
-          "time_to_apex_s": 2.2,
-          "speed_at_brake": 233
+          "time_to_apex_s": 3.72,
+          "speed_at_brake": 97
         },
         {
           "corner_id": 5,
-          "time_to_apex_s": 1.96,
-          "speed_at_brake": 159
+          "time_to_apex_s": 2.68,
+          "speed_at_brake": 177
         },
         {
           "corner_id": 6,
@@ -1727,13 +1602,8 @@
         },
         {
           "corner_id": 10,
-          "time_to_apex_s": 2.24,
-          "speed_at_brake": 112
-        },
-        {
-          "corner_id": 11,
-          "time_to_apex_s": 3.72,
-          "speed_at_brake": 97
+          "time_to_apex_s": 1.72,
+          "speed_at_brake": 107
         },
         {
           "corner_id": 13,
@@ -1742,13 +1612,8 @@
         },
         {
           "corner_id": 14,
-          "time_to_apex_s": 2.68,
-          "speed_at_brake": 177
-        },
-        {
-          "corner_id": 15,
-          "time_to_apex_s": 3.56,
-          "speed_at_brake": 253
+          "time_to_apex_s": 1.96,
+          "speed_at_brake": 159
         }
       ]
     }

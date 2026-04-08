@@ -360,7 +360,7 @@ def save_heatmap(rows, out_path):
 
     # カラーバー
     cbar = fig.colorbar(im, ax=ax, shrink=0.8)
-    cbar.set_label('ペース差 [秒]\n(負 = Driver1 が速い)', color='white', fontsize=10)
+    cbar.set_label('Pace Delta [sec]\n(negative = Driver1 faster)', color='white', fontsize=10)
     cbar.ax.yaxis.set_tick_params(color='white')
     plt.setp(cbar.ax.yaxis.get_ticklabels(), color='white')
 

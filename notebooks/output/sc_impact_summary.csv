@@ -1,0 +1,23 @@
+Driver,Team,PositionBeforeSC,PositionAfterSC,PositionChange,PittedDuringSC,CompoundBeforeSC,CompoundAfterSC,PaceBeforeSC_sec,PaceAfterSC_sec,StrategicOutcome
+ANT,Mercedes,1.0,1.0,0.0,True,MEDIUM,HARD,94.168,93.312,変化なし
+PIA,McLaren,5.0,2.0,3.0,False,HARD,HARD,94.392,93.683,勝者(+)
+LEC,Ferrari,7.0,5.0,2.0,False,HARD,HARD,94.266,93.805,勝者(+)
+RUS,Mercedes,2.0,4.0,-2.0,False,MEDIUM,HARD,94.788,93.811,敗者(-)
+NOR,McLaren,8.0,6.0,2.0,False,HARD,HARD,94.223,94.107,勝者(+)
+HAM,Ferrari,3.0,3.0,0.0,True,MEDIUM,HARD,94.995,93.809,変化なし
+GAS,Alpine,4.0,7.0,-3.0,True,MEDIUM,HARD,95.728,94.444,敗者(-)
+VER,Red Bull Racing,6.0,8.0,-2.0,True,MEDIUM,HARD,95.604,94.523,敗者(-)
+LAW,Racing Bulls,9.0,9.0,0.0,True,MEDIUM,HARD,96.523,94.892,変化なし
+OCO,Haas F1 Team,14.0,11.0,3.0,False,HARD,HARD,96.456,94.751,勝者(+)
+HUL,Audi,11.0,12.0,-1.0,True,MEDIUM,HARD,95.799,96.309,敗者(-)
+HAD,Red Bull Racing,15.0,13.0,2.0,False,HARD,HARD,96.294,95.767,勝者(+)
+BOR,Audi,10.0,10.0,0.0,True,MEDIUM,HARD,96.292,96.068,変化なし
+LIN,Racing Bulls,16.0,14.0,2.0,False,HARD,HARD,95.464,96.184,勝者(+)
+SAI,Williams,12.0,15.0,-3.0,True,MEDIUM,HARD,96.541,96.281,敗者(-)
+COL,Alpine,17.0,16.0,1.0,False,HARD,HARD,96.255,96.323,勝者(+)
+PER,Cadillac,18.0,18.0,0.0,False,MEDIUM,HARD,98.735,96.577,変化なし
+ALO,Aston Martin,20.0,20.0,0.0,True,MEDIUM,MEDIUM,98.504,97.638,変化なし
+BOT,Cadillac,21.0,21.0,0.0,False,MEDIUM,MEDIUM,102.013,97.183,変化なし
+ALB,Williams,13.0,17.0,-4.0,True,MEDIUM,HARD,96.702,96.427,敗者(-)
+STR,Aston Martin,19.0,19.0,0.0,True,MEDIUM,MEDIUM,98.406,97.366,変化なし
+BEA,Haas F1 Team,,,,False,HARD,UNKNOWN,95.905,,変化なし

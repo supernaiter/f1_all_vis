@@ -3725,34 +3725,5 @@
       "Red Bull Racing",
       "Audi"
     ]
-  },
-  "qualifying": {
-    "VER": {
-      "best_time": 102.025,
-      "sector1": 41.429,
-      "sector2": 19.065,
-      "sector3": 41.531,
-      "compound": "SOFT",
-      "position": null,
-      "Q1": null,
-      "Q2": null,
-      "Q3": null
-    },
-    "BOR": {
-      "best_time": 80.221,
-      "sector1": 28.272,
-      "sector2": 17.418,
-      "sector3": 34.531,
-      "compound": "SOFT",
-      "position": 10,
-      "Q1": 80.495,
-      "Q2": 80.221,
-      "Q3": null
-    },
-    "delta_sec": 21.804,
-    "faster": "BOR",
-    "delta_sector1": 13.157,
-    "delta_sector2": 1.647,
-    "delta_sector3": 7.0
   }
 }

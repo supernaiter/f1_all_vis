@@ -3673,34 +3673,5 @@
       "Ferrari",
       "Racing Bulls"
     ]
-  },
-  "qualifying": {
-    "HAM": {
-      "best_time": 79.478,
-      "sector1": 27.756,
-      "sector2": 17.57,
-      "sector3": 34.152,
-      "compound": "SOFT",
-      "position": 7,
-      "Q1": 79.811,
-      "Q2": 79.921,
-      "Q3": 79.478
-    },
-    "LIN": {
-      "best_time": 79.971,
-      "sector1": 28.173,
-      "sector2": 17.38,
-      "sector3": 34.418,
-      "compound": "SOFT",
-      "position": 9,
-      "Q1": 80.409,
-      "Q2": 79.971,
-      "Q3": 81.247
-    },
-    "delta_sec": -0.493,
-    "faster": "HAM",
-    "delta_sector1": -0.417,
-    "delta_sector2": 0.19,
-    "delta_sector3": -0.266
   }
 }

@@ -3773,34 +3773,5 @@
       "Mercedes",
       "Audi"
     ]
-  },
-  "qualifying": {
-    "ANT": {
-      "best_time": 78.811,
-      "sector1": 27.556,
-      "sector2": 17.44,
-      "sector3": 33.815,
-      "compound": "SOFT",
-      "position": 2,
-      "Q1": 80.12,
-      "Q2": 79.435,
-      "Q3": 78.811
-    },
-    "BOR": {
-      "best_time": 80.221,
-      "sector1": 28.272,
-      "sector2": 17.418,
-      "sector3": 34.531,
-      "compound": "SOFT",
-      "position": 10,
-      "Q1": 80.495,
-      "Q2": 80.221,
-      "Q3": null
-    },
-    "delta_sec": -1.41,
-    "faster": "ANT",
-    "delta_sector1": -0.716,
-    "delta_sector2": 0.022,
-    "delta_sector3": -0.716
   }
 }

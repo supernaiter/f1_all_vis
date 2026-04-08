@@ -3718,34 +3718,5 @@
       "Racing Bulls",
       "Alpine"
     ]
-  },
-  "qualifying": {
-    "LIN": {
-      "best_time": 79.971,
-      "sector1": 28.173,
-      "sector2": 17.38,
-      "sector3": 34.418,
-      "compound": "SOFT",
-      "position": 9,
-      "Q1": 80.409,
-      "Q2": 79.971,
-      "Q3": 81.247
-    },
-    "GAS": {
-      "best_time": 80.501,
-      "sector1": 28.339,
-      "sector2": 17.557,
-      "sector3": 34.605,
-      "compound": "SOFT",
-      "position": 14,
-      "Q1": 81.138,
-      "Q2": 80.501,
-      "Q3": null
-    },
-    "delta_sec": -0.53,
-    "faster": "LIN",
-    "delta_sector1": -0.166,
-    "delta_sector2": -0.177,
-    "delta_sector3": -0.187
   }
 }

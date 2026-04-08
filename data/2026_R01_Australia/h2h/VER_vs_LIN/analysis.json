@@ -3699,34 +3699,5 @@
       "Red Bull Racing",
       "Racing Bulls"
     ]
-  },
-  "qualifying": {
-    "VER": {
-      "best_time": 102.025,
-      "sector1": 41.429,
-      "sector2": 19.065,
-      "sector3": 41.531,
-      "compound": "SOFT",
-      "position": null,
-      "Q1": null,
-      "Q2": null,
-      "Q3": null
-    },
-    "LIN": {
-      "best_time": 79.971,
-      "sector1": 28.173,
-      "sector2": 17.38,
-      "sector3": 34.418,
-      "compound": "SOFT",
-      "position": 9,
-      "Q1": 80.409,
-      "Q2": 79.971,
-      "Q3": 81.247
-    },
-    "delta_sec": 22.054,
-    "faster": "LIN",
-    "delta_sector1": 13.256,
-    "delta_sector2": 1.685,
-    "delta_sector3": 7.113
   }
 }

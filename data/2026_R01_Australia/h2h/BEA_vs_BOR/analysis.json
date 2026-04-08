@@ -3744,34 +3744,5 @@
       "Haas F1 Team",
       "Audi"
     ]
-  },
-  "qualifying": {
-    "BEA": {
-      "best_time": 80.311,
-      "sector1": 28.492,
-      "sector2": 17.439,
-      "sector3": 34.38,
-      "compound": "SOFT",
-      "position": 12,
-      "Q1": 81.247,
-      "Q2": 80.311,
-      "Q3": null
-    },
-    "BOR": {
-      "best_time": 80.221,
-      "sector1": 28.272,
-      "sector2": 17.418,
-      "sector3": 34.531,
-      "compound": "SOFT",
-      "position": 10,
-      "Q1": 80.495,
-      "Q2": 80.221,
-      "Q3": null
-    },
-    "delta_sec": 0.09,
-    "faster": "BOR",
-    "delta_sector1": 0.22,
-    "delta_sector2": 0.021,
-    "delta_sector3": -0.151
   }
 }

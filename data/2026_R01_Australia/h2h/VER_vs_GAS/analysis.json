@@ -3699,34 +3699,5 @@
       "Red Bull Racing",
       "Alpine"
     ]
-  },
-  "qualifying": {
-    "VER": {
-      "best_time": 102.025,
-      "sector1": 41.429,
-      "sector2": 19.065,
-      "sector3": 41.531,
-      "compound": "SOFT",
-      "position": null,
-      "Q1": null,
-      "Q2": null,
-      "Q3": null
-    },
-    "GAS": {
-      "best_time": 80.501,
-      "sector1": 28.339,
-      "sector2": 17.557,
-      "sector3": 34.605,
-      "compound": "SOFT",
-      "position": 14,
-      "Q1": 81.138,
-      "Q2": 80.501,
-      "Q3": null
-    },
-    "delta_sec": 21.524,
-    "faster": "GAS",
-    "delta_sector1": 13.09,
-    "delta_sector2": 1.508,
-    "delta_sector3": 6.926
   }
 }

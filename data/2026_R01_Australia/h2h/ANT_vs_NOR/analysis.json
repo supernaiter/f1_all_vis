@@ -3818,34 +3818,5 @@
       "Mercedes",
       "McLaren"
     ]
-  },
-  "qualifying": {
-    "ANT": {
-      "best_time": 78.811,
-      "sector1": 27.556,
-      "sector2": 17.44,
-      "sector3": 33.815,
-      "compound": "SOFT",
-      "position": 2,
-      "Q1": 80.12,
-      "Q2": 79.435,
-      "Q3": 78.811
-    },
-    "NOR": {
-      "best_time": 79.475,
-      "sector1": 27.754,
-      "sector2": 17.568,
-      "sector3": 34.153,
-      "compound": "SOFT",
-      "position": 6,
-      "Q1": 80.01,
-      "Q2": 79.882,
-      "Q3": 79.475
-    },
-    "delta_sec": -0.664,
-    "faster": "ANT",
-    "delta_sector1": -0.198,
-    "delta_sector2": -0.128,
-    "delta_sector3": -0.338
   }
 }

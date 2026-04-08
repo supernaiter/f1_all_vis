@@ -3699,34 +3699,5 @@
       "Ferrari",
       "Audi"
     ]
-  },
-  "qualifying": {
-    "HAM": {
-      "best_time": 79.478,
-      "sector1": 27.756,
-      "sector2": 17.57,
-      "sector3": 34.152,
-      "compound": "SOFT",
-      "position": 7,
-      "Q1": 79.811,
-      "Q2": 79.921,
-      "Q3": 79.478
-    },
-    "BOR": {
-      "best_time": 80.221,
-      "sector1": 28.272,
-      "sector2": 17.418,
-      "sector3": 34.531,
-      "compound": "SOFT",
-      "position": 10,
-      "Q1": 80.495,
-      "Q2": 80.221,
-      "Q3": null
-    },
-    "delta_sec": -0.743,
-    "faster": "HAM",
-    "delta_sector1": -0.516,
-    "delta_sector2": 0.152,
-    "delta_sector3": -0.379
   }
 }

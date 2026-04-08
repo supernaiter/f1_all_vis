@@ -3744,34 +3744,5 @@
       "Racing Bulls",
       "Audi"
     ]
-  },
-  "qualifying": {
-    "LIN": {
-      "best_time": 79.971,
-      "sector1": 28.173,
-      "sector2": 17.38,
-      "sector3": 34.418,
-      "compound": "SOFT",
-      "position": 9,
-      "Q1": 80.409,
-      "Q2": 79.971,
-      "Q3": 81.247
-    },
-    "BOR": {
-      "best_time": 80.221,
-      "sector1": 28.272,
-      "sector2": 17.418,
-      "sector3": 34.531,
-      "compound": "SOFT",
-      "position": 10,
-      "Q1": 80.495,
-      "Q2": 80.221,
-      "Q3": null
-    },
-    "delta_sec": -0.25,
-    "faster": "LIN",
-    "delta_sector1": -0.099,
-    "delta_sector2": -0.038,
-    "delta_sector3": -0.113
   }
 }

@@ -39,3 +39,4 @@
 2026-04-08|openf1品質修正|6バグ修正(jitter/GPS最近傍/動的GP/ピット除外/死にコード削除/Canvas描画)|レビューで特定した全問題を一括修正。ビルド6470ページ成功|JSON再生成が必要（API呼び出し未実施）
 2026-04-08|intersd2パス修正|data.ts/astro.config.mjs/copy-charts.mjsの3ファイルでintersd2→lyssr_workspaceに変更|ディスク移動後のビルド失敗を解消|他にハードコードパスがないかgrepで要確認
 2026-04-08|Graphiti検討|Graphiti(getzep/graphiti)を不採用|構造化済みF1データにLLM抽出は過剰。エピソード投入ごとに複数LLM APIコールでコスト爆発。Neo4j運用も不要。JSON→静的ビルドパイプラインが最適|AIエージェント対話層を追加する場合のみ再検討
+2026-04-08|T2ロングラン抽出|notebooks/t2_run.py + t2_clean_longruns.ipynb作成|R01-R03 race_laps.csvからCLAUDE.md定義の6条件でクリーンロングラン抽出。2415行/全3GP統合CSV生成成功|107%フィルタはセッション全体（グリーン・ピット除外後）の最速ラップを基準にしている

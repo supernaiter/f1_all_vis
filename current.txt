@@ -74,17 +74,11 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
   - T8: クロスGPトレンド — Mercedes 123pt首位、Racing Bulls最安定(0.12%)
   - notebooks/配下に8 Notebook + 8 .py + output/ CSV/PNG全出力
 
-[次のアクション]
-- R02-R03 JSON再生成（OpenF1修正ロジックで実データ更新）
-- Cloudflare Pagesデプロイ
-- R04バーレーン（4/10-12）レース後に ./pipeline.sh 2026 Bahrain 4 --build 実行
+- JSON再生成+デプロイ完了(2026-04-08): autonomous-harnessで6タスク全PASS
+  - T1-T3: H2H JSON R01-R03再生成（各45ペア、修正済みロジック反映）
+  - T4: OpenF1 card JSON R01-R03再生成（9ファイル、GPS最近傍+ピット除外+GP名マッピング反映）
+  - T5: サイトビルド 6,470ページ、エラー0
+  - T6: Cloudflare Pagesデプロイ https://db2d7438.motorsports-visualised.pages.dev
 
-[2026-04-08 最新]
-- R01 Australia H2H JSON再生成完了（--top10, 45ペア、CSVベース）
-- R02 China H2H JSON再生成完了（--top10, 45ペア、CSVベース、SC Lap10-13）
-- R03 Japan H2H JSON再生成完了（--top10, 45ペア、CSVベース、SC Lap22-27）
-- OpenF1 card JSON再生成完了(2026-04-08):
-  - R01 Australia: braking_point/corner_speed/overtake_replay 3ファイル更新（20コーナー、3オーバーテイク）
-  - R02 China: braking_point/corner_speed/overtake_replay 3ファイル更新（17コーナー、3オーバーテイク）
-  - R03 Japan: braking_point/corner_speed/overtake_replay 3ファイル更新（13コーナー、3オーバーテイク）
-  - 修正: GP名→OpenF1 location マッピング追加（Australia→Melbourne, China→Shanghai等）
+[次のアクション]
+- R04バーレーン（4/10-12）レース後に ./pipeline.sh 2026 Bahrain 4 --build 実行

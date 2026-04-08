@@ -162,16 +162,20 @@ const pending = data.status === 'pending' || (!data.drivers?.length && !data.ove
       ctx.fillStyle = '#666'; ctx.font = '10px "IBM Plex Mono"'; ctx.textAlign = 'center';
       ctx.fillText(c.name_approx, px, py - 8);
     });
-    // braking dots per driver (spread around each corner by driver index)
+    // braking dots per driver (角度方向にオフセットして重なりを解消)
+    const driverCount = data.drivers.length;
     data.drivers.forEach((d, di) => {
+      const angleOffset = (di / Math.max(1, driverCount)) * Math.PI * 2;
       (d.braking_points || []).forEach(bp => {
         const c = data.corners.find(cc => cc.id === bp.corner_id);
         if (!c || c.x == null) return;
         const [px, py] = proj.project(c.x, c.y);
-        // offset ring based on time_to_apex (earlier brake = larger ring)
-        const ring = 8 + (bp.time_to_apex_s || 0) * 4 + di * 0.8;
-        ctx.strokeStyle = d.color; ctx.lineWidth = 1.5;
-        ctx.beginPath(); ctx.arc(px, py, ring, 0, Math.PI * 2); ctx.stroke();
+        // ブレーキが早いほどコーナーから遠い距離に配置
+        const dist = 12 + (bp.time_to_apex_s || 0) * 10;
+        const dotX = px + Math.cos(angleOffset) * dist;
+        const dotY = py + Math.sin(angleOffset) * dist;
+        ctx.fillStyle = d.color;
+        ctx.beginPath(); ctx.arc(dotX, dotY, 5, 0, Math.PI * 2); ctx.fill();
       });
     });
     // legend (top drivers)

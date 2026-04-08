@@ -76,6 +76,13 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
   - Spearman ρ=0.868、Pearson r=0.844、順位MAE=2.00pos、系統バイアス=+1.254秒
   - FPデータなし6名（STR/SAI/BOT/ALO/LIN/PER）: 103%フィルタ外またはシミュラップ未実施
 
+- T8 クロスGPパフォーマンストレンド完了(2026-04-08):
+  - notebooks/t8_run.py: チームペース推移・ドライバー成長率・コンストラクターポイント・HARDデグレート・一貫性スコア
+  - notebooks/t8_cross_gp_trends.ipynb: インタラクティブ版（同一ロジック）
+  - cross_gp_team_trends.csv: 11チーム×9カラム
+  - cross_gp_trends.png: 4パネルグラフ（397KB）
+  - 主な知見: Mercedes最安定(0.13%)、Racing Bulls最一貫(0.12%)、R03はMcLaren躍進
+
 - T7 SC影響分析完了(2026-04-08):
   - notebooks/t7_run.py: SC Lap22-27前後のポジション変動・ピット戦略・ペース比較・タイヤ戦略を4パネル分析
   - notebooks/t7_safety_car_impact.ipynb: インタラクティブ版（同一ロジック）

@@ -75,3 +75,11 @@
 ## openf1_client.py
 - 未使用コードは放置しない。706行→72行に削減した実績
 - jitter計算に `time.time() % 1` を使うと負の値になりうる → `random.uniform` が正解
+
+## データ品質（T1監査結果 2026-04-08）
+- 全25 CSVファイル存在確認済、LapTime異常0件、負セクター0件
+- R01のみ1ドライバーでラップ数不整合（±2許容で21/22一致）。R02/R03は全一致
+- FP laps.csvのLapTime NaN率: R01=19.4%、R02=20.0%、R03=20.4%（アウト/インラップで正常）
+- R01/R03にquali_laps.csvが存在しない → FP→予選検証はR02のみ可能
+- R02が最もデータ豊富（quali/sprint/SQ含む7セッションCSV）
+- 欠損セル率は全GP 11-13%（大半はPitOutTime/PitInTime/SpeedカラムのNaN）

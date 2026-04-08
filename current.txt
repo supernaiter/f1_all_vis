@@ -81,3 +81,4 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
 
 [2026-04-08 最新]
 - R01 Australia H2H JSON再生成完了（--top10, 45ペア、CSVベース）
+- R02 China H2H JSON再生成完了（--top10, 45ペア、CSVベース、SC Lap10-13）

@@ -1,5 +1,5 @@
 project: Motorsports-Visualised
-updated: 2026-04-08 (T4 燃料補正後レースペース分析)
+updated: 2026-04-08 (T5 チームメイト比較分析)
 
 goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 

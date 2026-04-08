@@ -7,7 +7,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@data': '/Volumes/intersd2/2026_1_4/Motorsports-Visualised/data',
+        '@data': '/Volumes/lyssr_workspace/2026_1_4/Motorsports-Visualised/data',
       },
     },
   },

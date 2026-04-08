@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const DATA_ROOT = path.resolve('/Volumes/intersd2/2026_1_4/Motorsports-Visualised/data');
+const DATA_ROOT = path.resolve('/Volumes/lyssr_workspace/2026_1_4/Motorsports-Visualised/data');
 const OUT_DIR = path.resolve('public/charts');
 
 // 出力先をクリーン

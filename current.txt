@@ -63,6 +63,13 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
   - 追加: intersd2→lyssr_workspaceパス修正(data.ts/astro.config.mjs/copy-charts.mjs)
   - ビルド: 6,470ページ、13秒、エラー0
 
+- T4 燃料補正レースペース完了(2026-04-08):
+  - notebooks/t4_run.py: 燃料補正(+0.06秒/ラップ)適用・ドライバーサマリー・4パネルグラフ・CSV出力
+  - notebooks/t4_fuel_corrected_pace.ipynb: インタラクティブ版（同一ロジック）
+  - fuel_corrected_pace.csv: 60行（22ドライバー×3GP）、7カラム
+  - fuel_pace_comparison.png: 384KB、4パネル分析グラフ
+  - 主な知見: チームランキング変動は±1-2位程度、Spearmanρ≈0.26-0.32
+
 [次のアクション]
 - R01-R03 JSON再生成（修正ロジックで実データ更新、OpenF1 API要）
 - Cloudflare Pagesデプロイ

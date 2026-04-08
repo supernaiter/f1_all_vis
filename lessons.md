@@ -76,6 +76,13 @@
 - 未使用コードは放置しない。706行→72行に削減した実績
 - jitter計算に `time.time() % 1` を使うと負の値になりうる → `random.uniform` が正解
 
+## チームメイト比較（T5結果 2026-04-08）
+- 30ペア（10チーム×3GP）全生成。PaceDelta範囲: -1.13〜+0.46秒
+- Ferrari R01 LEC-HAM差=0.12秒（接戦）。Mercedes R01 RUS-ANT差=-0.05秒（さらに接戦）
+- 最大差: Cadillac(PER-BOT)で-1.13秒 → バックマーカーほどチームメイト差が大きい傾向
+- Team列は race_results.csvの TeamName をそのまま使用（"Red Bull Racing"等フルネーム）
+- GP列はGP名のみ（"Australia"等）で R01_ prefix なし → クエリ時に注意
+
 ## 燃料補正レースペース（T4結果 2026-04-08）
 - 補正モデル: FuelCorrectedTime = LapTime_sec + (LapNumber * 0.06)。0.06 = 1.75kg/lap × 0.035秒/kg
 - 補正前後のチームランキング変動は±1-2位程度 → 均一補正では大きな順位逆転は起きない

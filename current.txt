@@ -53,8 +53,17 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
   - T4: SubNav赤下線アクティブ、surface-1背景
   - ビルド: 6,470ページ、エラー0
 
+- OpenF1コード品質修正(2026-04-08): autonomous-harnessで6タスク全PASS
+  - T1: jitterバグ修正(random.uniform)、JSONDecodeError明示キャッチ
+  - T2: コーナー対応付けGPS最近傍マッチング(match_corners_by_gps)
+  - T3: GP_DIR_MAP動的化(find_gp_dir, data/スキャン)
+  - T4: overtakeピット除外(/pit API+±10秒フィルタ)
+  - T5: openf1_client.py死にコード削除(706→72行)
+  - T6: braking-point角度オフセット、corner-speed globalAlpha、palette削除
+  - 追加: intersd2→lyssr_workspaceパス修正(data.ts/astro.config.mjs/copy-charts.mjs)
+  - ビルド: 6,470ページ、13秒、エラー0
+
 [次のアクション]
-- ブラウザで目視確認（npx astro preview）
-- mainにマージ
+- R01-R03 JSON再生成（修正ロジックで実データ更新、OpenF1 API要）
 - Cloudflare Pagesデプロイ
 - R04バーレーン（4/10-12）レース後に ./pipeline.sh 2026 Bahrain 4 --build 実行

@@ -48,6 +48,31 @@ TEAM_COLORS = {
 # data/ ディレクトリのパターン: 2026_R{NN}_{Name}
 _GP_DIR_PATTERN = re.compile(r"^(\d{4})_R(\d+)_(.+)$")
 
+# GP名 → OpenF1 location名のマッピング
+_GP_TO_OPENF1_LOCATION = {
+    "Australia": "Melbourne",
+    "China": "Shanghai",
+    "Japan": "Suzuka",
+    "Bahrain": "Sakhir",
+    "Saudi Arabia": "Jeddah",
+    "Miami": "Miami Gardens",
+    "Canada": "Montréal",
+    "Monaco": "Monte Carlo",
+    "Spain": "Barcelona",
+    "Austria": "Spielberg",
+    "United Kingdom": "Silverstone",
+    "Belgium": "Spa",
+    "Hungary": "Budapest",
+    "Netherlands": "Zandvoort",
+    "Singapore": "Singapore",
+    "United States": "Austin",
+    "Mexico": "Mexico City",
+    "Brazil": "São Paulo",
+    "Las Vegas": "Las Vegas",
+    "Qatar": "Lusail",
+    "Abu Dhabi": "Yas Island",
+}
+
 
 def find_gp_dir(data_root: Path, year: int, round_no: int):
     """

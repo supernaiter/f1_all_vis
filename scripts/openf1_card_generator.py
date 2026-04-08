@@ -12,8 +12,8 @@ OpenF1 API から braking_point / corner_speed / overtake_replay の 3種JSONを
     2. /drivers からドライバー一覧取得
     3. /car_data + /location で代表ラップ窓を取得（上位ドライバー限定）
     4. reference driver のspeed極小値からコーナー自動検出
-    5. 各ドライバーのブレーキ開始点 / コーナー最低速度を集計
-    6. /position からポジション入れ替わりを検出し、上位3オーバーテイクのGPS軌跡を抽出
+    5. 各ドライバーのブレーキ開始点 / コーナー最低速度を集計（GPS最近傍マッチング）
+    6. /position からポジション入れ替わりを検出し、ピットラップを除外した上位3オーバーテイクのGPS軌跡を抽出
     7. data/{gp}/cards/ 配下の3種JSONを更新
 
 注意:
@@ -24,6 +24,8 @@ OpenF1 API から braking_point / corner_speed / overtake_replay の 3種JSONを
 
 import argparse
 import json
+import math
+import re
 import sys
 import time
 from datetime import datetime, timedelta, timezone
@@ -32,13 +34,6 @@ from pathlib import Path
 # local client (wraps throttle/retry)
 sys.path.insert(0, str(Path(__file__).parent))
 from openf1_client import OpenF1Client, ThrottleConfig  # noqa: E402
-
-# GP 名マッピング（data/ ディレクトリ ↔ OpenF1 country/location）
-GP_DIR_MAP = {
-    1: ("2026_R01_Australia", "Australia", "Melbourne"),
-    2: ("2026_R02_China", "China", "Shanghai"),
-    3: ("2026_R03_Japan", "Japan", "Suzuka"),
-}
 
 # 公式チームカラー（OpenF1 team_colour のフォールバック）
 TEAM_COLORS = {
@@ -49,6 +44,31 @@ TEAM_COLORS = {
     "Alpine": "#0078AA", "Haas F1 Team": "#7A7A7A",
     "Kick Sauber": "#52E252", "Audi": "#3AAA3A", "Cadillac": "#888888",
 }
+
+# data/ ディレクトリのパターン: 2026_R{NN}_{Name}
+_GP_DIR_PATTERN = re.compile(r"^(\d{4})_R(\d+)_(.+)$")
+
+
+def find_gp_dir(data_root: Path, year: int, round_no: int):
+    """
+    data/ ディレクトリをスキャンして {year}_R{round_no:02d}_{name} に一致するものを返す。
+    一致しない場合は None。
+    戻り値: (dir_path, location_name) or (None, None)
+    """
+    if not data_root.is_dir():
+        return None, None
+    for entry in data_root.iterdir():
+        if not entry.is_dir():
+            continue
+        m = _GP_DIR_PATTERN.match(entry.name)
+        if not m:
+            continue
+        dir_year = int(m.group(1))
+        dir_round = int(m.group(2))
+        dir_name = m.group(3)
+        if dir_year == year and dir_round == round_no:
+            return entry, dir_name
+    return None, None
 
 
 def iso_parse(s: str) -> datetime:
@@ -149,13 +169,56 @@ def detect_corners(car_rows, location_rows, speed_threshold=180, min_gap_sec=2.0
     return corners
 
 
-def find_braking_points(car_rows, corners, brake_threshold=50):
-    """各コーナー手前での brake 立ち上がり地点を検出"""
-    if not car_rows or not corners:
+def gps_distance(x1, y1, x2, y2):
+    """2点間のユークリッド距離"""
+    if x1 is None or y1 is None or x2 is None or y2 is None:
+        return float("inf")
+    return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+
+
+def match_corners_by_gps(own_corners, ref_corners):
+    """
+    own_cornersの各コーナーをref_cornersのGPS最近傍にマッチングする。
+    ref_corner 1つに複数のown_cornerが対応する場合、最もspeed_at_apexが低いもの（apex）を採用。
+    戻り値: {ref_corner_id: own_corner_dict or None}
+    """
+    if not ref_corners:
+        return {}
+
+    # ref_corner_id → 候補リスト
+    candidates = {c["id"]: [] for c in ref_corners}
+
+    for oc in own_corners:
+        ox, oy = oc.get("x"), oc.get("y")
+        if ox is None or oy is None:
+            continue
+        # 最近傍 ref corner を見つける
+        best_ref = min(
+            ref_corners,
+            key=lambda rc: gps_distance(ox, oy, rc.get("x"), rc.get("y"))
+        )
+        candidates[best_ref["id"]].append(oc)
+
+    result = {}
+    for c in ref_corners:
+        cands = candidates[c["id"]]
+        if not cands:
+            result[c["id"]] = None
+        else:
+            # 複数候補があればspeed_at_apexが最も低いものをapexとして採用
+            result[c["id"]] = min(cands, key=lambda oc: oc.get("speed_at_apex") or 9999)
+    return result
+
+
+def find_braking_points(car_rows, corner_match, brake_threshold=50):
+    """
+    各コーナー（GPS最近傍マッチング済み）手前でのbrake立ち上がり地点を検出。
+    corner_match: {ref_corner_id: own_corner_dict or None}
+    """
+    if not car_rows or not corner_match:
         return []
     car_sorted = sorted(car_rows, key=lambda r: r["date"])
-    points = []
-    corner_times = [iso_parse(c["t"]) for c in corners]
+
     # ブレーキ立ち上がり点（brake 0→100 の遷移）を全列挙
     brake_events = []
     prev_brake = 0
@@ -167,25 +230,67 @@ def find_braking_points(car_rows, corners, brake_threshold=50):
                 "speed": r.get("speed"),
             })
         prev_brake = b
-    # 各コーナー apex の直前 (0〜3秒前) のブレーキ点を対応付け
-    for ci, ct in enumerate(corner_times):
+
+    points = []
+    for ref_id, oc in corner_match.items():
+        if oc is None:
+            continue
+        ct = iso_parse(oc["t"])
         candidates = [e for e in brake_events
                       if 0 < (ct - e["t"]).total_seconds() < 4.0]
         if candidates:
             # 最も遠い（早いブレーキ点）= ブレーキング始点
             best = max(candidates, key=lambda e: (ct - e["t"]).total_seconds())
             points.append({
-                "corner_id": corners[ci]["id"],
+                "corner_id": ref_id,
                 "time_to_apex_s": round((ct - best["t"]).total_seconds(), 2),
                 "speed_at_brake": best["speed"],
             })
     return points
 
 
-def find_overtakes(positions, max_count=5):
+def fetch_pit_events(client: OpenF1Client, session_key: int):
+    """ピットストップイベントを取得"""
+    return client.get("/pit", {"session_key": session_key}) or []
+
+
+def build_pit_intervals(pit_events, buffer_sec=10.0):
+    """
+    ピットイベントから (driver_number, start_t, end_t) の除外インターバルを構築。
+    pit_dateを基準に ±buffer_sec の窓を作る。
+    """
+    intervals = []
+    for p in pit_events:
+        drv = p.get("driver_number")
+        pit_date = p.get("date") or p.get("pit_duration") and None
+        # date フィールドがない場合は lap_number 基準で後でフィルタ不可 → スキップ
+        if drv is None or not pit_date:
+            continue
+        try:
+            t = iso_parse(pit_date)
+        except (ValueError, TypeError):
+            continue
+        intervals.append((drv, t - timedelta(seconds=buffer_sec), t + timedelta(seconds=buffer_sec)))
+    return intervals
+
+
+def is_pit_related(t_str: str, attacker: int, defender: int, pit_intervals):
+    """オーバーテイク時刻がピット除外インターバル内かどうか判定"""
+    try:
+        t = iso_parse(t_str)
+    except (ValueError, TypeError):
+        return False
+    for drv, start, end in pit_intervals:
+        if drv in (attacker, defender) and start <= t <= end:
+            return True
+    return False
+
+
+def find_overtakes(positions, pit_intervals=None, max_count=5):
     """
     position データから順位入れ替わりペアを検出する。
     各ドライバーの最新position を時系列で追い、2台の順位が swap した瞬間を記録。
+    ピット由来のswapはpit_intervalsで除外。ピットデータが取れない場合は3ポジション以上の急変を除外。
     """
     if not positions:
         return []
@@ -205,11 +310,19 @@ def find_overtakes(positions, max_count=5):
             continue
         # 位置が上がった → 誰を抜いたか: 現在pos以下にいるはずの元pos占有者
         if pos < prev_pos:
+            pos_change = prev_pos - pos
+            # ピットデータなし時のフォールバック: 3ポジション以上の急変はピットの可能性高いので除外
+            if pit_intervals is None and pos_change >= 3:
+                continue
+
             # 同じ pos にいた人 = 被抜き車
             for other_drv, other_pos in current.items():
                 if other_drv == drv:
                     continue
                 if other_pos == prev_pos:
+                    # ピット除外チェック
+                    if pit_intervals and is_pit_related(r["date"], drv, other_drv, pit_intervals):
+                        break
                     # swap!
                     key = tuple(sorted([drv, other_drv]) + [int(pos)])
                     if key in seen_pairs:
@@ -254,11 +367,12 @@ def team_color(team_name, team_colour_hex):
 
 
 def process_gp(year: int, round_no: int, project_root: Path):
-    if round_no not in GP_DIR_MAP:
-        print(f"[ERR] unknown round {round_no}")
+    data_root = project_root / "data"
+    gp_dir, location = find_gp_dir(data_root, year, round_no)
+    if gp_dir is None:
+        print(f"[ERR] no directory found for {year} R{round_no:02d} in {data_root}")
         return False
-    gp_dir_name, country, location = GP_DIR_MAP[round_no]
-    gp_dir = project_root / "data" / gp_dir_name
+    gp_dir_name = gp_dir.name
     if not gp_dir.exists():
         print(f"[ERR] gp dir not found: {gp_dir}")
         return False
@@ -325,25 +439,19 @@ def process_gp(year: int, round_no: int, project_root: Path):
         print(f"  fetching driver {num} ({info.get('name_acronym','?')})...")
         car = fetch_car_data_window(client, session_key, num, ws_iso, we_iso)
         loc = fetch_location_window(client, session_key, num, ws_iso, we_iso)
-        # 車の corner speeds: reference corner時刻近傍で各ドライバー位置は違うが、代わりに
-        # 各ドライバーのspeed極小値をそのまま使う（コーナー順対応付けはindex整合）
-        own_corners = detect_corners(car, loc)
-        # top N (reference cornersと同じ数まで切り詰め)
-        min_speeds = [c["speed_at_apex"] for c in own_corners[:len(corners)]]
-        # 不足分は None
-        while len(min_speeds) < len(corners):
-            min_speeds.append(None)
 
-        braking = find_braking_points(car, own_corners[:len(corners)])
-        # braking は own_corners index なので corners.id に直す（1:1）
-        braking_remap = []
-        for bp in braking:
-            if bp["corner_id"] <= len(corners):
-                braking_remap.append({
-                    "corner_id": corners[bp["corner_id"] - 1]["id"],
-                    "time_to_apex_s": bp["time_to_apex_s"],
-                    "speed_at_brake": bp["speed_at_brake"],
-                })
+        # GPS最近傍マッチングで各ドライバーのコーナーをreferenceに対応付け
+        own_corners = detect_corners(car, loc)
+        corner_match = match_corners_by_gps(own_corners, corners)
+
+        # min_speeds: reference corners順に速度を並べる
+        min_speeds = []
+        for c in corners:
+            matched = corner_match.get(c["id"])
+            min_speeds.append(matched["speed_at_apex"] if matched else None)
+
+        # ブレーキングポイント: GPS最近傍マッチング済みのcorner_matchを使用
+        braking_remap = find_braking_points(car, corner_match)
 
         drivers_data.append({
             "code": info.get("name_acronym", f"#{num}"),
@@ -354,9 +462,20 @@ def process_gp(year: int, round_no: int, project_root: Path):
             "braking_points": braking_remap,
         })
 
+    # ピットイベント取得（オーバーテイク除外用）
+    print("  fetching pit events...")
+    pit_events = fetch_pit_events(client, session_key)
+    print(f"    pit events: {len(pit_events)}")
+    if pit_events:
+        pit_intervals = build_pit_intervals(pit_events)
+        print(f"    pit intervals built: {len(pit_intervals)}")
+    else:
+        print("    no pit data — using fallback (±3 position change filter)")
+        pit_intervals = None
+
     # オーバーテイク検出
     print("  finding overtakes...")
-    overtakes_raw = find_overtakes(positions, max_count=3)
+    overtakes_raw = find_overtakes(positions, pit_intervals=pit_intervals, max_count=3)
     overtakes_out = []
     for ot in overtakes_raw:
         a_info = drv_by_num.get(ot["attacker"], {})

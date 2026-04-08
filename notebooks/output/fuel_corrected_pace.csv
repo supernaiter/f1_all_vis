@@ -1,0 +1,61 @@
+GP,Driver,Team,RawMedianPace,FuelCorrectedMedianPace,CleanLaps,RacePosition
+R01_Australia,ALB,Williams,85.297,87.476,47,12
+R01_Australia,ALO,Aston Martin,86.7165,87.488,10,18
+R01_Australia,ANT,Mercedes,83.017,85.261,49,2
+R01_Australia,BEA,Haas F1 Team,84.627,86.758,49,7
+R01_Australia,BOR,Audi,84.694,86.304,49,9
+R01_Australia,BOT,Cadillac,87.67,88.101,6,19
+R01_Australia,COL,Alpine,85.633,87.503,43,14
+R01_Australia,GAS,Alpine,85.202,87.337,49,10
+R01_Australia,HAD,Red Bull Racing,85.363,85.793,9,20
+R01_Australia,HAM,Ferrari,83.3135,85.2515,48,4
+R01_Australia,LAW,Racing Bulls,85.1425,86.8865,46,13
+R01_Australia,LEC,Ferrari,83.167,85.371,48,3
+R01_Australia,LIN,Racing Bulls,84.8295,86.696,46,8
+R01_Australia,NOR,McLaren,83.534,85.763,49,5
+R01_Australia,OCO,Haas F1 Team,85.249,87.178,49,11
+R01_Australia,PER,Cadillac,87.081,88.89,25,16
+R01_Australia,RUS,Mercedes,83.09,85.1845,50,1
+R01_Australia,SAI,Williams,85.433,87.232,41,15
+R01_Australia,STR,Aston Martin,87.122,88.247,13,17
+R01_Australia,VER,Red Bull Racing,83.5345,85.672,48,6
+R02_China,ALO,Aston Martin,100.3045,101.475,20,17
+R02_China,ANT,Mercedes,96.378,98.137,47,1
+R02_China,BEA,Haas F1 Team,97.496,99.743,47,5
+R02_China,BOT,Cadillac,99.768,101.693,45,13
+R02_China,COL,Alpine,98.3835,99.8855,44,10
+R02_China,GAS,Alpine,97.575,99.501,46,6
+R02_China,HAD,Red Bull Racing,98.039,100.061,45,8
+R02_China,HAM,Ferrari,96.876,98.911,47,3
+R02_China,HUL,Audi,98.388,99.836,42,11
+R02_China,LAW,Racing Bulls,97.995,100.1245,44,7
+R02_China,LEC,Ferrari,96.84,99.031,47,4
+R02_China,LIN,Racing Bulls,98.543,100.307,43,12
+R02_China,OCO,Haas F1 Team,98.357,99.856,41,14
+R02_China,PER,Cadillac,99.977,101.719,43,15
+R02_China,RUS,Mercedes,96.42,98.214,47,2
+R02_China,SAI,Williams,98.726,100.7735,44,9
+R02_China,STR,Aston Martin,101.083,101.5385,8,18
+R02_China,VER,Red Bull Racing,97.8145,99.578,34,16
+R03_Japan,ALB,Williams,96.771,97.7635,36,20
+R03_Japan,ALO,Aston Martin,97.865,99.4375,42,18
+R03_Japan,ANT,Mercedes,93.589,95.482,47,1
+R03_Japan,BEA,Haas F1 Team,96.764,97.4245,14,22
+R03_Japan,BOR,Audi,95.6455,97.468,44,13
+R03_Japan,BOT,Cadillac,97.166,99.2285,34,19
+R03_Japan,COL,Alpine,95.624,97.62,43,16
+R03_Japan,GAS,Alpine,94.538,96.487,46,7
+R03_Japan,HAD,Red Bull Racing,95.64,97.285,43,12
+R03_Japan,HAM,Ferrari,94.676,96.045,47,6
+R03_Japan,HUL,Audi,95.655,97.117,45,11
+R03_Japan,LAW,Racing Bulls,94.938,97.401,45,9
+R03_Japan,LEC,Ferrari,93.915,95.891,45,3
+R03_Japan,LIN,Racing Bulls,95.402,97.436,43,14
+R03_Japan,NOR,McLaren,94.131,95.996,45,5
+R03_Japan,OCO,Haas F1 Team,94.903,97.189,43,10
+R03_Japan,PER,Cadillac,96.467,98.67,44,17
+R03_Japan,PIA,McLaren,93.712,95.845,45,2
+R03_Japan,RUS,Mercedes,94.1395,95.8505,46,4
+R03_Japan,SAI,Williams,96.121,97.719,45,15
+R03_Japan,STR,Aston Martin,98.426,98.977,19,21
+R03_Japan,VER,Red Bull Racing,94.549,96.5495,46,8

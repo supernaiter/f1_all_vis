@@ -5,6 +5,8 @@ import time
 from dataclasses import dataclass
 from typing import Any, Dict, List
 
+import json
+
 import requests
 
 BASE_URL = "https://api.openf1.org/v1"

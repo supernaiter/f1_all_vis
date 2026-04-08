@@ -154,10 +154,13 @@ const chartData = {
 
   const data = JSON.parse(document.getElementById('chart-data')!.textContent!);
   const { speed, meta, color1, color2, summary } = data;
+  const rootStyles = getComputedStyle(document.documentElement);
+  const cssVar = (name: string) => rootStyles.getPropertyValue(name).trim();
+
 
   const themeBase = {
-    textStyle: { color: '#aaaaaa', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
-    tooltip: { backgroundColor: '#1c1c25', borderColor: '#303037', borderWidth: 1, textStyle: { color: '#fff', fontSize: 13 } },
+    textStyle: { color: cssVar('--text-dim'), fontFamily: cssVar('--font') },
+    tooltip: { backgroundColor: cssVar('--bg-card'), borderColor: cssVar('--border'), borderWidth: 1, textStyle: { color: cssVar('--text'), fontSize: 13 } },
   };
 
   function calcBoxplot(values: number[]) {
@@ -196,23 +199,23 @@ const chartData = {
     },
     legend: {
       data: [meta.driver1, meta.driver2],
-      textStyle: { color: '#aaaaaa' },
+      textStyle: { color: cssVar('--text-dim') },
       top: 0,
     },
     grid: { left: '12%', right: 30, top: 40, bottom: 40 },
     xAxis: {
       type: 'category',
       data: labels,
-      axisLine: { lineStyle: { color: '#303037' } },
-      axisLabel: { color: '#ffffff', fontSize: 13 },
+      axisLine: { lineStyle: { color: cssVar('--border') } },
+      axisLabel: { color: cssVar('--text'), fontSize: 13 },
     },
     yAxis: {
       type: 'value',
       name: 'Speed (km/h)',
-      nameTextStyle: { color: '#aaaaaa' },
-      axisLine: { lineStyle: { color: '#303037' } },
-      axisLabel: { color: '#aaaaaa' },
-      splitLine: { lineStyle: { color: '#303037', type: 'dashed' } },
+      nameTextStyle: { color: cssVar('--text-dim') },
+      axisLine: { lineStyle: { color: cssVar('--border') } },
+      axisLabel: { color: cssVar('--text-dim') },
+      splitLine: { lineStyle: { color: cssVar('--border'), type: 'dashed' } },
     },
     series: [
       {
@@ -264,12 +267,12 @@ const chartData = {
   .hero-name { font-weight: 800; }
   .hero-result { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
   .hero-speed {
-    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-family: var(--mono);
     font-size: 0.8rem; color: var(--text-dim); font-weight: 600;
   }
 
   .hero-center { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-  .hero-vs { font-size: 1.2rem; font-weight: 900; color: var(--text-dim); letter-spacing: 0.1em; }
+  .hero-vs { font-size: 1.2rem; font-weight: 900; color: var(--text-dim); letter-spacing: 0.1em; font-family: var(--font-display); }
   .hero-gp { font-size: 0.7rem; color: var(--text-dim); }
   .hero-gp-name { font-size: 0.85rem; color: var(--text-dim); font-weight: 600; }
   .hero-page-type {
@@ -279,7 +282,7 @@ const chartData = {
 
   /* ===== スコアカード ===== */
   .scorecard {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    background: var(--bg-card); border: 0 solid var(--border); border-width: 0 1px 1px 0; border-radius: 0 0 8px 0;
     overflow: hidden; margin-bottom: 24px;
   }
 
@@ -318,7 +321,7 @@ const chartData = {
   }
 
   .score-val {
-    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-family: var(--mono);
     color: var(--text); white-space: nowrap;
     transition: font-size 0.3s;
   }
@@ -346,11 +349,4 @@ const chartData = {
     .hero { gap: 10px; padding: 8px 0; }
     .hero-driver { min-width: 60px; }
     .hero-driver.winner .hero-portrait { width: 44px; height: 44px; }
-    .hero-driver.winner .hero-name { font-size: 1.1rem; }
-    .hero-driver.loser .hero-portrait { width: 32px; height: 32px; }
-    .hero-driver.loser .hero-name { font-size: 0.85rem; }
-    .hero-vs { font-size: 1rem; }
-
-    .score-row { padding: 10px 12px; --face-base: 32px; }
-  }
-</style>
+    .hero-driver.winner .hero-name { font-s

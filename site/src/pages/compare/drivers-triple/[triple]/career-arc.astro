@@ -1,4 +1,5 @@
 ---
+import Base from '../../../../layouts/Base.astro';
 import { listDriverTriples, loadDriverTriple, type DriverCompareCareerArcTriple } from '../../../../lib/data';
 
 export function getStaticPaths() {
@@ -16,26 +17,8 @@ const { driver1, driver2, driver3 } = data;
 const title = `${driver1.name} vs ${driver2.name} vs ${driver3.name} — Career Arc`;
 const payload = JSON.stringify(data);
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=1080">
-<title>{title} — Motorsports Visualised</title>
-<meta name="description" content={`${driver1.name} vs ${driver2.name} vs ${driver3.name} cumulative wins career arc comparison`}>
-<meta property="og:title" content={title}>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace}
-.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
-.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
-.ttl{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
-.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
-canvas{margin-top:24px;display:block}
-</style>
-</head>
-<body>
+<Base title={`${title} — Motorsports Visualised`} description={`${driver1.name} vs ${driver2.name} vs ${driver3.name} cumulative wins career arc comparison`}>
+<div class="card-page">
 <div class="card">
   <div class="wm">MOTORSPORTS-VISUALISED</div>
   <div class="ttl">CAREER ARC</div>
@@ -128,5 +111,21 @@ canvas{margin-top:24px;display:block}
   });
 })();
 </script>
-</body>
-</html>
+</div>
+</Base>
+
+<style>
+  .card-page {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  .card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+  .wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+  .ttl{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+  .sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+  canvas{margin-top:24px;display:block}
+
+</style>
+                                                                                                                                                                                                                                                                                                               

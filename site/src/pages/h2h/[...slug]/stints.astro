@@ -220,6 +220,9 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
 
   const data = JSON.parse(document.getElementById('chart-data')!.textContent!);
   const { stints, meta, color1, color2 } = data;
+  const rootStyles = getComputedStyle(document.documentElement);
+  const cssVar = (name: string) => rootStyles.getPropertyValue(name).trim();
+
 
   const COMPOUND_COLORS: Record<string, string> = {
     SOFT: '#FF3333', MEDIUM: '#FFD700', HARD: '#FFFFFF',
@@ -227,8 +230,8 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   };
 
   const themeBase = {
-    textStyle: { color: '#aaaaaa', fontFamily: 'Hiragino Sans, system-ui, sans-serif' },
-    tooltip: { backgroundColor: '#1c1c25', borderColor: '#303037', borderWidth: 1, textStyle: { color: '#fff', fontSize: 13 } },
+    textStyle: { color: cssVar('--text-dim'), fontFamily: cssVar('--font') },
+    tooltip: { backgroundColor: cssVar('--bg-card'), borderColor: cssVar('--border'), borderWidth: 1, textStyle: { color: cssVar('--text'), fontSize: 13 } },
   };
 
   function buildStintChart(el: HTMLElement, drvStints: any[], drvColor: string, drvName: string) {
@@ -279,7 +282,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
       },
       legend: {
         data: drvStints.map((s: any) => `S${s.stint} ${s.compound}`),
-        textStyle: { color: '#aaaaaa' },
+        textStyle: { color: cssVar('--text-dim') },
         top: 0,
       },
       grid: { left: '8%', right: 20, top: 35, bottom: 50 },
@@ -288,18 +291,18 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
         name: 'Tyre Life (laps)',
         nameLocation: 'center',
         nameGap: 25,
-        nameTextStyle: { color: '#aaaaaa' },
-        axisLine: { lineStyle: { color: '#303037' } },
-        axisLabel: { color: '#aaaaaa' },
-        splitLine: { lineStyle: { color: '#303037', type: 'dashed' } },
+        nameTextStyle: { color: cssVar('--text-dim') },
+        axisLine: { lineStyle: { color: cssVar('--border') } },
+        axisLabel: { color: cssVar('--text-dim') },
+        splitLine: { lineStyle: { color: cssVar('--border'), type: 'dashed' } },
       },
       yAxis: {
         type: 'value',
         name: 'Lap Time (s)',
-        nameTextStyle: { color: '#aaaaaa' },
-        axisLine: { lineStyle: { color: '#303037' } },
-        axisLabel: { color: '#aaaaaa', formatter: (v: number) => v.toFixed(1) },
-        splitLine: { lineStyle: { color: '#303037', type: 'dashed' } },
+        nameTextStyle: { color: cssVar('--text-dim') },
+        axisLine: { lineStyle: { color: cssVar('--border') } },
+        axisLabel: { color: cssVar('--text-dim'), formatter: (v: number) => v.toFixed(1) },
+        splitLine: { lineStyle: { color: cssVar('--border'), type: 'dashed' } },
       },
       dataZoom: [{ type: 'inside', xAxisIndex: 0 }],
       series,
@@ -346,12 +349,12 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   .hero-name { font-weight: 800; }
   .hero-result { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
   .hero-stat {
-    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-family: var(--mono);
     font-size: 0.8rem; color: var(--text-dim); font-weight: 600;
   }
 
   .hero-center { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-  .hero-vs { font-size: 1.2rem; font-weight: 900; color: var(--text-dim); letter-spacing: 0.1em; }
+  .hero-vs { font-size: 1.2rem; font-weight: 900; color: var(--text-dim); letter-spacing: 0.1em; font-family: var(--font-display); }
   .hero-gp { font-size: 0.7rem; color: var(--text-dim); }
   .hero-gp-name { font-size: 0.85rem; color: var(--text-dim); font-weight: 600; }
   .hero-page-type {
@@ -364,6 +367,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   .section-title {
     font-size: 1.2rem; font-weight: 700; margin-bottom: 16px;
     padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    font-family: var(--font-display); text-transform: uppercase; letter-spacing: -0.01em;
   }
   .strategy-section { margin-bottom: 32px; }
   .stint-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
@@ -386,7 +390,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   .deg-section { margin-bottom: 32px; }
   .no-deg-note { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px; }
   .scorecard {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    background: var(--bg-card); border: 0 solid var(--border); border-width: 0 1px 1px 0; border-radius: 0 0 8px 0;
     overflow: hidden; margin-bottom: 24px;
   }
 
@@ -422,7 +426,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   }
 
   .score-val {
-    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-family: var(--mono);
     color: var(--text); white-space: nowrap;
     transition: font-size 0.3s;
   }
@@ -456,12 +460,3 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   @media (max-width: 640px) {
     .hero { gap: 10px; padding: 8px 0; }
     .hero-driver { min-width: 60px; }
-    .hero-driver.winner .hero-portrait { width: 44px; height: 44px; }
-    .hero-driver.winner .hero-name { font-size: 1.1rem; }
-    .hero-driver.loser .hero-portrait { width: 32px; height: 32px; }
-    .hero-driver.loser .hero-name { font-size: 0.85rem; }
-    .hero-vs { font-size: 1rem; }
-
-    .score-row { padding: 10px 12px; --face-base: 32px; }
-  }
-</style>

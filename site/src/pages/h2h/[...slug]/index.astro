@@ -260,33 +260,29 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   .hero-name { font-weight: 800; }
   .hero-result { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
   .hero-pos {
-    font-weight: 900; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;
+    font-weight: 900; color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;
   }
-  .pos-up { color: #28973e; font-weight: 700; }
-  .pos-down { color: #ff2d27; font-weight: 700; }
+  .pos-up { color: var(--positive); font-weight: 700; }
+  .pos-down { color: var(--negative); font-weight: 700; }
   .pos-same { color: var(--text-dim); }
 
   .hero-center { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-  .hero-vs { font-size: 1.2rem; font-weight: 900; color: var(--text-dim); letter-spacing: 0.1em; }
+  .hero-vs { font-size: 1.2rem; font-weight: 900; color: var(--text-dim); letter-spacing: 0.1em; font-family: var(--font-display); }
   .hero-gp { font-size: 0.7rem; color: var(--text-dim); }
   .hero-gp-name { font-size: 0.85rem; color: var(--text-dim); font-weight: 600; }
 
   /* ===== スコアカード ===== */
   .scorecard {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    background: var(--bg-card); border: 0 solid var(--border); border-width: 0 1px 1px 0; border-radius: 0 0 8px 0;
     overflow: hidden; margin-bottom: 32px;
   }
 
   .score-row {
     display: flex; align-items: center; padding: 12px 20px;
     border-bottom: 1px solid var(--border);
-  }
-  .score-row:last-child { border-bottom: none; }
-
-  /* 基準サイズ（CSS custom propertiesでスケール） */
-  .score-row {
     --face-base: clamp(28px, 6vw, 44px);
   }
+  .score-row:last-child { border-bottom: none; }
 
   .score-side {
     flex: 1; display: flex; align-items: center; gap: clamp(6px, 1.5vw, 12px);
@@ -313,7 +309,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   }
 
   .score-val {
-    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-family: var(--mono);
     color: var(--text); white-space: nowrap;
     transition: font-size 0.3s;
   }
@@ -331,10 +327,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   .score-sub { font-size: clamp(0.58rem, 1.2vw, 0.7rem); font-weight: 700; }
 
   /* ===== ストラテジー ===== */
-  .section-title {
-    font-size: 1.2rem; font-weight: 700; margin-bottom: 16px;
-    padding-bottom: 8px; border-bottom: 1px solid var(--border);
-  }
+  .section-title { font-size: 1.2rem; font-weight: 700; font-family: var(--font-display); text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
   .strategy-section { margin-bottom: 32px; }
   .stint-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
   .stint-drv { font-weight: 700; font-size: 0.85rem; min-width: 36px; text-align: center; }
@@ -355,7 +348,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
   /* ===== ナビカード ===== */
   .nav-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 40px; }
   .nav-card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg-card); border: 0 solid var(--border); border-width: 0 1px 1px 0; border-radius: 0 0 8px 0;
     padding: 20px; text-decoration: none; color: var(--text);
     display: flex; flex-direction: column; gap: 8px; position: relative;
     transition: border-color 0.15s, background 0.15s;
@@ -376,8 +369,4 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline:
     .hero-driver.loser .hero-portrait { width: 32px; height: 32px; }
     .hero-driver.loser .hero-name { font-size: 0.85rem; }
     .hero-vs { font-size: 1rem; }
-    .hero-pos { font-size: 0.75rem; padding: 2px 6px; }
-
-    .score-row { padding: 10px 12px; --face-base: 32px; }
-  }
-</style>
+    .hero-pos { font-size: 0.75rem; paddin

@@ -1,4 +1,5 @@
 ---
+import Base from '../../layouts/Base.astro';
 import { loadSeasonData, SEASON_TYPES } from '../../lib/data';
 
 export function getStaticPaths() {
@@ -25,19 +26,13 @@ const title = titleMap[type as string] || (type as string).toUpperCase();
 const payload = JSON.stringify(data);
 const roundLabel = data.rounds ? `R${String(data.rounds[0]).padStart(2,'0')} — R${String(data.rounds[data.rounds.length-1]).padStart(2,'0')}` : '';
 const pending = data.status === 'pending';
+const pageTitle = `${title} — 2026 SEASON — Motorsports Visualised`;
+const pageDescription = `2026 F1 Season ${title} standings and analysis`;
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=1080">
-<title>{title} — 2026 SEASON — Motorsports Visualised</title>
-<meta name="description" content={`2026 F1 Season ${title} standings and analysis`}>
-<meta property="og:title" content={`${title} — 2026 SEASON`}>
+<Base title={pageTitle} description={pageDescription}>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace;color:#e0e0e0}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.card-page{display:flex;justify-content:center;padding:20px 0}
 .card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
 .wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
 .ttl{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
@@ -45,8 +40,7 @@ body{background:#060606;display:flex;justify-content:center;align-items:center;m
 canvas{display:block;margin-top:32px}
 .pending{display:flex;align-items:center;justify-content:center;height:820px;border:1px dashed #252525;color:#4a4a4a;font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.1em;margin-top:32px}
 </style>
-</head>
-<body>
+<div class="card-page">
 <div class="card">
   <div class="wm">MOTORSPORTS-VISUALISED</div>
   <div class="ttl">{title}</div>
@@ -56,6 +50,7 @@ canvas{display:block;margin-top:32px}
   ) : (
     <canvas id="chart" width="968" height="820" role="img" aria-label={`${title} chart for the 2026 F1 season`}></canvas>
   )}
+</div>
 </div>
 <script type="application/json" id="payload" set:html={payload}></script>
 <script is:inline define:vars={{ renderType: type }}>
@@ -159,7 +154,6 @@ canvas{display:block;margin-top:32px}
     if (!teams.length) return;
     const rounds = data.rounds || [];
     const rowH = Math.min(70, (H - pad.t - pad.b) / teams.length);
-    // ラウンド軸
     const timelineL = pad.l + 180;
     const timelineW = W - timelineL - pad.r;
     ctx.strokeStyle = '#222'; ctx.lineWidth = 1;
@@ -169,16 +163,12 @@ canvas{display:block;margin-top:32px}
       ctx.fillStyle = '#555'; ctx.font = '10px "IBM Plex Mono"'; ctx.textAlign = 'center';
       ctx.fillText('R' + String(r).padStart(2, '0'), x, pad.t + teams.length * rowH + 18);
     });
-    // チーム別タイムライン
     teams.forEach((t, i) => {
       const y = pad.t + i * rowH + rowH / 2;
-      // ベースライン
       ctx.strokeStyle = t.color + '44'; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.moveTo(timelineL, y); ctx.lineTo(timelineL + timelineW, y); ctx.stroke();
-      // チーム名
       ctx.fillStyle = t.color; ctx.font = 'bold 13px "IBM Plex Mono"'; ctx.textAlign = 'right';
       ctx.fillText(t.name.toUpperCase(), timelineL - 12, y + 4);
-      // アップグレードマーカー
       (t.upgrades || []).forEach(u => {
         const ri = rounds.indexOf(u.round);
         if (ri < 0) return;
@@ -194,5 +184,389 @@ canvas{display:block;margin-top:32px}
   }
 })();
 </script>
-</body>
-</html>
+</Base>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

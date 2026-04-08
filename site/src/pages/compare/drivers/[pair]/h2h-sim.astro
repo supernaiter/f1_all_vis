@@ -1,4 +1,5 @@
 ---
+import Base from '../../../../layouts/Base.astro';
 import { listDriverPairs, loadDriverCompare } from '../../../../lib/data';
 
 export function getStaticPaths() {
@@ -16,40 +17,8 @@ const { driver1, driver2, predictions } = data;
 const title = `${driver1.name} vs ${driver2.name} — H2H Simulator`;
 const payload = JSON.stringify(data);
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=1080">
-<title>{title} — Motorsports Visualised</title>
-<meta name="description" content={`${driver1.name} vs ${driver2.name} head-to-head simulator comparison`}>
-<meta property="og:title" content={title}>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#060606;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'IBM Plex Mono',monospace}
-.card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
-.wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
-.ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
-.sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
-.matchup{display:flex;justify-content:center;align-items:center;gap:40px;margin-top:36px}
-.driver{text-align:center}
-.driver .name{font-family:'Bebas Neue',sans-serif;font-size:88px;line-height:1}
-.driver .full{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#555;letter-spacing:0.15em;margin-top:2px}
-.vs{font-family:'Bebas Neue',sans-serif;font-size:40px;color:#252525}
-.bars{margin-top:32px;display:flex;flex-direction:column;gap:20px}
-.bar-group{display:flex;flex-direction:column;gap:6px}
-.bar-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;letter-spacing:0.12em;text-align:center}
-.bar-row{display:flex;height:40px}
-.bar-left{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;border-radius:4px 0 0 4px}
-.bar-right{height:100%;display:flex;align-items:center;justify-content:flex-start;padding-left:10px;border-radius:0 4px 4px 0}
-.bar-val{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff}
-canvas{margin-top:28px}
-.radar-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;text-align:center;letter-spacing:0.12em;margin-top:8px}
-.legend{display:flex;gap:32px;justify-content:center;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.08em}
-</style>
-</head>
-<body>
+<Base title={`${title} — Motorsports Visualised`} description={`${driver1.name} vs ${driver2.name} head-to-head simulator comparison`}>
+<div class="card-page">
 <div class="card">
   <div class="wm">MOTORSPORTS-VISUALISED</div>
   <div class="ttl">H2H SIMULATOR</div>
@@ -166,5 +135,35 @@ canvas{margin-top:28px}
   });
 })();
 </script>
-</body>
-</html>
+</div>
+</Base>
+
+<style>
+  .card-page {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  .card{width:1080px;height:1080px;background:#060606;position:relative;overflow:hidden;padding:48px 56px}
+  .wm{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#181818;position:absolute;top:28px;right:56px;text-transform:uppercase}
+  .ttl{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:0.06em;color:#e0e0e0;line-height:1}
+  .sub{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#252525;text-transform:uppercase;margin-top:6px}
+  .matchup{display:flex;justify-content:center;align-items:center;gap:40px;margin-top:36px}
+  .driver{text-align:center}
+  .driver .name{font-family:'Bebas Neue',sans-serif;font-size:88px;line-height:1}
+  .driver .full{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#555;letter-spacing:0.15em;margin-top:2px}
+  .vs{font-family:'Bebas Neue',sans-serif;font-size:40px;color:#252525}
+  .bars{margin-top:32px;display:flex;flex-direction:column;gap:20px}
+  .bar-group{display:flex;flex-direction:column;gap:6px}
+  .bar-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;letter-spacing:0.12em;text-align:center}
+  .bar-row{display:flex;height:40px}
+  .bar-left{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;border-radius:4px 0 0 4px}
+  .bar-right{height:100%;display:flex;align-items:center;justify-content:flex-start;padding-left:10px;border-radius:0 4px 4px 0}
+  .bar-val{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff}
+  canvas{margin-top:28px}
+  .radar-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#555;text-align:center;letter-spacing:0.12em;margin-top:8px}
+  .legend{display:flex;gap:32px;justify-content:center;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.08em}
+
+</style>
+                                                                                                                                                                                                                                                                                   

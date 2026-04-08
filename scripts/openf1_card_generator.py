@@ -102,10 +102,16 @@ def iso_parse(s: str) -> datetime:
 
 
 def find_race_session(client: OpenF1Client, year: int, location: str):
-    """年+ロケーションから Race session dict を取得"""
+    """年+ロケーションから Race session dict を取得
+
+    location: data/ ディレクトリ名から抽出した GP名 (例: "Australia", "Japan")
+    """
+    # GP名を OpenF1 location に変換
+    openf1_location = _GP_TO_OPENF1_LOCATION.get(location, location)
+
     rows = client.get("/sessions", {"year": year, "session_name": "Race"})
     for s in rows:
-        if location.lower() in (s.get("location") or "").lower():
+        if openf1_location.lower() in (s.get("location") or "").lower():
             return s
     return None
 

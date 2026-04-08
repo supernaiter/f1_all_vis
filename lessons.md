@@ -66,3 +66,12 @@
 - 空データハンドリングは frontmatter で判定フラグを作り、HTML テンプレート側で分岐表示
 - OGメタタグは全カードページに必須（ソーシャル共有目的のページなのに未設定だった）
 - color-mix(in srgb, var(--accent) N%, transparent) がデザイントークン対応の rgba() 代替。ブラウザ対応は Safari 16.4+
+
+## パス移行
+- ディスク移行時はdata.ts/astro.config.mjs/copy-charts.mjsの3箇所にハードコードパスがある
+- `grep -r 'intersd2\|lyssr_workspace' --include='*.{ts,js,mjs,astro}' site/` で検出可能
+- 根本対策: 相対パス or 環境変数化を検討
+
+## openf1_client.py
+- 未使用コードは放置しない。706行→72行に削減した実績
+- jitter計算に `time.time() % 1` を使うと負の値になりうる → `random.uniform` が正解

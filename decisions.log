@@ -36,3 +36,6 @@
 2026-04-06|upgradesレンダリング|チーム別水平タイムライン+アップグレードマーカーで実装|他5種(championship等)と同じCanvas描画パターン|upgradesデータのJSON形式: {teams:[{name,color,upgrades:[{round,delta}]}]}
 2026-04-07|UI改善|ハーネスパターン(Plan→Generate→Evaluate)でBase.astro+index.astro改善|ブログの4軸(Design/Originality/Craft/Functionality)で5→7/4→7/7→8/5→8に向上|全6,470ページに影響（グローバルレイアウト変更）
 2026-04-07|F1デザイン適用|formula1.comデザイン哲学をサイト全体に適用（Titillium Web+Orbitron、不完全フレーム、F1カラートークン）|プロフェッショナルなF1データサイトの外観を実現。著作権問題なし（フォントはGoogle Fonts、デザインパターンの参考のみ）|全6,470ページに影響、既存変数名は維持しつつ拡張
+2026-04-08|openf1品質修正|6バグ修正(jitter/GPS最近傍/動的GP/ピット除外/死にコード削除/Canvas描画)|レビューで特定した全問題を一括修正。ビルド6470ページ成功|JSON再生成が必要（API呼び出し未実施）
+2026-04-08|intersd2パス修正|data.ts/astro.config.mjs/copy-charts.mjsの3ファイルでintersd2→lyssr_workspaceに変更|ディスク移動後のビルド失敗を解消|他にハードコードパスがないかgrepで要確認
+2026-04-08|Graphiti検討|Graphiti(getzep/graphiti)を不採用|構造化済みF1データにLLM抽出は過剰。エピソード投入ごとに複数LLM APIコールでコスト爆発。Neo4j運用も不要。JSON→静的ビルドパイプラインが最適|AIエージェント対話層を追加する場合のみ再検討

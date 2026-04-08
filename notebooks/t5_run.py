@@ -18,7 +18,25 @@ from collections import defaultdict
 
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+import matplotlib.font_manager as fm
 import numpy as np
+
+# ─────────────────────────────────────────────
+# 日本語フォント設定（Hiragino Sans がある環境前提）
+# ─────────────────────────────────────────────
+def _setup_japanese_font():
+    """利用可能な日本語フォントを探して設定する"""
+    candidates = ['Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+                  'AppleGothic', 'Yu Gothic', 'Noto Sans CJK JP']
+    available = {f.name for f in fm.fontManager.ttflist}
+    for c in candidates:
+        if c in available:
+            matplotlib.rcParams['font.family'] = c
+            return c
+    # フォールバック: DejaVu Sansのまま（日本語は豆腐になるが動作は継続）
+    return 'DejaVu Sans'
+
+_JP_FONT = _setup_japanese_font()
 
 # ─────────────────────────────────────────────
 # パス設定

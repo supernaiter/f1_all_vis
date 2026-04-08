@@ -113,3 +113,10 @@
 - R01/R03にquali_laps.csvが存在しない → FP→予選検証はR02のみ可能
 - R02が最もデータ豊富（quali/sprint/SQ含む7セッションCSV）
 - 欠損セル率は全GP 11-13%（大半はPitOutTime/PitInTime/SpeedカラムのNaN）
+
+## FP→予選予測（T6結果 2026-04-08 R02中国GP）
+- スプリントWE（FP1のみ）の系統バイアスは+1.25秒（通常WEの+0.34秒の約3.7倍）
+- 順位相関はスプリントWEでも高い: Spearman ρ=0.868（通常WE: 0.82）
+- FP1でシミュラップなしドライバーが22名中6名（STR/SAI/BOT/ALO/LIN/PER）→ スプリントWEではチームがFP1でシミュラップ優先度を下げる可能性
+- fp_laps.csvのSession列は動的に確認すること: スプリントWEはFP1のみ、通常WEはFP1-3
+- quali_laps.csvにはSession列がない（fp_laps.csvとは異なる）→ ドライバー別ベスト集計は全ラップ対象でOK

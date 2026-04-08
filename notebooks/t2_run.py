@@ -18,8 +18,20 @@ matplotlib.use('Agg')  # GUIなし環境用バックエンド
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
+import matplotlib.font_manager as fm
 import os
 import sys
+
+# 日本語フォント設定（Hiragino Sansが利用可能な場合に使用）
+def _set_japanese_font():
+    for font in fm.fontManager.ttflist:
+        if font.name == 'Hiragino Sans':
+            matplotlib.rcParams['font.family'] = font.name
+            return
+    # フォールバック: 日本語文字の警告を抑制（グラフタイトルを英語にする）
+    matplotlib.rcParams['font.family'] = 'DejaVu Sans'
+
+_set_japanese_font()
 
 # ==============================
 # 設定

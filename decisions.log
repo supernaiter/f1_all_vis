@@ -45,3 +45,4 @@
 2026-04-08|T5チームメイト比較|燃料補正ペース+ロングランセクター+SpeedST+レース順位+TyreDegDeltaの5指標でチームメイト比較。Delta=D1-D2（負=D1速い）|CLAUDE.mdチームメイト比較チェックリスト準拠|NaN多め（McLaren R01/R02等）はロングランデータ不足によるもの
 2026-04-08|T7 SC分析手法|SC期間はrace_control_messagesのSAFETY CAR DEPLOYED/IN THIS LAPペアで特定|TrackStatus=4より正確、Lap単位で一致|VSCも同パターンで対応可
 2026-04-08|T6予選シミュレーション識別|個別ラップベース(CLAUDE.md準拠): Soft+非アウトラップ+TyreLife<=8+103%以内の4条件|スティント長ベースより誤判定リスク低い（CLAUDE.md記載の2025イタリアGP -12pos誤差回避）|スプリントWEではFP1のみ利用可能→系統バイアスが通常WE比3-4倍（+1.25秒 vs +0.34秒）
+2026-04-08|T8クロスGP分析|ドライバー別正規化ペースは個別ラップ基準（チーム平均ではなくドライバーGPリーダー比）で計算|サーキット差除去のため|ConsistencyScoreはNaN除外で3GP参加者のみ算出

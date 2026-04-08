@@ -386,7 +386,7 @@ def save_heatmap(rows, out_path):
                 ax.text(gi, ti, 'N/A', ha='center', va='center',
                         color='#666688', fontsize=8)
 
-    ax.set_title('チームメイトペース差ヒートマップ（2026 R01-R03）\nDriver1 - Driver2 [秒、燃料補正済み]',
+    ax.set_title('Teammate Pace Delta Heatmap (2026 R01-R03)\nDriver1 - Driver2 [sec, fuel-corrected]',
                  color='white', fontsize=13, pad=15)
     ax.spines[:].set_color('#333355')
 

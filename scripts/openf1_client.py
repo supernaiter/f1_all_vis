@@ -58,7 +58,7 @@ class OpenF1Client:
             if resp.status_code == 200:
                 try:
                     return resp.json()
-                except Exception:
+                except (json.JSONDecodeError, ValueError):
                     return []
             if resp.status_code in (429, 500, 502, 503, 504):
                 if attempt >= self.retry.max_retries:

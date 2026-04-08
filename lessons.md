@@ -76,6 +76,14 @@
 - 未使用コードは放置しない。706行→72行に削減した実績
 - jitter計算に `time.time() % 1` を使うと負の値になりうる → `random.uniform` が正解
 
+## セーフティカー影響（T7結果 2026-04-08 R03日本GP）
+- SC期間: Lap22-27（race_control_messages.csvから自動特定成功）
+- SC中ピット: 11名/22名（約半数がSCを利用してピット）
+- 最大勝者: PIA +3位, OCO +3位（SCピットで有利なポジションに）
+- 最大敗者: ALB -4位, GAS -3位（SCでアンダーカットされた）
+- SC前後のポジション変動は13/22名で発生（59%）→ SCは戦略を大きく左右する
+- race_control_messages.csvのMessageカラムでSC検出: "SAFETY CAR DEPLOYED"で開始、"SAFETY CAR IN THIS LAP"で終了
+
 ## チームメイト比較（T5結果 2026-04-08）
 - 30ペア（10チーム×3GP）全生成。PaceDelta範囲: -1.13〜+0.46秒
 - Ferrari R01 LEC-HAM差=0.12秒（接戦）。Mercedes R01 RUS-ANT差=-0.05秒（さらに接戦）

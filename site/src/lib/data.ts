@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const DATA_ROOT = path.resolve('/Volumes/intersd2/2026_1_4/Motorsports-Visualised/data');
+const DATA_ROOT = path.resolve('/Volumes/lyssr_workspace/2026_1_4/Motorsports-Visualised/data');
 
 export interface H2HPair {
   driver1: string;

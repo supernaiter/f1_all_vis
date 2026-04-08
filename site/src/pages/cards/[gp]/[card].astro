@@ -229,7 +229,6 @@ const pending = data.status === 'pending' || (!data.drivers?.length && !data.ove
     // Polygons per driver (top 5)
     data.drivers.slice(0, 5).forEach((d, di) => {
       ctx.strokeStyle = d.color; ctx.lineWidth = 2;
-      ctx.fillStyle = d.color + '15';
       ctx.beginPath();
       let started = false;
       for (let i = 0; i < N; i++) {
@@ -240,7 +239,13 @@ const pending = data.status === 'pending' || (!data.drivers?.length && !data.ove
         const px = cx + Math.cos(ang) * r, py = cy + Math.sin(ang) * r;
         if (!started) { ctx.moveTo(px, py); started = true; } else { ctx.lineTo(px, py); }
       }
-      ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.closePath();
+      // 半透明fillはglobalAlphaで制御（hex alpha付加より安全）
+      ctx.globalAlpha = 0.08;
+      ctx.fillStyle = d.color;
+      ctx.fill();
+      ctx.globalAlpha = 1.0;
+      ctx.stroke();
     });
   }
 

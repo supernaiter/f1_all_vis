@@ -261,9 +261,7 @@ const pending = data.status === 'pending' || (!data.drivers?.length && !data.ove
     });
     ctx.stroke();
 
-    const palette = ['#e80020', '#39b54a', '#3BA3E0'];
     (data.overtakes || []).slice(0, 3).forEach((ot, i) => {
-      const col = palette[i];
       // attacker trace
       ctx.strokeStyle = ot.attacker.color; ctx.lineWidth = 3;
       ctx.beginPath();

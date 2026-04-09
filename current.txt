@@ -80,5 +80,14 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
   - T5: サイトビルド 6,470ページ、エラー0
   - T6: Cloudflare Pagesデプロイ https://db2d7438.motorsports-visualised.pages.dev
 
+- 分析監査完了(2026-04-09): 全8タスク評価
+  - T4: 重大バグ — LapNumberがスティント内番号でGP間比較不正確、T5/T8に波及
+  - T3: 比較クエリ空操作バグ（str.replace R0→R0）、GP間比較無効
+  - T6: スリップストリーム注記・CLAUDE.md実績値対比なし
+  - T7: IsAccurateカラム存在確認なし
+  - T1/T2/T5/T8: 問題なし
+
 [次のアクション]
+- T4バグ修正（LapNumber→TyreLife相対変換）後にCSV再生成
+- T3比較クエリ1行fix
 - R04バーレーン（4/10-12）レース後に ./pipeline.sh 2026 Bahrain 4 --build 実行

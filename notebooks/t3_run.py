@@ -241,11 +241,10 @@ if has_old:
                   .rename(columns={'DegRate': 'DegRate_T3（107%フィルタ後）'}))
 
     # フィルタ前（既存）の平均 — GP短縮名を合わせる
-    df_old['GPShort'] = df_old['GP'].str.replace('R0', 'R0', regex=False)
     # cross_gp_deg_rates.csvのGPはR01/R02/R03形式
-    old_summary = (df_old.groupby(['GP', 'Compound'])['DegRate_sec_per_lap']
+    old_summary = (df_old_cmp.groupby(['GPShort', 'Compound'])['DegRate_sec_per_lap']
                    .mean().round(4).reset_index()
-                   .rename(columns={'GP': 'GPShort', 'DegRate_sec_per_lap': 'DegRate_Old（フィルタ前）'}))
+                   .rename(columns={'DegRate_sec_per_lap': 'DegRate_Old（フィルタ前）'}))
 
     merged_cmp = pd.merge(
         t3_summary, old_summary,

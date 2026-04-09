@@ -98,11 +98,11 @@ FUEL_CORRECTION_PER_LAP = 0.06  # 秒/ラップ（燃料軽量化効果）
 def apply_fuel_correction(df):
     """
     燃料補正を各ラップに適用する。
-    FuelCorrectedTime = LapTime_sec + (LapNumber * FUEL_CORRECTION_PER_LAP)
-    LapNumberが大きいほど燃料が軽くなっているため、その分を足し戻す。
+    FuelCorrectedTime = LapTime_sec + (TyreLife * FUEL_CORRECTION_PER_LAP)
+    TyreLifeが大きいほど燃料が軽くなっているため、その分を足し戻す。
     """
     df = df.copy()
-    df['FuelCorrectedTime'] = df['LapTime_sec'] + df['LapNumber'] * FUEL_CORRECTION_PER_LAP
+    df['FuelCorrectedTime'] = df['LapTime_sec'] + df['TyreLife'] * FUEL_CORRECTION_PER_LAP
     return df
 
 

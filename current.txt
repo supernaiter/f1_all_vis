@@ -87,7 +87,10 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
   - T7: IsAccurateカラム存在確認なし
   - T1/T2/T5/T8: 問題なし
 
+- 分析バグ修正完了(2026-04-09):
+  - T4: t4_run.py apply_fuel_correction LapNumber→TyreLife（Stint2+補正量正確化）
+  - T3: t3_run.py str.replace no-op削除、df_old_cmpでGPShort統一マージ
+  - fuel_corrected_pace.csv / deg_rates_clean.csv 再生成完了
+
 [次のアクション]
-- T4バグ修正 完了(2026-04-09): apply_fuel_correction関数のLapNumber→TyreLife変更
-- T3比較クエリfix 完了(2026-04-09): notebooks/t3_run.py行244&246-248修正（GPShort統一化）
 - R04バーレーン（4/10-12）レース後に ./pipeline.sh 2026 Bahrain 4 --build 実行

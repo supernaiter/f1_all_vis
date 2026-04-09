@@ -1,5 +1,5 @@
 project: Motorsports-Visualised
-updated: 2026-04-08 (T6 FP→予選予測精度検証)
+updated: 2026-04-09 (T4/T3バグ修正・CSV再生成)
 
 goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
 

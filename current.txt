@@ -88,6 +88,6 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
   - T1/T2/T5/T8: 問題なし
 
 [次のアクション]
-- T4バグ修正（LapNumber→TyreLife相対変換）後にCSV再生成
-- T3比較クエリ1行fix
+- T4バグ修正 完了(2026-04-09): apply_fuel_correction関数のLapNumber→TyreLife変更
+- T3比較クエリ1行fix (pending)
 - R04バーレーン（4/10-12）レース後に ./pipeline.sh 2026 Bahrain 4 --build 実行

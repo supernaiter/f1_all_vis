@@ -89,5 +89,5 @@ goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン�
 
 [次のアクション]
 - T4バグ修正 完了(2026-04-09): apply_fuel_correction関数のLapNumber→TyreLife変更
-- T3比較クエリ1行fix (pending)
+- T3比較クエリfix 完了(2026-04-09): notebooks/t3_run.py行244&246-248修正（GPShort統一化）
 - R04バーレーン（4/10-12）レース後に ./pipeline.sh 2026 Bahrain 4 --build 実行

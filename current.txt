@@ -1,96 +1,30 @@
 project: Motorsports-Visualised
-updated: 2026-04-09 (T4/T3バグ修正・CSV再生成)
-
-goal: F1データ分析コンテンツのpSEO 2.0自動生成パイプライン構築
+updated: 2026-04-15 (Codex入口修正 / deploy)
+goal: F1データ分析コンテンツ pSEO 2.0 自動生成パイプライン構築
 
 [STATUS]
-- R03日本GP: export完了（53周、22ドライバー、SC 22-27周）
-- R03日本GP: H2H top10分析完了（45ペア）、index.json生成済
-- pipeline.sh作成済: export→H2H→(optional)buildの一括実行
-- サイトビルド成功（676ページ、R01+R02+R03）
-- ブランチ harness/2026-03-31-r03-pipeline にコミット済
-- pSEO 2.0 Phase 0貫通: TYPE-B Career Arc 3ペア自動生成成功（743ページ）
-- data.ts: listDriverPairs/loadDriverCompare追加
-- site/src/pages/compare/drivers/[pair]/career-arc.astro 作成
-- pSEO 2.0 Phase 1完了: 歴代30ドライバー×435ペア×4種(career_arc/h2h_sim/lifetime/milestone)=1740 JSON自動生成
-- scripts/driver_compare_generator.py作成（master.json + pairsを一括生成）
-- site/src/pages/compare/drivers/[pair]/{h2h-sim,lifetime,milestone}.astro 作成
-- ビルド成功: 2480ページ（drivers配下1740 HTML含む）、エラー0
-- スラッグは辞書順正規化（sen-vs-ver, ham-vs-msc 等）
-- pSEO 2.0 Phase 2完了: TYPE-A 21 + TYPE-E 310 + TYPE-F 6 = 337ページ追加
-- scripts/card_data_generator.py / team_compare_generator.py / season_aggregator.py 作成
-- data.ts: loadCardData/listTeamPairs/loadTeamCompare/loadSeasonData 追加
-- site/src/pages/cards/[gp]/[card].astro / compare/teams/[gp]/[pair]/[type].astro / season/[type].astro 作成
-- ビルド成功: 3390ページ、エラー0
-- Cloudflare Pagesデプロイ完了: https://8525b2d9.motorsports-visualised.pages.dev
-- OpenF1統合完了(2026-04-05): 3カード種(braking/corner/overtake) R01-R03実データ化
-  - scripts/openf1_client.py (f1_all_eventsから移植、etl.common依存除去)
-  - scripts/openf1_card_generator.py (上位10ドライバー、3分窓、speed極小コーナー自動検出)
-  - コーナー検出数: R01=20, R02=17, R03=13
-  - オーバーテイク: 各GP 3件ずつGPS軌跡付きで記録
-  - site/src/pages/cards/[gp]/[card].astro にCanvas描画追加
-  - デプロイ: https://7781caf5.motorsports-visualised.pages.dev
-- pSEO 2.0 Phase 3完了: TYPE-C 22C3=1,540トリプル × 2種(career_arc/lifetime)=3,080ページ全展開（キュレーションなし）
-- scripts/driver_triple_generator.py 作成、master.jsonに2026不足7名追加(HAD/STR/COL/BEA/LAW/LIN/BOR)
-- data.ts: listDriverTriples/loadDriverTriple追加
-- site/src/pages/compare/drivers-triple/[triple]/{career-arc,lifetime}.astro 作成
-- ビルド成功: 6,470ページ (3,390 → 6,470、+3,080)
-- Cloudflare Pagesデプロイ完了: https://e7c18eff.motorsports-visualised.pages.dev
-- 全ページ品質最高化完了(2026-04-06):
-  - Phase 0: scorecard.ts(makeRow共有化)、TYRE_COLORS統合、card-theme.ts、CSS color-mix統一
-  - Phase 1: H2H 4サブページ — 空データハンドリング、aria属性、SubNav aria-current
-  - Phase 2: 全13カードページ — OGメタタグ、canvas aria-label
-  - Phase 3: career-arc(マイルストーン線)、h2h-sim(レーダー数値)、lifetime(動的フォント)、milestone(グロー)
-  - Phase 4: cards(pending修正)、teams(散布点)、season(upgrades実装)、era-adjusted(折れ線実装)
-  - Phase 5: insights(セマンティック修正)、tiers(ヘッドショット追加)
-  - ビルド: 6,470ページ、267秒、エラー0
+- data_gp_done: R01 Australia / R02 China / R03 Japan
+- data_gp_not_done: R04 Bahrain 未投入
+- pipeline: ./pipeline.sh YEAR GP ROUND --build 稼働
+- site_build_last_ok: 2026-04-15 / 6474 pages / error 0
+- deploy_last_ok: 2026-04-15 / https://1674b25e.motorsports-visualised.pages.dev
+- h2h_r03: 45 pairs / index.json 生成済
+- pseo_phase0: TYPE-B Career Arc 3 pairs 自動生成済
+- pseo_phase1: driver pairs 435 x 4 = 1740 pages 生成済
+- pseo_phase2: TYPE-A 21 + TYPE-E 310 + TYPE-F 6 = 337 pages 追加済
+- pseo_phase3: driver triples 1540 x 2 = 3080 pages 追加済
+- cards_openf1: braking / corner / overtake R01-R03 実データ化済
+- landing_routes: /compare/drivers/ /season/ /tiers/ /insights/ 追加済
+- ui_upgrade: Base / index / H2H / cards / teams / season 改修済
+- openf1_fix: GPS最近傍 / pit除外 / GP名マップ / jitter修正 / dead code削除 済
+- notebooks_analysis: 8 notebooks + 8 py + CSV / PNG 出力済
+- analysis_audit: T4 LapNumberバグ / T3比較バグ 検出済
+- analysis_fix: t4_run TyreLife補正化 / t3_run 比較修正 / CSV再生成 済
+- branch_current: main
+- branch_local_state: origin/main 比 +244 commits
+- untracked: .agents/ / AGENTS.md / notebooks/.claude/
 
-- UI改善(2026-04-07): Base.astro(ナビ5リンク/レーシングストライプ/3列フッター) + index.astro(ヒーロー刷新/コンテンツタイプ導線/GPブロック改善)
-- F1公式デザイン適用(2026-04-07): autonomous-harnessで4タスク全PASS
-  - T1: Titillium Web+Orbitron導入、19 CSS変数（surface 5段階+text 3段階）
-  - T2: ナビ下線ホバー+フッターレーシングストライプ+Orbitronロゴ
-  - T3: 不完全フレーム(右辺+下辺のみborder)、右下のみ角丸、uppercase見出し
-  - T4: SubNav赤下線アクティブ、surface-1背景
-  - ビルド: 6,470ページ、エラー0
-
-- OpenF1コード品質修正(2026-04-08): autonomous-harnessで6タスク全PASS
-  - T1: jitterバグ修正(random.uniform)、JSONDecodeError明示キャッチ
-  - T2: コーナー対応付けGPS最近傍マッチング(match_corners_by_gps)
-  - T3: GP_DIR_MAP動的化(find_gp_dir, data/スキャン)
-  - T4: overtakeピット除外(/pit API+±10秒フィルタ)
-  - T5: openf1_client.py死にコード削除(706→72行)
-  - T6: braking-point角度オフセット、corner-speed globalAlpha、palette削除
-  - 追加: intersd2→lyssr_workspaceパス修正(data.ts/astro.config.mjs/copy-charts.mjs)
-  - ビルド: 6,470ページ、13秒、エラー0
-
-- 包括的分析ハーネス完了(2026-04-08): 8タスク全PASS
-  - T1: データ品質監査 — 25CSV全健全、LapTime異常0件
-  - T2: クリーンロングラン抽出 — 2415クリーンラップ、107%+TrackStatus='1'フィルタ
-  - T3: タイヤデグ分析 — 124ロングラン回帰、91/124が負デグ（燃料効果優勢）
-  - T4: 燃料補正ペース — +0.06秒/lap補正、ランキング変動±1-2位
-  - T5: チームメイト比較 — 30ペア、Ferrari LEC-HAM差=0.12秒
-  - T6: FP→予選予測 — R02 Spearman ρ=0.868、順位MAE=2.0pos
-  - T7: SC影響分析 — R03 Lap22-27、11名ピット、PIA/OCO +3pos
-  - T8: クロスGPトレンド — Mercedes 123pt首位、Racing Bulls最安定(0.12%)
-  - notebooks/配下に8 Notebook + 8 .py + output/ CSV/PNG全出力
-
-- JSON再生成+デプロイ完了(2026-04-08): autonomous-harnessで6タスク全PASS
-  - T1-T3: H2H JSON R01-R03再生成（各45ペア、修正済みロジック反映）
-  - T4: OpenF1 card JSON R01-R03再生成（9ファイル、GPS最近傍+ピット除外+GP名マッピング反映）
-  - T5: サイトビルド 6,470ページ、エラー0
-  - T6: Cloudflare Pagesデプロイ https://db2d7438.motorsports-visualised.pages.dev
-
-- 分析監査完了(2026-04-09): 全8タスク評価
-  - T4: 重大バグ — LapNumberがスティント内番号でGP間比較不正確、T5/T8に波及
-  - T3: 比較クエリ空操作バグ（str.replace R0→R0）、GP間比較無効
-  - T6: スリップストリーム注記・CLAUDE.md実績値対比なし
-  - T7: IsAccurateカラム存在確認なし
-  - T1/T2/T5/T8: 問題なし
-
-- 分析バグ修正完了(2026-04-09):
-  - T4: t4_run.py apply_fuel_correction LapNumber→TyreLife（Stint2+補正量正確化）
-  - T3: t3_run.py str.replace no-op削除、df_old_cmpでGPShort統一マージ
-  - fuel_corrected_pace.csv / deg_rates_clean.csv 再生成完了
-
-[次のアクション]
-- R04バーレーン（4/10-12）レース後に ./pipeline.sh 2026 Bahrain 4 --build 実行
+[NEXT]
+- run_r04: race後 ./pipeline.sh 2026 Bahrain 4 --build
+- verify_r04: export / H2H / cards / build / deploy
+- push_sync: 必要時 local main と origin/main 整理

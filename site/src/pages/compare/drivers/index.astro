@@ -1,0 +1,290 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { listDriverPairs, loadDriverCompare } from '../../../lib/data';
+
+const DRIVER_COMPARE_TYPES = [
+  { slug: 'career-arc', file: 'career_arc', label: 'Career Arc' },
+  { slug: 'h2h-sim', file: 'h2h_sim', label: 'H2H Sim' },
+  { slug: 'lifetime', file: 'lifetime', label: 'Lifetime' },
+  { slug: 'milestone', file: 'milestone', label: 'Milestone' },
+] as const;
+
+const pairs = listDriverPairs()
+  .map(pair => {
+    const careerArc = loadDriverCompare(pair, 'career_arc');
+    if (!careerArc?.driver1 || !careerArc?.driver2) return null;
+
+    const availableTypes = DRIVER_COMPARE_TYPES.filter(type => loadDriverCompare(pair, type.file) !== null);
+    return {
+      pair,
+      driver1: careerArc.driver1,
+      driver2: careerArc.driver2,
+      availableTypes,
+    };
+  })
+  .filter(Boolean) as {
+    pair: string;
+    driver1: { code: string; name: string; color: string };
+    driver2: { code: string; name: string; color: string };
+    availableTypes: typeof DRIVER_COMPARE_TYPES;
+  }[];
+
+const totalPages = pairs.reduce((sum, pair) => sum + pair.availableTypes.length, 0);
+---
+
+<Base
+  title="Driver Compare — Motorsports Visualised"
+  description="歴代F1ドライバー比較一覧。キャリア推移、通算実績、節目、対戦シミュレーションを実データで表示。"
+  url="/compare/drivers/"
+  type="website"
+>
+  <section class="hero">
+    <div class="eyebrow">Driver Compare</div>
+    <h1>Historical Driver Matchups</h1>
+    <p>歴代ドライバー同士の比較ページ一覧。各カード 実データ生成済。</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">{pairs.length}</span>
+        <span class="stat-label">Pairs</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{totalPages}</span>
+        <span class="stat-label">Pages</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Views / Pair</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="list-section">
+    <div class="section-head">
+      <h2>All Matchups</h2>
+      <p>{pairs.length}ペア。`Career Arc / H2H Sim / Lifetime / Milestone` へ直接移動。</p>
+    </div>
+
+    <div class="pair-grid">
+      {pairs.map(({ pair, driver1, driver2, availableTypes }) => (
+        <article class="pair-card">
+          <div class="pair-top">
+            <div class="driver driver-left">
+              <span class="swatch" style={`background:${driver1.color};`}></span>
+              <div>
+                <div class="code">{driver1.code}</div>
+                <div class="name">{driver1.name}</div>
+              </div>
+            </div>
+            <div class="vs">VS</div>
+            <div class="driver driver-right">
+              <div>
+                <div class="code">{driver2.code}</div>
+                <div class="name">{driver2.name}</div>
+              </div>
+              <span class="swatch" style={`background:${driver2.color};`}></span>
+            </div>
+          </div>
+
+          <div class="pair-meta">{pair}</div>
+
+          <div class="link-row">
+            {availableTypes.map(type => (
+              <a href={`/compare/drivers/${pair}/${type.slug}/`} class="type-link">
+                {type.label}
+              </a>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: 24px 0 36px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  h1 {
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+
+  .hero p,
+  .section-head p {
+    color: var(--text-2);
+    max-width: 780px;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .stat,
+  .pair-card {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--surface-4) 88%, black), var(--surface-2));
+    border: 1px solid var(--border);
+    padding: 16px;
+    position: relative;
+  }
+
+  .stat::after,
+  .pair-card::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 26px;
+    height: 26px;
+    border-right: 3px solid color-mix(in srgb, var(--accent) 65%, transparent);
+    border-bottom: 3px solid color-mix(in srgb, var(--accent) 65%, transparent);
+    border-bottom-right-radius: 14px;
+  }
+
+  .stat-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--text-1);
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .list-section {
+    padding-bottom: 32px;
+  }
+
+  .section-head {
+    margin-bottom: 20px;
+  }
+
+  .section-head h2 {
+    margin: 0 0 8px;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .pair-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .pair-top {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .driver {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .driver-right {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .swatch {
+    width: 10px;
+    height: 34px;
+    border-radius: 2px;
+    flex: 0 0 auto;
+  }
+
+  .code {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--text-1);
+  }
+
+  .name {
+    color: var(--text-2);
+    font-size: 0.92rem;
+    line-height: 1.2;
+  }
+
+  .vs {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--accent);
+    letter-spacing: 0.16em;
+  }
+
+  .pair-meta {
+    margin: 12px 0 14px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .link-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .type-link {
+    padding: 8px 10px;
+    background: color-mix(in srgb, var(--surface-5) 92%, black);
+    border: 1px solid color-mix(in srgb, var(--border) 88%, white 12%);
+    color: var(--text-1);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: border-color var(--transition-fast), transform var(--transition-fast), background var(--transition-fast);
+  }
+
+  .type-link:hover {
+    text-decoration: none;
+    border-color: color-mix(in srgb, var(--accent) 70%, white 10%);
+    background: color-mix(in srgb, var(--accent) 18%, var(--surface-5));
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 980px) {
+    .pair-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .hero-stats,
+    .pair-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

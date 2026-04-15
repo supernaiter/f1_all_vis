@@ -1,0 +1,263 @@
+---
+import Base from '../../layouts/Base.astro';
+import { loadSeasonData, SEASON_TYPES } from '../../lib/data';
+
+const SEASON_TITLES: Record<string, string> = {
+  championship: 'Drivers Championship',
+  constructors: 'Constructors Championship',
+  'title-probability': 'Title Probability',
+  momentum: 'Team Momentum',
+  'power-ranking': 'Power Ranking',
+  upgrades: 'Upgrades Impact',
+};
+
+const SEASON_DESCRIPTIONS: Record<string, string> = {
+  championship: 'ドライバーズ選手権 累積推移',
+  constructors: 'コンストラクターズ選手権 累積推移',
+  'title-probability': 'タイトル確率 スナップショット',
+  momentum: 'チーム別 トレンド変化',
+  'power-ranking': '総合戦闘力 ランキング',
+  upgrades: 'アップデート投入とラップ差',
+};
+
+const pages = SEASON_TYPES
+  .map(type => {
+    const data = loadSeasonData(type);
+    if (!data) return null;
+
+    const rounds = Array.isArray(data.rounds) ? data.rounds : [];
+    const roundLabel = rounds.length
+      ? `R${String(rounds[0]).padStart(2, '0')} - R${String(rounds[rounds.length - 1]).padStart(2, '0')}`
+      : 'Snapshot';
+
+    return {
+      type,
+      href: `/season/${type}/`,
+      title: SEASON_TITLES[type],
+      description: SEASON_DESCRIPTIONS[type],
+      status: data.status === 'pending' ? 'pending' : 'ready',
+      roundLabel,
+    };
+  })
+  .filter(Boolean) as {
+    type: string;
+    href: string;
+    title: string;
+    description: string;
+    status: 'ready' | 'pending';
+    roundLabel: string;
+  }[];
+
+const readyCount = pages.filter(page => page.status === 'ready').length;
+---
+
+<Base
+  title="Season Overview — Motorsports Visualised"
+  description="2026 F1シーズン横断ページ一覧。ランキング、勢力図、タイトル確率、アップデート影響を実データで表示。"
+  url="/season/"
+  type="website"
+>
+  <section class="hero">
+    <div class="eyebrow">Season Overview</div>
+    <h1>2026 Cross-Season Pages</h1>
+    <p>シーズン横断ページ 入口。各カード 実データ参照。`upgrades` は pending 表示維持。</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">{pages.length}</span>
+        <span class="stat-label">Pages</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{readyCount}</span>
+        <span class="stat-label">Ready</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{pages.length - readyCount}</span>
+        <span class="stat-label">Pending</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="season-section">
+    <div class="season-grid">
+      {pages.map(page => (
+        <a href={page.href} class={`season-card ${page.status === 'pending' ? 'is-pending' : ''}`}>
+          <div class="card-top">
+            <span class={`status ${page.status}`}>{page.status}</span>
+            <span class="rounds">{page.roundLabel}</span>
+          </div>
+          <h2>{page.title}</h2>
+          <p>{page.description}</p>
+          <span class="cta">Open Page</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: 24px 0 36px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  h1 {
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+
+  .hero p {
+    color: var(--text-2);
+    max-width: 760px;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .stat,
+  .season-card {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--surface-4) 88%, black), var(--surface-2));
+    border: 1px solid var(--border);
+    padding: 18px;
+    position: relative;
+  }
+
+  .stat::after,
+  .season-card::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 26px;
+    height: 26px;
+    border-right: 3px solid color-mix(in srgb, var(--accent) 65%, transparent);
+    border-bottom: 3px solid color-mix(in srgb, var(--accent) 65%, transparent);
+    border-bottom-right-radius: 14px;
+  }
+
+  .stat-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--text-1);
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .season-section {
+    padding-bottom: 32px;
+  }
+
+  .season-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .season-card {
+    display: block;
+    min-height: 220px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  }
+
+  .season-card:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--accent) 70%, white 10%);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--surface-5) 92%, black), var(--surface-3));
+  }
+
+  .season-card.is-pending {
+    border-style: dashed;
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .status,
+  .rounds,
+  .cta {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .status {
+    padding: 4px 8px;
+    border: 1px solid currentColor;
+  }
+
+  .status.ready {
+    color: var(--positive);
+  }
+
+  .status.pending {
+    color: #d0a300;
+  }
+
+  .rounds {
+    color: var(--text-3);
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--text-1);
+  }
+
+  .season-card p {
+    color: var(--text-2);
+    margin-bottom: 20px;
+  }
+
+  .cta {
+    color: var(--accent);
+  }
+
+  @media (max-width: 980px) {
+    .season-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .hero-stats,
+    .season-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

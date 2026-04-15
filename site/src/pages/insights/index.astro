@@ -1,0 +1,165 @@
+---
+import Base from '../../layouts/Base.astro';
+import { listPillarPages, loadPillarData } from '../../lib/data';
+
+const pages = listPillarPages()
+  .map(slug => {
+    const data = loadPillarData(slug);
+    if (!data) return null;
+    return {
+      slug,
+      title: data.title,
+      subtitle: data.subtitle,
+      source: data.source,
+      entries: data.entries.length,
+      kind: data.kind,
+    };
+  })
+  .filter(Boolean) as {
+    slug: string;
+    title: string;
+    subtitle: string;
+    source: 'static' | 'pending';
+    entries: number;
+    kind: string;
+  }[];
+
+const readyCount = pages.filter(page => page.source === 'static').length;
+---
+
+<Base
+  title="Insights — Motorsports Visualised"
+  description="F1インサイトページ一覧。ランキング、指数、単体分析を実データで表示。"
+  url="/insights/"
+  type="website"
+>
+  <section class="hero">
+    <div class="eyebrow">Insights</div>
+    <h1>Single-Metric Pages</h1>
+    <p>単体分析ページ入口。`static` と `pending` を区別して表示。</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">{pages.length}</span>
+        <span class="stat-label">Pages</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{readyCount}</span>
+        <span class="stat-label">Ready</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid-section">
+    <div class="card-grid">
+      {pages.map(page => (
+        <a href={`/insights/${page.slug}/`} class={`card-link ${page.source === 'pending' ? 'is-pending' : ''}`}>
+          <div class="card-top">
+            <span class={`status ${page.source}`}>{page.source}</span>
+            <span class="metric">{page.entries} entries</span>
+          </div>
+          <h2>{page.title}</h2>
+          <p>{page.subtitle}</p>
+          <span class="kind">{page.kind}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: 24px 0 36px; }
+  .eyebrow {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  h1 {
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+  .hero p { color: var(--text-2); max-width: 760px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); gap: 12px; margin-top: 24px; }
+  .stat,
+  .card-link {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--surface-4) 88%, black), var(--surface-2));
+    border: 1px solid var(--border);
+    padding: 18px;
+    position: relative;
+  }
+  .stat::after,
+  .card-link::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 26px;
+    height: 26px;
+    border-right: 3px solid color-mix(in srgb, var(--accent) 65%, transparent);
+    border-bottom: 3px solid color-mix(in srgb, var(--accent) 65%, transparent);
+    border-bottom-right-radius: 14px;
+  }
+  .stat-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--text-1);
+  }
+  .stat-label,
+  .metric,
+  .kind,
+  .status {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .grid-section { padding-bottom: 32px; }
+  .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .card-link {
+    display: block;
+    min-height: 220px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  }
+  .card-link:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--accent) 70%, white 10%);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--surface-5) 92%, black), var(--surface-3));
+  }
+  .card-link.is-pending { border-style: dashed; }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .status.static { color: var(--positive); }
+  .status.pending { color: #d0a300; }
+  h2 {
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--text-1);
+  }
+  .card-link p { color: var(--text-2); margin-bottom: 18px; }
+  .kind { color: var(--accent); }
+  @media (max-width: 980px) { .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 720px) {
+    .hero-stats,
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>

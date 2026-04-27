@@ -47,3 +47,12 @@
 2026-04-08|T6予選シミュレーション識別|個別ラップベース(CLAUDE.md準拠): Soft+非アウトラップ+TyreLife<=8+103%以内の4条件|スティント長ベースより誤判定リスク低い（CLAUDE.md記載の2025イタリアGP -12pos誤差回避）|スプリントWEではFP1のみ利用可能→系統バイアスが通常WE比3-4倍（+1.25秒 vs +0.34秒）
 2026-04-08|T8クロスGP分析|ドライバー別正規化ペースは個別ラップ基準（チーム平均ではなくドライバーGPリーダー比）で計算|サーキット差除去のため|ConsistencyScoreはNaN除外で3GP参加者のみ算出
 2026-04-08|OpenF1 location マッピング|GP名→OpenF1 API location変換辞書 _GP_TO_OPENF1_LOCATION を追加|Australia→Melbourne など|find_race_session()で使用して session_key取得成功
+2026-04-27|git-pilot|GitHub Issuesを作業リストにする|ready issueをautomation入力へ統一|commit hashとverificationをissueへ戻す
+2026-04-27|session-brief-cache|起動時はcurrent.txtとSESSION_BRIEF.mdを先に読む|4ファイル全読込を避けつつ記憶性能を保つ|source変更時だけbrief再生成
+2026-04-27|human-vs-work-compression|人間との会話は平易な普通文、genshijin圧縮は作業中だけに分離|圧縮文は作業ログ向けで、人間説明では読みやすさを落とす|状態ファイル・作業ログは圧縮、人間返答は普通文
+
+2026-04-27|3-file-state|retired POLICY.md|active state must be current.txt decisions.log lessons.md only|content migrated to lessons.md before deletion
+
+2026-04-27|3-file-state|retired MEMORY.md|active state must be current.txt decisions.log lessons.md only|content migrated to lessons.md before deletion
+
+2026-04-27|3-file-state|retired SESSION_BRIEF.md|active state must be current.txt decisions.log lessons.md only|content migrated to lessons.md before deletion

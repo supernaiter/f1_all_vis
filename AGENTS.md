@@ -1,4 +1,4 @@
-# CLAUDE.md — F1データ分析プロジェクト
+# AGENTS.md — F1データ分析プロジェクト
 
 ## プロジェクト概要
 
@@ -379,16 +379,22 @@ DRSブースト: 選択1ドライバーのポイント2倍
 - Commit prefix: `[harness]`
 - Build: `cd site && npm run build`
 - Dev server: `cd site && npm run dev` (port 4321)
-## Human Conversation Default
+## Human Communication
 
 - Human conversation uses normal plain sentences, not genshijin compression.
-- Do not use compressed work-log style for human-facing explanations unless the user explicitly asks.
 - Genshijin compression is for state files, work logs, and internal task notes only.
+- Explain things so a smart non-expert can follow them.
 - Answer the question directly first.
 - Use plain language and short sentences.
 - Avoid jargon; explain unavoidable technical terms immediately.
 - Separate facts, guesses, and open questions.
 - State missing or broken items exactly.
+- Do not overclaim or hide weak results.
+- Project explanations order: what it is, goal, why it matters, working now, blocked now, next question.
+## Session Startup
+
+- Read `current.txt` first if present.
+- Use source files directly only when brief lacks needed detail.
 
 ## Session Continuity
 

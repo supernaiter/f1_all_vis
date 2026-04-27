@@ -1,18 +1,22 @@
 project: Motorsports-Visualised
-updated: 2026-04-15 (Codex入口修正 / deploy)
+updated: 2026-04-27 (git-pilot init / automation paused / issue #1 needs-contract)
 goal: F1データ分析コンテンツ pSEO 2.0 自動生成パイプライン構築
 
 [STATUS]
 - data_gp_done: R01 Australia / R02 China / R03 Japan
 - data_gp_not_done: R04 Bahrain 未投入
 - pipeline: ./pipeline.sh YEAR GP ROUND --build 稼働
-- site_build_last_ok: 2026-04-15 / 6474 pages / error 0
-- deploy_last_ok: 2026-04-15 / https://1674b25e.motorsports-visualised.pages.dev
+- site_build_last_ok: 2026-04-26 / 6551 pages / warning 2 css-minify + chunk size
+- deploy_last_ok: 2026-04-24 / https://ca0e8440.motorsports-visualised.pages.dev
 - h2h_r03: 45 pairs / index.json 生成済
 - pseo_phase0: TYPE-B Career Arc 3 pairs 自動生成済
 - pseo_phase1: driver pairs 435 x 4 = 1740 pages 生成済
 - pseo_phase2: TYPE-A 21 + TYPE-E 310 + TYPE-F 6 = 337 pages 追加済
 - pseo_phase3: driver triples 1540 x 2 = 3080 pages 追加済
+- feature_editorial: /articles/ 正本 + /features/ featured入口 + seed 3 migrated 済
+- article_pipeline: scripts/article_candidate_generator.py / article_daily_pipeline.py 実装済
+- article_automation: daily-f1-articles / 07:00 JST / ACTIVE / first_run_ok
+- article_last_publish: 2026-04-26 / 5 files / all_real_sources_ok / wording_fix(done) / build ok / deploy blocked(CLOUDFLARE_API_TOKEN)
 - cards_openf1: braking / corner / overtake R01-R03 実データ化済
 - landing_routes: /compare/drivers/ /season/ /tiers/ /insights/ 追加済
 - ui_upgrade: Base / index / H2H / cards / teams / season 改修済
@@ -20,6 +24,15 @@ goal: F1データ分析コンテンツ pSEO 2.0 自動生成パイプライン�
 - notebooks_analysis: 8 notebooks + 8 py + CSV / PNG 出力済
 - analysis_audit: T4 LapNumberバグ / T3比較バグ 検出済
 - analysis_fix: t4_run TyreLife補正化 / t3_run 比較修正 / CSV再生成 済
+- llm_wiki_skill: ~/.codex/skills/llm-wiki 導入済
+- llm_wiki_export: scripts/llm_wiki_export.py init|daily 実装済
+- llm_wiki_repo: research/llm-wiki scaffold / CLAUDE / index / manifest / overview raw 生成済
+- llm_wiki_automation: Daily LLM Wiki Sync / 07:00 JST / ACTIVE / 2026-04-17 user resume
+- llm_wiki_last_run: 2026-04-25 / changed 0 / wiki未更新 / lint 1 issue(log/20260416.md H1)
+- git_pilot_repo: supernaiter/f1_all_vis / base main
+- git_pilot_labels: ready/in-progress/blocked/needs-contract/needs-human/no-autopilot ok
+- git_pilot_automation: motorsports-visualised-github-implementation-2 / PAUSED
+- git_pilot_issue: #1 R04 Bahrain data pipeline / needs-contract
 - branch_current: main
 - branch_local_state: origin/main 比 +244 commits
 - untracked: .agents/ / AGENTS.md / notebooks/.claude/
@@ -27,4 +40,7 @@ goal: F1データ分析コンテンツ pSEO 2.0 自動生成パイプライン�
 [NEXT]
 - run_r04: race後 ./pipeline.sh 2026 Bahrain 4 --build
 - verify_r04: export / H2H / cards / build / deploy
+- verify_articles: 2026-04-26 publish 5 / source file exists 9 / build ok / deploy blocked CLOUDFLARE_API_TOKEN
+- verify_llm_wiki: 2026-04-25 no-change / log追記済 / lint既知1件継続
+- monitor_build_warning: css minify warning 2 / source特定 未了
 - push_sync: 必要時 local main と origin/main 整理

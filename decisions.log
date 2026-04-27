@@ -56,3 +56,4 @@
 2026-04-27|3-file-state|retired MEMORY.md|active state must be current.txt decisions.log lessons.md only|content migrated to lessons.md before deletion
 
 2026-04-27|3-file-state|retired SESSION_BRIEF.md|active state must be current.txt decisions.log lessons.md only|content migrated to lessons.md before deletion
+2026-04-28|session-state-compactor-role|session-state-compactorは3ファイル整形器ではなくrepo全体の知見整理役に変更|知見はstate filesだけでなくskills/scripts/reports/commitsに溜まるため|repo-wide reviewを作り、lessons/current/decisionsへ本質を戻す

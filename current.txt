@@ -38,6 +38,7 @@ goal: F1データ分析コンテンツ pSEO 2.0 自動生成パイプライン�
 - untracked: .agents/ / AGENTS.md / notebooks/.claude/
 
 [NEXT]
+- [GH-000] autopilot_stop: no_ready_issue
 - run_r04: race後 ./pipeline.sh 2026 Bahrain 4 --build
 - verify_r04: export / H2H / cards / build / deploy
 - verify_articles: 2026-04-26 publish 5 / source file exists 9 / build ok / deploy blocked CLOUDFLARE_API_TOKEN

@@ -1,5 +1,5 @@
 project: Motorsports-Visualised
-updated: 2026-04-27 (git-pilot init / automation paused / issue #1 needs-contract)
+updated: 2026-04-27 (autopilot: no_ready_issue / issue #1へ契約テンプレ追記)
 goal: F1データ分析コンテンツ pSEO 2.0 自動生成パイプライン構築
 
 [STATUS]
@@ -33,12 +33,16 @@ goal: F1データ分析コンテンツ pSEO 2.0 自動生成パイプライン�
 - git_pilot_labels: ready/in-progress/blocked/needs-contract/needs-human/no-autopilot ok
 - git_pilot_automation: motorsports-visualised-github-implementation-2 / PAUSED
 - git_pilot_issue: #1 R04 Bahrain data pipeline / needs-contract
-- branch_current: main
-- branch_local_state: origin/main 比 +244 commits
+- branch_current: codex/fix-missing-index-pages
+- branch_local_state: origin/main 比 +249 commits
+- worktree_state: dirty (tracked modified + untracked)
+- disk_free: 123Mi (/, 2026-04-27)
 - untracked: .agents/ / AGENTS.md / notebooks/.claude/
 
 [NEXT]
 - [GH-000] autopilot_stop: no_ready_issue
+- [GH-000] issue1_contract_comment: posted 2026-04-27
+- [GH-000] blocker_disk: uv が cache 書込で失敗 (No space left on device)
 - run_r04: race後 ./pipeline.sh 2026 Bahrain 4 --build
 - verify_r04: export / H2H / cards / build / deploy
 - verify_articles: 2026-04-26 publish 5 / source file exists 9 / build ok / deploy blocked CLOUDFLARE_API_TOKEN

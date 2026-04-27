@@ -244,3 +244,5 @@ style: short bullets, plain words, no jargon
 - GitHub Issues are the only active work list for tasks, decisions, blockers, and execution results.
 - Repository files hold durable policy, templates, and reusable operating rules.
 - `current.txt` is a local startup cache.
+- Before running `uv` or other heavy tooling: check free disk (`df -h /`) and stop if near-full.
+- When posting shell commands in `gh issue comment`: avoid backticks; prefer a quoted heredoc (`<<'EOF'`) to prevent command substitution.
